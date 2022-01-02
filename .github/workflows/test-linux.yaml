@@ -31,9 +31,9 @@ jobs:
           - gflags@2.2.2
           - git-mv-with-history
           - glog@0.5.0
-          - jemalloc-prof
+          # - jemalloc-prof
           - libiberty
-          - libunwind
+          # - libunwind
           - ncurses-termlib
           - ncurses@5
           - openssl@1.0.2t
@@ -63,10 +63,20 @@ jobs:
             echo "ignore=true" >> $GITHUB_ENV
           fi
 
-      - uses: ./src/actions
+      - name: setup tap
+        run: |
+          mkdir -p $(brew --repo)/Library/Taps/curoky
+          cp -r $PWD $(brew --repo)/Library/Taps/curoky/homebrew-tap
+
+      - name: install
         if: env.ignore != 'true'
-        with:
-          formula: ${{ matrix.package }}
-          install_args: '--include-test --verbose' # --build-from-source
-          test_args: --verbose
-          update_brew: 'true'
+        run: brew install --verbose curoky/tap/${{ matrix.package }}
+
+      # TODO(curoky): remove this trick
+      - name: setup test deps
+        if: env.ignore != 'true'
+        run: brew install bzip2 xz zip unzip gmp isl mpfr libmpc zlib zstd binutils gcc@11
+
+      - name: test
+        if: env.ignore != 'true'
+        run: brew test --verbose curoky/tap/${{ matrix.package }}

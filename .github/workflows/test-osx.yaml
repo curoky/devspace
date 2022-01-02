@@ -31,16 +31,16 @@ jobs:
           - gflags@2.2.2
           - git-mv-with-history
           - glog@0.5.0
-          - jemalloc-prof
+          # - jemalloc-prof
           - libiberty
-          - libunwind
+          # - libunwind
           - ncurses-termlib
           - ncurses@5
           - openssl@1.0.2t
           - openssl@1.0.2u
           - python@2
           - rime-bundle
-          - terminalizer
+          # - terminalizer
           - vim-bundle
           - wangle@2021.02.15
           - zsh-bundle
@@ -60,10 +60,15 @@ jobs:
             echo "ignore=true" >> $GITHUB_ENV
           fi
 
-      - uses: ./src/actions
+      - name: setup tap
+        run: |
+          mkdir -p $(brew --repo)/Library/Taps/curoky
+          cp -r $PWD $(brew --repo)/Library/Taps/curoky/homebrew-tap
+
+      - name: install
         if: env.ignore != 'true'
-        with:
-          formula: ${{ matrix.package }}
-          install_args: '--include-test --verbose'
-          test_args: --verbose
-          update_brew: 'true'
+        run: brew install --verbose curoky/tap/${{ matrix.package }}
+
+      - name: test
+        if: env.ignore != 'true'
+        run: brew test --verbose curoky/tap/${{ matrix.package }}

@@ -38,7 +38,7 @@ class Libunwind < Formula
         return 0;
       }
     EOS
-    system ENV.cc, "-I#{include}", 'test.c', "-L#{lib}", '-lunwind', '-o', 'test'
+    system ENV.cc, "-I#{include}", 'test.c', "-Wl,-rpath=#{lib}", "-L#{lib}", '-lunwind', '-o', 'test'
     system './test'
   end
 end
