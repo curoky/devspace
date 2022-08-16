@@ -6,7 +6,7 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: actions/setup-go@v2
         with:
@@ -14,9 +14,9 @@ jobs:
 
       - uses: actions/setup-python@v2
 
-      - run: ./bootstrap.sh
-        env:
-          SECRET: ${{ secrets.BOOTSTRAP_TOKEN }}
+      - run: brew install dotdrop
+
+      - run: dotdrop install --force --profile=image
 
       - uses: pre-commit/action@v2.0.3
         with:

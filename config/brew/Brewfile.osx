@@ -25,6 +25,7 @@ casks = [
   'sqlitestudio',
   'squirrel',
   'visual-studio-code',
+  'iina',
 ]
 extend_casks = [
   # launcher & command palette

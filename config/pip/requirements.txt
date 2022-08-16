@@ -2,6 +2,8 @@ absl-py
 aiofiles
 aiohttp[speedups]
 bqplot
+clip-client
+clip-server
 cmakelang
 conan
 dynaconf[all]
@@ -29,6 +31,8 @@ opencc
 pandas
 parse
 plotly
+prefect
+prefect-dask
 psutil
 pydantic
 pydantic_yaml
@@ -45,6 +49,7 @@ scikit-learn
 seaborn
 six
 srtm.py
+tensorflow
 thrift
 thriftpy2
 tornado

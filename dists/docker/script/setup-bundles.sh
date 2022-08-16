@@ -110,6 +110,7 @@ function p_tools() {
     'protoc-3.20.0'
     'thrift-0.9.1'
     'thrift-0.9.2'
+    'thrift-0.9.3.1'
     'thrift-0.15.0'
     'thrift-0.16.0'
     'clang-format-12.0.1'

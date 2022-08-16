@@ -15,7 +15,7 @@ brews_core = [
   'pre-commit', 'prettier', 'yapf', 'shfmt', 'buildifier', 'eslint', # 'clang-format',
   # language
   'gcc', 'llvm', 'lua', 'python@2', 'python@3', 'node', 'go', 'perl', 'ruby', 'rustup-init',
-  'openjdk@8', 'openjdk@11', 'openjdk', 'thrift', 'vlang', 'dotnet',
+  'openjdk@8', 'openjdk@11', 'openjdk@17', 'openjdk', 'thrift', 'thrift@0.9', 'vlang', 'dotnet',
   # git
   'git', 'lazygit', 'git-absorb', 'git-extras', 'git-lfs',
   # compression
@@ -32,7 +32,7 @@ brews_core = [
   'gdb', 'ncdu', 'file', 'the_silver_searcher', 'gperf', 'watchman', 'nnn', 'ranger',
   'exa', 'fzf', 'bat', 'cloc', 'atuin', 'go-task', 'krb5', 'less', 'navi', 'ghq', 'lcov', 'gcovr',
   'docker-compose', 'opencc', 'dolt', 'include-what-you-use', 'mold', 'parallel', 'fd',
-  'wishlist', 'coreutils', 'sqlcipher', 'sqlite3',
+  'wishlist', 'coreutils', 'sqlcipher', 'sqlite3', 'zoxide',
   # static website generator
   'hexo', 'mkdocs', 'sphinx-doc', 'hugo'
 ]

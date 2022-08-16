@@ -13,7 +13,6 @@ ENV PATH=/opt/conda/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbre
 
 # g=u doesn't really work. https://github.com/moby/buildkit/issues/1951
 COPY --chown=1000:1000 --chmod=g=u --from=homebrew/brew:latest /home/linuxbrew /home/linuxbrew
-COPY --chown=1000:1000 --chmod=g=u --from=curoky/vcpkg:ubuntu22.04 /opt/vcpkg /opt/vcpkg
 COPY --chown=1000:1000 --chmod=g=u --from=ghcr.io/conda/conda-ci:master-linux-python3.10 /opt/conda /opt/conda
 COPY ./script /opt/dotbox/script
 COPY ./site.yaml /opt/dotbox/site.yaml

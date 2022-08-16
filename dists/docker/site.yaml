@@ -43,6 +43,7 @@
           - systemd
           - openssh-server
           - rsyslog
+          - xxd
           # - language-pack-zh-hans
           # - cron
           # - xfce4
@@ -134,7 +135,22 @@
         owner: cicada
         group: cicada
 
-    - block:
+    - become: true
+      become_user: cicada
+      block:
+        - name: Setup nix
+          ansible.builtin.shell: |
+            sh <(curl -L https://nixos.org/nix/install) --no-daemon
+
+        - name: Install nix package
+          ansible.builtin.shell: nix-env --install dstat
+
+        - name: Setup vcpkg
+          ansible.builtin.shell: |
+            git clone https://github.com/microsoft/vcpkg /opt/vcpkg
+            cd /opt/vcpkg
+            ./bootstrap-vcpkg.sh -disableMetrics
+
         - name: Brew doctor
           ansible.builtin.shell: brew doctor || echo ignore
 
@@ -161,30 +177,13 @@
         - name: Prepare conda environment
           ansible.builtin.shell: echo
 
-      become: true
-      become_user: cicada
+        - name: Some tricks
+          ansible.builtin.shell: |
+            # [for warp]: zsh not found
+            sudo ln -s /home/linuxbrew/.linuxbrew/bin/zsh /usr/local/bin/
 
-    - block:
+    - become: true
+      become_user: worker
+      block:
         - name: Noop
           ansible.builtin.shell: echo
-
-      become: true
-      become_user: worker
-
-    # - name: Checkout repo mackup
-    #   git:
-    #     repo: git@github.com:curoky/mackup
-    #     version: dev
-    #     dest: /home/curoky/repos/mackup
-
-    # - name: Setup mackup
-    #   ansible.builtin.shell: cd ~/repos/mackup && ./bootstrap.sh
-
-    # - name: Download tools
-    #   get_url:
-    #     url: https://github.com/curoky/static-binaries/releases/download/v1.2.0/{{ item }}
-    #     dest: /usr/local/bin/{{ item }}
-    #     mode: '0755'
-    #   with_items:
-    #     - clang-format-14.0.0
-    #     - thrift-0.15.0
