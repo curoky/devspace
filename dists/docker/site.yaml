@@ -143,7 +143,7 @@
             sh -c "$(curl -L https://nixos.org/nix/install)" --no-daemon
 
         - name: Install nix package
-          ansible.builtin.shell: nix-env --install dstat
+          ansible.builtin.shell: ~/.nix-profile/bin/nix-env --install dstat
 
         - name: Setup vcpkg
           ansible.builtin.shell: |
