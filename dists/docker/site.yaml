@@ -175,7 +175,9 @@
           ansible.builtin.shell: /opt/dotbox/script/setup-bundles.sh /opt/bundles
 
         - name: Prepare conda environment
-          ansible.builtin.shell: echo
+          ansible.builtin.shell: |
+            conda create -n py2 python=2 --yes
+            pip3 install --no-cache-dir -q -r /opt/dotbox/config/pip/requirements.txt
 
         - name: Some tricks
           ansible.builtin.shell: |

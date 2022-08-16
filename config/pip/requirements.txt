@@ -1,41 +1,41 @@
 absl-py
 aiofiles
-aiohttp[speedups]
+aiohttp[speedups] ; python_version > "3"
 bqplot
-clip-client
-clip-server
-cmakelang
+clip-client ; python_version > "3"
+clip-server ; python_version > "3"
+cmakelang ; python_version > "3"
 conan
 dynaconf[all]
-fastapi[all]
+fastapi[all] ; python_version > "3"
 gevent
 GitPython
 giturlparse
 gpxpy
 icalendar
 icecream
-id-validator
+id-validator ; python_version > "3"
 ipykernel
-ipyleaflet
+ipyleaflet ; python_version > "3"
 ipywidgets
 jinja2
 kafka-python
 lxml
 lz4
 matplotlib
-memray
-mljar-mercury
+memray ; python_version > "3"
+mljar-mercury ; python_version > "3"
 msgpack
 numpy
 opencc
 pandas
 parse
 plotly
-prefect
-prefect-dask
+prefect ; python_version > "3"
+prefect-dask ; python_version > "3"
 psutil
-pydantic
-pydantic_yaml
+pydantic ; python_version > "3"
+pydantic_yaml ; python_version > "3"
 PyGithub
 pypinyin
 PySocks
@@ -44,12 +44,12 @@ python-consul
 python-dateutil
 pytz
 requests
-rich
+rich ; python_version > "3"
 scikit-learn
 seaborn
 six
 srtm.py
-tensorflow
+tensorflow ; python_version > "3"
 thrift
 thriftpy2
 tornado
