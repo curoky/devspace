@@ -20,7 +20,7 @@ jobs:
           python-version: '3.x'
           cache: 'pip'
 
-      - run: pip3 install opencc
+      - run: python -m pip install opencc
 
       - run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 

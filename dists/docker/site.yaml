@@ -140,7 +140,7 @@
       block:
         - name: Setup nix
           ansible.builtin.shell: |
-            sh <(curl -L https://nixos.org/nix/install) --no-daemon
+            sh -c "$(curl -L https://nixos.org/nix/install)" --no-daemon
 
         - name: Install nix package
           ansible.builtin.shell: nix-env --install dstat
