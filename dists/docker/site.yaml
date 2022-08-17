@@ -145,12 +145,6 @@
         - name: Install nix package
           ansible.builtin.shell: ~/.nix-profile/bin/nix-env --install dstat
 
-        - name: Setup vcpkg
-          ansible.builtin.shell: |
-            git clone https://github.com/microsoft/vcpkg /opt/vcpkg
-            cd /opt/vcpkg
-            ./bootstrap-vcpkg.sh -disableMetrics
-
         - name: Brew doctor
           ansible.builtin.shell: brew doctor || echo ignore
 
@@ -178,6 +172,12 @@
           ansible.builtin.shell: |
             conda create -n py2 python=2 --yes
             pip3 install --no-cache-dir -q -r /opt/dotbox/config/pip/requirements.txt
+
+        - name: Setup vcpkg
+          ansible.builtin.shell: |
+            git clone https://github.com/microsoft/vcpkg /opt/vcpkg
+            cd /opt/vcpkg
+            ./bootstrap-vcpkg.sh -disableMetrics
 
         - name: Some tricks
           ansible.builtin.shell: |
