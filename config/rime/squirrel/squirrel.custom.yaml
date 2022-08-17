@@ -109,3 +109,5 @@ patch:
       ascii_mode: true
     co.zeit.hyper:
       ascii_mode: true
+    dev.warp.Warp-Stable:
+      ascii_mode: true

@@ -22,6 +22,7 @@ brews_core = [
   'bzip2', 'xz', 'zstd', 'zip', 'unzip',
   # network tools
   'iproute2', 'iputils', 'net-tools', 'netcat', 'lsof', 'htop', 'connect', 'procps', 'gost', 'goproxy',
+  'inetutils',
   # shell tools
   'zsh', 'dotdrop', 'starship', 'direnv', 'asciinema', 'tmux', 'tmuxinator',
   # text editor

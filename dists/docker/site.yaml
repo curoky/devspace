@@ -152,7 +152,7 @@
           ansible.builtin.shell: /opt/dotbox/script/setup-pkg-brew.sh
 
         - name: Install python package
-          ansible.builtin.shell: pip3 install --no-cache-dir -q -r /opt/dotbox/config/pip/requirements.txt
+          ansible.builtin.shell: pip3 install --no-cache-dir -r /opt/dotbox/config/pip/requirements.txt
 
         - name: Install npm package
           ansible.builtin.shell: npm i -g docsify-cli
@@ -171,7 +171,7 @@
         - name: Prepare conda environment
           ansible.builtin.shell: |
             conda create -n py2 python=2 --yes
-            pip3 install --no-cache-dir -q -r /opt/dotbox/config/pip/requirements.txt
+            /opt/conda/envs/py2/bin/python2 install --no-cache-dir -r /opt/dotbox/config/pip/requirements.txt
 
         - name: Setup vcpkg
           ansible.builtin.shell: |
