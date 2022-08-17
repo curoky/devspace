@@ -30,7 +30,7 @@ numpy
 opencc
 pandas
 parse
-plotly
+# plotly
 prefect ; python_version > "3"
 prefect-dask ; python_version > "3"
 psutil
