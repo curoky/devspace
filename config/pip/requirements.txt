@@ -2,36 +2,42 @@ absl-py
 aiofiles
 aiohttp[speedups] ; python_version > "3"
 bqplot
+click >= 8.1.3  ; python_version > "3"
+click >= 7.1.2  ; python_version < "3"
 clip-client ; python_version > "3"
 clip-server ; python_version > "3"
 cmakelang ; python_version > "3"
-conan
 dynaconf[all]
 fastapi[all] ; python_version > "3"
-gevent
+gevent >= 21.12.0
 GitPython
 giturlparse
 gpxpy
 icalendar
-icecream
-id-validator ; python_version > "3"
-ipykernel
-ipyleaflet ; python_version > "3"
-ipywidgets
-jinja2
-kafka-python
-lxml
-lz4
-matplotlib
+icecream >= 2.1.3
+id-validator >= 1.0.20 ; python_version > "3"
+ipykernel >= 6.15.1 ; python_version > "3"
+ipykernel >= 4.10.1 ; python_version < "3"
+ipyleaflet >= 0.17.0 ; python_version > "3"
+ipywidgets >= 7.7.1
+jinja2 >= 3.1.2 ; python_version > "3"
+jinja2 >= 2.11.3 ; python_version < "3"
+kafka-python >= 2.0.2
+lxml >= 4.9.1
+lz4 >= 4.0.2 ; python_version > "3"
+matplotlib >= 3.5.3 ; python_version > "3"
+matplotlib >= 2.2.5 ; python_version < "3"
 memray ; python_version > "3"
-mljar-mercury ; python_version > "3"
+# mljar-mercury >= 1.1.5 ; python_version > "3"
 msgpack
 numpy
 opencc
-pandas
-parse
-# plotly
-prefect ; python_version > "3"
+pandas >= 1.4.3 ; python_version > "3"
+pandas >= 0.24.2 ; python_version < "3"
+parse >= 1.19.0
+plotly>=5.10.0 ; python_version > "3"
+plotly>=4.14.3 ; python_version < "3"
+prefect >= 2.0.4 ; python_version > "3"
 prefect-dask ; python_version > "3"
 psutil
 pydantic ; python_version > "3"
@@ -60,7 +66,7 @@ voila
 yapf
 zhdate
 
-git+https://github.com/pinterest/thrift-tools
+# git+https://github.com/pinterest/thrift-tools
 
 # deepdiff
 # anytree
