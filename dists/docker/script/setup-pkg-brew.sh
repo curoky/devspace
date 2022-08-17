@@ -22,7 +22,15 @@ sudo rm -rf "$(brew --cache)"
 
 brew unlink $(brew list --formula)
 # brew link $(brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux --formula)
-brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux --formula | xargs -I {} brew link {}
+# brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux --formula | xargs -I {} brew link {}
+
+for x in $(brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux --formula); do
+  if grep -q "keg-only" <(brew info $x); then
+    echo "$x is keg-only, skipping"
+  else
+    brew link $x
+  fi
+done
 
 # brew --prefix vim python@2 python@3 | xargs -n 1 -I {} sh -c 'sudo ln -sf $1/bin/* /usr/bin/' - {}
 
