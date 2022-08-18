@@ -139,8 +139,7 @@
       become_user: cicada
       block:
         - name: Setup nix
-          ansible.builtin.shell: |
-            sh -c "$(curl -L https://nixos.org/nix/install)" --no-daemon
+          ansible.builtin.shell: sh -c "$(curl -L https://nixos.org/nix/install)" --no-daemon
 
         - name: Install nix package
           ansible.builtin.shell: ~/.nix-profile/bin/nix-env --install dstat
@@ -169,9 +168,10 @@
           ansible.builtin.shell: /opt/dotbox/script/setup-bundles.sh /opt/bundles
 
         - name: Prepare conda environment
-          ansible.builtin.shell: |
-            conda create -n py2 python=2 --yes
-            /opt/conda/envs/py2/bin/python2 install --no-cache-dir -r /opt/dotbox/config/pip/requirements.txt
+          ansible.builtin.shell: conda create -n py2 python=2 --yes
+
+        - name: Install python2 package
+          ansible.builtin.shell: /opt/conda/envs/py2/bin/pip install --no-cache-dir -r /opt/dotbox/config/pip/requirements.txt
 
         - name: Setup vcpkg
           ansible.builtin.shell: |
@@ -179,9 +179,9 @@
             cd /opt/vcpkg
             ./bootstrap-vcpkg.sh -disableMetrics
 
+          # 1. [for warp]: zsh not found
         - name: Some tricks
           ansible.builtin.shell: |
-            # [for warp]: zsh not found
             sudo ln -s /home/linuxbrew/.linuxbrew/bin/zsh /usr/local/bin/
 
     - become: true
