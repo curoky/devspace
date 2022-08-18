@@ -2,8 +2,8 @@ absl-py
 aiofiles
 aiohttp[speedups] ; python_version > "3"
 bqplot
-click >= 8.1.3  ; python_version > "3"
 click >= 7.1.2  ; python_version < "3"
+click >= 8.1.3  ; python_version > "3"
 clip-client ; python_version > "3"
 clip-server ; python_version > "3"
 cmakelang ; python_version > "3"
@@ -16,27 +16,27 @@ gpxpy
 icalendar
 icecream >= 2.1.3
 id-validator >= 1.0.20 ; python_version > "3"
-ipykernel >= 6.15.1 ; python_version > "3"
 ipykernel >= 4.10.1 ; python_version < "3"
+ipykernel >= 6.15.1 ; python_version > "3"
 ipyleaflet >= 0.17.0 ; python_version > "3"
 ipywidgets >= 7.7.1
-jinja2 >= 3.1.2 ; python_version > "3"
+jieba
 jinja2 >= 2.11.3 ; python_version < "3"
+jinja2 >= 3.1.2 ; python_version > "3"
 kafka-python >= 2.0.2
 lxml >= 4.9.1
 lz4 >= 4.0.2 ; python_version > "3"
-matplotlib >= 3.5.3 ; python_version > "3"
 matplotlib >= 2.2.5 ; python_version < "3"
+matplotlib >= 3.5.3 ; python_version > "3"
 memray ; python_version > "3"
-# mljar-mercury >= 1.1.5 ; python_version > "3"
 msgpack
 numpy
 opencc
-pandas >= 1.4.3 ; python_version > "3"
 pandas >= 0.24.2 ; python_version < "3"
+pandas >= 1.4.3 ; python_version > "3"
 parse >= 1.19.0
-plotly>=5.10.0 ; python_version > "3"
 plotly>=4.14.3 ; python_version < "3"
+plotly>=5.10.0 ; python_version > "3"
 prefect >= 2.0.4 ; python_version > "3"
 prefect-dask ; python_version > "3"
 psutil
@@ -45,6 +45,7 @@ pydantic_yaml ; python_version > "3"
 PyGithub
 pypinyin
 PySocks
+pyspark[sql]
 pytest
 python-consul
 python-dateutil
@@ -52,7 +53,9 @@ pytz
 requests
 rich ; python_version > "3"
 scikit-learn
+scrapy
 seaborn
+selenium
 six
 srtm.py
 tensorflow ; python_version > "3"
@@ -68,12 +71,11 @@ zhdate
 
 # git+https://github.com/pinterest/thrift-tools
 
+# mljar-mercury >= 1.1.5 ; python_version > "3"
 # deepdiff
 # anytree
 # pypinyin
 # pysnooper
-# scrapy
-# selenium
 # bullet
 # colorama
 # cryptography
@@ -81,7 +83,6 @@ zhdate
 # eliot
 # fabric
 # importlib_metadata
-# jieba
 # kazoo
 # prettytable
 # prompt_toolkit
@@ -92,8 +93,6 @@ zhdate
 # raven
 # schedule
 # tabula-py
-# tensorflow
-# thrift==0.9.2
 # typer-cli
 # types-fb303
 

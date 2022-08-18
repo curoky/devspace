@@ -139,10 +139,10 @@
       become_user: cicada
       block:
         - name: Setup nix
-          ansible.builtin.shell: sh -c "$(curl -L https://nixos.org/nix/install)" --no-daemon
+          ansible.builtin.shell: curl -L https://nixos.org/nix/install | sh -s -- --daemon
 
         - name: Install nix package
-          ansible.builtin.shell: ~/.nix-profile/bin/nix-env --install dstat
+          ansible.builtin.shell: sudo /nix/var/nix/profiles/default/bin/nix-env --install dstat
 
         - name: Brew doctor
           ansible.builtin.shell: brew doctor || echo ignore
