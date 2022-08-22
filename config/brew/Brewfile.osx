@@ -37,8 +37,6 @@ extend_casks = [
   'anybar',
   # download manager
   'motrix',
-  # terminal
-  'warp',
   # calendar
   'itsycal',
   'michaelvillar-timer', 'chromedriver',
@@ -46,16 +44,4 @@ extend_casks = [
 
 casks.each do |b|
   cask b
-end
-
-brews = [
-  'git-absorb', 'starship', 'node', 'fzf', 'python@3', 'openssl', 'exa', 'bat'
-]
-
-extend_brews = [
-  'yapf', 'shfmt', 'prettier', 'pre-commit', 'ncdu', 'mas', 'gost', 'git-extras',
-]
-
-brews.each do |b|
-  brew b
 end

@@ -64,7 +64,7 @@
     - name: Prepare users
       block:
         - name: Update root password
-          user:
+          ansible.builtin.user:
             name: root
             password: 123456
 
@@ -139,7 +139,12 @@
       become_user: cicada
       block:
         - name: Setup nix
-          ansible.builtin.shell: curl -L https://nixos.org/nix/install | sh -s -- --daemon
+          ansible.builtin.shell: |
+            curl -L https://nixos.org/nix/install | sh -s -- --daemon
+            sudo ln -sfn /nix/var/nix/profiles/default/lib/tmpfiles.d/nix-daemon.conf /etc/tmpfiles.d/nix-daemon.conf
+            sudo systemd-tmpfiles --create --prefix=/nix/var/nix
+            sudo systemctl link "/nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.service"
+            sudo systemctl enable "/nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.socket"
 
         - name: Install nix package
           ansible.builtin.shell: sudo /nix/var/nix/profiles/default/bin/nix-env --install dstat

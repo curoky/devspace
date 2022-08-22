@@ -38,6 +38,7 @@
   ],
   "java.import.gradle.home": "/home/linuxbrew/.linuxbrew/opt/gradle/libexec/",
   "java.jdt.ls.java.home": "/home/linuxbrew/.linuxbrew/opt/openjdk/",
+  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx8G -Xms4G",
   "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],
   "markdown-preview-enhanced.pandocPath": "/home/linuxbrew/.linuxbrew/opt/pandoc/bin/pandoc",
   "prettier.prettierPath": "/home/linuxbrew/.linuxbrew/opt/prettier/libexec/lib/node_modules/prettier/",
