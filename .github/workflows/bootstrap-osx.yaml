@@ -13,7 +13,7 @@ jobs:
       HOMEBREW_NO_ANALYTICS: 1
       HOMEBREW_NO_AUTO_UPDATE: 1
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
         if: 'false'
         with:
@@ -26,12 +26,12 @@ jobs:
 
       - run: curl -sSL https://raw.githubusercontent.com/curoky/dotbox/master/config/brew/Brewfile.osx | brew bundle --file=- --cleanup
 
+      - run: curl -sSL https://raw.githubusercontent.com/curoky/dotbox/master/config/brew/Brewfile.linux | brew bundle --file=- --cleanup || echo ignore
+
       # - run: script/osx-hack.sh
 
-      - run: sudo mkdir /opt/bundles && sudo chown -R $(whoami) /opt/bundles
+      - run: sudo chown -R $(whoami) /opt
 
       - run: ./images/script/setup-bundles.sh /opt/bundles
 
       - run: ./bootstrap.sh
-        env:
-          SECRET: ${{ secrets.BOOTSTRAP_TOKEN }}
