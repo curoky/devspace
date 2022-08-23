@@ -7,7 +7,7 @@ else
   export BREW_PREFIX=/home/linuxbrew/.linuxbrew
 fi
 
-for f in $CONFIG_HOME/shell/*.sh; do
+for f in $CONFIG_HOME/env/*.sh; do
   [[ -f $f ]] && source "$f"
 done
 

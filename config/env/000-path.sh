@@ -14,7 +14,7 @@
 
 ENV_PATHS=(
   "$HOME/.local/bin"
-  "$HOME/dotbox/script"
+  "$HOME/dotbox/tools"
 
   "/usr/local/opt/coreutils/libexec/gnubin"
   "/usr/local/opt/grep/libexec/gnubin"

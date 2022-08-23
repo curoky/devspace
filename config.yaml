@@ -21,44 +21,44 @@ dotfiles:
     src: apt/proxy
   bash_logout:
     dst: ~/.bash_logout
-    src: shell/bash_logout
+    src: bash/bash_logout
   bashrc:
     dst: ~/.bashrc
-    src: shell/bashrc
+    src: bash/bashrc
   bat:
     dst: ~/.config/bat
     src: bat
   bazel:
     dst: ~/.bazelrc
-    src: bazelrc
+    src: bazel/bazelrc
   cargo:
-    dst: ~/.cargo/config.toml
-    src: cargo/config.toml
+    dst: ~/.cargo
+    src: cargo
   ccache:
     dst: ~/.config/ccache
     src: ccache
   clang-format:
     dst: ~/.clang-format
-    src: clang-format
+    src: clang-format/clang-format
   cmake-format:
     dst: ~/.cmake-format.json
-    src: cmake-format.json
+    src: cmake-format/cmake-format.json
   conan:
     dst: ~/.conan
     src: conan
   conda:
     dst: ~/.condarc
-    src: condarc
+    src: conda/condarc
   crontab:
     dst: /etc/cron.d/custom.crontab
     link: nolink
     src: crontab/custom.crontab
   dircolors:
     dst: ~/.dircolors
-    src: dircolors
+    src: ls/dircolors
   docker:
-    dst: ~/.docker/config.json
-    src: docker/config.json
+    dst: ~/.docker
+    src: docker
   docker-d:
     dst: /etc/docker/daemon.json
     link: nolink
@@ -68,8 +68,11 @@ dotfiles:
     link: nolink
     src: docker/http-proxy.conf
   dolthub:
-    dst: ~/.dolt/config_global.json
-    src: dolthub/config_global.json
+    dst: ~/.dolt
+    src: dolthub
+  gdb:
+    dst: ~/.gdbinit
+    src: gdb/gdbinit
   git-config:
     dst: ~/.gitconfig
     src: git/.gitconfig
@@ -85,7 +88,7 @@ dotfiles:
     src: go
   golangci:
     dst: ~/.golangci.yaml
-    src: golangci.yaml
+    src: golangci/golangci.yaml
   goproxy-systemd:
     dst: /lib/systemd/system/goproxy.service
     link: nolink
@@ -99,21 +102,21 @@ dotfiles:
     link: nolink
     src: gost/gost.service
   gradle:
-    dst: ~/.gradle/gradle.properties
-    src: gradle/gradle.properties
+    dst: ~/.gradle
+    src: gradle
   helix:
-    dst: ~/.config/helix/config.toml
-    src: helix/config.toml
+    dst: ~/.config/helix
+    src: helix
   httpbin:
     dst: /lib/systemd/system/go-httpbin.service
     link: nolink
     src: httpbin/go-httpbin.service
   hyper:
     dst: ~/.hyper.js
-    src: hyper.js
+    src: hyper/hyper.js
   isort:
     dst: ~/.isort.cfg
-    src: isort.cfg
+    src: isort/isort.cfg
   jupyter:
     dst: ~/.jupyter
     src: jupyter
@@ -124,7 +127,7 @@ dotfiles:
   linux-journal:
     dst: /etc/systemd/journald.conf
     link: nolink
-    src: linux/journald.conf
+    src: systemd/journald.conf
   linux-profile:
     dst: /etc/profile.d/custom.sh
     link: nolink
@@ -143,10 +146,10 @@ dotfiles:
     src: linux/sysctl.d/custom.conf
   markdownlint:
     dst: ~/.markdownlintrc
-    src: markdownlintrc
+    src: markdownlint/markdownlintrc
   maven:
-    dst: ~/.m2/settings.xml
-    src: maven/settings.xml
+    dst: ~/.m2
+    src: maven
   navi:
     dst: ~/.config/navi
     src: navi
@@ -161,25 +164,25 @@ dotfiles:
     src: pip
   prettier:
     dst: ~/.prettierrc.yaml
-    src: prettierrc.yaml
+    src: prettier/prettierrc.yaml
   procps:
     dst: ~/.config/procps
     src: procps
   profile:
     dst: ~/.profile
-    src: shell/profile
+    src: bash/profile
   pylintrc:
     dst: ~/.config/pylintrc
-    src: pylintrc
+    src: pylint/pylintrc
   rime:
     dst: ~/Library/Rime
     src: rime/squirrel
   rubocop:
     dst: ~/.rubocop.yml
-    src: rubocop.yml
+    src: rubocop/rubocop.yml
   shellcheck:
     dst: ~/.shellcheckrc
-    src: shellcheckrc
+    src: shellcheck/shellcheckrc
   snipaste:
     dst: ~/.snipaste/config.ini
     src: snipaste/config.ini
@@ -203,7 +206,7 @@ dotfiles:
     src: ssh/config
   startship:
     dst: ~/.config/starship.toml
-    src: starship.toml
+    src: starship/starship.toml
   tabby:
     dst: ~/Library/Application Support/tabby
     src: tabby
@@ -218,7 +221,7 @@ dotfiles:
     src: tmux/tmux.conf.local
   vimrc:
     dst: ~/.vimrc
-    src: vimrc
+    src: vim/vimrc
   vscode:
     dst: ~/Library/Application Support/Code/User
     src: vscode/app
@@ -230,16 +233,16 @@ dotfiles:
     src: vscode/remote-server-settings.json
   yapf:
     dst: ~/.style.yapf
-    src: style.yapf
+    src: yapf/style.yapf
   yarn:
     dst: ~/.yarnrc
-    src: yarnrc
+    src: yarn/yarnrc
   zprofile:
     dst: ~/.zprofile
-    src: shell/zprofile
+    src: zsh/zprofile
   zshrc:
     dst: ~/.zshrc
-    src: shell/zshrc
+    src: zsh/zshrc
 profiles:
   sysconf:
     dotfiles:
