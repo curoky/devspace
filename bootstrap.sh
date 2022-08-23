@@ -12,5 +12,5 @@ fi
 if [[ $(uname -s) == "Darwin" ]]; then
   dotdrop install --force --profile=darwin
 else
-  dotdrop install --force --profile=${1:-devbox}
+  dotdrop install --force --profile=${1:-image}
 fi

@@ -297,16 +297,10 @@ profiles:
       - zshrc
 
   darwin:
+    include:
+      - image
     dotfiles:
-      - helix
-      - prettier
-      - profile
-      - ssh-authorized-key
-      - yapf
-      - zprofile
-      - zshrc
-      # GUI-APP
       - hyper
       - rime
       - snipaste
-      - vscode
+      # - vscode
