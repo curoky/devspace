@@ -143,13 +143,13 @@ export VCPKG_DOWNLOADS=$XDG_CACHE_HOME/vcpkg/download
 # export ATUIN_CONFIG_DIR=$CONFIG_HOME/atuin
 
 #=-> bat
-export BAT_CONFIG_PATH=$CONFIG_HOME/bat/config
+# export BAT_CONFIG_PATH=$CONFIG_HOME/bat/config
 
 #=-> starship
-export STARSHIP_CONFIG=$CONFIG_HOME/starship.toml
+# export STARSHIP_CONFIG=$CONFIG_HOME/starship.toml
 
 #=-> navi
-export NAVI_CONFIG=$CONFIG_HOME/navi/config.yaml
+# export NAVI_CONFIG=$CONFIG_HOME/navi/config.yaml
 
 #-> htop
 export HTOPRC=$CONFIG_HOME/htop/htoprc

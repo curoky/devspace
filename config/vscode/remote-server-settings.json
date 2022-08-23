@@ -26,14 +26,18 @@
   },
   "http.proxySupport": "off",
   "java.configuration.runtimes": [
-    // {
-    //   "name": "JavaSE-11",
-    //   "path": "/home/linuxbrew/.linuxbrew/opt/openjdk@11/libexec"
-    // },
+    {
+      "name": "JavaSE-1.8",
+      "path": "/home/linuxbrew/.linuxbrew/opt/openjdk@8/libexec"
+    },
+    {
+      "name": "JavaSE-11",
+      "path": "/home/linuxbrew/.linuxbrew/opt/openjdk@11/libexec"
+    },
     {
       "default": true,
       "name": "JavaSE-18",
-      "path": "/home/linuxbrew/.linuxbrew/opt/openjdk/libexec"
+      "path": "/home/linuxbrew/.linuxbrew/opt/openjdk@18/libexec"
     }
   ],
   "java.import.gradle.home": "/home/linuxbrew/.linuxbrew/opt/gradle/libexec/",

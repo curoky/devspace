@@ -61,7 +61,7 @@
     - name: Install docker
       ansible.builtin.shell: sh -c "$(curl -fsSL https://get.docker.com/)"
 
-    - name: Prepare users
+    - name: Setup users
       block:
         - name: Update root password
           ansible.builtin.user:
@@ -94,7 +94,7 @@
             state: present
           with_items: '{{ users }}'
 
-    - name: Setup dotdrop
+    - name: Install dotdrop
       ansible.builtin.shell: brew install dotdrop
       become: true
       become_user: cicada
@@ -138,7 +138,7 @@
     - become: true
       become_user: cicada
       block:
-        - name: Setup nix
+        - name: Install nix
           ansible.builtin.shell: |
             curl -L https://nixos.org/nix/install | sh -s -- --daemon
             sudo ln -sfn /nix/var/nix/profiles/default/lib/tmpfiles.d/nix-daemon.conf /etc/tmpfiles.d/nix-daemon.conf
@@ -169,16 +169,16 @@
         - name: Install go package
           ansible.builtin.shell: CC=gcc CXX=g++ /opt/dotbox/script/setup-pkg-go.sh
 
-        - name: Download bundles
+        - name: Install bundles
           ansible.builtin.shell: /opt/dotbox/script/setup-bundles.sh /opt/bundles
 
-        - name: Prepare conda environment
+        - name: Setup conda environment
           ansible.builtin.shell: conda create -n py2 python=2 --yes
 
         - name: Install python2 package
           ansible.builtin.shell: /opt/conda/envs/py2/bin/pip install --no-cache-dir -r /opt/dotbox/config/pip/requirements.txt
 
-        - name: Setup vcpkg
+        - name: Install vcpkg
           ansible.builtin.shell: |
             git clone https://github.com/microsoft/vcpkg /opt/vcpkg
             cd /opt/vcpkg

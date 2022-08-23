@@ -47,8 +47,8 @@ dotfiles:
     dst: ~/.conan
     src: conan
   conda:
-    dst: ~/.condarc
-    src: conda/condarc
+    dst: ~/.config/conda
+    src: conda
   crontab:
     dst: /etc/cron.d/custom.crontab
     link: nolink
@@ -219,7 +219,7 @@ dotfiles:
   tmux-local:
     dst: ~/.tmux.conf.local
     src: tmux/tmux.conf.local
-  vimrc:
+  vim:
     dst: ~/.vimrc
     src: vim/vimrc
   vscode:
@@ -231,6 +231,9 @@ dotfiles:
   vscode-remote:
     dst: ~/.vscode-remote/data/Machine/settings.json
     src: vscode/remote-server-settings.json
+  warp:
+    dst: ~/.warp
+    src: warp
   yapf:
     dst: ~/.style.yapf
     src: yapf/style.yapf
@@ -263,6 +266,9 @@ profiles:
 
   image:
     dotfiles:
+      - bash_logout
+      - bashrc
+      - bat
       - bazel
       - cargo
       - clang-format
@@ -275,13 +281,15 @@ profiles:
       - helix
       - isort
       - maven
+      - navi
       - prettier
       - procps
       - profile
       - ssh-authorized-key
       - ssh-config
+      - startship
       - tmux
-      - vimrc
+      - vim
       - vscode-remote
       - vscode-server
       - yapf
