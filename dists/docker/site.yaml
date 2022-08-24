@@ -147,7 +147,7 @@
             sudo systemctl enable "/nix/var/nix/profiles/default/lib/systemd/system/nix-daemon.socket"
 
         - name: Install nix package
-          ansible.builtin.shell: sudo /nix/var/nix/profiles/default/bin/nix-env --install dstat
+          ansible.builtin.shell: /opt/dotbox/script/setup-pkg-nix.sh
 
         - name: Brew doctor
           ansible.builtin.shell: brew doctor || echo ignore
