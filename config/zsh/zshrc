@@ -2,10 +2,10 @@ export CONFIG_HOME=$HOME/dotbox/config
 
 if [[ -x /opt/homebrew/bin/brew ]]; then
   export BREW_PREFIX=/opt/homebrew
-  eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   export BREW_PREFIX=/home/linuxbrew/.linuxbrew
 fi
+eval "$($BREW_PREFIX/bin/brew shellenv)"
 
 for f in $CONFIG_HOME/env/*.sh; do
   [[ -f $f ]] && source "$f"
@@ -105,8 +105,11 @@ command -v zoxide >/dev/null && eval "$(zoxide init zsh --hook prompt --cmd j)"
 # CHECK_AND_SOURCE /usr/share/doc/fzf/examples/completion.zsh
 # CHECK_AND_SOURCE /usr/share/doc/fzf/examples/key-bindings.zsh
 # for homebrew
-CHECK_AND_SOURCE $BREW_PREFIX/opt/fzf/shell/completion.zsh
-CHECK_AND_SOURCE $BREW_PREFIX/opt/fzf/shell/key-bindings.zsh
+# CHECK_AND_SOURCE $BREW_PREFIX/opt/fzf/shell/completion.zsh
+# CHECK_AND_SOURCE $BREW_PREFIX/opt/fzf/shell/key-bindings.zsh
+# for nix
+CHECK_AND_SOURCE /nix/var/nix/profiles/default/share/fzf/completion.zsh
+CHECK_AND_SOURCE /nix/var/nix/profiles/default/share/fzf/key-bindings.zsh
 
 #=-> conda, GEN by `conda init zsh`, https://stackoverflow.com/questions/40370467/anaconda-not-found-in-zsh
 # >>> conda initialize >>>

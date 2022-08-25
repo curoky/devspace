@@ -12,13 +12,11 @@ casks = [
   'android-platform-tools',
   'db-browser-for-sqlite',
   'disk-drill',
-  # 'flameshot',
   'font-fira-code-nerd-font',
   'font-ubuntu-mono-nerd-font',
   'google-chrome',
   'google-drive',
-  # 'hyper',
-  'warp',
+  'iina',
   'istat-menus',
   'netnewswire',
   'notion',
@@ -26,20 +24,9 @@ casks = [
   'sqlitestudio',
   'squirrel',
   'visual-studio-code',
-  'iina',
-]
-extend_casks = [
-  # launcher & command palette
-  'sol',
-  # screen shot
-  'flameshot',
-  # menu bar
-  'anybar',
-  # download manager
-  'motrix',
-  # calendar
-  'itsycal',
-  'michaelvillar-timer', 'chromedriver',
+  'warp',
+  # 'anybar', 'chromedriver', 'flameshot', 'flameshot',
+  # 'hyper', 'itsycal', 'michaelvillar-timer', 'motrix', 'sol',
 ]
 
 casks.each do |b|

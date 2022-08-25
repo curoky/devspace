@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 LABEL org.opencontainers.image.authors="cccuroky@gmail.com"
 
-ENV PATH=/opt/conda/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH \
+ENV PATH=/nix/var/nix/profiles/default/bin:/home/linuxbrew/.linuxbrew/bin:$PATH \
   LANG=en_US.UTF-8 \
   LANGUAGE=en_US.UTF-8 \
   LC_ALL=en_US.UTF-8 \

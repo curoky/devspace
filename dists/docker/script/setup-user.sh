@@ -21,7 +21,7 @@ function CreateUser() {
   name=$2
   pass=$3
   groupadd -g $gid -o $name
-  useradd -m -s /home/linuxbrew/.linuxbrew/bin/zsh -u $uid -g $gid $name
+  useradd -m -s /bin/zsh -u $uid -g $gid $name
   usermod -aG sudo $name
   usermod -aG adm $name
   usermod -aG docker $name

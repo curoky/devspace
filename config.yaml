@@ -159,6 +159,9 @@ dotfiles:
   neofetch:
     dst: ~/.config/neofetch
     src: neofetch
+  nixpkgs:
+    dst: ~/.config/nixpkgs
+    src: nixpkgs
   pip:
     dst: ~/.config/pip
     src: pip
@@ -250,9 +253,9 @@ profiles:
   sysconf:
     dotfiles:
       - docker-d
-      - linux-environment
+      # - linux-environment
       - linux-journal
-      - linux-profile
+      # - linux-profile
       - linux-sudoers
       - linux-sysctl-1
       - linux-sysctl-2
@@ -282,6 +285,8 @@ profiles:
       - isort
       - maven
       - navi
+      - nixpkgs
+      - pip
       - prettier
       - procps
       - profile

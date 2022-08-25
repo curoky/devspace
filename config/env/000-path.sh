@@ -36,13 +36,13 @@ ENV_PATHS=(
   "/home/cicada/go/bin"
 
   "$BREW_PREFIX/lib/ruby/gems/3.1.0/bin"
+  "/nix/var/nix/profiles/default/lib/ruby/gems/2.7.0/bin"
 
   "/opt/vcpkg"
 
   "/opt/conda/bin"
 
   "/opt/bundles/bin"
-  "/opt/bundles/dool"
 
   "$HOME/.cargo/bin"
 )
@@ -59,6 +59,8 @@ ENV_FPATHS=(
   "/usr/share/zsh/vendor-completions"
   # typer
   "$HOME/.zfunc"
+  # nix
+  "/nix/var/nix/profiles/default/share/zsh/site-functions/"
 )
 for p in "${ENV_FPATHS[@]}"; do
   [[ -d $p ]] && fpath=($p $fpath)

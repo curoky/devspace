@@ -5,7 +5,7 @@ Wants=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/linuxbrew/.linuxbrew/opt/gost/bin/gost -C /etc/gost/daemon.json
+ExecStart=/nix/var/nix/profiles/default/bin/gost -C /etc/gost/daemon.json
 Restart=on-failure
 
 [Install]

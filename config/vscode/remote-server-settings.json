@@ -1,5 +1,5 @@
 {
-  "C_Cpp.clang_format_path": "/home/linuxbrew/.linuxbrew/bin/clang-format",
+  "C_Cpp.clang_format_path": "/nix/var/nix/profiles/default/bin/clang-format",
   "C_Cpp.codeAnalysis.maxConcurrentThreads": 32,
   "C_Cpp.codeAnalysis.maxMemory": 50000,
   "C_Cpp.intelliSense.maxCachedProcesses": 120,
@@ -12,49 +12,49 @@
   "[cpp]": {
     "editor.tabSize": 2
   },
-  "bazel.buildifierExecutable": "/home/linuxbrew/.linuxbrew/opt/buildifier/bin/buildifier",
-  "bazel.executable": "/home/linuxbrew/.linuxbrew/opt/bazelisk/bin/bazel",
-  "clang-format.executable": "/home/linuxbrew/.linuxbrew/bin/clang-format",
+  "bazel.buildifierExecutable": "/nix/var/nix/profiles/default/bin/buildifier",
+  "bazel.executable": "/nix/var/nix/profiles/default/bin/bazel",
+  "clang-format.executable": "/nix/var/nix/profiles/default/bin/clang-format",
   "clang-format.fallbackStyle": "Google",
-  "cmake.cmakePath": "/home/linuxbrew/.linuxbrew/bin/cmake",
-  "cmake.ctestPath": "/home/linuxbrew/.linuxbrew/bin/ctest",
-  "cmakeFormat.exePath": "/home/linuxbrew/.linuxbrew/bin/cmake-format",
-  "cpplint.cpplintPath": "/home/linuxbrew/.linuxbrew/bin/cpplint",
-  "git.path": "/home/linuxbrew/.linuxbrew/bin/git",
+  "cmake.cmakePath": "/nix/var/nix/profiles/default/bin/cmake",
+  "cmake.ctestPath": "/nix/var/nix/profiles/default/bin/ctest",
+  "cmakeFormat.exePath": "/nix/var/nix/profiles/default/bin/cmake-format",
+  "cpplint.cpplintPath": "/nix/var/nix/profiles/default/bin/cpplint",
+  "git.path": "/nix/var/nix/profiles/default/bin/git",
   "go.alternateTools": {
-    "go": "/home/linuxbrew/.linuxbrew/opt/go/bin/go"
+    "go": "/nix/var/nix/profiles/default/bin/go"
   },
   "http.proxySupport": "off",
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-1.8",
-      "path": "/home/linuxbrew/.linuxbrew/opt/openjdk@8/libexec"
+      "path": "/nix/var/nix/profiles/jdk8/lib/openjdk"
     },
     {
       "name": "JavaSE-11",
-      "path": "/home/linuxbrew/.linuxbrew/opt/openjdk@11/libexec"
+      "path": "/nix/var/nix/profiles/jdk11/lib/openjdk"
     },
     {
       "default": true,
-      "name": "JavaSE-18",
-      "path": "/home/linuxbrew/.linuxbrew/opt/openjdk@18/libexec"
+      "name": "JavaSE-17",
+      "path": "/nix/var/nix/profiles/jdk17/lib/openjdk"
     }
   ],
-  "java.import.gradle.home": "/home/linuxbrew/.linuxbrew/opt/gradle/libexec/",
-  "java.jdt.ls.java.home": "/home/linuxbrew/.linuxbrew/opt/openjdk/",
+  "java.import.gradle.home": "/nix/var/nix/profiles/default",
+  "java.jdt.ls.java.home": "/nix/var/nix/profiles/jdk17/lib/openjdk",
   "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx8G -Xms4G",
   "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],
-  "markdown-preview-enhanced.pandocPath": "/home/linuxbrew/.linuxbrew/opt/pandoc/bin/pandoc",
-  "prettier.prettierPath": "/home/linuxbrew/.linuxbrew/opt/prettier/libexec/lib/node_modules/prettier/",
+  "markdown-preview-enhanced.pandocPath": "/nix/var/nix/profiles/default/bin/pandoc",
+  "prettier.prettierPath": "/nix/var/nix/profiles/default/lib/node_modules/prettier",
   "python.defaultInterpreterPath": "/opt/conda/bin/python",
-  "python.formatting.yapfPath": "/home/linuxbrew/.linuxbrew/opt/yapf/bin/yapf",
+  "python.formatting.yapfPath": "/nix/var/nix/profiles/default/bin/yapf",
   "remote.autoForwardPortsSource": "output",
-  "ruby.interpreter.commandPath": "/home/linuxbrew/.linuxbrew/opt/ruby/bin/ruby",
-  "ruby.pathToBundler": "/home/linuxbrew/.linuxbrew/opt/ruby/bin/bundle",
+  "ruby.interpreter.commandPath": "/nix/var/nix/profiles/default/bin/ruby",
+  "ruby.pathToBundler": "/nix/var/nix/profiles/default/bin/bundle",
   // "ruby.useBundler": true,
-  "shellcheck.executablePath": "/home/linuxbrew/.linuxbrew/opt/shellcheck/bin/shellcheck",
-  "shellformat.path": "/home/linuxbrew/.linuxbrew/opt/shfmt/bin/shfmt",
-  "sqlite.sqlite3": "/home/linuxbrew/.linuxbrew/opt/sqlite/bin/sqlite3",
-  "typescript.npm": "/home/linuxbrew/.linuxbrew/bin/npm",
-  "xml.java.home": "/home/linuxbrew/.linuxbrew/opt/openjdk/"
+  "shellcheck.executablePath": "/nix/var/nix/profiles/default/bin/shellcheck",
+  "shellformat.path": "/nix/var/nix/profiles/default/bin/shfmt",
+  "sqlite.sqlite3": "/nix/var/nix/profiles/default/bin/sqlite3",
+  "typescript.npm": "/nix/var/nix/profiles/default/bin/npm",
+  "xml.java.home": "/nix/var/nix/profiles/jdk17/lib/openjdk"
 }

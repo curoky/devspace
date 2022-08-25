@@ -49,6 +49,7 @@ export HOMEBREW_BOOTSNAP=1
 export HOMEBREW_BAT=1
 export HOMEBREW_BAT_CONFIG_PATH=$HOME/.config/bat/config
 export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
+export HOMEBREW_GIT_PATH=/nix/var/nix/profiles/default/bin/git
 # export HOMEBREW_CACHE=$XDG_CACHE_HOME/homebrew # get with brew --cache
 
 #=-> flutter
@@ -107,7 +108,7 @@ export PYTHONWARNINGS=ignore:DEPRECATION
 # https://pip.pypa.io/en/latest/topics/configuration/#environment-variables
 # https://pip.pypa.io/en/latest/topics/caching/#default-paths
 # export PIP_CACHE_DIR=$XDG_CACHE_HOME/pip
-export PIP_CONFIG_FILE=$CONFIG_HOME/pip/pip.conf
+# export PIP_CONFIG_FILE=$CONFIG_HOME/pip/pip.conf
 
 #=-> go
 # https://pkg.go.dev/cmd/go#hdr-Build_and_test_caching
@@ -146,7 +147,7 @@ export VCPKG_DOWNLOADS=$XDG_CACHE_HOME/vcpkg/download
 # export BAT_CONFIG_PATH=$CONFIG_HOME/bat/config
 
 #=-> starship
-# export STARSHIP_CONFIG=$CONFIG_HOME/starship.toml
+# export STARSHIP_CONFIG=$CONFIG_HOME/starship/starship.toml
 
 #=-> navi
 # export NAVI_CONFIG=$CONFIG_HOME/navi/config.yaml
@@ -156,7 +157,11 @@ export HTOPRC=$CONFIG_HOME/htop/htoprc
 
 #-> conda
 # https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html#id4
-export CONDARC=$CONFIG_HOME/condarc
+export CONDARC=$CONFIG_HOME/conda/condarc
 
 #-> zoxide
 export _ZO_DATA_DIR=$XDG_CACHE_HOME/zoxide
+
+#-> nix
+# https://nixos.wiki/wiki/Locales
+export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive

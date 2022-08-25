@@ -117,6 +117,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -f ~/.linuxbrew/bin/zsh ]; then
-  ~/.linuxbrew/bin/zsh
-fi
+# for nix
+export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive

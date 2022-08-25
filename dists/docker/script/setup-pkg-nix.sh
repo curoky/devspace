@@ -15,25 +15,27 @@
 
 set -xeuo pipefail
 
+export PATH=/nix/var/nix/profiles/default/bin:$PATH
+
 # brew list | xargs -n 1
 # brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux | xargs -n 15
 # brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux | awk '{print "nixpkgs."$0}' | xargs -n 5 | awk '{print $0" \ \"}'
 
 # nix-env -iA \
-sudo /nix/var/nix/profiles/default/bin/nix-env -iA \
+nix-env -p /nix/var/nix/profiles/default -iA \
   nixpkgs.autoconf nixpkgs.automake nixpkgs.libtool nixpkgs.pkg-config nixpkgs.gnumake \
   nixpkgs.cmake nixpkgs.ninja nixpkgs.distcc nixpkgs.ccache nixpkgs.scons \
-  nixpkgs.meson nixpkgs.ant  nixpkgs.bazel nixpkgs.conan \
+  nixpkgs.meson nixpkgs.ant nixpkgs.bazel_5 nixpkgs.conan \
   nixpkgs.poetry nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven \
   nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.yapf nixpkgs.shfmt \
   nixpkgs.buildifier nixpkgs.nodePackages.eslint nixpkgs.gcc nixpkgs.llvm nixpkgs.lua \
-  nixpkgs.python3 nixpkgs.python nixpkgs.nodejs nixpkgs.go nixpkgs.perl nixpkgs.ruby \
+  nixpkgs.python3 nixpkgs.python nixpkgs.nodejs nixpkgs.go_1_19 nixpkgs.perl nixpkgs.ruby \
   nixpkgs.rustup nixpkgs.openjdk \
   nixpkgs.thrift nixpkgs.vlang nixpkgs.dotnet-sdk nixpkgs.git \
   nixpkgs.lazygit nixpkgs.git-absorb nixpkgs.git-extras nixpkgs.git-lfs nixpkgs.bzip2 \
   nixpkgs.xz nixpkgs.zstd nixpkgs.zip nixpkgs.unzip nixpkgs.iproute2 \
   nixpkgs.iputils nixpkgs.netcat nixpkgs.lsof nixpkgs.htop \
-  nixpkgs.connect nixpkgs.procps nixpkgs.gost nixpkgs.inetutils \
+  nixpkgs.connect nixpkgs.procps nixpkgs.gost nixpkgs.nettools \
   nixpkgs.zsh nixpkgs.starship nixpkgs.direnv nixpkgs.asciinema \
   nixpkgs.tmux nixpkgs.tmuxinator nixpkgs.flex nixpkgs.bison nixpkgs.gettext \
   nixpkgs.m4 nixpkgs.gnupatch nixpkgs.jq nixpkgs.vim \
@@ -44,4 +46,22 @@ sudo /nix/var/nix/profiles/default/bin/nix-env -iA \
   nixpkgs.navi nixpkgs.ghq nixpkgs.lcov nixpkgs.gcovr nixpkgs.docker-compose \
   nixpkgs.opencc nixpkgs.dolt nixpkgs.include-what-you-use nixpkgs.mold nixpkgs.parallel \
   nixpkgs.fd nixpkgs.wishlist nixpkgs.coreutils nixpkgs.sqlcipher nixpkgs.sqlite \
-  nixpkgs.zoxide nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo
+  nixpkgs.zoxide nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo nixpkgs.protobuf nixpkgs.buck \
+  nixpkgs.clang-tools_14 nixpkgs.cmake-format nixpkgs.shellcheck nixpkgs.pandoc nixpkgs.dstat \
+  nixpkgs.rustup nixpkgs.flamegraph nixpkgs.flutter nixpkgs.dart nixpkgs.nixpkgs-fmt
+
+nix-env -iA -p /nix/var/nix/profiles/gcc49 nixpkgs.gcc49
+nix-env -iA -p /nix/var/nix/profiles/gcc8 nixpkgs.gcc8
+nix-env -iA -p /nix/var/nix/profiles/gcc12 nixpkgs.gcc12
+nix-env -iA -p /nix/var/nix/profiles/protobuf3_17 nixpkgs.protobuf3_17
+nix-env -iA -p /nix/var/nix/profiles/jdk8 nixpkgs.jdk8
+nix-env -iA -p /nix/var/nix/profiles/jdk11 nixpkgs.jdk11
+nix-env -iA -p /nix/var/nix/profiles/jdk17 nixpkgs.jdk
+nix-env -iA -p /nix/var/nix/profiles/clang-tools_10 nixpkgs.clang-tools_10
+nix-env -iA -p /nix/var/nix/profiles/clang-tools_11 nixpkgs.clang-tools_11
+nix-env -iA -p /nix/var/nix/profiles/clang-tools_12 nixpkgs.clang-tools_12
+nix-env -iA -p /nix/var/nix/profiles/clang-tools_13 nixpkgs.clang-tools_13
+nix-env -iA -p /nix/var/nix/profiles/clang-tools_14 nixpkgs.clang-tools_14
+nix-env -iA -p /nix/var/nix/profiles/inetutils nixpkgs.inetutils
+
+nix-collect-garbage

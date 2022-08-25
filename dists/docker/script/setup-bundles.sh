@@ -153,10 +153,6 @@ p_vim
 p_git_mv_with_history
 
 if [[ $target == "Linux" ]]; then
-  p_dool
-  p_flutter
-  p_flamegraph
-  p_zeronet
   p_tools
 elif [[ $target == "Darwin" ]]; then
   p_rime
