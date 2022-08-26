@@ -28,7 +28,7 @@ nix-env -p /nix/var/nix/profiles/default -iA \
   nixpkgs.meson nixpkgs.ant nixpkgs.bazel_5 nixpkgs.conan \
   nixpkgs.poetry nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven \
   nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.yapf nixpkgs.shfmt \
-  nixpkgs.buildifier nixpkgs.nodePackages.eslint nixpkgs.llvm nixpkgs.lua \
+  nixpkgs.buildifier nixpkgs.nodePackages.eslint nixpkgs.lua \
   nixpkgs.nodejs nixpkgs.go_1_19 nixpkgs.perl nixpkgs.ruby \
   nixpkgs.rustup nixpkgs.openjdk \
   nixpkgs.thrift nixpkgs.vlang nixpkgs.dotnet-sdk nixpkgs.git \
@@ -66,6 +66,7 @@ nix-env -iA -p /nix/var/nix/profiles/clang-tools_11 nixpkgs.clang-tools_11
 nix-env -iA -p /nix/var/nix/profiles/clang-tools_12 nixpkgs.clang-tools_12
 nix-env -iA -p /nix/var/nix/profiles/clang-tools_13 nixpkgs.clang-tools_13
 nix-env -iA -p /nix/var/nix/profiles/clang-tools_14 nixpkgs.clang-tools_14
+nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.llvmPackages_14.llvm
 nix-env -iA -p /nix/var/nix/profiles/inetutils nixpkgs.inetutils
 
 nix-collect-garbage
