@@ -52,8 +52,8 @@ nix-env -p /nix/var/nix/profiles/default -iA \
   nixpkgs.llvmPackages_14.bintools-unwrapped
 
 nix-env -iA -p /nix/var/nix/profiles/gcc49 nixpkgs.gcc49
-nix-env -iA -p /nix/var/nix/profiles/gcc8 nixpkgs.gcc8
-nix-env -iA -p /nix/var/nix/profiles/gcc11 nixpkgs.gcc11
+# nix-env -iA -p /nix/var/nix/profiles/gcc8 nixpkgs.gcc8
+# nix-env -iA -p /nix/var/nix/profiles/gcc11 nixpkgs.gcc11
 nix-env -iA -p /nix/var/nix/profiles/gcc12 nixpkgs.gcc12
 nix-env -iA -p /nix/var/nix/profiles/protobuf3_17 nixpkgs.protobuf3_17
 nix-env -iA -p /nix/var/nix/profiles/jdk8 nixpkgs.jdk8
@@ -61,10 +61,10 @@ nix-env -iA -p /nix/var/nix/profiles/jdk11 nixpkgs.jdk11
 nix-env -iA -p /nix/var/nix/profiles/jdk17 nixpkgs.jdk
 nix-env -iA -p /nix/var/nix/profiles/python2 nixpkgs.python
 nix-env -iA -p /nix/var/nix/profiles/python3 nixpkgs.python3
-nix-env -iA -p /nix/var/nix/profiles/clang-tools_10 nixpkgs.clang-tools_10
-nix-env -iA -p /nix/var/nix/profiles/clang-tools_11 nixpkgs.clang-tools_11
-nix-env -iA -p /nix/var/nix/profiles/clang-tools_12 nixpkgs.clang-tools_12
-nix-env -iA -p /nix/var/nix/profiles/clang-tools_13 nixpkgs.clang-tools_13
+# nix-env -iA -p /nix/var/nix/profiles/clang-tools_10 nixpkgs.clang-tools_10
+# nix-env -iA -p /nix/var/nix/profiles/clang-tools_11 nixpkgs.clang-tools_11
+# nix-env -iA -p /nix/var/nix/profiles/clang-tools_12 nixpkgs.clang-tools_12
+# nix-env -iA -p /nix/var/nix/profiles/clang-tools_13 nixpkgs.clang-tools_13
 nix-env -iA -p /nix/var/nix/profiles/clang-tools_14 nixpkgs.clang-tools_14
 nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.llvmPackages_14.llvm
 nix-env -iA -p /nix/var/nix/profiles/inetutils nixpkgs.inetutils
