@@ -30,6 +30,8 @@ jobs:
 
       # - run: script/osx-hack.sh
 
+      - run: curl -L https://nixos.org/nix/install | sh -s
+
       - run: sudo chown -R $(whoami) /opt
 
       - run: ./images/script/setup-bundles.sh /opt/bundles

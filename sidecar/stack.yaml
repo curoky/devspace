@@ -10,15 +10,15 @@ services:
     ports:
       - '3200:80'
 
-  local-http-proxy:
-    image: ginuerzh/gost
-    restart: unless-stopped
-    network_mode: 'host'
-    logging:
-      driver: none
-    # ports:
-    #   - '3004:3004'
-    command: -L http://:3004
+  # local-http-proxy:
+  #   image: ginuerzh/gost
+  #   restart: unless-stopped
+  #   network_mode: 'host'
+  #   logging:
+  #     driver: none
+  #   # ports:
+  #   #   - '3004:3004'
+  #   command: -L http://:3004
 
   bazel-remote-cache:
     image: buchgr/bazel-remote-cache
@@ -31,29 +31,13 @@ services:
       - '3101:9092'
     command: --max_size=10 --dir=/data/cache
 
-  voila-1:
-    image: curoky/my-own-x:jupyter-voila
-    restart: unless-stopped
-    # user: root
-    ports:
-      - '3301:8866'
-    command: https://raw.githubusercontent.com/curoky/my-own-x/dev/app/jupyter/voila/timestamp.ipynb
-
-  voila-2:
-    image: curoky/my-own-x:jupyter-voila
-    restart: unless-stopped
-    # user: root
-    ports:
-      - '3302:8866'
-    command: https://raw.githubusercontent.com/curoky/my-own-x/dev/app/jupyter/voila/encoding.ipynb
-
-  voila-3:
-    image: curoky/my-own-x:jupyter-voila
-    restart: unless-stopped
-    # user: root
-    ports:
-      - '3303:8866'
-    command: https://raw.githubusercontent.com/curoky/my-own-x/dev/app/jupyter/voila/id-card.ipynb
+  # voila-1:
+  #   image: curoky/my-own-x:jupyter-voila
+  #   restart: unless-stopped
+  #   # user: root
+  #   ports:
+  #     - '3301:8866'
+  #   command: https://raw.githubusercontent.com/curoky/my-own-x/dev/app/jupyter/voila/timestamp.ipynb
 
   # zeronet:
   #   image: nofish/zeronet

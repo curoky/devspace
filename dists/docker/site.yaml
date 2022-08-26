@@ -170,6 +170,9 @@
         - name: Install python2 package
           ansible.builtin.shell: /opt/conda/envs/py2/bin/pip install --no-cache-dir -r /opt/dotbox/config/pip/requirements.txt
 
+        - name: Cleanup conda cache
+          ansible.builtin.shell: /opt/conda/bin/conda clean --all -y
+
         - name: Install npm package
           ansible.builtin.shell: /home/linuxbrew/.linuxbrew/bin/npm i -g docsify-cli
 

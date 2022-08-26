@@ -28,8 +28,8 @@ nix-env -p /nix/var/nix/profiles/default -iA \
   nixpkgs.meson nixpkgs.ant nixpkgs.bazel_5 nixpkgs.conan \
   nixpkgs.poetry nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven \
   nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.yapf nixpkgs.shfmt \
-  nixpkgs.buildifier nixpkgs.nodePackages.eslint nixpkgs.gcc nixpkgs.llvm nixpkgs.lua \
-  nixpkgs.python3 nixpkgs.python nixpkgs.nodejs nixpkgs.go_1_19 nixpkgs.perl nixpkgs.ruby \
+  nixpkgs.buildifier nixpkgs.nodePackages.eslint nixpkgs.llvm nixpkgs.lua \
+  nixpkgs.nodejs nixpkgs.go_1_19 nixpkgs.perl nixpkgs.ruby \
   nixpkgs.rustup nixpkgs.openjdk \
   nixpkgs.thrift nixpkgs.vlang nixpkgs.dotnet-sdk nixpkgs.git \
   nixpkgs.lazygit nixpkgs.git-absorb nixpkgs.git-extras nixpkgs.git-lfs nixpkgs.bzip2 \
@@ -48,15 +48,19 @@ nix-env -p /nix/var/nix/profiles/default -iA \
   nixpkgs.fd nixpkgs.wishlist nixpkgs.coreutils nixpkgs.sqlcipher nixpkgs.sqlite \
   nixpkgs.zoxide nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo nixpkgs.protobuf nixpkgs.buck \
   nixpkgs.clang-tools_14 nixpkgs.cmake-format nixpkgs.shellcheck nixpkgs.pandoc nixpkgs.dstat \
-  nixpkgs.rustup nixpkgs.flamegraph nixpkgs.flutter nixpkgs.dart nixpkgs.nixpkgs-fmt
+  nixpkgs.rustup nixpkgs.flamegraph nixpkgs.flutter nixpkgs.dart nixpkgs.nixpkgs-fmt \
+  nixpkgs.llvmPackages_14.bintools-unwrapped
 
 nix-env -iA -p /nix/var/nix/profiles/gcc49 nixpkgs.gcc49
 nix-env -iA -p /nix/var/nix/profiles/gcc8 nixpkgs.gcc8
+nix-env -iA -p /nix/var/nix/profiles/gcc11 nixpkgs.gcc11
 nix-env -iA -p /nix/var/nix/profiles/gcc12 nixpkgs.gcc12
 nix-env -iA -p /nix/var/nix/profiles/protobuf3_17 nixpkgs.protobuf3_17
 nix-env -iA -p /nix/var/nix/profiles/jdk8 nixpkgs.jdk8
 nix-env -iA -p /nix/var/nix/profiles/jdk11 nixpkgs.jdk11
 nix-env -iA -p /nix/var/nix/profiles/jdk17 nixpkgs.jdk
+nix-env -iA -p /nix/var/nix/profiles/python2 nixpkgs.python
+nix-env -iA -p /nix/var/nix/profiles/python3 nixpkgs.python3
 nix-env -iA -p /nix/var/nix/profiles/clang-tools_10 nixpkgs.clang-tools_10
 nix-env -iA -p /nix/var/nix/profiles/clang-tools_11 nixpkgs.clang-tools_11
 nix-env -iA -p /nix/var/nix/profiles/clang-tools_12 nixpkgs.clang-tools_12
