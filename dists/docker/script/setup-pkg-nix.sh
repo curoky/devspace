@@ -17,7 +17,6 @@ set -xeuo pipefail
 
 export PATH=/nix/var/nix/profiles/default/bin:$PATH
 
-# brew list | xargs -n 1
 # brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux | xargs -n 15
 # brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux | awk '{print "nixpkgs."$0}' | xargs -n 5 | awk '{print $0" \ \"}'
 
@@ -49,7 +48,7 @@ nix-env -p /nix/var/nix/profiles/default -iA \
   nixpkgs.zoxide nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo nixpkgs.protobuf nixpkgs.buck \
   nixpkgs.clang-tools_14 nixpkgs.cmake-format nixpkgs.shellcheck nixpkgs.pandoc nixpkgs.dstat \
   nixpkgs.rustup nixpkgs.flamegraph nixpkgs.flutter nixpkgs.dart nixpkgs.nixpkgs-fmt \
-  nixpkgs.llvmPackages_14.bintools-unwrapped
+  nixpkgs.llvmPackages_14.bintools-unwrapped nixpkgs.ansible
 
 nix-env -iA -p /nix/var/nix/profiles/gcc49 nixpkgs.gcc49
 # nix-env -iA -p /nix/var/nix/profiles/gcc8 nixpkgs.gcc8

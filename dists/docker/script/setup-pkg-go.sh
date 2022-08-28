@@ -23,4 +23,4 @@ done < <(grep -o '^[^#]*' /opt/dotbox/config/go/requirements.txt)
 
 go clean -cache
 # we only need binaries not packages
-sudo rm -rf /home/cicada/go/pkg
+# sudo rm -rf /home/cicada/go/pkg
