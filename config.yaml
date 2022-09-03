@@ -279,6 +279,7 @@ profiles:
       - conda
       - docker
       - dolthub
+      - gdb
       - git-config
       - gradle
       - helix
