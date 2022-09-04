@@ -64,7 +64,8 @@ nix-env -iA -p /nix/var/nix/profiles/python3 nixpkgs.python3
 # nix-env -iA -p /nix/var/nix/profiles/clang-tools_11 nixpkgs.clang-tools_11
 # nix-env -iA -p /nix/var/nix/profiles/clang-tools_12 nixpkgs.clang-tools_12
 # nix-env -iA -p /nix/var/nix/profiles/clang-tools_13 nixpkgs.clang-tools_13
-nix-env -iA -p /nix/var/nix/profiles/clang-tools_14 nixpkgs.clang-tools_14
+nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.clang_14
+nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.clang-tools_14
 nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.llvmPackages_14.llvm
 nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.llvmPackages_14.bintools-unwrapped
 nix-env -iA -p /nix/var/nix/profiles/inetutils nixpkgs.inetutils
