@@ -48,7 +48,7 @@ nix-env -p /nix/var/nix/profiles/default -iA \
   nixpkgs.zoxide nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo nixpkgs.protobuf nixpkgs.buck \
   nixpkgs.clang-tools_14 nixpkgs.cmake-format nixpkgs.shellcheck nixpkgs.pandoc nixpkgs.dstat \
   nixpkgs.rustup nixpkgs.flamegraph nixpkgs.flutter nixpkgs.dart nixpkgs.nixpkgs-fmt \
-  nixpkgs.ansible
+  nixpkgs.ansible nixpkgs.earthly nixpkgs.cppcheck
 
 nix-env -iA -p /nix/var/nix/profiles/gcc49 nixpkgs.gcc49
 # nix-env -iA -p /nix/var/nix/profiles/gcc8 nixpkgs.gcc8
@@ -67,7 +67,7 @@ nix-env -iA -p /nix/var/nix/profiles/python3 nixpkgs.python3
 nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.clang_14
 nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.clang-tools_14
 nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.llvmPackages_14.llvm
-nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.llvmPackages_14.bintools-unwrapped
+nix-env -iA -p /nix/var/nix/profiles/llvm14-bintools nixpkgs.llvmPackages_14.bintools-unwrapped
 nix-env -iA -p /nix/var/nix/profiles/inetutils nixpkgs.inetutils
 # nix-env -iA -p /nix/var/nix/profiles/hadoop nixpkgs.hadoop
 # nix-env -iA -p /nix/var/nix/profiles/spark nixpkgs.spark
