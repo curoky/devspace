@@ -18,6 +18,9 @@ jobs:
           username: curoky
           password: ${{ secrets.DOCKER_TOKEN }}
 
+      - name: prepare config files
+        run: cp -r config config.yaml images
+
       - uses: docker/build-push-action@v3
         with:
           context: images
