@@ -18,7 +18,10 @@ jobs:
           username: curoky
           password: ${{ secrets.DOCKER_TOKEN }}
 
-      - name: Build and push
-        run: |
-          export BOOTSTRAP_TOKEN=${{ secrets.BOOTSTRAP_TOKEN }}
-          ./images/build.sh --push --no-cache=1
+      - uses: docker/build-push-action@v3
+        with:
+          context: images
+          push: true
+          # cache-from: type=registry,ref=curoky/dotbox:ubuntu22.04
+          # cache-to: type=inline
+          tags: curoky/dotbox:ubuntu22.04
