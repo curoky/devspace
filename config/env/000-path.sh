@@ -33,7 +33,6 @@ ENV_PATHS=(
   "$HOME/.npm-global/bin"
 
   "$HOME/go/bin"
-  "/home/cicada/go/bin"
 
   "$BREW_PREFIX/lib/ruby/gems/3.1.0/bin"
   "/nix/var/nix/profiles/default/lib/ruby/gems/2.7.0/bin"

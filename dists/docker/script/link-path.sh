@@ -33,6 +33,3 @@ function try_link() {
 }
 
 try_link $HOME/repos/vscode-server $HOME/.vscode-server
-try_link $HOME/repos/homebrew-tap "$(brew --prefix)/Homebrew/Library/Taps/curoky/homebrew-tap"
-try_link $HOME/repos/static-binaries "$(brew --prefix)/Homebrew/Library/Taps/curoky/homebrew-static-binaries"
-try_link $HOME/repos/my-own-x/python/lib "$(brew --prefix python@3)/lib/python3.9/mox"

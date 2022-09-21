@@ -44,11 +44,11 @@ nix-env -p /nix/var/nix/profiles/default -iA \
   nixpkgs.cloc nixpkgs.atuin nixpkgs.go-task nixpkgs.krb5 nixpkgs.less \
   nixpkgs.navi nixpkgs.ghq nixpkgs.lcov nixpkgs.gcovr nixpkgs.docker-compose \
   nixpkgs.opencc nixpkgs.dolt nixpkgs.include-what-you-use nixpkgs.mold nixpkgs.parallel \
-  nixpkgs.fd nixpkgs.wishlist nixpkgs.coreutils nixpkgs.sqlcipher nixpkgs.sqlite \
+  nixpkgs.fd nixpkgs.wishlist nixpkgs.sqlcipher nixpkgs.sqlite \
   nixpkgs.zoxide nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo nixpkgs.protobuf nixpkgs.buck \
   nixpkgs.clang-tools_14 nixpkgs.cmake-format nixpkgs.shellcheck nixpkgs.pandoc nixpkgs.dstat \
   nixpkgs.rustup nixpkgs.flamegraph nixpkgs.flutter nixpkgs.dart nixpkgs.nixpkgs-fmt \
-  nixpkgs.ansible nixpkgs.earthly nixpkgs.cppcheck nixpkgs.graphviz
+  nixpkgs.ansible nixpkgs.earthly nixpkgs.cppcheck nixpkgs.graphviz nixpkgs.lld_14 nixpkgs.gdu
 
 nix-env -iA -p /nix/var/nix/profiles/gcc49 nixpkgs.gcc49
 # nix-env -iA -p /nix/var/nix/profiles/gcc8 nixpkgs.gcc8
@@ -69,6 +69,7 @@ nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.clang-tools_14
 nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.llvmPackages_14.llvm
 nix-env -iA -p /nix/var/nix/profiles/llvm14-bintools nixpkgs.llvmPackages_14.bintools-unwrapped
 nix-env -iA -p /nix/var/nix/profiles/inetutils nixpkgs.inetutils
+nix-env -iA -p /nix/var/nix/profiles/coreutils nixpkgs.coreutils
 # nix-env -iA -p /nix/var/nix/profiles/hadoop nixpkgs.hadoop
 # nix-env -iA -p /nix/var/nix/profiles/spark nixpkgs.spark
 # nix-env -iA -p /nix/var/nix/profiles/flink nixpkgs.flink
