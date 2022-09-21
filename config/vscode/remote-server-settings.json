@@ -28,21 +28,21 @@
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-1.8",
-      "path": "/nix/var/nix/profiles/jdk8/lib/openjdk"
+      "path": "/nix/var/nix/profiles/jdk8"
     },
     {
+      "default": true,
       "name": "JavaSE-11",
       "path": "/nix/var/nix/profiles/jdk11/lib/openjdk"
     },
     {
-      "default": true,
       "name": "JavaSE-17",
       "path": "/nix/var/nix/profiles/jdk17/lib/openjdk"
     }
   ],
   "java.import.gradle.home": "/nix/var/nix/profiles/default",
   "java.jdt.ls.java.home": "/nix/var/nix/profiles/jdk17/lib/openjdk",
-  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx8G -Xms4G",
+  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx16G -Xms4G",
   "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],
   "markdown-preview-enhanced.pandocPath": "/nix/var/nix/profiles/default/bin/pandoc",
   "prettier.prettierPath": "/nix/var/nix/profiles/default/lib/node_modules/prettier",

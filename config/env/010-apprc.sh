@@ -165,3 +165,6 @@ export _ZO_DATA_DIR=$XDG_CACHE_HOME/zoxide
 #-> nix
 # https://nixos.wiki/wiki/Locales
 export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+
+#-> java
+export JAVA_HOME=/nix/var/nix/profiles/jdk11
