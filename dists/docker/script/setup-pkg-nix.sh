@@ -58,8 +58,8 @@ nix-env -iA -p /nix/var/nix/profiles/protobuf3_17 nixpkgs.protobuf3_17
 nix-env -iA -p /nix/var/nix/profiles/jdk8 nixpkgs.jdk8
 nix-env -iA -p /nix/var/nix/profiles/jdk11 nixpkgs.jdk11
 nix-env -iA -p /nix/var/nix/profiles/jdk17 nixpkgs.jdk
-nix-env -iA -p /nix/var/nix/profiles/python2 nixpkgs.python
-nix-env -iA -p /nix/var/nix/profiles/python3 nixpkgs.python3
+# nix-env -iA -p /nix/var/nix/profiles/python2 nixpkgs.python
+# nix-env -iA -p /nix/var/nix/profiles/python3 nixpkgs.python3
 # nix-env -iA -p /nix/var/nix/profiles/clang-tools_10 nixpkgs.clang-tools_10
 # nix-env -iA -p /nix/var/nix/profiles/clang-tools_11 nixpkgs.clang-tools_11
 # nix-env -iA -p /nix/var/nix/profiles/clang-tools_12 nixpkgs.clang-tools_12

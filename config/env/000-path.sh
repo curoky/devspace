@@ -40,7 +40,7 @@ ENV_PATHS=(
 
   "/opt/vcpkg"
 
-  "/opt/conda/bin"
+  # "/opt/conda/bin"
 
   "/opt/bundles/bin"
 
