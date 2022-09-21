@@ -95,7 +95,7 @@ function p_vim() {
   fetch 'https://github.com/Xuyuanp/nerdtree-git-plugin/archive/master.tar.gz' vim/vim-plugin/plugged/nerdtree-git-plugin 1
 
   cd $output/vim && mkdir -p vim-plugin/autoload
-  ln -s plug.vim vim-plugin/autoload/plug.vim
+  ln -s ../../plug.vim vim-plugin/autoload/plug.vim
 }
 
 function p_git_mv_with_history() {
