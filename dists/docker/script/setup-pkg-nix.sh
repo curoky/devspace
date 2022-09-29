@@ -28,7 +28,7 @@ nix-env -p /nix/var/nix/profiles/default -iA \
   nixpkgs.poetry nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven \
   nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.yapf nixpkgs.shfmt \
   nixpkgs.buildifier nixpkgs.nodePackages.eslint nixpkgs.lua \
-  nixpkgs.nodejs nixpkgs.go_1_19 nixpkgs.perl nixpkgs.ruby \
+  nixpkgs.nodejs nixpkgs.go_1_19 nixpkgs.ruby \
   nixpkgs.rustup nixpkgs.openjdk \
   nixpkgs.thrift nixpkgs.vlang nixpkgs.dotnet-sdk nixpkgs.git \
   nixpkgs.lazygit nixpkgs.git-absorb nixpkgs.git-extras nixpkgs.git-lfs nixpkgs.bzip2 \
@@ -42,7 +42,7 @@ nix-env -p /nix/var/nix/profiles/default -iA \
   nixpkgs.ncdu nixpkgs.file nixpkgs.silver-searcher nixpkgs.gperf nixpkgs.watchman \
   nixpkgs.nnn nixpkgs.ranger nixpkgs.exa nixpkgs.fzf nixpkgs.bat \
   nixpkgs.cloc nixpkgs.atuin nixpkgs.go-task nixpkgs.krb5 nixpkgs.less \
-  nixpkgs.navi nixpkgs.ghq nixpkgs.lcov nixpkgs.gcovr nixpkgs.docker-compose \
+  nixpkgs.navi nixpkgs.ghq nixpkgs.lcov nixpkgs.gcovr \
   nixpkgs.opencc nixpkgs.dolt nixpkgs.include-what-you-use nixpkgs.mold nixpkgs.parallel \
   nixpkgs.fd nixpkgs.wishlist nixpkgs.sqlcipher nixpkgs.sqlite \
   nixpkgs.zoxide nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo nixpkgs.protobuf nixpkgs.buck \
@@ -50,7 +50,7 @@ nix-env -p /nix/var/nix/profiles/default -iA \
   nixpkgs.rustup nixpkgs.flamegraph nixpkgs.flutter nixpkgs.dart nixpkgs.nixpkgs-fmt \
   nixpkgs.ansible nixpkgs.earthly nixpkgs.cppcheck nixpkgs.graphviz nixpkgs.lld_14 nixpkgs.gdu
 
-nix-env -iA -p /nix/var/nix/profiles/gcc49 nixpkgs.gcc49
+# nix-env -iA -p /nix/var/nix/profiles/gcc49 nixpkgs.gcc49
 # nix-env -iA -p /nix/var/nix/profiles/gcc8 nixpkgs.gcc8
 # nix-env -iA -p /nix/var/nix/profiles/gcc11 nixpkgs.gcc11
 nix-env -iA -p /nix/var/nix/profiles/gcc12 nixpkgs.gcc12
@@ -58,6 +58,7 @@ nix-env -iA -p /nix/var/nix/profiles/protobuf3_17 nixpkgs.protobuf3_17
 nix-env -iA -p /nix/var/nix/profiles/jdk8 nixpkgs.jdk8
 nix-env -iA -p /nix/var/nix/profiles/jdk11 nixpkgs.jdk11
 nix-env -iA -p /nix/var/nix/profiles/jdk17 nixpkgs.jdk
+# nix-env -iA -p /nix/var/nix/profiles/perl nixpkgs.perl
 # nix-env -iA -p /nix/var/nix/profiles/python2 nixpkgs.python
 # nix-env -iA -p /nix/var/nix/profiles/python3 nixpkgs.python3
 # nix-env -iA -p /nix/var/nix/profiles/clang-tools_10 nixpkgs.clang-tools_10
