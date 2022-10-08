@@ -60,6 +60,18 @@
     "headerLinePrefix": " * ",
     "headerLineSuffix": ""
   },
+  "swift": {
+    "extensions": [".swift"],
+    "keepFirst": "",
+    "blockCommentStartPattern": "^\\s*/\\*",
+    "blockCommentEndPattern": "\\*/\\s*$",
+    "lineCommentStartPattern": "^\\s*//",
+    "lineCommentEndPattern": "",
+    "headerStartLine": "/*\n",
+    "headerEndLine": " */\n",
+    "headerLinePrefix": " * ",
+    "headerLineSuffix": ""
+  },
   "go": {
     "extensions": [".go"],
     "keepFirst": "",
