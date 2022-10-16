@@ -1,4 +1,3 @@
-#!/bin/sh
 # rustup shell setup
 # affix colons on either side of $PATH to simplify matching
 case ":${PATH}:" in
