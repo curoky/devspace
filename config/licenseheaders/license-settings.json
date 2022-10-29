@@ -36,7 +36,7 @@
     "headerLineSuffix": ""
   },
   "python": {
-    "extensions": [".py", ".bzl"],
+    "extensions": [".py", ".bzl", ".BUILD", ".bazel"],
     "filenames": ["BUILD", "WORKSPACE"],
     "keepFirst": "^#!|^# +pylint|^# +-\\*-|^# +coding|^# +encoding|^# +type|^# +flake8",
     "blockCommentStartPattern": "",
