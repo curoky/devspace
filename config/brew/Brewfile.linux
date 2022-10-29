@@ -8,9 +8,11 @@ tap 'charmbracelet/tap'
 
 brews = [
   # build system
-  # 'autoconf', 'automake', 'libtool', 'pkg-config', 'make', 'cmake',
+  # 'autoconf', 'automake', 'libtool', 'pkg-config', 'make',
+  'cmake',
   # 'ninja', 'distcc', 'ccache', 'scons', 'meson', 'ant',
-  # 'bazel', 'conan', 'poetry', 'yarn', 'pipenv', 'gradle', 'maven', 'facebook/fb/buck',
+  # 'bazel', 'poetry', 'yarn', 'pipenv', 'gradle', 'maven', 'facebook/fb/buck',
+  'conan', 'bazel',
   # 'thought-machine/please/please',
   'spack',
   # linter
@@ -37,6 +39,7 @@ brews = [
   # 'exa', 'fzf', 'bat', 'cloc', 'atuin', 'go-task', 'krb5', 'less', 'navi', 'ghq', 'lcov', 'gcovr',
   # 'docker-compose', 'opencc', 'dolt', 'include-what-you-use', 'mold', 'parallel', 'fd',
   # 'wishlist', 'coreutils', 'sqlcipher', 'sqlite3', 'zoxide',
+  'boost',
   # static website generator
   # 'mkdocs', 'sphinx-doc', 'hugo'
   'hexo',

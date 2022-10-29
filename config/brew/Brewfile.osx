@@ -1,11 +1,6 @@
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'go-task/tap'
-tap 'tidwall/jj'
-tap 'helix-editor/helix'
-tap 'thought-machine/please'
-tap 'facebook/fb'
-tap 'curoky/python2'
 
 # brew list --cask | xargs -n 1 | sort -u | awk '{ print "\x27"$1"\x27""," }'
 casks = [
@@ -14,21 +9,48 @@ casks = [
   'disk-drill',
   'font-fira-code-nerd-font',
   'font-ubuntu-mono-nerd-font',
-  'google-chrome',
-  'google-drive',
   'iina',
   'istat-menus',
   'netnewswire',
+  'firefox',
   'notion',
   'snipaste',
   'sqlitestudio',
   'squirrel',
-  'visual-studio-code',
-  'warp',
-  # 'anybar', 'chromedriver', 'flameshot', 'flameshot',
+  # 'google-chrome',
+  # 'google-drive',
+  # 'visual-studio-code',
+  # 'warp',
+  # 'anybar', 'chromedriver', 'flameshot',
   # 'hyper', 'itsycal', 'michaelvillar-timer', 'motrix', 'sol',
 ]
 
 casks.each do |b|
   cask b
+end
+
+brews = [
+  'pre-commit', 'prettier', 'yapf', 'shfmt', 'eslint', 'clang-format',
+  'gcc', 'llvm', 'python@3', 'node', 'go', 'ruby', 'rustup-init',
+  'openjdk@8', 'openjdk@11', 'openjdk@17', 'openjdk', 'thrift',
+  # git
+  'git', 'git-absorb', 'git-extras', 'git-lfs',
+  # compression
+  'bzip2', 'xz', 'zstd', 'zip', 'unzip',
+  # network tools
+  'netcat', 'lsof', 'connect', 'gost', 'inetutils',
+  # shell tools
+  'zsh', 'starship', 'direnv', 'asciinema', 'tmux', 'tmuxinator',
+  'dotdrop',
+  # text editor
+  'gettext', 'm4', 'gpatch', 'jq', 'vim',
+  # others
+  'wget', 'aria2', 'rsync', 'ncdu', 'the_silver_searcher',
+  'gdb',  'gperf', 'gdu', 'exa', 'fzf', 'bat', 'cloc', 'go-task', 'krb5',
+  'opencc', 'dolt', 'parallel', 'fd',
+  'coreutils', 'sqlcipher', 'sqlite3', 'sqlite-utils', 'drawio',
+]
+
+brews.each do |b|
+  brew b
 end
