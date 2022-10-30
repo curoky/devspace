@@ -23,35 +23,31 @@ export PATH=/nix/var/nix/profiles/default/bin:$PATH
 # brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux | xargs -n 15
 # brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux | awk '{print "nixpkgs."$0}' | xargs -n 5 | awk '{print $0" \ \"}'
 
+# The following packages are not working properly with nix.
+# nixpkgs.cmake nixpkgs.conan nixpkgs.autoconf nixpkgs.bazel_5
+
 # nix-env -iA \
 nix-env -p /nix/var/nix/profiles/default -iA \
-  nixpkgs.autoconf nixpkgs.automake nixpkgs.libtool nixpkgs.pkg-config nixpkgs.gnumake \
-  nixpkgs.cmake nixpkgs.ninja nixpkgs.distcc nixpkgs.ccache nixpkgs.scons \
-  nixpkgs.meson nixpkgs.ant nixpkgs.bazel_5 nixpkgs.conan \
-  nixpkgs.poetry nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven \
-  nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.yapf nixpkgs.shfmt \
-  nixpkgs.buildifier nixpkgs.nodePackages.eslint nixpkgs.lua \
-  nixpkgs.nodejs nixpkgs.go_1_19 nixpkgs.ruby \
-  nixpkgs.rustup nixpkgs.openjdk \
-  nixpkgs.thrift nixpkgs.vlang nixpkgs.dotnet-sdk nixpkgs.git \
-  nixpkgs.lazygit nixpkgs.git-absorb nixpkgs.git-extras nixpkgs.git-lfs nixpkgs.bzip2 \
-  nixpkgs.xz nixpkgs.zstd nixpkgs.zip nixpkgs.unzip nixpkgs.iproute2 \
-  nixpkgs.iputils nixpkgs.netcat nixpkgs.lsof nixpkgs.htop \
-  nixpkgs.connect nixpkgs.procps nixpkgs.gost nixpkgs.nettools \
-  nixpkgs.zsh nixpkgs.starship nixpkgs.direnv nixpkgs.asciinema \
-  nixpkgs.tmux nixpkgs.tmuxinator nixpkgs.flex nixpkgs.bison nixpkgs.gettext \
-  nixpkgs.m4 nixpkgs.gnupatch nixpkgs.jq nixpkgs.vim \
-  nixpkgs.helix nixpkgs.wget nixpkgs.aria2 nixpkgs.rsync nixpkgs.gdb \
-  nixpkgs.ncdu nixpkgs.file nixpkgs.silver-searcher nixpkgs.gperf nixpkgs.watchman \
-  nixpkgs.nnn nixpkgs.ranger nixpkgs.exa nixpkgs.fzf nixpkgs.bat \
-  nixpkgs.cloc nixpkgs.atuin nixpkgs.go-task nixpkgs.krb5 nixpkgs.less \
-  nixpkgs.navi nixpkgs.ghq nixpkgs.lcov nixpkgs.gcovr \
+  nixpkgs.automake nixpkgs.libtool nixpkgs.pkg-config nixpkgs.gnumake nixpkgs.ninja nixpkgs.distcc \
+  nixpkgs.ccache nixpkgs.scons nixpkgs.meson nixpkgs.ant nixpkgs.poetry nixpkgs.yarn nixpkgs.pipenv \
+  nixpkgs.gradle nixpkgs.maven nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.yapf \
+  nixpkgs.shfmt nixpkgs.buildifier nixpkgs.nodePackages.eslint nixpkgs.lua nixpkgs.nodejs \
+  nixpkgs.go_1_19 nixpkgs.ruby nixpkgs.rustup nixpkgs.openjdk nixpkgs.thrift nixpkgs.vlang \
+  nixpkgs.dotnet-sdk nixpkgs.git nixpkgs.lazygit nixpkgs.git-absorb nixpkgs.git-extras \
+  nixpkgs.git-lfs nixpkgs.bzip2 nixpkgs.xz nixpkgs.zstd nixpkgs.zip nixpkgs.unzip nixpkgs.iproute2 \
+  nixpkgs.iputils nixpkgs.netcat nixpkgs.lsof nixpkgs.htop nixpkgs.connect nixpkgs.procps \
+  nixpkgs.gost nixpkgs.nettools nixpkgs.zsh nixpkgs.starship nixpkgs.direnv nixpkgs.asciinema \
+  nixpkgs.tmux nixpkgs.tmuxinator nixpkgs.flex nixpkgs.bison nixpkgs.gettext nixpkgs.m4 \
+  nixpkgs.gnupatch nixpkgs.jq nixpkgs.vim nixpkgs.helix nixpkgs.wget nixpkgs.aria2 nixpkgs.rsync \
+  nixpkgs.gdb nixpkgs.ncdu nixpkgs.file nixpkgs.silver-searcher nixpkgs.gperf nixpkgs.watchman \
+  nixpkgs.nnn nixpkgs.ranger nixpkgs.exa nixpkgs.fzf nixpkgs.bat nixpkgs.cloc nixpkgs.atuin \
+  nixpkgs.go-task nixpkgs.krb5 nixpkgs.less nixpkgs.navi nixpkgs.ghq nixpkgs.lcov nixpkgs.gcovr \
   nixpkgs.opencc nixpkgs.dolt nixpkgs.include-what-you-use nixpkgs.mold nixpkgs.parallel \
-  nixpkgs.fd nixpkgs.wishlist nixpkgs.sqlcipher nixpkgs.sqlite \
-  nixpkgs.zoxide nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo nixpkgs.protobuf nixpkgs.buck \
-  nixpkgs.clang-tools_14 nixpkgs.cmake-format nixpkgs.shellcheck nixpkgs.pandoc nixpkgs.dstat \
-  nixpkgs.rustup nixpkgs.flamegraph nixpkgs.flutter nixpkgs.dart nixpkgs.nixpkgs-fmt \
-  nixpkgs.ansible nixpkgs.earthly nixpkgs.cppcheck nixpkgs.graphviz nixpkgs.lld_14 nixpkgs.gdu
+  nixpkgs.fd nixpkgs.wishlist nixpkgs.sqlcipher nixpkgs.sqlite nixpkgs.zoxide nixpkgs.mkdocs \
+  nixpkgs.sphinx nixpkgs.hugo nixpkgs.protobuf nixpkgs.buck nixpkgs.clang-tools_14 \
+  nixpkgs.cmake-format nixpkgs.shellcheck nixpkgs.pandoc nixpkgs.dstat nixpkgs.rustup \
+  nixpkgs.flamegraph nixpkgs.flutter nixpkgs.dart nixpkgs.nixpkgs-fmt nixpkgs.ansible nixpkgs.earthly \
+  nixpkgs.cppcheck nixpkgs.graphviz nixpkgs.lld_14 nixpkgs.gdu nixpkgs.git-filter-repo
 
 # nix-env -iA -p /nix/var/nix/profiles/gcc49 nixpkgs.gcc49
 # nix-env -iA -p /nix/var/nix/profiles/gcc8 nixpkgs.gcc8
@@ -74,6 +70,7 @@ nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.llvmPackages_14.llvm
 nix-env -iA -p /nix/var/nix/profiles/llvm14-bintools nixpkgs.llvmPackages_14.bintools-unwrapped
 nix-env -iA -p /nix/var/nix/profiles/inetutils nixpkgs.inetutils
 nix-env -iA -p /nix/var/nix/profiles/coreutils nixpkgs.coreutils
+nix-env -iA -p /nix/var/nix/profiles/libs nixpkgs.boost
 # nix-env -iA -p /nix/var/nix/profiles/hadoop nixpkgs.hadoop
 # nix-env -iA -p /nix/var/nix/profiles/spark nixpkgs.spark
 # nix-env -iA -p /nix/var/nix/profiles/flink nixpkgs.flink
