@@ -1,25 +1,17 @@
 Host *
-  # StrictHostKeyChecking no
   GSSAPIAuthentication yes
   GSSAPIDelegateCredentials no
   HashKnownHosts no
   IdentityFile ~/dotbox/config/ssh/id_rsa-devbox
   UserKnownHostsFile ~/.ssh/known_hosts ~/dotbox/config/ssh/known_hosts
+  ServerAliveInterval 60
+  ServerAliveCountMax 1000000
+  TCPKeepAlive yes
+  HostKeyAlgorithms +ssh-rsa
+  PubkeyAcceptedKeyTypes +ssh-rsa
 
 Host 10.*
   StrictHostKeyChecking no
   GSSAPIAuthentication yes
   GSSAPIDelegateCredentials no
   HashKnownHosts No
-
-# https://rakhesh.com/windows/notes-on-using-git-from-behind-a-firewall-tunneling-ssh-through-a-proxy-git-credential-helpers-and-so-on/
-# https://stackoverflow.com/questions/19161960/connect-with-ssh-through-a-proxy
-# https://help.github.com/en/github/authenticating-to-github/using-ssh-over-the-https-port
-#Host github.com
-#HostName ssh.github.com
-#ProxyCommand connect -d -H 10.3.21.198:3128 %h %p
-#ProxyCommand connect -d -H 10.115.139.242:8080 %h %p
-#ProxyCommand nc -X connect -x 10.3.21.198:3128 %h %p
-#Port 443
-#User git
-#IdentitiesOnly yes
