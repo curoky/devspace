@@ -32,8 +32,8 @@ nix-env -p /nix/var/nix/profiles/default -iA \
   nixpkgs.ccache nixpkgs.scons nixpkgs.meson nixpkgs.ant nixpkgs.poetry nixpkgs.yarn nixpkgs.pipenv \
   nixpkgs.gradle nixpkgs.maven nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.yapf \
   nixpkgs.shfmt nixpkgs.buildifier nixpkgs.nodePackages.eslint nixpkgs.lua nixpkgs.nodejs \
-  nixpkgs.go_1_19 nixpkgs.ruby nixpkgs.rustup nixpkgs.openjdk nixpkgs.thrift nixpkgs.vlang \
-  nixpkgs.dotnet-sdk nixpkgs.git nixpkgs.lazygit nixpkgs.git-absorb nixpkgs.git-extras \
+  nixpkgs.go_1_19 nixpkgs.ruby nixpkgs.rustup nixpkgs.jdk nixpkgs.thrift nixpkgs.vlang \
+  nixpkgs.git nixpkgs.lazygit nixpkgs.git-absorb nixpkgs.git-extras \
   nixpkgs.git-lfs nixpkgs.bzip2 nixpkgs.xz nixpkgs.zstd nixpkgs.zip nixpkgs.unzip nixpkgs.iproute2 \
   nixpkgs.iputils nixpkgs.netcat nixpkgs.lsof nixpkgs.htop nixpkgs.connect nixpkgs.procps \
   nixpkgs.gost nixpkgs.nettools nixpkgs.zsh nixpkgs.starship nixpkgs.direnv nixpkgs.asciinema \
@@ -46,17 +46,20 @@ nix-env -p /nix/var/nix/profiles/default -iA \
   nixpkgs.fd nixpkgs.wishlist nixpkgs.sqlcipher nixpkgs.sqlite nixpkgs.zoxide nixpkgs.mkdocs \
   nixpkgs.sphinx nixpkgs.hugo nixpkgs.protobuf nixpkgs.buck nixpkgs.clang-tools_14 \
   nixpkgs.cmake-format nixpkgs.shellcheck nixpkgs.pandoc nixpkgs.dstat nixpkgs.rustup \
-  nixpkgs.flamegraph nixpkgs.flutter nixpkgs.dart nixpkgs.nixpkgs-fmt nixpkgs.ansible nixpkgs.earthly \
+  nixpkgs.flamegraph nixpkgs.nixpkgs-fmt nixpkgs.ansible nixpkgs.earthly \
   nixpkgs.cppcheck nixpkgs.graphviz nixpkgs.lld_14 nixpkgs.gdu nixpkgs.git-filter-repo
 
 # nix-env -iA -p /nix/var/nix/profiles/gcc49 nixpkgs.gcc49
 # nix-env -iA -p /nix/var/nix/profiles/gcc8 nixpkgs.gcc8
 # nix-env -iA -p /nix/var/nix/profiles/gcc11 nixpkgs.gcc11
-nix-env -iA -p /nix/var/nix/profiles/gcc12 nixpkgs.gcc12
+# nix-env -iA -p /nix/var/nix/profiles/gcc12 nixpkgs.gcc12
+# nix-env -iA -p /nix/var/nix/profiles/flutter nixpkgs.flutter
+# nix-env -iA -p /nix/var/nix/profiles/dart nixpkgs.dart
 nix-env -iA -p /nix/var/nix/profiles/protobuf3_17 nixpkgs.protobuf3_17
 nix-env -iA -p /nix/var/nix/profiles/jdk8 nixpkgs.jdk8
 nix-env -iA -p /nix/var/nix/profiles/jdk11 nixpkgs.jdk11
 nix-env -iA -p /nix/var/nix/profiles/jdk17 nixpkgs.jdk
+# nix-env -iA -p /nix/var/nix/profiles/dotnet nixpkgs.dotnet-sdk
 # nix-env -iA -p /nix/var/nix/profiles/perl nixpkgs.perl
 # nix-env -iA -p /nix/var/nix/profiles/python2 nixpkgs.python
 # nix-env -iA -p /nix/var/nix/profiles/python3 nixpkgs.python3
