@@ -86,9 +86,9 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --daemon \
   && sudo rm -rf /nix
 
 # rustup-init -y --no-modify-path --component rls
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
   # && rustup toolchain install stable-x86_64-unknown-linux-gnu \
-  && rustup component add rls
+  # && $HOME/.cargo/bin/rustup component add rls
 
 # Note: g=u doesn't really work. https://github.com/moby/buildkit/issues/1951
 COPY --chown=1000:1000 --chmod=g=u --from=homebrew /home/linuxbrew /home/linuxbrew
