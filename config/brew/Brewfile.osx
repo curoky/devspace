@@ -17,6 +17,7 @@ casks = [
   'snipaste',
   'sqlitestudio',
   'squirrel',
+  'drawio',
   # 'google-chrome',
   # 'google-drive',
   # 'visual-studio-code',
@@ -48,7 +49,7 @@ brews = [
   'wget', 'aria2', 'rsync', 'ncdu', 'the_silver_searcher',
   'gdb',  'gperf', 'gdu', 'exa', 'fzf', 'bat', 'cloc', 'go-task', 'krb5',
   'opencc', 'dolt', 'parallel', 'fd',
-  'coreutils', 'sqlcipher', 'sqlite3', 'sqlite-utils', 'drawio',
+  'coreutils', 'sqlcipher', 'sqlite3', 'sqlite-utils',
 ]
 
 brews.each do |b|

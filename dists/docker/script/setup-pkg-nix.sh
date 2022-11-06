@@ -47,7 +47,8 @@ nix-env -p /nix/var/nix/profiles/default -iA \
   nixpkgs.sphinx nixpkgs.hugo nixpkgs.protobuf nixpkgs.buck nixpkgs.clang-tools_14 \
   nixpkgs.cmake-format nixpkgs.shellcheck nixpkgs.pandoc nixpkgs.dstat nixpkgs.rustup \
   nixpkgs.flamegraph nixpkgs.nixpkgs-fmt nixpkgs.ansible nixpkgs.earthly \
-  nixpkgs.cppcheck nixpkgs.graphviz nixpkgs.lld_14 nixpkgs.gdu nixpkgs.git-filter-repo
+  nixpkgs.cppcheck nixpkgs.graphviz nixpkgs.lld_14 nixpkgs.gdu nixpkgs.git-filter-repo \
+  nixpkgs.jemalloc
 
 # nix-env -iA -p /nix/var/nix/profiles/gcc49 nixpkgs.gcc49
 # nix-env -iA -p /nix/var/nix/profiles/gcc8 nixpkgs.gcc8
