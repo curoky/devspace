@@ -6,6 +6,7 @@ config:
   dotpath: config
   link_dotfile_default: link
   link_on_import: link
+  template_dotfile_default: false
 trans_read:
   _decrypt:
     openssl enc -aes-256-cbc -nosalt -d -pbkdf2 -in {0} -out {1} -pass pass:{{@@
