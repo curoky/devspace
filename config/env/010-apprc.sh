@@ -171,3 +171,6 @@ export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
 #-> java
 export JAVA_HOME=/nix/var/nix/profiles/jdk11
+if [[ ! -d $JAVA_HOME ]]; then
+  export JAVA_HOME=/opt/homebrew/opt/openjdk@17
+fi
