@@ -137,11 +137,7 @@ dotfiles:
     dst: /etc/sudoers.d/custom
     link: nolink
     src: linux/sudoers.d/custom
-  linux-sysctl-1:
-    dst: /etc/sysctl.d/10-ptrace.conf
-    link: nolink
-    src: linux/sysctl.d/10-ptrace.conf
-  linux-sysctl-2:
+  linux-sysctl:
     dst: /etc/sysctl.d/custom.conf
     link: nolink
     src: linux/sysctl.d/custom.conf
@@ -262,8 +258,7 @@ profiles:
       - linux-journal
       # - linux-profile
       - linux-sudoers
-      - linux-sysctl-1
-      - linux-sysctl-2
+      - linux-sysctl
       - ssh-d
       - ssh-systemd-socket
       - ssh-host-key
