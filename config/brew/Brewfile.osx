@@ -4,20 +4,20 @@ tap 'go-task/tap'
 
 # brew list --cask | xargs -n 1 | sort -u | awk '{ print "\x27"$1"\x27""," }'
 casks = [
-  'android-platform-tools',
-  'db-browser-for-sqlite',
-  'disk-drill',
   'font-fira-code-nerd-font',
   'font-ubuntu-mono-nerd-font',
+  'android-platform-tools',
   'iina',
   'istat-menus',
   'netnewswire',
   'firefox',
   'notion',
   'snipaste',
+  'db-browser-for-sqlite',
   'sqlitestudio',
   'squirrel',
   'drawio',
+  # 'disk-drill',
   # 'google-chrome',
   # 'google-drive',
   # 'visual-studio-code',
@@ -34,6 +34,7 @@ brews = [
   'pre-commit', 'prettier', 'yapf', 'shfmt', 'eslint', 'clang-format',
   'gcc', 'llvm', 'python@3', 'node', 'go', 'ruby', 'rustup-init',
   'openjdk@8', 'openjdk@11', 'openjdk@17', 'openjdk', 'thrift',
+  'maven',
   # git
   'git', 'git-absorb', 'git-extras', 'git-lfs',
   # compression

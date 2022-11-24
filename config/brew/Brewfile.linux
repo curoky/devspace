@@ -12,7 +12,7 @@ brews = [
   'cmake',
   # 'ninja', 'distcc', 'ccache', 'scons', 'meson', 'ant',
   # 'bazel', 'poetry', 'yarn', 'pipenv', 'gradle', 'maven', 'facebook/fb/buck',
-  'conan', 'bazel',
+  'conan', 'bazelisk',
   # 'thought-machine/please/please',
   'spack',
   # linter
@@ -39,7 +39,7 @@ brews = [
   # 'exa', 'fzf', 'bat', 'cloc', 'atuin', 'go-task', 'krb5', 'less', 'navi', 'ghq', 'lcov', 'gcovr',
   # 'docker-compose', 'opencc', 'dolt', 'include-what-you-use', 'mold', 'parallel', 'fd',
   # 'wishlist', 'coreutils', 'sqlcipher', 'sqlite3', 'zoxide',
-  'boost',
+  # 'boost',
   # static website generator
   # 'mkdocs', 'sphinx-doc', 'hugo'
   'hexo',
