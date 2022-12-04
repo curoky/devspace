@@ -46,8 +46,6 @@ ENV_PATHS=(
 
   # "/opt/conda/bin"
 
-  "/opt/bundles/bin"
-
   "$HOME/.cargo/bin"
 )
 for p in "${ENV_PATHS[@]}"; do

@@ -18,7 +18,7 @@ if [[ -d $HOME/repos/mackup/bin ]]; then
 fi
 
 #=-> oh-my-zsh
-export ZSH=/opt/bundles/zsh
+export ZSH=$BREW_PREFIX/opt/zsh-bundle/
 DISABLE_AUTO_UPDATE=true
 ZSH_DISABLE_COMPFIX=true
 # ZSH_THEME="spaceship"

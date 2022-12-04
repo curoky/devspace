@@ -1,6 +1,7 @@
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'go-task/tap'
+tap 'curoky/tap'
 
 # brew list --cask | xargs -n 1 | sort -u | awk '{ print "\x27"$1"\x27""," }'
 casks = [
@@ -9,14 +10,14 @@ casks = [
   'android-platform-tools',
   'iina',
   'istat-menus',
-  'netnewswire',
-  'firefox',
   'notion',
   'snipaste',
   'db-browser-for-sqlite',
   'sqlitestudio',
   'squirrel',
   'drawio',
+  # 'firefox',
+  # 'netnewswire',
   # 'disk-drill',
   # 'google-chrome',
   # 'google-drive',
@@ -51,6 +52,7 @@ brews = [
   'gdb',  'gperf', 'gdu', 'exa', 'fzf', 'bat', 'cloc', 'go-task', 'krb5',
   'opencc', 'dolt', 'parallel', 'fd',
   'coreutils', 'sqlcipher', 'sqlite3', 'sqlite-utils',
+  'zsh-bundle', 'vim-bundle', 'rime-bundle', 'git-mv-with-history',
 ]
 
 brews.each do |b|

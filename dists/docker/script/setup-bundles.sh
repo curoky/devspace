@@ -151,12 +151,7 @@ mkdir -p $output $output/bin
 
 target=${2:-$(uname -s)}
 
-p_zsh
-p_vim
-p_git_mv_with_history
-
 if [[ $target == "Linux" ]]; then
   p_tools
 elif [[ $target == "Darwin" ]]; then
-  p_rime
 fi
