@@ -1,14 +1,15 @@
 class RimeBundle < Formula
-  desc "Rime's resource."
+  include Language::Python::Virtualenv
+
+  desc 'Bundle rime dict'
   homepage 'https://rime.im'
-  url 'https://gist.github.com/curoky/2985fe6d1899b77fd611bde444a8289d/archive/master.zip'
-  version '1.0.0'
+  url 'https://github.com/rime/squirrel/archive/refs/tags/0.15.2.tar.gz'
+  # version '1.0.0'
 
   resource 'rime-emoji' do
     url 'https://github.com/rime/rime-emoji/archive/master.zip'
   end
 
-  # meow-emoji
   resource 'meow-emoji-rime' do
     url 'https://github.com/hitigon/meow-emoji-rime/archive/master.zip'
   end
@@ -21,36 +22,44 @@ class RimeBundle < Formula
     url 'https://github.com/fkxxyz/rime-symbols/archive/master.zip'
   end
 
+  resource 'rime-dict' do
+    url 'https://github.com/Iorest/rime-dict/archive/master.zip'
+  end
+
   resource 'rime-cloverpinyin' do
     url 'https://github.com/fkxxyz/rime-cloverpinyin/releases/download/1.1.4/clover.schema-1.1.4.zip'
   end
 
   keg_only :versioned_formula
 
-  depends_on 'python@3.9' => :build
+  depends_on 'python@3' => :build
+  depends_on 'opencc' => :build
 
   def install
-    system 'pip3', 'install', 'opencc'
+    venv = virtualenv_create(libexec, 'python3')
+    venv.pip_install 'opencc'
+
     resource('rime-emoji').stage do
       (prefix / 'opencc').install Dir['opencc/*']
     end
 
     resource('rime-symbols').stage do
-      system 'python3', './rime-symbols-gen'
+      system libexec / 'bin/python3', './rime-symbols-gen'
       (prefix / 'opencc').install 'symbol.json'
       (prefix / 'opencc').install 'symbol_word.txt'
       (prefix / 'opencc').install 'symbol_category.txt'
     end
 
-    resource('rime-cloverpinyin').stage do
-      prefix.install 'clover.base.dict.yaml'
-      prefix.install 'clover.dict.yaml'
-      prefix.install 'clover.key_bindings.yaml'
-      prefix.install 'clover.phrase.dict.yaml'
-      prefix.install 'clover.schema.yaml'
+    resource('rime-dict').stage do
+      Pathname.glob('**/*.dict.yaml') do |file|
+        system 'opencc', '-i', file, '-o', "s.#{file.basename}", '-c', 't2s.json'
+        prefix.install Dir['s.*.yaml']
+      end
     end
 
-    prefix.install 'curoky.dict.yaml'
+    resource('rime-cloverpinyin').stage do
+      prefix.install Dir['*.yaml']
+    end
   end
 
   test do

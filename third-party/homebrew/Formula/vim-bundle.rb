@@ -1,5 +1,5 @@
 class VimBundle < Formula
-  desc 'Bundle vim with plugins and themes.'
+  desc 'Bundle vim plugins'
   homepage 'https://github.com/junegunn/vim-plug'
   url 'https://github.com/junegunn/vim-plug/archive/master.zip'
   head 'https://github.com/junegunn/vim-plug.git'
