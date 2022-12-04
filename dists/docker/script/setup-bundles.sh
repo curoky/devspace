@@ -153,5 +153,4 @@ target=${2:-$(uname -s)}
 
 if [[ $target == "Linux" ]]; then
   p_tools
-elif [[ $target == "Darwin" ]]; then
 fi
