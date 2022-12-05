@@ -44,6 +44,7 @@ brews = [
   # static website generator
   # 'mkdocs', 'sphinx-doc', 'hugo'
   'hexo',
+  'zsh-bundle', 'vim-bundle', 'rime-bundle', 'git-mv-with-history',
 ]
 
 brews.each do |b|
