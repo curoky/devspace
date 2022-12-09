@@ -90,6 +90,6 @@ function git-show-deleted-files() {
 }
 
 function set-git-proxy() {
-  export GIT_SSH=~/dotbox/script/git-proxy-wrapper.sh
+  export GIT_SSH=~/dotbox/tools/git-proxy-wrapper.sh
   echo "export GIT_SSH=$GIT_SSH"
 }
