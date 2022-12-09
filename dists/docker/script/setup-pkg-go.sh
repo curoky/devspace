@@ -18,11 +18,13 @@
 
 set -xeuo pipefail
 
+requirements=$1
+
 export GOPATH=$HOME/go
 
 while IFS= read -r line; do
   go install "$line"
-done < <(grep -o '^[^#]*' /opt/dotbox/config/go/requirements.txt)
+done < <(grep -o '^[^#]*' $requirements)
 
 go clean -cache
 # we only need binaries not packages

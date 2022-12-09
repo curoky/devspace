@@ -32,7 +32,7 @@ github.com/abice/go-enum@latest
 github.com/apache/skywalking-eyes/cmd/license-eye@latest
 github.com/bazelbuild/bazel-gazelle/cmd/gazelle@latest
 github.com/gobuffalo/packr/v2/packr2@latest
+github.com/google/wire/cmd/wire@latest
 github.com/mccutchen/go-httpbin/v2/cmd/go-httpbin@latest
 github.com/mna/pigeon@latest
 github.com/onsi/ginkgo/v2/ginkgo@latest
-github.com/google/wire/cmd/wire@latest

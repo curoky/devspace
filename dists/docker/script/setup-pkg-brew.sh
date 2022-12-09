@@ -18,16 +18,18 @@
 
 set -xeuo pipefail
 
+brewfile=$1
+
 brew update
 
-brew bundle --file /opt/dotbox/config/brew/Brewfile.linux --force # --cleanup
+brew bundle --file $brewfile --force # --cleanup
 sudo rm -rf "$(brew --cache)"
 
 brew unlink $(brew list --formula)
-# brew link $(brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux --formula)
-# brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux --formula | xargs -I {} brew link {}
+# brew link $(brew bundle list --file $brewfile --formula)
+# brew bundle list --file $brewfile --formula | xargs -I {} brew link {}
 
-for x in $(brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux --formula); do
+for x in $(brew bundle list --file $brewfile --formula); do
   if grep -q "keg-only" <(brew info $x); then
     echo "$x is keg-only, skipping"
   else
@@ -35,7 +37,7 @@ for x in $(brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux --form
   fi
 done
 
-# brew --prefix vim python@2 python@3 | xargs -n 1 -I {} sh -c 'sudo ln -sf $1/bin/* /usr/bin/' - {}
+# brew --prefix vim python@2 python@3 | xargs -n 1 -I {} sh -c 'sudo ln -sf $brewfile/bin/* /usr/bin/' - {}
 
 # some brew's packages build on ubuntu 16.04 with gcc5, and they hardcode gcc-5 in
 # config files, we need to change it to gcc.

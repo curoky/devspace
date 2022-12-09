@@ -1,18 +1,26 @@
+# git+https://github.com/facebook/fbthrift.git#subdirectory=thrift/lib/py/
+# git+https://github.com/pinterest/thrift-tools
+# tensorflow ; python_version > "3"
 absl-py
 aiofiles
 aiohttp[speedups] ; python_version > "3"
+# apache-flink ; python_version > "3"
 bqplot
-click >= 7.1.2  ; python_version < "3"
-click >= 8.1.3  ; python_version > "3"
+click >= 7.1.2 ; python_version < "3"
+click >= 8.1.3 ; python_version > "3"
 clip-client ; python_version > "3"
 clip-server ; python_version > "3"
 cmakelang ; python_version > "3"
+cryptography
+deepdiff
 dynaconf[all]
 fastapi[all] ; python_version > "3"
+geojson
 gevent >= 21.12.0
 GitPython
 giturlparse
 gpxpy
+grpcio>=1.51.1 ; python_version > "3"
 icalendar
 icecream >= 2.1.3
 id-validator >= 1.0.20 ; python_version > "3"
@@ -24,6 +32,7 @@ jieba
 jinja2 >= 2.11.3 ; python_version < "3"
 jinja2 >= 3.1.2 ; python_version > "3"
 kafka-python >= 2.0.2
+kazoo
 licenseheaders ; python_version > "3"
 lxml >= 4.9.1
 lz4 >= 4.0.2 ; python_version > "3"
@@ -31,20 +40,27 @@ matplotlib >= 2.2.5 ; python_version < "3"
 matplotlib >= 3.5.3 ; python_version > "3"
 memray ; python_version > "3"
 msgpack
-numpy
+numpy ; python_version < "3"
+numpy >= 1.23.5 ; python_version > "3"
 opencc
 pandas >= 0.24.2 ; python_version < "3"
 pandas >= 1.4.3 ; python_version > "3"
 parse >= 1.19.0
-plotly>=4.14.3 ; python_version < "3"
-plotly>=5.10.0 ; python_version > "3"
+pipdeptree
+plotly >= 4.14.3 ; python_version < "3"
+plotly >= 5.10.0 ; python_version > "3"
 prefect >= 2.0.4 ; python_version > "3"
 prefect-dask ; python_version > "3"
 psutil
 pydantic ; python_version > "3"
 pydantic_yaml ; python_version > "3"
+pyfiglet
 PyGithub
+pymongo
+PyMySQL
+pynacl
 pypinyin
+pysnooper
 PySocks
 pyspark[sql]
 pytest
@@ -58,8 +74,8 @@ scrapy
 seaborn
 selenium
 six
+sqlmodel ; python_version > "3"
 srtm.py
-tensorflow ; python_version > "3"
 thrift
 thriftpy2
 tornado
@@ -69,33 +85,3 @@ virtualenv
 voila
 yapf
 zhdate
-
-# git+https://github.com/pinterest/thrift-tools
-
-# mljar-mercury >= 1.1.5 ; python_version > "3"
-# deepdiff
-# anytree
-# pypinyin
-# pysnooper
-# bullet
-# colorama
-# cryptography
-# diagrams
-# eliot
-# fabric
-# importlib_metadata
-# kazoo
-# prettytable
-# prompt_toolkit
-# pyfiglet
-# pymongo
-# pynacl
-# python-frontmatter
-# raven
-# schedule
-# tabula-py
-# typer-cli
-# types-fb303
-
-# https://gith1ub.com/curoky/DockerHub-API/archive/master.zip
-# git+https://github.com/facebook/fbthrift.git#subdirectory=thrift/lib/py/
