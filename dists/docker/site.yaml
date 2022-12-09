@@ -97,7 +97,7 @@
             - worker
 
     - name: Setup sysconf
-      ansible.builtin.shell: dotdrop install --force --profile=sysconf
+      ansible.builtin.shell: dotdrop install --cfg=/opt/dotbox/config.yaml --force --profile=sysconf
 
     - name: Change /opt ownership
       ansible.builtin.file:
