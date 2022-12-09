@@ -6,7 +6,7 @@ class GitMvWithHistory < Formula
   version 'head'
 
   def install
-    bin.install 'git-mv-with-history' => 'git-mv-file'
+    bin.install 'git-mv-with-history' => 'git-mv-with-history'
   end
 
   test do
