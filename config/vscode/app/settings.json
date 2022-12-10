@@ -130,7 +130,7 @@
   "editor.tabSize": 2,
   "errorLens.delay": 15000,
   "eslint.format.enable": true,
-  // updated 2022-09-30 04:30
+  // updated 2022-11-17 14:08
   // https://github.com/antfu/vscode-file-nesting-config
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
@@ -151,6 +151,7 @@
     "*.cxx": "$(capture).hpp, $(capture).h, $(capture).hxx",
     "*.dart": "$(capture).freezed.dart, $(capture).g.dart",
     "*.ex": "$(capture).html.eex, $(capture).html.heex, $(capture).html.leex",
+    "*.go": "$(capture)_test.go",
     "*.java": "$(capture).class",
     "*.js": "$(capture).js.map, $(capture).*.js, $(capture)_*.js",
     "*.jsx": "$(capture).js, $(capture).*.jsx, $(capture)_*.js, $(capture)_*.jsx",
@@ -184,6 +185,7 @@
     "gatsby-config.*": "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, gatsby-browser.*, gatsby-node.*, gatsby-ssr.*, gatsby-transformer.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*",
     "gemfile": ".ruby-version, gemfile.lock",
     "go.mod": ".air*, go.sum",
+    "go.work": "go.work.sum",
     "mix.exs": ".credo.exs, .dialyzer_ignore.exs, .formatter.exs, .iex.exs, .tool-versions, mix.lock",
     "next.config.*": "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, next-env.d.ts, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*",
     "nuxt.config.*": "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*",
@@ -197,13 +199,7 @@
     "shims.d.ts": "*.d.ts",
     "svelte.config.*": "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, mdsvex.config.js, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*",
     "vite.config.*": "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*",
-    "vue.config.*": "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*",
-    // my change
-    // "BLADE_ROOT": "BLADE_ROOT, BLADE_ROOT.local, build.ninja, compile_commands.json, compile_commands.ori.json, distcc.log",
-    // "README.md": "LICENSE, LICENSE.md",
-    "Pipfile": "Pipfile.lock"
-    // "WORKSPACE": "*.bzl, *.bazel, *.bazelrc, bazel.rc, .bazelignore, .bazelproject, BUILD",
-    // ".pre-commit-config.yaml": ".clang-format, .cmake-format.py, .isort.cfg, .licenserc.yaml, .shellcheckrc, .style.yapf, license-settings.json, apache-2.tmpl, CPPLINT.cfg, .eslintrc.js, .markdownlintrc, .prettierrc.yaml"
+    "vue.config.*": "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*"
   },
   "explorer.openEditors.visible": 0,
   "extensions.ignoreRecommendations": true,
@@ -211,6 +207,7 @@
     "*.BUILD": "starlark",
     "*.blade": "starlark",
     "*.cc.j2": "jinja-cpp",
+    "*.drawio": "xml",
     "*.h.j2": "jinja-cpp",
     "*.imp": "llvm",
     "*.inc": "cpp",
@@ -219,7 +216,6 @@
     "*.orc": "thrift",
     "*.tcc": "cpp",
     "*.tcc.j2": "jinja-cpp",
-    // https://code.visualstudio.com/docs/languages/identifiers
     "BUILD": "starlark",
     "Brewfile.*": "ruby",
     "vimrc": "viml"
@@ -356,7 +352,9 @@
   "shellcheck.exclude": ["1090", "2034", "2068", "2086", "2206", "2231"],
   "shellcheck.run": "onSave",
   "shellformat.flag": "-i 2 -s -ln bash",
+  "sql-formatter.uppercase": true,
   "sqltools.useNodeRuntime": true,
+  "svg.preview.mode": "svg",
   "task.slowProviderWarning": ["typescript"],
   "taskExplorer.pathToMake": "make",
   "telemetry.telemetryLevel": "off",
@@ -371,6 +369,7 @@
   "terminal.integrated.fontSize": 23,
   "terminal.integrated.fontWeight": "500",
   "terminal.integrated.gpuAcceleration": "on",
+  "terminal.integrated.inheritEnv": false,
   "terminal.integrated.scrollback": 10000,
   "testMate.cpp.discovery.gracePeriodForMissing": 20,
   "testMate.cpp.discovery.runtimeLimit": 20,
