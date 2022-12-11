@@ -57,6 +57,6 @@
   "shellformat.path": "/nix/var/nix/profiles/default/bin/shfmt",
   "sqlite.sqlite3": "/nix/var/nix/profiles/default/bin/sqlite3",
   "typescript.npm": "/nix/var/nix/profiles/default/bin/npm",
-  "xml.java.home": "/nix/var/nix/profiles/jdk17/lib/openjdk",
+  "xml.java.home": "/nix/var/nix/profiles/jdk19/lib/openjdk",
   "xml.server.vmargs": "-Xmx5G"
 }
