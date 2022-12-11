@@ -29,7 +29,7 @@ export PATH=/nix/var/nix/profiles/default/bin:$PATH
 pkg_list=(
   # build tools
   nixpkgs.automake nixpkgs.libtool nixpkgs.pkg-config nixpkgs.gnumake nixpkgs.ninja nixpkgs.distcc
-  nixpkgs.ccache nixpkgs.poetry nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven
+  nixpkgs.ccache nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven # nixpkgs.poetry
   # nixpkgs.buck nixpkgs.scons nixpkgs.meson nixpkgs.ant
   nixpkgs.include-what-you-use nixpkgs.mold nixpkgs.clang-tools_14 nixpkgs.lld_14
   nixpkgs.nodejs nixpkgs.go_1_19 nixpkgs.ruby # nixpkgs.lua nixpkgs.vlang nixpkgs.rustup
