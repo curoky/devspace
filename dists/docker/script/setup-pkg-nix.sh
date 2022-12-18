@@ -24,7 +24,7 @@ export PATH=/nix/var/nix/profiles/default/bin:$PATH
 # brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux | awk '{print "nixpkgs."$0}' | xargs -n 5 | awk '{print $0" \ \"}'
 
 # The following packages are not working properly with nix.
-# nixpkgs.cmake nixpkgs.conan nixpkgs.autoconf nixpkgs.bazel_5
+# nixpkgs.cmake nixpkgs.conan nixpkgs.autoconf nixpkgs.bazel_5 nixpkgs.zsh
 
 pkg_list=(
   # build tools
@@ -50,7 +50,7 @@ pkg_list=(
   # doc
   nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo nixpkgs.pandoc
   # shell
-  nixpkgs.zsh nixpkgs.starship nixpkgs.direnv nixpkgs.tmux nixpkgs.tmuxinator
+  nixpkgs.starship nixpkgs.direnv nixpkgs.tmux nixpkgs.tmuxinator
   # editor
   nixpkgs.flex nixpkgs.bison nixpkgs.helix nixpkgs.gnupatch nixpkgs.gettext nixpkgs.m4
   nixpkgs.jq nixpkgs.vim nixpkgs.bat nixpkgs.less
