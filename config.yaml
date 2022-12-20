@@ -103,8 +103,8 @@ dotfiles:
     link: nolink
     src: gost/gost.service
   gradle:
-    dst: ~/.gradle
-    src: gradle
+    dst: ~/.gradle/gradle.properties
+    src: gradle/gradle.properties
   helix:
     dst: ~/.config/helix
     src: helix
