@@ -37,7 +37,6 @@ class VimBundle < Formula
   end
 
   keg_only :versioned_formula
-  depends_on 'vim'
 
   def install
     prefix.install Dir['*']

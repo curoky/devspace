@@ -22,7 +22,6 @@ class ZshBundle < Formula
   end
 
   keg_only :versioned_formula
-  depends_on 'zsh'
 
   def install
     prefix.install Dir['*']
