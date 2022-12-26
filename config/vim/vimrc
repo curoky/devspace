@@ -13,8 +13,12 @@ set expandtab
 " set backspace=indent,eol,start
 set backspace=2
 
-set rtp+=$VIM_PLUGIN_PATH
-call plug#begin('$VIM_PLUGIN_PATH/plugged')
+let $plug_path=$VIM_PLUGIN_PATH
+if empty($plug_path)
+  let $plug_path='/home/linuxbrew/.linuxbrew/opt/vim-bundle/vim-plugin'
+endif
+set rtp+=$plug_path
+call plug#begin('$plug_path/plugged')
 Plug 'Raimondi/delimitMate'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
