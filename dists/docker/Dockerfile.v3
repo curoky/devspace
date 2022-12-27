@@ -14,7 +14,8 @@ COPY images/config/brew/Brewfile.linux Brewfile.linux
 COPY images/script/setup-pkg-brew.sh setup-pkg-brew.sh
 RUN apt-get update -qq \
   && apt-get install -y -qq --no-install-recommends \
-    ca-certificates git curl zip unzip tar make g++ patch file less \
+    ca-certificates git curl zip unzip tar make g++ patch file less sudo \
+  && echo '#' >> /.dockerenv \
   && bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" \
   && ./setup-pkg-brew.sh Brewfile.linux
 
