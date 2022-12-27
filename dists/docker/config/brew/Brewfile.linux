@@ -14,8 +14,7 @@ brews = [
   # 'ninja', 'distcc', 'ccache', 'scons', 'meson', 'ant',
   # 'bazel', 'poetry', 'yarn', 'pipenv', 'gradle', 'maven', 'facebook/fb/buck',
   'conan', 'bazelisk',
-  # 'thought-machine/please/please',
-  'spack',
+  # 'thought-machine/please/please', 'spack',
   # linter
   # 'pre-commit', 'prettier', 'yapf', 'shfmt', 'buildifier', 'eslint', 'clang-format',
   # language
@@ -30,10 +29,10 @@ brews = [
   # 'goproxy', 'net-tools',
   # shell tools
   # 'zsh', 'starship', 'direnv', 'asciinema', 'tmux', 'tmuxinator',
-  'dotdrop',
+  'dotdrop', 'zsh-bundle', 'vim-bundle', 'rime-bundle', 'git-mv-with-history',
   # text editor
   # 'flex', 'bison', 'gettext', 'm4', 'gpatch', 'jq', 'vim', 'helix-editor/helix/helix',
-  'tidwall/jj/jj',
+  # 'tidwall/jj/jj',
   # others
   # 'wget', 'aria2', 'rsync',
   # 'gdb', 'ncdu', 'file', 'the_silver_searcher', 'gperf', 'watchman', 'nnn', 'ranger',
@@ -42,9 +41,7 @@ brews = [
   # 'wishlist', 'coreutils', 'sqlcipher', 'sqlite3', 'zoxide',
   # 'boost',
   # static website generator
-  # 'mkdocs', 'sphinx-doc', 'hugo'
-  'hexo',
-  'zsh-bundle', 'vim-bundle', 'rime-bundle', 'git-mv-with-history',
+  # 'mkdocs', 'sphinx-doc', 'hugo', 'hexo',
 ]
 
 brews.each do |b|

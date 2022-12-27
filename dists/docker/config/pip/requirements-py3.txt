@@ -48,6 +48,7 @@ seaborn
 # voila
 
 #################### data science && math tools ####################
+scipy
 numpy
 pandas >= 1.4.3
 jieba
