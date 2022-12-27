@@ -3,6 +3,21 @@ COPY images/script/setup-pkg-brew.sh setup-pkg-brew.sh
 COPY images/config/brew/Brewfile.linux Brewfile.linux
 RUN ./setup-pkg-brew.sh Brewfile.linux
 
+FROM ubuntu:22.10 as homebrew2
+ENV HOMEBREW_NO_ANALYTICS=1 \
+  HOMEBREW_NO_AUTO_UPDATE=1 \
+  HOMEBREW_INSTALL_FROM_API=1 \
+  DEBIAN_FRONTEND=noninteractive \
+  HOMEBREW_CC=gcc \
+  PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
+COPY images/config/brew/Brewfile.linux Brewfile.linux
+COPY images/script/setup-pkg-brew.sh setup-pkg-brew.sh
+RUN apt-get update -qq \
+  && apt-get install -y -qq --no-install-recommends \
+    ca-certificates git curl zip unzip tar make g++ patch file less \
+  && bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" \
+  && ./setup-pkg-brew.sh Brewfile.linux
+
 FROM ghcr.io/conda/conda-ci:master-linux-python3.10 as conda
 USER root
 COPY images/config/pip/*.txt .
@@ -88,7 +103,7 @@ RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
   # && $HOME/.cargo/bin/rustup component add rls
 
 # Note: g=u doesn't really work. https://github.com/moby/buildkit/issues/1951
-COPY --chown=1000:1000 --chmod=g=u --from=homebrew /home/linuxbrew /home/linuxbrew
+COPY --chown=1000:1000 --chmod=g=u --from=homebrew2 /home/linuxbrew /home/linuxbrew
 COPY --chown=1000:1000 --chmod=g=u --from=conda /opt/conda /opt/conda
 COPY --chown=1000:1000 --chmod=g=u --from=bundles /opt/bundles /opt/bundles
 COPY --chown=1000:1000 --chmod=g=u --from=vcpkg /opt/vcpkg /opt/vcpkg
