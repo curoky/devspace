@@ -22,8 +22,8 @@ brewfile=$1
 
 brew update
 
-brew bundle --file $brewfile --force # --cleanup
-sudo rm -rf "$(brew --cache)"
+brew bundle --file $brewfile --force --verbose --debug --no-lock --no-upgrade # --cleanup
+# sudo rm -rf "$(brew --cache)"
 
 brew unlink $(brew list --formula)
 # brew link $(brew bundle list --file $brewfile --formula)
