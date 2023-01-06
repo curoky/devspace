@@ -54,6 +54,7 @@ export HOMEBREW_BAT_CONFIG_PATH=$HOME/.config/bat/config
 export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 export HOMEBREW_GIT_PATH=/nix/var/nix/profiles/default/bin/git
 # export HOMEBREW_CACHE=$XDG_CACHE_HOME/homebrew # get with brew --cache
+export HOMEBREW_INSTALL_FROM_API=1
 
 #=-> flutter
 # export PUB_HOSTED_URL="https://mirrors.tuna.tsinghua.edu.cn/dart-pub/"
@@ -96,7 +97,7 @@ export DISTCC_LOG=$XDG_CACHE_HOME/distcc.log
 
 #=-> ccache already enabled by default
 # https://ccache.dev/manual/latest.html#config_cache_dir
-export CCACHE_CONFIGPATH=$CONFIG_HOME/ccache/ccache.conf
+# export CCACHE_CONFIGPATH=$CONFIG_HOME/ccache/ccache.conf
 # export CCACHE_DIR=$XDG_CACHE_HOME/ccache
 
 #=-> vim-plugin
@@ -157,14 +158,14 @@ export VCPKG_DOWNLOADS=$XDG_CACHE_HOME/vcpkg/download
 # export NAVI_CONFIG=$CONFIG_HOME/navi/config.yaml
 
 #-> htop
-export HTOPRC=$CONFIG_HOME/htop/htoprc
+# export HTOPRC=$CONFIG_HOME/htop/htoprc
 
 #-> conda
 # https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html#id4
-export CONDARC=$CONFIG_HOME/conda/condarc
+# export CONDARC=$CONFIG_HOME/conda/condarc
 
 #-> zoxide
-export _ZO_DATA_DIR=$XDG_CACHE_HOME/zoxide
+# export _ZO_DATA_DIR=$XDG_CACHE_HOME/zoxide
 
 #-> nix
 # https://nixos.wiki/wiki/Locales

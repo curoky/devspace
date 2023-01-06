@@ -36,8 +36,8 @@ dotfiles:
     dst: ~/.cargo/config.toml
     src: cargo/config.toml
   ccache:
-    dst: ~/.config/ccache
-    src: ccache
+    dst: ~/.config/ccache/ccache.conf
+    src: ccache/ccache.conf
   clang-format:
     dst: ~/.clang-format
     src: clang-format/clang-format
@@ -48,8 +48,8 @@ dotfiles:
     dst: ~/.conan
     src: conan
   conda:
-    dst: ~/.config/conda
-    src: conda
+    dst: ~/.config/conda/condarc
+    src: conda/condarc
   crontab:
     dst: /etc/cron.d/custom.crontab
     link: nolink
@@ -108,6 +108,9 @@ dotfiles:
   helix:
     dst: ~/.config/helix
     src: helix
+  htop:
+    dst: ~/.config/htop/htoprc
+    src: htop/htoprc
   httpbin:
     dst: /lib/systemd/system/go-httpbin.service
     link: nolink
@@ -275,6 +278,7 @@ profiles:
       - bat
       - bazel
       - cargo
+      - ccache
       - clang-format
       - conan
       - conda
@@ -284,9 +288,9 @@ profiles:
       - git-config
       - gradle
       - helix
+      - htop
       - isort
       - maven
-      - navi
       - nixpkgs
       - pip
       - prettier
@@ -304,10 +308,27 @@ profiles:
       - zshrc
 
   darwin:
-    include:
-      - image
     dotfiles:
-      - hyper
+      - bat
+      - cargo
+      - clang-format
+      - conda
+      - git-config
+      - gradle
+      - isort
+      - maven
+      - pip
+      - prettier
+      - procps
+      - profile
+      - ssh-authorized-key
+      - ssh-config
+      - startship
+      - tmux
+      - vim
+      - yapf
+      - zprofile
+      - zshrc
       - rime
       - snipaste
       # - vscode
