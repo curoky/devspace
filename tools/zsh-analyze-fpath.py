@@ -20,15 +20,15 @@ Usage:
 $ fpath | zsh-analyze-fpath.py
 '''
 
-from copy import deepcopy
 import sys
+from collections import defaultdict
+from copy import deepcopy
 from pathlib import Path
 from typing import Dict, List
-from rich.console import Console
-from rich.table import Table
-from collections import defaultdict
 
 import typer
+from rich.console import Console
+from rich.table import Table
 
 app = typer.Typer(add_completion=True, help='')
 
