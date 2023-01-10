@@ -19,6 +19,7 @@ casks = [
   'drawio',
   'charles',
   'google-drive',
+  'webtorrent',
   # 'firefox',
   # 'netnewswire',
   # 'disk-drill',
@@ -52,7 +53,7 @@ brews = [
   # others
   'wget', 'aria2', 'rsync', 'ncdu', 'the_silver_searcher',
   'gdb',  'gperf', 'gdu', 'exa', 'fzf', 'bat', 'cloc', 'go-task', 'krb5',
-  'opencc', 'parallel', 'fd',
+  'opencc', 'parallel', 'fd', # 'gdal',
   'coreutils', 'sqlcipher', 'sqlite3', 'sqlite-utils',
   'zsh', 'zsh-bundle', 'vim', 'vim-bundle', 'rime-bundle', 'git-mv-with-history',
 ]

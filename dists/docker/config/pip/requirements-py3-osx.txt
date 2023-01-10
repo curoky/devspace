@@ -1,2 +1,4 @@
 typer[all]
 loguru
+geopy
+gpxpy
