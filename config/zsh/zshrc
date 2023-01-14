@@ -147,6 +147,9 @@ compdef _bb bb bbup bb4 bb4up bbcl bbclup
 # export HISTORY_IGNORE="(?|??|???|????|* --help|* --version|agf *)"
 # export HISTORY_IGNORE="(?|??)"
 # HISTFILE="conf/.history/$MY_HOST_NAME.$(id -u).zsh_history"
+if [[ -d ~/repos/backup/shell_input_history ]]; then
+  HISTFILE="$HOME/repos/backup/shell_input_history/$MY_HOST_NAME.$(id -u).zsh_history"
+fi
 HISTSIZE=30000
 SAVEHIST=20000
 setopt EXTENDED_HISTORY
