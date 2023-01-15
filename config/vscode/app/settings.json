@@ -103,6 +103,7 @@
   "debug.console.fontFamily": "UbuntuMonoNerdFontCompleteM-Regular",
   "debug.console.fontSize": 18,
   "debug.inlineValues": true,
+  "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.maxComputationTime": 0,
   "docker.languageserver.formatter.ignoreMultilineInstructions": true,
   "doxdocgen.generic.authorEmail": "cccuroky@gmail.com",
@@ -272,6 +273,7 @@
   "go.useCodeSnippetsOnFunctionSuggest": true,
   "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
   "graphviz-interactive-preview.renderLockAdditionalTimeout": 10000,
+  "hdinsight.disableOpenSurveyLink": true,
   "hediet.vscode-drawio.codeLinkActivated": false,
   "hediet.vscode-drawio.theme": "automatic",
   "isort.args": ["--line-length=100"],
@@ -409,7 +411,7 @@
   "xml.server.binary.trustedHashes": [
     "3d9e771126ecadc94e645d7d2fa1ea98c50c9c283ffa9ddf39be665bd6cef445"
   ],
-  "xml.server.vmargs": "-Xmx512M",
+  "xml.server.vmargs": "-Xmx1024M",
   "xml.symbols.maxItemsComputed": 400000,
   "yaml.format.enable": false,
   "yaml.format.singleQuote": true

@@ -15,3 +15,9 @@ Host 10.*
   GSSAPIAuthentication yes
   GSSAPIDelegateCredentials no
   HashKnownHosts No
+
+Host github.com
+  IdentityFile ~/repos/mackup/conf/ssh/id_rsa.gh
+
+Host bitbucket.org
+  IdentityFile ~/repos/mackup/conf/ssh/id_rsa.gh

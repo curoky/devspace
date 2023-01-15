@@ -62,16 +62,22 @@ date = iso
 		"
 
 [includeIf "gitdir:/root/"]
-path = ~/dotbox/config/git/.gitconfig.self
+path = ~/dotbox/config/git/.user.gitconfig
 
 [includeIf "gitdir:/home/linuxbrew/"]
-path = ~/dotbox/config/git/.gitconfig.self
+path = ~/dotbox/config/git/.user.gitconfig
 
 [includeIf "gitdir:/Users/curoky/"]
-path = ~/dotbox/config/git/.gitconfig.self
+path = ~/dotbox/config/git/.user.gitconfig
 
 [includeIf "gitdir:/home/curoky/"]
-path = ~/dotbox/config/git/.gitconfig.self
+path = ~/dotbox/config/git/.user.gitconfig
+
+[includeIf "gitdir:/Users/cicada/"]
+path = ~/dotbox/config/git/.user.gitconfig
 
 [includeIf "gitdir:/home/cicada/"]
-path = ~/dotbox/config/git/.gitconfig.self
+path = ~/dotbox/config/git/.user.gitconfig
+
+[includeIf "gitdir:/Volumes/"]
+path = ~/dotbox/config/git/.user.gitconfig

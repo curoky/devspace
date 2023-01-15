@@ -11,8 +11,8 @@ for f in $CONFIG_HOME/env/*.sh; do
   [[ -f $f ]] && source "$f"
 done
 
-if [[ -d $HOME/repos/mackup/bin ]]; then
-  for f in $HOME/repos/mackup/bin/env-*.sh; do
+if [[ -d $HOME/repos/mackup/conf/shell/env.sh ]]; then
+  for f in $HOME/repos/mackup/conf/shell/env.sh; do
     [[ -f $f ]] && source "$f"
   done
 fi
