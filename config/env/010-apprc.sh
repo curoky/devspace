@@ -176,3 +176,10 @@ export JAVA_HOME=/nix/var/nix/profiles/jdk11
 if [[ ! -d $JAVA_HOME ]]; then
   export JAVA_HOME=/opt/homebrew/opt/openjdk@17
 fi
+
+#-> fzf
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
+FZF_BASE=$BREW_PREFIX/opt/fzf
+if [[ ! -d $FZF_BASE ]]; then
+  FZF_BASE=/nix/var/nix/profiles/default/share/fzf
+fi

@@ -20,15 +20,27 @@ alias chx='chmod +x'
 alias fpath='print -l $fpath | sort'
 alias penv='env | sort'
 
+alias t='tail -f'
+
+# alias ls=exa
+# alias l='ls -lFh --git'
+# alias la='ls -lFha --git'
+
 alias ta='tmux attach -t'
 alias tad='tmux attach -d -t'
 alias ts='tmux new-session -s'
 alias tl='tmux list-sessions'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
+
 alias topme='top -U $UID'
 
+alias grep='grep --color'
 alias cat='bat'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
 
 alias -s txt=less
 alias -s h=less
@@ -63,8 +75,8 @@ alias ggpf='git push origin "$(git_current_branch)" --force'
 
 alias dctemp="docker run --rm --tty --network=host --interactive --entrypoint /bin/bash"
 
-# atuin register -u curoky -e curoky@github.com -p 123456
-alias atuin_login="atuin login -u curoky -p 123456 -k xCCkW4UgSNd1lIHY9XRbRUgb+q6krCjDsRFTXCNjpW54kg=="
+alias cd_wechat_path="$HOME/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat"
+alias cd_lark_path="$HOME/Library/Containers/com.bytedance.macos.feishu/Data/Library/Application Support/LarkShell/sdk_storage"
 
 # https://gist.github.com/elventear/7640982
 # alias wget="curl -O --retry 999 --retry-max-time 0 -C -"
