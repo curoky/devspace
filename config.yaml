@@ -232,11 +232,17 @@ dotfiles:
   vscode:
     dst: ~/Library/Application Support/Code/User
     src: vscode/app
+  vscode-snippets:
+    dst: ~/Library/Application Support/Code/User/snippets
+    src: vscode/app/snippets
+  vscode-keybindings:
+    dst: ~/Library/Application Support/Code/User/keybindings.json
+    src: vscode/app/keybindings.json
+  vscode-settings:
+    dst: ~/Library/Application Support/Code/User/settings.json
+    src: vscode/app/settings.json
   vscode-server:
     dst: ~/.vscode-server/data/Machine/settings.json
-    src: vscode/remote-server-settings.json
-  vscode-remote:
-    dst: ~/.vscode-remote/data/Machine/settings.json
     src: vscode/remote-server-settings.json
   warp:
     dst: ~/.warp
@@ -287,7 +293,6 @@ profiles:
       - gdb
       - git-config
       - gradle
-      - helix
       - htop
       - isort
       - maven
@@ -301,7 +306,6 @@ profiles:
       - startship
       - tmux
       - vim
-      - vscode-remote
       - vscode-server
       - yapf
       - zprofile
@@ -321,14 +325,15 @@ profiles:
       - prettier
       - procps
       - profile
+      - rime
+      - snipaste
       - ssh-authorized-key
       - ssh-config
       - startship
-      - tmux
       - vim
+      - vscode-keybindings
+      - vscode-settings
+      - vscode-snippets
       - yapf
       - zprofile
       - zshrc
-      - rime
-      - snipaste
-      # - vscode
