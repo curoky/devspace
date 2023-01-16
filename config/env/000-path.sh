@@ -16,11 +16,6 @@
 # limitations under the License.
 
 ENV_PATHS=(
-  "$HOME/.local/bin"
-  "$HOME/dotbox/tools"
-
-  "/opt/conda/envs/py3/bin"
-
   "/opt/homebrew/opt/coreutils/libexec/gnubin"
   "/opt/homebrew/opt/grep/libexec/gnubin"
   "/opt/homebrew/opt/findutils/libexec/gnubin"
@@ -31,22 +26,21 @@ ENV_PATHS=(
   "/opt/homebrew/opt/gnu-indent/libexec/gnubin"
   "/opt/homebrew/opt/gnu-getopt/bin"
   "/opt/homebrew/opt/openssl@3/bin"
+  # "$BREW_PREFIX/bin"
+  # "$BREW_PREFIX/sbin"
 
-  "$BREW_PREFIX/bin"
-  "$BREW_PREFIX/sbin"
-
+  "/opt/conda/envs/py3/bin"
   "$HOME/.npm-global/bin"
-
   "$HOME/go/bin"
-
+  "$HOME/.cargo/bin"
   "$BREW_PREFIX/lib/ruby/gems/3.1.0/bin"
   "/nix/var/nix/profiles/default/lib/ruby/gems/2.7.0/bin"
 
   "/opt/vcpkg"
 
-  # "/opt/conda/bin"
+  "$HOME/.local/bin"
 
-  "$HOME/.cargo/bin"
+  "$HOME/dotbox/tools"
 )
 for p in "${ENV_PATHS[@]}"; do
   [[ -d $p ]] && export PATH=$p:$PATH
