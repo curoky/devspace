@@ -40,22 +40,22 @@ brews = [
   'openjdk@8', 'openjdk@11', 'openjdk@17', 'openjdk', 'thrift',
   'maven',
   # git
-  'git', 'git-absorb', 'git-extras', 'git-lfs',
+  'git', 'git-absorb', 'git-extras', 'git-lfs', 'git-mv-with-history',
   # compression
   'bzip2', 'xz', 'zstd', 'zip', 'unzip',
   # network tools
   'netcat', 'lsof', 'connect', 'gost', 'inetutils',
   # shell tools
-  'zsh', 'starship', 'direnv', 'asciinema', 'tmux', 'tmuxinator',
-  'dotdrop',
-  # text editor
-  'gettext', 'm4', 'gpatch', 'jq', 'vim',
+  'zsh', 'zsh-bundle', 'starship', 'direnv', 'asciinema', 'tmux', 'tmuxinator',
+  # text editor and tools
+  'gettext', 'm4', 'gpatch', 'jq', 'vim', 'vim-bundle',
+  'exa', 'exa-wrapper', 'bat',
+  'the_silver_searcher', 'fzf',
   # others
-  'wget', 'aria2', 'rsync', 'ncdu', 'the_silver_searcher',
-  'gdb',  'gperf', 'gdu', 'exa', 'fzf', 'bat', 'cloc', 'go-task', 'krb5',
+  'wget', 'aria2', 'rsync', 'ncdu', 'dotdrop',
+  'gdb', 'gperf', 'gdu', 'cloc', 'go-task', 'krb5',
   'opencc', 'parallel', 'fd', # 'gdal',
-  'coreutils', 'sqlcipher', 'sqlite3', 'sqlite-utils',
-  'zsh', 'zsh-bundle', 'vim', 'vim-bundle', 'rime-bundle', 'git-mv-with-history',
+  'coreutils', 'sqlcipher', 'sqlite3', 'sqlite-utils', 'rime-bundle',
 ]
 
 brews.each do |b|
