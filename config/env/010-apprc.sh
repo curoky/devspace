@@ -51,6 +51,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_BOOTSNAP=1
 export HOMEBREW_BAT=1
 export HOMEBREW_BAT_CONFIG_PATH=$HOME/.config/bat/config
+export HOMEBREW_CC=gcc
 export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 export HOMEBREW_GIT_PATH=/nix/var/nix/profiles/default/bin/git
 # export HOMEBREW_CACHE=$XDG_CACHE_HOME/homebrew # get with brew --cache
