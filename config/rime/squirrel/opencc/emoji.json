@@ -1,0 +1,44 @@
+{
+  "name": "Chinese to Emoji",
+  "segmentation": {
+    "type": "mmseg",
+    "dict": {
+      "type": "group",
+      "dicts": [
+        {
+          "type": "text",
+          "file": "/opt/homebrew/opt/rime-bundle/opencc/rime-emoji/simple.emoji_word.txt"
+        },
+        {
+          "type": "text",
+          "file": "/opt/homebrew/opt/rime-bundle/opencc/rime-ice/emoji.txt"
+        }
+      ]
+    }
+  },
+  "conversion_chain": [
+    {
+      "dict": {
+        "type": "group",
+        "dicts": [
+          {
+            "type": "text",
+            "file": "/opt/homebrew/opt/rime-bundle/opencc/rime-emoji/simple.emoji_word.txt"
+          },
+          {
+            "type": "text",
+            "file": "/opt/homebrew/opt/rime-bundle/opencc/rime-ice/emoji.txt"
+          },
+          {
+            "type": "text",
+            "file": "/opt/homebrew/opt/rime-bundle/opencc/rime-ice/others.txt"
+          },
+          {
+            "type": "text",
+            "file": "/opt/homebrew/opt/rime-bundle/opencc/rime-emoji/simple.emoji_category.txt"
+          }
+        ]
+      }
+    }
+  ]
+}

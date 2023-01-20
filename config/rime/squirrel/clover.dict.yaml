@@ -3,40 +3,47 @@ version: '1'
 sort: by_weight
 
 import_tables:
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/clover.base
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/clover.phrase
-  # - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.anime
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.basis
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.biaoqing
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.chat
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.classical
-  # - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.cn_en
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.computer
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.daily
-  # - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.diet
-  # - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.game
-  # - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.gd
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.hanyu
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.history
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.idiom
-  # - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.moba
-  # - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.movie
-  # - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.music
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.name
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.net
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.poetry
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.practical
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.sougou
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/s.luna_pinyin.website
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/sogou_new_words
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/THUOCL_animal
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/THUOCL_caijing
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/THUOCL_car
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/THUOCL_chengyu
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/THUOCL_diming
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/THUOCL_food
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/THUOCL_IT
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/THUOCL_law
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/THUOCL_lishimingren
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/THUOCL_medical
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/THUOCL_poem
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-ice/cn_dicts/8105
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-ice/cn_dicts/base
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-ice/cn_dicts/ext
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-ice/cn_dicts/sogou
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-ice/cn_dicts/tencent
+
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-cloverpinyin/THUOCL_animal
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-cloverpinyin/THUOCL_caijing
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-cloverpinyin/THUOCL_car
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-cloverpinyin/THUOCL_chengyu
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-cloverpinyin/THUOCL_diming
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-cloverpinyin/THUOCL_food
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-cloverpinyin/THUOCL_IT
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-cloverpinyin/THUOCL_law
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-cloverpinyin/THUOCL_lishimingren
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-cloverpinyin/THUOCL_medical
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-cloverpinyin/THUOCL_poem
+
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-cloverpinyin/clover.base
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-cloverpinyin/clover.phrase
+
+  # - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.anime
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.basis
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.biaoqing
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.chat
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.classical
+  # - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.cn_en
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.computer
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.daily
+  # - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.diet
+  # - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.game
+  # - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.gd
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.hanyu
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.history
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.idiom
+  # - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.moba
+  # - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.movie
+  # - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.music
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.name
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.net
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.poetry
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.practical
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.sougou
+  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-dict/simple.luna_pinyin.website
