@@ -16,17 +16,17 @@
 # limitations under the License.
 
 ENV_PATHS=(
-  "/opt/homebrew/opt/coreutils/libexec/gnubin"
-  "/opt/homebrew/opt/grep/libexec/gnubin"
-  "/opt/homebrew/opt/findutils/libexec/gnubin"
-  "/opt/homebrew/opt/gawk/libexec/gnubin"
-  "/opt/homebrew/opt/unzip/bin"
-  "/opt/homebrew/opt/gnu-sed/libexec/gnubin"
-  "/opt/homebrew/opt/gnu-tar/libexec/gnubin"
-  "/opt/homebrew/opt/gnu-indent/libexec/gnubin"
-  "/opt/homebrew/opt/gnu-getopt/bin"
-  "/opt/homebrew/opt/openssl@3/bin"
-  # "$BREW_PREFIX/bin"
+  "$BREW_PREFIX/opt/coreutils/libexec/gnubin"
+  "$BREW_PREFIX/opt/grep/libexec/gnubin"
+  "$BREW_PREFIX/opt/findutils/libexec/gnubin"
+  "$BREW_PREFIX/opt/gawk/libexec/gnubin"
+  "$BREW_PREFIX/opt/unzip/bin"
+  "$BREW_PREFIX/opt/gnu-sed/libexec/gnubin"
+  "$BREW_PREFIX/opt/gnu-tar/libexec/gnubin"
+  "$BREW_PREFIX/opt/gnu-indent/libexec/gnubin"
+  "$BREW_PREFIX/opt/gnu-getopt/bin"
+  "$BREW_PREFIX/opt/openssl@3/bin"
+  "$BREW_PREFIX/bin"
   # "$BREW_PREFIX/sbin"
 
   "/opt/conda/envs/py3/bin"
