@@ -30,6 +30,10 @@ class RimeBundle < Formula
     url 'https://github.com/fkxxyz/rime-cloverpinyin/releases/download/1.1.4/clover.schema-1.1.4.zip'
   end
 
+  resource 'rime-ice' do
+    url 'https://github.com/iDvel/rime-ice/archive/main.zip'
+  end
+
   keg_only :versioned_formula
 
   depends_on 'python@3' => :build
@@ -39,27 +43,47 @@ class RimeBundle < Formula
     venv = virtualenv_create(libexec, 'python3')
     venv.pip_install 'opencc'
 
+    # emoji and symbols
     resource('rime-emoji').stage do
-      (prefix / 'opencc').install Dir['opencc/*']
+      Pathname.glob('opencc/*.txt') do |file|
+        system 'opencc', '-i', file, '-o', "opencc/simple.#{file.basename}", '-c', 't2s.json'
+      end
+      (prefix / 'opencc/rime-emoji').install Dir['opencc/*']
     end
 
     resource('rime-symbols').stage do
       system libexec / 'bin/python3', './rime-symbols-gen'
-      (prefix / 'opencc').install 'symbol.json'
-      (prefix / 'opencc').install 'symbol_word.txt'
-      (prefix / 'opencc').install 'symbol_category.txt'
+      Pathname.glob('*.txt') do |file|
+        system 'opencc', '-i', file, '-o', "simple.#{file.basename}", '-c', 't2s.json'
+      end
+      (prefix / 'opencc/rime-symbols').install Dir['*']
     end
 
+    resource('rime-ice').stage do
+      (prefix / 'opencc/rime-ice').install Dir['opencc/*']
+    end
+
+    # dict
     resource('rime-dict').stage do
       Pathname.glob('**/*.dict.yaml') do |file|
-        system 'opencc', '-i', file, '-o', "s.#{file.basename}", '-c', 't2s.json'
-        prefix.install Dir['s.*.yaml']
+        system 'opencc', '-i', file, '-o', "simple.#{file.basename}", '-c', 't2s.json'
       end
+      (prefix / 'dicts/rime-dict').install Dir['simple.*']
+    end
+
+    resource('rime-ice').stage do
+      (prefix / 'dicts/rime-ice').install 'cn_dicts', 'en_dicts'
     end
 
     resource('rime-cloverpinyin').stage do
-      prefix.install Dir['*.yaml']
+      (prefix / 'dicts/rime-cloverpinyin').install Dir['*.dict.yaml']
     end
+
+    # setting
+    resource('rime-cloverpinyin').stage do
+      prefix.install Dir['clover.*.yaml']
+    end
+
   end
 
   test do
