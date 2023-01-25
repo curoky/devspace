@@ -67,6 +67,9 @@ path = ~/dotbox/config/git/.user.gitconfig
 [includeIf "gitdir:/home/linuxbrew/"]
 path = ~/dotbox/config/git/.user.gitconfig
 
+[includeIf "gitdir:/opt/homebrew/"]
+path = ~/dotbox/config/git/.user.gitconfig
+
 [includeIf "gitdir:/Users/curoky/"]
 path = ~/dotbox/config/git/.user.gitconfig
 
