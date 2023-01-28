@@ -36,3 +36,4 @@ function try_link() {
 }
 
 try_link $HOME/repos/vscode-server $HOME/.vscode-server
+try_link $HOME/repos/dotbox $HOME/dotbox

@@ -76,6 +76,7 @@ nix-env -iA -p /nix/var/nix/profiles/jdk19 nixpkgs.jdk19
 # nix-env -iA -p /nix/var/nix/profiles/perl nixpkgs.perl
 # nix-env -iA -p /nix/var/nix/profiles/python2 nixpkgs.python
 # nix-env -iA -p /nix/var/nix/profiles/python3 nixpkgs.python3
+nix-env -iA -p /nix/var/nix/profiles/python39 nixpkgs.python39
 # nix-env -iA -p /nix/var/nix/profiles/clang-tools_13 nixpkgs.clang-tools_13
 nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.clang_14
 nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.clang-tools_14

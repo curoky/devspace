@@ -7,6 +7,7 @@ tap 'curoky/tap'
 casks = [
   'font-fira-code-nerd-font',
   'font-ubuntu-mono-nerd-font',
+  'font-lxgw-wenkai',
   'android-platform-tools',
   'iina',
   'istat-menus',
@@ -52,8 +53,8 @@ brews = [
   'exa', 'exa-wrapper', 'bat',
   'the_silver_searcher', 'fzf',
   # others
-  'wget', 'aria2', 'rsync', 'ncdu', 'dotdrop',
-  'gdb', 'gperf', 'gdu', 'cloc', 'go-task', 'krb5',
+  'wget', 'aria2', 'rsync', 'ncdu', 'dotdrop', 'smartmontools',
+  'gdb', 'gperf', 'gdu', 'cloc', 'go-task', 'krb5', 'md5deep',
   'opencc', 'parallel', 'fd', # 'gdal',
   'coreutils', 'sqlcipher', 'sqlite3', 'sqlite-utils', 'rime-bundle',
 ]
