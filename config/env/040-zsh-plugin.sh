@@ -19,6 +19,7 @@
 export ZSH=$BREW_PREFIX/opt/zsh-bundle/
 DISABLE_AUTO_UPDATE=true
 ZSH_DISABLE_COMPFIX=true
+DISABLE_LS_COLORS=true # we use exa not ls
 # ZSH_THEME="spaceship"
 
 plugins=(
