@@ -5,7 +5,7 @@
   // same ids are connected.
   "catch2": {
     "prefix": "catch2",
-    "body": ["#include <catch2/catch.hpp>"]
+    "body": ["#include <catch2/catch_test_macros.hpp>"]
   },
   "cout": {
     "prefix": "sout",
