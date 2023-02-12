@@ -8,19 +8,19 @@ casks = [
   'font-fira-code-nerd-font',
   'font-ubuntu-mono-nerd-font',
   'font-lxgw-wenkai',
-  'android-platform-tools',
+  # 'android-platform-tools',
   'iina',
   'istat-menus',
   'notion',
   'snipaste',
-  'db-browser-for-sqlite',
-  'dbeaver-community',
-  'sqlitestudio',
+  # 'db-browser-for-sqlite',
+  # 'dbeaver-community',
+  # 'sqlitestudio',
   'squirrel',
   'drawio',
-  'charles',
+  # 'charles',
   'google-drive',
-  'webtorrent',
+  # 'webtorrent',
   # 'firefox',
   # 'netnewswire',
   # 'disk-drill',
@@ -37,26 +37,27 @@ end
 
 brews = [
   'pre-commit', 'prettier', 'yapf', 'shfmt', 'eslint', 'clang-format',
-  'gcc', 'llvm', 'python@3', 'node', 'go', 'ruby', 'rustup-init',
-  'openjdk@8', 'openjdk@11', 'openjdk@17', 'openjdk', 'thrift',
-  'maven',
+  'python@3', # 'node', 'ruby', 'gcc', 'llvm', 'go', 'rustup-init',
+  'openjdk@17', # 'openjdk@8', 'openjdk@11', 'openjdk', 'thrift',
+  # 'maven',
   # git
   'git', 'git-absorb', 'git-extras', 'git-lfs', 'git-mv-with-history',
   # compression
   'bzip2', 'xz', 'zstd', 'zip', 'unzip',
   # network tools
-  'netcat', 'lsof', 'connect', 'gost', 'inetutils',
+  'netcat', 'lsof', 'connect', 'inetutils', # 'gost',
   # shell tools
-  'zsh', 'zsh-bundle', 'starship', 'direnv', 'asciinema', 'tmux', 'tmuxinator',
+  'zsh', 'zsh-bundle', 'starship', # 'asciinema', 'tmux', 'tmuxinator', 'direnv',
   # text editor and tools
-  'gettext', 'm4', 'gpatch', 'jq', 'vim', 'vim-bundle',
-  'exa', 'exa-wrapper', 'bat',
-  'the_silver_searcher', 'fzf',
+  'gettext', 'm4', 'gpatch', 'vim', 'vim-bundle', # 'jq',
+  'exa', 'exa-wrapper', 'bat', 'the_silver_searcher', 'fzf',
   # others
   'wget', 'aria2', 'rsync', 'ncdu', 'dotdrop', 'smartmontools',
-  'gdb', 'gperf', 'gdu', 'cloc', 'go-task', 'krb5', 'md5deep',
-  'opencc', 'parallel', 'fd', # 'gdal',
-  'coreutils', 'sqlcipher', 'sqlite3', 'sqlite-utils', 'rime-bundle',
+  'gdu', 'cloc', 'go-task', 'krb5', 'md5deep', 'parallel', 'fd',
+  'coreutils', 'rime-bundle',
+  # 'gdb', 'opencc', 'gdal', 'gperf',
+  # sqlite
+  # 'sqlcipher', 'sqlite3', 'sqlite-utils',
 ]
 
 brews.each do |b|
