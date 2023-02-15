@@ -85,6 +85,10 @@ function wip() {
   git commit -v -m 'wip' --no-verify
 }
 
+function commit() {
+  git commit -v -m "2023-02-15 11:23:13+08:00"
+}
+
 function git-show-deleted-files() {
   git log --diff-filter=D --summary | grep delete
 }
