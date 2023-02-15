@@ -29,38 +29,38 @@ export PATH=/nix/var/nix/profiles/default/bin:$PATH
 pkg_list=(
   # build tools
   nixpkgs.automake nixpkgs.libtool nixpkgs.pkg-config nixpkgs.gnumake nixpkgs.ninja nixpkgs.distcc
-  nixpkgs.ccache nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven # nixpkgs.poetry
-  # nixpkgs.buck nixpkgs.scons nixpkgs.meson nixpkgs.ant
-  nixpkgs.include-what-you-use nixpkgs.mold nixpkgs.clang-tools_14 nixpkgs.lld_14
-  nixpkgs.nodejs nixpkgs.go_1_19 nixpkgs.ruby # nixpkgs.lua nixpkgs.vlang nixpkgs.rustup
-  # formatter and linter
+  nixpkgs.ccache nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven nixpkgs.nodejs
+  nixpkgs.include-what-you-use nixpkgs.mold nixpkgs.clang-tools_14 nixpkgs.lld_14 nixpkgs.go_1_19
+  nixpkgs.ruby
+  # nixpkgs.lua nixpkgs.vlang nixpkgs.rustup nixpkgs.buck nixpkgs.scons nixpkgs.meson nixpkgs.ant
+  # nixpkgs.poetry formatter and linter
   nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.yapf nixpkgs.nixpkgs-fmt
-  nixpkgs.shfmt nixpkgs.buildifier nixpkgs.nodePackages.eslint nixpkgs.cppcheck
+  nixpkgs.shfmt nixpkgs.buildifier nixpkgs.nodePackages.eslint # nixpkgs.cppcheck
   nixpkgs.cmake-format nixpkgs.shellcheck
   # git
-  nixpkgs.git nixpkgs.lazygit nixpkgs.git-absorb nixpkgs.git-extras nixpkgs.git-lfs
-  nixpkgs.git-filter-repo
+  nixpkgs.git nixpkgs.git-absorb nixpkgs.git-extras nixpkgs.git-lfs nixpkgs.git-filter-repo
+  # nixpkgs.lazygit
   # compress
   nixpkgs.bzip2 nixpkgs.xz nixpkgs.zstd nixpkgs.zip nixpkgs.unzip
   # sre
-  nixpkgs.iproute2 nixpkgs.iputils nixpkgs.netcat nixpkgs.lsof nixpkgs.htop nixpkgs.connect
-  nixpkgs.procps nixpkgs.gost nixpkgs.nettools nixpkgs.fd nixpkgs.ethtool nixpkgs.tcpdump
+  nixpkgs.iproute2 nixpkgs.iputils nixpkgs.netcat nixpkgs.lsof nixpkgs.connect
+  nixpkgs.procps nixpkgs.nettools nixpkgs.fd nixpkgs.ethtool nixpkgs.tcpdump nixpkgs.gdb
   nixpkgs.dstat nixpkgs.wget nixpkgs.aria2 nixpkgs.rsync nixpkgs.file nixpkgs.gperf
-  nixpkgs.gdb
+  # nixpkgs.gost nixpkgs.htop
   # doc
-  nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo nixpkgs.pandoc
+  nixpkgs.pandoc # nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo
   # shell
-  nixpkgs.starship nixpkgs.direnv nixpkgs.tmux nixpkgs.tmuxinator
+  nixpkgs.starship nixpkgs.direnv nixpkgs.tmux # nixpkgs.tmuxinator
   # editor
-  nixpkgs.flex nixpkgs.bison nixpkgs.helix nixpkgs.gnupatch nixpkgs.gettext nixpkgs.m4
+  nixpkgs.flex nixpkgs.bison nixpkgs.gnupatch nixpkgs.gettext nixpkgs.m4 # nixpkgs.helix
   nixpkgs.jq nixpkgs.vim nixpkgs.bat nixpkgs.less
   # tools
-  nixpkgs.graphviz nixpkgs.asciinema nixpkgs.gdu nixpkgs.jemalloc nixpkgs.ncdu
-  nixpkgs.silver-searcher nixpkgs.watchman nixpkgs.opencc nixpkgs.dolt nixpkgs.parallel
-  nixpkgs.exa nixpkgs.fzf nixpkgs.cloc                    # nixpkgs.atuin nixpkgs.nnn nixpkgs.ranger
-  nixpkgs.go-task nixpkgs.krb5 nixpkgs.lcov nixpkgs.gcovr # nixpkgs.navi nixpkgs.ghq
-  nixpkgs.wishlist nixpkgs.sqlcipher nixpkgs.sqlite nixpkgs.zoxide
-  nixpkgs.flamegraph nixpkgs.ansible nixpkgs.earthly
+  nixpkgs.graphviz nixpkgs.asciinema nixpkgs.gdu nixpkgs.ncdu nixpkgs.silver-searcher nixpkgs.parallel
+  nixpkgs.exa nixpkgs.fzf nixpkgs.cloc nixpkgs.go-task nixpkgs.krb5 nixpkgs.ansible nixpkgs.earthly
+  # nixpkgs.jemalloc nixpkgs.flamegraph nixpkgs.dolt nixpkgs.watchman nixpkgs.opencc
+  # nixpkgs.atuin nixpkgs.nnn nixpkgs.ranger nixpkgs.lcov nixpkgs.gcovr nixpkgs.navi nixpkgs.ghq
+  # nixpkgs.sqlcipher nixpkgs.sqlite nixpkgs.zoxide nixpkgs.wishlist
+
 )
 nix-env -p /nix/var/nix/profiles/default -iA "${pkg_list[@]}"
 
