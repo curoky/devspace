@@ -83,16 +83,13 @@
   "bazel.queriesShareServer": true,
   "better-comments.tags": [
     {
-      "backgroundColor": "transparent",
-      "color": "#3366ff",
+      "tag": "@curoky:",
+      "color": "#ca5b6a",
       "strikethrough": false,
-      "tag": "@For: "
-    },
-    {
+      "underline": false,
       "backgroundColor": "transparent",
-      "color": "#875fff",
-      "strikethrough": false,
-      "tag": "QM:"
+      "bold": false,
+      "italic": false
     }
   ],
   "bookmarks.saveBookmarksInProject": true,
@@ -418,5 +415,10 @@
   "xml.server.vmargs": "-Xmx1024M",
   "xml.symbols.maxItemsComputed": 400000,
   "yaml.format.enable": false,
-  "yaml.format.singleQuote": true
+  "yaml.format.singleQuote": true,
+  "editor.stickyScroll.enabled": true,
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "shellformat.path": "/opt/homebrew/bin/shfmt"
 }
