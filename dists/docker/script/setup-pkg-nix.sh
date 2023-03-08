@@ -30,9 +30,9 @@ pkg_list=(
   # build tools
   nixpkgs.automake nixpkgs.libtool nixpkgs.pkg-config nixpkgs.gnumake nixpkgs.ninja nixpkgs.distcc
   nixpkgs.ccache nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven nixpkgs.nodejs
-  nixpkgs.include-what-you-use nixpkgs.mold nixpkgs.clang-tools_14 nixpkgs.lld_14 nixpkgs.go_1_19
-  nixpkgs.ruby
+  nixpkgs.mold nixpkgs.clang-tools_15 nixpkgs.lld_15 nixpkgs.go_1_20 nixpkgs.ruby
   # nixpkgs.lua nixpkgs.vlang nixpkgs.rustup nixpkgs.buck nixpkgs.scons nixpkgs.meson nixpkgs.ant
+  # nixpkgs.include-what-you-use
   # nixpkgs.poetry formatter and linter
   nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.yapf nixpkgs.nixpkgs-fmt
   nixpkgs.shfmt nixpkgs.buildifier nixpkgs.nodePackages.eslint # nixpkgs.cppcheck
@@ -68,7 +68,7 @@ nix-env -p /nix/var/nix/profiles/default -iA "${pkg_list[@]}"
 # nix-env -iA -p /nix/var/nix/profiles/gcc12 nixpkgs.gcc12
 # nix-env -iA -p /nix/var/nix/profiles/flutter nixpkgs.flutter
 # nix-env -iA -p /nix/var/nix/profiles/dart nixpkgs.dart
-nix-env -iA -p /nix/var/nix/profiles/protobuf3_17 nixpkgs.protobuf3_17
+# nix-env -iA -p /nix/var/nix/profiles/protobuf3_17 nixpkgs.protobuf3_17
 nix-env -iA -p /nix/var/nix/profiles/jdk8 nixpkgs.jdk8
 nix-env -iA -p /nix/var/nix/profiles/jdk11 nixpkgs.jdk11
 nix-env -iA -p /nix/var/nix/profiles/jdk19 nixpkgs.jdk19
@@ -76,13 +76,13 @@ nix-env -iA -p /nix/var/nix/profiles/jdk19 nixpkgs.jdk19
 # nix-env -iA -p /nix/var/nix/profiles/perl nixpkgs.perl
 # nix-env -iA -p /nix/var/nix/profiles/python2 nixpkgs.python
 # nix-env -iA -p /nix/var/nix/profiles/python3 nixpkgs.python3
-nix-env -iA -p /nix/var/nix/profiles/python39 nixpkgs.python39
+# nix-env -iA -p /nix/var/nix/profiles/python39 nixpkgs.python39
 # nix-env -iA -p /nix/var/nix/profiles/clang-tools_13 nixpkgs.clang-tools_13
-nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.clang_14
-nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.clang-tools_14
-nix-env -iA -p /nix/var/nix/profiles/llvm14 nixpkgs.llvmPackages_14.llvm
-nix-env -iA -p /nix/var/nix/profiles/llvm14-bintools nixpkgs.llvmPackages_14.bintools-unwrapped
+nix-env -iA -p /nix/var/nix/profiles/llvm15 nixpkgs.clang_15
+nix-env -iA -p /nix/var/nix/profiles/llvm15 nixpkgs.clang-tools_15
+nix-env -iA -p /nix/var/nix/profiles/llvm15 nixpkgs.llvmPackages_15.llvm
+nix-env -iA -p /nix/var/nix/profiles/llvm15-bintools nixpkgs.llvmPackages_15.bintools-unwrapped
 nix-env -iA -p /nix/var/nix/profiles/inetutils nixpkgs.inetutils
-nix-env -iA -p /nix/var/nix/profiles/coreutils nixpkgs.coreutils
+# nix-env -iA -p /nix/var/nix/profiles/coreutils nixpkgs.coreutils
 
 nix-collect-garbage
