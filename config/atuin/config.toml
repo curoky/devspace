@@ -21,7 +21,7 @@ auto_sync = true
 sync_frequency = "5m"
 
 ## address of the sync server
-sync_address = "http://10.198.49.78:8888"
+sync_address = "http://0.0.0.0:8888"
 
 ## which search mode to use
 ## possible values: prefix, fulltext, fuzzy
