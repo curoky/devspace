@@ -1,0 +1,25 @@
+# /etc/zsh/zprofile: system-wide .zprofile file for zsh(1).
+#
+# This file is sourced only for login shells (i.e. shells
+# invoked with "-" as the first character of argv[0], and
+# shells invoked with the -l flag.)
+#
+# Global Order: zshenv, zprofile, zshrc, zlogin
+
+if [[ -z "$PATH" || "$PATH" == "/bin:/usr/bin" ]]
+then
+	export PATH="/usr/local/bin:/usr/bin:/bin:/usr/games"
+fi
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+
+# for homebrew mirror
+# https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/
+
+# export HOMEBREW_INSTALL_FROM_API=1
+export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+# export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"

@@ -19,7 +19,11 @@ dotfiles:
   apt-proxy:
     dst: /etc/apt/apt.conf.d/proxy
     link: nolink
-    src: apt/proxy
+    src: apt/apt.conf.d/proxy
+  apt-ubuntu-mirror-cn:
+    dst: /etc/apt/sources.list
+    link: nolink
+    src: apt/sources-ubuntu-mirror-cn.list
   bash_logout:
     dst: ~/.bash_logout
     src: bash/bash_logout
@@ -132,10 +136,10 @@ dotfiles:
     dst: /etc/systemd/journald.conf
     link: nolink
     src: systemd/journald.conf
-  linux-profile:
-    dst: /etc/profile.d/custom.sh
+  linux-profile-homebrew-mirror-cn:
+    dst: /etc/profile.d/homebrew-mirror-cn.sh
     link: nolink
-    src: linux/profile.d/custom.sh
+    src: linux/profile.d/homebrew-mirror-cn.sh
   linux-sudoers:
     dst: /etc/sudoers.d/custom
     link: nolink
@@ -159,6 +163,14 @@ dotfiles:
   neofetch:
     dst: ~/.config/neofetch
     src: neofetch
+  nix:
+    dst: /etc/nix/nix.conf
+    link: nolink
+    src: nixpkgs/nix.conf
+  nix-mirror-cn:
+    dst: /etc/nix/nix.conf
+    link: nolink
+    src: nixpkgs/nix-mirror-cn.conf
   nixpkgs:
     dst: ~/.config/nixpkgs
     src: nixpkgs
@@ -253,9 +265,14 @@ dotfiles:
   yarn:
     dst: ~/.yarnrc
     src: yarn/yarnrc
-  zprofile:
-    dst: ~/.zprofile
-    src: zsh/zprofile
+  zshenv-etc:
+    dst: /etc/zsh/zshenv
+    link: nolink
+    src: zsh/etc/zshenv
+  zshenv-homebrew-mirror-cn-etc:
+    dst: /etc/zsh/zshenv
+    link: nolink
+    src: zsh/etc/zshenv-homebrew-mirror-cn
   zshrc:
     dst: ~/.zshrc
     src: zsh/zshrc
@@ -265,17 +282,24 @@ profiles:
       - docker-d
       # - linux-environment
       - linux-journal
-      # - linux-profile
       - linux-sudoers
       - linux-sysctl
       - ssh-d
       - ssh-systemd-socket
       - ssh-host-key
+      - zshenv-etc
 
   sysconf-proxy:
     dotfiles:
       - apt-proxy
       - docker-proxy
+
+  sysconf-mirror-cn:
+    dotfiles:
+      - apt-ubuntu-mirror-cn
+      - linux-profile-homebrew-mirror-cn
+      - nix-mirror-cn
+      - zshenv-homebrew-mirror-cn-etc
 
   image:
     dotfiles:
@@ -308,7 +332,6 @@ profiles:
       - vim
       - vscode-server
       - yapf
-      - zprofile
       - zshrc
 
   darwin:
@@ -335,5 +358,4 @@ profiles:
       - vscode-settings
       - vscode-snippets
       - yapf
-      - zprofile
       - zshrc
