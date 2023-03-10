@@ -70,8 +70,8 @@ ENV PATH=$PATH:/nix/var/nix/profiles/default/bin \
 RUN apt-get update -qq \
   && apt-get install -y -qq --no-install-recommends \
     sudo ca-certificates gcc g++ man iptables locales file git curl \
-    tzdata gnupg2 init systemd openssh-server rsyslog xxd zsh \
-    # cron xfce4 xfce4-goodies tightvncserver
+    tzdata gnupg2 init systemd openssh-server rsyslog xxd zsh cron \
+    # xfce4 xfce4-goodies tightvncserver
   && yes | unminimize \
   && apt-get autoremove -y
 
