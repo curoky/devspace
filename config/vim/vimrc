@@ -13,12 +13,12 @@ set expandtab
 " set backspace=indent,eol,start
 set backspace=2
 
-let $plug_path=$VIM_PLUGIN_PATH
-if empty($plug_path)
-  let $plug_path='/home/linuxbrew/.linuxbrew/opt/vim-bundle/vim-plugin'
-  if !filereadable($plug_path)
-    let $plug_path='/opt/homebrew/opt/vim-bundle/vim-plugin'
-  endif
+let $plug_path='/home/linuxbrew/.linuxbrew/opt/vim-bundle/vim-plugin'
+if !filereadable('/opt/homebrew/opt/vim-bundle/vim-plugin')
+  let $plug_path='/opt/homebrew/opt/vim-bundle/vim-plugin'
+endif
+if !empty($VIM_PLUGIN_PATH)
+  let $plug_path=$VIM_PLUGIN_PATH
 endif
 set rtp+=$plug_path
 call plug#begin('$plug_path/plugged')

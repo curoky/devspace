@@ -1,6 +1,4 @@
 Defaults        secure_path="/nix/var/nix/profiles/default/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
 
-# for vim
-# Defaults:%sudo env_keep += "VIM_PLUGIN_PATH"
 
 # Cmnd_Alias  COMMANDS = /usr/bin/apt, /usr/bin/apt-get

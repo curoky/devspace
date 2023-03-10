@@ -140,10 +140,10 @@ dotfiles:
     dst: /etc/profile.d/homebrew-mirror-cn.sh
     link: nolink
     src: linux/profile.d/homebrew-mirror-cn.sh
-  linux-sudoers:
-    dst: /etc/sudoers.d/custom
+  linux-sudoers_more_secure_path:
+    dst: /etc/sudoers.d/more_secure_path
     link: nolink
-    src: linux/sudoers.d/custom
+    src: linux/sudoers.d/more_secure_path
   linux-sysctl:
     dst: /etc/sysctl.d/custom.conf
     link: nolink
@@ -280,9 +280,8 @@ profiles:
   sysconf:
     dotfiles:
       - docker-d
-      # - linux-environment
       - linux-journal
-      - linux-sudoers
+      - linux-sudoers_more_secure_path
       - linux-sysctl
       - ssh-d
       - ssh-systemd-socket
