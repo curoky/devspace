@@ -79,6 +79,7 @@ export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 
 #=-> git
 export FILTER_BRANCH_SQUELCH_WARNING=1
+export KRB5CCNAME=/tmp/krb5_ccache
 
 #=-> docker
 # export DOCKER_CLIENT_TIMEOUT=120
