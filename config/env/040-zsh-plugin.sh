@@ -81,7 +81,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 export HISTORY_IGNORE="(?|??|???|????|* --help|* --version)"
 # export HISTORY_IGNORE="(?|??)"
 if [[ -d ~/repos/backup/shell_input_history ]]; then
-  HISTFILE="$HOME/repos/backup/shell_input_history/$MY_HOST_NAME.$(id -u).zsh_history"
+  HISTFILE="$HOME/repos/backup/shell-input-history/$MY_HOST_NAME.$(id -u).zsh_history"
 fi
 # HISTSIZE=30000
 # SAVEHIST=20000
