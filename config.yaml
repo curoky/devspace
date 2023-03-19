@@ -241,9 +241,6 @@ dotfiles:
   vim:
     dst: ~/.vimrc
     src: vim/vimrc
-  vscode:
-    dst: ~/Library/Application Support/Code/User
-    src: vscode/app
   vscode-snippets:
     dst: ~/Library/Application Support/Code/User/snippets
     src: vscode/app/snippets

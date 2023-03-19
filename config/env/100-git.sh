@@ -86,7 +86,7 @@ function wip() {
 }
 
 function commit() {
-  git commit -v -m "2023-02-15 11:23:13+08:00"
+  git commit -v -m "$(date --rfc-3339=seconds)"
 }
 
 function git-show-deleted-files() {
