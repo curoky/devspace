@@ -25,7 +25,9 @@ pytz
 six
 # virtualenv
 zhdate
-# notion-client
+diskcache
+notion-client
+cython
 
 #################### cli utils ####################
 pyfiglet
@@ -33,6 +35,9 @@ tqdm
 typer[all]
 rich
 click >= 8.1.3
+
+#################### image utils ####################
+pyexiftool
 
 #################### draw && jupyter ####################
 graphviz

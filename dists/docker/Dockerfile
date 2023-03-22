@@ -109,6 +109,7 @@ COPY --chown=1000:1000 --chmod=g=u --from=conda /opt/conda /opt/conda
 COPY --chown=1000:1000 --chmod=g=u --from=bundles /opt/bundles /opt/bundles
 COPY --chown=1000:1000 --chmod=g=u --from=vcpkg /opt/vcpkg /opt/vcpkg
 COPY --chown=1000:1000 --chmod=g=u --from=golang /root/go/bin /home/cicada/go/bin
+COPY --chown=1000:1000 --chmod=g=u --from=golang /root/go/bin /home/worker/go/bin
 COPY --chown=1000:1000 --chmod=g=u --from=nixpkgs /nix /nix
 COPY --chown=1000:1000 --chmod=g=u --from=curoky/sidecar:spark /opt/hadoop /opt/hadoop
 COPY --chown=1000:1000 --chmod=g=u --from=curoky/sidecar:spark /opt/spark /opt/spark
