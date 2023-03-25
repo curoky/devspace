@@ -7,15 +7,9 @@
           groups: 'sudo,adm,docker',
           dotbox: /home/cicada/dotbox,
         }
-      - {
-          name: worker,
-          id: 1001,
-          groups: 'sudo,adm,docker,cicada',
-          dotbox: /home/worker/dotbox,
-        }
 
-  # environment:
-  #   PATH: /nix/var/nix/profiles/default/bin:{{ ansible_env.PATH }}
+  environment:
+    PATH: /nix/var/nix/profiles/default/bin:/home/linuxbrew/.linuxbrew/bin:{{ ansible_env.PATH }}
 
   tasks:
     - name: Ensure a locale exists
@@ -52,7 +46,7 @@
             password: 123456
             groups: '{{ item.groups }}'
             append: yes
-            shell: /bin/zsh
+            shell: /nix/var/nix/profiles/default/bin/zsh
           with_items: '{{ users }}'
 
         - name: Add the user to sudoers
@@ -73,7 +67,6 @@
           with_items:
             - /root
             - /home/cicada
-            - /home/worker
 
         - ansible.builtin.file:
             path: '{{ item.dotbox }}'
@@ -83,16 +76,15 @@
           with_items: '{{ users }}'
 
         - ansible.builtin.shell:
-            cmd: cd ~/dotbox && dotdrop install --force --profile=image
+            cmd: cd ~/dotbox && dotdrop install --force --profile=devbox-user
           become: true
           become_user: '{{ item }}'
           with_items:
             - root
             - cicada
-            - worker
 
     - name: Setup sysconf
-      ansible.builtin.shell: dotdrop install --cfg=/opt/dotbox/config.yaml --force --profile=sysconf
+      ansible.builtin.shell: dotdrop install --cfg=/opt/dotbox/config.yaml --force --profile=devbox-sysconf
 
     - name: Change /opt ownership
       ansible.builtin.file:

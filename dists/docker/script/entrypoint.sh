@@ -19,7 +19,6 @@
 set -xeuo pipefail
 
 # Note: sometimes we want to mount ~/.cache to /dev/shm/..., so need changing owner.
-chown cicada:cicada -R /home/cicada/.cache
-chown worker:worker -R /home/worker/.cache
+[[ -f /home/cicada/.cache ]] && chown cicada:cicada -R /home/cicada/.cache
 
 exec /lib/systemd/systemd

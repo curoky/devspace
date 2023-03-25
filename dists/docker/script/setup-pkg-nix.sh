@@ -24,13 +24,14 @@ export PATH=/nix/var/nix/profiles/default/bin:$PATH
 # brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux | awk '{print "nixpkgs."$0}' | xargs -n 5 | awk '{print $0" \ \"}'
 
 # The following packages are not working properly with nix.
-# nixpkgs.cmake nixpkgs.conan nixpkgs.autoconf nixpkgs.bazel_5 nixpkgs.zsh
+#  nixpkgs.conan nixpkgs.bazel_5
 
 pkg_list=(
   # build tools
-  nixpkgs.automake nixpkgs.libtool nixpkgs.pkg-config nixpkgs.gnumake nixpkgs.ninja nixpkgs.distcc
-  nixpkgs.ccache nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven nixpkgs.nodejs
-  nixpkgs.mold nixpkgs.clang-tools_15 nixpkgs.lld_15 nixpkgs.go_1_20 nixpkgs.ruby
+  nixpkgs.automake nixpkgs.autoconf nixpkgs.libtool nixpkgs.pkg-config nixpkgs.gnumake
+  nixpkgs.cmake nixpkgs.ninja nixpkgs.distcc nixpkgs.bazelisk nixpkgs.ccache nixpkgs.mold
+  nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven nixpkgs.nodejs
+  nixpkgs.clang-tools_15 nixpkgs.lld_15 nixpkgs.go_1_20 nixpkgs.ruby
   # nixpkgs.lua nixpkgs.vlang nixpkgs.rustup nixpkgs.buck nixpkgs.scons nixpkgs.meson nixpkgs.ant
   # nixpkgs.include-what-you-use
   # nixpkgs.poetry formatter and linter
@@ -45,11 +46,14 @@ pkg_list=(
   # sre
   nixpkgs.iproute2 nixpkgs.iputils nixpkgs.netcat nixpkgs.lsof nixpkgs.connect
   nixpkgs.procps nixpkgs.nettools nixpkgs.fd nixpkgs.ethtool nixpkgs.tcpdump nixpkgs.gdb
-  nixpkgs.dstat nixpkgs.wget nixpkgs.aria2 nixpkgs.rsync nixpkgs.file nixpkgs.gperf
-  # nixpkgs.gost nixpkgs.htop
+  nixpkgs.dstat nixpkgs.rsync nixpkgs.file nixpkgs.gperf nixpkgs.man
+  nixpkgs.curl nixpkgs.wget nixpkgs.aria2 nixpkgs.croc nixpkgs.sudo nixpkgs.iptables
+  nixpkgs.gnupg nixpkgs.tzdata nixpkgs.unixtools.xxd nixpkgs.locale
+  # nixpkgs.gost nixpkgs.htop nixpkgs.cron
   # doc
   nixpkgs.pandoc # nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo
   # shell
+  nixpkgs.zsh nixpkgs.bash
   nixpkgs.starship nixpkgs.direnv nixpkgs.tmux # nixpkgs.tmuxinator
   # editor
   nixpkgs.flex nixpkgs.bison nixpkgs.gnupatch nixpkgs.gettext nixpkgs.m4 # nixpkgs.helix
