@@ -278,7 +278,7 @@ dotfiles:
     dst: ~/.zshrc
     src: zsh/zshrc
 profiles:
-  sysconf:
+  devbox-sysconf:
     dotfiles:
       - docker-d
       - linux-journal
@@ -289,19 +289,19 @@ profiles:
       - ssh-host-key
       - zshenv-etc
 
-  sysconf-proxy:
+  devbox-sysconf-proxy:
     dotfiles:
       - apt-proxy
       - docker-proxy
 
-  sysconf-mirror-cn:
+  devbox-sysconf-mirror-cn:
     dotfiles:
       - apt-ubuntu-mirror-cn
       - linux-profile-homebrew-mirror-cn
       - nix-mirror-cn
       - zshenv-homebrew-mirror-cn-etc
 
-  image:
+  devbox-user:
     dotfiles:
       - bash_logout
       - bashrc
@@ -334,7 +334,7 @@ profiles:
       - yapf
       - zshrc
 
-  darwin:
+  mac-user:
     dotfiles:
       - bat
       - cargo

@@ -26,7 +26,7 @@ if ! command -v dotdrop &>/dev/null; then
 fi
 
 if [[ $(uname -s) == "Darwin" ]]; then
-  dotdrop install --force --profile=darwin
+  dotdrop install --force --profile=mac-user
 else
-  dotdrop install --force --profile=${1:-image}
+  dotdrop install --force --profile=${1:-'devbox-user'}
 fi
