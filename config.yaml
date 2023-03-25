@@ -267,11 +267,11 @@ dotfiles:
     dst: ~/.yarnrc
     src: yarn/yarnrc
   zshenv-etc:
-    dst: /etc/zsh/zshenv
+    dst: /etc/zshenv
     link: nolink
     src: zsh/etc/zshenv
   zshenv-homebrew-mirror-cn-etc:
-    dst: /etc/zsh/zshenv
+    dst: /etc/zshenv
     link: nolink
     src: zsh/etc/zshenv-homebrew-mirror-cn
   zshrc:
