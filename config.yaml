@@ -144,6 +144,10 @@ dotfiles:
     dst: /etc/sudoers.d/more_secure_path
     link: nolink
     src: linux/sudoers.d/more_secure_path
+  linux-sudoers_add_user:
+    dst: /etc/sudoers.d/add_user
+    link: nolink
+    src: linux/sudoers.d/add_user
   linux-sysctl:
     dst: /etc/sysctl.d/custom.conf
     link: nolink
