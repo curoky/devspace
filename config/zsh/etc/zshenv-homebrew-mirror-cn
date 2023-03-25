@@ -6,10 +6,7 @@
 #
 # Global Order: zshenv, zprofile, zshrc, zlogin
 
-if [[ -z "$PATH" || "$PATH" == "/bin:/usr/bin" ]]
-then
-	export PATH="/usr/local/bin:/usr/bin:/bin:/usr/games"
-fi
+export PATH=/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/default/sbin:$PATH
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8

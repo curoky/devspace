@@ -10,10 +10,10 @@ tap 'curoky/tap'
 brews = [
   # build system
   # 'autoconf', 'automake', 'libtool', 'pkg-config', 'make',
-  'cmake',
+  # 'cmake',
   # 'ninja', 'distcc', 'ccache', 'scons', 'meson', 'ant',
   # 'bazel', 'poetry', 'yarn', 'pipenv', 'gradle', 'maven', 'facebook/fb/buck',
-  'conan', 'bazelisk',
+  'conan', # 'bazelisk',
   # 'thought-machine/please/please', 'spack',
   # linter
   # 'pre-commit', 'prettier', 'yapf', 'shfmt', 'buildifier', 'eslint', 'clang-format',

@@ -43,7 +43,7 @@ ENV_PATHS=(
   "$HOME/dotbox/tools"
 )
 for p in "${ENV_PATHS[@]}"; do
-  [[ -d $p ]] && export PATH=$p:$PATH
+  [[ -d $p ]] && export PATH=$PATH:$p
 done
 
 ENV_FPATHS=(
