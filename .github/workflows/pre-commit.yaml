@@ -11,8 +11,8 @@ jobs:
 
       - run: pip install dotdrop
 
-      - run: dotdrop install --force --profile=image
+      - run: dotdrop install --force --profile=devbox-user
 
-      - uses: pre-commit/action@v2.0.3
+      - uses: pre-commit/action@v3.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
