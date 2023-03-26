@@ -60,6 +60,10 @@ RUN apt-get update -qq \
     ca-certificates locales tzdata sudo init systemd \
     openssh-server rsyslog cron \
     # xfce4 xfce4-goodies tightvncserver
+  && apt purge -y --allow-remove-essential \
+    # tar coreutils diffutils \
+    sed xz-utils curl grep gzip git findutils \
+  && apt-get autoremove -y \
   && locale-gen en_US.UTF-8
 
 RUN curl -sSL https://get.docker.com/ | sh -s
@@ -68,7 +72,7 @@ COPY ./ /opt/dotbox/
 
 RUN ansible-galaxy collection install community.general \
   && ansible-playbook -vvv /opt/dotbox/images/site.yaml \
-  && rm -rf /root/.ansible
+  && rm -rf ~/.ansible
 
 USER cicada
 

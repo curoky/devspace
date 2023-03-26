@@ -42,13 +42,14 @@ pkg_list=(
   nixpkgs.git nixpkgs.git-absorb nixpkgs.git-extras nixpkgs.git-lfs nixpkgs.git-filter-repo
   # nixpkgs.lazygit
   # compress
-  nixpkgs.bzip2 nixpkgs.xz nixpkgs.zstd nixpkgs.zip nixpkgs.unzip
+  nixpkgs.bzip2 nixpkgs.xz nixpkgs.zstd nixpkgs.zip nixpkgs.unzip nixpkgs.gnutar
   # sre
   nixpkgs.iproute2 nixpkgs.iputils nixpkgs.netcat nixpkgs.lsof nixpkgs.connect
   nixpkgs.procps nixpkgs.nettools nixpkgs.fd nixpkgs.ethtool nixpkgs.tcpdump nixpkgs.gdb
   nixpkgs.dstat nixpkgs.rsync nixpkgs.file nixpkgs.gperf nixpkgs.man
-  nixpkgs.curl nixpkgs.wget nixpkgs.aria2 nixpkgs.croc nixpkgs.sudo nixpkgs.iptables
-  nixpkgs.gnupg nixpkgs.tzdata nixpkgs.unixtools.xxd nixpkgs.locale
+  nixpkgs.curl nixpkgs.wget nixpkgs.aria2 nixpkgs.croc nixpkgs.iptables # nixpkgs.sudo
+  nixpkgs.gnupg nixpkgs.tzdata nixpkgs.unixtools.xxd nixpkgs.locale nixpkgs.util-linux
+  nixpkgs.findutils nixpkgs.coreutils nixpkgs.diffutils
   # nixpkgs.gost nixpkgs.htop nixpkgs.cron
   # doc
   nixpkgs.pandoc # nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo
@@ -57,7 +58,7 @@ pkg_list=(
   nixpkgs.starship nixpkgs.direnv nixpkgs.tmux # nixpkgs.tmuxinator
   # editor
   nixpkgs.flex nixpkgs.bison nixpkgs.gnupatch nixpkgs.gettext nixpkgs.m4 # nixpkgs.helix
-  nixpkgs.jq nixpkgs.vim nixpkgs.bat nixpkgs.less
+  nixpkgs.jq nixpkgs.vim nixpkgs.bat nixpkgs.less nixpkgs.gnused nixpkgs.gnugrep nixpkgs.gzip
   # tools
   nixpkgs.graphviz nixpkgs.asciinema nixpkgs.gdu nixpkgs.ncdu nixpkgs.silver-searcher nixpkgs.parallel
   nixpkgs.exa nixpkgs.fzf nixpkgs.cloc nixpkgs.go-task nixpkgs.krb5 nixpkgs.ansible nixpkgs.earthly
