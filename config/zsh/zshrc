@@ -5,12 +5,13 @@ else
 fi
 eval "$($BREW_PREFIX/bin/brew shellenv)"
 
-export CONFIG_HOME=$HOME/dotbox/config
+export WORKSPACE=~/repos
+export CONFIG_HOME=~/dotbox/config
 for f in "$CONFIG_HOME"/env/*.sh; do
   source "$f"
 done
 
-CHECK_AND_SOURCE ~/repos/mackup/conf/shell/env.sh
+CHECK_AND_SOURCE $WORKSPACE/mackup/conf/shell/env.sh
 
 #=-> start oh-my-zsh
 source "${ZSH}/oh-my-zsh.sh"
