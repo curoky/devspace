@@ -12,7 +12,7 @@
 #
 # Global Order: zshenv, zprofile, zshrc, zlogin
 
-export PATH=/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/default/sbin:$PATH
+export PATH=$PATH:/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/default/sbin
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
