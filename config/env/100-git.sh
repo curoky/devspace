@@ -97,3 +97,10 @@ function set-git-proxy() {
   export GIT_SSH=~/dotbox/tools/git-proxy-wrapper.sh
   echo "export GIT_SSH=$GIT_SSH"
 }
+
+function git-merge-repo() {
+  git remote add prj $1
+  git fetch prj --tags
+  git merge --allow-unrelated-histories prj/master
+  git remote remove prj
+}

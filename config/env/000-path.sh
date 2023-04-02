@@ -17,30 +17,30 @@
 
 ENV_PATHS=(
   "$BREW_PREFIX/opt/coreutils/libexec/gnubin"
-  "$BREW_PREFIX/opt/grep/libexec/gnubin"
   "$BREW_PREFIX/opt/findutils/libexec/gnubin"
   "$BREW_PREFIX/opt/gawk/libexec/gnubin"
-  "$BREW_PREFIX/opt/unzip/bin"
+  "$BREW_PREFIX/opt/gnu-getopt/bin"
+  "$BREW_PREFIX/opt/gnu-indent/libexec/gnubin"
   "$BREW_PREFIX/opt/gnu-sed/libexec/gnubin"
   "$BREW_PREFIX/opt/gnu-tar/libexec/gnubin"
-  "$BREW_PREFIX/opt/gnu-indent/libexec/gnubin"
-  "$BREW_PREFIX/opt/gnu-getopt/bin"
+  "$BREW_PREFIX/opt/grep/libexec/gnubin"
   "$BREW_PREFIX/opt/openssl@3/bin"
-  "$BREW_PREFIX/bin"
-  # "$BREW_PREFIX/sbin"
+  "$BREW_PREFIX/opt/unzip/bin"
+)
+for p in "${ENV_PATHS[@]}"; do
+  [[ -d $p ]] && export PATH=$p:$PATH
+done
 
-  "/opt/conda/envs/py3/bin"
-  "$HOME/.npm-global/bin"
-  "$HOME/go/bin"
-  "$HOME/.cargo/bin"
-  "$BREW_PREFIX/lib/ruby/gems/3.1.0/bin"
+ENV_PATHS=(
   "/nix/var/nix/profiles/default/lib/ruby/gems/2.7.0/bin"
-
+  "/opt/conda/envs/py3/bin"
   "/opt/vcpkg"
-
+  "$BREW_PREFIX/lib/ruby/gems/3.1.0/bin"
+  "$HOME/.cargo/bin"
   "$HOME/.local/bin"
-
+  "$HOME/.npm-global/bin"
   "$HOME/dotbox/tools"
+  "$HOME/go/bin"
 )
 for p in "${ENV_PATHS[@]}"; do
   [[ -d $p ]] && export PATH=$PATH:$p
@@ -56,16 +56,8 @@ ENV_FPATHS=(
   # typer
   "$HOME/.zfunc"
   # nix
-  "/nix/var/nix/profiles/default/share/zsh/site-functions/"
+  "/nix/var/nix/profiles/default/share/zsh/site-functions"
 )
 for p in "${ENV_FPATHS[@]}"; do
   [[ -d $p ]] && fpath=($p $fpath)
-done
-
-# https://docs.python.org/3/using/cmdline.html#environment-variables
-ENV_PYPATHS=(
-  # "$DOTS_PATH/lib"
-)
-for p in "${ENV_PYPATHS[@]}"; do
-  [[ -d $p ]] && export PYTHONPATH=$p:$PYTHONPATH
 done

@@ -116,6 +116,8 @@ export PYTHONWARNINGS=ignore:DEPRECATION
 # https://pip.pypa.io/en/latest/topics/caching/#default-paths
 # export PIP_CACHE_DIR=$XDG_CACHE_HOME/pip
 # export PIP_CONFIG_FILE=$CONFIG_HOME/pip/pip.conf
+# https://docs.python.org/3/using/cmdline.html#environment-variables
+# export PYTHONPATH=$p:$PYTHONPATH
 
 #=-> go
 # https://pkg.go.dev/cmd/go#hdr-Build_and_test_caching

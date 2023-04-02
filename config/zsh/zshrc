@@ -3,7 +3,6 @@ if [[ -x /opt/homebrew/bin/brew ]]; then
 else
   export BREW_PREFIX=/home/linuxbrew/.linuxbrew
 fi
-eval "$($BREW_PREFIX/bin/brew shellenv)"
 
 export WORKSPACE=~/repos
 export CONFIG_HOME=~/dotbox/config
@@ -11,13 +10,16 @@ for f in "$CONFIG_HOME"/env/*.sh; do
   source "$f"
 done
 
+#=-> homebrew
+eval "$($BREW_PREFIX/bin/brew shellenv)"
+
+#=-> nix
+CHECK_AND_SOURCE ~/.nix-profile/etc/profile.d/nix.sh
+
 CHECK_AND_SOURCE $WORKSPACE/mackup/conf/shell/env.sh
 
 #=-> start oh-my-zsh
 source "${ZSH}/oh-my-zsh.sh"
-
-#=-> nix
-CHECK_AND_SOURCE ~/.nix-profile/etc/profile.d/nix.sh
 
 #=-> conda, GEN by `conda init zsh`, https://stackoverflow.com/questions/40370467/anaconda-not-found-in-zsh
 # >>> conda initialize >>>
