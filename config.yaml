@@ -156,8 +156,8 @@ dotfiles:
     dst: ~/.markdownlintrc
     src: markdownlint/markdownlintrc
   maven:
-    dst: ~/.m2
-    src: maven
+    dst: ~/.m2/settings.xml
+    src: maven/settings.xml
   navi:
     dst: ~/.config/navi
     src: navi
