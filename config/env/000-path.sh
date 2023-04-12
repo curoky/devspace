@@ -36,7 +36,7 @@ ENV_PATHS=(
   "/opt/conda/envs/py3/bin"
   "/opt/vcpkg"
   "$BREW_PREFIX/lib/ruby/gems/3.1.0/bin"
-  "$HOME/.cargo/bin"
+  # "$HOME/.cargo/bin" # already source in ~/.zshenv
   "$HOME/.local/bin"
   "$HOME/.npm-global/bin"
   "$HOME/dotbox/tools"
