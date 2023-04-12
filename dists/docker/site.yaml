@@ -30,7 +30,8 @@
         - name: Update root password
           ansible.builtin.user:
             name: root
-            password: 123456
+            password: $6$vd4FRlWo7SbhtIcM$LbGVkmwN7FvaiR7yjWOYH4nSukcgppzHuD.GwUQt5l17X90ezYFP3DBF50aVVEHolpnaUX/MFQqaGBcuNfX/e/
+            shell: /nix/var/nix/profiles/default/bin/zsh
 
         - name: Add groups
           ansible.builtin.group:
@@ -43,7 +44,8 @@
             name: '{{ item.name }}'
             uid: '{{ item.id }}'
             group: '{{ item.name }}'
-            password: 123456
+            # https://docs.ansible.com/ansible/latest/reference_appendices/faq.html#how-do-i-generate-encrypted-passwords-for-the-user-module
+            password: $6$vd4FRlWo7SbhtIcM$LbGVkmwN7FvaiR7yjWOYH4nSukcgppzHuD.GwUQt5l17X90ezYFP3DBF50aVVEHolpnaUX/MFQqaGBcuNfX/e/
             groups: '{{ item.groups }}'
             append: yes
             shell: /nix/var/nix/profiles/default/bin/zsh

@@ -4,7 +4,8 @@ COPY images/config/brew/Brewfile.linux Brewfile.linux
 ENV HOMEBREW_NO_ANALYTICS=1 \
   HOMEBREW_INSTALL_FROM_API=1
 RUN rm -rf /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/homebrew/homebrew-core \
-  && ./setup-pkg-brew.sh Brewfile.linux
+  && ./setup-pkg-brew.sh Brewfile.linux \
+  && rm -rf "$(brew --cache)"
 
 FROM ghcr.io/conda/conda-ci:master-linux-python3.10 as conda
 USER root
