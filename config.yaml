@@ -334,7 +334,7 @@ profiles:
       - yapf
       - zshrc
 
-  mac-user:
+  macos-user:
     dotfiles:
       - bat
       - cargo

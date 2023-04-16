@@ -45,19 +45,3 @@ ENV_PATHS=(
 for p in "${ENV_PATHS[@]}"; do
   [[ -d $p ]] && export PATH=$PATH:$p
 done
-
-ENV_FPATHS=(
-  # homebrew
-  # "$BREW_PREFIX/share/zsh/functions" # already added by default
-  "$BREW_PREFIX/share/zsh/site-functions"
-  "$BREW_PREFIX/Homebrew/completions/zsh"
-  # system
-  "/usr/share/zsh/vendor-completions"
-  # typer
-  "$HOME/.zfunc"
-  # nix
-  "/nix/var/nix/profiles/default/share/zsh/site-functions"
-)
-for p in "${ENV_FPATHS[@]}"; do
-  [[ -d $p ]] && fpath=($p $fpath)
-done

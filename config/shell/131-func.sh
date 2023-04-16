@@ -159,8 +159,3 @@ function cleanup_history() {
   # tac $HISTFILE | awk '!x[$0]++' | tac | sponge $HISTFILE
   ruby -i -e 'puts readlines.reverse.uniq.reverse' $HISTFILE
 }
-
-function git-config-mine() {
-  git config user.name "curoky"
-  git config user.email "cccuroky@gmail.com"
-}

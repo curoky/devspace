@@ -69,8 +69,6 @@ alias todo="ag --color-line-number '1;36' --color-path '1;36' --ignore-case --pr
 
 alias lint="pre-commit run --all-files"
 
-alias sctl='sudo systemctl'
-
 alias ggpf='git push origin "$(git_current_branch)" --force'
 
 alias dctemp="docker run --rm --tty --network=host --interactive --entrypoint /bin/bash"

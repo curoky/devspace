@@ -271,6 +271,8 @@
   "gitlens.defaultDateStyle": "absolute",
   "gitlens.defaultTimeFormat": "YYYY-MM-D HH:mm:ss",
   "gitlens.hovers.currentLine.over": "line",
+  "gitlens.showWelcomeOnInstall": false,
+  "gitlens.showWhatsNewAfterUpgrades": false,
   "gitlens.views.repositories.compact": true,
   "go.autocompleteUnimportedPackages": true,
   "go.toolsManagement.autoUpdate": true,
@@ -318,6 +320,8 @@
   "notebook.lineNumbers": "on",
   "prettier.jsxSingleQuote": true,
   "prettier.prettierPath": "/opt/homebrew/opt/prettier/libexec/bin",
+  // pylint has memory leak https://github.com/microsoft/vscode-pylint/issues/280
+  "pylint.args": ["--clear-cache-post-run"],
   "python.analysis.autoImportCompletions": true,
   "python.analysis.completeFunctionParens": true,
   "python.analysis.typeCheckingMode": "basic",

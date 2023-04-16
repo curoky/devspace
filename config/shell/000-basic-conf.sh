@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # Copyright (c) 2018-2023 curoky(cccuroky@gmail.com).
 #
 # This file is part of dotbox.
@@ -15,18 +14,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-set -xeuo pipefail
 
-cd "$(dirname $0)"
-
-export PATH=/usr/local/opt/openssl@3/bin:/Users/curoky/Library/Python/3.8/bin:$PATH
-
-if ! command -v dotdrop &>/dev/null; then
-  python3 -m pip install git+https://github.com/deadc0de6/dotdrop
-fi
-
-if [[ $(uname -s) == "Darwin" ]]; then
-  dotdrop install --force --profile=macos-user
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  export BREW_PREFIX=/opt/homebrew
 else
-  dotdrop install --force --profile=${1:-'devbox-user'}
+  export BREW_PREFIX=/home/linuxbrew/.linuxbrew
 fi
+
+export WORKSPACE=~/repos
