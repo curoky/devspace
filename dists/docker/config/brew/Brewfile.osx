@@ -15,7 +15,7 @@ casks = [
   'squirrel',
   'drawio',
   'raycast',
-  'firefox',
+  # 'firefox',
   # 'google-drive',
   # 'adrive',
   # 'expressvpn',
@@ -54,7 +54,7 @@ brews = [
   'openjdk@17', # 'openjdk@8', 'openjdk@11', 'openjdk', 'thrift',
   # 'maven',
   # git
-  'git', 'git-absorb', 'git-extras', 'git-lfs', 'git-mv-with-history',
+  'git', 'git-absorb', 'git-extras', 'git-lfs', 'git-mv-with-history', 'git-filter-repo',
   # compression
   'bzip2', 'xz', 'zstd', 'zip', 'unzip',
   # network tools

@@ -159,3 +159,9 @@ function cleanup_history() {
   # tac $HISTFILE | awk '!x[$0]++' | tac | sponge $HISTFILE
   ruby -i -e 'puts readlines.reverse.uniq.reverse' $HISTFILE
 }
+
+function analyze-file-extension-name() {
+  # https://stackoverflow.com/questions/1842254/how-can-i-find-all-of-the-distinct-file-extensions-in-a-folder-hierarchy
+  # find . -type f -name "*.*" | rev | cut -d. -f1 | rev  | tr '[:upper:]' '[:lower:]' | sort | uniq --count | sort -rn
+  find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort | uniq -c | sort -n
+}
