@@ -18,7 +18,6 @@
 #=-> basic config
 export EDITOR=hx
 command -v vim >/dev/null && export EDITOR=vim
-export MY_HOST_NAME=$(hostname)
 
 #=-> XDG
 export XDG_CACHE_HOME=$HOME/.cache

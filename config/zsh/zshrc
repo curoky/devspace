@@ -30,7 +30,7 @@ eval "$($BREW_PREFIX/bin/brew shellenv)"
 #=-> nix
 CHECK_AND_SOURCE ~/.nix-profile/etc/profile.d/nix.sh
 
-CHECK_AND_SOURCE $WORKSPACE/mackup/conf/shell/env.sh
+CHECK_AND_SOURCE $WORKSPACE/mackup/conf/shell/$MY_HOST_NAME.sh
 
 #=-> start oh-my-zsh
 source "${ZSH}/oh-my-zsh.sh"

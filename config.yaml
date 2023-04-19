@@ -49,8 +49,8 @@ dotfiles:
     dst: ~/.cmake-format.json
     src: cmake-format/cmake-format.json
   conan:
-    dst: ~/.conan
-    src: conan
+    dst: ~/.conan/conan.conf
+    src: conan/conan.conf
   conda:
     dst: ~/.config/conda/condarc
     src: conda/condarc
@@ -310,7 +310,7 @@ profiles:
       - cargo
       - ccache
       - clang-format
-      - conan
+      # - conan
       - conda
       - docker
       - dolthub

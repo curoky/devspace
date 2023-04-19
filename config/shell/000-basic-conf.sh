@@ -22,3 +22,4 @@ else
 fi
 
 export WORKSPACE=~/repos
+export MY_HOST_NAME=$(hostname)
