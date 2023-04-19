@@ -60,7 +60,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     ca-certificates locales tzdata sudo init systemd \
     openssh-server rsyslog cron \
-    gcc g++ \
+    gcc-13 g++-13 \
     # xfce4 xfce4-goodies tightvncserver
   && apt purge -y --allow-remove-essential \
     # tar coreutils diffutils \
