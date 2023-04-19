@@ -65,13 +65,16 @@ RUN apt-get update \
   && apt purge -y --allow-remove-essential \
     # tar coreutils diffutils \
     sed xz-utils curl grep gzip git findutils \
-  && ln -s /nix/var/nix/profiles/default/bin/gzip /usr/bin/gzip \
-  && ln -s /nix/var/nix/profiles/default/bin/grep /usr/bin/grep \
-  && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
   && apt-get autoremove -y \
   && locale-gen en_US.UTF-8
 
 RUN curl -sSL https://get.docker.com/ | sh -s
+
+# TODO(curoky): remove follow tricks
+RUN userdel ubuntu && rm -rf /home/ubuntu \
+  && ln -s /nix/var/nix/profiles/default/bin/gzip /usr/bin/gzip \
+  && ln -s /nix/var/nix/profiles/default/bin/grep /usr/bin/grep \
+  && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel
 
 COPY ./ /opt/dotbox/
 
