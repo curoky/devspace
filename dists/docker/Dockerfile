@@ -34,7 +34,7 @@ COPY images/script/setup-pkg-nix.sh setup-pkg-nix.sh
 RUN nix-channel --update \
   && ./setup-pkg-nix.sh
 
-FROM ubuntu:22.10
+FROM ubuntu:23.04
 LABEL org.opencontainers.image.authors="cccuroky@gmail.com"
 
 # Note: g=u doesn't really work. https://github.com/moby/buildkit/issues/1951
@@ -56,8 +56,8 @@ ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/linuxbrew/.linuxbrew/bin 
   LC_ALL=en_US.UTF-8 \
   LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
-RUN apt-get update -qq \
-  && apt-get install -y -qq --no-install-recommends \
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
     ca-certificates locales tzdata sudo init systemd \
     openssh-server rsyslog cron \
     gcc g++ \
@@ -65,6 +65,9 @@ RUN apt-get update -qq \
   && apt purge -y --allow-remove-essential \
     # tar coreutils diffutils \
     sed xz-utils curl grep gzip git findutils \
+  && ln -s /nix/var/nix/profiles/default/bin/gzip /usr/bin/gzip \
+  && ln -s /nix/var/nix/profiles/default/bin/grep /usr/bin/grep \
+  && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
   && apt-get autoremove -y \
   && locale-gen en_US.UTF-8
 
