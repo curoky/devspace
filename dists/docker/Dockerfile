@@ -70,13 +70,14 @@ RUN apt-get update \
 
 RUN curl -sSL https://get.docker.com/ | sh -s
 
+COPY ./ /opt/dotbox/
+
 # TODO(curoky): remove follow tricks
 RUN userdel ubuntu && rm -rf /home/ubuntu \
   && ln -s /nix/var/nix/profiles/default/bin/gzip /usr/bin/gzip \
   && ln -s /nix/var/nix/profiles/default/bin/grep /usr/bin/grep \
-  && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel
-
-COPY ./ /opt/dotbox/
+  && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
+  && /opt/dotbox/images/script/setup-gcc-as-default.sh
 
 RUN ansible-galaxy collection install community.general \
   && ansible-playbook -vvv /opt/dotbox/images/site.yaml \
