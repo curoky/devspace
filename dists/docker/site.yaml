@@ -78,7 +78,7 @@
           with_items: '{{ users }}'
 
         - ansible.builtin.shell:
-            cmd: cd ~/dotbox && dotdrop install --force --profile=devbox-user
+            cmd: cd ~/dotbox && dotdrop install --force --profile=devbox-userconf
           become: true
           become_user: '{{ item }}'
           with_items:

@@ -301,7 +301,7 @@ profiles:
       - nix-mirror-cn
       - zshenv-homebrew-mirror-cn-etc
 
-  devbox-user:
+  devbox-userconf:
     dotfiles:
       - bash_logout
       - bashrc
@@ -334,7 +334,7 @@ profiles:
       - yapf
       - zshrc
 
-  macos-user:
+  macos-userconf:
     dotfiles:
       - bat
       - cargo
