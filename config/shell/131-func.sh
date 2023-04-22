@@ -126,13 +126,21 @@ function github_latest_rel() {
 }
 
 function set-http-proxy() {
-  local proxy=${1:-http://http.proxy.com:3128}
+  local proxy="http://$1:$2"
   export http_proxy=$proxy
   export HTTP_PROXY=$proxy
   export https_proxy=$proxy
   export HTTPS_PROXY=$proxy
   export all_proxy=$proxy
   export ALL_PROXY=$proxy
+}
+
+function set-wifi-proxy() {
+  networksetup -setwebproxy wi-fi $1 $2
+}
+
+function unset-wifi-proxy() {
+  networksetup -setwebproxystate wi-fi off
 }
 
 function unset-http-proxy() {
