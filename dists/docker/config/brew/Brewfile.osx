@@ -14,7 +14,7 @@ casks = [
   'snipaste',
   'squirrel',
   'drawio',
-  'raycast',
+  # 'raycast',
   # 'firefox',
   # 'google-drive',
   # 'adrive',
@@ -58,7 +58,7 @@ brews = [
   # compression
   'bzip2', 'xz', 'zstd', 'zip', 'unzip',
   # network tools
-  'netcat', 'lsof', 'connect', 'inetutils', # 'gost',
+  'netcat', 'lsof', 'connect', 'inetutils', 'gost',
   # shell tools
   'zsh', 'zsh-bundle', 'starship', # 'asciinema', 'tmux', 'tmuxinator', 'direnv',
   # text editor and tools
