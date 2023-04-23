@@ -49,7 +49,8 @@ parser.add_argument('-s',
 args = parser.parse_args()
 
 osRelease = dict(
-    l.split('=', 2) for l in Path('/etc/os-release').read_text().replace('"', '').splitlines())
+    line.split('=', 2)
+    for line in Path('/etc/os-release').read_text().replace('"', '').splitlines())
 # print(osRelease)
 
 data = {

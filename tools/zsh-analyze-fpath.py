@@ -24,7 +24,6 @@ import sys
 from collections import defaultdict
 from copy import deepcopy
 from pathlib import Path
-from typing import Dict, List
 
 import typer
 from rich.console import Console
@@ -35,7 +34,7 @@ app = typer.Typer(add_completion=True, help='')
 
 @app.command()
 def analyze():
-    lines: List[str] = sys.stdin.readlines()
+    lines: list[str] = sys.stdin.readlines()
     if not lines:
         raise typer.Abort('read null from stdin!')
     tablePathCount = Table()
@@ -45,8 +44,8 @@ def analyze():
     tableNameDup.add_column('Name', justify='left', style='cyan', no_wrap=True)
     tableNameDup.add_column('Path', style='magenta')
 
-    name2path: Dict[str, List[str]] = defaultdict(list)
-    for p in set(map(lambda l: l.strip(), lines)):
+    name2path: dict[str, list[str]] = defaultdict(list)
+    for p in set(map(lambda line: line.strip(), lines)):
         count = 0
         for f in Path(p).glob('_*'):
             count += 1

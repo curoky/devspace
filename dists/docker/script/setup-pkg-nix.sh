@@ -37,7 +37,7 @@ pkg_list=(
   # nixpkgs.poetry formatter and linter
   nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.yapf nixpkgs.nixpkgs-fmt
   nixpkgs.shfmt nixpkgs.buildifier nixpkgs.nodePackages.eslint # nixpkgs.cppcheck
-  nixpkgs.cmake-format nixpkgs.shellcheck
+  nixpkgs.cmake-format nixpkgs.shellcheck nixpkgs.ruff
   # git
   nixpkgs.git nixpkgs.git-absorb nixpkgs.git-extras nixpkgs.git-lfs nixpkgs.git-filter-repo
   # nixpkgs.lazygit
