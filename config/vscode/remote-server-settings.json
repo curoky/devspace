@@ -48,7 +48,7 @@
   "markdown-preview-enhanced.pandocPath": "/nix/var/nix/profiles/default/bin/pandoc",
   "prettier.prettierPath": "/nix/var/nix/profiles/default/lib/node_modules/prettier",
   "python.defaultInterpreterPath": "/opt/conda/envs/py3/bin/python",
-  "python.formatting.yapfPath": "/nix/var/nix/profiles/default/bin/yapf",
+  "python.formatting.yapfPath": "/home/linuxbrew/.linuxbrew/bin/yapf",
   "remote.autoForwardPortsSource": "output",
   "ruby.interpreter.commandPath": "/nix/var/nix/profiles/default/bin/ruby",
   "ruby.pathToBundler": "/nix/var/nix/profiles/default/bin/bundle",
