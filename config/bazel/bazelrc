@@ -4,12 +4,19 @@ startup --host_jvm_args=-XX:-UseParallelGC
 
 query --keep_going
 
-build --show_timestamps --keep_going # --jobs 180
+# build --cxxopt="-std=c++23"
+# build --enable_bzlmod
+# build --check_visibility=false
+# build --sandbox_base="/dev/shm/"
+build --show_timestamps
+build --keep_going # --jobs 180
 build --color=yes
-#build --check_visibility=false
 build --compilation_mode=dbg
 build --dynamic_mode=off
 build --remote_download_toplevel
+build --disk_cache="~/.cache/bazel/disk_cache"
+build --spawn_strategy=local
+build --experimental_remote_cache_compression
 
 # test --remote_executor=
 # build --remote_executor=grpc://0.0.0.0:7851
