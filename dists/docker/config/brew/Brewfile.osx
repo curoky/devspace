@@ -67,9 +67,9 @@ brews = [
   'exa', 'exa-wrapper', 'bat', 'the_silver_searcher', 'fzf',
   # others
   'wget', 'aria2', 'rsync', 'ncdu', 'dotdrop', 'smartmontools',
-  'gdu', 'cloc', 'go-task', 'krb5', 'md5deep', 'parallel', 'fd',
+  'cloc', 'go-task', 'krb5', 'parallel', 'fd',
   'coreutils', 'rime-bundle', 'exiftool',
-  # 'gdb', 'opencc', 'gdal', 'gperf',
+  # 'gdb', 'opencc', 'gdal', 'gperf', 'md5deep', 'gdu',
   # sqlite
   # 'sqlcipher', 'sqlite3', 'sqlite-utils',
 ]
