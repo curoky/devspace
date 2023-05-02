@@ -14,17 +14,18 @@ casks = [
   'snipaste',
   'squirrel',
   'drawio',
+  'google-drive',
+  'dupeguru',
+  'db-browser-for-sqlite',
+  'adrive'
+
   # 'raycast',
   # 'firefox',
-  # 'google-drive',
-  # 'adrive',
   # 'expressvpn',
-
   # 'android-platform-tools',
   # 'anybar',
   # 'charles',
   # 'chromedriver',
-  # 'db-browser-for-sqlite',
   # 'dbeaver-community',
   # 'disk-drill',
   # 'flameshot',
@@ -67,7 +68,7 @@ brews = [
   # others
   'wget', 'aria2', 'rsync', 'ncdu', 'dotdrop', 'smartmontools',
   'gdu', 'cloc', 'go-task', 'krb5', 'md5deep', 'parallel', 'fd',
-  'coreutils', 'rime-bundle',
+  'coreutils', 'rime-bundle', 'exiftool',
   # 'gdb', 'opencc', 'gdal', 'gperf',
   # sqlite
   # 'sqlcipher', 'sqlite3', 'sqlite-utils',
