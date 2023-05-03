@@ -38,10 +38,6 @@ FROM ubuntu:23.04
 LABEL org.opencontainers.image.authors="cccuroky@gmail.com"
 
 # Note: g=u doesn't really work. https://github.com/moby/buildkit/issues/1951
-COPY --chown=1000:1000 --chmod=g=u --from=curoky/sidecar:spark /opt/hadoop /opt/hadoop
-COPY --chown=1000:1000 --chmod=g=u --from=curoky/sidecar:spark /opt/spark /opt/spark
-COPY --chown=1000:1000 --chmod=g=u --from=curoky/sidecar:flink /opt/flink /opt/flink
-COPY --chown=1000:1000 --chmod=g=u --from=curoky/sidecar:hive /opt/hive /opt/hive
 COPY --chown=1000:1000 --chmod=g=u --from=golang /root/go/bin /home/cicada/go/bin
 COPY --chown=1000:1000 --chmod=g=u --from=vcpkg /opt/vcpkg /opt/vcpkg
 COPY --chown=1000:1000 --chmod=g=u --from=conda /opt/conda /opt/conda
