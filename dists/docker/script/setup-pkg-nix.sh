@@ -31,7 +31,7 @@ pkg_list=(
   nixpkgs.automake nixpkgs.autoconf nixpkgs.libtool nixpkgs.pkg-config nixpkgs.gnumake
   nixpkgs.cmake nixpkgs.ninja nixpkgs.distcc nixpkgs.bazelisk nixpkgs.ccache nixpkgs.mold
   nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven nixpkgs.nodejs
-  nixpkgs.clang-tools_15 nixpkgs.lld_15 nixpkgs.go_1_20 nixpkgs.ruby
+  nixpkgs.clang-tools_16 nixpkgs.lld_16 nixpkgs.go_1_20 nixpkgs.ruby
   # nixpkgs.lua nixpkgs.vlang nixpkgs.rustup nixpkgs.buck nixpkgs.scons nixpkgs.meson nixpkgs.ant
   # nixpkgs.include-what-you-use
   # nixpkgs.poetry formatter and linter
@@ -83,10 +83,10 @@ nix-env -iA -p /nix/var/nix/profiles/jdk19 nixpkgs.jdk19
 # nix-env -iA -p /nix/var/nix/profiles/python3 nixpkgs.python3
 # nix-env -iA -p /nix/var/nix/profiles/python39 nixpkgs.python39
 # nix-env -iA -p /nix/var/nix/profiles/clang-tools_13 nixpkgs.clang-tools_13
-nix-env -iA -p /nix/var/nix/profiles/llvm15 nixpkgs.clang_15
-nix-env -iA -p /nix/var/nix/profiles/llvm15 nixpkgs.clang-tools_15
-nix-env -iA -p /nix/var/nix/profiles/llvm15 nixpkgs.llvmPackages_15.llvm
-nix-env -iA -p /nix/var/nix/profiles/llvm15-bintools nixpkgs.llvmPackages_15.bintools-unwrapped
+nix-env -iA -p /nix/var/nix/profiles/llvm16 nixpkgs.clang_16
+nix-env -iA -p /nix/var/nix/profiles/llvm16 nixpkgs.clang-tools_16
+nix-env -iA -p /nix/var/nix/profiles/llvm16 nixpkgs.llvmPackages_16.llvm
+nix-env -iA -p /nix/var/nix/profiles/llvm16-bintools nixpkgs.llvmPackages_16.bintools-unwrapped
 nix-env -iA -p /nix/var/nix/profiles/inetutils nixpkgs.inetutils
 # nix-env -iA -p /nix/var/nix/profiles/coreutils nixpkgs.coreutils
 
