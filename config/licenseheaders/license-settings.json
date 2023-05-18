@@ -12,7 +12,7 @@
     "headerLineSuffix": ""
   },
   "script": {
-    "extensions": [".sh", ".csh", ".pl"],
+    "extensions": [".sh", ".csh", ".pl", ".zsh"],
     "keepFirst": "^#!|^# -\\*-",
     "blockCommentStartPattern": "",
     "blockCommentEndPattern": "",
