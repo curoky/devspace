@@ -17,3 +17,12 @@ export PATH=$PATH:/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/defaul
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+
+if [ -d /etc/zshenv.d ]; then
+  for i in /etc/zshenv.d/*.zsh; do
+    if [ -r "$i" ]; then
+      source "$i"
+    fi
+  done
+  unset i
+fi

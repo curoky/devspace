@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # Copyright (c) 2018-2023 curoky(cccuroky@gmail.com).
 #
 # This file is part of dotbox.
@@ -16,11 +15,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set -xeuo pipefail
-cd "$(dirname $0)" || exit 1
-
-docker buildx build .. --network=host --file Dockerfile "${@:1}" \
-  --cache-to=type=inline \
-  --cache-from=type=registry,ref=curoky/dotbox:ubuntu23.04 \
-  --tag curoky/dotbox:ubuntu23.04
-# --output type=local,dest=$PWD/temp
+export GOPROXY="https://goproxy.cn,direct"

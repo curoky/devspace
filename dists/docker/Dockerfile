@@ -59,8 +59,8 @@ RUN apt-get update \
     gcc-13 g++-13 \
     # xfce4 xfce4-goodies tightvncserver
   && apt purge -y --allow-remove-essential \
-    # tar coreutils diffutils \
-    sed xz-utils curl grep gzip git findutils \
+    # tar coreutils diffutils sed \
+    xz-utils curl grep gzip git findutils \
   && apt-get autoremove -y \
   && locale-gen en_US.UTF-8
 

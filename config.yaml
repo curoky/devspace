@@ -270,10 +270,14 @@ dotfiles:
     dst: /etc/zshenv
     link: nolink
     src: zsh/etc/zshenv
-  zshenv-homebrew-mirror-cn-etc:
-    dst: /etc/zshenv
+  zshenv-etc-homebrew-mirror-cn:
+    dst: /etc/zshenv.d/homebrew-mirror-cn.zsh
     link: nolink
-    src: zsh/etc/zshenv-homebrew-mirror-cn
+    src: zsh/etc/zshenv.d/homebrew-mirror-cn.zsh
+  zshenv-etc-golang-proxy-cn:
+    dst: /etc/zshenv.d/golang-proxy-cn.zsh
+    link: nolink
+    src: zsh/etc/zshenv.d/golang-proxy-cn.zsh
   zshrc:
     dst: ~/.zshrc
     src: zsh/zshrc
@@ -297,9 +301,10 @@ profiles:
   devbox-sysconf-mirror-cn:
     dotfiles:
       - apt-ubuntu-mirror-cn
-      - linux-profile-homebrew-mirror-cn
       - nix-mirror-cn
-      - zshenv-homebrew-mirror-cn-etc
+      - linux-profile-homebrew-mirror-cn
+      - zshenv-etc-homebrew-mirror-cn
+      - zshenv-etc-golang-proxy-cn
 
   devbox-userconf:
     dotfiles:
