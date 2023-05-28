@@ -137,10 +137,12 @@ function set-http-proxy() {
 
 function set-wifi-proxy() {
   networksetup -setwebproxy wi-fi $1 $2
+  networksetup -setsecurewebproxy wi-fi $1 $2
 }
 
 function unset-wifi-proxy() {
   networksetup -setwebproxystate wi-fi off
+  networksetup -setsecurewebproxystate wi-fi off
 }
 
 function unset-http-proxy() {
