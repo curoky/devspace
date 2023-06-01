@@ -3,6 +3,7 @@ version: '1'
 sort: by_weight
 
 import_tables:
+  - curoky
   - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-ice/cn_dicts/8105
   - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-ice/cn_dicts/base
   - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-ice/cn_dicts/ext
