@@ -17,29 +17,23 @@ casks = [
   'google-drive',
   'dupeguru',
   'db-browser-for-sqlite',
-  'adrive'
+  'adrive',
+  'obs',
 
-  # 'raycast',
-  # 'firefox',
-  # 'expressvpn',
   # 'android-platform-tools',
-  # 'anybar',
   # 'charles',
   # 'chromedriver',
   # 'dbeaver-community',
   # 'disk-drill',
   # 'flameshot',
-  # 'hyper',
-  # 'itsycal',
-  # 'michaelvillar-timer',
   # 'motrix',
   # 'netnewswire',
   # 'sketch',
-  # 'sol',
   # 'sqlitestudio',
   # 'webtorrent',
 
   # update by it self
+  # 'firefox',
   # 'visual-studio-code',
   # 'warp',
   # 'google-chrome',
@@ -50,7 +44,7 @@ casks.each do |b|
 end
 
 brews = [
-  'pre-commit', 'prettier', 'yapf', 'shfmt', 'eslint', 'clang-format',
+  'pre-commit', 'prettier', 'yapf', 'shfmt', 'eslint', 'clang-format', 'ruff',
   'python@3', # 'node', 'ruby', 'gcc', 'llvm', 'go', 'rustup-init',
   'openjdk@17', # 'openjdk@8', 'openjdk@11', 'openjdk', 'thrift',
   # 'maven',
