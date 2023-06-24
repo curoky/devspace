@@ -7,23 +7,23 @@ class RimeBundle < Formula
   # version '1.0.0'
 
   resource 'rime-emoji' do
-    url 'https://github.com/rime/rime-emoji/archive/master.zip'
+    url 'https://github.com/rime/rime-emoji/archive/master.tar.gz'
   end
 
   resource 'meow-emoji-rime' do
-    url 'https://github.com/hitigon/meow-emoji-rime/archive/master.zip'
+    url 'https://github.com/hitigon/meow-emoji-rime/archive/master.tar.gz'
   end
 
   resource 'rime-prelude' do
-    url 'https://github.com/rime/rime-prelude/archive/master.zip'
+    url 'https://github.com/rime/rime-prelude/archive/master.tar.gz'
   end
 
   resource 'rime-symbols' do
-    url 'https://github.com/fkxxyz/rime-symbols/archive/master.zip'
+    url 'https://github.com/fkxxyz/rime-symbols/archive/master.tar.gz'
   end
 
   resource 'rime-dict' do
-    url 'https://github.com/Iorest/rime-dict/archive/master.zip'
+    url 'https://github.com/Iorest/rime-dict/archive/master.tar.gz'
   end
 
   resource 'rime-cloverpinyin' do
@@ -31,7 +31,7 @@ class RimeBundle < Formula
   end
 
   resource 'rime-ice' do
-    url 'https://github.com/iDvel/rime-ice/archive/main.zip'
+    url 'https://github.com/iDvel/rime-ice/archive/main.tar.gz'
   end
 
   keg_only :versioned_formula
