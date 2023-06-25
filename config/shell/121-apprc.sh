@@ -44,17 +44,17 @@ fi
 #=-> homebrew
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
-# export HOMEBREW_PATCHELF_RB_WRITE=1
-# export HOMEBREW_EDITOR=code
-# export HOMEBREW_TEMP=$XDG_CACHE_HOME/brew  # default: ~/tmp
 export HOMEBREW_BOOTSNAP=1
 export HOMEBREW_BAT=1
 export HOMEBREW_BAT_CONFIG_PATH=$HOME/.config/bat/config
 export HOMEBREW_CC=gcc
-export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 export HOMEBREW_GIT_PATH=/nix/var/nix/profiles/default/bin/git
+# export HOMEBREW_PATCHELF_RB_WRITE=1
+# export HOMEBREW_EDITOR=code
+# export HOMEBREW_TEMP=$XDG_CACHE_HOME/brew  # default: ~/tmp
+# export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 # export HOMEBREW_CACHE=$XDG_CACHE_HOME/homebrew # get with brew --cache
-export HOMEBREW_INSTALL_FROM_API=1
+# export HOMEBREW_INSTALL_FROM_API=1
 
 #=-> flutter
 # export PUB_HOSTED_URL="https://mirrors.tuna.tsinghua.edu.cn/dart-pub/"
@@ -77,8 +77,7 @@ export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 # export NPM_CONFIG_REGISTRY=https://registry.npm.taobao.org
 
 #=-> git
-export FILTER_BRANCH_SQUELCH_WARNING=1
-export KRB5CCNAME=/tmp/krb5_ccache
+# export FILTER_BRANCH_SQUELCH_WARNING=1
 
 #=-> docker
 # export DOCKER_CLIENT_TIMEOUT=120
@@ -86,6 +85,7 @@ export KRB5CCNAME=/tmp/krb5_ccache
 
 #=-> Krb5
 # export KRB5_CONFIG=$CONFIG_HOME/krb5/krb5.conf
+export KRB5CCNAME=/tmp/krb5_ccache
 
 #=-> distcc
 # export DISTCC_IO_TIMEOUT=10000
@@ -142,7 +142,7 @@ export GOENV=$CONFIG_HOME/go/env
 # export GHQ_ROOT=
 
 #=-> cpm
-export CPM_SOURCE_CACHE=$XDG_CACHE_HOME/cpm
+# export CPM_SOURCE_CACHE=$XDG_CACHE_HOME/cpm
 
 #=->vcpkg
 export VCPKG_DOWNLOADS=$XDG_CACHE_HOME/vcpkg/download
@@ -178,11 +178,4 @@ export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 export JAVA_HOME=/nix/var/nix/profiles/jdk11
 if [[ ! -d $JAVA_HOME ]]; then
   export JAVA_HOME=/opt/homebrew/opt/openjdk@17
-fi
-
-#-> fzf
-# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
-FZF_BASE=$BREW_PREFIX/opt/fzf
-if [[ ! -d $FZF_BASE ]]; then
-  FZF_BASE=/nix/var/nix/profiles/default/share/fzf
 fi

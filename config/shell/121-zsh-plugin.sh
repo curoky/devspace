@@ -63,7 +63,7 @@ plugins=(
 # SPACESHIP_TIME_SHOW=true
 # SPACESHIP_XCODE_SHOW_LOCAL=false
 
-#=-> [zsh-plugin] z
+#=-> z
 # _Z_CMD=j
 # _Z_DATA="conf/.z/$MY_HOST_NAME.$(id -u).z"
 # _Z_NO_RESOLVE_SYMLINKS=1
@@ -74,6 +74,13 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
 ZSH_AUTOSUGGEST_MANUAL_REBIND=0
 # for hyper-hypest/iterm2 https://jonasjacek.github.io/colors/
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
+
+#-> fzf
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
+FZF_BASE=$BREW_PREFIX/opt/fzf
+if [[ ! -d $FZF_BASE ]]; then
+  FZF_BASE=/nix/var/nix/profiles/default/share/fzf
+fi
 
 #=-> zsh history
 # https://zsh.sourceforge.io/Doc/Release/Options.html
