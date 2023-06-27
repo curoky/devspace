@@ -62,6 +62,7 @@ pkg_list=(
   # tools
   nixpkgs.graphviz nixpkgs.asciinema nixpkgs.gdu nixpkgs.ncdu nixpkgs.silver-searcher nixpkgs.parallel
   nixpkgs.exa nixpkgs.fzf nixpkgs.cloc nixpkgs.go-task nixpkgs.krb5 nixpkgs.ansible nixpkgs.earthly
+  nixpkgs.vultr-cli
   # nixpkgs.jemalloc nixpkgs.flamegraph nixpkgs.dolt nixpkgs.watchman nixpkgs.opencc
   # nixpkgs.atuin nixpkgs.nnn nixpkgs.ranger nixpkgs.lcov nixpkgs.gcovr nixpkgs.navi nixpkgs.ghq
   # nixpkgs.sqlcipher nixpkgs.sqlite nixpkgs.zoxide nixpkgs.wishlist
