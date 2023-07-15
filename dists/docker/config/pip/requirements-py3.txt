@@ -93,7 +93,7 @@ pynacl
 #################### large scale data ####################
 pymongo
 PyMySQL
-sqlmodel
+# sqlmodel
 python-consul
 kafka-python >= 2.0.2
 kazoo
