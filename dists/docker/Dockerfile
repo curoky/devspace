@@ -37,13 +37,6 @@ RUN nix-channel --update \
 FROM ubuntu:23.04
 LABEL org.opencontainers.image.authors="cccuroky@gmail.com"
 
-# Note: g=u doesn't really work. https://github.com/moby/buildkit/issues/1951
-COPY --chown=1000:1000 --chmod=g=u --from=golang /root/go/bin /home/cicada/go/bin
-COPY --chown=1000:1000 --chmod=g=u --from=vcpkg /opt/vcpkg /opt/vcpkg
-COPY --chown=1000:1000 --chmod=g=u --from=conda /opt/conda /opt/conda
-COPY --chown=1000:1000 --chmod=g=u --from=homebrew /home/linuxbrew /home/linuxbrew
-COPY --chown=1000:1000 --chmod=g=u --from=nixpkgs /nix /nix
-
 ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/linuxbrew/.linuxbrew/bin \
   DEBIAN_FRONTEND=noninteractive \
   # NIX_SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
@@ -52,27 +45,30 @@ ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/linuxbrew/.linuxbrew/bin 
   LC_ALL=en_US.UTF-8 \
   LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
+# Note: g=u doesn't really work. https://github.com/moby/buildkit/issues/1951
+COPY --chown=1000:1000 --chmod=g=u --from=golang /root/go/bin /home/cicada/go/bin
+COPY --chown=1000:1000 --chmod=g=u --from=vcpkg /opt/vcpkg /opt/vcpkg
+COPY --chown=1000:1000 --chmod=g=u --from=conda /opt/conda /opt/conda
+COPY --chown=1000:1000 --chmod=g=u --from=homebrew /home/linuxbrew /home/linuxbrew
+COPY --chown=1000:1000 --chmod=g=u --from=nixpkgs /nix /nix
+
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     ca-certificates locales tzdata sudo init systemd \
     openssh-server rsyslog cron \
-    gcc-13 g++-13 \
+    gcc g++ gcc-13 g++-13 \
     # xfce4 xfce4-goodies tightvncserver
-  && apt purge -y --allow-remove-essential \
-    # tar coreutils diffutils sed \
-    xz-utils curl grep gzip git findutils \
   && apt-get autoremove -y \
-  && locale-gen en_US.UTF-8
+  && locale-gen en_US.UTF-8 \
+  && userdel ubuntu && rm -rf /home/ubuntu
 
 RUN curl -sSL https://get.docker.com/ | sh -s
 
 COPY ./ /opt/dotbox/
 
 # TODO(curoky): remove follow tricks
-RUN userdel ubuntu && rm -rf /home/ubuntu \
-  && ln -s /nix/var/nix/profiles/default/bin/gzip /usr/bin/gzip \
-  && ln -s /nix/var/nix/profiles/default/bin/grep /usr/bin/grep \
-  && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
+RUN ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
+  && /opt/dotbox/images/script/setup-bazel-registry.sh \
   && /opt/dotbox/images/script/setup-gcc-as-default.sh
 
 RUN ansible-galaxy collection install community.general \

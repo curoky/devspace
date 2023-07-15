@@ -18,12 +18,13 @@
 
 update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 \
   15 \
-  --slave /usr/bin/cc cc /usr/bin/gcc-13 \
-  --slave /usr/bin/c++ c++ /usr/bin/g++-13 \
-  --slave /usr/bin/g++ g++ /usr/bin/g++-13 \
   --slave /usr/bin/gcov gcov /usr/bin/gcov-13 \
   --slave /usr/bin/gcov-dump gcov-dump /usr/bin/gcov-dump-13 \
   --slave /usr/bin/gcov-tool gcov-tool /usr/bin/gcov-tool-13 \
   --slave /usr/bin/gcc-ar gcc-ar /usr/bin/gcc-ar-13 \
   --slave /usr/bin/gcc-nm gcc-nm /usr/bin/gcc-nm-13 \
   --slave /usr/bin/gcc-ranlib gcc-ranlib /usr/bin/gcc-ranlib-13
+
+update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 15
+update-alternatives --install /usr/bin/cc cc /usr/bin/gcc-13 15
+update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-13 15
