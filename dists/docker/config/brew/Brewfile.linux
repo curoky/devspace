@@ -13,7 +13,7 @@ brews = [
   # 'cmake',
   # 'ninja', 'distcc', 'ccache', 'scons', 'meson', 'ant',
   # 'bazel', 'poetry', 'yarn', 'pipenv', 'gradle', 'maven', 'facebook/fb/buck',
-  'conan', # 'bazelisk',
+  # 'conan', 'bazelisk',
   # 'thought-machine/please/please', 'spack',
   # linter
   'yapf', # 'pre-commit', 'prettier', 'shfmt', 'buildifier', 'eslint', 'clang-format',

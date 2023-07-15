@@ -31,7 +31,7 @@ pkg_list=(
   nixpkgs.automake nixpkgs.autoconf nixpkgs.libtool nixpkgs.pkg-config nixpkgs.gnumake
   nixpkgs.cmake nixpkgs.ninja nixpkgs.distcc nixpkgs.bazelisk nixpkgs.ccache nixpkgs.mold
   nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven nixpkgs.nodejs
-  nixpkgs.clang-tools_16 nixpkgs.lld_16 nixpkgs.go_1_20 nixpkgs.ruby
+  nixpkgs.clang-tools_16 nixpkgs.lld_16 nixpkgs.go_1_20 nixpkgs.ruby nixpkgs.pipx
   # nixpkgs.lua nixpkgs.vlang nixpkgs.rustup nixpkgs.buck nixpkgs.scons nixpkgs.meson nixpkgs.ant
   # nixpkgs.include-what-you-use
   # nixpkgs.poetry formatter and linter

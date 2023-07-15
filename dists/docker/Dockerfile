@@ -83,6 +83,7 @@ USER cicada
 
 RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon
 RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
+RUN pipx install conan==1.60.1
 
 USER root
 ENTRYPOINT ["/opt/dotbox/images/script/entrypoint.sh"]
