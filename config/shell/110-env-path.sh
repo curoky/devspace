@@ -26,6 +26,7 @@ ENV_PATHS=(
   "$BREW_PREFIX/opt/grep/libexec/gnubin"
   "$BREW_PREFIX/opt/openssl@3/bin"
   "$BREW_PREFIX/opt/unzip/bin"
+  "$BREW_PREFIX/opt/ruby/bin"
 )
 for p in "${ENV_PATHS[@]}"; do
   [[ -d $p ]] && export PATH=$p:$PATH
