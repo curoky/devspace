@@ -26,16 +26,17 @@
   },
   "http.proxySupport": "off",
   "java.configuration.runtimes": [
-    {
-      "name": "JavaSE-1.8",
-      "path": "/nix/var/nix/profiles/jdk8/lib/openjdk"
-    },
+    // {
+    //   "name": "JavaSE-1.8",
+    //   "path": "/nix/var/nix/profiles/jdk8/lib/openjdk"
+    // },
+    // {
+    //   "default": true,
+    //   "name": "JavaSE-11",
+    //   "path": "/nix/var/nix/profiles/jdk11/lib/openjdk"
+    // }
     {
       "default": true,
-      "name": "JavaSE-11",
-      "path": "/nix/var/nix/profiles/jdk11/lib/openjdk"
-    },
-    {
       "name": "JavaSE-19",
       "path": "/nix/var/nix/profiles/jdk19/lib/openjdk"
     }
