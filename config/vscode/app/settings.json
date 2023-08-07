@@ -328,7 +328,7 @@
   "notebook.formatOnSave.enabled": true,
   "notebook.lineNumbers": "on",
   "prettier.jsxSingleQuote": true,
-  "prettier.prettierPath": "/opt/homebrew/opt/prettier/libexec/bin",
+  "prettier.prettierPath": "/opt/homebrew/opt/prettier/libexec/lib/node_modules/prettier/index.cjs",
   // pylint has memory leak https://github.com/microsoft/vscode-pylint/issues/280
   "pylint.args": ["--clear-cache-post-run"],
   "python.analysis.autoImportCompletions": true,
