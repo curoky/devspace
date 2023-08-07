@@ -77,7 +77,7 @@ export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 # export NPM_CONFIG_REGISTRY=https://registry.npm.taobao.org
 
 #=-> git
-# export FILTER_BRANCH_SQUELCH_WARNING=1
+export FILTER_BRANCH_SQUELCH_WARNING=1
 
 #=-> docker
 # export DOCKER_CLIENT_TIMEOUT=120

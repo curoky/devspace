@@ -46,7 +46,7 @@
   "java.trace.server": "verbose",
   "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],
   "markdown-preview-enhanced.pandocPath": "/nix/var/nix/profiles/default/bin/pandoc",
-  "prettier.prettierPath": "/nix/var/nix/profiles/default/lib/node_modules/prettier",
+  "prettier.prettierPath": "/nix/var/nix/profiles/default/lib/node_modules/prettier/index.cjs",
   "python.defaultInterpreterPath": "/opt/conda/envs/py3/bin/python",
   "python.formatting.yapfPath": "/home/linuxbrew/.linuxbrew/bin/yapf",
   "remote.autoForwardPortsSource": "output",
