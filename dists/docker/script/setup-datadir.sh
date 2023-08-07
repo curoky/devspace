@@ -17,7 +17,7 @@
 # limitations under the License.
 set -euo pipefail
 
-function try_link() {
+function try_link_to() {
   local src=$1
   local dst=$2
 
@@ -35,5 +35,9 @@ function try_link() {
   ln -s $src $dst
 }
 
-try_link $HOME/repos/vscode-server $HOME/.vscode-server
-try_link $HOME/repos/dotbox $HOME/dotbox
+sudo mkdir -p /data/vscode-server /data/workspace /data/cache
+sudo chown -R cicada:cicada /data
+
+try_link_to /data/vscode-server $HOME/.vscode-server
+try_link_to /data/workspace $HOME/repos
+try_link_to /data/cache $HOME/.cache

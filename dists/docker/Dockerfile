@@ -7,7 +7,7 @@ RUN rm -rf /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/homebrew/homebrew-co
   && ./setup-pkg-brew.sh Brewfile.linux \
   && rm -rf "$(brew --cache)"
 
-FROM ghcr.io/conda/conda-ci:master-linux-python3.10 as conda
+FROM ghcr.io/conda/conda-ci:main-linux-python3.11 as conda
 USER root
 COPY images/config/pip/*.txt .
 RUN /opt/conda/bin/conda create -n py2 python=2 --yes \
@@ -46,8 +46,8 @@ ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/linuxbrew/.linuxbrew/bin 
   LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
 # Note: g=u doesn't really work. https://github.com/moby/buildkit/issues/1951
+# COPY --chown=1000:1000 --chmod=g=u --from=vcpkg /opt/vcpkg /opt/vcpkg
 COPY --chown=1000:1000 --chmod=g=u --from=golang /root/go/bin /home/cicada/go/bin
-COPY --chown=1000:1000 --chmod=g=u --from=vcpkg /opt/vcpkg /opt/vcpkg
 COPY --chown=1000:1000 --chmod=g=u --from=conda /opt/conda /opt/conda
 COPY --chown=1000:1000 --chmod=g=u --from=homebrew /home/linuxbrew /home/linuxbrew
 COPY --chown=1000:1000 --chmod=g=u --from=nixpkgs /nix /nix
@@ -66,20 +66,23 @@ RUN curl -sSL https://get.docker.com/ | sh -s
 
 COPY ./ /opt/dotbox/
 
-# TODO(curoky): remove follow tricks
-RUN ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
-  && /opt/dotbox/images/script/setup-bazel-registry.sh \
-  && /opt/dotbox/images/script/setup-gcc-as-default.sh
-
 RUN ansible-galaxy collection install community.general \
   && ansible-playbook -vvv /opt/dotbox/images/site.yaml \
-  && rm -rf ~/.ansible
+  && rm -rf ~/.ansible \
+  && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
+  && /opt/dotbox/images/script/setup-bazel-registry.sh \
+  && /opt/dotbox/images/script/setup-gcc-as-default.sh \
+  && /opt/dotbox/images/script/setup-dotfiles.sh
 
 USER cicada
 
-RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon
-RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
-RUN pipx install conan==1.60.1
+RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
+  && curl -sSf https://sh.rustup.rs | sh -s -- -y \
+  && pipx install conan==1.60.1
+
+RUN sudo mkdir /data \
+ && sudo chown -R cicada:cicada /data /opt \
+ && /opt/dotbox/images/script/setup-dotfiles.sh
 
 USER root
 ENTRYPOINT ["/opt/dotbox/images/script/entrypoint.sh"]

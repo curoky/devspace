@@ -36,8 +36,8 @@ pkg_list=(
   # nixpkgs.include-what-you-use
   # nixpkgs.poetry formatter and linter
   nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.yapf nixpkgs.nixpkgs-fmt
-  nixpkgs.shfmt nixpkgs.buildifier nixpkgs.nodePackages.eslint # nixpkgs.cppcheck
-  nixpkgs.cmake-format nixpkgs.shellcheck nixpkgs.ruff
+  nixpkgs.shfmt nixpkgs.buildifier nixpkgs.nodePackages.eslint # nixpkgs.cppcheck nixpkgs.cmake-format
+  nixpkgs.ruff                                                 # nixpkgs.shellcheck
   # git
   nixpkgs.git nixpkgs.git-absorb nixpkgs.git-extras nixpkgs.git-lfs nixpkgs.git-filter-repo
   # nixpkgs.lazygit
@@ -55,13 +55,13 @@ pkg_list=(
   nixpkgs.pandoc # nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo
   # shell
   nixpkgs.zsh nixpkgs.bash
-  nixpkgs.starship nixpkgs.direnv nixpkgs.tmux # nixpkgs.tmuxinator
+  nixpkgs.starship nixpkgs.tmux # nixpkgs.tmuxinator nixpkgs.direnv
   # editor
   nixpkgs.flex nixpkgs.bison nixpkgs.gnupatch nixpkgs.gettext nixpkgs.m4 # nixpkgs.helix
   nixpkgs.jq nixpkgs.vim nixpkgs.bat nixpkgs.less nixpkgs.gnused nixpkgs.gnugrep nixpkgs.gzip
   # tools
   nixpkgs.graphviz nixpkgs.asciinema nixpkgs.gdu nixpkgs.ncdu nixpkgs.silver-searcher nixpkgs.parallel
-  nixpkgs.exa nixpkgs.fzf nixpkgs.cloc nixpkgs.go-task nixpkgs.krb5 nixpkgs.ansible nixpkgs.earthly
+  nixpkgs.exa nixpkgs.fzf nixpkgs.cloc nixpkgs.go-task nixpkgs.krb5 nixpkgs.ansible # nixpkgs.earthly
   nixpkgs.vultr-cli
   # nixpkgs.jemalloc nixpkgs.flamegraph nixpkgs.dolt nixpkgs.watchman nixpkgs.opencc
   # nixpkgs.atuin nixpkgs.nnn nixpkgs.ranger nixpkgs.lcov nixpkgs.gcovr nixpkgs.navi nixpkgs.ghq
@@ -75,8 +75,8 @@ nix-env -p /nix/var/nix/profiles/default -iA "${pkg_list[@]}"
 # nix-env -iA -p /nix/var/nix/profiles/flutter nixpkgs.flutter
 # nix-env -iA -p /nix/var/nix/profiles/dart nixpkgs.dart
 # nix-env -iA -p /nix/var/nix/profiles/protobuf3_17 nixpkgs.protobuf3_17
-nix-env -iA -p /nix/var/nix/profiles/jdk8 nixpkgs.jdk8
-nix-env -iA -p /nix/var/nix/profiles/jdk11 nixpkgs.jdk11
+# nix-env -iA -p /nix/var/nix/profiles/jdk8 nixpkgs.jdk8
+# nix-env -iA -p /nix/var/nix/profiles/jdk11 nixpkgs.jdk11
 nix-env -iA -p /nix/var/nix/profiles/jdk19 nixpkgs.jdk19
 # nix-env -iA -p /nix/var/nix/profiles/dotnet nixpkgs.dotnet-sdk
 # nix-env -iA -p /nix/var/nix/profiles/perl nixpkgs.perl

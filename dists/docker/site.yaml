@@ -59,37 +59,3 @@
             commands: ALL
             state: present
           with_items: '{{ users }}'
-
-    - name: Setup dotbox
-      block:
-        - ansible.builtin.git:
-            repo: https://github.com/curoky/dotbox.git
-            dest: '{{ item }}/dotbox'
-            version: master
-          with_items:
-            - /root
-            - /home/cicada
-
-        - ansible.builtin.file:
-            path: '{{ item.dotbox }}'
-            owner: '{{ item.name }}'
-            group: '{{ item.name }}'
-            recurse: true
-          with_items: '{{ users }}'
-
-        - ansible.builtin.shell:
-            cmd: cd ~/dotbox && dotdrop install --force --profile=devbox-userconf
-          become: true
-          become_user: '{{ item }}'
-          with_items:
-            - root
-            - cicada
-
-    - name: Setup sysconf
-      ansible.builtin.shell: dotdrop install --cfg=/opt/dotbox/config.yaml --force --profile=devbox-sysconf
-
-    - name: Change /opt ownership
-      ansible.builtin.file:
-        path: /opt
-        owner: cicada
-        group: cicada
