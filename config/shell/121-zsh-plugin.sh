@@ -91,8 +91,8 @@ if [[ -d "$WORKSPACE/backup/app/shell-history" ]]; then
   HISTFILE="$WORKSPACE/backup/app/shell-history/$MY_HOST_NAME.$(id -u).zsh_history"
 elif [[ -d ~/"Library/Mobile Documents/com~apple~CloudDocs/backup/shell-history" ]]; then
   HISTFILE=~/"Library/Mobile Documents/com~apple~CloudDocs/backup/shell-history/$MY_HOST_NAME.$(id -u).zsh_history"
-elif [[ -d "$WORKSPACE/backup/shell-input-history" ]]; then
-  HISTFILE="$WORKSPACE/backup/shell-input-history/$MY_HOST_NAME.$(id -u).zsh_history"
+elif [[ -d "$WORKSPACE/shell-input-history" ]]; then
+  HISTFILE="$WORKSPACE/shell-input-history/$MY_HOST_NAME.$(id -u).zsh_history"
 fi
 # HISTSIZE=30000
 # SAVEHIST=20000

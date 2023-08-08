@@ -84,3 +84,6 @@ path = ~/dotbox/config/git/.user.gitconfig
 
 [includeIf "gitdir:/Volumes/"]
 path = ~/dotbox/config/git/.user.gitconfig
+
+[includeIf "gitdir:/data/workspace"]
+path = ~/dotbox/config/git/.user.gitconfig

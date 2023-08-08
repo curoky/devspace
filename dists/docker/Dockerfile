@@ -71,7 +71,7 @@ RUN ansible-galaxy collection install community.general \
   && rm -rf ~/.ansible \
   && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
   && /opt/dotbox/images/script/setup-bazel-registry.sh \
-  && /opt/dotbox/images/script/setup-gcc-as-default.sh \
+  # && /opt/dotbox/images/script/setup-gcc-as-default.sh \
   && /opt/dotbox/images/script/setup-dotfiles.sh
 
 USER cicada
