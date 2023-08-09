@@ -49,7 +49,7 @@
     "headerLineSuffix": ""
   },
   "c": {
-    "extensions": [".c", ".cc", ".cpp", "c++", ".h", ".hpp"],
+    "extensions": [".c", ".cc", ".cpp", ".c++", ".h", ".hpp", ".cu"],
     "keepFirst": "",
     "blockCommentStartPattern": "^\\s*/\\*",
     "blockCommentEndPattern": "\\*/\\s*$",
