@@ -62,7 +62,14 @@ RUN apt-get update \
   && locale-gen en_US.UTF-8 \
   && userdel ubuntu && rm -rf /home/ubuntu
 
+# install docker
 RUN curl -sSL https://get.docker.com/ | sh -s
+
+# install cuda
+RUN curl -sSL -o cuda_linux.run https://developer.download.nvidia.com/compute/cuda/12.2.1/local_installers/cuda_12.2.1_535.86.10_linux.run \
+  && chmod +x cuda_linux.run \
+  && ./cuda_linux.run --silent --toolkit \
+  && rm -f cuda_linux.run
 
 COPY ./ /opt/dotbox/
 
@@ -72,17 +79,22 @@ RUN ansible-galaxy collection install community.general \
   && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
   && /opt/dotbox/images/script/setup-bazel-registry.sh \
   # && /opt/dotbox/images/script/setup-gcc-as-default.sh \
-  && /opt/dotbox/images/script/setup-dotfiles.sh
+  && /opt/dotbox/images/script/setup-dotfiles.sh \
+  && mkdir /data \
+  && chown -R cicada:cicada /data /opt
 
 USER cicada
 
-RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
-  && curl -sSf https://sh.rustup.rs | sh -s -- -y \
-  && pipx install conan==1.60.1
+# install nixpkg
+RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon
 
-RUN sudo mkdir /data \
- && sudo chown -R cicada:cicada /data /opt \
- && /opt/dotbox/images/script/setup-dotfiles.sh
+# install rust
+RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
+
+# install conan
+RUN pipx install conan==1.60.1
+
+RUN /opt/dotbox/images/script/setup-dotfiles.sh
 
 USER root
 ENTRYPOINT ["/opt/dotbox/images/script/entrypoint.sh"]
