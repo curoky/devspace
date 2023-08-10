@@ -14,6 +14,11 @@ RUN /opt/conda/bin/conda create -n py2 python=2 --yes \
   && /opt/conda/envs/py2/bin/pip install --no-cache-dir -r requirements-py2.txt \
   && /opt/conda/bin/conda create -n py3 python=3.11 -c conda-forge --yes \
   && /opt/conda/envs/py3/bin/pip install --no-cache-dir -r requirements-py3.txt \
+  && /opt/conda/bin/conda create -n tf python=3.11 -c conda-forge --yes \
+  && /opt/conda/envs/tf/bin/pip install --no-cache-dir nvidia-cudnn-cu11==8.* tensorflow==2.13.* \
+  && conda install -c conda-forge cudatoolkit=11.8.0 --yes \
+  && mkdir -p /opt/conda/envs/tf/etc/conda/activate.d \
+  && echo 'export LD_LIBRARY_PATH=/opt/conda/envs/tf/lib/:/opt/conda/envs/tf/lib/python3.11/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH' >> /opt/conda/envs/tf/etc/conda/activate.d/env_vars.sh \
   && /opt/conda/bin/conda clean --all -y
 
 FROM ubuntu:latest as vcpkg
@@ -66,7 +71,7 @@ RUN apt-get update \
 RUN curl -sSL https://get.docker.com/ | sh -s
 
 # install cuda
-RUN curl -sSL -o cuda_linux.run https://developer.download.nvidia.com/compute/cuda/12.2.1/local_installers/cuda_12.2.1_535.86.10_linux.run \
+RUN curl -sSL -o cuda_linux.run https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run \
   && chmod +x cuda_linux.run \
   && ./cuda_linux.run --silent --toolkit \
   && rm -f cuda_linux.run
