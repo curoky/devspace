@@ -175,7 +175,7 @@ export VCPKG_DOWNLOADS=$XDG_CACHE_HOME/vcpkg/download
 export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
 #-> java
-export JAVA_HOME=/nix/var/nix/profiles/jdk11
+export JAVA_HOME=/nix/var/nix/profiles/jdk19
 if [[ ! -d $JAVA_HOME ]]; then
   export JAVA_HOME=/opt/homebrew/opt/openjdk@17
 fi

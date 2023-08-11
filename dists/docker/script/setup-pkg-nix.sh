@@ -27,17 +27,20 @@ export PATH=/nix/var/nix/profiles/default/bin:$PATH
 #  nixpkgs.conan nixpkgs.bazel_5
 
 pkg_list=(
-  # build tools
+  # lang
   nixpkgs.automake nixpkgs.autoconf nixpkgs.libtool nixpkgs.pkg-config nixpkgs.gnumake
-  nixpkgs.cmake nixpkgs.ninja nixpkgs.distcc nixpkgs.bazelisk nixpkgs.ccache nixpkgs.mold
-  nixpkgs.yarn nixpkgs.pipenv nixpkgs.gradle nixpkgs.maven nixpkgs.nodejs
-  nixpkgs.clang-tools_16 nixpkgs.lld_16 nixpkgs.go_1_20 nixpkgs.ruby nixpkgs.pipx
-  # nixpkgs.lua nixpkgs.vlang nixpkgs.rustup nixpkgs.buck nixpkgs.scons nixpkgs.meson nixpkgs.ant
-  # nixpkgs.include-what-you-use
-  # nixpkgs.poetry formatter and linter
-  nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.yapf nixpkgs.nixpkgs-fmt
-  nixpkgs.shfmt nixpkgs.buildifier nixpkgs.nodePackages.eslint nixpkgs.ruff
-  # nixpkgs.cppcheck nixpkgs.cmake-format nixpkgs.shellcheck
+  nixpkgs.ninja nixpkgs.distcc nixpkgs.ccache # nixpkgs.buck nixpkgs.scons nixpkgs.meson
+  nixpkgs.clang-tools_16 nixpkgs.lld_16 nixpkgs.mold
+  nixpkgs.zsh nixpkgs.bash nixpkgs.shfmt                                 # nixpkgs.shellcheck
+  nixpkgs.cmake nixpkgs.cmake-format nixpkgs.bazelisk nixpkgs.buildifier # nixpkgs.cppcheck nixpkgs.include-what-you-use
+  nixpkgs.go
+  nixpkgs.ruby
+  nixpkgs.nodejs nixpkgs.yarn nixpkgs.nodePackages.prettier nixpkgs.nodePackages.eslint
+  nixpkgs.gradle nixpkgs.maven                          # nixpkgs.ant
+  nixpkgs.pipenv nixpkgs.pipx nixpkgs.ruff nixpkgs.yapf # nixpkgs.poetry
+  nixpkgs.rustc nixpkgs.cargo                           # nixpkgs.rustup
+  nixpkgs.pre-commit nixpkgs.nixpkgs-fmt
+  # nixpkgs.lua nixpkgs.vlang
   # git
   nixpkgs.git nixpkgs.git-absorb nixpkgs.git-extras nixpkgs.git-lfs nixpkgs.git-filter-repo
   # nixpkgs.lazygit
@@ -47,14 +50,13 @@ pkg_list=(
   nixpkgs.iproute2 nixpkgs.iputils nixpkgs.netcat nixpkgs.lsof nixpkgs.connect
   nixpkgs.procps nixpkgs.nettools nixpkgs.fd nixpkgs.ethtool nixpkgs.tcpdump nixpkgs.gdb
   nixpkgs.dstat nixpkgs.rsync nixpkgs.file nixpkgs.gperf nixpkgs.man
-  nixpkgs.curl nixpkgs.wget nixpkgs.aria2 nixpkgs.croc nixpkgs.iptables # nixpkgs.sudo
+  nixpkgs.curl nixpkgs.wget nixpkgs.aria2 nixpkgs.croc nixpkgs.iptables
   nixpkgs.gnupg nixpkgs.tzdata nixpkgs.unixtools.xxd nixpkgs.locale nixpkgs.util-linux
   nixpkgs.findutils nixpkgs.coreutils nixpkgs.diffutils
   # nixpkgs.gost nixpkgs.htop nixpkgs.cron
   # doc
   nixpkgs.pandoc # nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo
   # shell
-  nixpkgs.zsh nixpkgs.bash
   nixpkgs.starship nixpkgs.tmux # nixpkgs.tmuxinator nixpkgs.direnv
   # editor
   nixpkgs.flex nixpkgs.bison nixpkgs.gnupatch nixpkgs.gettext nixpkgs.m4 # nixpkgs.helix

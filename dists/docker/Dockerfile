@@ -51,10 +51,6 @@ ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/linuxbrew/.linuxbrew/bin 
   LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
 # Note: g=u doesn't really work. https://github.com/moby/buildkit/issues/1951
-# COPY --chown=1000:1000 --chmod=g=u --from=vcpkg /opt/vcpkg /opt/vcpkg
-COPY --chown=1000:1000 --chmod=g=u --from=golang /root/go/bin /home/cicada/go/bin
-COPY --chown=1000:1000 --chmod=g=u --from=conda /opt/conda /opt/conda
-COPY --chown=1000:1000 --chmod=g=u --from=homebrew /home/linuxbrew /home/linuxbrew
 COPY --chown=1000:1000 --chmod=g=u --from=nixpkgs /nix /nix
 
 RUN apt-get update \
@@ -76,7 +72,11 @@ RUN curl -sSL -o cuda_linux.run https://developer.download.nvidia.com/compute/cu
   && ./cuda_linux.run --silent --toolkit \
   && rm -f cuda_linux.run
 
-COPY ./ /opt/dotbox/
+# COPY --chown=1000:1000 --chmod=g=u --from=vcpkg /opt/vcpkg /opt/vcpkg
+COPY --chown=1000:1000 --chmod=g=u --from=homebrew /home/linuxbrew /home/linuxbrew
+COPY --chown=1000:1000 --chmod=g=u --from=golang /root/go/bin /home/cicada/go/bin
+COPY --chown=1000:1000 --chmod=g=u --from=conda /opt/conda /opt/conda
+COPY --chown=1000:1000 --chmod=g=u ./ /opt/dotbox/
 
 RUN ansible-galaxy collection install community.general \
   && ansible-playbook -vvv /opt/dotbox/images/site.yaml \
@@ -86,7 +86,7 @@ RUN ansible-galaxy collection install community.general \
   # && /opt/dotbox/images/script/setup-gcc-as-default.sh \
   && /opt/dotbox/images/script/setup-dotfiles.sh \
   && mkdir /data \
-  && chown -R cicada:cicada /data /opt
+  && chown cicada:cicada /data /opt
 
 USER cicada
 
@@ -94,7 +94,7 @@ USER cicada
 RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon
 
 # install rust
-RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
+# RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
 
 # install conan
 RUN pipx install conan==1.60.1
