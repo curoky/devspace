@@ -21,3 +21,6 @@ Host github.com
 
 Host bitbucket.org
   IdentityFile ~/mackup/conf/ssh/github.private.id_rsa
+
+Host tmate.io
+  IdentityFile ~/mackup/conf/ssh/github.private.id_rsa
