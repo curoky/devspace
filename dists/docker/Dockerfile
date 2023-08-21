@@ -57,7 +57,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     ca-certificates locales tzdata sudo init systemd \
     openssh-server rsyslog cron \
-    gcc g++ gcc-13 g++-13 \
+    gcc g++ gcc-11 g++-11 gcc-13 g++-13 \
     # xfce4 xfce4-goodies tightvncserver
   && apt-get autoremove -y \
   && locale-gen en_US.UTF-8 \
@@ -83,7 +83,7 @@ RUN ansible-galaxy collection install community.general \
   && rm -rf ~/.ansible \
   && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
   && /opt/dotbox/images/script/setup-bazel-registry.sh \
-  # && /opt/dotbox/images/script/setup-gcc-as-default.sh \
+  && /opt/dotbox/images/script/setup-gcc-as-default.sh \
   && /opt/dotbox/images/script/setup-dotfiles.sh \
   && mkdir /data \
   && chown cicada:cicada /data /opt
