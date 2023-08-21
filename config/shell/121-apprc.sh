@@ -145,7 +145,7 @@ export GOENV=$CONFIG_HOME/go/env
 # export CPM_SOURCE_CACHE=$XDG_CACHE_HOME/cpm
 
 #=->vcpkg
-export VCPKG_DOWNLOADS=$XDG_CACHE_HOME/vcpkg/download
+# export VCPKG_DOWNLOADS=$XDG_CACHE_HOME/vcpkg/download
 
 #=-> atuin
 # export ATUIN_NOBIND="true"
@@ -179,3 +179,6 @@ export JAVA_HOME=/nix/var/nix/profiles/jdk19
 if [[ ! -d $JAVA_HOME ]]; then
   export JAVA_HOME=/opt/homebrew/opt/openjdk@17
 fi
+
+#-> cuda
+# export CUDA_PATH=/usr/local/cuda
