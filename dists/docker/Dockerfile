@@ -67,7 +67,9 @@ RUN apt-get update \
 RUN curl -sSL https://get.docker.com/ | sh -s
 
 # install cuda
-RUN curl -sSL -o cuda_linux.run https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run \
+# https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run \
+RUN curl -sSL -o cuda_linux.run \
+    https://developer.download.nvidia.com/compute/cuda/11.7.0/local_installers/cuda_11.7.0_515.43.04_linux.run \
   && chmod +x cuda_linux.run \
   && ./cuda_linux.run --silent --toolkit \
   && rm -f cuda_linux.run
