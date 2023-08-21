@@ -1,0 +1,17 @@
+nvidia-cudnn-cu11==8.*
+
+ipykernel
+plotly
+
+numpy
+pandas
+scipy
+statsmodels
+scikit-learn
+tensorflow==2.13.*
+tensorrt
+
+jieba
+
+# clip-server
+clip-client

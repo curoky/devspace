@@ -41,26 +41,19 @@ pyexiftool
 
 #################### draw && jupyter ####################
 graphviz
-ipykernel >= 6.15.1
-ipywidgets >= 7.7.1
+ipykernel
+ipywidgets
 jupyterlab
 kaleido
 bqplot
-plotly >= 5.10.0
-matplotlib >= 3.5.3
+plotly
+matplotlib
 # seaborn
 # voila
 
 #################### data science && math tools ####################
-scipy
-numpy
-pandas >= 1.4.3
-jieba
-scikit-learn
-clip-client
-# clip-server
-# tensorflow >= 2.11.0
-statsmodels
+# numpy
+# pandas >= 1.4.3
 
 #################### map && gps ####################
 gpxpy
@@ -108,7 +101,7 @@ loguru
 #################### tools ####################
 # cmakelang
 # yapf
-licenseheaders
+# licenseheaders
 # pipdeptree
 
 #################### google api ####################

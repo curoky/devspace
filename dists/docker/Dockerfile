@@ -15,8 +15,8 @@ RUN /opt/conda/bin/conda create -n py2 python=2 --yes \
   && /opt/conda/bin/conda create -n py3 python=3.11 -c conda-forge --yes \
   && /opt/conda/envs/py3/bin/pip install --no-cache-dir -r requirements-py3.txt \
   && /opt/conda/bin/conda create -n tf python=3.11 -c conda-forge --yes \
-  && /opt/conda/envs/tf/bin/pip install --no-cache-dir nvidia-cudnn-cu11==8.* tensorflow==2.13.* \
-  && conda install -c conda-forge cudatoolkit=11.8.0 --yes \
+  && /opt/conda/envs/tf/bin/pip install --no-cache-dir -r requirements-ml.txt \
+  && conda install -c conda-forge cudatoolkit=11.7.0 --yes \
   && mkdir -p /opt/conda/envs/tf/etc/conda/activate.d \
   && echo 'export LD_LIBRARY_PATH=/opt/conda/envs/tf/lib/:/opt/conda/envs/tf/lib/python3.11/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH' >> /opt/conda/envs/tf/etc/conda/activate.d/env_vars.sh \
   && /opt/conda/bin/conda clean --all -y
@@ -97,7 +97,8 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon
 # RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
 
 # install conan
-RUN pipx install conan==1.60.1
+RUN pipx install conan==1.60.1 \
+  && pipx install licenseheaders
 
 RUN /opt/dotbox/images/script/setup-dotfiles.sh
 
