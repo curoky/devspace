@@ -16,9 +16,8 @@ RUN /opt/conda/bin/conda create -n py2 python=2 --yes \
   && /opt/conda/envs/py3/bin/pip install --no-cache-dir -r requirements-py3.txt \
   && /opt/conda/bin/conda create -n tf python=3.11 -c conda-forge --yes \
   && /opt/conda/envs/tf/bin/pip install --no-cache-dir -r requirements-ml.txt \
-  && conda install -c conda-forge cudatoolkit=11.8.0 --yes \
   && mkdir -p /opt/conda/envs/tf/etc/conda/activate.d \
-  && echo 'export LD_LIBRARY_PATH=/opt/conda/envs/tf/lib/:/opt/conda/envs/tf/lib/python3.11/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH' >> /opt/conda/envs/tf/etc/conda/activate.d/env_vars.sh \
+  && echo 'export LD_LIBRARY_PATH=/opt/conda/envs/tf/lib/:/nix/var/nix/profiles/cuda11_8/lib:/opt/conda/envs/tf/lib/python3.11/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH' >> /opt/conda/envs/tf/etc/conda/activate.d/env_vars.sh \
   && /opt/conda/bin/conda clean --all -y
 
 FROM ubuntu:latest as vcpkg
@@ -35,6 +34,8 @@ COPY images/script/setup-pkg-go.sh setup-pkg-go.sh
 RUN ./setup-pkg-go.sh requirements.txt
 
 FROM nixos/nix as nixpkgs
+ENV NIXPKGS_ALLOW_UNFREE=1 \
+  NIXPKGS_ALLOW_BROKEN=1
 COPY images/script/setup-pkg-nix.sh setup-pkg-nix.sh
 RUN nix-channel --update \
   && ./setup-pkg-nix.sh
@@ -50,12 +51,9 @@ ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/linuxbrew/.linuxbrew/bin 
   LC_ALL=en_US.UTF-8 \
   LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
-# Note: g=u doesn't really work. https://github.com/moby/buildkit/issues/1951
-COPY --chown=1000:1000 --chmod=g=u --from=nixpkgs /nix /nix
-
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-    ca-certificates locales tzdata sudo init systemd \
+    curl gnupg2 ca-certificates locales tzdata sudo init systemd \
     openssh-server rsyslog cron \
     gcc g++ gcc-11 g++-11 gcc-13 g++-13 \
     # xfce4 xfce4-goodies tightvncserver
@@ -66,14 +64,14 @@ RUN apt-get update \
 # install docker
 RUN curl -sSL https://get.docker.com/ | sh -s
 
-# install cuda
-# https://developer.download.nvidia.com/compute/cuda/11.7.0/local_installers/cuda_11.7.0_515.43.04_linux.run \
-RUN curl -sSL -o cuda_linux.run \
-    https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run \
-  && chmod +x cuda_linux.run \
-  && ./cuda_linux.run --silent --toolkit \
-  && rm -f cuda_linux.run
+# install nvidia
+RUN curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/3bf863cc.pub | apt-key add - \
+  && echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64 /" > /etc/apt/sources.list.d/cuda.list \
+  && apt-get update \
+  && apt-get install -y --no-install-recommends cuda-cudart-11-8 cuda-compat-11-8
 
+# Note: g=u doesn't really work. https://github.com/moby/buildkit/issues/1951
+COPY --chown=1000:1000 --chmod=g=u --from=nixpkgs /nix /nix
 # COPY --chown=1000:1000 --chmod=g=u --from=vcpkg /opt/vcpkg /opt/vcpkg
 COPY --chown=1000:1000 --chmod=g=u --from=homebrew /home/linuxbrew /home/linuxbrew
 COPY --chown=1000:1000 --chmod=g=u --from=golang /root/go/bin /home/cicada/go/bin

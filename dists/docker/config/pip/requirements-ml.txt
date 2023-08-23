@@ -1,3 +1,5 @@
+pytest
+
 nvidia-cudnn-cu11==8.*
 
 ipykernel

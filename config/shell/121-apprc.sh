@@ -181,4 +181,4 @@ if [[ ! -d $JAVA_HOME ]]; then
 fi
 
 #-> cuda
-# export CUDA_PATH=/usr/local/cuda
+export CUDA_HOME=/nix/var/nix/profiles/cuda11_8/

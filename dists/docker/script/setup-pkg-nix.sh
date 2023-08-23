@@ -24,7 +24,7 @@ export PATH=/nix/var/nix/profiles/default/bin:$PATH
 # brew bundle list --file /opt/dotbox/config/brew/Brewfile.linux | awk '{print "nixpkgs."$0}' | xargs -n 5 | awk '{print $0" \ \"}'
 
 # The following packages are not working properly with nix.
-#  nixpkgs.conan nixpkgs.bazel_5
+# nixpkgs.conan nixpkgs.bazel_5
 
 pkg_list=(
   # lang
@@ -92,5 +92,10 @@ nix-env -iA -p /nix/var/nix/profiles/llvm16 nixpkgs.llvmPackages_16.llvm
 nix-env -iA -p /nix/var/nix/profiles/llvm16-bintools nixpkgs.llvmPackages_16.bintools-unwrapped
 nix-env -iA -p /nix/var/nix/profiles/inetutils nixpkgs.inetutils
 # nix-env -iA -p /nix/var/nix/profiles/coreutils nixpkgs.coreutils
+
+nix-env -iA -p /nix/var/nix/profiles/cuda11_8 nixpkgs.cudaPackages_11_8.cudatoolkit
+# nixpkgs.cudaPackages_11_8.nsight_compute \
+# nixpkgs.cudaPackages_11_8.nsight_systems
+# nixpkgs.cudaPackages_11_8.cuda_nvvp
 
 nix-collect-garbage
