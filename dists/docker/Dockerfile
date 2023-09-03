@@ -10,7 +10,8 @@ RUN rm -rf /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/homebrew/homebrew-co
 FROM ghcr.io/conda/conda-ci:main-linux-python3.11 as conda
 USER root
 COPY images/config/pip/*.txt .
-RUN /opt/conda/bin/conda create -n py2 python=2 --yes \
+RUN apt-get -y update && apt-get install -y procps \
+  && /opt/conda/bin/conda create -n py2 python=2 --yes \
   && /opt/conda/envs/py2/bin/pip install --no-cache-dir -r requirements-py2.txt \
   && /opt/conda/bin/conda create -n py3 python=3.11 -c conda-forge --yes \
   && /opt/conda/envs/py3/bin/pip install --no-cache-dir -r requirements-py3.txt \
@@ -54,7 +55,7 @@ ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/linuxbrew/.linuxbrew/bin 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     curl gnupg2 ca-certificates locales tzdata sudo init systemd \
-    openssh-server rsyslog cron \
+    openssh-server rsyslog cron lsb-release \
     gcc g++ gcc-11 g++-11 gcc-13 g++-13 \
     # xfce4 xfce4-goodies tightvncserver
   && apt-get autoremove -y \
