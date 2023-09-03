@@ -42,6 +42,7 @@ ENV_PATHS=(
   "$HOME/.npm-global/bin"
   "$HOME/dotbox/tools"
   "$HOME/go/bin"
+  "/nix/var/nix/profiles/cuda11_8/bin"
 )
 for p in "${ENV_PATHS[@]}"; do
   [[ -d $p ]] && export PATH=$PATH:$p
