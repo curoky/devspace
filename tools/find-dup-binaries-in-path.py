@@ -20,18 +20,18 @@ import os
 from collections import defaultdict
 from pathlib import Path
 
-if __name__ == '__main__':
-    paths = map(lambda x: Path(x), sorted(set(os.environ['PATH'].split(':'))))
+if __name__ == "__main__":
+    paths = map(lambda x: Path(x), sorted(set(os.environ["PATH"].split(":"))))
 
     binsIndex = defaultdict(lambda: [])
     # binsFromPaths = {}
     for p in paths:
-        if p.as_posix() in ('/sbin', '/bin'):
+        if p.as_posix() in ("/sbin", "/bin"):
             continue
         if not p.is_dir():
             continue
         for f in filter(lambda x: x.is_file(), p.iterdir()):
-            if f.as_posix().startswith('/nix/var/nix/profiles/') and f.is_symlink():
+            if f.as_posix().startswith("/nix/var/nix/profiles/") and f.is_symlink():
                 f = f.readlink()
             binsIndex[f.name].append(f)
     for b, ps in binsIndex.items():

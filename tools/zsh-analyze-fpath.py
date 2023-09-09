@@ -15,10 +15,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-'''
+"""
 Usage:
 $ fpath | zsh-analyze-fpath.py
-'''
+"""
 
 import sys
 from collections import defaultdict
@@ -29,27 +29,27 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
-app = typer.Typer(add_completion=True, help='')
+app = typer.Typer(add_completion=True, help="")
 
 
 @app.command()
 def analyze():
     lines: list[str] = sys.stdin.readlines()
     if not lines:
-        raise typer.Abort('read null from stdin!')
+        raise typer.Abort("read null from stdin!")
     tablePathCount = Table()
-    tablePathCount.add_column('Path', justify='left', style='cyan', no_wrap=True)
-    tablePathCount.add_column('Count', style='magenta')
+    tablePathCount.add_column("Path", justify="left", style="cyan", no_wrap=True)
+    tablePathCount.add_column("Count", style="magenta")
     tableNameDup = Table()
-    tableNameDup.add_column('Name', justify='left', style='cyan', no_wrap=True)
-    tableNameDup.add_column('Path', style='magenta')
+    tableNameDup.add_column("Name", justify="left", style="cyan", no_wrap=True)
+    tableNameDup.add_column("Path", style="magenta")
 
     name2path: dict[str, list[str]] = defaultdict(list)
     for p in set(map(lambda line: line.strip(), lines)):
         count = 0
-        for f in Path(p).glob('_*'):
+        for f in Path(p).glob("_*"):
             count += 1
-            if f.name == '_ninja':
+            if f.name == "_ninja":
                 print(p)
             name2path[f.name].append(p)
         if count:
@@ -65,5 +65,5 @@ def analyze():
     console.print(tableNameDup)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app()
