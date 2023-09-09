@@ -17,10 +17,7 @@
 
 export CONFIG_HOME=~/dotbox/config
 
-for f in "$CONFIG_HOME"/shell/0*.sh; do
-  source "$f"
-done
-for f in "$CONFIG_HOME"/shell/1*.sh; do
+for f in "$CONFIG_HOME"/zsh/lib/*.sh; do
   source "$f"
 done
 
