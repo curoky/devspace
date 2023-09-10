@@ -49,7 +49,7 @@
   "markdown-preview-enhanced.pandocPath": "/nix/var/nix/profiles/default/bin/pandoc",
   "prettier.prettierPath": "/nix/var/nix/profiles/default/lib/node_modules/prettier/index.cjs",
   "python.defaultInterpreterPath": "/opt/conda/envs/py3/bin/python",
-  "python.formatting.yapfPath": "/home/linuxbrew/.linuxbrew/bin/yapf",
+  // "python.formatting.yapfPath": "/nix/var/nix/profiles/default/bin/yapf",
   "remote.autoForwardPortsSource": "output",
   "ruby.interpreter.commandPath": "/nix/var/nix/profiles/default/bin/ruby",
   "ruby.pathToBundler": "/nix/var/nix/profiles/default/bin/bundle",
@@ -60,5 +60,6 @@
   "sqlite.sqlite3": "/nix/var/nix/profiles/default/bin/sqlite3",
   "typescript.npm": "/nix/var/nix/profiles/default/bin/npm",
   "xml.java.home": "/nix/var/nix/profiles/jdk19/lib/openjdk",
-  "xml.server.vmargs": "-Xmx5G"
+  "xml.server.vmargs": "-Xmx5G",
+  "black-formatter.path": ["/nix/var/nix/profiles/default/bin/black"]
 }
