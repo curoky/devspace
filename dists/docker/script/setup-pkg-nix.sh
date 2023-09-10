@@ -36,9 +36,9 @@ pkg_list=(
   nixpkgs.go
   nixpkgs.ruby
   nixpkgs.nodejs nixpkgs.yarn nixpkgs.nodePackages.prettier nixpkgs.nodePackages.eslint
-  nixpkgs.gradle nixpkgs.maven                          # nixpkgs.ant
-  nixpkgs.pipenv nixpkgs.pipx nixpkgs.ruff nixpkgs.yapf # nixpkgs.poetry
-  nixpkgs.rustc nixpkgs.cargo                           # nixpkgs.rustup
+  nixpkgs.gradle nixpkgs.maven                                        # nixpkgs.ant
+  nixpkgs.pipenv nixpkgs.pipx nixpkgs.ruff nixpkgs.yapf nixpkgs.black # nixpkgs.poetry
+  nixpkgs.rustc nixpkgs.cargo                                         # nixpkgs.rustup
   nixpkgs.pre-commit nixpkgs.nixpkgs-fmt
   # nixpkgs.lua nixpkgs.vlang
   # git
@@ -63,8 +63,8 @@ pkg_list=(
   nixpkgs.jq nixpkgs.vim nixpkgs.bat nixpkgs.less nixpkgs.gnused nixpkgs.gnugrep nixpkgs.gzip
   # tools
   nixpkgs.graphviz nixpkgs.asciinema nixpkgs.gdu nixpkgs.ncdu nixpkgs.silver-searcher nixpkgs.parallel
-  nixpkgs.exa nixpkgs.fzf nixpkgs.cloc nixpkgs.go-task nixpkgs.krb5 nixpkgs.ansible # nixpkgs.earthly
-  nixpkgs.vultr-cli nixpkgs.qemu
+  nixpkgs.eza nixpkgs.fzf nixpkgs.cloc nixpkgs.go-task nixpkgs.krb5 nixpkgs.ansible # nixpkgs.earthly
+  nixpkgs.vultr-cli nixpkgs.qemu nixpkgs.sqlite
   # nixpkgs.jemalloc nixpkgs.flamegraph nixpkgs.dolt nixpkgs.watchman nixpkgs.opencc
   # nixpkgs.atuin nixpkgs.nnn nixpkgs.ranger nixpkgs.lcov nixpkgs.gcovr nixpkgs.navi nixpkgs.ghq
   # nixpkgs.sqlcipher nixpkgs.sqlite nixpkgs.zoxide nixpkgs.wishlist

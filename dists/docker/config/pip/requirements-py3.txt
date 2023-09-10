@@ -28,6 +28,7 @@ zhdate
 diskcache
 notion-client
 cython
+locust
 
 #################### cli utils ####################
 pyfiglet
@@ -70,7 +71,8 @@ tornado
 msgpack
 aiofiles
 aiohttp[speedups]
-fastapi[all]
+fastapi
+# fastapi[all]
 gevent >= 21.12.0
 thrift
 thriftpy2
@@ -86,7 +88,7 @@ pynacl
 #################### large scale data ####################
 pymongo
 PyMySQL
-# sqlmodel
+sqlmodel
 python-consul
 kafka-python >= 2.0.2
 kazoo
