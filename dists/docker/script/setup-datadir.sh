@@ -43,3 +43,5 @@ try_link_to /data/workspace $HOME/repos
 try_link_to /data/cache $HOME/.cache
 try_link_to $HOME/repos/dotbox $HOME/dotbox
 try_link_to $HOME/repos/mackup $HOME/mackup
+try_link_to /data_shared/dotbox $HOME/dotbox
+try_link_to /data_shared/mackup $HOME/mackup
