@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ENV_PATHS=(
-  "$WORKSPACE/thrift-toolbox"
+  "$WORKSPACE/thriftoy"
 )
 
 for p in "${ENV_PATHS[@]}"; do

@@ -87,3 +87,6 @@ path = ~/dotbox/config/git/.user.gitconfig
 
 [includeIf "gitdir:/data/workspace/"]
 path = ~/dotbox/config/git/.user.gitconfig
+
+[includeIf "gitdir:/data_shared/"]
+path = ~/dotbox/config/git/.user.gitconfig
