@@ -1,7 +1,7 @@
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'go-task/tap'
-tap 'curoky/tap'
+tap 'curoky/dotbox', 'https://github.com/curoky/dotbox'
 
 # brew list --cask | xargs -n 1 | sort -u | awk '{ print "\x27"$1"\x27""," }'
 casks = [
@@ -44,7 +44,7 @@ casks.each do |b|
 end
 
 brews = [
-  'pre-commit', 'prettier', 'yapf', 'shfmt', 'eslint', 'clang-format', 'ruff',
+  'pre-commit', 'prettier', 'black', 'shfmt', 'eslint', 'clang-format', 'ruff',
   'python@3', # 'node', 'ruby', 'gcc', 'llvm', 'go', 'rustup-init',
   'openjdk@17', # 'openjdk@8', 'openjdk@11', 'openjdk', 'thrift',
   # 'maven',
