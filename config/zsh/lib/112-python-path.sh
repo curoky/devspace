@@ -16,6 +16,7 @@
 # limitations under the License.
 ENV_PATHS=(
   "$WORKSPACE/thriftoy"
+  "/data_shared/thriftoy"
 )
 
 for p in "${ENV_PATHS[@]}"; do

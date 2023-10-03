@@ -90,3 +90,6 @@ path = ~/dotbox/config/git/.user.gitconfig
 
 [includeIf "gitdir:/data_shared/"]
 path = ~/dotbox/config/git/.user.gitconfig
+
+[safe]
+	directory = /opt/bazel/registry/bazel-central-registry
