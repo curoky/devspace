@@ -29,6 +29,7 @@ function git-history-files() {
 }
 
 function git-history-files-big() {
+  limit=${1:-10}
   # old method
   # git rev-list --objects --all |
   #   grep "$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -20 | awk '{print$1}')"
@@ -40,7 +41,7 @@ function git-history-files-big() {
     git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' |
     awk '/^blob/ {print substr($0,6)}' |
     sort --numeric-sort --key=2 --reverse |
-    head -n 10 |
+    head -n $limit |
     cut --complement --characters=13-40 |
     numfmt --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
 }

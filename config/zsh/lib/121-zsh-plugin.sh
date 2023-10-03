@@ -44,6 +44,9 @@ plugins=(
   zsh-completions
 )
 
+#=-> [zsh-syntax-highlighting]
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets pattern cursor)
+
 #=-> [zsh-theme] space-ship
 # SPACESHIP_DIR_TRUNC=5
 # SPACESHIP_DIR_TRUNC_REPO=false
@@ -87,13 +90,14 @@ fi
 # setopt | grep hist
 export HISTORY_IGNORE="(?|??|???|????|* --help|* --version)"
 # export HISTORY_IGNORE="(?|??)"
-if [[ -d "$WORKSPACE/backup/app/shell-history" ]]; then
-  HISTFILE="$WORKSPACE/backup/app/shell-history/$MY_HOST_NAME.$(id -u).$DEVBOX_PROFILE.zsh_history"
+if [[ -d "$HOME/My Drive/CKYData/010-backup/shell-history" ]]; then
+  HISTFILE="$HOME/My Drive/CKYData/010-backup/shell-history/$MY_HOST_NAME.$(id -u).$DEVBOX_PROFILE.zsh_history"
 elif [[ -d ~/"Library/Mobile Documents/com~apple~CloudDocs/backup/shell-history" ]]; then
   HISTFILE=~/"Library/Mobile Documents/com~apple~CloudDocs/backup/shell-history/$MY_HOST_NAME.$(id -u).$DEVBOX_PROFILE.zsh_history"
 elif [[ -d "$WORKSPACE/shell-input-history" ]]; then
   HISTFILE="$WORKSPACE/shell-input-history/$MY_HOST_NAME.$(id -u).$DEVBOX_PROFILE.zsh_history"
 fi
+
 # HISTSIZE=30000
 # SAVEHIST=20000
 # setopt EXTENDED_HISTORY
