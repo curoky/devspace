@@ -5,7 +5,7 @@ tap 'thought-machine/please'
 tap 'facebook/fb'
 tap 'curoky/python2'
 tap 'charmbracelet/tap'
-tap 'curoky/tap'
+tap 'curoky/dotbox', 'https://github.com/curoky/dotbox'
 
 brews = [
   # build system

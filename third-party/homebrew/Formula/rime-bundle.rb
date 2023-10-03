@@ -83,7 +83,6 @@ class RimeBundle < Formula
     resource('rime-cloverpinyin').stage do
       prefix.install Dir['clover.*.yaml']
     end
-
   end
 
   test do
