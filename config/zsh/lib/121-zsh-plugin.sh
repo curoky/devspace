@@ -45,7 +45,7 @@ plugins=(
 )
 
 #=-> [zsh-syntax-highlighting]
-ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets pattern cursor)
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main brackets pattern cursor)
 
 #=-> [zsh-theme] space-ship
 # SPACESHIP_DIR_TRUNC=5

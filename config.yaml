@@ -342,13 +342,13 @@ profiles:
   macos-userconf:
     dotfiles:
       - bat
-      - cargo
-      - clang-format
-      - conda
+      # - cargo
+      # - clang-format
+      # - conda
       - git-config
-      - gradle
-      - isort
-      - maven
+      # - gradle
+      # - isort
+      # - maven
       - pip
       - prettier
       - procps
@@ -362,5 +362,5 @@ profiles:
       - vscode-keybindings
       - vscode-settings
       - vscode-snippets
-      - yapf
+      # - yapf
       - zshrc
