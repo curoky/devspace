@@ -1,24 +1,24 @@
 class ZshBundle < Formula
   desc 'Bundle zsh plugins'
   homepage 'https://github.com/ohmyzsh/ohmyzsh'
-  url 'https://github.com/ohmyzsh/ohmyzsh/archive/master.zip'
+  url 'https://github.com/ohmyzsh/ohmyzsh/archive/refs/heads/master.tar.gz'
   head 'https://github.com/ohmyzsh/ohmyzsh.git'
   version 'head'
 
   resource 'zsh-autosuggestions' do
-    url 'https://github.com/zsh-users/zsh-autosuggestions/archive/master.zip'
+    url 'https://github.com/zsh-users/zsh-autosuggestions/archive/refs/heads/master.tar.gz'
   end
   resource 'zsh-completions' do
-    url 'https://github.com/zsh-users/zsh-completions/archive/master.zip'
+    url 'https://github.com/zsh-users/zsh-completions/archive/refs/heads/master.tar.gz'
   end
   resource 'zsh-syntax-highlighting' do
-    url 'https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.zip'
+    url 'https://github.com/zsh-users/zsh-syntax-highlighting/archive/refs/heads/master.tar.gz'
   end
   resource 'spaceship-prompt' do
-    url 'https://github.com/denysdovhan/spaceship-prompt/archive/master.zip'
+    url 'https://github.com/denysdovhan/spaceship-prompt/archive/refs/heads/master.tar.gz'
   end
   resource 'conda-zsh-completion' do
-    url 'https://github.com/esc/conda-zsh-completion/archive/master.zip'
+    url 'https://github.com/esc/conda-zsh-completion/archive/refs/heads/master.tar.gz'
   end
 
   keg_only :versioned_formula
