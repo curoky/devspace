@@ -21,5 +21,6 @@ else
   export BREW_PREFIX=/home/linuxbrew/.linuxbrew
 fi
 
-export WORKSPACE=~/repos
+export WORKSPACE=~/workspace
+
 export MY_HOST_NAME=$(hostname)

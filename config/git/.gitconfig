@@ -79,6 +79,9 @@ path = ~/dotbox/config/git/.user.gitconfig
 [includeIf "gitdir:/Users/cicada/"]
 path = ~/dotbox/config/git/.user.gitconfig
 
+[includeIf "gitdir:/Users/m/"]
+path = ~/dotbox/config/git/.user.gitconfig
+
 [includeIf "gitdir:/home/cicada/"]
 path = ~/dotbox/config/git/.user.gitconfig
 
