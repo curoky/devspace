@@ -10,15 +10,21 @@ RUN rm -rf /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/homebrew/homebrew-co
 FROM ghcr.io/conda/conda-ci:main-linux-python3.11 as conda
 USER root
 COPY images/config/pip/*.txt .
-RUN apt-get -y update && apt-get install -y procps \
+RUN apt-get -y update && apt-get install -y procps libsnappy-dev \
+  # py2
   && /opt/conda/bin/conda create -n py2 python=2 --yes \
   && /opt/conda/envs/py2/bin/pip install --no-cache-dir -r requirements-py2.txt \
+  # py3
   && /opt/conda/bin/conda create -n py3 python=3.11 -c conda-forge --yes \
   && /opt/conda/envs/py3/bin/pip install --no-cache-dir -r requirements-py3.txt \
-  && /opt/conda/bin/conda create -n tf python=3.11 -c conda-forge --yes \
-  && /opt/conda/envs/tf/bin/pip install --no-cache-dir -r requirements-ml.txt \
-  && mkdir -p /opt/conda/envs/tf/etc/conda/activate.d \
-  && echo 'export LD_LIBRARY_PATH=/opt/conda/envs/tf/lib/:/nix/var/nix/profiles/cuda11_8/lib:/opt/conda/envs/tf/lib/python3.11/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH' >> /opt/conda/envs/tf/etc/conda/activate.d/env_vars.sh \
+  # py3-ml
+  && /opt/conda/bin/conda create -n ml python=3.11 -c conda-forge --yes \
+  && /opt/conda/envs/ml/bin/pip install --no-cache-dir -r requirements-ml.txt \
+  && mkdir -p /opt/conda/envs/ml/etc/conda/activate.d \
+  && echo 'export LD_LIBRARY_PATH=/opt/conda/envs/ml/lib/:/nix/var/nix/profiles/cuda11_8/lib:/opt/conda/envs/ml/lib/python3.11/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH' >> /opt/conda/envs/ml/etc/conda/activate.d/env_vars.sh \
+  # py3-work-ml
+  && /opt/conda/bin/conda create -n ml-work python=3.8 -c conda-forge --yes \
+  && /opt/conda/envs/ml-work/bin/pip install --no-cache-dir -r requirements-ml-work.txt \
   && /opt/conda/bin/conda clean --all -y
 
 FROM ubuntu:latest as vcpkg
@@ -69,7 +75,8 @@ RUN curl -sSL https://get.docker.com/ | sh -s
 RUN curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/3bf863cc.pub | apt-key add - \
   && echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64 /" > /etc/apt/sources.list.d/cuda.list \
   && apt-get update \
-  && apt-get install -y --no-install-recommends cuda-cudart-11-8 cuda-compat-11-8
+  # cuda-cudart-11-8 cuda-compat-11-8
+  && apt-get install -y --no-install-recommends cuda-11-8
 
 # Note: g=u doesn't really work. https://github.com/moby/buildkit/issues/1951
 COPY --chown=1000:1000 --chmod=g=u --from=nixpkgs /nix /nix

@@ -40,6 +40,7 @@ pkg_list=(
   nixpkgs.pipenv nixpkgs.pipx nixpkgs.ruff nixpkgs.yapf nixpkgs.black # nixpkgs.poetry
   nixpkgs.rustc nixpkgs.cargo                                         # nixpkgs.rustup
   nixpkgs.pre-commit nixpkgs.nixpkgs-fmt
+  nixpkgs.protobuf3_24
   # nixpkgs.lua nixpkgs.vlang
   # git
   nixpkgs.git nixpkgs.git-absorb nixpkgs.git-extras nixpkgs.git-lfs nixpkgs.git-filter-repo

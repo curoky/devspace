@@ -29,6 +29,11 @@ diskcache
 notion-client
 cython
 locust
+protobuf~=4.24.1
+python-snappy
+psycopg2-binary
+bbpb
+protobuf-inspector
 
 #################### cli utils ####################
 pyfiglet

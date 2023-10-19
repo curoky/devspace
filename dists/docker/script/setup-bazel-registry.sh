@@ -22,3 +22,4 @@ mkdir -p /opt/bazel/registry
 git clone --depth=1 https://github.com/bazelbuild/bazel-central-registry /opt/bazel/registry/bazel-central-registry
 git clone --depth=1 https://github.com/eomii/bazel-eomii-registry /opt/bazel/registry/bazel-eomii-registry
 git clone --depth=1 https://github.com/curoky/bazel-curoky-registry /opt/bazel/registry/bazel-curoky-registry
+git clone --depth=1 https://github.com/fernride/bazel-fernride-registry /opt/bazel/registry/bazel-fernride-registry
