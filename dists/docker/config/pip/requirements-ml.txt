@@ -1,4 +1,7 @@
 pytest
+thriftpy2
+typer
+sqlmodel
 
 nvidia-cudnn-cu11==8.*
 
@@ -12,8 +15,11 @@ statsmodels
 scikit-learn
 tensorflow==2.13.*
 tensorrt
+tensorboard
 
-jieba
+# jieba
+
+
 
 # clip-server
-clip-client
+# clip-client

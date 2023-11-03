@@ -15,36 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-function PATH_REMOVE() {
-  local DIR=$1
-  export PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$DIR'"' | sed 's/:$//')
-}
-
-function PATH_REMOVE_CONTAIN() {
-  local DIR=$1
-  export PATH=$(echo ${PATH} | awk -v RS=: -v ORS=: '/'$DIR'/ {next} {print}' | sed 's/:*$//')
-}
-
-function PATH_PUSH_FRONT() {
-  local DIR=$1
-  [ -d "${DIR}" ] && export PATH=${DIR}:$PATH #|| echo "${DIR} does not exist"
-}
-
-function PATH_PUSH_BACK() {
-  local DIR=$1
-  [ -d "${DIR}" ] && export PATH=$PATH:${DIR} #|| echo "${DIR} does not exist"
-}
-
-function FPATH_PUSH_FRONT() {
-  local DIR=$1
-  [ -d "${DIR}" ] && fpath=(${DIR} $fpath) #|| echo "${DIR} does not exist"
-}
-
-function CHECK_AND_SOURCE() {
-  local target=${1}
-  [[ -s ${target} ]] && source ${target}
-}
-
 function psgrepme() {
   name=$(whoami)
   psgrep ${1} | grep ${name:0:7} | grep -v "sshd: ${name:0:7}"

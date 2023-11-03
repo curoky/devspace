@@ -62,6 +62,7 @@ pkg_list=(
   # editor
   nixpkgs.flex nixpkgs.bison nixpkgs.gnupatch nixpkgs.gettext nixpkgs.m4 # nixpkgs.helix
   nixpkgs.jq nixpkgs.vim nixpkgs.bat nixpkgs.less nixpkgs.gnused nixpkgs.gnugrep nixpkgs.gzip
+  nixpkgs.mcfly
   # tools
   nixpkgs.graphviz nixpkgs.asciinema nixpkgs.gdu nixpkgs.ncdu nixpkgs.silver-searcher nixpkgs.parallel
   nixpkgs.eza nixpkgs.fzf nixpkgs.cloc nixpkgs.go-task nixpkgs.krb5 nixpkgs.ansible # nixpkgs.earthly

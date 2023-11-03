@@ -25,10 +25,10 @@ done
 eval "$($BREW_PREFIX/bin/brew shellenv)"
 
 #=-> nix
-CHECK_AND_SOURCE ~/.nix-profile/etc/profile.d/nix.sh
+source_if_exists ~/.nix-profile/etc/profile.d/nix.sh
 
-CHECK_AND_SOURCE ~/mackup/conf/shell/$DEVBOX_PROFILE.sh
-CHECK_AND_SOURCE ~/mackup/conf/shell/$MY_HOST_NAME.sh
+source_if_exists ~/mackup/conf/shell/$DEVBOX_PROFILE.sh
+source_if_exists ~/mackup/conf/shell/$MY_HOST_NAME.sh
 
 #=-> start oh-my-zsh
 source "${ZSH}/oh-my-zsh.sh"
@@ -66,3 +66,6 @@ compdef _bb bb bbup bb4 bb4up bbcl bbclup
 
 #-> (post) starship
 eval "$(starship init zsh)"
+
+#-> (post) mcfly
+eval "$(mcfly init zsh)"
