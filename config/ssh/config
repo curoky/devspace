@@ -4,8 +4,8 @@ Host *
   HashKnownHosts no
   IdentityFile ~/dotbox/config/ssh/devbox.private.id_rsa
   UserKnownHostsFile ~/.ssh/known_hosts ~/dotbox/config/ssh/known_hosts
-  ServerAliveInterval 60
-  ServerAliveCountMax 1000000
+  ServerAliveInterval 10
+  ServerAliveCountMax 100000000
   TCPKeepAlive yes
   HostKeyAlgorithms +ssh-rsa
   PubkeyAcceptedKeyTypes +ssh-rsa
