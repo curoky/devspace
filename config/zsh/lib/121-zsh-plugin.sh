@@ -92,8 +92,6 @@ export HISTORY_IGNORE="(?|??|???|????|* --help|* --version)"
 # export HISTORY_IGNORE="(?|??)"
 if [[ -d "$HOME/My Drive/CKYData/010-backup/shell-history" ]]; then
   HISTFILE="$HOME/My Drive/CKYData/010-backup/shell-history/$MY_HOST_NAME.$(id -u).$DEVBOX_PROFILE.zsh_history"
-elif [[ -d "$WORKSPACE/bytedots/backup" ]]; then
-  HISTFILE="$WORKSPACE/bytedots/backup/shell-input-history-$MY_HOST_NAME.$(id -u).$DEVBOX_PROFILE.zsh_history"
 elif [[ -d ~/"Library/Mobile Documents/com~apple~CloudDocs/backup/shell-history" ]]; then
   HISTFILE=~/"Library/Mobile Documents/com~apple~CloudDocs/backup/shell-history/$MY_HOST_NAME.$(id -u).$DEVBOX_PROFILE.zsh_history"
 elif [[ -d "$WORKSPACE/shell-input-history" ]]; then

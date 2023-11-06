@@ -27,9 +27,6 @@ eval "$($BREW_PREFIX/bin/brew shellenv)"
 #=-> nix
 source_if_exists ~/.nix-profile/etc/profile.d/nix.sh
 
-source_if_exists ~/mackup/conf/shell/$DEVBOX_PROFILE.sh
-source_if_exists ~/mackup/conf/shell/$MY_HOST_NAME.sh
-
 #=-> start oh-my-zsh
 source "${ZSH}/oh-my-zsh.sh"
 
