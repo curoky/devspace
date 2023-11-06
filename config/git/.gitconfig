@@ -61,37 +61,7 @@ date = iso
 		rm -f $TMPFILE \
 		"
 
-[includeIf "gitdir:/root/"]
-path = ~/dotbox/config/git/.user.gitconfig
-
-[includeIf "gitdir:/home/linuxbrew/"]
-path = ~/dotbox/config/git/.user.gitconfig
-
-[includeIf "gitdir:/opt/homebrew/"]
-path = ~/dotbox/config/git/.user.gitconfig
-
-[includeIf "gitdir:/Users/curoky/"]
-path = ~/dotbox/config/git/.user.gitconfig
-
-[includeIf "gitdir:/home/curoky/"]
-path = ~/dotbox/config/git/.user.gitconfig
-
-[includeIf "gitdir:/Users/cicada/"]
-path = ~/dotbox/config/git/.user.gitconfig
-
-[includeIf "gitdir:/Users/m/"]
-path = ~/dotbox/config/git/.user.gitconfig
-
-[includeIf "gitdir:/home/cicada/"]
-path = ~/dotbox/config/git/.user.gitconfig
-
-[includeIf "gitdir:/Volumes/"]
-path = ~/dotbox/config/git/.user.gitconfig
-
-[includeIf "gitdir:/data/workspace/"]
-path = ~/dotbox/config/git/.user.gitconfig
-
-[includeIf "gitdir:/data_shared/"]
+[includeIf "gitdir:/"]
 path = ~/dotbox/config/git/.user.gitconfig
 
 [safe]

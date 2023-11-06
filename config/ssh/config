@@ -16,11 +16,11 @@ Host 10.*
   GSSAPIDelegateCredentials no
   HashKnownHosts No
 
-Host github.com
-  IdentityFile ~/mackup/conf/ssh/github.private.id_rsa
+# Host github.com
+#  IdentityFile ~/mackup/conf/ssh/github.private.id_rsa
 
-Host bitbucket.org
-  IdentityFile ~/mackup/conf/ssh/github.private.id_rsa
+# Host bitbucket.org
+#   IdentityFile ~/mackup/conf/ssh/github.private.id_rsa
 
-Host *.tmate.io
-  IdentityFile ~/mackup/conf/ssh/github.private.id_rsa
+# Host *.tmate.io
+#   IdentityFile ~/mackup/conf/ssh/github.private.id_rsa
