@@ -4,7 +4,7 @@
       - {
           name: cicada,
           id: 1000,
-          groups: 'sudo,adm,docker',
+          groups: 'sudo,adm', # docker
           dotbox: /home/cicada/dotbox,
         }
 

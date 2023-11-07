@@ -27,6 +27,8 @@ ENV_PATHS=(
   "$BREW_PREFIX/opt/openssl@3/bin"
   "$BREW_PREFIX/opt/unzip/bin"
   "$BREW_PREFIX/opt/ruby/bin"
+
+  "/opt/conda/envs/py3/bin"
 )
 for p in "${ENV_PATHS[@]}"; do
   [[ -d $p ]] && export PATH=$p:$PATH
@@ -34,7 +36,6 @@ done
 
 ENV_PATHS=(
   "/nix/var/nix/profiles/default/lib/ruby/gems/2.7.0/bin"
-  "/opt/conda/envs/py3/bin"
   "/opt/vcpkg"
   "$BREW_PREFIX/lib/ruby/gems/3.1.0/bin"
   # "$HOME/.cargo/bin" # already source in ~/.zshenv

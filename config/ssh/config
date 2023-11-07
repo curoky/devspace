@@ -17,10 +17,10 @@ Host 10.*
   HashKnownHosts No
 
 # Host github.com
-#  IdentityFile ~/mackup/conf/ssh/github.private.id_rsa
+#  IdentityFile ~/xxx/conf/ssh/github.private.id_rsa
 
 # Host bitbucket.org
-#   IdentityFile ~/mackup/conf/ssh/github.private.id_rsa
+#   IdentityFile ~/xxx/conf/ssh/github.private.id_rsa
 
 # Host *.tmate.io
-#   IdentityFile ~/mackup/conf/ssh/github.private.id_rsa
+#   IdentityFile ~/xxx/conf/ssh/github.private.id_rsa

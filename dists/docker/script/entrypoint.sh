@@ -21,4 +21,8 @@ set -xeuo pipefail
 # Note: sometimes we want to mount ~/.cache to /dev/shm/..., so need changing owner.
 [[ -f /home/cicada/.cache ]] && chown cicada:cicada -R /home/cicada/.cache
 
+sudo -i -u cicada bash <<EOF
+  dotdrop install --cfg=~/dotbox/config.yaml --force --profile=devbox-userconf-outofbox
+EOF
+
 exec /lib/systemd/systemd

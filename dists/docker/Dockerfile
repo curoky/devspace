@@ -62,21 +62,11 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     curl gnupg2 ca-certificates locales tzdata sudo init systemd \
     openssh-server rsyslog cron lsb-release \
-    gcc g++ gcc-11 g++-11 gcc-13 g++-13 \
+    gcc-11 g++-11 libsnappy-dev \
     # xfce4 xfce4-goodies tightvncserver
   && apt-get autoremove -y \
   && locale-gen en_US.UTF-8 \
   && userdel ubuntu && rm -rf /home/ubuntu
-
-# install docker
-RUN curl -sSL https://get.docker.com/ | sh -s
-
-# install nvidia
-RUN curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/3bf863cc.pub | apt-key add - \
-  && echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64 /" > /etc/apt/sources.list.d/cuda.list \
-  && apt-get update \
-  # cuda-cudart-11-8 cuda-compat-11-8
-  && apt-get install -y --no-install-recommends cuda-11-8
 
 # Note: g=u doesn't really work. https://github.com/moby/buildkit/issues/1951
 COPY --chown=1000:1000 --chmod=g=u --from=nixpkgs /nix /nix
@@ -84,7 +74,9 @@ COPY --chown=1000:1000 --chmod=g=u --from=nixpkgs /nix /nix
 COPY --chown=1000:1000 --chmod=g=u --from=homebrew /home/linuxbrew /home/linuxbrew
 COPY --chown=1000:1000 --chmod=g=u --from=golang /root/go/bin /home/cicada/go/bin
 COPY --chown=1000:1000 --chmod=g=u --from=conda /opt/conda /opt/conda
-COPY --chown=1000:1000 --chmod=g=u ./ /opt/dotbox/
+COPY --chown=1000:1000 --chmod=g=u ./ /opt/dotbox
+COPY --chown=1000:1000 --chmod=g=u ./ /home/cicada/dotbox
+COPY --chown=root:adm --chmod=g=u ./ /root/dotbox
 
 RUN ansible-galaxy collection install community.general \
   && ansible-playbook -vvv /opt/dotbox/images/site.yaml \
@@ -92,23 +84,19 @@ RUN ansible-galaxy collection install community.general \
   && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
   && /opt/dotbox/images/script/setup-bazel-registry.sh \
   && /opt/dotbox/images/script/setup-gcc-as-default.sh \
-  && /opt/dotbox/images/script/setup-dotfiles.sh \
+  && /opt/dotbox/images/script/setup-cuda.sh \
+  && dotdrop install --cfg=~/dotbox/config.yaml --force --profile=devbox-sysconf \
+  && dotdrop install --cfg=~/dotbox/config.yaml --force --profile=devbox-userconf-outofbox \
   && mkdir /data \
   && chown cicada:cicada /data /opt
 
 USER cicada
 
-# install nixpkg
-RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon
-
-# install rust
-# RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
-
-# install conan
-RUN pipx install conan==1.60.1 \
+RUN git -C ~/dotbox remote set-url origin git@github.com:curoky/dotbox \
+  && dotdrop install --cfg=~/dotbox/config.yaml --force --profile=devbox-userconf-base \
+  && curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
+  && pipx install conan==1.60.1 \
   && pipx install licenseheaders
-
-RUN /opt/dotbox/images/script/setup-dotfiles.sh
 
 USER root
 ENTRYPOINT ["/opt/dotbox/images/script/entrypoint.sh"]

@@ -33,6 +33,7 @@ pkg_list=(
   nixpkgs.clang-tools_16 nixpkgs.lld_16 nixpkgs.mold
   nixpkgs.zsh nixpkgs.bash nixpkgs.shfmt                                 # nixpkgs.shellcheck
   nixpkgs.cmake nixpkgs.cmake-format nixpkgs.bazelisk nixpkgs.buildifier # nixpkgs.cppcheck nixpkgs.include-what-you-use
+  nixpkgs.gcc13
   nixpkgs.go
   nixpkgs.ruby
   nixpkgs.nodejs nixpkgs.yarn nixpkgs.nodePackages.prettier nixpkgs.nodePackages.eslint
@@ -40,7 +41,7 @@ pkg_list=(
   nixpkgs.pipenv nixpkgs.pipx nixpkgs.ruff nixpkgs.yapf nixpkgs.black # nixpkgs.poetry
   nixpkgs.rustc nixpkgs.cargo                                         # nixpkgs.rustup
   nixpkgs.pre-commit nixpkgs.nixpkgs-fmt
-  nixpkgs.protobuf3_24
+  nixpkgs.protobuf3_24 nixpkgs.snappy
   # nixpkgs.lua nixpkgs.vlang
   # git
   nixpkgs.git nixpkgs.git-absorb nixpkgs.git-extras nixpkgs.git-lfs nixpkgs.git-filter-repo
@@ -75,7 +76,7 @@ pkg_list=(
 nix-env -p /nix/var/nix/profiles/default -iA "${pkg_list[@]}"
 
 # nix-env -iA -p /nix/var/nix/profiles/gcc49 nixpkgs.gcc49
-# nix-env -iA -p /nix/var/nix/profiles/gcc12 nixpkgs.gcc12
+nix-env -iA -p /nix/var/nix/profiles/gcc9 nixpkgs.gcc9
 # nix-env -iA -p /nix/var/nix/profiles/flutter nixpkgs.flutter
 # nix-env -iA -p /nix/var/nix/profiles/dart nixpkgs.dart
 # nix-env -iA -p /nix/var/nix/profiles/protobuf3_17 nixpkgs.protobuf3_17
@@ -95,7 +96,10 @@ nix-env -iA -p /nix/var/nix/profiles/llvm16-bintools nixpkgs.llvmPackages_16.bin
 nix-env -iA -p /nix/var/nix/profiles/inetutils nixpkgs.inetutils
 # nix-env -iA -p /nix/var/nix/profiles/coreutils nixpkgs.coreutils
 
+nix-env -iA -p /nix/var/nix/profiles/cuda11_0 nixpkgs.cudaPackages_11_0.cudatoolkit
+nix-env -iA -p /nix/var/nix/profiles/cuda11_4 nixpkgs.cudaPackages_11_4.cudatoolkit
 nix-env -iA -p /nix/var/nix/profiles/cuda11_8 nixpkgs.cudaPackages_11_8.cudatoolkit
+
 # nixpkgs.cudaPackages_11_8.nsight_compute \
 # nixpkgs.cudaPackages_11_8.nsight_systems
 # nixpkgs.cudaPackages_11_8.cuda_nvvp

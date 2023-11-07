@@ -17,8 +17,11 @@
 # limitations under the License.
 set -xeuo pipefail
 
+# curl -sSL -o cuda_linux.run \
+#   https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
+
 curl -sSL -o cuda_linux.run \
-  https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
+  http://developer.download.nvidia.com/compute/cuda/11.0.2/local_installers/cuda_11.0.2_450.51.05_linux.run
 
 chmod +x cuda_linux.run
 
@@ -40,3 +43,10 @@ rm -f cuda_linux.run
 #   && chmod +x cuda_linux.run \
 #   && ./cuda_linux.run --silent --toolkit \
 #   && rm -f cuda_linux.run
+
+# install nvidia
+# RUN curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/3bf863cc.pub | apt-key add - \
+#   && echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64 /" > /etc/apt/sources.list.d/cuda.list \
+#   && apt-get update \
+#   cuda-cudart-11-8 cuda-compat-11-8
+#   && apt-get install -y --no-install-recommends cuda-11-8

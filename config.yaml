@@ -62,8 +62,8 @@ dotfiles:
     dst: ~/.dircolors
     src: ls/dircolors
   docker:
-    dst: ~/.docker
-    src: docker
+    dst: ~/.docker/config.json
+    src: docker/config.json
   docker-d:
     dst: /etc/docker/daemon.json
     link: nolink
@@ -306,7 +306,7 @@ profiles:
       - zshenv-etc-homebrew-mirror-cn
       - zshenv-etc-golang-proxy-cn
 
-  devbox-userconf:
+  devbox-userconf-base:
     dotfiles:
       - bash_logout
       - bashrc
@@ -315,28 +315,32 @@ profiles:
       - cargo
       - ccache
       - clang-format
-      # - conan
       - conda
-      - docker
       - dolthub
       - gdb
-      - git-config
       - gradle
       - htop
       - isort
-      - maven
       - nixpkgs
       - pip
       - prettier
       - procps
       - profile
       - ssh-authorized-key
-      - ssh-config
       - startship
       - tmux
       - vim
       - vscode-server
       - yapf
+
+  devbox-userconf-outofbox:
+    include:
+      - devbox-userconf-base
+    dotfiles:
+      - docker
+      - git-config
+      - ssh-config
+      - maven
       - zshrc
 
   macos-userconf:

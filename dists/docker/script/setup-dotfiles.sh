@@ -17,7 +17,8 @@
 # limitations under the License.
 set -xeuo pipefail
 
-git clone https://github.com/curoky/dotbox.git ~/dotbox
+cp -r /opt/dotbox ~/
+git -C ~/dotbox remote set-url origin git@github.com:curoky/dotbox
 
 dotdrop install --cfg=~/dotbox/config.yaml --force --profile=devbox-userconf
 
