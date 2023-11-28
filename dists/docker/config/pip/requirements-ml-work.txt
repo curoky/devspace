@@ -1,6 +1,0 @@
-protobuf==3.9.2
-tensorflow==2.5.0
-locust
-thriftpy2
-sqlmodel
-typer

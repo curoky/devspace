@@ -28,7 +28,7 @@ ENV_PATHS=(
   "$BREW_PREFIX/opt/unzip/bin"
   "$BREW_PREFIX/opt/ruby/bin"
 
-  "/opt/conda/envs/py3/bin"
+  "/opt/conda/envs/default/bin"
 )
 for p in "${ENV_PATHS[@]}"; do
   [[ -d $p ]] && export PATH=$p:$PATH

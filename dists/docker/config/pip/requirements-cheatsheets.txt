@@ -1,29 +1,29 @@
-# absl-py
-# deepdiff
+absl-py
+deepdiff
 dynaconf[all]
 GitPython
-# giturlparse
-# icalendar
-# id-validator >= 1.0.20
+giturlparse
+icalendar
+id-validator >= 1.0.20
 jinja2 >= 3.1.2
 lxml >= 4.9.1
-# memray
-# opencc
+memray
+opencc
 parse >= 1.19.0
-# prefect >= 2.0.4
-# prefect-dask
+prefect >= 2.0.4
+prefect-dask
 psutil
 pydantic
 pydantic_yaml
-# PyGithub
-# pypinyin
+PyGithub
+pypinyin
 pytest
 python-dateutil
 pytz
-# scrapy
-# selenium
+scrapy
+selenium
 six
-# virtualenv
+virtualenv
 zhdate
 diskcache
 notion-client
@@ -54,12 +54,12 @@ kaleido
 bqplot
 plotly
 matplotlib
-# seaborn
-# voila
+seaborn
+voila
 
 #################### data science && math tools ####################
-# numpy
-# pandas >= 1.4.3
+numpy
+pandas >= 1.4.3
 
 #################### map && gps ####################
 gpxpy
@@ -97,21 +97,21 @@ sqlmodel
 python-consul
 kafka-python >= 2.0.2
 kazoo
-# pyspark[sql] >= 3.3.0
-# apache-flink >= 1.16.0
+pyspark[sql] >= 3.3.0
+apache-flink >= 1.16.0
 
 #################### logging && debug ####################
-# icecream >= 2.1.3
-# pysnooper
+icecream >= 2.1.3
+pysnooper
 loguru
 
 #################### tools ####################
-# cmakelang
-# yapf
-# licenseheaders
-# pipdeptree
+cmakelang
+yapf
+licenseheaders
+pipdeptree
 
 #################### google api ####################
-# google-api-python-client
-# google-auth-httplib2
-# google-auth-oauthlib
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib

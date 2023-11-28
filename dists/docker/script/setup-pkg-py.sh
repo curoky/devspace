@@ -16,7 +16,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set -xeuo pipefail
+set -euo pipefail
 
-# ${1-:pip3} install --upgrade pip
-${1-:pip3} install --no-cache-dir -q -r /opt/dotbox/config/pip/requirements.txt
+# $(readlink -f
+conf_path=${1:-~/dotbox/images/config/pip}
+echo "use conf_path=$conf_path"
+
+function create_conda_env() {
+  local env_name=$1
+  local py_version=$2
+  echo "create $env_name($py_version)"
+  /opt/conda/bin/conda env remove -n $env_name
+  /opt/conda/bin/conda create -n $env_name python=$py_version --yes
+  /opt/conda/envs/$env_name/bin/pip install --no-cache-dir -r $conf_path/requirements-${env_name}.txt
+}
+
+create_conda_env default '3.11'
+create_conda_env ml-tf2.13 '3.11'
+create_conda_env ml-tf2.5 '3.8'
+create_conda_env py2 '2'
+
+# mkdir -p /opt/conda/envs/ml/etc/conda/activate.d
+# echo 'export LD_LIBRARY_PATH=/opt/conda/envs/ml/lib/:/nix/var/nix/profiles/cuda11_8/lib:/opt/conda/envs/ml/lib/python3.11/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH' >> /opt/conda/envs/ml/etc/conda/activate.d/env_vars.sh
+
+/opt/conda/bin/conda clean --all -y
