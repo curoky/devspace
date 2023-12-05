@@ -30,6 +30,8 @@ RUN ./setup-pkg-go.sh requirements.txt
 FROM nixos/nix as nixpkgs
 ENV NIXPKGS_ALLOW_UNFREE=1 \
   NIXPKGS_ALLOW_BROKEN=1
+COPY pkgs/nix pkgs/nix
+COPY default.nix default.nix
 COPY images/script/setup-pkg-nix.sh setup-pkg-nix.sh
 RUN nix-channel --update \
   && ./setup-pkg-nix.sh
