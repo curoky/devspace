@@ -1,10 +1,9 @@
-FROM homebrew/brew:latest as homebrew
+FROM homebrew/brew:4.1.21 as homebrew
 COPY images/script/setup-pkg-brew.sh setup-pkg-brew.sh
 COPY images/config/brew/Brewfile.linux Brewfile.linux
 ENV HOMEBREW_NO_ANALYTICS=1 \
   HOMEBREW_INSTALL_FROM_API=1
-RUN rm -rf /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/homebrew/homebrew-core \
-  && ./setup-pkg-brew.sh Brewfile.linux \
+RUN ./setup-pkg-brew.sh Brewfile.linux \
   && rm -rf "$(brew --cache)"
 
 FROM ghcr.io/conda/conda-ci:main-linux-python3.11 as conda

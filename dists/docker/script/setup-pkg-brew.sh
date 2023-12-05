@@ -20,7 +20,7 @@ set -xeuo pipefail
 
 brewfile=$1
 
-brew update
+# brew update
 
 brew bundle --file $brewfile --force --verbose --debug --no-lock --no-upgrade # --cleanup
 # sudo rm -rf "$(brew --cache)"
