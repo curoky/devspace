@@ -16,15 +16,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 \
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 \
   15 \
-  --slave /usr/bin/gcov gcov /usr/bin/gcov-11 \
-  --slave /usr/bin/gcov-dump gcov-dump /usr/bin/gcov-dump-11 \
-  --slave /usr/bin/gcov-tool gcov-tool /usr/bin/gcov-tool-11 \
-  --slave /usr/bin/gcc-ar gcc-ar /usr/bin/gcc-ar-11 \
-  --slave /usr/bin/gcc-nm gcc-nm /usr/bin/gcc-nm-11 \
-  --slave /usr/bin/gcc-ranlib gcc-ranlib /usr/bin/gcc-ranlib-11
+  --slave /usr/bin/gcov gcov /usr/bin/gcov-9 \
+  --slave /usr/bin/gcov-dump gcov-dump /usr/bin/gcov-dump-9 \
+  --slave /usr/bin/gcov-tool gcov-tool /usr/bin/gcov-tool-9 \
+  --slave /usr/bin/gcc-ar gcc-ar /usr/bin/gcc-ar-9 \
+  --slave /usr/bin/gcc-nm gcc-nm /usr/bin/gcc-nm-9 \
+  --slave /usr/bin/gcc-ranlib gcc-ranlib /usr/bin/gcc-ranlib-9
 
-update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 15
-update-alternatives --install /usr/bin/cc cc /usr/bin/gcc-11 15
-update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-11 15
+update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 15
+update-alternatives --install /usr/bin/cc cc /usr/bin/gcc-9 15
+update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-9 15

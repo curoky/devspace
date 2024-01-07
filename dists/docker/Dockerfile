@@ -1,8 +1,7 @@
-FROM homebrew/brew:4.1.21 as homebrew
+FROM homebrew/brew:4.2.1 as homebrew
 COPY images/script/setup-pkg-brew.sh setup-pkg-brew.sh
 COPY images/config/brew/Brewfile.linux Brewfile.linux
-ENV HOMEBREW_NO_ANALYTICS=1 \
-  HOMEBREW_INSTALL_FROM_API=1
+ENV HOMEBREW_NO_ANALYTICS=1
 RUN ./setup-pkg-brew.sh Brewfile.linux \
   && rm -rf "$(brew --cache)"
 
@@ -35,7 +34,7 @@ COPY images/script/setup-pkg-nix.sh setup-pkg-nix.sh
 RUN nix-channel --update \
   && ./setup-pkg-nix.sh
 
-FROM ubuntu:23.04
+FROM ubuntu:23.10
 LABEL org.opencontainers.image.authors="cccuroky@gmail.com"
 
 ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/linuxbrew/.linuxbrew/bin \
@@ -50,7 +49,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     curl gnupg2 ca-certificates locales tzdata sudo init systemd \
     openssh-server rsyslog cron lsb-release \
-    gcc-11 g++-11 libsnappy-dev \
+    gcc-9 g++-9 libsnappy-dev libxml2 \
     # xfce4 xfce4-goodies tightvncserver
   && apt-get autoremove -y \
   && locale-gen en_US.UTF-8 \
