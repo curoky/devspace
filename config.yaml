@@ -1,6 +1,6 @@
 actions:
   fix-sshd-host-key-permissions: chmod 600 /etc/ssh/ssh_host*
-  fix-ssh_config-permissions: chmod 600 config/ssh/config
+  fix-ssh_config-permissions: chmod 600 config/ssh/ssh_config
 config:
   banner: false
   dotpath: config
@@ -84,10 +84,10 @@ dotfiles:
   git-key:
     dst: ~/dotbox/config/ssh/id_rsa-github.origin
     src: ssh/id_rsa-github
-    trans_read: _decrypt
-    trans_write: _encrypt
     link: nolink
     chmod: '600'
+    trans_install: _decrypt
+    trans_update: _encrypt
   go:
     dst: ~/.config/go
     src: go
@@ -226,7 +226,7 @@ dotfiles:
     dst: ~/.ssh/config
     actions:
       - fix-ssh_config-permissions
-    src: ssh/config
+    src: ssh/ssh_config
   startship:
     dst: ~/.config/starship.toml
     src: starship/starship.toml

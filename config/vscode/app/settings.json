@@ -63,8 +63,8 @@
     "editor.formatOnSave": true,
     "editor.tabSize": 4,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true,
-      "source.fixAll": true
+      "source.organizeImports": "explicit",
+      "source.fixAll": "explicit"
     }
   },
   "[rust]": {
@@ -236,7 +236,9 @@
     ".bazelrc": "shellscript",
     "BUILD": "starlark",
     "Brewfile.*": "ruby",
-    "vimrc": "viml"
+    "vimrc": "viml",
+    "ssh_config": "ssh_config",
+    "*.ssh_config": "ssh_config"
   },
   "files.autoSave": "afterDelay",
   "files.exclude": {
@@ -426,7 +428,8 @@
   "workbench.editorAssociations": {
     "*.hex": "hexEditor.hexedit",
     "*.ipynb": "jupyter-notebook",
-    "*.plist": "default"
+    "*.plist": "default",
+    "*.spec": "default"
   },
   "workbench.fontAliasing": "antialiased",
   "workbench.iconTheme": "material-icon-theme",
@@ -439,5 +442,14 @@
   "xml.symbols.maxItemsComputed": 400000,
   "yaml.format.enable": false,
   "yaml.format.singleQuote": true,
-  "black-formatter.path": ["/opt/homebrew/bin/black"]
+  "black-formatter.path": ["/opt/homebrew/bin/black"],
+  "java.imports.gradle.wrapper.checksums": [
+    {
+      "sha256": "ee3739525a995bcb5601621a6e2daec1f183bbefc375743acc235cec33547e04",
+      "allowed": false
+    }
+  ],
+  "remote.SSH.remotePlatform": {
+    "sg_gpu_pod_w": "linux"
+  }
 }
