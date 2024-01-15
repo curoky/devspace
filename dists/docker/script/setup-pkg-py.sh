@@ -34,6 +34,7 @@ function create_conda_env() {
 create_conda_env default '3.11'
 create_conda_env ml-tf2.13 '3.11'
 create_conda_env ml-tf2.5 '3.8'
+create_conda_env ml-tf1.15 '3.7'
 create_conda_env py2 '2'
 
 # mkdir -p /opt/conda/envs/ml/etc/conda/activate.d

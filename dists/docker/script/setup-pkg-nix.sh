@@ -38,7 +38,7 @@ pkg_list=(
   nixpkgs.nodejs nixpkgs.yarn nixpkgs.nodePackages.prettier nixpkgs.nodePackages.eslint
   nixpkgs.gradle nixpkgs.maven                                        # nixpkgs.ant
   nixpkgs.pipenv nixpkgs.pipx nixpkgs.ruff nixpkgs.yapf nixpkgs.black # nixpkgs.poetry
-  nixpkgs.rustc nixpkgs.cargo                                         # nixpkgs.rustup
+  # nixpkgs.rustc nixpkgs.cargo                                         # nixpkgs.rustup
   nixpkgs.pre-commit nixpkgs.nixpkgs-fmt
   nixpkgs.snappy
   # nixpkgs.lua nixpkgs.vlang
@@ -66,7 +66,8 @@ pkg_list=(
   # tools
   nixpkgs.graphviz nixpkgs.asciinema nixpkgs.gdu nixpkgs.ncdu nixpkgs.silver-searcher nixpkgs.parallel
   nixpkgs.eza nixpkgs.fzf nixpkgs.cloc nixpkgs.go-task nixpkgs.krb5 nixpkgs.ansible # nixpkgs.earthly
-  nixpkgs.vultr-cli nixpkgs.qemu nixpkgs.sqlite
+  nixpkgs.sqlite
+  # nixpkgs.vultr-cli nixpkgs.qemu
   # nixpkgs.jemalloc nixpkgs.flamegraph nixpkgs.dolt nixpkgs.watchman nixpkgs.opencc
   # nixpkgs.atuin nixpkgs.nnn nixpkgs.ranger nixpkgs.lcov nixpkgs.gcovr nixpkgs.navi nixpkgs.ghq
   # nixpkgs.sqlcipher nixpkgs.sqlite nixpkgs.zoxide nixpkgs.wishlist
@@ -75,8 +76,8 @@ pkg_list=(
 nix-env -p /nix/var/nix/profiles/default -iA "${pkg_list[@]}"
 
 # nix-env -iA -p /nix/var/nix/profiles/gcc49 nixpkgs.gcc49
-nix-env -iA -p /nix/var/nix/profiles/gcc9 nixpkgs.gcc9
-nix-env -iA -p /nix/var/nix/profiles/gcc13 nixpkgs.gcc13
+# nix-env -iA -p /nix/var/nix/profiles/gcc9 nixpkgs.gcc9
+# nix-env -iA -p /nix/var/nix/profiles/gcc13 nixpkgs.gcc13
 # nix-env -iA -p /nix/var/nix/profiles/flutter nixpkgs.flutter
 # nix-env -iA -p /nix/var/nix/profiles/dart nixpkgs.dart
 # nix-env -iA -p /nix/var/nix/profiles/protobuf3_17 nixpkgs.protobuf3_17
@@ -98,7 +99,7 @@ nix-env -iA -p /nix/var/nix/profiles/protobuf_3_8_0 protobuf_3_8_0 -f default.ni
 nix-env -iA -p /nix/var/nix/profiles/protobuf_3_20 nixpkgs.protobuf3_20
 # nix-env -iA -p /nix/var/nix/profiles/coreutils nixpkgs.coreutils
 
-nix-env -iA -p /nix/var/nix/profiles/cuda11_0 nixpkgs.cudaPackages_11_0.cudatoolkit
+# nix-env -iA -p /nix/var/nix/profiles/cuda11_0 nixpkgs.cudaPackages_11_0.cudatoolkit
 # nix-env -iA -p /nix/var/nix/profiles/cuda11_4 nixpkgs.cudaPackages_11_4.cudatoolkit
 # nix-env -iA -p /nix/var/nix/profiles/cuda11_8 nixpkgs.cudaPackages_11_8.cudatoolkit
 
