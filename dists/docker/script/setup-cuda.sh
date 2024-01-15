@@ -20,8 +20,11 @@ set -xeuo pipefail
 # curl -sSL -o cuda_linux.run \
 #   https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
 
+# curl -sSL -o cuda_linux.run \
+#   http://developer.download.nvidia.com/compute/cuda/11.0.2/local_installers/cuda_11.0.2_450.51.05_linux.run
+
 curl -sSL -o cuda_linux.run \
-  http://developer.download.nvidia.com/compute/cuda/11.0.2/local_installers/cuda_11.0.2_450.51.05_linux.run
+  https://developer.download.nvidia.com/compute/cuda/11.4.0/local_installers/cuda_11.4.0_470.42.01_linux.run
 
 # curl -sSL -o cuda_linux.run \
 #   https://developer.download.nvidia.com/compute/cuda/11.2.0/local_installers/cuda_11.2.0_460.27.04_linux.run
