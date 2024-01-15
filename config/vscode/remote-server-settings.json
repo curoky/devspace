@@ -3,7 +3,7 @@
     "editor.tabSize": 2
   },
   "bazel.buildifierExecutable": "/nix/var/nix/profiles/default/bin/buildifier",
-  "bazel.executable": "/home/linuxbrew/.linuxbrew/bin/bazel",
+  "bazel.executable": "/nix/var/nix/profiles/default/bin/bazel",
   "C_Cpp.clang_format_path": "/nix/var/nix/profiles/default/bin/clang-format",
   "C_Cpp.codeAnalysis.maxConcurrentThreads": 32,
   "C_Cpp.codeAnalysis.maxMemory": 50000,
