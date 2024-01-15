@@ -23,7 +23,7 @@ DISABLE_LS_COLORS=true # we use exa not ls
 # ZSH_THEME="spaceship"
 
 plugins=(
-  # conda-zsh-completion
+  conda-zsh-completion
   # direnv
   # docker
   # docker-compose

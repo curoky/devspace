@@ -30,7 +30,7 @@ class ZshBundle < Formula
     (prefix / 'custom/plugins/zsh-syntax-highlighting').install resource('zsh-syntax-highlighting')
 
     # (prefix / 'custom/themes/spaceship-prompt').install resource('spaceship-prompt')
-    # (prefix / 'custom/plugins/conda-zsh-completion').install resource('conda-zsh-completion')
+    (prefix / 'custom/plugins/conda-zsh-completion').install resource('conda-zsh-completion')
   end
 
   test do
