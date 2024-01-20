@@ -55,35 +55,38 @@ RUN apt-get update \
   && locale-gen en_US.UTF-8 \
   && userdel ubuntu && rm -rf /home/ubuntu
 
+COPY images/script/setup-sys-*.sh /tmp/
+
+RUN /tmp/setup-sys-locale.sh \
+  && /tmp/setup-sys-user.sh \
+  && /tmp/setup-sys-timezone.sh \
+  && /tmp/setup-sys-backport-pkg.sh \
+  && /tmp/setup-sys-update-gcc-version.sh \
+  && /tmp/setup-sys-cuda.sh
+
 # Note: g=u doesn't really work. https://github.com/moby/buildkit/issues/1951
-COPY --chown=1000:1000 --chmod=g=u --from=nixpkgs /nix /nix
 # COPY --chown=1000:1000 --chmod=g=u --from=vcpkg /opt/vcpkg /opt/vcpkg
 COPY --chown=1000:1000 --chmod=g=u --from=homebrew /home/linuxbrew /home/linuxbrew
 COPY --chown=1000:1000 --chmod=g=u --from=golang /root/go/bin /home/cicada/go/bin
 COPY --chown=1000:1000 --chmod=g=u --from=conda /opt/conda /opt/conda
+COPY --chown=1000:1000 --chmod=g=u --from=nixpkgs /nix /nix
 COPY --chown=1000:1000 --chmod=g=u ./ /opt/dotbox
 COPY --chown=1000:1000 --chmod=g=u ./ /home/cicada/dotbox
 COPY --chown=root:adm --chmod=g=u ./ /root/dotbox
 
-RUN ansible-galaxy collection install community.general \
-  && ansible-playbook -vvv /opt/dotbox/images/site.yaml \
-  && rm -rf ~/.ansible \
-  && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
-  && /opt/dotbox/images/script/setup-bazel-registry.sh \
-  && /opt/dotbox/images/script/setup-gcc-as-default.sh \
-  && /opt/dotbox/images/script/setup-cuda.sh \
+RUN /opt/dotbox/images/script/setup-bazel-registry.sh \
   && dotdrop install --cfg=~/dotbox/config.yaml --force --profile=devbox-sysconf \
   && dotdrop install --cfg=~/dotbox/config.yaml --force --profile=devbox-userconf-outofbox \
-  && mkdir /data \
-  && chown cicada:cicada /data /opt
+  && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
+  && mkdir /data /data_shared \
+  && chown cicada:cicada /data /data_shared /opt
 
 USER cicada
 
 RUN git -C ~/dotbox remote set-url origin git@github.com:curoky/dotbox \
   && dotdrop install --cfg=~/dotbox/config.yaml --force --profile=devbox-userconf-base \
   && curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
-  && pipx install conan==1.60.1 \
-  && pipx install licenseheaders
+  && /opt/dotbox/images/script/setup-pkg-pipx.sh
 
 USER root
 ENTRYPOINT ["/opt/dotbox/images/script/entrypoint.sh"]

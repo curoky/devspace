@@ -18,22 +18,5 @@
 
 set -xeuo pipefail
 
-function CreateUser() {
-  uid=$1
-  gid=$uid
-  name=$2
-  pass=$3
-  groupadd -g $gid -o $name
-  useradd -m -s /bin/zsh -u $uid -g $gid $name
-  usermod -aG sudo $name
-  usermod -aG adm $name
-  usermod -aG docker $name
-  echo "$name:$pass" | chpasswd
-  echo "create user $name($uid:$gid) with password: $pass"
-  echo "$name ALL=(ALL:ALL) NOPASSWD:ALL" >>/etc/sudoers
-}
-
-CreateUser 1000 curoky 123456
-CreateUser 1001 worker 123456
-
-usermod -aG curoky worker
+pipx install conan==1.62.0
+pipx install licenseheaders
