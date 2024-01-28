@@ -49,7 +49,8 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     curl gnupg2 ca-certificates locales tzdata sudo init systemd \
     openssh-server rsyslog cron lsb-release \
-    gcc-10 g++-10 libsnappy-dev libxml2 \
+    gcc-10 g++-10 \
+    libsnappy-dev libxml2 libexpat1 \
     # xfce4 xfce4-goodies tightvncserver
   && apt-get autoremove -y \
   && locale-gen en_US.UTF-8 \

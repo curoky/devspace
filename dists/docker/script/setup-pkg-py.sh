@@ -31,13 +31,24 @@ function create_conda_env() {
   /opt/conda/envs/$env_name/bin/pip install --no-cache-dir -r $conf_path/requirements-${env_name}.txt
 }
 
+function insert_tf_ldpath() {
+  local env_name=$1
+  local py_version=$2
+  # echo "export LD_LIBRARY_PATH=/opt/conda/envs/ml/lib/:/nix/var/nix/profiles/cuda11_8/lib:/opt/conda/envs/ml/lib/python3.11/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH" >> /opt/conda/envs/$env_name/etc/conda/activate.d/env_vars.sh
+  mkdir -p /opt/conda/envs/$env_name/etc/conda/activate.d
+  echo "export LD_LIBRARY_PATH=/opt/conda/envs/$env_name/lib/python$py_version/site-packages/nvidia/cudnn/lib:\$LD_LIBRARY_PATH" >>/opt/conda/envs/$env_name/etc/conda/activate.d/env_vars.sh
+}
+
 create_conda_env default '3.11'
-create_conda_env ml-tf2.x '3.11'
-create_conda_env ml-tf2.5 '3.8'
 create_conda_env ml-tf1.15 '3.7'
+create_conda_env ml-tf2.5 '3.8'
+create_conda_env ml-tf2.9.2 '3.10'
+create_conda_env ml-tf2.x '3.11'
 create_conda_env py2 '2'
 
-# mkdir -p /opt/conda/envs/ml/etc/conda/activate.d
-# echo 'export LD_LIBRARY_PATH=/opt/conda/envs/ml/lib/:/nix/var/nix/profiles/cuda11_8/lib:/opt/conda/envs/ml/lib/python3.11/site-packages/nvidia/cudnn/lib:$LD_LIBRARY_PATH' >> /opt/conda/envs/ml/etc/conda/activate.d/env_vars.sh
+insert_tf_ldpath ml-tf1.15 '3.7'
+insert_tf_ldpath ml-tf2.5 '3.8'
+insert_tf_ldpath ml-tf2.9.2 '3.10'
+insert_tf_ldpath ml-tf2.x '3.11'
 
 /opt/conda/bin/conda clean --all -y
