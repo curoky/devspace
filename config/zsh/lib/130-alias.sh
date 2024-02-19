@@ -73,8 +73,5 @@ alias ggpf='git push origin "$(git_current_branch)" --force'
 
 alias dctemp="docker run --rm --tty --network=host --interactive --entrypoint /bin/bash"
 
-alias cd_wechat_path="$HOME/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat"
-alias cd_lark_path="$HOME/Library/Containers/com.bytedance.macos.feishu/Data/Library/Application Support/LarkShell/sdk_storage"
-
 # https://gist.github.com/elventear/7640982
 # alias wget="curl -O --retry 999 --retry-max-time 0 -C -"
