@@ -36,7 +36,7 @@ plugins=(
   common-aliases
   # direnv
   extract
-  # fzf
+  fzf
   git
   systemadmin
   zsh-autosuggestions

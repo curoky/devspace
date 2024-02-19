@@ -311,7 +311,6 @@ profiles:
       - bash_logout
       - bashrc
       - bat
-      - bazel
       - cargo
       - ccache
       - clang-format

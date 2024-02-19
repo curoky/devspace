@@ -96,6 +96,7 @@ nix-env -iA -p /nix/var/nix/profiles/llvm16 nixpkgs.llvmPackages_16.llvm
 nix-env -iA -p /nix/var/nix/profiles/llvm16-bintools nixpkgs.llvmPackages_16.bintools-unwrapped
 nix-env -iA -p /nix/var/nix/profiles/inetutils nixpkgs.inetutils
 nix-env -iA -p /nix/var/nix/profiles/protobuf_3_8_0 protobuf_3_8_0 -f default.nix
+nix-env -iA -p /nix/var/nix/profiles/protobuf_3_9_2 protobuf_3_9_2 -f default.nix
 nix-env -iA -p /nix/var/nix/profiles/protobuf_3_20 nixpkgs.protobuf3_20
 # nix-env -iA -p /nix/var/nix/profiles/coreutils nixpkgs.coreutils
 

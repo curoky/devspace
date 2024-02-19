@@ -65,4 +65,4 @@ compdef _bb bb bbup bb4 bb4up bbcl bbclup
 eval "$(starship init zsh)"
 
 #-> (post) mcfly
-eval "$(mcfly init zsh)"
+# eval "$(mcfly init zsh)"
