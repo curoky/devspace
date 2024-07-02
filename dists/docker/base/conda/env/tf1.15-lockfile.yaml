@@ -46,7 +46,7 @@ dependencies:
       - tensorflow==1.15.0
       - tensorflow-estimator==1.15.1
       - termcolor==1.1.0
-      - urllib3==1.26.18
+      - urllib3==1.26.19
       - werkzeug==1.0.1
       - wrapt==1.15.0
 prefix: /app/conda/envs/tf1.15
