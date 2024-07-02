@@ -15,7 +15,7 @@ RUN curl -sSL -o /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda
   && ./setup-conda-env.sh env/tf2.5.yaml 1 11.4 \
   # && ./setup-conda-env.sh env/tf2.11.yaml 1 \
   && ./setup-conda-env.sh env/tf2.16.yaml 1 12.3 \
-  && ./setup-conda-env.sh env/pytorch.yaml \
+  # && ./setup-conda-env.sh env/pytorch.yaml \
   && rm -rf /tmp/*
 
 COPY --from=pipx install-pkgs.sh install-pipx-pkgs.sh
