@@ -17,10 +17,13 @@
 # limitations under the License.
 
 set -xeuo pipefail
+cd "$(dirname $0)" || exit 1
 
-/app/dotbox/dists/docker/script/link-host-dir.sh
+base_image=${1:-'ubuntu24.04'} #debian9
 
-sed -i -e "s/Port 61000/Port ${DEVBOX_SSHD_PORT:-61000}/g" /app/dotbox/config/sshd/sshd_config.conf
-
-# dotdrop install --force --cfg=/home/x/dotbox/config/config.yaml --profile=docker-userconf-final
-# exec /lib/systemd/systemd
+# --cache-to=type=inline \
+# --cache-from=type=registry,ref=curoky/dotbox:${base_image} \
+docker buildx build ../.. --network=host --file Dockerfile "${@:2}" \
+  --build-arg="BASE_IMAGE=${base_image}" \
+  --tag curoky/dotbox:${base_image}-minimal
+# --output type=local,dest=$PWD/temp

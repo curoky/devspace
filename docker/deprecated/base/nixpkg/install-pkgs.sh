@@ -59,6 +59,7 @@ pkg_list=(
   nixpkgs.nix-index nixpkgs.nixpkgs-fmt nixpkgs.pre-commit nixpkgs.gperf
   nixpkgs.openssh_gssapi nixpkgs.pandoc nixpkgs.graphviz
   nixpkgs.parallel nixpkgs.cloc nixpkgs.go-task nixpkgs.krb5 nixpkgs.sqlite
+  nixpkgs.act
 
   # nixpkgs.gost nixpkgs.htop nixpkgs.tcpdump nixpkgs.shellcheck
   # nixpkgs.mkdocs nixpkgs.sphinx nixpkgs.hugo nixpkgs.inetutils

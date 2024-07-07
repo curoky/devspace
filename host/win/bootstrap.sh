@@ -15,21 +15,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-set -xeuo pipefail
 
-# timezone
-ln -f /nix/var/nix/profiles/default/share/zoneinfo/Singapore /etc/localtime
-
-# cert
-mkdir -p /etc/ssl/certs/
-cp /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
-
-# locales
-mkdir -p /usr/lib/locale
-ln -s /nix/var/nix/profiles/default/lib/locale/locale-archive /usr/lib/locale/locale-archive
-echo 'LANG=en_US.UTF-8' >/etc/locale.conf
-
-# systemd
-systemctl enable /app/dotbox/config/systemd/myssh.service
-useradd --uid 200 -g 65534 --home-dir /run/sshd --create-home --shell /usr/sbin/nologin sshd
-mkdir -p /var/empty
+winget uninstall Microsoft.YourPhone_8wekyb3d8bbwe
+winget uninstall MicrosoftWindows.Client.WebExperience_cw5n1h2txyewy
+winget uninstall Microsoft.GetHelp_8wekyb3d8bbwe

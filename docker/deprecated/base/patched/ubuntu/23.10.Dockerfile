@@ -7,5 +7,4 @@ RUN apt-get update \
     sudo systemd \
     # xfce4 xfce4-goodies tightvncserver
   && apt-get autoremove -y \
-  && userdel ubuntu -r \
-  && echo "root:123456" | chpasswd
+  && userdel ubuntu -r

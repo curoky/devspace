@@ -5,5 +5,4 @@ RUN apt-get update \
     ncurses-bin ncurses-base \
   && apt-get install -y --no-install-recommends \
     sudo systemd \
-  && apt-get autoremove -y \
-  && echo "root:123456" | chpasswd
+  && apt-get autoremove -y

@@ -15,15 +15,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 set -xeuo pipefail
-cd "$(dirname $0)" || exit 1
 
-base_image=${1:-'ubuntu24.04'} #debian9
+# BIN_NAMES=(curl grep sed gzip find less git) # perl bash
+# for n in "${BIN_NAMES[@]}"; do
+#   if [[ ! -e /usr/bin/$n ]]; then
+#     ln -s /nix/var/nix/profiles/default/bin/$n /usr/bin/$n
+#   fi
+# done
 
-# --cache-to=type=inline \
-# --cache-from=type=registry,ref=curoky/dotbox:${base_image} \
-docker buildx build ../.. --network=host --file Dockerfile "${@:2}" \
-  --build-arg="BASE_IMAGE=${base_image}" \
-  --tag curoky/dotbox:${base_image}
-# --output type=local,dest=$PWD/temp
+# ln -s /app/pipx/bin/{dotdrop,licenseheaders} /usr/local/bin
+# ln -s /nix/var/nix/profiles/default/bin/{curl,grep,sed,gzip,find,less,git,zsh} /usr/local/bin

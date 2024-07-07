@@ -17,12 +17,21 @@
 # limitations under the License.
 set -xeuo pipefail
 
-BIN_NAMES=(curl grep sed gzip find less git) # perl bash
-for n in "${BIN_NAMES[@]}"; do
-  if [[ ! -e /usr/bin/$n ]]; then
-    ln -s /nix/var/nix/profiles/default/bin/$n /usr/bin/$n
-  fi
-done
+# timezone
+ln -f /nix/var/nix/profiles/default/share/zoneinfo/Singapore /etc/localtime
 
-ln -s /app/pipx/bin/{dotdrop,netron,licenseheaders} /usr/local/bin
-ln -s /nix/var/nix/profiles/default/bin/{curl,grep,sed,gzip,find,less,git,zsh} /usr/local/bin
+# cert
+# export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+# export NIX_SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+mkdir -p /etc/ssl/certs/
+cp /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
+
+# locales
+mkdir -p /usr/lib/locale
+ln -s /nix/var/nix/profiles/default/lib/locale/locale-archive /usr/lib/locale/locale-archive
+echo 'LANG=en_US.UTF-8' >/etc/locale.conf
+
+# systemd
+systemctl enable /app/dotbox/config/systemd/myssh.service
+useradd --uid 200 -g 65534 --home-dir /run/sshd --create-home --shell /usr/sbin/nologin sshd
+mkdir -p /var/empty
