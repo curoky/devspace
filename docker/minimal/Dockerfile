@@ -45,6 +45,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     nixpkgs.bison nixpkgs.gettext nixpkgs.m4 \
     # compile
     nixpkgs.automake nixpkgs.autoconf nixpkgs.libtool nixpkgs.pkg-config nixpkgs.gnumake nixpkgs.cmake \
+    nixpkgs.bazelisk \
     # shell
     nixpkgs.zsh nixpkgs.bash nixpkgs.shfmt nixpkgs.starship nixpkgs.tmux nixpkgs.asciinema \
     # git
@@ -66,6 +67,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
   && nix-env -iA -p /nix/var/nix/profiles/protobuf_24 nixpkgs.protobuf_24 \
   && nix-env -iA -p /nix/var/nix/profiles/vim-bundle -f nixpkgs/default.nix vim-bundle \
   && nix-env -iA -p /nix/var/nix/profiles/zsh-bundle -f nixpkgs/default.nix zsh-bundle \
+  && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
   && nix-collect-garbage
 
 ############################################################
