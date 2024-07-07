@@ -122,7 +122,8 @@ RUN mkdir ~/.nix-defexpr \
 
 RUN sudo mkdir -p /data/share /data/cache /data/workspace \
   && sudo chown x:x ~ /data /app ~/.local /app/conda /app/pipx \
-  && dotdrop install --cfg=/app/dotbox/config/config.yaml --force --profile=docker-userconf-final
+  && dotdrop install --cfg=/app/dotbox/config/config.yaml --force --profile=docker-userconf-final \
+  && ln -s /app/dotbox ~/dotbox
 
 USER root
 ENTRYPOINT ["/app/dotbox/docker/minimal/script/entrypoint.sh"]
