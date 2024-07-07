@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=ubuntu24.04
+ARG BASE_IMAGE=ubuntu:24.04
 ############################################################
 #################   Conda && Pipx   ########################
 ############################################################
@@ -32,6 +32,7 @@ ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/x/.nix-profile/bin:/nix/v
   NIXPKGS_ALLOW_BROKEN=1
 RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
   && nix-channel --update
+COPY third-party/nixpkgs nixpkgs
 RUN nix-env -p /nix/var/nix/profiles/default -iA \
     # system core package
     nixpkgs.tzdata.out nixpkgs.locale nixpkgs.cacert \
@@ -59,6 +60,8 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     nixpkgs.buildifier \
     # other
     nixpkgs.cloc nixpkgs.go-task nixpkgs.krb5 nixpkgs.openssh_gssapi nixpkgs.pandoc \
+  && nix-env -iA -p /nix/var/nix/profiles/vim-bundle -f nixpkgs/default.nix vim-bundle \
+  && nix-env -iA -p /nix/var/nix/profiles/zsh-bundle -f nixpkgs/default.nix zsh-bundle \
   && nix-collect-garbage
 
 ############################################################
@@ -115,9 +118,7 @@ ENV PATH=$PATH:/home/x/.nix-profile/bin:/app/dotbox/docker/minimal/script
 # Post setup for nixpkgs
 RUN mkdir ~/.nix-defexpr \
   && ln -s ~/.local/state/nix/profiles/profile ~/.nix-profile \
-  && ln -s ~/.local/state/nix/profiles/channels ~/.nix-defexpr/channels \
-  && nix-env -iA -p /nix/var/nix/profiles/vim-bundle -f /app/dotbox/third-party/nixpkgs/default.nix vim-bundle \
-  && nix-env -iA -p /nix/var/nix/profiles/zsh-bundle -f /app/dotbox/third-party/nixpkgs/default.nix zsh-bundle
+  && ln -s ~/.local/state/nix/profiles/channels ~/.nix-defexpr/channels
 
 RUN sudo mkdir -p /data/share /data/cache /data/workspace \
   && sudo chown x:x ~ /data /app ~/.local /app/conda /app/pipx \

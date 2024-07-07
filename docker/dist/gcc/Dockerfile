@@ -1,4 +1,4 @@
-FROM curoky/dotbox:ubuntu24.04-minimal
+FROM curoky/dotbox:minimal-ubuntu24.04
 
 USER root
 ## Setup gcc
