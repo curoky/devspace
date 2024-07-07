@@ -79,6 +79,7 @@ dotfiles:
     dst: ~/.gdbinit
     src: gdb/gdbinit
   git-config:
+    link: nolink
     dst: ~/.gitconfig
     src: git/.gitconfig
   git-key:
@@ -206,6 +207,7 @@ dotfiles:
     dst: ~/.snipaste/config.ini
     src: snipaste/config.ini
   ssh-authorized-key:
+    link: nolink
     dst: ~/.ssh/authorized_keys
     src: ssh/authorized_keys
   sshd_config:
@@ -283,6 +285,7 @@ dotfiles:
     src: zsh/etc/zshenv.d/golang-proxy-cn.zsh
   zshrc:
     dst: ~/.zshrc
+    link: nolink
     src: zsh/zshrc
 profiles:
   # docker-sysconf-proxy:

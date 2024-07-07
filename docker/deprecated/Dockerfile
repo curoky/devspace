@@ -25,7 +25,7 @@ RUN sudo mkdir -p /data/share /data/cache /data/workspace \
   && mkdir ~/.nix-defexpr \
   && ln -s ~/.local/state/nix/profiles/profile ~/.nix-profile \
   && ln -s ~/.local/state/nix/profiles/channels ~/.nix-defexpr/channels \
-  && dotdrop install --cfg=/app/dotbox/config/config.yaml --force --profile=docker-userconf-base
+  && dotdrop install --cfg=/app/dotbox/config/config.yaml --force --profile=docker-userconf-final
 
 USER root
 ENTRYPOINT ["/app/dotbox/dists/docker/script/entrypoint.sh"]
