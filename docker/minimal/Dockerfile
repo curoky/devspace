@@ -35,7 +35,7 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
 COPY third-party/nixpkgs nixpkgs
 RUN nix-env -p /nix/var/nix/profiles/default -iA \
     # system core package
-    nixpkgs.tzdata.out nixpkgs.locale nixpkgs.cacert \
+    nixpkgs.tzdata.out nixpkgs.locale nixpkgs.glibcLocales nixpkgs.cacert \
     # compression
     nixpkgs.bzip2 nixpkgs.xz nixpkgs.zstd nixpkgs.zip nixpkgs.unzip nixpkgs.gnutar nixpkgs.zlib nixpkgs.zlib-ng nixpkgs.gzip nixpkgs.snappy \
     # download
