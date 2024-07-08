@@ -67,6 +67,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
   && nix-env -iA -p /nix/var/nix/profiles/protobuf_24 nixpkgs.protobuf_24 \
   && nix-env -iA -p /nix/var/nix/profiles/vim-bundle -f nixpkgs/default.nix vim-bundle \
   && nix-env -iA -p /nix/var/nix/profiles/zsh-bundle -f nixpkgs/default.nix zsh-bundle \
+  && chmod +w /nix/var/nix/profiles/default/* \
   && ln -s /nix/var/nix/profiles/default/bin/bazelisk /nix/var/nix/profiles/default/bin/bazel \
   && nix-collect-garbage
 
