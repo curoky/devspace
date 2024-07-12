@@ -130,6 +130,7 @@ RUN mkdir ~/.nix-defexpr \
 RUN sudo mkdir -p /data/share /data/cache /data/workspace \
   && sudo chown x:x ~ /data /app ~/.local /app/conda /app/pipx \
   && dotdrop install --cfg=/app/dotbox/config/config.yaml --force --profile=docker-userconf-final \
+  && chmod 600 /app/dotbox/config/sshd/host-key/ssh_host_rsa_key \
   && ln -s /app/dotbox ~/dotbox
 
 USER root

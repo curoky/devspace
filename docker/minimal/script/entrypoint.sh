@@ -26,4 +26,9 @@ if [[ -d /home/x/dotbox ]]; then
   dotdrop install --force --cfg=/home/x/dotbox/config/config.yaml --profile=docker-userconf-final
 fi
 
-exec /lib/systemd/systemd
+/nix/var/nix/profiles/default/bin/sshd -D \
+  -f /app/dotbox/config/sshd/sshd_config.conf \
+  -E /var/log/mysshd.log
+
+sleep 50000000
+# exec /lib/systemd/systemd
