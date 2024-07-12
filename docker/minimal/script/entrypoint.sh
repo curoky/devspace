@@ -18,7 +18,7 @@
 
 set -xeuo pipefail
 
-/app/dotbox/dists/docker/script/link-host-dir.sh
+/app/dotbox/docker/minimal/script/link-host-dir.sh
 
 sed -i -e "s/Port 61000/Port ${DEVBOX_SSHD_PORT:-61000}/g" /app/dotbox/config/sshd/sshd_config.conf
 
@@ -26,9 +26,10 @@ if [[ -d /home/x/dotbox ]]; then
   dotdrop install --force --cfg=/home/x/dotbox/config/config.yaml --profile=docker-userconf-final
 fi
 
-/nix/var/nix/profiles/default/bin/sshd -D \
-  -f /app/dotbox/config/sshd/sshd_config.conf \
-  -E /var/log/mysshd.log
+mkdir -p /var/log
+/nix/var/nix/profiles/default/bin/sshd \
+  -f /app/dotbox/config/sshd/sshd_config.conf -e
+# -E /var/log/mysshd.log
 
 sleep 50000000
 # exec /lib/systemd/systemd
