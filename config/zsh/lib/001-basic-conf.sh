@@ -47,5 +47,5 @@ mkdir_if_not_exists $TMPDIR
 if [[ $(uname) == "Linux" ]]; then
   # https://superuser.com/questions/687094/does-ulimit-su-limit-the-number-of-user-processes-created-in-interactive-logi
   # https://github.com/tmux/tmux/issues/1356
-  ulimit -Sn 1048575
+  ulimit -Sn 1024768
 fi
