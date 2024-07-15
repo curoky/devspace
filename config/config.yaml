@@ -1,6 +1,6 @@
 actions:
-  fix-sshd-host-key-permissions: chmod 600 /etc/ssh/ssh_host*
-  fix-ssh_config-permissions: chmod 600 config/ssh/ssh_config
+  fix-sshd-host-key-permissions: chmod 600 /etc/ssh/sshd-host-key/*
+  fix-ssh-config-permissions: chmod 600 config/ssh/ssh_config
   fix-user-ssh-config-permissions: chmod 600 ~/.ssh/config
 config:
   banner: false
@@ -222,10 +222,12 @@ dotfiles:
     dst: /etc/systemd/system/ssh.socket.d/custom.conf
     link: nolink
     src: sshd/systemd.ssh.socket.d.custom.conf
-  ssh-host-key:
-    dst: /etc/ssh
+  sshd-host-key:
     link: nolink
+    dst: /etc/ssh/sshd-host-key
     src: sshd/host-key
+    actions:
+      - fix-sshd-host-key-permissions
   ssh-user-config:
     dst: ~/.ssh/config
     actions:
@@ -326,6 +328,7 @@ profiles:
       - linux-environment
       - locale
       - ssh-etc-config
+      - sshd-host-key
       - zoneinfo-sg
       - zshenv-etc
 

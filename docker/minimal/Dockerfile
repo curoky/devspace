@@ -77,7 +77,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
 ############################################################
 FROM $BASE_IMAGE
 
-ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/x/.nix-profile/bin:/app/dotbox/docker/minimal/script:/app/pipx/bin \
+ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/x/.nix-profile/bin:/app/pipx/bin:/app/app/dotbox/docker/minimal/script \
   DEBIAN_FRONTEND=noninteractive
 
 COPY --chown=1000:1000 --link --from=stage_nixpkg /nix /nix
@@ -100,4 +100,5 @@ RUN mkdir ~/.nix-defexpr \
   && ln -s ~/.local/state/nix/profiles/profile ~/.nix-profile \
   && ln -s ~/.local/state/nix/profiles/channels ~/.nix-defexpr/channels
 
+USER root
 ENTRYPOINT ["/app/dotbox/docker/minimal/script/entrypoint.sh"]

@@ -18,7 +18,7 @@
 set -xeuo pipefail
 
 # remove ubuntu user
-RUN userdel ubuntu -r || echo "ignore userdel failed"
+userdel ubuntu -r || echo "ignore userdel failed"
 
 # setup user root
 echo "root:123456" | chpasswd
@@ -64,7 +64,6 @@ mkdir -p /data/share /data/workspace
 chown x:x /home/x /home/x/.local \
   /data /data/share /data/workspace \
   /app /app/conda /app/pipx
-chmod 600 /home/x/dotbox/config/sshd/host-key/ssh_host_rsa_key
 
 # setup cache dir
 mkdir -p /data/cache
