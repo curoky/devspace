@@ -34,6 +34,7 @@ done
 
 ENV_PATHS=(
   "$HOME/.local/bin"
+  "/app/pipx/bin"
   # "$HOME/.npm-global/bin"
   "$HOME/dotbox/tools"
   # "$HOME/go/bin"

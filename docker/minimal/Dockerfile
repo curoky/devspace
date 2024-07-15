@@ -80,54 +80,22 @@ ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/x/.nix-profile/bin:/app/d
   DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y \
-  && apt-get install -y --no-install-recommends sudo
-
-RUN userdel ubuntu -r || echo "ignore userdel failed" \
-  && echo "root:123456" | chpasswd \
-  && chsh -s /nix/var/nix/profiles/default/bin/zsh \
+  && apt-get install -y --no-install-recommends sudo \
+  && userdel ubuntu -r || echo "ignore userdel failed" \
   && useradd --create-home --shell /nix/var/nix/profiles/default/bin/zsh --uid 1000 --user-group x \
   && echo "x:123456" | chpasswd \
   && usermod -aG sudo x \
-  && echo "x ALL=(ALL:ALL) NOPASSWD:ALL" >>/etc/sudoers.d/nopasswd_user \
-  # for sshd
-  && useradd --uid 200 -g 65534 --home-dir /run/sshd --create-home --shell /usr/sbin/nologin sshd \
-  && mkdir -p /var/empty
+  && echo "x ALL=(ALL:ALL) NOPASSWD:ALL" >>/etc/sudoers.d/nopasswd_user
 
 COPY --chown=1000:1000 --link --from=stage_nixpkg /nix /nix
 COPY --chown=1000:1000 --link --from=stage_nixpkg /home/x/.local/state/nix /home/x/.local/state/nix
 COPY --chown=1000:1000 --link --from=stage_conda /app/conda /app/conda
 COPY --chown=1000:1000 --link --from=stage_conda /app/pipx /app/pipx
-
-######## Setup core system config ##########
-RUN \
-  # timezone
-  ln -f /nix/var/nix/profiles/default/share/zoneinfo/Singapore /etc/localtime \
-  # ca-certificates
-  && mkdir -p /etc/ssl/certs/ \
-  && cp /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt \
-  # locale
-  && mkdir -p /usr/lib/locale \
-  && ln -s /nix/var/nix/profiles/default/lib/locale/locale-archive /usr/lib/locale/locale-archive \
-  && echo 'LANG=en_US.UTF-8' >/etc/locale.conf
-
-######## Step other system config and user config ##########
 COPY --chown=1000:1000 ./ /app/dotbox
-RUN dotdrop install --cfg=/app/dotbox/config/config.yaml --force --profile=docker-sysconf \
-  && dotdrop install --cfg=/app/dotbox/config/config.yaml --force --profile=docker-userconf-final \
-  && ln -s /app/dotbox ~/dotbox
 
 USER x
-RUN sudo mkdir -p /data/share /data/cache /data/workspace \
-  && sudo chown x:x ~ /data /app ~/.local /app/conda /app/pipx \
-  && dotdrop install --cfg=/app/dotbox/config/config.yaml --force --profile=docker-userconf-final \
-  && chmod 600 /app/dotbox/config/sshd/host-key/ssh_host_rsa_key \
-  && ln -s /app/dotbox ~/dotbox \
-  # Post setup for nixpkgs
-  && mkdir ~/.nix-defexpr \
+RUN mkdir ~/.nix-defexpr \
   && ln -s ~/.local/state/nix/profiles/profile ~/.nix-profile \
   && ln -s ~/.local/state/nix/profiles/channels ~/.nix-defexpr/channels
-  # systemd
-  # && systemctl enable /app/dotbox/config/systemd/myssh.service \
 
-USER root
 ENTRYPOINT ["/app/dotbox/docker/minimal/script/entrypoint.sh"]
