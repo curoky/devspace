@@ -17,8 +17,7 @@ RUN apt-get update -y \
 USER x
 
 COPY config config
-RUN nix-env -p /nix/var/nix/profiles/tf-gpu -iA \
-    nixpkgs.bazelisk \
-  && nix-env -p /nix/var/nix/profiles/tf-gpu -iA -f /app/dotbox/third-party/nixpkgs/default.nix nsight-systems \
+RUN nix-env -p /nix/var/nix/profiles/nsight-systems -iA -f /app/dotbox/third-party/nixpkgs/default.nix nsight-systems \
+  && nix-collect-garbage \
   && /app/dotbox/docker/minimal/script/setup-conda-env.sh config/conda_env/tf2.5.yaml 1 11.4 \
   && /app/dotbox/docker/minimal/script/setup-conda-env.sh config/conda_env/tf2.16.yaml 1 12.3
