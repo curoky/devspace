@@ -31,19 +31,19 @@ chsh -s /nix/var/nix/profiles/default/bin/zsh
 # echo "x ALL=(ALL:ALL) NOPASSWD:ALL" >>/etc/sudoers.d/nopasswd_user
 
 # setup timezone
-ln -sf /nix/var/nix/profiles/default/share/zoneinfo/Singapore /etc/localtime
+# ln -sf /nix/var/nix/profiles/default/share/zoneinfo/Singapore /etc/localtime
 
 # setup ca-certificates
-mkdir -p /etc/ssl/certs/
-cp /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
+# mkdir -p /etc/ssl/certs/
+# cp /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
 
 # setup locale
 mkdir -p /usr/lib/locale
 ln -sf /nix/var/nix/profiles/default/lib/locale/locale-archive /usr/lib/locale/locale-archive
-echo 'LANG=en_US.UTF-8' >/etc/locale.conf
+# echo 'LANG=en_US.UTF-8' >/etc/locale.conf
 
 # setup other system config
-dotdrop install --cfg=/app/dotbox/config/config.yaml --force --profile=docker-sysconf
+# dotdrop install --cfg=/app/dotbox/config/config.yaml --force --profile=docker-sysconf
 
 # setup dotfiles for root
 ln -sf /app/dotbox /root/dotbox

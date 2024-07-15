@@ -242,6 +242,10 @@ dotfiles:
   tabby:
     dst: ~/Library/Application Support/tabby
     src: tabby
+  locale:
+    link: nolink
+    dst: /etc/locale.conf
+    src: linux/locale/locale.conf
   terminalizer:
     dst: ~/.terminalizer
     src: terminalizer
@@ -275,6 +279,14 @@ dotfiles:
   yarn:
     dst: ~/.yarnrc
     src: yarn/yarnrc
+  zoneinfo-sg:
+    link: nolink
+    dst: /etc/localtime
+    src: linux/zoneinfo/Singapore
+  zoneinfo-utc:
+    link: nolink
+    dst: /etc/localtime
+    src: linux/zoneinfo/UTC
   zshenv-etc:
     dst: /etc/zshenv
     link: nolink
@@ -312,7 +324,9 @@ profiles:
       - linux-sudoers_more_secure_path
       - linux-sysctl
       - linux-environment
+      - locale
       - ssh-etc-config
+      - zoneinfo-sg
       - zshenv-etc
 
   docker-userconf-base:
