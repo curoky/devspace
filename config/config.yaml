@@ -206,6 +206,10 @@ dotfiles:
   snipaste:
     dst: ~/.snipaste/config.ini
     src: snipaste/config.ini
+  ca-certificates:
+    link: nolink
+    dst: /etc/ssl/certs/ca-certificates.crt
+    src: linux/ssl/ca-bundle.crt
   ssh-authorized-key:
     link: nolink
     dst: ~/.ssh/authorized_keys

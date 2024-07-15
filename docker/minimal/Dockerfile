@@ -85,7 +85,9 @@ RUN apt-get update -y \
   && useradd --create-home --shell /nix/var/nix/profiles/default/bin/zsh --uid 1000 --user-group x \
   && echo "x:123456" | chpasswd \
   && usermod -aG sudo x \
-  && echo "x ALL=(ALL:ALL) NOPASSWD:ALL" >>/etc/sudoers.d/nopasswd_user
+  && echo "x ALL=(ALL:ALL) NOPASSWD:ALL" >>/etc/sudoers.d/nopasswd_user \
+  && mkdir -p /etc/ssl/certs/ \
+  && cp /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
 
 COPY --chown=1000:1000 --link --from=stage_nixpkg /nix /nix
 COPY --chown=1000:1000 --link --from=stage_nixpkg /home/x/.local/state/nix /home/x/.local/state/nix
