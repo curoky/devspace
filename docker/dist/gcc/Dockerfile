@@ -10,6 +10,6 @@ USER x
 
 ## Setup tools from nixpkgs
 RUN nix-env -p /nix/var/nix/profiles/gcc -iA \
-    nixpkgs.ninja nixpkgs.distcc nixpkgs.ccache nixpkgs.scons nixpkgs.meson \
     nixpkgs.mold nixpkgs.lld_16 \
-    nixpkgs.jemalloc nixpkgs.flamegraph
+    nixpkgs.jemalloc nixpkgs.flamegraph \
+  && nix-collect-garbage

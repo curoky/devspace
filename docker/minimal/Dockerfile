@@ -45,6 +45,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     nixpkgs.bison nixpkgs.gettext nixpkgs.m4 \
     # compile
     nixpkgs.automake nixpkgs.autoconf nixpkgs.libtool nixpkgs.pkg-config nixpkgs.gnumake nixpkgs.cmake \
+    nixpkgs.ninja nixpkgs.scons nixpkgs.meson nixpkgs.distcc nixpkgs.ccache \
     nixpkgs.bazelisk \
     # shell
     nixpkgs.zsh nixpkgs.bash nixpkgs.shfmt nixpkgs.starship nixpkgs.tmux nixpkgs.asciinema \
@@ -79,6 +80,12 @@ FROM $BASE_IMAGE
 ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/x/.nix-profile/bin:/app/dotbox/docker/minimal/script:/app/pipx/bin \
   DEBIAN_FRONTEND=noninteractive
 
+COPY --chown=1000:1000 --link --from=stage_nixpkg /nix /nix
+COPY --chown=1000:1000 --link --from=stage_nixpkg /home/x/.local/state/nix /home/x/.local/state/nix
+COPY --chown=1000:1000 --link --from=stage_conda /app/conda /app/conda
+COPY --chown=1000:1000 --link --from=stage_conda /app/pipx /app/pipx
+COPY --chown=1000:1000 ./ /app/dotbox
+
 RUN apt-get update -y \
   && apt-get install -y --no-install-recommends sudo \
   && userdel ubuntu -r || echo "ignore userdel failed" \
@@ -86,14 +93,7 @@ RUN apt-get update -y \
   && echo "x:123456" | chpasswd \
   && usermod -aG sudo x \
   && echo "x ALL=(ALL:ALL) NOPASSWD:ALL" >>/etc/sudoers.d/nopasswd_user \
-  && mkdir -p /etc/ssl/certs/ \
-  && cp /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
-
-COPY --chown=1000:1000 --link --from=stage_nixpkg /nix /nix
-COPY --chown=1000:1000 --link --from=stage_nixpkg /home/x/.local/state/nix /home/x/.local/state/nix
-COPY --chown=1000:1000 --link --from=stage_conda /app/conda /app/conda
-COPY --chown=1000:1000 --link --from=stage_conda /app/pipx /app/pipx
-COPY --chown=1000:1000 ./ /app/dotbox
+  && dotdrop install --cfg=/app/dotbox/config/config.yaml --force --profile=docker-sysconf
 
 USER x
 RUN mkdir ~/.nix-defexpr \

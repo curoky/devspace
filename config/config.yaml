@@ -307,6 +307,7 @@ profiles:
 
   docker-sysconf:
     dotfiles:
+      - ca-certificates
       - linux-journal
       - linux-sudoers_more_secure_path
       - linux-sysctl
