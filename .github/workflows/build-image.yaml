@@ -95,7 +95,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
       - uses: docker/build-push-action@v5
         with:
-          context: .
+          context: docker/dist/${{ matrix.name }}
           file: docker/dist/${{ matrix.name }}/Dockerfile
           push: true
           cache-from: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.saved_image }}
