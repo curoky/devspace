@@ -70,14 +70,18 @@ jobs:
     strategy:
       matrix:
         include:
-          - name: default-debian:11
+          - name: default
             base_image: 'debian:11'
-          - name: default-ubuntu24.04
+            saved_image: default-debian11
+          - name: default
             base_image: 'ubuntu:24.04'
+            saved_image: default-ubuntu24.04
           - name: tf-gpu
             base_image: 'debian:11'
+            saved_image: tf-gpu
           - name: gcc
             base_image: 'debian:11'
+            saved_image: gcc
     needs:
       - base
       - stage
@@ -94,8 +98,8 @@ jobs:
           context: .
           file: docker/dist/${{ matrix.name }}/Dockerfile
           push: true
-          cache-from: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.name }}
-          cache-to: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.name }},mode=max
+          cache-from: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.saved_image }}
+          cache-to: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.saved_image }},mode=max
           no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
           build-args: BASE_IMAGE=${{ matrix.base_image }}
-          tags: curoky/dotbox:${{ matrix.name }}
+          tags: curoky/dotbox:${{ matrix.saved_image }}
