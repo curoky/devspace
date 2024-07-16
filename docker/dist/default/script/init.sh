@@ -15,15 +15,25 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 set -xeuo pipefail
-cd "$(dirname $0)" || exit 1
 
-base_image=${1:-'ubuntu24.04'} #debian9
+# reset dotfiles for x
+if [[ -d /data/share/dotbox ]]; then
+  ln -sf /data/share/dotbox /home/x/dotbox
+fi
 
-# --cache-to=type=inline \
-# --cache-from=type=registry,ref=curoky/dotbox:${base_image} \
-docker buildx build . --network=host --file Dockerfile "${@:2}" \
-  --build-arg="BASE_IMAGE=${base_image}" \
-  --tag curoky/dotbox:gcc
-# --output type=local,dest=$PWD/temp
+# setup cache dir
+if [[ -d /data/cache ]]; then
+  chown x:x /data/cache
+  rm -rf /home/x/.cache
+  ln -sf /data/cache /home/x/.cache
+fi
+
+# setup vscode-server cache
+if [[ -d /data/cache/vscode-server ]]; then
+  rm -rf /home/x/.vscode-server
+  ln -s /data/cache/vscode-server /home/x/.vscode-server
+  chown x:x /data/cache/vscode-server
+fi
+
+chown x:x /data/workspace

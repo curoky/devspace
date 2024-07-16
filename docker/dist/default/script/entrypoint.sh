@@ -18,7 +18,7 @@
 
 set -xeuo pipefail
 
-/app/dotbox/docker/minimal/script/init.sh
+/app/dotbox/docker/dist/default/script/init.sh
 
 sed -i -e "s/Port 61000/Port ${DEVBOX_SSHD_PORT:-61000}/g" /app/dotbox/config/sshd/sshd_config.conf
 

@@ -17,10 +17,8 @@
 # limitations under the License.
 
 set -xeuo pipefail
-cd "$(dirname $0)" || exit 1
 
-base_image=${1:-'ubuntu:24.04'}
-
-docker buildx build ../.. --network=host --file Dockerfile "${@:2}" \
-  --build-arg="BASE_IMAGE=${base_image}" \
-  --tag curoky/dotbox:minimal-${base_image//:/}
+docker buildx build . \
+  --file Dockerfile \
+  --network=host \
+  --tag curoky/dotbox:stage-conda

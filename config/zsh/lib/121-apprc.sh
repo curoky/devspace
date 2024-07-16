@@ -124,6 +124,7 @@ fi
 #=-> starship
 # https://starship.rs/config/#logging
 # export STARSHIP_CACHE=$XDG_CACHE_HOME/starship
+export STARSHIP_CONFIG=$CONFIG_HOME/starship/starship.toml
 
 #=-> dool(dstat's fork)
 # https://github.com/scottchiefbaker/dool/blob/master/docs/dool.1.adoc#environment-variables
@@ -146,10 +147,7 @@ fi
 # export ATUIN_CONFIG_DIR=$CONFIG_HOME/atuin
 
 #=-> bat
-# export BAT_CONFIG_PATH=$CONFIG_HOME/bat/config
-
-#=-> starship
-# export STARSHIP_CONFIG=$CONFIG_HOME/starship/starship.toml
+export BAT_CONFIG_PATH=$CONFIG_HOME/bat/config
 
 #=-> navi
 # export NAVI_CONFIG=$CONFIG_HOME/navi/config.yaml

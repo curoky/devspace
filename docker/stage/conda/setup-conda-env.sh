@@ -52,5 +52,6 @@ if [[ $add_tf_env -eq 1 ]]; then
     echo 'export LD_LIBRARY_PATH=/usr/local/cudnn8-cu12.3/lib:$LD_LIBRARY_PATH' >>$target_env_file
     # echo "export LD_LIBRARY_PATH=$CONAN_ROOT/envs/$env_name/lib/python$python_short_version/site-packages/nvidia/cudnn/lib:\$LD_LIBRARY_PATH" >>$target_env_file
   fi
-
 fi
+
+conda clean -y -a
