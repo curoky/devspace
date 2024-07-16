@@ -15,15 +15,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 set -xeuo pipefail
-cd "$(dirname $0)" || exit 1
 
-base_image=${1:-'ubuntu24.04'} #debian9
-
-# --cache-to=type=inline \
-# --cache-from=type=registry,ref=curoky/dotbox:${base_image} \
-docker buildx build . --network=host --file Dockerfile "${@:2}" \
-  --build-arg="BASE_IMAGE=${base_image}" \
-  --tag curoky/dotbox:gcc
-# --output type=local,dest=$PWD/temp
+docker run --rm --entrypoint bash -it curoky/dotbox:tf-gpu
