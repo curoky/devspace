@@ -35,6 +35,7 @@ function copy_path() {
   fi
   mkdir -p $(dirname $dst)
   cp -r $src $dst
+  chmod 600 $dst
   echo "Copied $src to $dst"
 }
 
@@ -64,6 +65,8 @@ link_path $CONF_PATH/nixpkgs/config.nix ~/.config/nixpkgs/config.nix
 link_path $CONF_PATH/procps/toprc ~/.config/procps/toprc
 link_path $CONF_PATH/vim/vimrc ~/.vimrc
 copy_path $CONF_PATH/zsh/zshrc ~/.zshrc
+copy_path $CONF_PATH/git/.gitconfig ~/.gitconfig
+copy_path $CONF_PATH/ssh/user.ssh_config ~/.ssh/config
 link_path $CONF_PATH/vscode/remote-server-settings.json ~/.vscode-server/data/Machine/settings.json
 link_path ~/.local/state/nix/profiles/profile ~/.nix-profile 1
 link_path ~/.local/state/nix/profiles/channels ~/.nix-defexpr/channels 1
