@@ -38,6 +38,25 @@ function copy_path() {
   echo "Copied $src to $dst"
 }
 
+function link_path() {
+  src=$1
+  dst=$2
+  force=${3:-0}
+  if [[ ! -e $src ]]; then
+    echo "Path $src does not exist"
+    if [[ $force -eq 0 ]]; then
+      return
+    fi
+  fi
+  if [[ -e $dst ]]; then
+    echo "Path $dst already exists, remove it"
+    rm -rf $dst
+  fi
+  mkdir -p $(dirname $dst)
+  ln -s $src $dst
+  echo "Linked $src to $dst"
+}
+
 apt-get update -y
 
 # install sudo
