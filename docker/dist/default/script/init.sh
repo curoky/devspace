@@ -19,14 +19,15 @@ set -xeuo pipefail
 
 # reset dotfiles for x
 if [[ -d /data/share/dotbox ]]; then
-  ln -sf /data/share/dotbox /home/x/dotbox
+  rm -rf /home/x/dotbox
+  ln -s /data/share/dotbox /home/x/dotbox
 fi
 
 # setup cache dir
 if [[ -d /data/cache ]]; then
   chown x:x /data/cache
   rm -rf /home/x/.cache
-  ln -sf /data/cache /home/x/.cache
+  ln -s /data/cache /home/x/.cache
 fi
 
 # setup vscode-server cache
