@@ -33,7 +33,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     nixpkgs.ninja nixpkgs.scons nixpkgs.meson nixpkgs.distcc nixpkgs.ccache \
     nixpkgs.bazelisk \
     # shell
-    nixpkgs.zsh nixpkgs.bash nixpkgs.shfmt nixpkgs.starship nixpkgs.tmux nixpkgs.asciinema \
+    nixpkgs.zsh nixpkgs.bash nixpkgs.shfmt nixpkgs.starship nixpkgs.tmux nixpkgs.asciinema nixpkgs.atuin \
     # git
     nixpkgs.git nixpkgs.git-absorb nixpkgs.git-extras nixpkgs.git-lfs nixpkgs.git-filter-repo nixpkgs.gnupatch \
     # sre
