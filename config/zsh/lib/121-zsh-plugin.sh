@@ -33,7 +33,7 @@ plugins=(
   fzf
   git
   systemadmin
-  zsh-autosuggestions
+  # zsh-autosuggestions
   zsh-completions
   zsh-syntax-highlighting
   # direnv
