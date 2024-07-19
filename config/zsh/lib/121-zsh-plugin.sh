@@ -33,7 +33,7 @@ plugins=(
   fzf
   git
   systemadmin
-  # zsh-autosuggestions
+  zsh-autosuggestions
   zsh-completions
   zsh-syntax-highlighting
   # direnv
@@ -93,9 +93,9 @@ fi
 # https://zsh.sourceforge.io/Doc/Release/Options.html
 # setopt | grep hist
 # export HISTORY_IGNORE="(?|??|???|????|* --help|* --version)"
-if [[ -d "$HOME/My Drive/CKYData/010-backup/shell-history" ]]; then
-  HISTFILE="$HOME/My Drive/CKYData/010-backup/shell-history/$MY_HOST_NAME.$(id -u).$DEVBOX_PROFILE.zsh_history"
-fi
+# if [[ -d "$HOME/My Drive/CKYData/010-backup/shell-history" ]]; then
+#   HISTFILE="$HOME/My Drive/CKYData/010-backup/shell-history/$MY_HOST_NAME.$(id -u).$DEVBOX_PROFILE.zsh_history"
+# fi
 
 # HISTSIZE=30000
 # SAVEHIST=20000
