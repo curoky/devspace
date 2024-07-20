@@ -10,23 +10,12 @@ config:
   template_dotfile_default: false
   minversion: 1.14.0
 dotfiles:
-  apt-proxy:
-    dst: /etc/apt/apt.conf.d/proxy
-    link: nolink
-    src: apt/apt.conf.d/proxy
-  apt-ubuntu-mirror-cn:
-    dst: /etc/apt/sources.list
-    link: nolink
-    src: apt/sources-ubuntu-mirror-cn.list
-  bash_logout:
-    dst: ~/.bash_logout
-    src: bash/bash_logout
+  atuin:
+    dst: ~/.config/atuin/config.toml
+    src: atuin/config.toml
   bashrc:
     dst: ~/.bashrc
     src: bash/bashrc
-  bat:
-    dst: ~/.config/bat/config
-    src: bat/config
   bazel:
     dst: ~/.bazelrc
     src: bazel/bazelrc
@@ -36,15 +25,6 @@ dotfiles:
   ccache:
     dst: ~/.config/ccache/ccache.conf
     src: ccache/ccache.conf
-  clang-format:
-    dst: ~/.clang-format
-    src: clang-format/clang-format
-  cmake-format:
-    dst: ~/.cmake-format.json
-    src: cmake-format/cmake-format.json
-  conan:
-    dst: ~/.conan/conan.conf
-    src: conan/conan.conf
   conan2:
     dst: ~/.conan2/global.conf
     src: conan2/global.conf
@@ -54,27 +34,9 @@ dotfiles:
   croc:
     dst: ~/.config/croc
     src: croc
-  crontab:
-    dst: /etc/cron.d/custom.crontab
-    link: nolink
-    src: crontab/custom.crontab
-  dircolors:
-    dst: ~/.dircolors
-    src: ls/dircolors
   docker:
     dst: ~/.docker/config.json
     src: docker/config.json
-  docker-d:
-    dst: /etc/docker/daemon.json
-    link: nolink
-    src: docker/daemon.json
-  docker-proxy:
-    dst: /etc/systemd/system/docker.service.d/http-proxy.conf
-    link: nolink
-    src: docker/http-proxy.conf
-  dolthub:
-    dst: ~/.dolt
-    src: dolthub
   gdb:
     dst: ~/.gdbinit
     src: gdb/gdbinit
@@ -82,100 +44,21 @@ dotfiles:
     link: nolink
     dst: ~/.gitconfig
     src: git/.gitconfig
-  git-key:
-    dst: ~/dotbox/config/ssh/id_rsa-github.origin
-    src: ssh/id_rsa-github
-    link: nolink
-    chmod: '600'
-    trans_install: _decrypt
-    trans_update: _encrypt
   go:
     dst: ~/.config/go
     src: go
   golangci:
     dst: ~/.golangci.yaml
     src: golangci/golangci.yaml
-  goproxy-systemd:
-    dst: /lib/systemd/system/goproxy.service
-    link: nolink
-    src: goproxy/goproxy.service
-  gost-d:
-    dst: /etc/gost/daemon.json
-    link: nolink
-    src: gost/daemon.json
-  gost-systemd:
-    dst: /lib/systemd/system/gost.service
-    link: nolink
-    src: gost/gost.service
   gradle:
     dst: ~/.gradle/gradle.properties
     src: gradle/gradle.properties
-  helix:
-    dst: ~/.config/helix
-    src: helix
-  htop:
-    dst: ~/.config/htop/htoprc
-    src: htop/htoprc
-  httpbin:
-    dst: /lib/systemd/system/go-httpbin.service
-    link: nolink
-    src: httpbin/go-httpbin.service
-  hyper:
-    dst: ~/.hyper.js
-    src: hyper/hyper.js
-  isort:
-    dst: ~/.isort.cfg
-    src: isort/isort.cfg
   jupyter:
     dst: ~/.jupyter
     src: jupyter
-  linux-environment:
-    dst: /etc/environment
-    link: nolink
-    src: linux/environment
-  linux-journal:
-    dst: /etc/systemd/journald.conf
-    link: nolink
-    src: systemd/journald.conf
-  linux-profile-homebrew-mirror-cn:
-    dst: /etc/profile.d/homebrew-mirror-cn.sh
-    link: nolink
-    src: linux/profile.d/homebrew-mirror-cn.sh
-  linux-sudoers_more_secure_path:
-    dst: /etc/sudoers.d/more_secure_path
-    link: nolink
-    src: linux/sudoers.d/more_secure_path
-  linux-sudoers_nopasswd_user:
-    dst: /etc/sudoers.d/nopasswd_user
-    link: nolink
-    src: linux/sudoers.d/nopasswd_user
-  linux-sysctl:
-    dst: /etc/sysctl.d/custom.conf
-    link: nolink
-    src: linux/sysctl.d/custom.conf
-  markdownlint:
-    dst: ~/.markdownlintrc
-    src: markdownlint/markdownlintrc
   maven:
     dst: ~/.m2/settings.xml
     src: maven/settings.xml
-  navi:
-    dst: ~/.config/navi
-    src: navi
-  navi-cheats:
-    dst: ~/.local/share/navi/cheats/local
-    src: navi-cheats
-  neofetch:
-    dst: ~/.config/neofetch
-    src: neofetch
-  nix:
-    dst: /etc/nix/nix.conf
-    link: nolink
-    src: nixpkgs/nix.conf
-  nix-mirror-cn:
-    dst: /etc/nix/nix.conf
-    link: nolink
-    src: nixpkgs/nix-mirror-cn.conf
   nixpkgs:
     dst: ~/.config/nixpkgs/config.nix
     src: nixpkgs/config.nix
@@ -188,55 +71,21 @@ dotfiles:
   top:
     dst: ~/.config/procps/toprc
     src: procps/toprc
-  profile:
-    dst: ~/.profile
-    src: bash/profile
-  pylintrc:
-    dst: ~/.config/pylintrc
-    src: pylint/pylintrc
   rime:
     dst: ~/Library/Rime
     src: rime/squirrel
-  rubocop:
-    dst: ~/.rubocop.yml
-    src: rubocop/rubocop.yml
-  shellcheck:
-    dst: ~/.shellcheckrc
-    src: shellcheck/shellcheckrc
   snipaste:
     dst: ~/.snipaste/config.ini
     src: snipaste/config.ini
-  ca-certificates:
-    link: nolink
-    dst: /etc/ssl/certs/ca-certificates.crt
-    src: linux/ssl/ca-bundle.crt
   ssh-authorized-key:
     link: nolink
     dst: ~/.ssh/authorized_keys
     src: ssh/authorized_keys
-  sshd_config:
-    dst: /etc/ssh/sshd_config.d/custom.conf
-    link: nolink
-    src: sshd/sshd_config.d.custom.conf
-  ssh-systemd-socket:
-    dst: /etc/systemd/system/ssh.socket.d/custom.conf
-    link: nolink
-    src: sshd/systemd.ssh.socket.d.custom.conf
-  sshd-host-key:
-    link: nolink
-    dst: /etc/ssh/sshd-host-key
-    src: sshd/host-key
-    actions:
-      - fix-sshd-host-key-permissions
+    chmod: 600
   ssh-user-config:
     dst: ~/.ssh/config
-    actions:
-      - fix-user-ssh-config-permissions
+    chmod: 600
     src: ssh/user.ssh_config
-    link: nolink
-  ssh-etc-config:
-    dst: /etc/ssh/ssh_config
-    src: ssh/etc.ssh_config
     link: nolink
   startship:
     dst: ~/.config/starship.toml
@@ -244,10 +93,6 @@ dotfiles:
   tabby:
     dst: ~/Library/Application Support/tabby
     src: tabby
-  locale:
-    link: nolink
-    dst: /etc/locale.conf
-    src: linux/locale/locale.conf
   terminalizer:
     dst: ~/.terminalizer
     src: terminalizer
@@ -272,70 +117,17 @@ dotfiles:
   vscode-server:
     dst: ~/.vscode-server/data/Machine/settings.json
     src: vscode/remote-server-settings.json
-  warp:
-    dst: ~/.warp
-    src: warp
-  yapf:
-    dst: ~/.style.yapf
-    src: yapf/style.yapf
   yarn:
     dst: ~/.yarnrc
     src: yarn/yarnrc
-  zoneinfo-sg:
-    link: nolink
-    dst: /etc/localtime
-    src: linux/zoneinfo/Singapore
-  zoneinfo-utc:
-    link: nolink
-    dst: /etc/localtime
-    src: linux/zoneinfo/UTC
-  zshenv-etc:
-    dst: /etc/zshenv
-    link: nolink
-    src: zsh/etc/zshenv
-  zshenv-etc-homebrew-mirror-cn:
-    dst: /etc/zshenv.d/homebrew-mirror-cn.zsh
-    link: nolink
-    src: zsh/etc/zshenv.d/homebrew-mirror-cn.zsh
-  zshenv-etc-golang-proxy-cn:
-    dst: /etc/zshenv.d/golang-proxy-cn.zsh
-    link: nolink
-    src: zsh/etc/zshenv.d/golang-proxy-cn.zsh
   zshrc:
     dst: ~/.zshrc
     link: nolink
     src: zsh/zshrc
 profiles:
-  # docker-sysconf-proxy:
-  #   dotfiles:
-  #     - apt-proxy
-  #     - docker-proxy
-
-  # docker-sysconf-mirror-cn:
-  #   dotfiles:
-  #     - apt-ubuntu-mirror-cn
-  #     - nix-mirror-cn
-  #     - linux-profile-homebrew-mirror-cn
-  #     - zshenv-etc-homebrew-mirror-cn
-  #     - zshenv-etc-golang-proxy-cn
-
-  docker-sysconf:
-    dotfiles:
-      - ca-certificates
-      - linux-journal
-      - linux-sudoers_more_secure_path
-      - linux-sysctl
-      - linux-environment
-      - locale
-      - ssh-etc-config
-      - sshd-host-key
-      - zoneinfo-sg
-      - zshenv-etc
-
-  docker-userconf-base:
+  docker:
     dotfiles:
       - bashrc
-      - bat
       # - bazel
       - conda
       - croc
@@ -343,22 +135,17 @@ profiles:
       - nixpkgs
       # - prettier
       - top
-      - tmux
+      # - tmux
       - vim
       - vscode-server
-
-  docker-userconf-final:
-    include:
-      - docker-userconf-base
-    dotfiles:
       - git-config
       - ssh-user-config
       - zshrc
 
-  macos-user-base:
+  macos:
     dotfiles:
-      - bat
       # - prettier
+      - atuin
       - top
       - rime
       - snipaste
@@ -366,20 +153,6 @@ profiles:
       - vscode-keybindings
       - vscode-settings
       - vscode-snippets
-
-  macos-user-final:
-    include:
-      - macos-user-base
-    dotfiles:
-      - zshrc
       - git-config
       - ssh-user-config
-
-trans_install:
-  _decrypt:
-    openssl enc -aes-256-cbc -nosalt -d -pbkdf2 -in {0} -out {1} -pass pass:{{@@
-    env['SECRET'] @@}}
-trans_update:
-  _encrypt:
-    openssl enc -aes-256-cbc -nosalt -pbkdf2 -in {0} -out {1} -pass pass:{{@@
-    env['SECRET'] @@}}
+      - zshrc

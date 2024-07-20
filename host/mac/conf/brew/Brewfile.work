@@ -11,14 +11,14 @@ casks = [
   'snipaste',
   'squirrel',
   'drawio',
-  'google-drive',
-  'dupeguru',
-  'adrive',
-  'pika',
+  # 'google-drive',
+  # 'dupeguru',
+  # 'adrive',
+  # 'pika',
   'miniconda',
   'keepingyouawake',
-  'orbstack',
-  'db-browser-for-sqlite',
+  # 'orbstack',
+  # 'db-browser-for-sqlite',
 
   # 'obs',
   # 'android-platform-tools',
@@ -50,7 +50,7 @@ brews = [
   # network tools
   'netcat', 'lsof', 'connect', 'inetutils',
   # shell tools
-  'zsh', 'zsh-bundle', 'starship',
+  'zsh', 'zsh-bundle', 'starship', 'atuin',
   # text editor and tools
   'gettext', 'm4', 'gpatch', 'vim', 'vim-bundle',
   'eza', 'exa-wrapper', 'bat', 'the_silver_searcher', 'fzf',

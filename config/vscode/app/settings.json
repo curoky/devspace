@@ -118,6 +118,7 @@
   // "http.proxy": "http://:3128",
   "doxdocgen.generic.authorName": "curoky",
   "editor.accessibilitySupport": "off",
+  "editor.autoIndent": "advanced",
   "editor.bracketPairColorization.enabled": true,
   // "editor.codeActionsOnSave": {
   //   "source.fixAll.eslint": true

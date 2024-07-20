@@ -19,7 +19,7 @@
 set -xeuo pipefail
 
 export PIP_CACHE_DIR=/tmp/pip
-conf_path=${1:-~/dotbox/dists/osx-host/conf/conan}
+conf_path=${1:-~/dotbox/host/mac/conf/conda}
 echo "use conf_path=$conf_path"
 
 function create_conda_env() {
