@@ -41,7 +41,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     nixpkgs.nettools nixpkgs.fd nixpkgs.ethtool nixpkgs.gdb nixpkgs.file nixpkgs.eza nixpkgs.fzf \
     nixpkgs.findutils nixpkgs.coreutils nixpkgs.lsb-release nixpkgs.tree nixpkgs.procs nixpkgs.gdu \
     nixpkgs.dstat nixpkgs.man nixpkgs.iptables nixpkgs.unixtools.xxd nixpkgs.util-linux nixpkgs.ncdu \
-    nixpkgs.silver-searcher nixpkgs.diffutils nixpkgs.patchelf nixpkgs.strace \
+    nixpkgs.silver-searcher nixpkgs.diffutils nixpkgs.patchelf nixpkgs.strace nixpkgs.libcap \
     # linter
     nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.shfmt nixpkgs.ruff nixpkgs.clang-tools_16 \
     nixpkgs.buildifier \
