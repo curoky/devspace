@@ -23,6 +23,11 @@ if [[ -d /data/share/dotbox ]]; then
   ln -s /data/share/dotbox /home/x/dotbox
 fi
 
+if [[ -d /workspace/dotbox ]]; then
+  rm -rf /home/x/dotbox
+  ln -s /workspace/dotbox /home/x/dotbox
+fi
+
 # setup cache dir
 if [[ -d /data/cache ]]; then
   chown x:x /data/cache
