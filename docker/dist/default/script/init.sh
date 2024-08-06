@@ -29,17 +29,15 @@ if [[ -d /workspace/dotbox ]]; then
 fi
 
 # setup cache dir
-if [[ -d /data/cache ]]; then
-  chown x:x /data/cache
-  rm -rf /home/x/.cache
-  ln -s /data/cache /home/x/.cache
-fi
+mkdir -p /data/cache
+chown x:x /data/cache
+rm -rf /home/x/.cache
+ln -s /data/cache /home/x/.cache
 
 # setup vscode-server cache
-if [[ -d /data/cache/vscode-server ]]; then
-  rm -rf /home/x/.vscode-server
-  ln -s /data/cache/vscode-server /home/x/.vscode-server
-  chown x:x /data/cache/vscode-server
-fi
+mkdir -p /data/cache/vscode-server
+chown x:x /data/cache/vscode-server
+rm -rf /home/x/.vscode-server
+ln -s /data/cache/vscode-server /home/x/.vscode-server
 
 chown x:x /workspace

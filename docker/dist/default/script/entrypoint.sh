@@ -27,5 +27,10 @@ mkdir -p /var/log
   -f /app/dotbox/config/sshd/sshd_config.conf -e
 # -E /var/log/mysshd.log
 
+if [[ -f /workspace/private-key/install.sh ]]; then
+  sudo -i -u x bash /workspace/private-key/install.sh
+  sudo -i -u x bash /workspace/private-key/sync-atuin.sh &
+fi
+
 sleep 50000000
 # exec /lib/systemd/systemd
