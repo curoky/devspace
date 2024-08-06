@@ -37,4 +37,4 @@ if [[ -d /data/cache/vscode-server ]]; then
   chown x:x /data/cache/vscode-server
 fi
 
-chown x:x /data/workspace
+chown x:x /workspace

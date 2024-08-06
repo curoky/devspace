@@ -67,4 +67,4 @@ eval "$(starship init zsh)"
 # eval "$(mcfly init zsh)"
 
 #-> (post) atuin
-eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"

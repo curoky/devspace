@@ -20,7 +20,7 @@ RUN /app/dotbox/dists/docker/script/setup-sys-conf.sh \
   && dotdrop install --cfg=/app/dotbox/config/config.yaml --force --profile=docker-userconf-final
 
 USER x
-RUN sudo mkdir -p /data/share /data/cache /data/workspace \
+RUN sudo mkdir -p /data/share /data/cache /workspace \
   && sudo chown x:x ~ /data /app ~/.local /app/conda /app/pipx \
   && mkdir ~/.nix-defexpr \
   && ln -s ~/.local/state/nix/profiles/profile ~/.nix-profile \

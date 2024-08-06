@@ -38,6 +38,6 @@ if [[ ! -d /home/x/dotbox ]]; then
   ln -s /app/dotbox /home/x/dotbox
 fi
 
-if [[ -d /data/workspace ]]; then
-  chown x:x /data/workspace
+if [[ -d /workspace ]]; then
+  chown x:x /workspace
 fi

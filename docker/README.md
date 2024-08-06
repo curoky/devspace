@@ -29,6 +29,6 @@ for container
 
 mount mapping
 
-- data/{{profile}}/workspace:/data/workspace \
+- data/{{profile}}/workspace:/workspace \
 - data/{{profile}}/cache:/data/cache \
 - data/share:/data/share \

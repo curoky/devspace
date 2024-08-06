@@ -18,8 +18,8 @@
 # just for macos
 HOMEBREW_PREFIX=/opt/homebrew
 
-if [[ -d /data/workspace ]]; then
-  export WORKSPACE=/data/workspace
+if [[ -d /workspace ]]; then
+  export WORKSPACE=/workspace
 else
   export WORKSPACE=~/workspace
 fi

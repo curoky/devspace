@@ -18,7 +18,7 @@
 
 set -xeuo pipefail
 
-cd /data/workspace
+cd /workspace
 
 git clone git@github.com:curoky/dotbox.git
 git clone git@github.com:curoky/minimal-example.git
