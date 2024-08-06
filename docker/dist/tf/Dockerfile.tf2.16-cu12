@@ -4,7 +4,7 @@ RUN nix-env -p /nix/var/nix/profiles/nvidia -iA -f nixpkgs/default.nix nsight-sy
 
 FROM docker.io/curoky/dotbox:stage-conda as stage-conda
 COPY config config
-RUN ./setup-conda-env.sh config/conda_env/tf2.16.yaml 1 12.3 8.9
+RUN ./setup-conda-env.sh config/conda/tf2.16.yaml 1 12.3 8.9
 
 FROM curoky/dotbox:base-debian11
 
@@ -13,8 +13,8 @@ COPY --chown=1000:1000 --link --from=stage-nixpkg /home/x/.local/state/nix /home
 COPY --chown=1000:1000 --link --from=stage-nixpkg /home/x/.local/state/nix /root/.local/state/nix
 COPY --chown=1000:1000 --link --from=stage-conda /app/conda /app/conda
 COPY --chown=1000:1000 --link --from=stage-conda /app/pipx /app/pipx
-COPY --chown=1000:1000 ./config /app/dotbox/docker/dist/tf-gpu/config
-COPY --chown=1000:1000 ./script /app/dotbox/docker/dist/tf-gpu/script
+COPY --chown=1000:1000 ./config/ /app/dotbox/docker/dist/tf/config/
+COPY --chown=1000:1000 ./script/ /app/dotbox/docker/dist/tf/script/
 
 COPY --link --from=nvidia/cuda:12.3.2-devel-ubuntu20.04 /usr/local/cuda-12.3 /usr/local/cuda-12.3
 
@@ -27,7 +27,7 @@ RUN apt-get update -y \
   && ln -s /app/conda/envs/py3/bin/python3 /usr/bin/python3
 
 USER x
-RUN /app/dotbox/docker/dist/tf-gpu/script/install-cudnn.sh 8.9.7.29_cuda12 /app/nvidia/cudnn8.9-cu12
+RUN /app/dotbox/docker/dist/tf/script/install-cudnn.sh 8.9.7.29_cuda12 /app/nvidia/cudnn8.9-cu12
 
 USER root
 ENTRYPOINT ["/app/dotbox/docker/dist/default/script/entrypoint.sh"]
