@@ -46,7 +46,7 @@ if [[ $add_tf_env -eq 1 ]]; then
   if [[ $cuda_version == '11.4' ]]; then
     echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64:/usr/local/cuda-11.4/extras/CUPTI/lib64/:$LD_LIBRARY_PATH' >>$target_env_file
     if [[ $cudnn_version == '8.1' ]]; then
-      echo 'export LD_LIBRARY_PATH=/app/nvidia/cudnn8.1-cu11/lib:$LD_LIBRARY_PATH' >>$target_env_file
+      echo 'export LD_LIBRARY_PATH=/app/nvidia/cudnn8.1-cu11/lib64:$LD_LIBRARY_PATH' >>$target_env_file
       echo 'export CUDNN_INSTALL_PATH=/app/nvidia/cudnn8.1-cu11' >>$target_env_file
       # echo 'export LD_LIBRARY_PATH=/usr/local/cudnn8-cu11.4/lib:$LD_LIBRARY_PATH' >>$target_env_file
     fi
