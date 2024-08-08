@@ -93,15 +93,39 @@ search_mode = "fuzzy"
 ## default history list format - can also be specified with the --format arg
 # history_format = "{time}\t{command}\t{duration}"
 
+history_filter = [
+  # "(pip[\\dx]?\\s+(install|uninstall|show|freeze))",
+  # "apt (install|reinstall|remove|search|purge|update|list)",
+  # "apt-get (install|reinstall|remove|search|purge|update|list)",
+
+  # "^.{0,4}$",
+  # "^l[sal]*\\b\\s*",
+  # "^(?:sudo\\s+)?(less|tail|cat|vi|vim|code|touch|echo)\\b",
+  # "^(?:sudo\\s+)?(chmod|chown|chx|cp|mv|mkdir|take|rm|which|type|env)\\b",
+  # "^(?:sudo\\s+)?(ldd|strings|c\\+\\+filt)\\b",
+  # "^(?:sudo\\s+)?(gdu|ncdu|agf|tree|df|extract|dpkg)\\b",
+  # "^(?:sudo\\s+)?(ping|wget|task|curl)\\b",
+  # "^(?:sudo\\s+)?(lint|commit|wip|add-license.sh)\\b",
+  # "^(?:sudo\\s+)?(gaa|ga|gcmsg|gst|gl|glgg|gp|ggp|ggpf)\\b",
+  # "^(?:sudo\\s+)?(nvidia-smi|netron)\\b",
+
+  # "^bazel build [^\\-]*$",
+
+  # "^./run.py$",
+  # "^./test.py$",
+  # "^./diff.py$",
+  # "^./main.py$",
+  # "^./start.sh$",
+  # "^./real_run.sh$",
+  # "^./run.sh$",
+  # "^./build.sh$",
+  # "^login.sh$",
+]
 ## prevent commands matching any of these regexes from being written to history.
 ## Note that these regular expressions are unanchored, i.e. if they don't start
 ## with ^ or end with $, they'll match anywhere in the command.
 ## For details on the supported regular expression syntax, see
 ## https://docs.rs/regex/latest/regex/#syntax
-# history_filter = [
-#   "^secret-cmd",
-#   "^innocuous-cmd .*--secret=.+",
-# ]
 
 ## prevent commands run with cwd matching any of these regexes from being written
 ## to history. Note that these regular expressions are unanchored, i.e. if they don't

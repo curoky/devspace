@@ -64,10 +64,11 @@ link_path $CONF_PATH/gdb/gdbinit ~/.gdbinit
 link_path $CONF_PATH/nixpkgs/config.nix ~/.config/nixpkgs/config.nix
 link_path $CONF_PATH/procps/toprc ~/.config/procps/toprc
 link_path $CONF_PATH/vim/vimrc ~/.vimrc
-copy_path $CONF_PATH/zsh/zshrc ~/.zshrc
-copy_path $CONF_PATH/git/.gitconfig ~/.gitconfig
-copy_path $CONF_PATH/ssh/user.ssh_config ~/.ssh/config
-copy_path $CONF_PATH/atuin/config.toml ~/.config/atuin/config.toml
+link_path $CONF_PATH/atuin/config.toml ~/.config/atuin/config.toml
 link_path $CONF_PATH/vscode/remote-server-settings.json ~/.vscode-server/data/Machine/settings.json
 link_path ~/.local/state/nix/profiles/profile ~/.nix-profile 1
 link_path ~/.local/state/nix/profiles/channels ~/.nix-defexpr/channels 1
+
+copy_path $CONF_PATH/zsh/zshrc ~/.zshrc
+copy_path $CONF_PATH/git/.gitconfig ~/.gitconfig
+copy_path $CONF_PATH/ssh/user.ssh_config ~/.ssh/config
