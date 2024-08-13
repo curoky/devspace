@@ -46,7 +46,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.shfmt nixpkgs.ruff nixpkgs.clang-tools_16 \
     nixpkgs.buildifier \
     # other
-    nixpkgs.cloc nixpkgs.go-task nixpkgs.krb5 nixpkgs.openssh_gssapi nixpkgs.pandoc \
+    nixpkgs.cloc nixpkgs.go-task nixpkgs.krb5 nixpkgs.openssh_gssapi nixpkgs.pandoc nixpkgs.graphviz \
   && nix-env -iA -p /nix/var/nix/profiles/protobuf_3_8_0 -f nixpkgs/default.nix protobuf_3_8_0 \
   && nix-env -iA -p /nix/var/nix/profiles/protobuf_3_9_2 -f nixpkgs/default.nix protobuf_3_9_2 \
   && nix-env -iA -p /nix/var/nix/profiles/protobuf_3_20 nixpkgs.protobuf3_20 \
