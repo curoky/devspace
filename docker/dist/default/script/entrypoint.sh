@@ -19,6 +19,7 @@
 set -xeuo pipefail
 
 /app/dotbox/docker/dist/default/script/init.sh
+/app/dotbox/docker/base/script/setup-userconf.sh
 
 sed -i -e "s/Port 61000/Port ${DEVBOX_SSHD_PORT:-61000}/g" /app/dotbox/config/sshd/sshd_config.conf
 
@@ -32,5 +33,5 @@ if [[ -f /workspace/private-key/install.sh ]]; then
   sudo -i -u x bash /workspace/private-key/sync-atuin.sh &
 fi
 
-sleep 50000000
+while true; do sleep 86400; done
 # exec /lib/systemd/systemd
