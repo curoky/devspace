@@ -41,3 +41,5 @@ rm -rf /home/x/.vscode-server
 ln -s /data/cache/vscode-server /home/x/.vscode-server
 
 chown x:x /workspace
+
+/app/dotbox/docker/base/script/setup-userconf.sh
