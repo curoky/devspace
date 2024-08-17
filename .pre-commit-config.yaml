@@ -26,6 +26,12 @@ repos:
   #   hooks:
   #     - id: commitizen
   #       stages: [commit-msg]
+  - repo: https://github.com/curoky/dotbox
+    rev: '9765db91e5498035e3927b089746b8c350c19872'
+    hooks:
+      - id: check-git-author
+        args: [-n, curoky, -e, 'cccuroky@gmail.com']
+        stages: [commit-msg]
   # >>>>>>>>>>>>>>>>>>>>> basic <<<<<<<<<<<<<<<<<<<< #
 
   # >>>>>>>>>>>>>>>>>>>>> bash <<<<<<<<<<<<<<<<<<<< #
