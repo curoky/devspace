@@ -1,4 +1,4 @@
-FROM debian:bookworm-backports as stage_nixpkg
+FROM debian:bookworm-backports
 
 RUN apt-get update -y \
   && apt-get install -y curl xz-utils sudo \

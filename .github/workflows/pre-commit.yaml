@@ -13,6 +13,4 @@ jobs:
 
       - run: dotdrop install --cfg=config/config.yaml --force --profile=docker
 
-      - uses: pre-commit/action@v3.0.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: pre-commit/action@v3.0.1

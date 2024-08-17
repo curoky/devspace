@@ -1,4 +1,4 @@
-FROM debian:bookworm-backports as stage_conda
+FROM debian:bookworm-backports
 
 RUN apt-get update -y \
   && apt-get install -y curl gcc g++ git \

@@ -17,23 +17,24 @@
 # limitations under the License.
 set -xeuo pipefail
 
-version=${1:-11.4}
+cuda_version=${1:-'11.4'}
+driver_version=${2:-'470.42.01'}
 
-if [[ $version == "11.4" ]]; then
+if [[ $cuda_version == "11.4.0" ]] && [[ $driver_version == "470.42.01" ]]; then
   curl -sSL -o /tmp/cuda_linux.run \
     https://developer.download.nvidia.com/compute/cuda/11.4.0/local_installers/cuda_11.4.0_470.42.01_linux.run
 
-elif [[ $version == "11.4-t" ]]; then
-  curl -sSL -o /tmp/cuda_linux.run \
-    https://us.download.nvidia.com/tesla/450.248.02/NVIDIA-Linux-x86_64-450.248.02.run
+# elif [[ $version == "11.4-t" ]]; then
+#   curl -sSL -o /tmp/cuda_linux.run \
+#     https://us.download.nvidia.com/tesla/450.248.02/NVIDIA-Linux-x86_64-450.248.02.run
 
-elif [[ $version == "11.8" ]]; then
-  curl -sSL -o /tmp/cuda_linux.run \
-    https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
+# elif [[ $version == "11.8" ]]; then
+#   curl -sSL -o /tmp/cuda_linux.run \
+#     https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
 
-elif [[ $version == "12.3" ]]; then
-  curl -sSL -o /tmp/cuda_linux.run \
-    https://developer.download.nvidia.com/compute/cuda/12.3.0/local_installers/cuda_12.3.0_545.23.06_linux.run
+# elif [[ $version == "12.3" ]]; then
+#   curl -sSL -o /tmp/cuda_linux.run \
+#     https://developer.download.nvidia.com/compute/cuda/12.3.0/local_installers/cuda_12.3.0_545.23.06_linux.run
 fi
 
 chmod +x /tmp/cuda_linux.run
