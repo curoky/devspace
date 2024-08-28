@@ -11,6 +11,7 @@ COPY --chown=1000:1000 --link --from=stage-nixpkg /home/x/.local/state/nix /home
 COPY --chown=1000:1000 --link --from=stage-nixpkg /home/x/.local/state/nix /root/.local/state/nix
 COPY --chown=1000:1000 --link --from=docker.io/curoky/dotbox:stage-conda /app/conda /app/conda
 COPY --chown=1000:1000 --link --from=docker.io/curoky/dotbox:stage-conda /app/pipx /app/pipx
+COPY --chown=1000:1000 --link --from=docker.io/curoky/dotbox:stage-prebuilt /output /app/prebuilt
 
 USER root
 RUN apt-get update -y \
