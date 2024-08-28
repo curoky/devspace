@@ -69,7 +69,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.tree
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.unixtools.xxd
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.unzip
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.util-linux
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.vim
+# RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.vim
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.xz
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zip
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib
@@ -97,5 +97,5 @@ FROM debian:bookworm-backports
 
 COPY --chown=1000:1000 --from=builder /tmp/output /output
 
-RUN cd /output \
+RUN cd /output/bin \
   && ln -s bazelisk bazel

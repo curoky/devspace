@@ -12,8 +12,8 @@
   "[cpp]": {
     "editor.tabSize": 2
   },
-  "bazel.buildifierExecutable": "/nix/var/nix/profiles/default/bin/buildifier",
-  "bazel.executable": "/nix/var/nix/profiles/default/bin/bazel",
+  "bazel.buildifierExecutable": "/app/prebuilt/bin/buildifier",
+  "bazel.executable": "/app/prebuilt/bin/bazel",
   "black-formatter.path": ["/nix/var/nix/profiles/default/bin/black"],
   "clang-format.executable": "/nix/var/nix/profiles/default/bin/clang-format",
   "clang-format.fallbackStyle": "Google",
@@ -60,10 +60,10 @@
   "remote.autoForwardPortsSource": "output",
   "ruby.interpreter.commandPath": "/nix/var/nix/profiles/default/bin/ruby",
   "ruby.pathToBundler": "/nix/var/nix/profiles/default/bin/bundle",
-  "ruff.path": ["/nix/var/nix/profiles/default/bin/ruff"],
+  "ruff.path": ["/app/prebuilt/bin/ruff"],
   // "ruby.useBundler": true,
   "shellcheck.executablePath": "/nix/var/nix/profiles/default/bin/shellcheck",
-  "shellformat.path": "/nix/var/nix/profiles/default/bin/shfmt",
+  "shellformat.path": "/app/prebuilt/bin/shfmt",
   "sqlite.sqlite3": "/nix/var/nix/profiles/default/bin/sqlite3",
   "typescript.npm": "/nix/var/nix/profiles/default/bin/npm",
   "xml.java.home": "/nix/var/nix/profiles/jdk/lib/openjdk",
