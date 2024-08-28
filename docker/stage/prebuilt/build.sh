@@ -17,7 +17,9 @@
 # limitations under the License.
 
 set -xeuo pipefail
-cd "$(dirname $0)" || exit 1
-version=${1:-'tf2.5-cu11.4.3-cudnn8.1.0-gcc10-py3.7'}
-docker buildx build . --network=host --file Dockerfile.tf$version "${@:2}" \
-  --tag curoky/dotbox:tf${version}
+
+docker buildx build . \
+  --build-context third-party=../../../third-party \
+  --file Dockerfile \
+  --network=host \
+  --tag curoky/dotbox:stage-prebuilt
