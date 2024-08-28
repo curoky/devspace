@@ -44,7 +44,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     nixpkgs.silver-searcher nixpkgs.diffutils nixpkgs.patchelf nixpkgs.strace nixpkgs.libcap \
     # linter
     nixpkgs.pre-commit nixpkgs.nodePackages.prettier nixpkgs.shfmt nixpkgs.ruff nixpkgs.clang-tools_16 \
-    nixpkgs.buildifier \
+    nixpkgs.buildifier nixpkgs.nixpkgs-fmt nixpkgs.nixfmt \
     # other
     nixpkgs.cloc nixpkgs.go-task nixpkgs.krb5 nixpkgs.openssh_gssapi nixpkgs.pandoc nixpkgs.graphviz \
     nixpkgs.openssl.bin nixpkgs.gh \

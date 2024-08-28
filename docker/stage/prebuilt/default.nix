@@ -12,7 +12,32 @@ let
   gdu_static = pkgs.gdu.overrideAttrs (oldAttrs: rec {
     CGO_ENABLED = "0";
   });
+  gh_static = pkgs.gh.overrideAttrs (oldAttrs: rec {
+    CGO_ENABLED = "0";
+  });
+  bazelisk_static = pkgs.bazelisk.overrideAttrs (oldAttrs: rec {
+    CGO_ENABLED = "0";
+  });
+  croc_static = pkgs.croc.overrideAttrs (oldAttrs: rec {
+    CGO_ENABLED = "0";
+  });
+  go_task_static = pkgs.go-task.overrideAttrs (oldAttrs: rec {
+    CGO_ENABLED = "0";
+  });
+  git_lfs_static = pkgs.git-lfs.overrideAttrs (oldAttrs: rec {
+    CGO_ENABLED = "0";
+  });
 in
 {
+  inherit bazelisk_static;
+  inherit croc_static;
   inherit gdu_static;
+  inherit gh_static;
+  inherit git_lfs_static;
+  inherit go_task_static;
+
+
+  rsync_static = pkgs.libxml2.override {
+    enableXXHash = false;
+  };
 }
