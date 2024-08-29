@@ -106,7 +106,7 @@ RUN curl -sSL -o /output/bin/ncdu https://bin.ajam.dev/x86_64_Linux/ncdu \
   && curl -sSL -o /output/bin/rsync https://bin.ajam.dev/x86_64_Linux/rsync \
   && curl -sSL -o /output/bin/clang-format-16 https://github.com/muttleyxd/clang-tools-static-binaries/releases/download/master-32d3ac78/clang-format-16_linux-amd64 \
   && curl -sSL -o /output/bin/clang-format-18 https://github.com/muttleyxd/clang-tools-static-binaries/releases/download/master-32d3ac78/clang-format-18_linux-amd64 \
-  && chmod +x /output/bin/ncdu /output/bin/wget /output/bin/rsync /output/bin/openssl \
+  && chmod +x /output/bin/ncdu /output/bin/wget /output/bin/rsync \
     /output/bin/clang-format-16 /output/bin/clang-format-18
 
 RUN cd /output/bin \
