@@ -104,7 +104,11 @@ RUN apt-get update -y && apt-get install -y curl
 RUN curl -sSL -o /output/bin/ncdu https://bin.ajam.dev/x86_64_Linux/ncdu \
   && curl -sSL -o /output/bin/wget https://bin.ajam.dev/x86_64_Linux/wget \
   && curl -sSL -o /output/bin/rsync https://bin.ajam.dev/x86_64_Linux/rsync \
-  && chmod +x /output/bin/ncdu /output/bin/wget /output/bin/rsync
+  && curl -sSL -o /output/bin/clang-format-16 https://github.com/muttleyxd/clang-tools-static-binaries/releases/download/master-32d3ac78/clang-format-16_linux-amd64 \
+  && curl -sSL -o /output/bin/clang-format-18 https://github.com/muttleyxd/clang-tools-static-binaries/releases/download/master-32d3ac78/clang-format-18_linux-amd64 \
+  && chmod +x /output/bin/ncdu /output/bin/wget /output/bin/rsync /output/bin/openssl \
+    /output/bin/clang-format-16 /output/bin/clang-format-18
 
 RUN cd /output/bin \
-  && ln -s bazelisk bazel
+  && ln -s bazelisk bazel \
+  && ln -s clang-format-16 clang-format

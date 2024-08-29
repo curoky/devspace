@@ -20,7 +20,7 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
 COPY --from=third-party nixpkgs nixpkgs
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA \
-    nixpkgs.asciinema nixpkgs.bash nixpkgs.ccache nixpkgs.clang-tools_16 nixpkgs.cloc nixpkgs.cmake \
+    nixpkgs.asciinema nixpkgs.bash nixpkgs.ccache nixpkgs.cloc nixpkgs.cmake \
     nixpkgs.diffutils nixpkgs.distcc nixpkgs.dstat nixpkgs.gdb nixpkgs.git nixpkgs.git-extras \
     nixpkgs.git-filter-repo nixpkgs.glibcLocales nixpkgs.gnupg nixpkgs.graphviz nixpkgs.iproute2 \
     nixpkgs.krb5 nixpkgs.locale nixpkgs.lsb-release nixpkgs.man nixpkgs.meson nixpkgs.nixfmt \
