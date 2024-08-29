@@ -58,6 +58,10 @@ def main():
     for path in nix_paths:
         for subpath in path.iterdir():
             if subpath.is_dir():
+                if subpath.is_symlink():
+                    link = subpath.readlink()
+                    if link.as_posix().startswith("/nix/store/"):
+                        package_paths.add(link.parent)
                 for subdir in subpath.iterdir():
                     if subdir.is_symlink():
                         link = subdir.readlink()
