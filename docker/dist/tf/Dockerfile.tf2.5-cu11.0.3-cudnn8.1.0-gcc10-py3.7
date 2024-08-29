@@ -33,8 +33,5 @@ RUN apt-get update -y \
   && ln -s /app/conda/envs/py3/bin/python3 /usr/bin/python \
   && ln -s /app/conda/envs/py3/bin/python3 /usr/bin/python3
 
-USER x
-RUN /app/dotbox/docker/dist/tf/script/install-cudnn.sh 8.1.0.77_cuda11 /app/nvidia/cudnn8.1-cu11
-
 USER root
 ENTRYPOINT ["/app/dotbox/docker/dist/default/script/entrypoint.sh"]
