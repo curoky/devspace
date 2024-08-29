@@ -23,9 +23,9 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     nixpkgs.asciinema nixpkgs.bash nixpkgs.ccache nixpkgs.clang-tools_16 nixpkgs.cloc nixpkgs.cmake \
     nixpkgs.diffutils nixpkgs.distcc nixpkgs.dstat nixpkgs.gdb nixpkgs.git nixpkgs.git-extras \
     nixpkgs.git-filter-repo nixpkgs.glibcLocales nixpkgs.gnupg nixpkgs.graphviz nixpkgs.iproute2 \
-    nixpkgs.krb5 nixpkgs.locale nixpkgs.lsb-release nixpkgs.man nixpkgs.meson nixpkgs.ncdu nixpkgs.nixfmt \
+    nixpkgs.krb5 nixpkgs.locale nixpkgs.lsb-release nixpkgs.man nixpkgs.meson nixpkgs.nixfmt \
     nixpkgs.nixpkgs-fmt nixpkgs.nodePackages.prettier nixpkgs.openssh_gssapi nixpkgs.pandoc \
-    nixpkgs.pre-commit nixpkgs.rsync nixpkgs.scons nixpkgs.silver-searcher nixpkgs.wget nixpkgs.zsh \
+    nixpkgs.pre-commit nixpkgs.scons nixpkgs.silver-searcher nixpkgs.zsh \
     nixpkgs.vim \
   && nix-env -iA -p /nix/var/nix/profiles/protobuf_3_8_0 -f nixpkgs/default.nix protobuf_3_8_0 \
   && nix-env -iA -p /nix/var/nix/profiles/protobuf_3_9_2 -f nixpkgs/default.nix protobuf_3_9_2 \

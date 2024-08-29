@@ -88,14 +88,23 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gdu_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gh_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix git_lfs_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix go_task_static
-
+RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gost_static
 
 COPY pack.py .
 RUN ./pack.py
 
 FROM debian:bookworm-backports
 
+ENV PATH=$PATH:/output/bin
+
 COPY --chown=1000:1000 --from=builder /tmp/output /output
+
+RUN apt-get update -y && apt-get install -y curl
+
+RUN curl -sSL -o /output/bin/ncdu https://bin.ajam.dev/x86_64_Linux/ncdu \
+  && curl -sSL -o /output/bin/wget https://bin.ajam.dev/x86_64_Linux/wget \
+  && curl -sSL -o /output/bin/rsync https://bin.ajam.dev/x86_64_Linux/rsync \
+  && chmod +x /output/bin/ncdu /output/bin/wget /output/bin/rsync
 
 RUN cd /output/bin \
   && ln -s bazelisk bazel

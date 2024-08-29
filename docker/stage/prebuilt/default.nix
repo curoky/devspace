@@ -27,6 +27,9 @@ let
   git_lfs_static = pkgs.git-lfs.overrideAttrs (oldAttrs: rec {
     CGO_ENABLED = "0";
   });
+  gost_static = pkgs.gost.overrideAttrs (oldAttrs: rec {
+    CGO_ENABLED = "0";
+  });
 in
 {
   inherit bazelisk_static;
@@ -35,7 +38,7 @@ in
   inherit gh_static;
   inherit git_lfs_static;
   inherit go_task_static;
-
+  inherit gost_static;
 
   rsync_static = pkgs.libxml2.override {
     enableXXHash = false;

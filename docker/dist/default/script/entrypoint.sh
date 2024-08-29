@@ -29,7 +29,6 @@ mkdir -p /var/log
   -f /app/dotbox/config/sshd/sshd_config.conf -e
 # -E /var/log/mysshd.log
 
-# if env PROFILE_NAME exist
 if [[ -n ${PROFILE_NAME:-} ]]; then
   openssl enc -d -aes-256-cbc -pbkdf2 -in /app/dotbox/config/ssh/profile -out /tmp/profile -k $PROFILE_NAME
   chmod +x /tmp/profile
