@@ -29,5 +29,4 @@ RUN apt-get update -y \
   && ln -s /app/conda/envs/py3/bin/python3 /usr/bin/python \
   && ln -s /app/conda/envs/py3/bin/python3 /usr/bin/python3
 
-USER root
 ENTRYPOINT ["/app/dotbox/docker/dist/default/script/entrypoint.sh"]
