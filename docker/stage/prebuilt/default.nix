@@ -30,6 +30,9 @@ let
   gost_static = pkgs.gost.overrideAttrs (oldAttrs: rec {
     CGO_ENABLED = "0";
   });
+  silver_searcher_static = pkgs.pkgsStatic.silver-searcher.overrideAttrs (oldAttrs: rec {
+    NIX_LDFLAGS = "";
+  });
 in
 {
   inherit bazelisk_static;
@@ -39,8 +42,12 @@ in
   inherit git_lfs_static;
   inherit go_task_static;
   inherit gost_static;
+  inherit silver_searcher_static;
 
   rsync_static = pkgs.libxml2.override {
     enableXXHash = false;
+  };
+  coreutils_static = pkgs.pkgsStatic.coreutils.override {
+    singleBinary = false;
   };
 }

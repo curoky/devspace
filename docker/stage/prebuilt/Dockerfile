@@ -28,7 +28,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.buildifier
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.bzip2
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.cacert
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.connect
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.coreutils
+# RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.coreutils
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.curl
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ethtool
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.eza
@@ -75,6 +75,9 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zip
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib-ng
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zstd
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.git-extras
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.python312
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.glibcLocales
 
 # need put it last
 RUN nix-env -p /nix/var/nix/profiles/default2 -iA nixpkgs.pkgsStatic.netcat
@@ -89,6 +92,8 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gh_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix git_lfs_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix go_task_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gost_static
+RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix silver_searcher_static
+RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix coreutils_static
 
 COPY pack.py .
 RUN ./pack.py
