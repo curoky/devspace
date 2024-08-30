@@ -165,3 +165,7 @@ export BAT_CONFIG_PATH=$CONFIG_HOME/bat/config
 #-> nix
 # https://nixos.wiki/wiki/Locales
 # export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+
+#-> pre-commit
+# cache path
+export PRE_COMMIT_HOME=/tmp/pre-commit

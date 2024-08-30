@@ -17,7 +17,7 @@
 # limitations under the License.
 set -xeuo pipefail
 
-CONF_PATH=${1:-/app/dotbox/config}
+CONF_PATH=${1:-$HOME/dotbox/config}
 
 function copy_path() {
   src=$1

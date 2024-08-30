@@ -111,4 +111,5 @@ RUN curl -sSL -o /output/bin/ncdu https://bin.ajam.dev/x86_64_Linux/ncdu \
 
 RUN cd /output/bin \
   && ln -s bazelisk bazel \
+  && ln -sf .bat-wrapped bat \
   && ln -s clang-format-16 clang-format
