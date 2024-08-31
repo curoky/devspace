@@ -30,6 +30,12 @@ let
   gost_static = pkgs.gost.overrideAttrs (oldAttrs: rec {
     CGO_ENABLED = "0";
   });
+  shfmt_static = pkgs.shfmt.overrideAttrs (oldAttrs: rec {
+    CGO_ENABLED = "0";
+  });
+  fzf_static = pkgs.fzf.overrideAttrs (oldAttrs: rec {
+    CGO_ENABLED = "0";
+  });
   silver_searcher_static = pkgs.pkgsStatic.silver-searcher.overrideAttrs (oldAttrs: rec {
     NIX_LDFLAGS = "";
   });
@@ -43,6 +49,8 @@ in
   inherit go_task_static;
   inherit gost_static;
   inherit silver_searcher_static;
+  inherit shfmt_static;
+  inherit fzf_static;
 
   rsync_static = pkgs.libxml2.override {
     enableXXHash = false;

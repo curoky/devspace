@@ -45,7 +45,7 @@ def is_static_binary(file_path):
 
 
 def main():
-    output_path = Path("/tmp/output")
+    output_path = Path("/output")
     nix_paths = [
         Path("/nix/var/nix/profiles/default"),
         Path("/nix/var/nix/profiles/default2"),

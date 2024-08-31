@@ -19,18 +19,12 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
 COPY --from=third-party nixpkgs nixpkgs
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA \
-    nixpkgs.asciinema nixpkgs.bash nixpkgs.cloc nixpkgs.cmake \
+    nixpkgs.bash nixpkgs.zsh nixpkgs.pre-commit nixpkgs.vim nixpkgs.cloc nixpkgs.cmake \
     nixpkgs.diffutils nixpkgs.dstat nixpkgs.gdb nixpkgs.git \
     nixpkgs.git-filter-repo nixpkgs.gnupg nixpkgs.graphviz nixpkgs.iproute2 \
-    nixpkgs.krb5 nixpkgs.locale nixpkgs.lsb-release nixpkgs.man nixpkgs.meson nixpkgs.nixfmt \
+    nixpkgs.krb5 nixpkgs.locale nixpkgs.lsb-release nixpkgs.man nixpkgs.nixfmt \
     nixpkgs.nixpkgs-fmt nixpkgs.nodePackages.prettier nixpkgs.openssh_gssapi nixpkgs.pandoc \
-    nixpkgs.ccache nixpkgs.distcc nixpkgs.pre-commit nixpkgs.scons nixpkgs.zsh nixpkgs.vim \
-  && nix-env -iA -p /nix/var/nix/profiles/protobuf_3_8_0 -f nixpkgs/default.nix protobuf_3_8_0 \
-  && nix-env -iA -p /nix/var/nix/profiles/protobuf_3_9_2 -f nixpkgs/default.nix protobuf_3_9_2 \
-  && nix-env -iA -p /nix/var/nix/profiles/protobuf_3_20 nixpkgs.protobuf3_20 \
-  && nix-env -iA -p /nix/var/nix/profiles/protobuf_24 nixpkgs.protobuf_24 \
-  && nix-env -iA -p /nix/var/nix/profiles/vim-bundle -f nixpkgs/default.nix vim-bundle \
-  && nix-env -iA -p /nix/var/nix/profiles/zsh-bundle -f nixpkgs/default.nix zsh-bundle \
+    # nixpkgs.ccache nixpkgs.distcc nixpkgs.meson nixpkgs.scons nixpkgs.asciinema
   && chmod +w /nix/var/nix/profiles/default/* \
   && nix-env -iA -p /nix/var/nix/profiles/libs nixpkgs.python311Packages.libtorrent-rasterbar \
       nixpkgs.ncurses5 nixpkgs.libxml2.out nixpkgs.libxcrypt nixpkgs.libbacktrace \

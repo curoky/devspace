@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchFromGitHub, zsh, oh-my-zsh,
+{ lib, stdenv, fetchFromGitHub, oh-my-zsh,
   zsh-syntax-highlighting,
   zsh-autosuggestions,
   zsh-completions,
@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
 
   sourceRoot = ".";
   strictDeps = true;
-  buildInputs = [ zsh ];
+  buildInputs = [ ];
 
   installPhase = ''
     cp -r ${oh-my-zsh.out} $out/
