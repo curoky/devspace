@@ -1,0 +1,19 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - >
+        docker buildx build .
+        --build-context third-party=../../../third-party
+        --file Dockerfile
+        --network=host
+        --tag curoky/dotbox:stage-prebuilt
+  llvm17:
+    cmds:
+      - >
+        docker buildx build .
+        --build-context third-party=../../../third-party
+        --file Dockerfile.llvm17
+        --network=host
+        --tag curoky/dotbox:stage-prebuilt-llvm17
