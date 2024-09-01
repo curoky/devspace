@@ -5,7 +5,7 @@ Wants=network.target
 
 [Service]
 Type=simple
-ExecStart=/nix/var/nix/profiles/default/bin/gost -C /etc/gost/daemon.json
+ExecStart=/app/prebuilt/bin/gost -C /etc/gost/daemon.json
 Restart=on-failure
 
 [Install]

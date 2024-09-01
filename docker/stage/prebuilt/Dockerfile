@@ -108,7 +108,7 @@ RUN ./pack.py \
   && rsync --progress --archive --human-readable /output-llvm17/ /output/ \
   && cd /output/bin \
   && ln -s bazelisk bazel \
-  && ln -s clang-format-18 clang-format \
+  && ln -s clang-format-17 clang-format \
   && rm -rf bat && mv .bat-wrapped bat \
   && chmod +x ncdu wget rsync
 

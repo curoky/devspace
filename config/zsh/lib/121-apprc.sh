@@ -16,7 +16,7 @@
 # limitations under the License.
 
 #=-> locles
-export LOCALE_ARCHIVE=/nix/var/nix/profiles/default/lib/locale/locale-archive
+export LOCALE_ARCHIVE=/app/prebuilt/lib/locale/locale-archive
 
 #-> java
 if [[ -d /nix/var/nix/profiles/jdk19 ]]; then
@@ -167,5 +167,4 @@ export BAT_CONFIG_PATH=$CONFIG_HOME/bat/config
 # export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
 #-> pre-commit
-# cache path
-export PRE_COMMIT_HOME=/tmp/pre-commit
+# export PRE_COMMIT_HOME=/tmp/pre-commit

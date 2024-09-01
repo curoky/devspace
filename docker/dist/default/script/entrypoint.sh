@@ -36,6 +36,7 @@ if [[ -n ${PROFILE_NAME:-} ]]; then
   sudo -i -u x /tmp/profile install
   sudo -i -u x /tmp/profile login
   sudo -i -u x /tmp/profile sync &
+  sudo -u x bash -c 'cd /app/dotbox && pre-commit install-hooks' &
 fi
 
 while true; do sleep 86400; done

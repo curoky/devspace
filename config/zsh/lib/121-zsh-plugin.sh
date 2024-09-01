@@ -18,7 +18,7 @@
 #=-> oh-my-zsh
 export ZSH=$HOMEBREW_PREFIX/opt/zsh-bundle
 if [[ ! -d $ZSH ]]; then
-  export ZSH=/nix/var/nix/profiles/zsh-bundle/share/oh-my-zsh/
+  export ZSH=/app/prebuilt/share/oh-my-zsh
 fi
 
 DISABLE_AUTO_UPDATE=true
@@ -86,7 +86,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
 FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
 if [[ ! -d $FZF_BASE ]]; then
-  FZF_BASE=/nix/var/nix/profiles/default/share/fzf
+  FZF_BASE=/app/prebuilt/share/fzf/
 fi
 
 #=-> zsh history

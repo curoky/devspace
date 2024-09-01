@@ -26,6 +26,7 @@ ENV_FPATHS=(
   "$HOME/.zfunc"
   # nix
   "/nix/var/nix/profiles/default/share/zsh/site-functions"
+  "/app/prebuilt/share/zsh/site-functions"
   "$HOME/dotbox/config/zsh/completions"
 )
 for p in "${ENV_FPATHS[@]}"; do
