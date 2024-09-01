@@ -47,7 +47,7 @@ jobs:
     strategy:
       matrix:
         name:
-          - cache
+          # - cache
           - conda
           - nixpkg
           - prebuilt
