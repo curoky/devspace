@@ -91,7 +91,8 @@ FROM debian:bookworm-backports as packer
 RUN apt-get update -y && apt-get install -y curl python3 python3-pip rsync
 
 COPY --from=nixpkgs-builder /nix/ /nix/
-COPY --from=curoky/dotbox:stage-prebuilt-llvm17 /output /output-llvm17
+COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /output /output-llvm18
+COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /output /output-rust
 # COPY --chown=1000:1000 --from=brew-builder /home/linuxbrew/.linuxbrew/ /home/linuxbrew/.linuxbrew/
 
 RUN mkdir -p /output/bin \
@@ -105,10 +106,11 @@ RUN mkdir -p /output/bin \
 
 COPY pack.py .
 RUN ./pack.py \
-  && rsync --progress --archive --human-readable /output-llvm17/ /output/ \
+  && rsync --progress --archive --human-readable /output-llvm18/ /output/ \
+  && rsync --progress --archive --human-readable /output-rust/ /output/ \
   && cd /output/bin \
   && ln -s bazelisk bazel \
-  && ln -s clang-format-17 clang-format \
+  && ln -s clang-format-18 clang-format \
   && rm -rf bat && mv .bat-wrapped bat \
   && chmod +x ncdu wget rsync
 

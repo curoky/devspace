@@ -1,19 +1,18 @@
 FROM nixpkgs/nix-unstable:latest as nixpkgs-builder
 
-ENV NIX_PATH=nixpkgs=channel:nixos-24.05
+ENV NIX_PATH=nixpkgs=channel:nixpkgs-unstable
 
-RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
+RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs \
   && nix-channel --update
 
-RUN nix-env -p /nix/var/nix/profiles/llvm -iA nixpkgs.pkgsStatic.llvmPackages_17.clang-unwrapped
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.procs
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ruff
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.starship
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.atuin
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.bat
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.eza
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.fd
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.git-absorb
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.procs
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ruff
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.starship
 
 FROM debian:bookworm-backports as packer
 
@@ -22,8 +21,7 @@ RUN apt-get update -y && apt-get install -y curl python3 python3-pip
 
 COPY pack.py .
 RUN mkdir /output \
-  && ./pack.py \
-  && cp -L /nix/var/nix/profiles/llvm/bin/clang-format /output/bin/clang-format-17
+  && ./pack.py
 
 FROM debian:bookworm-backports
 COPY --from=packer /output /output
