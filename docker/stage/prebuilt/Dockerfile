@@ -78,8 +78,10 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gh_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix git_lfs_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix go_task_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gost_static
+RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix rsync_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix shfmt_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix silver_searcher_static
+# RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix wget_static
 
 # FROM homebrew/brew:latest as brew-builder
 # ENV HOMEBREW_NO_ANALYTICS=1
@@ -95,24 +97,24 @@ COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /output /output-llvm18
 COPY --from=curoky/dotbox:stage-prebuilt-rust /output /output-rust
 # COPY --chown=1000:1000 --from=brew-builder /home/linuxbrew/.linuxbrew/ /home/linuxbrew/.linuxbrew/
 
+COPY pack.py .
 RUN mkdir -p /output/bin \
+  && ./pack.py \
+  && rsync --progress --archive --human-readable /output-llvm18/ /output/ \
+  && rsync --progress --archive --human-readable /output-rust/ /output/ \
   && curl -sSL -o /output/bin/ncdu https://bin.ajam.dev/x86_64_Linux/ncdu \
   && curl -sSL -o /output/bin/wget https://bin.ajam.dev/x86_64_Linux/wget \
-  && curl -sSL -o /output/bin/rsync https://bin.ajam.dev/x86_64_Linux/rsync \
   && cp -L /nix/var/nix/profiles/protobuf_3_8_0/bin/protoc /output/bin/protoc-3.8.0 \
   && cp -L /nix/var/nix/profiles/protobuf_3_9_2/bin/protoc /output/bin/protoc-3.9.2 \
   && cp -L /nix/var/nix/profiles/protobuf_24/bin/protoc /output/bin/protoc-24 \
-  && cp -L /nix/var/nix/profiles/protobuf3_20/bin/protoc /output/bin/protoc-3.20
-
-COPY pack.py .
-RUN ./pack.py \
-  && rsync --progress --archive --human-readable /output-llvm18/ /output/ \
-  && rsync --progress --archive --human-readable /output-rust/ /output/ \
+  && cp -L /nix/var/nix/profiles/protobuf3_20/bin/protoc /output/bin/protoc-3.20 \
+  && rm -rf /output/bin/xxd \
+  && cp -L /nix/var/nix/profiles/default/bin/xxd /output/bin/xxd \
   && cd /output/bin \
   && ln -s bazelisk bazel \
   && ln -s clang-format-18 clang-format \
   && rm -rf bat && mv .bat-wrapped bat \
-  && chmod +x ncdu wget rsync
+  && chmod +x ncdu wget
 
 FROM debian:bookworm-backports
 COPY --from=packer /output /output

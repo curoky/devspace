@@ -39,6 +39,10 @@ let
   silver_searcher_static = pkgs.pkgsStatic.silver-searcher.overrideAttrs (oldAttrs: rec {
     NIX_LDFLAGS = "";
   });
+  wget_static = pkgs.pkgsStatic.wget.overrideAttrs (oldAttrs: rec {
+    nativeBuildInputs = [ pkgs.gettext pkgs.pkg-config pkgs.lzip pkgs.libiconv pkgs.libintl ];
+    doCheck = false;
+  });
 in
 {
   inherit bazelisk_static;
@@ -51,8 +55,9 @@ in
   inherit silver_searcher_static;
   inherit shfmt_static;
   inherit fzf_static;
+  inherit wget_static;
 
-  rsync_static = pkgs.libxml2.override {
+  rsync_static = pkgs.pkgsStatic.rsync.override {
     enableXXHash = false;
   };
   coreutils_static = pkgs.pkgsStatic.coreutils.override {
