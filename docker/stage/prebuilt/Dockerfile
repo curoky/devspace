@@ -92,7 +92,7 @@ RUN apt-get update -y && apt-get install -y curl python3 python3-pip rsync
 
 COPY --from=nixpkgs-builder /nix/ /nix/
 COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /output /output-llvm18
-COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /output /output-rust
+COPY --from=curoky/dotbox:stage-prebuilt-rust /output /output-rust
 # COPY --chown=1000:1000 --from=brew-builder /home/linuxbrew/.linuxbrew/ /home/linuxbrew/.linuxbrew/
 
 RUN mkdir -p /output/bin \
