@@ -18,6 +18,7 @@ jobs:
           docker rm -v $id
 
       - uses: actions/upload-artifact@v4
+        if: ${{ github.event_name == 'workflow_dispatch' }}
         with:
           name: output.tar
           path: output.tar
