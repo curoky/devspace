@@ -83,6 +83,10 @@ jobs:
             CUDA_VERSION: '11.0.3'
             CUDA_DRIVER_VERSION: '450.51.06'
             CUDNN_VERSION: '8.1.0.77_cuda11'
+          - name: cu11.2.0-cudnn8.1.0
+            CUDA_VERSION: '11.2.0'
+            CUDA_DRIVER_VERSION: '460.27.04'
+            CUDNN_VERSION: '8.1.0.77_cuda11'
           - name: cu11.4.0-cudnn8.1.0
             CUDA_VERSION: '11.4.0'
             CUDA_DRIVER_VERSION: '470.42.01'
