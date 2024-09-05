@@ -41,6 +41,10 @@ mkProtobufDerivation = buildProtobuf: stdenv: stdenv.mkDerivation {
 
   dontDisableStatic = true;
 
+  postInstall = ''
+    mv $out/bin/protoc $out/bin/protoc-${version}
+  '';
+
   meta = {
     description = "Google's data interchange format";
     longDescription =

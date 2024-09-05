@@ -39,9 +39,17 @@ let
   silver_searcher_static = pkgs.pkgsStatic.silver-searcher.overrideAttrs (oldAttrs: rec {
     NIX_LDFLAGS = "";
   });
+  diffutils_static = pkgs.pkgsStatic.diffutils.overrideAttrs (oldAttrs: rec {
+    doCheck = false;
+  });
   wget_static = pkgs.pkgsStatic.wget.overrideAttrs (oldAttrs: rec {
     nativeBuildInputs = [ pkgs.gettext pkgs.pkg-config pkgs.lzip pkgs.libiconv pkgs.libintl ];
     doCheck = false;
+  });
+  protobuf3_20_static = pkgs.pkgsStatic.protobuf3_20.overrideAttrs (oldAttrs: rec {
+    postInstall = ''
+      mv $out/bin/protoc $out/bin/protoc-${oldAttrs.version}
+    '';
   });
 in
 {
@@ -56,6 +64,8 @@ in
   inherit shfmt_static;
   inherit fzf_static;
   inherit wget_static;
+  inherit diffutils_static;
+  inherit protobuf3_20_static;
 
   rsync_static = pkgs.pkgsStatic.rsync.override {
     enableXXHash = false;

@@ -44,15 +44,7 @@ def is_static_binary(file_path):
         return False
 
 
-def main():
-    output_path = Path("/output")
-    nix_paths = [
-        Path("/nix/var/nix/profiles/default"),
-        Path("/nix/var/nix/profiles/default2"),
-        Path("/nix/var/nix/profiles/default3"),
-        Path("/nix/var/nix/profiles/default4"),
-    ]
-
+def pack(output_path: Path, nix_paths: list[Path]):
     package_paths: set[Path] = set()
 
     for path in nix_paths:
@@ -96,4 +88,18 @@ def main():
 
 if __name__ == "__main__":
     logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.INFO)
-    main()
+    pack(
+        output_path=Path("/output"),
+        nix_paths=[
+            Path("/nix/var/nix/profiles/default"),
+            Path("/nix/var/nix/profiles/default2"),
+            Path("/nix/var/nix/profiles/default3"),
+            Path("/nix/var/nix/profiles/default4"),
+        ],
+    )
+    pack(
+        output_path=Path("/output/extra"),
+        nix_paths=[
+            Path("/nix/var/nix/profiles/extra"),
+        ],
+    )

@@ -25,3 +25,11 @@ tasks:
         --file Dockerfile.rust
         --network=host
         --tag curoky/dotbox:stage-prebuilt-rust
+  py3:
+    cmds:
+      - >
+        docker buildx build .
+        --build-context third-party=../../../third-party
+        --file Dockerfile.py3
+        --network=host
+        --tag curoky/dotbox:stage-prebuilt-py3

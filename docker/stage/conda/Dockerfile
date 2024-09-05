@@ -1,7 +1,8 @@
 FROM debian:bookworm-backports
 
 RUN apt-get update -y \
-  && apt-get install -y curl gcc g++ git \
+  && apt-get install -y curl gcc g++ git pkg-config \
+    libglib2.0-dev libgirepository1.0-dev libcairo2-dev \
   && curl -sSL -o /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
   && bash /tmp/miniconda.sh -b -u -p /app/conda
 
