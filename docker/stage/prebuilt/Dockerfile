@@ -54,6 +54,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib-ng
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zstd
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.protobuf_24
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.lsb-release
 
 RUN nix-env -p /nix/var/nix/profiles/default2 -iA nixpkgs.pkgsStatic.netcat
 RUN nix-env -p /nix/var/nix/profiles/default3 -iA nixpkgs.pkgsStatic.openssl.bin
@@ -63,15 +64,12 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.vim
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.pkg-config-unwrapped
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.zsh
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.bash
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.lsb-release
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.python311
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.dool
+RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.git-filter-repo
 
 COPY --from=third-party nixpkgs nixpkgs
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f ./nixpkgs/default.nix vim-bundle
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f ./nixpkgs/default.nix zsh-bundle
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f ./nixpkgs/default.nix protobuf_3_8_0
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f ./nixpkgs/default.nix protobuf_3_9_2
 
 COPY default.nix .
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix bazelisk_static
@@ -87,8 +85,10 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix rsync_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix shfmt_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix silver_searcher_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix diffutils_static
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix protobuf3_20_static
-# RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix wget_static
+RUN nix-env -p /nix/var/nix/profiles/default5 -iA -f default.nix protobuf_3_8_0_static
+RUN nix-env -p /nix/var/nix/profiles/default5 -iA -f default.nix protobuf_3_9_2_static
+RUN nix-env -p /nix/var/nix/profiles/default5 -iA -f default.nix protobuf3_20_static
+RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix python311_static
 
 # FROM homebrew/brew:latest as brew-builder
 # ENV HOMEBREW_NO_ANALYTICS=1
@@ -105,8 +105,10 @@ COPY --from=curoky/dotbox:stage-prebuilt-rust /output /output-rust
 # COPY --chown=1000:1000 --from=brew-builder /home/linuxbrew/.linuxbrew/ /home/linuxbrew/.linuxbrew/
 
 COPY pack.py .
+COPY patch.sh .
 RUN mkdir -p /output/bin /output/extra/bin \
   && ./pack.py \
+  && ./patch.sh \
   && rsync --progress --archive --human-readable /output-llvm18/ /output/ \
   && rsync --progress --archive --human-readable /output-rust/ /output/ \
   && curl -sSL -o /output/bin/ncdu https://bin.ajam.dev/x86_64_Linux/ncdu \
@@ -118,6 +120,9 @@ RUN mkdir -p /output/bin /output/extra/bin \
   && ln -s clang-format-18 clang-format \
   && rm -rf bat && mv .bat-wrapped bat \
   && chmod +x ncdu wget
+
+COPY wrapper/dool /output/bin/dool
+COPY wrapper/git-filter-repo /output/bin/git-filter-repo
 
 FROM debian:bookworm-backports
 COPY --from=packer /output /output

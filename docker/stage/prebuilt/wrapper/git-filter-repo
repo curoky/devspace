@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -xeuo pipefail
+
+abs_path=$(cd "$(dirname "$0")" && pwd)
+python_bin_path=$abs_path/../extra/bin/python3
+pathon_lib_root=$abs_path/../extra/lib/python3.11
+
+export PYTHONHOME=$abs_path/../extra
+export PYTHONPATH=$pathon_lib_root:$pathon_lib_root/site-packages:$pathon_lib_root/lib-dynload
+exec -a "$0" "$python_bin_path" "$abs_path/../extra/lib/python3.11/site-packages/git_filter_repo.py" "$@"

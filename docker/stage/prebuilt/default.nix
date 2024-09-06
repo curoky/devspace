@@ -51,6 +51,52 @@ let
       mv $out/bin/protoc $out/bin/protoc-${oldAttrs.version}
     '';
   });
+  protobuf_3_8_0_static = pkgs.pkgsStatic.protobuf3_20.overrideAttrs (oldAttrs: rec {
+    src = pkgs.fetchFromGitHub {
+      owner = "protocolbuffers";
+      repo = "protobuf";
+      rev = "v3.8.0";
+      sha256 = "sha256-qK4Tb6o0SAN5oKLHocEIIKoGCdVFQMeBONOQaZQAlG4=";
+    };
+    postInstall = ''
+      mv $out/bin/protoc $out/bin/protoc-3.8.0
+    '';
+  });
+  protobuf_3_9_2_static = pkgs.pkgsStatic.protobuf3_20.overrideAttrs (oldAttrs: rec {
+    src = pkgs.fetchFromGitHub {
+      owner = "protocolbuffers";
+      repo = "protobuf";
+      rev = "v3.9.2";
+      sha256 = "sha256-1mLSNLyRspTqoaTFylGCc2JaEQOMR1WAL7ffwJPqHyA=";
+    };
+    postInstall = ''
+      mv $out/bin/protoc $out/bin/protoc-3.9.2
+    '';
+  });
+  dstat_static = pkgs.pkgsStatic.dstat.overrideAttrs (oldAttrs: rec {
+    doCheck = false;
+    pytestCheckPhase = "";
+    preDistPhases = [];
+    installCheckPhase = false;
+  });
+  python311_static = pkgs.pkgsStatic.python311.overrideAttrs (oldAttrs: rec {
+    # https://wiki.python.org/moin/BuildStatically
+    # https://github.com/python/cpython/blob/3.11/Modules/Setup
+    configureFlags = oldAttrs.configureFlags ++ [
+      "LDFLAGS=-L${pkgs.pkgsStatic.termcap}/lib"
+    ];
+    postPatch = oldAttrs.postPatch + ''
+      #sed -i 's/#*shared*/#*static*/g' Modules/Setup
+      echo "math mathmodule.c" >> Modules/Setup.local
+      echo "_posixsubprocess _posixsubprocess.c" >> Modules/Setup.local
+      echo "resource resource.c" >> Modules/Setup.local
+      echo "select selectmodule.c" >> Modules/Setup.local
+      echo "fcntl fcntlmodule.c" >> Modules/Setup.local
+      echo "_struct _struct.c" >> Modules/Setup.local
+      echo "termios termios.c" >> Modules/Setup.local
+      echo "_curses -lncurses -lncursesw -ltermcap _cursesmodule.c" >> Modules/Setup.local
+    '';
+  });
 in
 {
   inherit bazelisk_static;
@@ -66,6 +112,10 @@ in
   inherit wget_static;
   inherit diffutils_static;
   inherit protobuf3_20_static;
+  inherit python311_static;
+  inherit dstat_static;
+  inherit protobuf_3_8_0_static;
+  inherit protobuf_3_9_2_static;
 
   rsync_static = pkgs.pkgsStatic.rsync.override {
     enableXXHash = false;

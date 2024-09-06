@@ -95,6 +95,9 @@ if __name__ == "__main__":
             Path("/nix/var/nix/profiles/default2"),
             Path("/nix/var/nix/profiles/default3"),
             Path("/nix/var/nix/profiles/default4"),
+            Path("/nix/var/nix/profiles/default5"),
+            Path("/nix/var/nix/profiles/default6"),
+            Path("/nix/var/nix/profiles/default7"),
         ],
     )
     pack(

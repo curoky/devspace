@@ -20,10 +20,9 @@ COPY --from=third-party nixpkgs nixpkgs
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA \
     nixpkgs.bash nixpkgs.zsh nixpkgs.pre-commit nixpkgs.vim nixpkgs.cloc nixpkgs.cmake \
-    nixpkgs.dstat nixpkgs.gdb nixpkgs.git nixpkgs.pkg-config \
-    nixpkgs.git-filter-repo nixpkgs.gnupg nixpkgs.graphviz \
-    nixpkgs.krb5 nixpkgs.locale nixpkgs.lsb-release nixpkgs.man nixpkgs.nixfmt \
-    nixpkgs.nixpkgs-fmt nixpkgs.nodePackages.prettier nixpkgs.openssh_gssapi nixpkgs.pandoc \
+    nixpkgs.dstat nixpkgs.gdb nixpkgs.git nixpkgs.pkg-config nixpkgs.gnupg nixpkgs.graphviz \
+    nixpkgs.krb5 nixpkgs.locale nixpkgs.man nixpkgs.nixfmt nixpkgs.nixpkgs-fmt \
+    nixpkgs.nodePackages.prettier nixpkgs.openssh_gssapi nixpkgs.pandoc \
     # nixpkgs.ccache nixpkgs.distcc nixpkgs.meson nixpkgs.scons nixpkgs.asciinema
   && chmod +w /nix/var/nix/profiles/default/* \
   && nix-env -iA -p /nix/var/nix/profiles/libs nixpkgs.python311Packages.libtorrent-rasterbar \
