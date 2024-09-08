@@ -15,11 +15,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-set -xeuo pipefail
+set -euo pipefail
 
-wget https://github.com/curoky/dotbox/releases/download/v1.0.0/prebuilt.tar.zip -O /tmp/prebuilt.tar.zip
-unzip -o /tmp/prebuilt.tar.zip -d /tmp/prebuilt.tar
-mkdir ~/prebuilt
-tar -xf /tmp/prebuilt.tar/output.tar -C ~/prebuilt --strip-components=1
-echo "export PATH=$HOME/prebuilt/bin:$PATH" >>~/.bashrc
-echo "export PATH=$HOME/prebuilt/bin:$PATH" >>~/.profile
+DIRECTORY="/nix"
+
+find "$DIRECTORY" -exec stat -c "%u %n" {} \; | while read uid name; do
+  if [ "$uid" -ne 1000 ]; then
+    echo "Owner of '$name' is not 1000, it is $uid"
+  fi
+done

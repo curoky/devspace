@@ -19,10 +19,10 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
 COPY --from=third-party nixpkgs nixpkgs
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA \
-    nixpkgs.bash nixpkgs.zsh nixpkgs.pre-commit nixpkgs.vim nixpkgs.cloc nixpkgs.cmake \
-    nixpkgs.dstat nixpkgs.gdb nixpkgs.git nixpkgs.pkg-config nixpkgs.gnupg nixpkgs.graphviz \
+    nixpkgs.pkg-config nixpkgs.vim nixpkgs.bash nixpkgs.zsh nixpkgs.gdb \
+    nixpkgs.pre-commit nixpkgs.cloc nixpkgs.cmake nixpkgs.dstat nixpkgs.git nixpkgs.gnupg \
     nixpkgs.krb5 nixpkgs.locale nixpkgs.man nixpkgs.nixfmt nixpkgs.nixpkgs-fmt \
-    nixpkgs.nodePackages.prettier nixpkgs.openssh_gssapi nixpkgs.pandoc \
+    nixpkgs.graphviz nixpkgs.nodePackages.prettier nixpkgs.openssh_gssapi nixpkgs.pandoc \
     # nixpkgs.ccache nixpkgs.distcc nixpkgs.meson nixpkgs.scons nixpkgs.asciinema
   && chmod +w /nix/var/nix/profiles/default/* \
   && nix-env -iA -p /nix/var/nix/profiles/libs nixpkgs.python311Packages.libtorrent-rasterbar \
