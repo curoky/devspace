@@ -39,7 +39,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.libtool
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.lsb-release
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.lsof
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.m4
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ncdu
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ncdu_1
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.nettools
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ninja
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.patchelf
