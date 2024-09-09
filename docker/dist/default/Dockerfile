@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.9.0
 FROM curoky/dotbox:base-ubuntu24.04
 
 COPY --chown=1000:1000 --link --from=curoky/dotbox:stage-nixpkg /nix /nix

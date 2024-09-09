@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.9.0
 FROM python:3.12
 
 COPY --from=curoky/dotbox:base-ubuntu24.04 /app/dotbox /app/dotbox

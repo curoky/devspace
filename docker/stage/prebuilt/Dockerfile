@@ -1,4 +1,5 @@
-FROM nixpkgs/nix-unstable:latest as nixpkgs-builder
+# syntax=docker/dockerfile:1.9.0
+FROM nixpkgs/nix-unstable:latest AS nixpkgs-builder
 
 ENV NIX_PATH=nixpkgs=channel:nixos-24.05 \
   NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
@@ -35,12 +36,15 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.jq
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.less
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.libcap
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.libtool
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.lsb-release
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.lsof
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.m4
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ncdu
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.nettools
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ninja
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.patchelf
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.procps
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.protobuf_24
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.snappy
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.strace
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.tmux
@@ -48,13 +52,12 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.tree
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.unixtools.xxd
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.unzip
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.util-linux
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.wget
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.xz
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zip
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib-ng
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zstd
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.protobuf_24
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.lsb-release
 
 RUN nix-env -p /nix/var/nix/profiles/default2 -iA nixpkgs.pkgsStatic.netcat
 RUN nix-env -p /nix/var/nix/profiles/default3 -iA nixpkgs.pkgsStatic.openssl.bin
@@ -93,12 +96,12 @@ RUN nix-env -p /nix/var/nix/profiles/default5 -iA -f default.nix protobuf_3_9_2_
 RUN nix-env -p /nix/var/nix/profiles/default5 -iA -f default.nix protobuf3_20_static
 RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix python311_static
 
-# FROM homebrew/brew:latest as brew-builder
+# FROM homebrew/brew:latest AS brew-builder
 # ENV HOMEBREW_NO_ANALYTICS=1
 # COPY --from=third-party homebrew/Formula/ /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/x/homebrew-x/Formula/
 # RUN brew install x/x/llvm-tools
 
-FROM debian:bookworm-backports as packer
+FROM debian:bookworm-backports AS packer
 
 RUN apt-get update -y && apt-get install -y curl python3 python3-pip rsync
 
@@ -114,15 +117,12 @@ RUN mkdir -p /output/bin /output/extra/bin \
   && ./patch.sh \
   && rsync --progress --archive --human-readable /output-llvm18/ /output/ \
   && rsync --progress --archive --human-readable /output-rust/ /output/ \
-  && curl -sSL -o /output/bin/ncdu https://bin.ajam.dev/x86_64_Linux/ncdu \
-  && curl -sSL -o /output/bin/wget https://bin.ajam.dev/x86_64_Linux/wget \
   && rm -rf /output/bin/xxd \
   && cp -L /nix/var/nix/profiles/default/bin/xxd /output/bin/xxd \
   && cd /output/bin \
   && ln -s bazelisk bazel \
   && ln -s clang-format-18 clang-format \
-  && rm -rf bat && mv .bat-wrapped bat \
-  && chmod +x ncdu wget
+  && rm -rf bat && mv .bat-wrapped bat
 
 COPY wrapper/dool /output/bin/dool
 COPY wrapper/git-filter-repo /output/bin/git-filter-repo

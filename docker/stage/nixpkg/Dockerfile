@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.9.0
 FROM debian:bookworm-backports
 
 RUN apt-get update -y \
@@ -19,11 +20,11 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
 COPY --from=third-party nixpkgs nixpkgs
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA \
-    nixpkgs.pkg-config nixpkgs.vim nixpkgs.bash nixpkgs.zsh nixpkgs.gdb \
+    nixpkgs.pkg-config nixpkgs.vim nixpkgs.zsh nixpkgs.gdb \
     nixpkgs.pre-commit nixpkgs.cloc nixpkgs.cmake nixpkgs.dstat nixpkgs.git nixpkgs.gnupg \
     nixpkgs.krb5 nixpkgs.locale nixpkgs.man nixpkgs.nixfmt nixpkgs.nixpkgs-fmt \
     nixpkgs.graphviz nixpkgs.nodePackages.prettier nixpkgs.openssh_gssapi nixpkgs.pandoc \
-    # nixpkgs.ccache nixpkgs.distcc nixpkgs.meson nixpkgs.scons nixpkgs.asciinema
+    # nixpkgs.ccache nixpkgs.distcc nixpkgs.meson nixpkgs.scons nixpkgs.asciinema nixpkgs.bash
   && chmod +w /nix/var/nix/profiles/default/* \
   && nix-env -iA -p /nix/var/nix/profiles/libs nixpkgs.python311Packages.libtorrent-rasterbar \
       nixpkgs.ncurses5 nixpkgs.libxml2.out nixpkgs.libxcrypt nixpkgs.libbacktrace \

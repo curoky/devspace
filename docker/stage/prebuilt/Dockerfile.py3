@@ -1,8 +1,9 @@
-FROM nixpkgs/nix-unstable:latest as nixpkgs-builder
+# syntax=docker/dockerfile:1.9.0
+FROM nixpkgs/nix-unstable:latest AS nixpkgs-builder
 
-ENV NIX_PATH=nixpkgs=channel:nixos-23.11
+ENV NIX_PATH=nixpkgs=channel:nixos-24.05
 
-RUN nix-channel --add https://nixos.org/channels/nixos-23.11 nixpkgs \
+RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
   && nix-channel --update
 ENV NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
 ENV NIXPKGS_ALLOW_BROKEN=1
@@ -18,13 +19,14 @@ ENV NIXPKGS_ALLOW_BROKEN=1
 # RUN nix-env -p /nix/var/nix/profiles/krb5 -iA nixpkgs.pkgsStatic.perl
 # RUN nix-env -p /nix/var/nix/profiles/krb5 -iA nixpkgs.pkgsStatic.pandoc
 # RUN nix-env -p /nix/var/nix/profiles/krb5 -iA nixpkgs.pkgsStatic.graphviz
-RUN nix-env -p /nix/var/nix/profiles/krb5 -iA nixpkgs.pkgsStatic.krb5
+# RUN nix-env -p /nix/var/nix/profiles/krb5 -iA nixpkgs.pkgsStatic.wget
+RUN nix-env -p /nix/var/nix/profiles/krb5 -iA nixpkgs.pkgsStatic.ncdu
 
 
 # COPY default.nix .
 # RUN nix-env -p /nix/var/nix/profiles/py311 -iA -f ./default.nix dstat_static
 
-# FROM debian:bookworm-backports as packer
+# FROM debian:bookworm-backports AS packer
 
 # RUN apt-get update -y && apt-get install -y curl python3 python3-pip
 
