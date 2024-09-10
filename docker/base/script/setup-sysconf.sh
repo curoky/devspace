@@ -30,8 +30,8 @@ function copy_path() {
     fi
   fi
   if [[ -e $dst ]]; then
-    echo "Path $dst already exists, remove it"
-    rm -rf $dst
+    echo "Path $dst already exists, move it to backup"
+    mv $dst ${dst}.bk
   fi
   mkdir -p $(dirname $dst)
   cp -r $src $dst
@@ -49,8 +49,8 @@ function link_path() {
     fi
   fi
   if [[ -e $dst ]]; then
-    echo "Path $dst already exists, remove it"
-    rm -rf $dst
+    echo "Path $dst already exists, move it to backup"
+    mv $dst ${dst}.bk
   fi
   mkdir -p $(dirname $dst)
   ln -s $src $dst
@@ -102,7 +102,7 @@ link_path /etc/zsh/zshenv /etc/zshenv
 
 # setup locales from apt
 apt-get install -y locales
-# locale-gen en_US.UTF-8
+locale-gen en_US.UTF-8
 
 # setup locales from custon
 # cp $CONF_PATH/linux/locale/locale.conf /etc/locale.conf

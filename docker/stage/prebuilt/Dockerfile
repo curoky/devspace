@@ -122,7 +122,8 @@ RUN mkdir -p /output/bin /output/extra/bin \
   && cd /output/bin \
   && ln -s bazelisk bazel \
   && ln -s clang-format-18 clang-format \
-  && rm -rf bat && mv .bat-wrapped bat
+  && mv .bat-wrapped bat \
+  && mv .gzip-wrapped gzip
 
 COPY wrapper/dool /output/bin/dool
 COPY wrapper/git-filter-repo /output/bin/git-filter-repo
