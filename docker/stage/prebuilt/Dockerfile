@@ -92,8 +92,8 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix shfmt_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix silver_searcher_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix diffutils_static
 RUN nix-env -p /nix/var/nix/profiles/default5 -iA -f default.nix protobuf_3_8_0_static
-RUN nix-env -p /nix/var/nix/profiles/default5 -iA -f default.nix protobuf_3_9_2_static
-RUN nix-env -p /nix/var/nix/profiles/default5 -iA -f default.nix protobuf3_20_static
+RUN nix-env -p /nix/var/nix/profiles/default6 -iA -f default.nix protobuf_3_9_2_static
+RUN nix-env -p /nix/var/nix/profiles/default7 -iA -f default.nix protobuf3_20_static
 RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix python311_static
 
 # FROM homebrew/brew:latest AS brew-builder

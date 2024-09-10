@@ -36,6 +36,10 @@ echo "create $env_name($env_file) python_version:$python_version python_short_ve
 conda env remove -n $env_name -y
 conda create -n $env_name python=$python_version -y --no-default-packages
 rm -rf $CONAN_ROOT/envs/$env_name/compiler_compat/
+
+export PKG_CONFIG_PATH=$CONAN_ROOT/envs/$env_name/lib/pkgconfig
+export CFLAGS="-I/$CONAN_ROOT/envs/$env_name/include"
+export LDFLAGS="-I/$CONAN_ROOT/envs/$env_name/lib"
 conda env update -f ${env_file}
 
 if [[ $add_tf_env -eq 1 ]]; then
@@ -48,7 +52,6 @@ if [[ $add_tf_env -eq 1 ]]; then
     if [[ $cudnn_version == '8.1' ]]; then
       echo 'export LD_LIBRARY_PATH=/app/nvidia/cudnn8.1-cu11/lib64:$LD_LIBRARY_PATH' >>$target_env_file
       echo 'export CUDNN_INSTALL_PATH=/app/nvidia/cudnn8.1-cu11' >>$target_env_file
-      # echo 'export LD_LIBRARY_PATH=/usr/local/cudnn8-cu11.0/lib:$LD_LIBRARY_PATH' >>$target_env_file
     fi
 
   elif [[ $cuda_version == '11.2' ]]; then
@@ -56,7 +59,6 @@ if [[ $add_tf_env -eq 1 ]]; then
     if [[ $cudnn_version == '8.1' ]]; then
       echo 'export LD_LIBRARY_PATH=/app/nvidia/cudnn8.1-cu11/lib64:$LD_LIBRARY_PATH' >>$target_env_file
       echo 'export CUDNN_INSTALL_PATH=/app/nvidia/cudnn8.1-cu11' >>$target_env_file
-      # echo 'export LD_LIBRARY_PATH=/usr/local/cudnn8-cu11.0/lib:$LD_LIBRARY_PATH' >>$target_env_file
     fi
 
   elif [[ $cuda_version == '11.4' ]]; then
@@ -64,7 +66,6 @@ if [[ $add_tf_env -eq 1 ]]; then
     if [[ $cudnn_version == '8.1' ]]; then
       echo 'export LD_LIBRARY_PATH=/app/nvidia/cudnn8.1-cu11/lib64:$LD_LIBRARY_PATH' >>$target_env_file
       echo 'export CUDNN_INSTALL_PATH=/app/nvidia/cudnn8.1-cu11' >>$target_env_file
-      # echo 'export LD_LIBRARY_PATH=/usr/local/cudnn8-cu11.4/lib:$LD_LIBRARY_PATH' >>$target_env_file
     fi
 
   elif [[ $cuda_version == '12.3' ]]; then
@@ -73,7 +74,6 @@ if [[ $add_tf_env -eq 1 ]]; then
       echo 'export CUDNN_INSTALL_PATH=/app/nvidia/cudnn8.9-cu12' >>$target_env_file
       echo 'export LD_LIBRARY_PATH=/app/nvidia/cudnn8.9-cu12/lib:$LD_LIBRARY_PATH' >>$target_env_file
     fi
-    # echo "export LD_LIBRARY_PATH=$CONAN_ROOT/envs/$env_name/lib/python$python_short_version/site-packages/nvidia/cudnn/lib:\$LD_LIBRARY_PATH" >>$target_env_file
   fi
 
 fi
