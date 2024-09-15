@@ -73,6 +73,9 @@ let
       mv $out/bin/protoc $out/bin/protoc-3.9.2
     '';
   });
+  cmake_static = pkgs.pkgsStatic.cmakeMinimal.overrideAttrs (oldAttrs: rec {
+    doCheck = false;
+  });
   dstat_static = pkgs.pkgsStatic.dstat.overrideAttrs (oldAttrs: rec {
     doCheck = false;
     pytestCheckPhase = "";

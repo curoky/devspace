@@ -42,7 +42,8 @@ if [ $debian_version -eq 10 ]; then
     containerd.io_1.6.22-1
     docker-ce-cli_24.0.5-1~debian.11~bullseye
     docker-ce_24.0.5-1~debian.11~bullseye
-    docker-buildx-plugin_0.11.2-1~debian.11~bullseye
+    # docker-buildx-plugin_0.11.2-1~debian.11~bullseye
+    docker-buildx-plugin_0.16.2-1~debian.11~bullseye
     docker-compose-plugin_2.20.2-1~debian.11~bullseye
   )
 
