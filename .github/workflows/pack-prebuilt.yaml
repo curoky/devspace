@@ -17,6 +17,12 @@ jobs:
           docker cp $id:/output - > output.tar
           docker rm -v $id
 
+      - name: test setup config
+        run: |
+          tar -xvf output.tar
+          ls -la
+          ./output/dotbox/docker/base/script/setup-userconf.sh ./output/dotbox/config
+
       - uses: actions/upload-artifact@v4
         if: ${{ github.event_name == 'workflow_dispatch' }}
         with:

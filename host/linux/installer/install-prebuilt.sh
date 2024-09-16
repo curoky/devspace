@@ -17,9 +17,23 @@
 # limitations under the License.
 set -xeuo pipefail
 
-wget https://github.com/curoky/dotbox/releases/download/v1.0.0/prebuilt.zip -O /tmp/prebuilt.tar.zip
+rm -rf /tmp/prebuilt.tar.zip
+curl -SL https://github.com/curoky/dotbox/releases/download/v1.0.0/prebuilt.zip -o /tmp/prebuilt.tar.zip
 unzip -o /tmp/prebuilt.tar.zip -d /tmp/prebuilt.tar
+
+rm -rf ~/prebuilt
 mkdir ~/prebuilt
 tar -xf /tmp/prebuilt.tar/output.tar -C ~/prebuilt --strip-components=1
-echo "export PATH=$HOME/prebuilt/bin:$PATH" >>~/.bashrc
-echo "export PATH=$HOME/prebuilt/bin:$PATH" >>~/.profile
+
+# add to path
+echo 'export PATH=$HOME/prebuilt/bin:$PATH' >>~/.bashrc
+echo 'export PATH=$HOME/prebuilt/bin:$PATH' >>~/.profile
+
+# link dotbox
+if [[ -L ~/dotbox ]]; then
+  rm -f ~/dotbox
+fi
+
+~/prebuilt/dotbox/docker/base/script/setup-userconf.sh ~/prebuilt/dotbox/config
+rm -rf ~/.gitconfig
+rm -rf ~/.ssh/config

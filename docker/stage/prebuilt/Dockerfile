@@ -123,7 +123,10 @@ RUN mkdir -p /output/bin /output/extra/bin \
   && ln -s bazelisk bazel \
   && ln -s clang-format-18 clang-format \
   && mv .bat-wrapped bat \
-  && mv .gzip-wrapped gzip
+  && mv .gzip-wrapped gzip \
+  && mkdir -p /output/dotbox \
+  && curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/master.tar.gz \
+    | tar -xv --gunzip -C /output/dotbox --strip-components 1
 
 COPY wrapper/dool /output/bin/dool
 COPY wrapper/git-filter-repo /output/bin/git-filter-repo
