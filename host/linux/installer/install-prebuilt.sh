@@ -26,8 +26,12 @@ mkdir ~/prebuilt
 tar -xf /tmp/prebuilt.tar/output.tar -C ~/prebuilt --strip-components=1
 
 # add to path
-echo 'export PATH=$HOME/prebuilt/bin:$PATH' >>~/.bashrc
-echo 'export PATH=$HOME/prebuilt/bin:$PATH' >>~/.profile
+if ! grep -q 'prebuilt/bin' ~/.bashrc; then
+  echo 'export PATH=$HOME/prebuilt/bin:$PATH' >>~/.bashrc
+fi
+if ! grep -q 'prebuilt/bin' ~/.profile; then
+  echo 'export PATH=$HOME/prebuilt/bin:$PATH' >>~/.profile
+fi
 
 # link dotbox
 if [[ -L ~/dotbox ]]; then

@@ -66,6 +66,7 @@ link_path $CONF_PATH/procps/toprc ~/.config/procps/toprc
 link_path $CONF_PATH/vim/vimrc ~/.vimrc
 link_path $CONF_PATH/atuin/config.toml ~/.config/atuin/config.toml
 link_path $CONF_PATH/vscode/remote-server-settings.json ~/.vscode-server/data/Machine/settings.json
+link_path $CONF_PATH/tabby-ml/config.toml ~/.tabby-client/agent/config.toml
 link_path ~/.local/state/nix/profiles/profile ~/.nix-profile 1
 link_path ~/.local/state/nix/profiles/channels ~/.nix-defexpr/channels 1
 

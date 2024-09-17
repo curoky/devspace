@@ -9,8 +9,6 @@ RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.glibcLocales
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.aria2
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.autoconf
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.automake
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.bison
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.buildifier
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.bzip2
@@ -35,7 +33,6 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.iputils
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.jq
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.less
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.libcap
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.libtool
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.lsb-release
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.lsof
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.m4
@@ -52,7 +49,6 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.tree
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.unixtools.xxd
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.unzip
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.util-linux
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.wget
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.xz
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zip
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib
@@ -71,6 +67,11 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.bash
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.dool
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.git-filter-repo
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.pkg-config
+RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.libtool
+RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.autoconf
+RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.automake
+RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.wget
+
 # RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.gdb
 
 COPY --from=third-party nixpkgs nixpkgs
@@ -96,11 +97,6 @@ RUN nix-env -p /nix/var/nix/profiles/default6 -iA -f default.nix protobuf_3_9_2_
 RUN nix-env -p /nix/var/nix/profiles/default7 -iA -f default.nix protobuf3_20_static
 RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix python311_static
 
-# FROM homebrew/brew:latest AS brew-builder
-# ENV HOMEBREW_NO_ANALYTICS=1
-# COPY --from=third-party homebrew/Formula/ /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/x/homebrew-x/Formula/
-# RUN brew install x/x/llvm-tools
-
 FROM debian:bookworm-backports AS packer
 
 RUN apt-get update -y && apt-get install -y curl python3 python3-pip rsync
@@ -108,22 +104,12 @@ RUN apt-get update -y && apt-get install -y curl python3 python3-pip rsync
 COPY --from=nixpkgs-builder /nix/ /nix/
 COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /output /output-llvm18
 COPY --from=curoky/dotbox:stage-prebuilt-rust /output /output-rust
-# COPY --chown=1000:1000 --from=brew-builder /home/linuxbrew/.linuxbrew/ /home/linuxbrew/.linuxbrew/
 
 COPY pack.py .
-COPY patch.sh .
 RUN mkdir -p /output/bin /output/extra/bin \
   && ./pack.py \
-  && ./patch.sh \
   && rsync --progress --archive --human-readable /output-llvm18/ /output/ \
   && rsync --progress --archive --human-readable /output-rust/ /output/ \
-  && rm -rf /output/bin/xxd \
-  && cp -L /nix/var/nix/profiles/default/bin/xxd /output/bin/xxd \
-  && cd /output/bin \
-  && ln -s bazelisk bazel \
-  && ln -s clang-format-18 clang-format \
-  && mv .bat-wrapped bat \
-  && mv .gzip-wrapped gzip \
   && mkdir -p /output/dotbox \
   && curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/master.tar.gz \
     | tar -xv --gunzip -C /output/dotbox --strip-components 1
@@ -131,5 +117,9 @@ RUN mkdir -p /output/bin /output/extra/bin \
 COPY wrapper/dool /output/bin/dool
 COPY wrapper/git-filter-repo /output/bin/git-filter-repo
 
-FROM debian:bookworm-backports
+COPY patch.sh .
+RUN ./patch.sh \
+  && chown 1000:1000 -R /output
+
+FROM debian:bookworm-slim
 COPY --from=packer /output /output
