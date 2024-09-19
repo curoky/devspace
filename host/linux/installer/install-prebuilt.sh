@@ -17,13 +17,15 @@
 # limitations under the License.
 set -xeuo pipefail
 
+install_prefix=${1:-~/prebuilt}
+
 rm -rf /tmp/prebuilt.tar.zip
-curl -SL https://github.com/curoky/dotbox/releases/download/v1.0.0/prebuilt.zip -o /tmp/prebuilt.tar.zip
+curl -SL https://github.com/curoky/dotbox/releases/download/v1.0.0/prebuilt.tar.zip -o /tmp/prebuilt.tar.zip
 unzip -o /tmp/prebuilt.tar.zip -d /tmp/prebuilt.tar
 
-rm -rf ~/prebuilt
-mkdir ~/prebuilt
-tar -xf /tmp/prebuilt.tar/output.tar -C ~/prebuilt --strip-components=1
+rm -rf $install_prefix
+mkdir $install_prefix
+tar -xf /tmp/prebuilt.tar/output.tar -C $install_prefix --strip-components=1
 
 # add to path
 if ! grep -q 'prebuilt/bin' ~/.bashrc; then
@@ -37,7 +39,11 @@ fi
 if [[ -L ~/dotbox ]]; then
   rm -f ~/dotbox
 fi
+ln -s $install_prefix/dotbox ~/dotbox
 
-~/prebuilt/dotbox/docker/base/script/setup-userconf.sh ~/prebuilt/dotbox/config
+rm -rf ~/.nix-profile
+rm -rf ~/.nix-defexpr/channels
+
+$install_prefix/dotbox/docker/base/script/setup-userconf.sh $install_prefix/dotbox/config
 rm -rf ~/.gitconfig
 rm -rf ~/.ssh/config

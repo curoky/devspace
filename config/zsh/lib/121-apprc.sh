@@ -16,7 +16,7 @@
 # limitations under the License.
 
 #=-> locles
-export LOCALE_ARCHIVE=/app/prebuilt/lib/locale/locale-archive
+# export LOCALE_ARCHIVE=/app/prebuilt/lib/locale/locale-archive
 
 #-> java
 if [[ -d /nix/var/nix/profiles/jdk19 ]]; then
@@ -102,6 +102,12 @@ export FILTER_BRANCH_SQUELCH_WARNING=1
 # export CCACHE_DIR=$XDG_CACHE_HOME/ccache
 
 #=-> vim-plugin
+# if [[ -d "${HOMEBREW_PREFIX}/opt/vim-bundle/vim-plugin" ]]; then
+#   export VIM_PLUGIN_PATH="${HOMEBREW_PREFIX}/opt/vim-bundle/vim-plugin"
+# elif [[ -d "${HOME}/prebuilt/vim-plugin" ]]; then
+#   export VIM_PLUGIN_PATH="${HOME}/prebuilt/vim-plugin"
+# fi
+
 # export VIM_PLUGIN_PATH=$HOMEBREW_PREFIX/opt/vim-bundle/vim-plugin
 # https://stackoverflow.com/questions/4618151/how-to-reference-source-a-custom-vimrc-file
 # export VIMINIT="source ${__VIM_RC_PATH}"

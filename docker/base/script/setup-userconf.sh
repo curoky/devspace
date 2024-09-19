@@ -42,14 +42,14 @@ function copy_path() {
 function link_path() {
   src=$1
   dst=$2
-  force=${3:-0}
+  ignore_source_not_exist=${3:-0}
   if [[ ! -e $src ]]; then
     echo "Path $src does not exist"
-    if [[ $force -eq 0 ]]; then
+    if [[ $ignore_source_not_exist -eq 0 ]]; then
       return
     fi
   fi
-  if [[ -e $dst ]]; then
+  if [[ -e $dst ]] || [[ -L $dst ]]; then
     echo "Path $dst already exists, remove it"
     rm -rf $dst
   fi
