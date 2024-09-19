@@ -46,6 +46,13 @@ let
     nativeBuildInputs = [ pkgs.gettext pkgs.pkg-config pkgs.lzip pkgs.libiconv pkgs.libintl ];
     doCheck = false;
   });
+  zsh_static = pkgs.pkgsStatic.zsh.overrideAttrs (oldAttrs: rec {
+    patchPhase = oldAttrs.patchPhase or "" + ''
+      echo "link=either" >> Src/Modules/system.mdd
+      echo "link=either" >> Src/Modules/regex.mdd
+      echo "link=either" >> Src/Modules/mathfunc.mdd
+    '';
+  });
   protobuf3_20_static = pkgs.pkgsStatic.protobuf3_20.overrideAttrs (oldAttrs: rec {
     postInstall = ''
       mv $out/bin/protoc $out/bin/protoc-${oldAttrs.version}
@@ -112,6 +119,7 @@ in
   inherit silver_searcher_static;
   inherit shfmt_static;
   inherit fzf_static;
+  inherit zsh_static;
   inherit wget_static;
   inherit diffutils_static;
   inherit protobuf3_20_static;

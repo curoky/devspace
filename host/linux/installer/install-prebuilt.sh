@@ -39,6 +39,10 @@ fi
 if [[ -L ~/dotbox ]]; then
   rm -f ~/dotbox
 fi
+rm -rf $install_prefix/dotbox
+mkdir -p $install_prefix/dotbox
+curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/master.tar.gz |
+  tar -xv --gunzip -C $install_prefix/dotbox --strip-components 1
 ln -s $install_prefix/dotbox ~/dotbox
 
 rm -rf ~/.nix-profile

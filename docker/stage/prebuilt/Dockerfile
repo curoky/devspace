@@ -62,7 +62,6 @@ RUN nix-env -p /nix/var/nix/profiles/default4 -iA nixpkgs.pkgsStatic.tzdata.out
 # https://askubuntu.com/questions/445686/vim-cannot-find-syntax-vim
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.vim
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.pkg-config-unwrapped
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.zsh
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.bash
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.dool
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.git-filter-repo
@@ -96,6 +95,7 @@ RUN nix-env -p /nix/var/nix/profiles/default5 -iA -f default.nix protobuf_3_8_0_
 RUN nix-env -p /nix/var/nix/profiles/default6 -iA -f default.nix protobuf_3_9_2_static
 RUN nix-env -p /nix/var/nix/profiles/default7 -iA -f default.nix protobuf3_20_static
 RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix python311_static
+RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix zsh_static
 
 FROM debian:bookworm-backports AS packer
 
