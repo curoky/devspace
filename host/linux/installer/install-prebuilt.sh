@@ -19,13 +19,11 @@ set -xeuo pipefail
 
 install_prefix=${1:-~/prebuilt}
 
-rm -rf /tmp/prebuilt.tar.zip
-curl -SL https://github.com/curoky/dotbox/releases/download/v1.0.0/prebuilt.tar.zip -o /tmp/prebuilt.tar.zip
-unzip -o /tmp/prebuilt.tar.zip -d /tmp/prebuilt.tar
-
+rm -rf /tmp/prebuilt.tar.gz
+curl -SL https://github.com/curoky/dotbox/releases/download/v1.0.0/prebuilt.tar.gz -o /tmp/prebuilt.tar.gz
 rm -rf $install_prefix
 mkdir $install_prefix
-tar -xf /tmp/prebuilt.tar/output.tar -C $install_prefix --strip-components=1
+tar -xzf /tmp/prebuilt.tar.gz -C $install_prefix --strip-components=1
 
 # add to path
 if ! grep -q 'prebuilt/bin' ~/.bashrc; then

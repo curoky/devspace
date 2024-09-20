@@ -18,6 +18,7 @@ jobs:
           id=$(docker create curoky/dotbox:stage-prebuilt)
           docker cp $id:/output - > output.tar
           docker rm -v $id
+          gzip -k output.tar
 
       - name: test setup config
         run: |
@@ -27,12 +28,12 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: ${{ github.event_name == 'workflow_dispatch' }}
         with:
-          name: output.tar
-          path: output.tar
+          name: output.tar.gz
+          path: output.tar.gz
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: output.tar
-          asset_name: output.tar
+          file: output.tar.gz
+          asset_name: output.tar.gz
           tag: 'v1.0.0'
           overwrite: true
