@@ -100,7 +100,7 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix python311_static
 
 FROM debian:bookworm-backports AS packer
 
-RUN apt-get update -y && apt-get install -y curl python3 python3-pip rsync
+RUN apt-get update -y && apt-get install -y curl python3 python3-pip rsync binutils file
 
 COPY --from=nixpkgs-builder /nix/ /nix/
 COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /output /output-llvm18
