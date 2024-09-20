@@ -174,3 +174,6 @@ export BAT_CONFIG_PATH=$CONFIG_HOME/bat/config
 
 #-> pre-commit
 # export PRE_COMMIT_HOME=/tmp/pre-commit
+
+#-> tmux
+export TMUX_CONF_LOCAL=$CONFIG_HOME/tmux/tmux.conf.local

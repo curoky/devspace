@@ -20,7 +20,7 @@ set -xeuo pipefail
 
 cd /workspace
 
-git clone git@github.com:curoky/dotbox.git
+git clone -b dev git@github.com:curoky/dotbox.git
 git clone git@github.com:curoky/minimal-example.git
 
 clone_all=${1:-0}

@@ -17,5 +17,6 @@ USER x
 RUN ln -s /app/dotbox ~/dotbox \
   && ln -s /app/prebuilt ~/prebuilt \
   && ln -s ~/.local/state/nix/profiles/profile ~/.nix-profile \
+  && mkdir ~/.nix-defexpr \
   && ln -s ~/.local/state/nix/profiles/channels ~/.nix-defexpr/channels \
   && /app/dotbox/docker/base/script/setup-userconf.sh ~/dotbox/config

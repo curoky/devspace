@@ -71,8 +71,7 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.libtool
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.autoconf
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.automake
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.wget
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.perl
-
+# RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.perl
 # RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.gdb
 
 COPY --from=third-party nixpkgs nixpkgs
@@ -114,7 +113,8 @@ RUN mkdir -p /output/bin /output/extra/bin \
   && rsync --progress --archive --human-readable /output-rust/ /output/ \
   && mkdir -p /output/dotbox \
   && curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/master.tar.gz \
-    | tar -xv --gunzip -C /output/dotbox --strip-components 1
+    | tar -xv --gunzip -C /output/dotbox --strip-components 1 \
+  && curl -sSL -o /output/share/tmux.conf https://raw.githubusercontent.com/gpakosz/.tmux/master/.tmux.conf \
 
 COPY wrapper/dool /output/bin/dool
 COPY wrapper/git-filter-repo /output/bin/git-filter-repo

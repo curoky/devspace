@@ -22,7 +22,7 @@ install_prefix=${1:-~/prebuilt}
 function update_dotbox() {
   rm -rf $install_prefix/dotbox
   mkdir -p $install_prefix/dotbox
-  curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/master.tar.gz |
+  curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/dev.tar.gz |
     tar -xv --gunzip -C $install_prefix/dotbox --strip-components 1
 }
 
