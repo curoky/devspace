@@ -48,6 +48,8 @@ ln -s -r $prefix/bin/clang-format-18 $prefix/bin/clang-format
 mv $prefix/bin/.bat-wrapped $prefix/bin/bat
 mv $prefix/bin/.gzip-wrapped $prefix/bin/gzip
 
+mv $prefix/share/zsh/5.9/functions/* $prefix/share/zsh/site-functions/
+
 find $prefix -name "*.a" -delete
 find $prefix -name "*.pyc" -delete
 rm -rf \

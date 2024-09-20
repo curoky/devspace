@@ -24,12 +24,10 @@ ENV_FPATHS=(
   "/usr/share/zsh/vendor-completions"
   # typer
   "$HOME/.zfunc"
-  # nix
+
   "/nix/var/nix/profiles/default/share/zsh/site-functions"
-  "$HOME/dotbox/config/zsh/completions"
 
   "$HOME/prebuilt/share/zsh/site-functions"
-  "$HOME/prebuilt/extra/share/zsh/5.9/functions"
 )
 
 for p in "${ENV_FPATHS[@]}"; do

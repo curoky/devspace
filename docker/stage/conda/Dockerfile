@@ -8,9 +8,9 @@ RUN apt-get update -y \
 
 COPY env env
 COPY setup-conda-env.sh setup-conda-env.sh
-RUN ./setup-conda-env.sh env/py2.yaml \
-  && ./setup-conda-env.sh env/py3.yaml \
-  && ./setup-conda-env.sh env/py311.yaml \
+RUN ./setup-conda-env.sh env/py3.yaml \
+  # && ./setup-conda-env.sh env/py2.yaml \
+  # && ./setup-conda-env.sh env/py311.yaml \
   && ./setup-conda-env.sh env/pipx.yaml
 
 COPY pipx-install.sh pipx-install.sh
