@@ -9,6 +9,8 @@ on:
 jobs:
   base:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - run: docker pull curoky/dotbox:stage-prebuilt
@@ -27,3 +29,10 @@ jobs:
         with:
           name: output.tar
           path: output.tar
+
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          file: output.tar
+          asset_name: output.tar
+          tag: 'v1.0.0'
+          overwrite: true
