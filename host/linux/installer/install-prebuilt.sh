@@ -19,6 +19,13 @@ set -xeuo pipefail
 
 install_prefix=${1:-~/prebuilt}
 
+function update_dotbox() {
+  rm -rf $install_prefix/dotbox
+  mkdir -p $install_prefix/dotbox
+  curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/master.tar.gz |
+    tar -xv --gunzip -C $install_prefix/dotbox --strip-components 1
+}
+
 rm -rf /tmp/prebuilt.tar.gz
 curl -SL https://github.com/curoky/dotbox/releases/download/v1.0.0/prebuilt.tar.gz -o /tmp/prebuilt.tar.gz
 rm -rf $install_prefix
@@ -33,18 +40,10 @@ if ! grep -q 'prebuilt/bin' ~/.profile; then
   echo 'export PATH=$HOME/prebuilt/bin:$PATH' >>~/.profile
 fi
 
-# link dotbox
 if [[ -L ~/dotbox ]]; then
   rm -f ~/dotbox
 fi
-rm -rf $install_prefix/dotbox
-mkdir -p $install_prefix/dotbox
-curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/master.tar.gz |
-  tar -xv --gunzip -C $install_prefix/dotbox --strip-components 1
 ln -s $install_prefix/dotbox ~/dotbox
-
-rm -rf ~/.nix-profile
-rm -rf ~/.nix-defexpr/channels
 
 $install_prefix/dotbox/docker/base/script/setup-userconf.sh $install_prefix/dotbox/config
 rm -rf ~/.gitconfig

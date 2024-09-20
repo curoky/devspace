@@ -54,6 +54,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zip
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib-ng
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zstd
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.binutils
 
 RUN nix-env -p /nix/var/nix/profiles/default2 -iA nixpkgs.pkgsStatic.netcat
 RUN nix-env -p /nix/var/nix/profiles/default3 -iA nixpkgs.pkgsStatic.openssl.bin
@@ -70,6 +71,7 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.libtool
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.autoconf
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.automake
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.wget
+RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.perl
 
 # RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.gdb
 
@@ -91,11 +93,11 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix rsync_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix shfmt_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix silver_searcher_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix diffutils_static
+RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix zsh_static
 RUN nix-env -p /nix/var/nix/profiles/default5 -iA -f default.nix protobuf_3_8_0_static
 RUN nix-env -p /nix/var/nix/profiles/default6 -iA -f default.nix protobuf_3_9_2_static
 RUN nix-env -p /nix/var/nix/profiles/default7 -iA -f default.nix protobuf3_20_static
 RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix python311_static
-RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix zsh_static
 
 FROM debian:bookworm-backports AS packer
 

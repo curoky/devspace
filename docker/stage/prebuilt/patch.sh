@@ -25,6 +25,21 @@ sed -i '1s|.*|#!/usr/bin/env bash|' $prefix/bin/lsb_release
 sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/||g' \
   $prefix/bin/lsb_release
 
+# find all plain text file in /usr/bin, and do sed
+for f in $(find $prefix/bin -type f); do
+  if file "$f" | grep -q 'text'; then
+    sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/||g' "$f"
+  fi
+done
+
+for f in $(find $prefix -type f); do
+  if file "$f" | grep -q 'text'; then
+    sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/||g' "$f"
+  else
+    strip --strip-unneeded $prefix
+  fi
+done
+
 rm -rf $prefix/bin/xxd
 cp -L /nix/var/nix/profiles/default/bin/xxd $prefix/bin/xxd
 
@@ -39,7 +54,12 @@ rm -rf \
   $prefix/extra/share/vim/vim91/doc \
   $prefix/bin/ruff_dev \
   $prefix/bin/red_knot \
-  $prefix/lib/locale/locale-archive
-
-strip --strip-unneeded $prefix/bin/* || echo ignore
-strip --strip-unneeded $prefix/extra/bin/* || echo ignoret
+  $prefix/lib/locale/locale-archive \
+  $prefix/lib/cmake \
+  $prefix/nix-support \
+  $prefix/extra/nix-support \
+  $prefix/test \
+  $prefix/.github \
+  $prefix/.gitignore \
+  $prefix/*.yaml \
+  $prefix/*.png
