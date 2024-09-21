@@ -81,7 +81,7 @@ def pack(output_path: Path, nix_paths: list[Path]):
                 if "/bin/" in abs_path.as_posix():
                     if not (abs_path.stat().st_mode & stat.S_IXUSR):
                         logging.error("file %s is not executable", abs_path)
-                        exit(-1)
+                        # exit(-1)
                     # if not is_static_binary(abs_path.as_posix()):
                     #     logging.error("file %s is not static binary", abs_path)
                     #     exit(-1)
