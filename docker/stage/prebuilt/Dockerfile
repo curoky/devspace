@@ -5,6 +5,8 @@ ENV NIX_PATH=nixpkgs=channel:nixos-24.05 \
   NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
 
 RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
+  && nix-channel --update \
+  && nix-channel --add https://github.com/NixOS/nixpkgs/archive/staging.tar.gz staging \
   && nix-channel --update
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.glibcLocales
@@ -100,17 +102,19 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix python311_static
 
 FROM debian:bookworm-backports AS packer
 
-RUN apt-get update -y && apt-get install -y curl python3 python3-pip rsync binutils file
+RUN apt-get update -y && apt-get install -y curl python3 python3-pip rsync binutils file less vim
 
 COPY --from=nixpkgs-builder /nix/ /nix/
 COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /output /output-llvm18
 COPY --from=curoky/dotbox:stage-prebuilt-rust /output /output-rust
+COPY --from=curoky/dotbox:stage-prebuilt-perl /output /output-perl
 
 COPY pack.py .
 RUN mkdir -p /output/bin /output/extra/bin \
   && ./pack.py \
   && rsync --progress --archive --human-readable /output-llvm18/ /output/ \
   && rsync --progress --archive --human-readable /output-rust/ /output/ \
+  && rsync --progress --archive --human-readable /output-perl/ /output/ \
   && mkdir -p /output/dotbox \
   && curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/master.tar.gz \
     | tar -xv --gunzip -C /output/dotbox --strip-components 1 \

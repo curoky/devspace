@@ -3,7 +3,8 @@ FROM debian:bookworm-backports
 
 RUN apt-get update -y \
   && apt-get install -y curl gcc g++ git pkg-config \
-  && curl -sSL -o /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+  # && curl -sSL -o /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+  && curl -sSL -o /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-py312_24.7.1-0-Linux-x86_64.sh \
   && bash /tmp/miniconda.sh -b -u -p /app/conda
 
 COPY env env

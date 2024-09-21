@@ -33,6 +33,14 @@ tasks:
         --file Dockerfile.rust
         --network=host
         --tag curoky/dotbox:stage-prebuilt-rust
+  perl:
+    cmds:
+      - >
+        docker buildx build .
+        --build-context third-party=../../../third-party
+        --file Dockerfile.perl
+        --network=host
+        --tag curoky/dotbox:stage-prebuilt-perl
   py3:
     cmds:
       - >

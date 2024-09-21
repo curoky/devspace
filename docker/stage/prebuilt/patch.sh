@@ -28,7 +28,7 @@ sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/||g' \
 # find all plain text file in /usr/bin, and do sed
 for f in $(find $prefix/bin -type f); do
   if file "$f" | grep -q 'text'; then
-    sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/||g' "$f"
+    sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/|/usr/bin/env |g' "$f"
   fi
 done
 
