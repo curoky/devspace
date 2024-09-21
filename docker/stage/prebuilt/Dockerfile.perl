@@ -6,11 +6,11 @@ FROM nixpkgs/nix-unstable:latest AS nixpkgs-builder
 RUN nix-channel --add https://github.com/NixOS/nixpkgs/archive/staging.tar.gz staging \
   && nix-channel --update
 
-RUN nix-env -p /nix/var/nix/profiles/perl -iA staging.pkgsStatic.perl
-RUN nix-env -p /nix/var/nix/profiles/perl -iA staging.pkgsStatic.autoconf
-RUN nix-env -p /nix/var/nix/profiles/perl -iA staging.pkgsStatic.automake
-RUN nix-env -p /nix/var/nix/profiles/perl -iA staging.pkgsStatic.pkg-config
-RUN nix-env -p /nix/var/nix/profiles/perl -iA staging.pkgsStatic.libtool
+RUN nix-env -p /nix/var/nix/profiles/default -iA staging.pkgsStatic.perl
+RUN nix-env -p /nix/var/nix/profiles/default -iA staging.pkgsStatic.autoconf
+RUN nix-env -p /nix/var/nix/profiles/default -iA staging.pkgsStatic.automake
+RUN nix-env -p /nix/var/nix/profiles/default -iA staging.pkgsStatic.pkg-config
+RUN nix-env -p /nix/var/nix/profiles/default -iA staging.pkgsStatic.libtool
 
 FROM debian:bookworm-backports AS packer
 

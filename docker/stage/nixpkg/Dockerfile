@@ -20,8 +20,8 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
 COPY --from=third-party nixpkgs nixpkgs
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA \
-    nixpkgs.pkg-config nixpkgs.vim nixpkgs.gdb \
-    nixpkgs.libtool nixpkgs.wget nixpkgs.automake nixpkgs.autoconf \
+    nixpkgs.vim nixpkgs.gdb nixpkgs.wget \
+    nixpkgs.pkg-config nixpkgs.libtool nixpkgs.automake nixpkgs.autoconf \
     nixpkgs.pre-commit nixpkgs.cloc nixpkgs.cmake nixpkgs.dstat nixpkgs.git nixpkgs.gnupg \
     nixpkgs.krb5 nixpkgs.locale nixpkgs.man nixpkgs.nixfmt nixpkgs.nixpkgs-fmt \
     nixpkgs.graphviz nixpkgs.nodePackages.prettier nixpkgs.openssh_gssapi nixpkgs.pandoc \

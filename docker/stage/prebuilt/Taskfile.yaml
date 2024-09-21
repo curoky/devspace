@@ -25,6 +25,14 @@ tasks:
         --file Dockerfile.llvm18
         --network=host
         --tag curoky/dotbox:stage-prebuilt-llvm18
+  go:
+    cmds:
+      - >
+        docker buildx build .
+        --build-context third-party=../../../third-party
+        --file Dockerfile.go
+        --network=host
+        --tag curoky/dotbox:stage-prebuilt-go
   rust:
     cmds:
       - >

@@ -9,10 +9,9 @@ RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
   && nix-channel --add https://github.com/NixOS/nixpkgs/archive/staging.tar.gz staging \
   && nix-channel --update
 
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.glibcLocales
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.aria2
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.glibcLocales
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.bison
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.buildifier
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.bzip2
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.cacert
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.connect
@@ -68,12 +67,7 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.pkg-config-unw
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.bash
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.dool
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.git-filter-repo
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.pkg-config
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.libtool
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.autoconf
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.automake
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.wget
-# RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.perl
 # RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.gdb
 
 COPY --from=third-party nixpkgs nixpkgs
@@ -81,17 +75,8 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA -f ./nixpkgs/default.nix vim-bu
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f ./nixpkgs/default.nix zsh-bundle
 
 COPY default.nix .
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix bazelisk_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix coreutils_static
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix croc_static
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix fzf_static
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gdu_static
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gh_static
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix git_lfs_static
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix go_task_static
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gost_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix rsync_static
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix shfmt_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix silver_searcher_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix diffutils_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix zsh_static
@@ -108,6 +93,7 @@ COPY --from=nixpkgs-builder /nix/ /nix/
 COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /output /output-llvm18
 COPY --from=curoky/dotbox:stage-prebuilt-rust /output /output-rust
 COPY --from=curoky/dotbox:stage-prebuilt-perl /output /output-perl
+COPY --from=curoky/dotbox:stage-prebuilt-go /output /output-go
 
 COPY pack.py .
 RUN mkdir -p /output/bin /output/extra/bin \
@@ -115,6 +101,7 @@ RUN mkdir -p /output/bin /output/extra/bin \
   && rsync --progress --archive --human-readable /output-llvm18/ /output/ \
   && rsync --progress --archive --human-readable /output-rust/ /output/ \
   && rsync --progress --archive --human-readable /output-perl/ /output/ \
+  && rsync --progress --archive --human-readable /output-go/ /output/ \
   && mkdir -p /output/dotbox \
   && curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/master.tar.gz \
     | tar -xv --gunzip -C /output/dotbox --strip-components 1 \
