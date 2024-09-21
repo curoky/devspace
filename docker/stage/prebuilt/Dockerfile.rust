@@ -1,9 +1,12 @@
 # syntax=docker/dockerfile:1.9.0
 FROM nixpkgs/nix-unstable:latest AS nixpkgs-builder
 
-ENV NIX_PATH=nixpkgs=channel:nixpkgs-unstable
+# ENV NIX_PATH=nixpkgs=channel:nixpkgs-unstable
+# RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs \
+#   && nix-channel --update
 
-RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs \
+ENV NIX_PATH=nixpkgs=channel:nixos-24.05
+RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
   && nix-channel --update
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.atuin
@@ -14,3 +17,4 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.git-absorb
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.procs
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ruff
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.starship
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.nixpkgs-fmt

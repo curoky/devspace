@@ -10,6 +10,7 @@ RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
 
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.dool
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.git-filter-repo
+# RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.pre-commit
 
 COPY default.nix .
 RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix python311_static

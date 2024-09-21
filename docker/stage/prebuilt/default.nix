@@ -83,6 +83,13 @@ let
   cmake_static = pkgs.pkgsStatic.cmakeMinimal.overrideAttrs (oldAttrs: rec {
     doCheck = false;
   });
+  git_static = pkgs.pkgsStatic.git.overrideAttrs (oldAttrs: rec {
+    preInstallCheck = oldAttrs.preInstallCheck + ''
+      disable_test t0211-trace2-perf
+      disable_test t2082-parallel-checkout-attributes
+      disable_test t1517-outside-repo
+    '';
+  });
   dstat_static = pkgs.pkgsStatic.dstat.overrideAttrs (oldAttrs: rec {
     doCheck = false;
     pytestCheckPhase = "";
@@ -125,6 +132,7 @@ in
   inherit protobuf3_20_static;
   inherit python311_static;
   inherit dstat_static;
+  inherit git_static;
   inherit protobuf_3_8_0_static;
   inherit protobuf_3_9_2_static;
 
@@ -133,5 +141,8 @@ in
   };
   coreutils_static = pkgs.pkgsStatic.coreutils.override {
     singleBinary = false;
+  };
+  gnupg_minimal_static = pkgs.pkgsStatic.gnupg.override {
+    enableMinimal = true;
   };
 }

@@ -52,8 +52,8 @@ jobs:
           - conda
           - nixpkg
           - prebuilt
-    # needs:
-    #   - stage-prebuilt
+    needs:
+      - stage-prebuilt
     steps:
       - uses: actions/checkout@v4
       - uses: docker/setup-buildx-action@v3
