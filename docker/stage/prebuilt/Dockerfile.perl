@@ -11,6 +11,8 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA staging.pkgsStatic.autoconf
 RUN nix-env -p /nix/var/nix/profiles/default -iA staging.pkgsStatic.automake
 RUN nix-env -p /nix/var/nix/profiles/default -iA staging.pkgsStatic.pkg-config
 RUN nix-env -p /nix/var/nix/profiles/default -iA staging.pkgsStatic.libtool
+# RUN nix-env -p /nix/var/ntix/profiles/default -iA staging.pkgsStatic.cloc
+# RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.pkg-config-unwrapped
 
 FROM debian:bookworm-backports AS packer
 

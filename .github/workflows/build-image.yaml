@@ -130,6 +130,7 @@ jobs:
           - name: rust
           - name: perl
           - name: go
+          - name: py3
     steps:
       - uses: actions/checkout@v4
       - run: tools/free-github-action-disk-space.sh
