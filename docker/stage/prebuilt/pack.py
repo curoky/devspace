@@ -44,6 +44,14 @@ def is_static_binary(file_path):
         return False
 
 
+def readlink(path: Path) -> Path:
+    while True:
+        if path.is_symlink():
+            path = path.readlink()
+        else:
+            return path
+
+
 def pack(output_path: Path, nix_paths: list[Path]):
     package_paths: set[Path] = set()
 
@@ -52,12 +60,12 @@ def pack(output_path: Path, nix_paths: list[Path]):
             for subpath in path.iterdir():
                 if subpath.is_dir():
                     if subpath.is_symlink():
-                        link = subpath.readlink()
+                        link = readlink(subpath)
                         if link.as_posix().startswith("/nix/store/"):
                             package_paths.add(link.parent)
                     for subdir in subpath.iterdir():
                         if subdir.is_symlink():
-                            link = subdir.readlink()
+                            link = readlink(subdir)
                             if link.as_posix().startswith("/nix/store/"):
                                 package_paths.add(link.parent.parent)
 

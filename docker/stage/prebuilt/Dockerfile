@@ -99,8 +99,8 @@ COPY --from=curoky/dotbox:stage-prebuilt-go /nix/ /nix/
 RUN ./pack.py && rm -rf /nix
 COPY --from=curoky/dotbox:stage-prebuilt-py3 /nix/ /nix/
 RUN ./pack.py && rm -rf /nix
-COPY --from=curoky/dotbox:stage-prebuilt-haskell /nix/ /nix/
-RUN ./pack.py && rm -rf /nix
+# COPY --from=curoky/dotbox:stage-prebuilt-haskell /nix/ /nix/
+# RUN ./pack.py && rm -rf /nix
 COPY --from=nixpkgs-builder /nix/ /nix/
 RUN ./pack.py && rm -rf /nix
 

@@ -40,9 +40,6 @@ for f in $(find $prefix -type f); do
   fi
 done
 
-rm -rf $prefix/bin/xxd
-cp -L /nix/var/nix/profiles/default/bin/xxd $prefix/bin/xxd
-
 ln -s -r $prefix/bin/bazelisk $prefix/bin/bazel
 ln -s -r $prefix/bin/clang-format-18 $prefix/bin/clang-format
 mv $prefix/bin/.bat-wrapped $prefix/bin/bat
