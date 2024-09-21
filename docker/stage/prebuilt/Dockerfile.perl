@@ -13,15 +13,3 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA staging.pkgsStatic.pkg-config
 RUN nix-env -p /nix/var/nix/profiles/default -iA staging.pkgsStatic.libtool
 # RUN nix-env -p /nix/var/ntix/profiles/default -iA staging.pkgsStatic.cloc
 # RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.pkg-config-unwrapped
-
-FROM debian:bookworm-backports AS packer
-
-COPY --from=nixpkgs-builder /nix /nix
-RUN apt-get update -y && apt-get install -y curl python3 python3-pip
-
-COPY pack.py .
-RUN mkdir /output \
-  && ./pack.py
-
-FROM debian:bookworm-backports
-COPY --from=packer /output /output

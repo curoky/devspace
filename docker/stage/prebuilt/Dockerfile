@@ -85,29 +85,29 @@ FROM debian:bookworm-backports AS packer
 
 RUN apt-get update -y && apt-get install -y curl python3 python3-pip rsync binutils file less vim
 
+COPY pack.py .
+RUN mkdir -p /output/bin /output/extra/bin
+
+COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /nix/ /nix/
+RUN ./pack.py
+COPY --from=curoky/dotbox:stage-prebuilt-rust /nix/ /nix/
+RUN ./pack.py
+COPY --from=curoky/dotbox:stage-prebuilt-perl /nix/ /nix/
+RUN ./pack.py
+COPY --from=curoky/dotbox:stage-prebuilt-go /nix/ /nix/
+RUN ./pack.py
+COPY --from=curoky/dotbox:stage-prebuilt-py3 /nix/ /nix/
+RUN ./pack.py
 COPY --from=nixpkgs-builder /nix/ /nix/
-COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /output /output-llvm18
-COPY --from=curoky/dotbox:stage-prebuilt-rust /output /output-rust
-COPY --from=curoky/dotbox:stage-prebuilt-perl /output /output-perl
-COPY --from=curoky/dotbox:stage-prebuilt-go /output /output-go
-COPY --from=curoky/dotbox:stage-prebuilt-py3 /output /output-py3
+RUN ./pack.py
 COPY wrapper/dool /output/bin/dool
 COPY wrapper/git-filter-repo /output/bin/git-filter-repo
-
-COPY pack.py .
-RUN mkdir -p /output/bin /output/extra/bin \
-  && ./pack.py \
-  && rsync --progress --archive --human-readable /output-llvm18/ /output/ \
-  && rsync --progress --archive --human-readable /output-rust/ /output/ \
-  && rsync --progress --archive --human-readable /output-perl/ /output/ \
-  && rsync --progress --archive --human-readable /output-go/ /output/ \
-  && rsync --progress --archive --human-readable /output-py3/ /output/
 
 COPY patch.sh .
 RUN ./patch.sh \
   && chown 1000:1000 -R /output \
   && mkdir -p /output/dotbox \
-  && curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/master.tar.gz \
+  && curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/dev.tar.gz \
     | tar -xv --gunzip -C /output/dotbox --strip-components 1 \
   && curl -sSL -o /output/share/tmux.conf https://raw.githubusercontent.com/gpakosz/.tmux/5f1047550ba2ba16a27bf8c9ea958fbbf974598d/.tmux.conf
 

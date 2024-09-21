@@ -27,7 +27,7 @@ ENV_FPATHS=(
 
   "/nix/var/nix/profiles/default/share/zsh/site-functions"
 
-  "$HOME/prebuilt/share/zsh/site-functions"
+  # "$HOME/prebuilt/share/zsh/site-functions"
 )
 
 for p in "${ENV_FPATHS[@]}"; do
