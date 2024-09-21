@@ -129,6 +129,7 @@ jobs:
           - name: llvm18
           - name: rust
           - name: perl
+          - name: go
     steps:
       - uses: actions/checkout@v4
       - run: tools/free-github-action-disk-space.sh
