@@ -56,6 +56,8 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zip
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib-ng
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zstd
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gdb
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.wget
 
 RUN nix-env -p /nix/var/nix/profiles/default2 -iA nixpkgs.pkgsStatic.netcat
 RUN nix-env -p /nix/var/nix/profiles/default3 -iA nixpkgs.pkgsStatic.openssl.bin
@@ -64,8 +66,6 @@ RUN nix-env -p /nix/var/nix/profiles/default4 -iA nixpkgs.pkgsStatic.tzdata.out
 # https://askubuntu.com/questions/445686/vim-cannot-find-syntax-vim
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.vim
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.bash
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.wget
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.gdb
 
 COPY --from=third-party nixpkgs nixpkgs
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f ./nixpkgs/default.nix vim-bundle
@@ -76,11 +76,11 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix coreutils_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix diffutils_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix rsync_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix silver_searcher_static
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix zsh_static
+RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix zsh_static
+RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gnupg_minimal_static
 RUN nix-env -p /nix/var/nix/profiles/default5 -iA -f default.nix protobuf_3_8_0_static
 RUN nix-env -p /nix/var/nix/profiles/default6 -iA -f default.nix protobuf_3_9_2_static
 RUN nix-env -p /nix/var/nix/profiles/default7 -iA -f default.nix protobuf3_20_static
-RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix gnupg_minimal_static
 
 FROM debian:bookworm-backports AS packer
 
@@ -99,13 +99,12 @@ COPY --from=curoky/dotbox:stage-prebuilt-go /nix/ /nix/
 RUN ./pack.py && rm -rf /nix
 COPY --from=curoky/dotbox:stage-prebuilt-py3 /nix/ /nix/
 RUN ./pack.py && rm -rf /nix
-# COPY --from=curoky/dotbox:stage-prebuilt-haskell /nix/ /nix/
-# RUN ./pack.py && rm -rf /nix
+COPY --from=curoky/dotbox:stage-prebuilt-haskell /nix/ /nix/
+RUN ./pack.py && rm -rf /nix
 COPY --from=nixpkgs-builder /nix/ /nix/
 RUN ./pack.py && rm -rf /nix
 
-COPY wrapper/dool /output/bin/dool
-COPY wrapper/git-filter-repo /output/bin/git-filter-repo
+COPY wrapper/* /output/bin/
 
 COPY patch.sh .
 RUN ./patch.sh \

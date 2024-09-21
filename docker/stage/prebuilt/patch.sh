@@ -45,8 +45,6 @@ ln -s -r $prefix/bin/clang-format-18 $prefix/bin/clang-format
 mv $prefix/bin/.bat-wrapped $prefix/bin/bat
 mv $prefix/bin/.gzip-wrapped $prefix/bin/gzip
 
-mv $prefix/share/zsh/5.9/functions $prefix/share/zsh/zsh-functions
-
 find $prefix -name "*.a" -delete
 find $prefix -name "*.pyc" -delete
 rm -rf \
@@ -54,11 +52,6 @@ rm -rf \
   $prefix/bin/ruff_dev \
   $prefix/bin/red_knot \
   $prefix/lib/locale/locale-archive \
-  $prefix/lib/cmake \
   $prefix/nix-support \
   $prefix/extra/nix-support \
-  $prefix/test \
-  $prefix/.github \
-  $prefix/.gitignore \
-  $prefix/*.yaml \
-  $prefix/*.png
+  $prefix/test

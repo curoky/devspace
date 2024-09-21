@@ -7,4 +7,4 @@ RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
   && nix-channel --update
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.nixfmt-rfc-style
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.pandoc
+# RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.pandoc

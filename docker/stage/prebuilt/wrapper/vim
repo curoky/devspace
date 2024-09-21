@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+root=$(cd "$(dirname "$0")" && pwd)/../extra
+export VIMRUNTIME=$root/share/vim/vim91
+
+exec -a "$0" "$root/bin/vim" "$@"

@@ -21,13 +21,12 @@ ENV_FPATHS=(
   "$HOMEBREW_PREFIX/share/zsh/site-functions"
   "$HOMEBREW_PREFIX/Homebrew/completions/zsh"
   # system
-  "/usr/share/zsh/vendor-completions"
+  # "/usr/share/zsh/vendor-completions"
   # typer
   "$HOME/.zfunc"
 
-  "/nix/var/nix/profiles/default/share/zsh/site-functions"
-
-  # "$HOME/prebuilt/share/zsh/site-functions"
+  "$HOME/prebuilt/share/zsh/site-functions"
+  # "$HOME/prebuilt/share/zsh/zsh-functions"
 )
 
 for p in "${ENV_FPATHS[@]}"; do
