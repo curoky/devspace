@@ -49,6 +49,14 @@ tasks:
         --file Dockerfile.perl
         --network=host
         --tag curoky/dotbox:stage-prebuilt-perl
+  haskell:
+    cmds:
+      - >
+        docker buildx build .
+        --build-context third-party=../../../third-party
+        --file Dockerfile.haskell
+        --network=host
+        --tag curoky/dotbox:stage-prebuilt-haskell
   py3:
     cmds:
       - >

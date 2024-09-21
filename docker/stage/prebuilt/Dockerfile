@@ -66,7 +66,6 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.vim
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.bash
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.wget
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.gdb
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.nixfmt-rfc-style
 
 COPY --from=third-party nixpkgs nixpkgs
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f ./nixpkgs/default.nix vim-bundle
@@ -91,17 +90,19 @@ COPY pack.py .
 RUN mkdir -p /output/bin /output/extra/bin
 
 COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /nix/ /nix/
-RUN ./pack.py
+RUN ./pack.py && rm -rf /nix
 COPY --from=curoky/dotbox:stage-prebuilt-rust /nix/ /nix/
-RUN ./pack.py
+RUN ./pack.py && rm -rf /nix
 COPY --from=curoky/dotbox:stage-prebuilt-perl /nix/ /nix/
-RUN ./pack.py
+RUN ./pack.py && rm -rf /nix
 COPY --from=curoky/dotbox:stage-prebuilt-go /nix/ /nix/
-RUN ./pack.py
+RUN ./pack.py && rm -rf /nix
 COPY --from=curoky/dotbox:stage-prebuilt-py3 /nix/ /nix/
-RUN ./pack.py
+RUN ./pack.py && rm -rf /nix
+COPY --from=curoky/dotbox:stage-prebuilt-haskell /nix/ /nix/
+RUN ./pack.py && rm -rf /nix
 COPY --from=nixpkgs-builder /nix/ /nix/
-RUN ./pack.py
+RUN ./pack.py && rm -rf /nix
 
 COPY wrapper/dool /output/bin/dool
 COPY wrapper/git-filter-repo /output/bin/git-filter-repo

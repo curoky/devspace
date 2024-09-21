@@ -24,7 +24,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     # nixpkgs.pkg-config nixpkgs.libtool nixpkgs.automake nixpkgs.autoconf \
     # nixpkgs.gdb nixpkgs.man \
     nixpkgs.dstat nixpkgs.git nixpkgs.gnupg \
-    nixpkgs.krb5 nixpkgs.locale nixpkgs.nixfmt nixpkgs.nixpkgs-fmt \
+    nixpkgs.krb5 nixpkgs.locale \
     nixpkgs.graphviz nixpkgs.nodePackages.prettier nixpkgs.pandoc \
     # nixpkgs.ccache nixpkgs.distcc nixpkgs.meson nixpkgs.scons nixpkgs.asciinema nixpkgs.bash
     # dotnet-sdk static failed
