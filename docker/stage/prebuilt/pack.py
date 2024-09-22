@@ -96,6 +96,7 @@ def pack(output_path: Path, nix_paths: list[Path]):
 
 if __name__ == "__main__":
     logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.INFO)
+    os.makedirs("/output/extra")
     pack(
         output_path=Path("/output"),
         nix_paths=[

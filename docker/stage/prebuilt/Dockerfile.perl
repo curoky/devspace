@@ -17,3 +17,12 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.libtool
 
 COPY default.nix .
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix git_static
+
+############################## END ##############################
+RUN nix-env -p /nix/var/nix/profiles/packer -iA nixpkgs.python3
+
+COPY pack.py .
+RUN /nix/var/nix/profiles/packer/bin/python3 ./pack.py
+
+FROM debian:bookworm-backports
+COPY --from=nixpkgs-builder /output /output

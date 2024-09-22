@@ -21,6 +21,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ethtool
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.file
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.findutils
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.flex
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gdb
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gettext
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.git-extras
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gnugrep
@@ -51,13 +52,12 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.tree
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.unixtools.xxd
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.unzip
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.util-linux
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.wget
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.xz
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zip
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib-ng
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zstd
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gdb
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.wget
 
 RUN nix-env -p /nix/var/nix/profiles/default2 -iA nixpkgs.pkgsStatic.netcat
 RUN nix-env -p /nix/var/nix/profiles/default3 -iA nixpkgs.pkgsStatic.openssl.bin
@@ -82,30 +82,30 @@ RUN nix-env -p /nix/var/nix/profiles/default5 -iA -f default.nix protobuf_3_8_0_
 RUN nix-env -p /nix/var/nix/profiles/default6 -iA -f default.nix protobuf_3_9_2_static
 RUN nix-env -p /nix/var/nix/profiles/default7 -iA -f default.nix protobuf3_20_static
 
+RUN nix-env -p /nix/var/nix/profiles/packer -iA nixpkgs.python3
+COPY pack.py .
+RUN /nix/var/nix/profiles/packer/bin/python3 ./pack.py
+
 FROM debian:bookworm-backports AS packer
 
-RUN apt-get update -y && apt-get install -y curl python3 python3-pip rsync binutils file less vim
+# RUN apt-get update -y && apt-get install -y curl python3 python3-pip rsync binutils file less vim
 
-COPY pack.py .
-RUN mkdir -p /output/bin /output/extra/bin
+COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /output /output-llvm18
+COPY --from=curoky/dotbox:stage-prebuilt-rust /output /output-rust
+COPY --from=curoky/dotbox:stage-prebuilt-perl /output /output-perl
+COPY --from=curoky/dotbox:stage-prebuilt-go /output /output-go
+COPY --from=curoky/dotbox:stage-prebuilt-py3 /output /output-py3
+COPY --from=curoky/dotbox:stage-prebuilt-haskell /output /output-haskell
+COPY --from=nixpkgs-builder /output /output
 
-COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /nix/ /nix/
-RUN ./pack.py && rm -rf /nix
-COPY --from=curoky/dotbox:stage-prebuilt-rust /nix/ /nix/
-RUN ./pack.py && rm -rf /nix
-COPY --from=curoky/dotbox:stage-prebuilt-perl /nix/ /nix/
-RUN ./pack.py && rm -rf /nix
-COPY --from=curoky/dotbox:stage-prebuilt-go /nix/ /nix/
-RUN ./pack.py && rm -rf /nix
-COPY --from=curoky/dotbox:stage-prebuilt-py3 /nix/ /nix/
-RUN ./pack.py && rm -rf /nix
-COPY --from=curoky/dotbox:stage-prebuilt-haskell /nix/ /nix/
-RUN ./pack.py && rm -rf /nix
-COPY --from=nixpkgs-builder /nix/ /nix/
-RUN ./pack.py && rm -rf /nix
+RUN rsync --progress --archive --human-readable /output-llvm18/ /output/ \
+  && rsync --progress --archive --human-readable /output-rust/ /output/ \
+  && rsync --progress --archive --human-readable /output-perl/ /output/ \
+  && rsync --progress --archive --human-readable /output-go/ /output/ \
+  && rsync --progress --archive --human-readable /output-py3/ /output/ \
+  && rsync --progress --archive --human-readable /output-haskell/ /output/
 
 COPY wrapper/* /output/bin/
-
 COPY patch.sh .
 RUN ./patch.sh \
   && chown 1000:1000 -R /output \

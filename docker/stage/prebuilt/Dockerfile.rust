@@ -15,3 +15,12 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.procs
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ruff
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.starship
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.nixpkgs-fmt
+
+############################## END ##############################
+RUN nix-env -p /nix/var/nix/profiles/packer -iA nixpkgs.python3
+
+COPY pack.py .
+RUN /nix/var/nix/profiles/packer/bin/python3 ./pack.py
+
+FROM debian:bookworm-backports
+COPY --from=nixpkgs-builder /output /output

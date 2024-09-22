@@ -7,3 +7,12 @@ RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
   && nix-channel --update
 
 RUN nix-env -p /nix/var/nix/profiles/llvm -iA nixpkgs.pkgsStatic.llvmPackages_17.clang-unwrapped
+
+############################## END ##############################
+RUN nix-env -p /nix/var/nix/profiles/packer -iA nixpkgs.python3
+
+COPY pack.py .
+RUN /nix/var/nix/profiles/packer/bin/python3 ./pack.py
+
+FROM debian:bookworm-backports
+COPY --from=nixpkgs-builder /output /output

@@ -18,3 +18,12 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix git_lfs_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gost_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix shfmt_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix fzf_static
+
+############################## END ##############################
+RUN nix-env -p /nix/var/nix/profiles/packer -iA nixpkgs.python3
+
+COPY pack.py .
+RUN /nix/var/nix/profiles/packer/bin/python3 ./pack.py
+
+FROM debian:bookworm-backports
+COPY --from=nixpkgs-builder /output /output

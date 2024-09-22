@@ -18,3 +18,12 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.asciinema
 
 COPY default.nix .
 RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix python311_static
+
+############################## END ##############################
+RUN nix-env -p /nix/var/nix/profiles/packer -iA nixpkgs.python3
+
+COPY pack.py .
+RUN /nix/var/nix/profiles/packer/bin/python3 ./pack.py
+
+FROM debian:bookworm-backports
+COPY --from=nixpkgs-builder /output /output
