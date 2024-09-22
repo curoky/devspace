@@ -18,7 +18,6 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.cacert
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.connect
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.curl
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ethtool
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.file
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.findutils
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.flex
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gdb
@@ -66,6 +65,7 @@ RUN nix-env -p /nix/var/nix/profiles/default4 -iA nixpkgs.pkgsStatic.tzdata.out
 # https://askubuntu.com/questions/445686/vim-cannot-find-syntax-vim
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.vim
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.bash
+RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.file
 
 COPY --from=third-party nixpkgs nixpkgs
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f ./nixpkgs/default.nix vim-bundle
@@ -88,7 +88,7 @@ RUN /nix/var/nix/profiles/packer/bin/python3 ./pack.py
 
 FROM debian:bookworm-backports AS packer
 
-# RUN apt-get update -y && apt-get install -y curl python3 python3-pip rsync binutils file less vim
+RUN apt-get update -y && apt-get install -y rsync curl file binutils less vim # python3 python3-pip
 
 COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /output /output-llvm18
 COPY --from=curoky/dotbox:stage-prebuilt-rust /output /output-rust

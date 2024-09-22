@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+root=$(cd "$(dirname "$0")" && pwd)/../extra
+
+exec -a "$0" "$root/bin/file" "--magic-file" "$root/share/misc/magic.mgc" "$@"
