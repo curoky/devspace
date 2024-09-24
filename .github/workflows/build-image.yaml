@@ -144,6 +144,8 @@ jobs:
           context: docker/stage/prebuilt
           file: docker/stage/prebuilt/Dockerfile.${{ matrix.name }}
           push: true
+          build-contexts: |
+            third-party=third-party
           provenance: mode=max
           cache-from: type=registry,ref=curoky/dotbox:__cache_stage_prebuilt_${{ matrix.name }}
           cache-to: type=registry,ref=curoky/dotbox:__cache_stage_prebuilt_${{ matrix.name }},mode=max
