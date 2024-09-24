@@ -14,6 +14,7 @@
   zsh-bundle = pkgs.callPackage ./pkgs/nix/zsh-bundle/default.nix { };
   vim-bundle = pkgs.callPackage ./pkgs/nix/vim-bundle/default.nix { };
   nsight-systems = pkgs.callPackage ./pkgs/nix/nsight-systems/default.nix { };
+  netron = pkgs.callPackage ./pkgs/nix/netron.nix { };
 
   dotdrop = pkgs.python3Packages.callPackage ./pkgs/nix/dotdrop/default.nix { };
   licenseheaders = pkgs.python3Packages.callPackage ./pkgs/nix/licenseheaders/default.nix { };

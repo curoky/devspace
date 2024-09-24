@@ -16,6 +16,9 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.asciinema
 # RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.meson
 # RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.pre-commit
 
+COPY --from=third-party nixpkgs nixpkgs
+RUN nix-env -p /nix/var/nix/profiles/default -iA -f ./nixpkgs/default.nix netron
+
 COPY default.nix .
 RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix python311_static
 
