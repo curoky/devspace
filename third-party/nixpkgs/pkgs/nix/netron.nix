@@ -1,4 +1,8 @@
-{ lib, python3Packages, fetchPypi,fetchFromGitHub }:
+{ lib,
+  python3Packages,
+  fetchPypi,
+  fetchFromGitHub
+}:
 
 python3Packages.buildPythonApplication rec {
   pname = "netron";

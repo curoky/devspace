@@ -1,26 +1,26 @@
-{ lib
-, python3
-, fetchFromGitHub
+{ lib,
+  python3Packages,
+  fetchFromGitHub
 }:
 
-python3.pkgs.buildPythonApplication rec {
+python3Packages.buildPythonApplication rec {
   pname = "dotdrop";
-  version = "1.14.0";
+  version = "1.14.2";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "deadc0de6";
     repo = "dotdrop";
     rev = "v${version}";
-    hash = "sha256-l7FBiyrQJJieeYNdpE1MGWs3X8wXbTKfEo7meAxqNWc=";
+    hash = "sha256-K0STUs6RkuFoshxnhWCGaITAAbQtO/MQT5o49HKZlwQ=";
   };
 
-  nativeBuildInputs = [
-    python3.pkgs.setuptools
-    python3.pkgs.wheel
+  nativeBuildInputs = with python3Packages; [
+    setuptools
+    wheel
   ];
 
-  propagatedBuildInputs = with python3.pkgs; [
+  propagatedBuildInputs = with python3Packages; [
     distro
     docopt
     jinja2
