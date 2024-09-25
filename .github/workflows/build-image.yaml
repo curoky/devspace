@@ -127,6 +127,7 @@ jobs:
       matrix:
         include:
           - name: llvm18
+          - name: base
           - name: rust
           - name: perl
           - name: go

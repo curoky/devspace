@@ -21,9 +21,9 @@ prefix=${1:-/output}
 
 sed -i 's$pluginpath = \[$pluginpath = \[os\.path\.dirname\(__file__\)+"/\.\./share/dool/",$g' \
   $prefix/py311/bin/dool
-sed -i '1s|.*|#!/usr/bin/env bash|' $prefix/bin/lsb_release
-sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/||g' \
-  $prefix/bin/lsb_release
+# sed -i '1s|.*|#!/usr/bin/env bash|' $prefix/bin/lsb_release
+# sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/||g' \
+#   $prefix/bin/lsb_release
 
 # find all plain text file in /usr/bin, and do sed
 for f in $(find $prefix/bin -type f); do
@@ -50,6 +50,4 @@ find $prefix -name "*.pyc" -delete
 rm -rf \
   $prefix/inner/share/vim/vim91/doc \
   $prefix/bin/ruff_dev \
-  $prefix/bin/red_knot \
-  $prefix/lib/locale/locale-archive \
-  $prefix/test
+  $prefix/bin/red_knot
