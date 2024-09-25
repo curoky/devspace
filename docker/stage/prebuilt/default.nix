@@ -111,7 +111,21 @@ let
       echo "fcntl fcntlmodule.c" >> Modules/Setup.local
       echo "_struct _struct.c" >> Modules/Setup.local
       echo "termios termios.c" >> Modules/Setup.local
+      echo "array arraymodule.c" >> Modules/Setup.local
+      echo "_random _randommodule.c" >> Modules/Setup.local
+      echo "binascii binascii.c" >> Modules/Setup.local
+      echo "_socket socketmodule.c" >> Modules/Setup.local
       echo "_curses -lncurses -lncursesw -ltermcap _cursesmodule.c" >> Modules/Setup.local
+      echo "_ssl _ssl.c $(OPENSSL_INCLUDES) $(OPENSSL_LDFLAGS) -l:libssl.a -Wl,--exclude-libs,libssl.a -l:libcrypto.a -Wl,--exclude-libs,libcrypto.a" >> Modules/Setup.local
+      echo "_hashlib _hashopenssl.c $(OPENSSL_INCLUDES) $(OPENSSL_LDFLAGS) -l:libcrypto.a -Wl,--exclude-libs,libcrypto.a" >> Modules/Setup.local
+      echo "unicodedata unicodedata.c" >> Modules/Setup.local
+
+      echo "_blake2 _blake2/blake2module.c _blake2/blake2b_impl.c _blake2/blake2s_impl.c" >> Modules/Setup.local
+      echo "_md5 md5module.c" >> Modules/Setup.local
+      echo "_sha1 sha1module.c" >> Modules/Setup.local
+      echo "_sha256 sha256module.c" >> Modules/Setup.local
+      echo "_sha512 sha512module.c" >> Modules/Setup.local
+      echo "_sha3 _sha3/sha3module.c" >> Modules/Setup.local
     '';
   });
 in

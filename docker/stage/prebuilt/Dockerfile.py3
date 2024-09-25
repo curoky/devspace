@@ -12,6 +12,7 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.dool
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.git-filter-repo
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.scons
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.asciinema
+# RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.python311Packages.docopt
 # RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.dstat
 # RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.meson
 # RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.pre-commit
