@@ -40,7 +40,7 @@ for f in $(find $prefix -type f); do
   fi
 done
 
-ln -s -r $prefix/bin/bazelisk $prefix/bin/bazel
+ln -s -r $prefix/extra/bin/bazelisk $prefix/extra/bin/bazel
 ln -s -r $prefix/bin/clang-format-18 $prefix/bin/clang-format
 mv $prefix/bin/.bat-wrapped $prefix/bin/bat
 mv $prefix/bin/.gzip-wrapped $prefix/bin/gzip

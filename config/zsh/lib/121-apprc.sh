@@ -105,7 +105,7 @@ export FILTER_BRANCH_SQUELCH_WARNING=1
 # if [[ -d "${HOMEBREW_PREFIX}/opt/vim-bundle/vim-plugin" ]]; then
 #   export VIM_PLUGIN_PATH="${HOMEBREW_PREFIX}/opt/vim-bundle/vim-plugin"
 # elif [[ -d "${HOME}/prebuilt/vim-plugin" ]]; then
-#   export VIM_PLUGIN_PATH="${HOME}/prebuilt/vim-plugin"
+#   export VIM_PLUGIN_PATH="${HOME}/prebuilt/share/vim-plugin"
 # fi
 
 # export VIM_PLUGIN_PATH=$HOMEBREW_PREFIX/opt/vim-bundle/vim-plugin

@@ -25,21 +25,22 @@ stdenv.mkDerivation rec {
   buildPhase = ":";
 
   installPhase = ''
-    cp -r ${vim-plug.src}/ $out/
-    chmod +w $out/
-    mkdir -p $out/vim-plugin/autoload
-    ln -s $out/plug.vim $out/vim-plugin/autoload/
-    mkdir -p $out/vim-plugin/plugged
-    cp -r ${delimitMate}/ $out/vim-plugin/plugged/delimitMate
-    cp -r ${vim-airline}/ $out/vim-plugin/plugged/vim-airline
-    cp -r ${vim-airline-themes}/ $out/vim-plugin/plugged/vim-airline-themes
-    cp -r ${vim-colors-solarized}/ $out/vim-plugin/plugged/vim-colors-solarized
-    cp -r ${indentLine}/ $out/vim-plugin/plugged/indentLine
-    cp -r ${vim-commentary}/ $out/vim-plugin/plugged/vim-commentary
-    cp -r ${vim-fugitive}/ $out/vim-plugin/plugged/vim-fugitive
-    cp -r ${vim-gitgutter}/ $out/vim-plugin/plugged/vim-gitgutter
-    cp -r ${nerdtree}/ $out/vim-plugin/plugged/nerdtree
-    cp -r ${nerdtree-git-plugin}/ $out/vim-plugin/plugged/nerdtree-git-plugin
+    mkdir -p $out/share/
+    # cp -r ${vim-plug.src}/ $out/share/
+    # chmod +w $out/share/
+    mkdir -p $out/share/vim-plugin/autoload
+    cp ${vim-plug.src}/plug.vim $out/share/vim-plugin/autoload/
+    mkdir -p $out/share/vim-plugin/plugged
+    cp -r ${delimitMate}/ $out/share/vim-plugin/plugged/delimitMate
+    cp -r ${vim-airline}/ $out/share/vim-plugin/plugged/vim-airline
+    cp -r ${vim-airline-themes}/ $out/share/vim-plugin/plugged/vim-airline-themes
+    cp -r ${vim-colors-solarized}/ $out/share/vim-plugin/plugged/vim-colors-solarized
+    cp -r ${indentLine}/ $out/share/vim-plugin/plugged/indentLine
+    cp -r ${vim-commentary}/ $out/share/vim-plugin/plugged/vim-commentary
+    cp -r ${vim-fugitive}/ $out/share/vim-plugin/plugged/vim-fugitive
+    cp -r ${vim-gitgutter}/ $out/share/vim-plugin/plugged/vim-gitgutter
+    cp -r ${nerdtree}/ $out/share/vim-plugin/plugged/nerdtree
+    cp -r ${nerdtree-git-plugin}/ $out/share/vim-plugin/plugged/nerdtree-git-plugin
   '';
 
   meta = with lib; {
