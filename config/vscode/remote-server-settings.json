@@ -12,8 +12,8 @@
   "[cpp]": {
     "editor.tabSize": 2
   },
-  "bazel.buildifierExecutable": "/app/prebuilt/bin/buildifier",
-  "bazel.executable": "/app/prebuilt/bin/bazel",
+  "bazel.buildifierExecutable": "/app/prebuilt/extra/bin/buildifier",
+  "bazel.executable": "/app/prebuilt/extra/bin/bazel",
   "black-formatter.path": ["/nix/var/nix/profiles/default/bin/black"],
   "clang-format.executable": "/app/prebuilt/bin/clang-format-17",
   "clang-format.fallbackStyle": "Google",

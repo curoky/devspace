@@ -6,7 +6,7 @@ ENV NIX_PATH=nixpkgs=channel:nixos-24.05
 RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
   && nix-channel --update
 
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.buildifier
+RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.buildifier
 
 COPY default.nix .
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gdu_static
