@@ -165,10 +165,10 @@ jobs:
           docker cp $id:/output - > output.tar
           docker rm -v $id
           tar -xvf output.tar
-          tar -czvf output.tar.gz /output
-          rm -rf /output/extra
-          rm -rf /output/experimental
-          tar -czvf output-minimal.tar.gz /output
+          tar -czvf output.tar.gz ./output
+          rm -rf ./output/extra
+          rm -rf ./output/experimental
+          tar -czvf output-minimal.tar.gz ./output
 
       - name: test setup config
         run: |
