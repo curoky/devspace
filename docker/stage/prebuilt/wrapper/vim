@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-root=$(cd "$(dirname "$0")" && pwd)/../extra
+# https://askubuntu.com/questions/445686/vim-cannot-find-syntax-vim
+
+root=$(cd "$(dirname "$0")" && pwd)/../inner
 export VIMRUNTIME=$root/share/vim/vim91
 
 exec -a "$0" "$root/bin/vim" "$@"

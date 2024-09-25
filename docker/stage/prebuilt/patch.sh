@@ -20,7 +20,7 @@ set -xeuo pipefail
 prefix=${1:-/output}
 
 sed -i 's$pluginpath = \[$pluginpath = \[os\.path\.dirname\(__file__\)+"/\.\./share/dool/",$g' \
-  $prefix/extra/bin/dool
+  $prefix/py311/bin/dool
 sed -i '1s|.*|#!/usr/bin/env bash|' $prefix/bin/lsb_release
 sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/||g' \
   $prefix/bin/lsb_release
@@ -44,16 +44,14 @@ ln -s -r $prefix/bin/bazelisk $prefix/bin/bazel
 ln -s -r $prefix/bin/clang-format-18 $prefix/bin/clang-format
 mv $prefix/bin/.bat-wrapped $prefix/bin/bat
 mv $prefix/bin/.gzip-wrapped $prefix/bin/gzip
-mv $prefix/bin/clang-format $prefix/bin/clang-format-18
+# mv $prefix/bin/clang-format $prefix/bin/clang-format-18
 ln -s -r $prefix/bin/clang-format-18 $prefix/bin/clang-format
 
 find $prefix -name "*.a" -delete
 find $prefix -name "*.pyc" -delete
 rm -rf \
-  $prefix/extra/share/vim/vim91/doc \
+  $prefix/inner/share/vim/vim91/doc \
   $prefix/bin/ruff_dev \
   $prefix/bin/red_knot \
   $prefix/lib/locale/locale-archive \
-  $prefix/nix-support \
-  $prefix/extra/nix-support \
   $prefix/test

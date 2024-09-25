@@ -6,7 +6,7 @@ ENV NIX_PATH=nixpkgs=channel:nixpkgs-unstable
 RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs \
   && nix-channel --update
 
-RUN nix-env -p /nix/var/nix/profiles/llvm -iA nixpkgs.pkgsStatic.llvmPackages_18.clang-unwrapped
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.llvmPackages_18.clang-unwrapped
 
 ############################## END ##############################
 RUN nix-env -p /nix/var/nix/profiles/packer -iA nixpkgs.python3
@@ -15,4 +15,4 @@ COPY pack.py .
 RUN /nix/var/nix/profiles/packer/bin/python3 ./pack.py
 
 FROM debian:bookworm-backports
-COPY --from=nixpkgs-builder /output /output
+COPY --from=nixpkgs-builder /output/bin/clang-format /output/bin/clang-format-18

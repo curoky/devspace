@@ -96,7 +96,10 @@ def pack(output_path: Path, nix_paths: list[Path]):
 
 if __name__ == "__main__":
     logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.INFO)
+    os.makedirs("/output/inner")
     os.makedirs("/output/extra")
+    os.makedirs("/output/py311")
+    os.makedirs("/output/experimental")
     pack(
         output_path=Path("/output"),
         nix_paths=[
@@ -110,8 +113,29 @@ if __name__ == "__main__":
         ],
     )
     pack(
+        output_path=Path("/output/experimental"),
+        nix_paths=[
+            Path("/nix/var/nix/profiles/experimental"),
+        ],
+    )
+    pack(
+        output_path=Path("/output/inner"),
+        nix_paths=[
+            Path("/nix/var/nix/profiles/inner"),
+        ],
+    )
+    pack(
+        output_path=Path("/output/py311"),
+        nix_paths=[
+            Path("/nix/var/nix/profiles/py311"),
+        ],
+    )
+    pack(
         output_path=Path("/output/extra"),
         nix_paths=[
             Path("/nix/var/nix/profiles/extra"),
+            Path("/nix/var/nix/profiles/extra2"),
+            Path("/nix/var/nix/profiles/extra3"),
+            Path("/nix/var/nix/profiles/extra4"),
         ],
     )

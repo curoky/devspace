@@ -9,15 +9,16 @@ RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.buildifier
 
 COPY default.nix .
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix bazelisk_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gdu_static
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gh_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix croc_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix go_task_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix git_lfs_static
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gost_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix shfmt_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix fzf_static
+
+RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix gh_static
+RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix gost_static
+RUN nix-env -p /nix/var/nix/profiles/extra -iA -f default.nix bazelisk_static
 
 ############################## END ##############################
 RUN nix-env -p /nix/var/nix/profiles/packer -iA nixpkgs.python3
