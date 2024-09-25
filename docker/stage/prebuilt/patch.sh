@@ -44,8 +44,6 @@ ln -s -r $prefix/bin/bazelisk $prefix/bin/bazel
 ln -s -r $prefix/bin/clang-format-18 $prefix/bin/clang-format
 mv $prefix/bin/.bat-wrapped $prefix/bin/bat
 mv $prefix/bin/.gzip-wrapped $prefix/bin/gzip
-# mv $prefix/bin/clang-format $prefix/bin/clang-format-18
-ln -s -r $prefix/bin/clang-format-18 $prefix/bin/clang-format
 
 find $prefix -name "*.a" -delete
 find $prefix -name "*.pyc" -delete
