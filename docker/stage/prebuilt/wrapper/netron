@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+root=$(cd "$(dirname "$0")" && pwd)/../extra
+python_bin_path=$root/bin/python3
+pathon_lib_root=$root/lib/python3.11
+
+export PYTHONHOME=$root
+export PYTHONPATH=$pathon_lib_root:$pathon_lib_root/site-packages:$pathon_lib_root/lib-dynload
+exec -a "$0" "$python_bin_path" "$root/bin/.netron-wrapped" "$@"
