@@ -27,7 +27,7 @@ function update_dotbox() {
 }
 
 rm -rf /tmp/prebuilt.tar.gz
-curl -SL https://github.com/curoky/dotbox/releases/download/v1.0.0/output.tar.gz -o /tmp/prebuilt.tar.gz
+curl -SL https://github.com/curoky/dotbox/releases/download/v1.0.0/output-minimal.tar.gz -o /tmp/prebuilt.tar.gz
 rm -rf $install_prefix
 mkdir $install_prefix
 tar -xzf /tmp/prebuilt.tar.gz -C $install_prefix --strip-components=1
