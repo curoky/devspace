@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
-root=$(cd "$(dirname "$0")" && pwd)/../py311
-python_bin_path=$root/bin/python3
-pathon_lib_root=$root/lib/python3.11
+root=$(cd "$(dirname "$0")" && pwd)/..
 
-# python_bin_path=/nix/var/nix/profiles/py311-static/bin/python3
+export PYTHONHOME=$root/py311-static
+export PYTHONPATH=$PYTHONPATH:$PYTHONHOME/lib/python3.11
+export PYTHONPATH=$PYTHONPATH:$PYTHONHOME/lib/python3.11/site-packages
+export PYTHONPATH=$PYTHONPATH:$PYTHONHOME/lib/python3.11/lib-dynload
+export PYTHONPATH=$PYTHONPATH:$root/pipx/venvs/dool/lib/python3.11/site-packages
+
+# python_bin_path=/home/x/.nix-profile/bin/python3.11
 # pathon_lib_root=/nix/var/nix/profiles/py311-static/lib/python3.11/
 
-export PYTHONHOME=$root
-export PYTHONPATH=$pathon_lib_root:$pathon_lib_root/site-packages:$pathon_lib_root/lib-dynload
-exec -a "$0" "$python_bin_path" "$root/bin/dool" "$@"
+exec -a "$0" "$PYTHONHOME/bin/python3" "$root/pipx/venvs/dool/bin/dool" "$@"

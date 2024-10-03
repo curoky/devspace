@@ -6,6 +6,8 @@ ENV NIX_PATH=nixpkgs=channel:nixpkgs-unstable
 RUN nix-channel --add https://github.com/NixOS/nixpkgs/archive/staging.tar.gz nixpkgs \
   && nix-channel --update
 
+COPY ./configuration.nix /etc/nixos/configuration.nix
+
 RUN nix-env -p /nix/var/nix/profiles/experimental -iA nixpkgs.pkgsStatic.man
 RUN nix-env -p /nix/var/nix/profiles/experimental -iA nixpkgs.pkgsStatic.perl
 RUN nix-env -p /nix/var/nix/profiles/experimental -iA nixpkgs.pkgsStatic.autoconf

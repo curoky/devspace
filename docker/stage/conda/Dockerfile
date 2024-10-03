@@ -16,4 +16,4 @@ RUN ./setup-conda-env.sh env/py3.yaml \
 
 COPY pipx-install.sh pipx-install.sh
 RUN ./pipx-install.sh \
-    licenseheaders dotdrop netron
+    dotdrop

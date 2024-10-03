@@ -57,19 +57,32 @@ def pack(output_path: Path, nix_paths: list[Path]):
 
     for path in nix_paths:
         if path.exists():
-            for subpath in path.iterdir():
-                if subpath.is_dir():
-                    if subpath.is_symlink():
-                        link = readlink(subpath)
+            for root, dirs, _ in os.walk(path, topdown=True, followlinks=False):
+                for file in map(lambda x: Path(root) / Path(x), dirs):
+                    # print(file)
+                    if file.is_symlink():
+                        link = readlink(file)
+                        # print("link", link)
                         if link.as_posix().startswith("/nix/store/"):
-                            package_paths.add(link.parent)
-                    for subdir in subpath.iterdir():
-                        if subdir.is_symlink():
-                            link = readlink(subdir)
-                            if link.as_posix().startswith("/nix/store/"):
-                                package_paths.add(link.parent.parent)
+                            # parts = path.parts
+                            # if len(parts)
+                            # print("start ", link.parts[:4])
+                            package_paths.add(Path(*link.parts[:4]))
+
+            # for subpath in path.iterdir():
+            #     if subpath.is_dir():
+            #         if subpath.is_symlink():
+            #             link = readlink(subpath)
+            #             if link.as_posix().startswith("/nix/store/"):
+            #                 package_paths.add(link.parent)
+            #         for subdir in subpath.iterdir():
+            #             if subdir.is_symlink():
+            #                 link = readlink(subdir)
+            #                 if link.as_posix().startswith("/nix/store/"):
+            #                     package_paths.add(link.parent.parent)
 
     print(package_paths)
+    # exit(1)
     for path in package_paths:
         for root, _, files in os.walk(path, topdown=True, followlinks=False):
             root = Path(root)
@@ -98,7 +111,8 @@ if __name__ == "__main__":
     logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.INFO)
     os.makedirs("/output/inner")
     os.makedirs("/output/extra")
-    os.makedirs("/output/py311")
+    # os.makedirs("/output/py311")
+    os.makedirs("/output/py311-static")
     os.makedirs("/output/experimental")
     pack(
         output_path=Path("/output"),
@@ -125,17 +139,17 @@ if __name__ == "__main__":
         ],
     )
     pack(
-        output_path=Path("/output/py311"),
-        nix_paths=[
-            Path("/nix/var/nix/profiles/py311"),
-        ],
-    )
-    pack(
         output_path=Path("/output/extra"),
         nix_paths=[
             Path("/nix/var/nix/profiles/extra"),
             Path("/nix/var/nix/profiles/extra2"),
             Path("/nix/var/nix/profiles/extra3"),
             Path("/nix/var/nix/profiles/extra4"),
+        ],
+    )
+    pack(
+        output_path=Path("/output/py311-static"),
+        nix_paths=[
+            Path("/nix/var/nix/profiles/py311-static"),
         ],
     )

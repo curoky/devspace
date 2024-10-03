@@ -19,8 +19,8 @@ set -xeuo pipefail
 
 prefix=${1:-/output}
 
-sed -i 's$pluginpath = \[$pluginpath = \[os\.path\.dirname\(__file__\)+"/\.\./share/dool/",$g' \
-  $prefix/py311/bin/dool
+# sed -i 's$pluginpath = \[$pluginpath = \[os\.path\.dirname\(__file__\)+"/\.\./share/dool/",$g' \
+#   $prefix/py311/bin/dool
 # sed -i '1s|.*|#!/usr/bin/env bash|' $prefix/bin/lsb_release
 # sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/||g' \
 #   $prefix/bin/lsb_release
@@ -28,13 +28,14 @@ sed -i 's$pluginpath = \[$pluginpath = \[os\.path\.dirname\(__file__\)+"/\.\./sh
 # find all plain text file in /usr/bin, and do sed
 for f in $(find $prefix/bin -type f); do
   if file "$f" | grep -q 'text'; then
-    sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/|/usr/bin/env |g' "$f"
+    sed -i -e 's|#\!\s*/nix/store/[a-z0-9\._-]*/bin/|#\! /usr/bin/env |g' "$f"
   fi
 done
 
 for f in $(find $prefix -type f); do
   if file "$f" | grep -q 'text'; then
-    sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/||g' "$f"
+    # sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/||g' "$f"
+    echo "ignore"
   elif file "$f" | grep -q 'ELF'; then
     strip --strip-unneeded "$f"
   fi

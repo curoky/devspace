@@ -8,21 +8,12 @@ ENV NIXPKGS_ALLOW_BROKEN=1
 RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
   && nix-channel --update
 
-RUN nix-env -p /nix/var/nix/profiles/py311 -iA nixpkgs.pkgsStatic.dool
-RUN nix-env -p /nix/var/nix/profiles/py311 -iA nixpkgs.pkgsStatic.git-filter-repo
-RUN nix-env -p /nix/var/nix/profiles/py311 -iA nixpkgs.pkgsStatic.scons
-RUN nix-env -p /nix/var/nix/profiles/py311 -iA nixpkgs.pkgsStatic.asciinema
-# RUN nix-env -p /nix/var/nix/profiles/py311 -iA nixpkgs.pkgsStatic.python311Packages.docopt
-# RUN nix-env -p /nix/var/nix/profiles/py311 -iA nixpkgs.pkgsStatic.dstat
-# RUN nix-env -p /nix/var/nix/profiles/py311 -iA nixpkgs.pkgsStatic.meson
-# RUN nix-env -p /nix/var/nix/profiles/py311 -iA nixpkgs.pkgsStatic.pre-commit
-
-COPY --from=third-party nixpkgs nixpkgs
-RUN nix-env -p /nix/var/nix/profiles/py311 -iA -f ./nixpkgs/default.nix netron
-RUN nix-env -p /nix/var/nix/profiles/py311 -iA -f ./nixpkgs/default.nix dotdrop
-
 COPY default.nix .
-RUN nix-env -p /nix/var/nix/profiles/py311 -iA -f default.nix python311_static
+RUN nix-env -p /nix/var/nix/profiles/py311-static -iA -f default.nix python311_static
+RUN nix-env -p /nix/var/nix/profiles/py311 -iA nixpkgs.pipx
+
+COPY pipx-install.sh .
+RUN ./pipx-install.sh licenseheaders dotdrop netron git-filter-repo dool asciinema licenseheaders
 
 ############################## END ##############################
 RUN nix-env -p /nix/var/nix/profiles/packer -iA nixpkgs.python3

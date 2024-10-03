@@ -101,7 +101,11 @@ let
     # https://github.com/python/cpython/blob/3.11/Modules/Setup
     configureFlags = oldAttrs.configureFlags ++ [
       "LDFLAGS=-L${pkgs.pkgsStatic.termcap}/lib"
+      #"--with-ensurepip=install"
     ];
+    stripIdlelib = true;
+    stripTests = true;
+    stripTkinter = true;
     postPatch = oldAttrs.postPatch + ''
       #sed -i 's/#*shared*/#*static*/g' Modules/Setup
       cat <<EOF >> Modules/Setup.local
@@ -149,6 +153,17 @@ let
         spwd spwdmodule.c
         syslog syslogmodule.c
         termios termios.c
+
+        _elementtree _elementtree.c
+        pyexpat pyexpat.c
+
+        _bz2 _bz2module.c -lbz2
+        _ctypes _ctypes/_ctypes.c _ctypes/callbacks.c _ctypes/callproc.c _ctypes/stgdict.c _ctypes/cfield.c -ldl -lffi -DHAVE_FFI_PREP_CIF_VAR -DHAVE_FFI_PREP_CLOSURE_LOC -DHAVE_FFI_CLOSURE_ALLOC
+        _dbm _dbmmodule.c -lgdbm_compat -DUSE_GDBM_COMPAT
+        _gdbm _gdbmmodule.c -lgdbm
+        _lzma _lzmamodule.c -llzma
+        #_uuid _uuidmodule.c -luuid
+        zlib  zlibmodule.c -lz
 
         _ssl _ssl.c $(OPENSSL_INCLUDES) $(OPENSSL_LDFLAGS) $(OPENSSL_LIBS)
         _hashlib _hashopenssl.c $(OPENSSL_INCLUDES) $(OPENSSL_LDFLAGS) -lcrypto
