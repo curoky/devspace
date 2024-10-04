@@ -72,3 +72,7 @@ link_path $CONF_PATH/tabby-ml/config.toml ~/.tabby-client/agent/config.toml
 copy_path $CONF_PATH/zsh/zshrc ~/.zshrc
 copy_path $CONF_PATH/git/.gitconfig ~/.gitconfig
 copy_path $CONF_PATH/ssh/user.ssh_config ~/.ssh/config
+
+# FIXME: tabby depend on this
+mkdir -p ~/.tabby-client/agent/
+touch ~/.tabby-client/agent/data.json
