@@ -57,8 +57,19 @@ def pack(output_path: Path, nix_paths: list[Path]):
 
     for path in nix_paths:
         if path.exists():
-            for root, dirs, _ in os.walk(path, topdown=True, followlinks=False):
+            for root, dirs, files in os.walk(path, topdown=True, followlinks=False):
                 for file in map(lambda x: Path(root) / Path(x), dirs):
+                    # print(file)
+                    if file.is_symlink():
+                        link = readlink(file)
+                        # print("link", link)
+                        if link.as_posix().startswith("/nix/store/"):
+                            # parts = path.parts
+                            # if len(parts)
+                            # print("start ", link.parts[:4])
+                            package_paths.add(Path(*link.parts[:4]))
+
+                for file in map(lambda x: Path(root) / Path(x), files):
                     # print(file)
                     if file.is_symlink():
                         link = readlink(file)
