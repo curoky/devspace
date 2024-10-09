@@ -16,4 +16,4 @@ dependencies:
       # - bbpb
       # - notion-client
       # - git+https://github.com/curoky/thriftpy2@dev
-      - git+https://github.com/curoky/thriftoy@dev
+      - git+https://github.com/curoky/thriftoy@master
