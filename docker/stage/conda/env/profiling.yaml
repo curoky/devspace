@@ -1,0 +1,19 @@
+name: profiling
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - ipykernel
+      - ipywidgets
+      - pydantic
+      - requests
+      - typer
+      # - python-snappy==0.6.1
+      - locust
+      - sqlmodel
+      # - bbpb
+      # - notion-client
+      # - git+https://github.com/curoky/thriftpy2@dev
+      - git+https://github.com/curoky/thriftoy@dev
