@@ -200,7 +200,6 @@ in
   inherit zsh_static;
   inherit wget_static;
   inherit krb5_static;
-  inherit openssh_gssapi_static;
   inherit diffutils_static;
   inherit protobuf3_20_static;
   inherit python311_static;
