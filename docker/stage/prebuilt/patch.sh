@@ -25,15 +25,9 @@ prefix=${1:-/output}
 # sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/||g' \
 #   $prefix/bin/lsb_release
 
-# find all plain text file in /usr/bin, and do sed
-for f in $(find $prefix/bin -type f); do
-  if file "$f" | grep -q 'text'; then
-    sed -i -e 's|#\!\s*/nix/store/[a-z0-9\._-]*/bin/|#\! /usr/bin/env |g' "$f"
-  fi
-done
-
 for f in $(find $prefix -type f); do
   if file "$f" | grep -q 'text'; then
+    sed -i -e 's|#\!\s*/nix/store/[a-z0-9\._-]*/bin/|#\! /usr/bin/env |g' "$f"
     sed -i -e 's|/nix/store/[a-z0-9\._-]*/bin/||g' "$f"
   elif file "$f" | grep -q 'ELF'; then
     strip --strip-unneeded "$f"
@@ -42,8 +36,10 @@ done
 
 ln -s -r $prefix/extra/bin/bazelisk $prefix/extra/bin/bazel
 ln -s -r $prefix/bin/clang-format-18 $prefix/bin/clang-format
+ln -s -r $prefix/bin/vim $prefix/bin/vi
 mv $prefix/bin/.bat-wrapped $prefix/bin/bat
 mv $prefix/bin/.gzip-wrapped $prefix/bin/gzip
+mv $prefix/bin/git $prefix/bin/.git-wrapped
 
 find $prefix -name "*.a" -delete
 find $prefix -name "*.pyc" -delete

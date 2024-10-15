@@ -19,7 +19,6 @@ RUN rsync --progress --archive --human-readable /output-base/ /output/ \
   && rsync --progress --archive --human-readable /output-py3/ /output/ \
   && rsync --progress --archive --human-readable /output-haskell/ /output/
 
-COPY wrapper/* /output/bin/
 COPY patch.sh .
 RUN ./patch.sh \
   && chown 1000:1000 -R /output \
@@ -27,6 +26,8 @@ RUN ./patch.sh \
   && curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/dev.tar.gz \
     | tar -xv --gunzip -C /output/dotbox --strip-components 1 \
   && curl -sSL -o /output/share/tmux.conf https://raw.githubusercontent.com/gpakosz/.tmux/5f1047550ba2ba16a27bf8c9ea958fbbf974598d/.tmux.conf
+
+COPY wrapper/* /output/bin/
 
 FROM debian:bookworm-slim
 COPY --from=packer /output /output
