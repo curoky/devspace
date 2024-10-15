@@ -177,3 +177,14 @@ export BAT_CONFIG_PATH=$CONFIG_HOME/bat/config
 
 #-> tmux
 export TMUX_CONF_LOCAL=$CONFIG_HOME/tmux/tmux.conf.local
+
+#-> vscode
+# vscode-remote code command not found
+# https://www.v2ex.com/t/1080529#reply0
+# https://github.com/microsoft/vscode-remote-release/issues/6339
+export VS_SERVICES_DIR="$HOME/.vscode-server/cli/servers/"
+if [[ -f "${VS_SERVICES_DIR}/lru.json" ]]; then
+  vs_version=$(cat ${VS_SERVICES_DIR}/lru.json | awk -F '"' '{print $2}')
+  vscode_dir="${VS_SERVICES_DIR}/${vs_version}/server/bin/remote-cli"
+  export PATH=${vscode_dir}:${PATH}
+fi
