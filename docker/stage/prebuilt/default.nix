@@ -88,14 +88,6 @@ let
       NIX_CFLAGS_COMPILE = "-fcommon";
     };
   });
-  openssh_gssapi_static = krb5_fix.pkgsStatic.openssh_gssapi.overrideAttrs (oldAttrs: rec {
-    withFIDO = false;
-    configureFlags = oldAttrs.configureFlags ++ [
-      "--disable-security-key"
-      # "-lkeyutils"
-      # "-lcrypto"
-    ];
-  });
   git_static = pkgs.pkgsStatic.git.overrideAttrs (oldAttrs: rec {
     preInstallCheck = oldAttrs.preInstallCheck + ''
       disable_test t0211-trace2-perf
