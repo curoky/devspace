@@ -133,6 +133,7 @@ jobs:
           - name: go
           - name: py3
           - name: haskell
+          - name: mac
     steps:
       - uses: actions/checkout@v4
       - uses: docker/setup-buildx-action@v3
@@ -176,6 +177,12 @@ jobs:
           rm -rf ./output-minimal/experimental
           tar -czvf output-minimal.tar.gz ./output-minimal
 
+      - name: pack osx
+        run: |
+          id=$(docker create curoky/dotbox:stage-prebuilt-mac)
+          docker cp $id:/output - > output-mac.tar
+          gzip output-mac.tar
+
       - uses: actions/upload-artifact@v4
         # if: ${{ github.event_name == 'workflow_dispatch' }}
         with:
@@ -183,6 +190,7 @@ jobs:
           path: |
             output.tar.gz
             output-minimal.tar.gz
+            output-mac.tar.gz
 
       - uses: svenstaro/upload-release-action@v2
         with:

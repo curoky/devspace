@@ -11,8 +11,9 @@
 {
   protobuf_3_8_0 = pkgs.pkgsStatic.callPackage ./pkgs/nix/protobuf/3.8.0.nix { };
   protobuf_3_9_2 = pkgs.pkgsStatic.callPackage ./pkgs/nix/protobuf/3.9.2.nix { };
-  zsh-bundle = pkgs.callPackage ./pkgs/nix/zsh-bundle/default.nix { };
-  vim-bundle = pkgs.callPackage ./pkgs/nix/vim-bundle/default.nix { };
+  zsh-bundle = pkgs.callPackage ./pkgs/nix/zsh-bundle.nix { };
+  vim-bundle = pkgs.callPackage ./pkgs/nix/vim-bundle.nix { };
+  rime-bundle = pkgs.callPackage ./pkgs/nix/rime-bundle.nix { };
   nsight-systems = pkgs.callPackage ./pkgs/nix/nsight-systems/default.nix { };
   netron = pkgs.callPackage ./pkgs/nix/netron.nix { };
 

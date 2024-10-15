@@ -44,7 +44,6 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.tree
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.unixtools.xxd
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.wget
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.patchelf
-
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.snappy
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.unzip
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.xz
