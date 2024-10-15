@@ -29,10 +29,6 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     nixpkgs.pre-commit \
     # perl5.40.0-Module test failed
     nixpkgs.cloc \
-    # on 24.05 configure: error: ** Incomplete or missing ldns libraries
-    # on staging krb5 multiple definition of `master_keyblock'; kdb5_util
-    nixpkgs.krb5 \
-    nixpkgs.openssh_gssapi \
     # ModuleNotFoundError: No module named '_dbm
     nixpkgs.dstat \
     # libuv test failed

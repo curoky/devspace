@@ -83,6 +83,19 @@ let
   cmake_static = pkgs.pkgsStatic.cmakeMinimal.overrideAttrs (oldAttrs: rec {
     doCheck = false;
   });
+  krb5_static = pkgs.pkgsStatic.krb5.overrideAttrs (oldAttrs: rec {
+    env = {
+      NIX_CFLAGS_COMPILE = "-fcommon";
+    };
+  });
+  openssh_gssapi_static = krb5_fix.pkgsStatic.openssh_gssapi.overrideAttrs (oldAttrs: rec {
+    withFIDO = false;
+    configureFlags = oldAttrs.configureFlags ++ [
+      "--disable-security-key"
+      # "-lkeyutils"
+      # "-lcrypto"
+    ];
+  });
   git_static = pkgs.pkgsStatic.git.overrideAttrs (oldAttrs: rec {
     preInstallCheck = oldAttrs.preInstallCheck + ''
       disable_test t0211-trace2-perf
@@ -194,6 +207,8 @@ in
   inherit fzf_static;
   inherit zsh_static;
   inherit wget_static;
+  inherit krb5_static;
+  inherit openssh_gssapi_static;
   inherit diffutils_static;
   inherit protobuf3_20_static;
   inherit python311_static;

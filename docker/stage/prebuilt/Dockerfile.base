@@ -6,7 +6,15 @@ ENV NIX_PATH=nixpkgs=channel:nixos-24.05 \
 
 RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
   && nix-channel --update \
+  && nix-channel --add https://github.com/NixOS/nixpkgs/archive/master.tar.gz master \
+  && nix-channel --update \
   && nix-channel --add https://github.com/NixOS/nixpkgs/archive/staging.tar.gz staging \
+  && nix-channel --update \
+  && nix-channel --add https://github.com/tobim/nixpkgs/archive/refs/heads/pkgsStatic/krb5-fix-build.tar.gz krb5_fix \
+  && nix-channel --update \
+  && nix-channel --add https://github.com/tobim/nixpkgs/archive/refs/heads/pkgs/git-static.tar.gz git_fix \
+  && nix-channel --update \
+  && nix-channel --add https://github.com/deinferno/nixpkgs/archive/refs/heads/openssh-musl-and-static-changes.tar.gz openssh_fix \
   && nix-channel --update
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.cacert
@@ -69,13 +77,19 @@ RUN nix-env -p /nix/var/nix/profiles/inner -iA nixpkgs.pkgsStatic.file
 
 RUN nix-env -p /nix/var/nix/profiles/experimental -iA nixpkgs.pkgsStatic.bash
 
+# not in stabe
+RUN nix-env -p /nix/var/nix/profiles/default -iA master.pkgsStatic.rsync
+RUN nix-env -p /nix/var/nix/profiles/default -iA krb5_fix.pkgsStatic.krb5
+RUN nix-env -p /nix/var/nix/profiles/default -iA openssh_fix.pkgsStatic.openssh_gssapi
+# RUN nix-env -p /nix/var/nix/profiles/default -iA git_fix.pkgsStatic.git
+
 COPY --from=third-party nixpkgs nixpkgs
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f ./nixpkgs/default.nix vim-bundle
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f ./nixpkgs/default.nix zsh-bundle
 
 COPY default.nix .
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix diffutils_static
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix rsync_static
+# RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix rsync_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix silver_searcher_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gnupg_minimal_static
 RUN nix-env -p /nix/var/nix/profiles/inner -iA -f default.nix zsh_static
