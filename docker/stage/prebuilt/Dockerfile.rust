@@ -13,9 +13,9 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.procs
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ruff
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.starship
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.miniserve
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.atuin
 # RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.simple-http-server
 
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.atuin
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.git-absorb
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.nixpkgs-fmt
 
