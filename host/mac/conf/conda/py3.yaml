@@ -8,6 +8,7 @@ dependencies:
   - pip:
       - ipykernel
       - ipywidgets
+      - nbformat
       - pydantic
       - requests
       - typer

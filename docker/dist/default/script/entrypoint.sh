@@ -31,7 +31,7 @@ mkdir -p /var/log
 # -E /var/log/mysshd.log
 
 if [[ -n ${PROFILE_NAME:-} ]]; then
-  openssl enc -d -aes-256-cbc -pbkdf2 -in /app/dotbox/config/ssh/profile -out /tmp/profile -k $PROFILE_NAME
+  openssl enc -d -aes-256-cbc -pbkdf2 -in /app/dotbox/config/passkey/profile -out /tmp/profile -k $PROFILE_NAME
   chmod +x /tmp/profile
   sudo -i -u x /tmp/profile install
   sudo -i -u x /tmp/profile login
