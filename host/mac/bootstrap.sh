@@ -33,12 +33,17 @@ function setup-brew() {
 }
 
 function setup-brew-pkgs() {
-  mkdir -p /opt/homebrew/Library/Taps/curoky/
-  rm -rf /opt/homebrew/Library/Taps/curoky/homebrew-tap
-  ln -sf ~/dotbox/third-party/homebrew/ /opt/homebrew/Library/Taps/curoky/homebrew-tap
-  brew bundle --force --file ~/dotbox/host/mac/conf/brew/Brewfile.personal --cleanup --verbose
+  brew bundle --force --file ~/dotbox/host/mac/conf/brew/Brewfile.work --cleanup --verbose
   brew link krb5 --force
   brew cleanup --prune=all
+}
+
+function setup-prebuilt() {
+  rm -rf /tmp/prebuilt-mac.tar.gz
+  curl -SL https://github.com/curoky/dotbox/releases/download/v1.0.0/output-mac.tar.gz -o /tmp/prebuilt-mac.tar.gz
+  rm -rf ~/prebuilt
+  mkdir ~/prebuilt
+  tar -xzf /tmp/prebuilt-mac.tar.gz -C ~/prebuilt --strip-components=1
 }
 
 function setup-conda-pkgs() {
@@ -53,6 +58,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 setup-dotfiles
 setup-brew-pkgs
+setup-prebuilt
 
 if [[ ! -d /opt/homebrew/Caskroom/miniconda/base/envs/py3 ]]; then
   setup-conda-pkgs
