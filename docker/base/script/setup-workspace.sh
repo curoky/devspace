@@ -25,6 +25,7 @@ git clone git@github.com:curoky/minimal-example.git
 
 clone_all=${1:-0}
 if [ $clone_all -eq 1 ]; then
+  git clone git@github.com:curoky/private-key.git
   git clone git@github.com:curoky/learn-ml.git
   git clone git@github.com:curoky/learn-cpp.git
 fi

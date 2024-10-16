@@ -26,40 +26,24 @@ function setup-dotfiles() {
   dotdrop install --cfg=$HOME/dotbox/config/config.yaml --force --profile=macos
 }
 
-function setup-brew() {
-  export NONINTERACTIVE=1
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-}
-
 function setup-brew-pkgs() {
   brew bundle --force --file ~/dotbox/host/mac/conf/brew/Brewfile.personal --cleanup --verbose
   brew link krb5 --force
   brew cleanup --prune=all
 }
 
-function setup-prebuilt() {
-  rm -rf /tmp/prebuilt-mac.tar.gz
-  curl -SL https://github.com/curoky/dotbox/releases/download/v1.0.0/output-mac.tar.gz -o /tmp/prebuilt-mac.tar.gz
-  rm -rf ~/prebuilt
-  mkdir ~/prebuilt
-  tar -xzf /tmp/prebuilt-mac.tar.gz -C ~/prebuilt --strip-components=1
-}
-
-function setup-conda-pkgs() {
-  ~/dotbox/host/mac/script/setup-conda-pkgs.sh
-}
-
 ####################### start ######################
 if [[ ! -f /opt/homebrew/bin/brew ]]; then
-  setup-brew
+  export NONINTERACTIVE=1
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 setup-dotfiles
 setup-brew-pkgs
-setup-prebuilt
+./installer/install-prebuilt.sh
 
 if [[ ! -d /opt/homebrew/Caskroom/miniconda/base/envs/py3 ]]; then
-  setup-conda-pkgs
+  ./script/setup-conda-pkgs.sh
 fi

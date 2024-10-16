@@ -15,8 +15,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 set -xeuo pipefail
 
-git clone --depth 1 git@github.com:curoky/private-key /app/private-key
-/app/private-key/install.sh
+rm -rf /tmp/prebuilt-mac.tar.gz
+curl -SL https://github.com/curoky/dotbox/releases/download/v1.0.0/output-mac.tar.gz -o /tmp/prebuilt-mac.tar.gz
+rm -rf ~/prebuilt
+mkdir ~/prebuilt
+tar -xzf /tmp/prebuilt-mac.tar.gz -C ~/prebuilt --strip-components=1

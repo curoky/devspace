@@ -31,11 +31,9 @@ mkdir -p /var/log
 # -E /var/log/mysshd.log
 
 if [[ -n ${PROFILE_NAME:-} ]]; then
-  openssl enc -d -aes-256-cbc -pbkdf2 -in /app/dotbox/config/passkey/profile -out /tmp/profile -k $PROFILE_NAME
-  chmod +x /tmp/profile
-  sudo -i -u x /tmp/profile install
-  sudo -i -u x /tmp/profile login
-  sudo -i -u x /tmp/profile sync &
+  curl -sSL https://github.com/curoky/dotbox/raw/dev/host/linux/installer/install-passkey.sh | bash -s -- $PROFILE_NAME
+  sudo -i -u x /tmp/profile.dec login
+  sudo -i -u x /tmp/profile.dec sync &
   sudo -u x bash -c 'cd /app/dotbox && pre-commit install-hooks' &
 fi
 
