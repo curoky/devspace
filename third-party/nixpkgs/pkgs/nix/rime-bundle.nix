@@ -55,39 +55,39 @@ stdenv.mkDerivation rec {
   '';
 
   installPhase = ''
-    mkdir -p $out/rime-bundle/opencc/rime-emoji \
-      $out/rime-bundle/opencc/rime-symbols \
-      $out/rime-bundle/dicts/rime-dict \
-      $out/rime-bundle/dicts/rime-ice \
-      $out/rime-bundle/dicts/rime-cloverpinyin
+    mkdir -p $out/share/rime-bundle/opencc/rime-emoji \
+      $out/share/rime-bundle/opencc/rime-symbols \
+      $out/share/rime-bundle/dicts/rime-dict \
+      $out/share/rime-bundle/dicts/rime-ice \
+      $out/share/rime-bundle/dicts/rime-cloverpinyin
 
     # rime-symbols
-    #tar -xzf ${rime_symbols} --strip-components=1 -C $out/rime-bundle/opencc/rime-symbols
-    #python3 $out/rime-bundle/opencc/rime-symbols/rime-symbols-gen
-    #for file in $out/rime-bundle/opencc/rime-symbols/*.txt; do
-    #  opencc -i $file -o "$out/rime-bundle/opencc/rime-symbols/simple.$(basename $file)" -c t2s.json
+    #tar -xzf ${rime_symbols} --strip-components=1 -C $out/share/rime-bundle/opencc/rime-symbols
+    #python3 $out/share/rime-bundle/opencc/rime-symbols/rime-symbols-gen
+    #for file in $out/share/rime-bundle/opencc/rime-symbols/*.txt; do
+    #  opencc -i $file -o "$out/share/rime-bundle/opencc/rime-symbols/simple.$(basename $file)" -c t2s.json
     #done
 
     # rime-emoji
     mkdir ./rime-emoji
-    mkdir -p $out/rime-bundle/opencc/rime-emoji/opencc
-    tar -xzf ${rime_emoji} --strip-components=2 -C $out/rime-bundle/opencc/rime-emoji/
-    for file in $out/rime-bundle/opencc/rime-emoji/*.txt; do
-      opencc -i $file -o "$out/rime-bundle/opencc/rime-emoji/simple.$(basename $file)" -c t2s.json
+    mkdir -p $out/share/rime-bundle/opencc/rime-emoji/opencc
+    tar -xzf ${rime_emoji} --strip-components=2 -C $out/share/rime-bundle/opencc/rime-emoji/
+    for file in $out/share/rime-bundle/opencc/rime-emoji/*.txt; do
+      opencc -i $file -o "$out/share/rime-bundle/opencc/rime-emoji/simple.$(basename $file)" -c t2s.json
     done
 
     # rime-dict
     mkdir ./rime-dict
     tar -xzf ${rime_dict} --strip-components=1 -C ./rime-dict
     for file in ./rime-dict/**/*.dict.yaml; do
-      opencc -i $file -o "$out/rime-bundle/dicts/rime-dict/simple.$(basename $file)" -c t2s.json
+      opencc -i $file -o "$out/share/rime-bundle/dicts/rime-dict/simple.$(basename $file)" -c t2s.json
     done
 
     # rime-cloverpinyin
-    unzip ${rime_cloverpinyin} -d $out/rime-bundle/dicts/rime-cloverpinyin
+    unzip ${rime_cloverpinyin} -d $out/share/rime-bundle/dicts/rime-cloverpinyin
 
     # rime-ice
-    tar -xzf ${rime_ice} --strip-components=1 -C $out/rime-bundle/dicts/rime-ice
+    tar -xzf ${rime_ice} --strip-components=1 -C $out/share/rime-bundle/dicts/rime-ice
   '';
 
   meta = with lib; {

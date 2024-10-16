@@ -73,3 +73,11 @@ tasks:
         --file Dockerfile.py3
         --network=host
         --tag curoky/dotbox:stage-prebuilt-py3
+  mac:
+    cmds:
+      - >
+        docker buildx build .
+        --build-context third-party=../../../third-party
+        --file Dockerfile.mac
+        --network=host
+        --tag curoky/dotbox:stage-prebuilt-mac
