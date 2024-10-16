@@ -33,7 +33,7 @@ function setup-brew() {
 }
 
 function setup-brew-pkgs() {
-  brew bundle --force --file ~/dotbox/host/mac/conf/brew/Brewfile.work --cleanup --verbose
+  brew bundle --force --file ~/dotbox/host/mac/conf/brew/Brewfile.personal --cleanup --verbose
   brew link krb5 --force
   brew cleanup --prune=all
 }
@@ -47,7 +47,7 @@ function setup-prebuilt() {
 }
 
 function setup-conda-pkgs() {
-  ~/dotbox/host/mac/setup-conda-pkgs.sh
+  ~/dotbox/host/mac/script/setup-conda-pkgs.sh
 }
 
 ####################### start ######################
