@@ -16,10 +16,7 @@
 # limitations under the License.
 
 #=-> oh-my-zsh
-export ZSH=$HOMEBREW_PREFIX/opt/zsh-bundle
-if [[ ! -d $ZSH ]]; then
-  export ZSH=~/prebuilt/share/oh-my-zsh
-fi
+export ZSH=~/prebuilt/share/oh-my-zsh
 
 DISABLE_AUTO_UPDATE=true
 ZSH_DISABLE_COMPFIX=true

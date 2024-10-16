@@ -13,9 +13,7 @@ set expandtab
 " set backspace=indent,eol,start
 set backspace=2
 
-if isdirectory('/opt/homebrew/opt/vim-bundle/share/vim-plugin')
-  let $plug_path='/opt/homebrew/opt/vim-bundle/share/vim-plugin'
-elseif isdirectory(expand('$HOME/prebuilt/share/vim-plugin'))
+if isdirectory(expand('$HOME/prebuilt/share/vim-plugin'))
   let $plug_path=expand('$HOME/prebuilt/share/vim-plugin')
 endif
 if !empty($VIM_PLUGIN_PATH)

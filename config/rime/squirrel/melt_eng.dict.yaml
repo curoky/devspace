@@ -8,5 +8,5 @@
 name: melt_eng
 version: '1'
 import_tables:
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-ice/en_dicts/en_ext
-  - ../../../../../../../opt/homebrew/opt/rime-bundle/dicts/rime-ice/en_dicts/en
+  - ../../../../../prebuilt/share/rime-bundle/rime-ice/en_dicts/en_ext
+  - ../../../../../prebuilt/share/rime-bundle/rime-ice/en_dicts/en

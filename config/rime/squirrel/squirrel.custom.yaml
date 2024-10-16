@@ -180,9 +180,9 @@ patch:
       hilited_text_color: 0xed9564 # 选中拼音颜色 （inline_preedit: false）
 
   app_options:
-    com.microsoft.VSCode:
-      ascii_mode: true
-      vim_mode: true
+    # com.microsoft.VSCode:
+    #   ascii_mode: true
+    #   vim_mode: true
     org.tabby:
       ascii_mode: true
     co.zeit.hyper:

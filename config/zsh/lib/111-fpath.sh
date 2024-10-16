@@ -18,7 +18,7 @@
 ENV_FPATHS=(
   # homebrew
   # "$HOMEBREW_PREFIX/share/zsh/functions" # already added by default
-  "$HOMEBREW_PREFIX/share/zsh/site-functions"
+  # "$HOMEBREW_PREFIX/share/zsh/site-functions"
   "$HOMEBREW_PREFIX/Homebrew/completions/zsh"
   # system
   # "/usr/share/zsh/vendor-completions"
