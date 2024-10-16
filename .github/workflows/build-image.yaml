@@ -206,6 +206,13 @@ jobs:
           tag: 'v1.0.0'
           overwrite: true
 
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          file: output-mac.tar.gz
+          asset_name: output-mac.tar.gz
+          tag: 'v1.0.0'
+          overwrite: true
+
       - name: test
         run: ./host/linux/installer/install-prebuilt.sh
 
@@ -268,7 +275,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: docker/dist/tf
+          context: docker/dist/tensorflow
           file: docker/dist/tensorflow/Dockerfile.${{ matrix.name }}
           push: true
           provenance: mode=max
