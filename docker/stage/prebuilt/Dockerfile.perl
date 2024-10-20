@@ -14,9 +14,6 @@ RUN nix-env -p /nix/var/nix/profiles/experimental -iA nixpkgs.pkgsStatic.pkg-con
 RUN nix-env -p /nix/var/nix/profiles/experimental -iA nixpkgs.pkgsStatic.libtool
 # RUN nix-env -p /nix/var/nix/profiles/experimental -iA nixpkgs.pkgsStatic.pkg-config-unwrapped
 
-COPY default.nix .
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix git_static
-
 ############################## END ##############################
 RUN nix-env -p /nix/var/nix/profiles/packer -iA nixpkgs.python3
 
