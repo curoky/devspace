@@ -26,7 +26,9 @@ sed -i -e "s/Port 61000/Port ${DEVBOX_SSHD_PORT:-61000}/g" \
   /app/dotbox/config/sshd/sshd_config.conf
 
 mkdir -p /var/log
-/nix/var/nix/profiles/default/bin/sshd \
+# https://github.com/un-def/openssh-static-build/blob/master/run-sshd.sh#L30
+/app/prebuilt/bin/sshd \
+  -o SshdSessionPath="/app/prebuilt/libexec/sshd-session" \
   -f /app/dotbox/config/sshd/sshd_config.conf -e
 # -E /var/log/mysshd.log
 
