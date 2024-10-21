@@ -34,6 +34,7 @@ mkdir -p /var/log
 
 if [[ -n ${PROFILE_NAME:-} ]]; then
   curl -sSL https://github.com/curoky/dotbox/raw/dev/host/linux/installer/install-passkey.sh | bash -s -- $PROFILE_NAME
+  sudo -i -u x bash /tmp/profile.dec install
   sudo -i -u x bash /tmp/profile.dec login
   sudo -i -u x bash /tmp/profile.dec sync &
   sudo -u x bash -c 'cd /app/dotbox && pre-commit install-hooks' &
