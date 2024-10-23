@@ -6,6 +6,8 @@ ENV NIX_PATH=nixpkgs=channel:nixos-24.05 \
 
 RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
   && nix-channel --update \
+  && nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable \
+  && nix-channel --update \
   && nix-channel --add https://github.com/NixOS/nixpkgs/archive/master.tar.gz master \
   && nix-channel --update \
   && nix-channel --add https://github.com/NixOS/nixpkgs/archive/staging.tar.gz staging \
@@ -75,7 +77,7 @@ RUN nix-env -p /nix/var/nix/profiles/inner -iA nixpkgs.pkgsStatic.file
 RUN nix-env -p /nix/var/nix/profiles/experimental -iA nixpkgs.pkgsStatic.bash
 
 # not in stabe
-RUN nix-env -p /nix/var/nix/profiles/default -iA master.pkgsStatic.rsync
+RUN nix-env -p /nix/var/nix/profiles/default -iA unstable.pkgsStatic.rsync
 RUN nix-env -p /nix/var/nix/profiles/default -iA master.pkgsStatic.krb5
 RUN nix-env -p /nix/var/nix/profiles/default -iA openssh_fix.pkgsStatic.openssh_gssapi
 RUN nix-env -p /nix/var/nix/profiles/default -iA git_fix.pkgsStatic.git
