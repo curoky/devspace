@@ -5,8 +5,8 @@ RUN apt-get update -y \
   && apt-get install -y curl xz-utils sudo
 
 RUN userdel ubuntu && rm -rf /home/ubuntu \
-  && groupadd -g 1000 -o nix \
-  && useradd -m -u 1000 -g 1000 nix \
+  && groupadd -g 5230 -o nix \
+  && useradd -m -u 5230 -g 5230 nix \
   && usermod -aG sudo nix \
   && echo "nix ALL=(ALL:ALL) NOPASSWD:ALL" >>/etc/sudoers.d/nopasswd_user
 
@@ -23,4 +23,4 @@ COPY --from=nixpkg pkgs pkgs
 COPY --from=nixpkg default.nix .
 COPY install-pkgs.sh .
 RUN nix-channel --update && ./install-pkgs.sh
-RUN sudo mkdir -p /app && sudo chown 1000:1000 -R /app
+RUN sudo mkdir -p /app && sudo chown 5230:5230 -R /app

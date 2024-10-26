@@ -70,7 +70,7 @@ echo "root:123456" | chpasswd
 chsh -s /usr/bin/zsh
 
 # add user x
-useradd --create-home --shell /usr/bin/zsh --uid 1000 --user-group x
+useradd --create-home --shell /usr/bin/zsh --uid 5230 --user-group x
 echo "x:123456" | chpasswd
 usermod -aG sudo x
 echo "x ALL=(ALL:ALL) NOPASSWD:ALL" >>/etc/sudoers.d/nopasswd_user

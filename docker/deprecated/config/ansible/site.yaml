@@ -6,7 +6,7 @@
     users:
       - {
           name: x,
-          id: 1000,
+          id: 5230,
           groups: 'sudo,adm', # docker
           dotbox: /home/x/dotbox,
         }

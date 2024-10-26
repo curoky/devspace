@@ -20,7 +20,7 @@ set -euo pipefail
 DIRECTORY="/nix"
 
 find "$DIRECTORY" -exec stat -c "%u %n" {} \; | while read uid name; do
-  if [ "$uid" -ne 1000 ]; then
-    echo "Owner of '$name' is not 1000, it is $uid"
+  if [ "$uid" -ne 5230 ]; then
+    echo "Owner of '$name' is not 5230, it is $uid"
   fi
 done

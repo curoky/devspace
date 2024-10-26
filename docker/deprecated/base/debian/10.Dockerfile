@@ -13,7 +13,7 @@ RUN sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list \
   && apt-get autoremove -y \
   # update user
   && echo "root:123456" | chpasswd \
-  && useradd --create-home --shell /nix/var/nix/profiles/default/bin/zsh --uid 1000 --user-group x \
+  && useradd --create-home --shell /nix/var/nix/profiles/default/bin/zsh --uid 5230 --user-group x \
   && echo "x:123456" | chpasswd \
   && usermod -aG sudo x \
   && echo "x ALL=(ALL:ALL) NOPASSWD:ALL" >>/etc/sudoers.d/nopasswd_user

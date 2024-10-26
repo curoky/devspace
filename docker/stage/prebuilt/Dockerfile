@@ -21,7 +21,7 @@ RUN rsync --progress --archive --human-readable /output-base/ /output/ \
 
 COPY patch.sh .
 RUN ./patch.sh \
-  && chown 1000:1000 -R /output \
+  && chown 5230:5230 -R /output \
   && mkdir -p /output/dotbox \
   && curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/dev.tar.gz \
     | tar -xv --gunzip -C /output/dotbox --strip-components 1 \
