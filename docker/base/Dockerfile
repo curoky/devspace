@@ -11,6 +11,8 @@ COPY --chown=5230:5230 ./ /app/dotbox
 
 ADD --chmod=644 https://curl.se/ca/cacert-2024-09-24.pem /etc/ssl/certs/ca-certificates.crt
 
+RUN apt-get update -y && apt-get install -y sudo
+
 RUN ln -sf /app/dotbox ~/dotbox \
   && /app/dotbox/docker/base/script/setup-sysconf.sh ~/dotbox/config \
   && /app/dotbox/docker/base/script/setup-userconf.sh ~/dotbox/config \
