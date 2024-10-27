@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.9.0
-FROM curoky/dotbox:base-ubuntu24.04
+FROM curoky/dotbox:base-debian11
 
 COPY --chown=x:x --link --from=curoky/dotbox:stage-nixpkg /nix /nix
 COPY --chown=x:x --link --from=curoky/dotbox:stage-nixpkg /home/x/.local/state/nix /home/x/.local/state/nix

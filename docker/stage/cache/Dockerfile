@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.9.0
 FROM python:3.12
 
-COPY --from=curoky/dotbox:base-ubuntu24.04 /app/dotbox /app/dotbox
+COPY --from=curoky/dotbox:base-debian11 /app/dotbox /app/dotbox
 
 ENV PRE_COMMIT_HOME=/tmp/pre-commit
 

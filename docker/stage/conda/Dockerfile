@@ -7,14 +7,16 @@ RUN apt-get update -y \
   && curl -sSL -o /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-py312_24.7.1-0-Linux-x86_64.sh \
   && bash /tmp/miniconda.sh -b -u -p /app/conda
 
+ENV PATH=$PATH:/app/conda/condabin:/app/pipx/bin/
+
 COPY env env
 COPY setup-conda-env.sh /app/conda/condabin/setup-conda-env.sh
-RUN /app/conda/condabin/setup-conda-env.sh env/py3.yaml \
-  && /app/conda/condabin/setup-conda-env.sh env/profiling.yaml \
-  # && /app/conda/condabin/setup-conda-env.sh env/py2.yaml \
-  # && /app/conda/condabin/setup-conda-env.sh env/py311.yaml \
-  && /app/conda/condabin/setup-conda-env.sh env/pipx.yaml
+RUN setup-conda-env.sh env/py3.yaml \
+  && setup-conda-env.sh env/profiling.yaml \
+  # && setup-conda-env.sh env/py2.yaml \
+  # && setup-conda-env.sh env/py311.yaml \
+  && setup-conda-env.sh env/pipx.yaml
 
 COPY pipx-install.sh /app/pipx/bin/pipx-install.sh
-RUN /app/pipx/bin/pipx-install.sh \
+RUN pipx-install.sh \
     dotdrop licenseheaders
