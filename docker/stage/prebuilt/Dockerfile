@@ -20,7 +20,7 @@ RUN rsync --progress --archive --human-readable /output-base/ /output/ \
   && rsync --progress --archive --human-readable /output-haskell/ /output/
 
 # https://curl.se/docs/caextract.html
-ADD https://curl.se/ca/cacert-2024-09-24.pem /output/etc/ssl/certs/ca-bundle.crt
+ADD https://curl.se/ca/cacert-2024-09-24.pem /output/etc/ssl/certs/ca-certificates.crt
 
 COPY patch.sh .
 RUN ./patch.sh \

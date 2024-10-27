@@ -8,13 +8,13 @@ RUN apt-get update -y \
   && bash /tmp/miniconda.sh -b -u -p /app/conda
 
 COPY env env
-COPY setup-conda-env.sh setup-conda-env.sh
-RUN ./setup-conda-env.sh env/py3.yaml \
-  && ./setup-conda-env.sh env/profiling.yaml \
-  # && ./setup-conda-env.sh env/py2.yaml \
-  # && ./setup-conda-env.sh env/py311.yaml \
-  && ./setup-conda-env.sh env/pipx.yaml
+COPY setup-conda-env.sh /app/conda/condabin/setup-conda-env.sh
+RUN /app/conda/condabin/setup-conda-env.sh env/py3.yaml \
+  && /app/conda/condabin/setup-conda-env.sh env/profiling.yaml \
+  # && /app/conda/condabin/setup-conda-env.sh env/py2.yaml \
+  # && /app/conda/condabin/setup-conda-env.sh env/py311.yaml \
+  && /app/conda/condabin/setup-conda-env.sh env/pipx.yaml
 
-COPY pipx-install.sh pipx-install.sh
-RUN ./pipx-install.sh \
-    dotdrop
+COPY pipx-install.sh /app/pipx/bin/pipx-install.sh
+RUN /app/pipx/bin/pipx-install.sh \
+    dotdrop licenseheaders

@@ -15,9 +15,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+set -xeuo pipefail
 
-sed -i -e "s/Port 61000/Port ${DEVBOX_SSHD_PORT:-61000}/g" \
+SSHD_PORT=${1:-61000}
+
+sed -i -e "s/Port 61000/Port ${SSHD_PORT}/g" \
   /app/dotbox/config/sshd/sshd_config.conf
+
+chmod 600 /app/dotbox/config/sshd/host-key/*
 
 mkdir -p /var/log
 # https://github.com/un-def/openssh-static-build/blob/master/run-sshd.sh#L30

@@ -17,8 +17,9 @@
 # limitations under the License.
 
 set -xeuo pipefail
+PROFILE_PASS=${1:-0}
 
-curl -sSL https://github.com/curoky/dotbox/raw/dev/host/linux/installer/install-passkey.sh | bash -s -- $PROFILE_NAME
+curl -sSL https://github.com/curoky/dotbox/raw/dev/host/linux/installer/install-passkey.sh | bash -s -- ${PROFILE_PASS}
 bash /tmp/profile.dec install
 bash /tmp/profile.dec login
 bash /tmp/profile.dec sync

@@ -18,14 +18,16 @@
 
 set -xeuo pipefail
 
+echo "SSHD_PORT: $SSHD_PORT"
+echo "PROFILE_PASS: $PROFILE_PASS"
+
 /app/dotbox/docker/dist/default/script/link-path.sh
 /app/dotbox/docker/base/script/setup-userconf.sh
-sudo -i -u x /app/dotbox/docker/base/script/setup-userconf.sh
-/app/dotbox/docker/dist/default/script/start-sshd.sh
+sudo -u x /app/dotbox/docker/base/script/setup-userconf.sh
+/app/dotbox/docker/dist/default/script/start-sshd.sh $SSHD_PORT
 
-if [[ -n ${PROFILE_PASSKEY:-} ]]; then
-  sudo -i -u x bash /app/dotbox/docker/dist/default/script/entrypoint.sh &
-fi
+sudo -u x bash /app/dotbox/docker/dist/default/script/setup-profile.sh $PROFILE_PASS &
+
 sudo -u x bash -c 'cd /app/dotbox && pre-commit install-hooks' &
 
 while true; do sleep 86400; done

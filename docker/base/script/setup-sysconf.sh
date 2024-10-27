@@ -85,9 +85,9 @@ copy_path $CONF_PATH/linux/sudoers.d/more_secure_path /etc/sudoers.d/more_secure
 copy_path $CONF_PATH/linux/sysctl.d/custom.conf /etc/sysctl.d/custom.conf
 
 # ssh && sshd
-copy_path $CONF_PATH/ssh/etc.ssh_config /etc/ssh/ssh_config
-copy_path $CONF_PATH/sshd/host-key /etc/ssh/sshd-host-key
-chmod 600 /etc/ssh/sshd-host-key/*
+# copy_path $CONF_PATH/ssh/etc.ssh_config /etc/ssh/ssh_config
+# copy_path $CONF_PATH/sshd/host-key /etc/ssh/sshd-host-key
+# chmod 600 /etc/ssh/sshd-host-key/*
 # systemctl enable /app/dotbox/config/systemd/myssh.service
 useradd --uid 200 -g 65534 --home-dir /run/sshd --create-home --shell /usr/sbin/nologin sshd
 mkdir -p /var/empty
