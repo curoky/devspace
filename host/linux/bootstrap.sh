@@ -17,4 +17,34 @@
 # limitations under the License.
 set -xeuo pipefail
 
-curl -sSL https://github.com/curoky/dotbox/raw/dev/host/linux/installer/install-prebuilt.sh | bash
+install_prefix=${1:-~/prebuilt}
+
+function update_dotbox() {
+  rm -rf $install_prefix/dotbox
+  mkdir -p $install_prefix/dotbox
+  curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/dev.tar.gz |
+    tar -xv --gunzip -C $install_prefix/dotbox --strip-components 1
+}
+
+rm -rf /tmp/prebuilt.tar.gz
+curl -SL https://github.com/curoky/dotbox/releases/download/v1.0.0/output-minimal.tar.gz -o /tmp/prebuilt.tar.gz
+rm -rf $install_prefix
+mkdir $install_prefix
+tar -xzf /tmp/prebuilt.tar.gz -C $install_prefix --strip-components=2
+
+# add to path
+if ! grep -q 'prebuilt/bin' ~/.bashrc; then
+  echo 'export PATH=$HOME/prebuilt/bin:$PATH' >>~/.bashrc
+fi
+if ! grep -q 'prebuilt/bin' ~/.profile; then
+  echo 'export PATH=$HOME/prebuilt/bin:$PATH' >>~/.profile
+fi
+
+if [[ -L ~/dotbox ]]; then
+  rm -f ~/dotbox
+fi
+ln -s $install_prefix/dotbox ~/dotbox
+
+$install_prefix/dotbox/docker/base/script/setup-userconf.sh $install_prefix/dotbox/config
+rm -rf ~/.gitconfig
+rm -rf ~/.ssh/config

@@ -13,7 +13,6 @@ COPY --chown=5230:5230 --link --from=stage-nixpkg /nix /nix
 COPY --chown=5230:5230 --link --from=stage-nixpkg /home/x/.local/state/nix /home/x/.local/state/nix
 COPY --chown=5230:5230 --link --from=stage-conda /app/conda /app/conda
 COPY --chown=5230:5230 --link --from=stage-conda /app/pipx /app/pipx
-COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-prebuilt /output /app/prebuilt
 COPY --chown=5230:5230 --exclude=**/*.a --from=curoky/dotbox:stage-cuda-cu12.3.2-cudnn8.9.7 /usr/local/cuda-12.3 /usr/local/cuda-12.3
 COPY --chown=5230:5230 --exclude=**/*.a --from=curoky/dotbox:stage-cuda-cu12.3.2-cudnn8.9.7 /app/nvidia/cudnn8.9-cu12 /app/nvidia/cudnn8.9-cu12
 
@@ -24,8 +23,8 @@ USER root
 RUN apt-get update -y \
   && apt-get install -y --no-install-recommends \
     gcc-10 g++-10 \
-  && /app/dotbox/docker/dist/default/script/setup-sys-change-default-gcc.sh 10 \
+  && /app/dotbox/docker/base/script/setup-sys-change-default-gcc.sh 10 \
   && ln -s /app/conda/envs/py3/bin/python3 /usr/bin/python \
   && ln -s /app/conda/envs/py3/bin/python3 /usr/bin/python3
 
-ENTRYPOINT ["/app/dotbox/docker/dist/default/script/entrypoint.sh"]
+ENTRYPOINT ["/app/dotbox/docker/base/script/entrypoint.sh"]

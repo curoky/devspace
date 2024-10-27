@@ -11,7 +11,6 @@ COPY --chown=5230:5230 --link --from=stage-nixpkg /nix /nix
 COPY --chown=5230:5230 --link --from=stage-nixpkg /home/x/.local/state/nix /home/x/.local/state/nix
 COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-conda /app/conda /app/conda
 COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-conda /app/pipx /app/pipx
-COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-prebuilt /output /app/prebuilt
 
 USER root
 RUN apt-get update -y \
@@ -19,4 +18,4 @@ RUN apt-get update -y \
     gcc-13 g++-13
 
 USER root
-ENTRYPOINT ["/app/dotbox/docker/dist/default/script/entrypoint.sh"]
+ENTRYPOINT ["/app/dotbox/docker/base/script/entrypoint.sh"]
