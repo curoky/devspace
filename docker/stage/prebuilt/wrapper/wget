@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+root=$(cd "$(dirname "$0")" && pwd)/..
+
+exec -a "$0" "$root/bin/.wget-wrapped" --ca-certificate $root/etc/ssl/certs/ca-certificates.crt "$@"

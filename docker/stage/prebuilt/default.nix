@@ -89,6 +89,25 @@ let
     };
   });
   git_static = pkgs.pkgsStatic.git.overrideAttrs (oldAttrs: rec {
+    # buildInputs = builtins.filter (dep: dep != pkgs.curl)(oldAttrs.buildInputs) ++ [
+    #buildInputs = oldAttrs.buildInputs ++ [
+    #  (pkgs.pkgsStatic.curl.override {
+    #    idnSupport = false;
+    #    pslSupport = false;
+    #  })
+    #];
+    withSsh = true;
+    svnSupport = true;
+    LDFLAGS = "-L${pkgs.pkgsStatic.curl.out}/lib -L${pkgs.pkgsStatic.openssl.out}/lib -L${pkgs.pkgsStatic.libunistring.out}/lib -L${pkgs.pkgsStatic.libpsl.out}/lib -L${pkgs.pkgsStatic.libssh2.out}/lib -L${pkgs.pkgsStatic.libidn2.out}/lib -L${pkgs.pkgsStatic.zlib.out}/lib -L${pkgs.pkgsStatic.zstd.out}/lib -L${pkgs.pkgsStatic.nghttp2.lib}/lib";
+    LIBS = "-lzstd -lssl -lcrypto -lidn2 -lpsl -lnghttp2 -lssh2 -lunistring -lz"; 
+    # 
+    #configureFlags = oldAttrs.configureFlags ++ [
+    #  "ac_cv_prog_CURL_CONFIG="
+    #];
+    #configureFlags = oldAttrs.configureFlags ++ [
+    #  "LDFLAGS='-L${pkgs.pkgsStatic.curl.out}/lib -L${pkgs.pkgsStatic.openssl.out}/lib'"
+    #];
+
     preInstallCheck = oldAttrs.preInstallCheck + ''
       disable_test t0211-trace2-perf
       disable_test t2082-parallel-checkout-attributes

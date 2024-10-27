@@ -18,15 +18,8 @@
 
 set -xeuo pipefail
 
-/app/dotbox/docker/dist/default/script/link-path.sh
-/app/dotbox/docker/base/script/setup-userconf.sh
-sudo -i -u x /app/dotbox/docker/base/script/setup-userconf.sh
-/app/dotbox/docker/dist/default/script/start-sshd.sh
+curl -sSL https://github.com/curoky/dotbox/raw/dev/host/linux/installer/install-passkey.sh | bash -s -- $PROFILE_NAME
+bash /tmp/profile.dec install
+bash /tmp/profile.dec login
+bash /tmp/profile.dec sync
 
-if [[ -n ${PROFILE_PASSKEY:-} ]]; then
-  sudo -i -u x bash /app/dotbox/docker/dist/default/script/entrypoint.sh &
-fi
-sudo -u x bash -c 'cd /app/dotbox && pre-commit install-hooks' &
-
-while true; do sleep 86400; done
-# exec /lib/systemd/systemd

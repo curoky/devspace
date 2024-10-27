@@ -16,17 +16,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set -xeuo pipefail
+sed -i -e "s/Port 61000/Port ${DEVBOX_SSHD_PORT:-61000}/g" \
+  /app/dotbox/config/sshd/sshd_config.conf
 
-/app/dotbox/docker/dist/default/script/link-path.sh
-/app/dotbox/docker/base/script/setup-userconf.sh
-sudo -i -u x /app/dotbox/docker/base/script/setup-userconf.sh
-/app/dotbox/docker/dist/default/script/start-sshd.sh
-
-if [[ -n ${PROFILE_PASSKEY:-} ]]; then
-  sudo -i -u x bash /app/dotbox/docker/dist/default/script/entrypoint.sh &
-fi
-sudo -u x bash -c 'cd /app/dotbox && pre-commit install-hooks' &
-
-while true; do sleep 86400; done
-# exec /lib/systemd/systemd
+mkdir -p /var/log
+# https://github.com/un-def/openssh-static-build/blob/master/run-sshd.sh#L30
+/app/prebuilt/bin/sshd \
+  -o SshdSessionPath="/app/prebuilt/libexec/sshd-session" \
+  -f /app/dotbox/config/sshd/sshd_config.conf -e
+# -E /var/log/mysshd.log

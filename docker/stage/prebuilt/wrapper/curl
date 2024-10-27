@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+root=$(cd "$(dirname "$0")" && pwd)/..
+
+exec -a "$0" "$root/bin/.curl-wrapped" --cacert $root/etc/ssl/certs/ca-certificates.crt "$@"

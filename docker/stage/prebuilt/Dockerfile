@@ -19,6 +19,9 @@ RUN rsync --progress --archive --human-readable /output-base/ /output/ \
   && rsync --progress --archive --human-readable /output-py3/ /output/ \
   && rsync --progress --archive --human-readable /output-haskell/ /output/
 
+# https://curl.se/docs/caextract.html
+ADD https://curl.se/ca/cacert-2024-09-24.pem /output/etc/ssl/certs/ca-bundle.crt
+
 COPY patch.sh .
 RUN ./patch.sh \
   && chown 5230:5230 -R /output \
