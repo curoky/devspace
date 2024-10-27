@@ -3,7 +3,7 @@ ARG BASE_IMAGE=ubuntu:24.04
 
 FROM $BASE_IMAGE
 
-ENV PATH=$PATH:/app/prebuilt/bin:/app/prebuilt/extra/bin:/nix/var/nix/profiles/default/bin:/home/x/.nix-profile/bin:/app/pipx/bin:/app/dotbox/docker/stage/conda \
+ENV PATH=$PATH:/app/pipx/bin:/app/prebuilt/bin:/app/prebuilt/extra/bin:/nix/var/nix/profiles/default/bin \
   DEBIAN_FRONTEND=noninteractive
 
 COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-prebuilt /output /app/prebuilt

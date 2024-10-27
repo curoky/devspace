@@ -12,7 +12,7 @@ RUN userdel ubuntu && rm -rf /home/ubuntu \
 
 USER nix
 
-ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/nix/.nix-profile/bin:/nix/var/nix/profiles/gcc13/bin \
+ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/gcc13/bin \
   NIXPKGS_ALLOW_UNFREE=1 \
   NIXPKGS_ALLOW_BROKEN=1
 
