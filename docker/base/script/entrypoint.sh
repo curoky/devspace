@@ -18,11 +18,9 @@
 
 set -xeuo pipefail
 
-echo "SSHD_PORT: $SSHD_PORT"
-echo "PROFILE_PASS: $PROFILE_PASS"
-
 /app/dotbox/docker/base/script/link-path.sh
-/app/dotbox/docker/base/script/setup-userconf.sh
+sudo -u x /app/dotbox/docker/base/script/setup-userconf.sh
+
 /app/dotbox/docker/base/script/start-sshd.sh $SSHD_PORT
 
 sudo -u x bash /app/dotbox/docker/base/script/setup-profile.sh $PROFILE_PASS &
