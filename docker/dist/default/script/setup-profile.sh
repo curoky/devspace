@@ -23,4 +23,3 @@ curl -sSL https://github.com/curoky/dotbox/raw/dev/host/linux/installer/install-
 bash /tmp/profile.dec install
 bash /tmp/profile.dec login
 bash /tmp/profile.dec sync
-
