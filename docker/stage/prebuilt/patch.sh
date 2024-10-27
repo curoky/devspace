@@ -39,7 +39,7 @@ ln -s -r $prefix/bin/clang-format-18 $prefix/bin/clang-format
 ln -s -r $prefix/bin/vim $prefix/bin/vi
 mv $prefix/bin/.bat-wrapped $prefix/bin/bat
 mv $prefix/bin/.gzip-wrapped $prefix/bin/gzip
-mv $prefix/bin/git $prefix/bin/.git-wrapped
+# mv $prefix/bin/git $prefix/bin/.git-wrapped
 mv $prefix/bin/curl $prefix/bin/.curl-wrapped
 mv $prefix/bin/wget $prefix/bin/.wget-wrapped
 
