@@ -6,9 +6,10 @@ FROM $BASE_IMAGE
 ENV PATH=$PATH:/app/prebuilt/bin:/app/prebuilt/extra/bin:/nix/var/nix/profiles/default/bin:/home/x/.nix-profile/bin:/app/pipx/bin:/app/dotbox/docker/stage/conda \
   DEBIAN_FRONTEND=noninteractive
 
-ADD --chmod=644 https://curl.se/ca/cacert-2024-09-24.pem /etc/ssl/certs/ca-certificates.crt
-
+COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-prebuilt /output /app/prebuilt
 COPY --chown=5230:5230 ./ /app/dotbox
+
+ADD --chmod=644 https://curl.se/ca/cacert-2024-09-24.pem /etc/ssl/certs/ca-certificates.crt
 
 RUN ln -sf /app/dotbox ~/dotbox \
   && /app/dotbox/docker/base/script/setup-sysconf.sh ~/dotbox/config \
