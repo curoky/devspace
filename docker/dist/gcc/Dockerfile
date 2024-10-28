@@ -7,9 +7,9 @@ RUN nix-env -p /nix/var/nix/profiles/gcc -iA \
 
 FROM curoky/dotbox:base-debian11
 
-COPY --chown=x:x --link --from=stage-nixpkg /nix /nix
-COPY --chown=x:x --link --from=stage-nixpkg /home/x/.local/state/nix /home/x/.local/state/nix
-COPY --chown=x:x --link --from=curoky/dotbox:stage-conda /app/conda /app/conda
+COPY --chown=5230:5230 --link --from=stage-nixpkg /nix /nix
+COPY --chown=5230:5230 --link --from=stage-nixpkg /home/x/.local/state/nix /home/x/.local/state/nix
+COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-conda /app/conda /app/conda
 COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-conda /app/pipx /app/pipx
 
 USER root
