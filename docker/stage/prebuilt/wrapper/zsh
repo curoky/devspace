@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-root=$(cd "$(dirname "$0")" && pwd)/../inner
+script_path="$(readlink -f "$0")"
+root=$(cd "$(dirname "$script_path")" && pwd)/../inner
 export FPATH=$FPATH:$root/share/zsh/5.9/functions
 
 exec -a "$0" "$root/bin/zsh" "$@"

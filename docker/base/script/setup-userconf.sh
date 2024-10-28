@@ -30,8 +30,8 @@ function copy_path() {
     fi
   fi
   if [[ -e $dst ]]; then
-    echo "Path $dst already exists, remove it"
-    rm -rf $dst
+    echo "Path $dst already exists, move it to backup"
+    mv $dst ${dst}.bk
   fi
   mkdir -p $(dirname $dst)
   cp -r $src $dst
@@ -50,8 +50,8 @@ function link_path() {
     fi
   fi
   if [[ -e $dst ]] || [[ -L $dst ]]; then
-    echo "Path $dst already exists, remove it"
-    rm -rf $dst
+    echo "Path $dst already exists, move it to backup"
+    mv $dst ${dst}.bk
   fi
   mkdir -p $(dirname $dst)
   ln -s $src $dst
