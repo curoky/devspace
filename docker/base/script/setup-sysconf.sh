@@ -71,7 +71,8 @@ usermod -aG sudo x
 echo "x ALL=(ALL:ALL) NOPASSWD:ALL" >>/etc/sudoers.d/nopasswd_user
 
 # add ca-certificates
-# copy_path $CONF_PATH/linux/ssl/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
+copy_path /app/prebuilt/etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+chmod 644 /etc/ssl/certs/ca-certificates.crt
 
 # sudoers
 copy_path $CONF_PATH/linux/sudoers.d/more_secure_path /etc/sudoers.d/more_secure_path
