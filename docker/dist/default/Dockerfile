@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1.9.0
-FROM curoky/dotbox:base-debian11
+ARG BASE_IMAGE=debian11
+FROM curoky/dotbox:base-$BASE_IMAGE
 
 COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-nixpkg /nix /nix
 COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-nixpkg /home/x/.local/state/nix /home/x/.local/state/nix
