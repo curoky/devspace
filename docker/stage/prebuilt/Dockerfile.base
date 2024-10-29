@@ -79,7 +79,7 @@ RUN nix-env -p /nix/var/nix/profiles/experimental -iA nixpkgs.pkgsStatic.bash
 # not in stabe
 RUN nix-env -p /nix/var/nix/profiles/default -iA unstable.pkgsStatic.rsync
 RUN nix-env -p /nix/var/nix/profiles/default -iA master.pkgsStatic.krb5
-RUN nix-env -p /nix/var/nix/profiles/default -iA openssh_fix.pkgsStatic.openssh_gssapi
+RUN nix-env -p /nix/var/nix/profiles/default -iA master.pkgsStatic.openssh_gssapi
 RUN nix-env -p /nix/var/nix/profiles/experimental -iA git_fix.pkgsStatic.git
 
 COPY --from=third-party nixpkgs nixpkgs
