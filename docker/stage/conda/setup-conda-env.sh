@@ -25,6 +25,7 @@ export PIP_CACHE_DIR=/tmp/pip
 env_file=${1}
 add_tf_env=${2:-'0'}
 cuda_version=${3:-'11.4'}
+cuda_short_version=${cuda_version%%.*}
 cudnn_version=${4:-'8.1'}
 env_name=$(grep -oP "name: \K\S+" $env_file)
 python_version=$(grep -oP " python=\K\S+" $env_file)
@@ -47,35 +48,9 @@ if [[ $add_tf_env -eq 1 ]]; then
   target_env_file=$CONAN_ROOT/envs/$env_name/etc/conda/activate.d/env_vars.sh
   echo '' >$target_env_file
 
-  if [[ $cuda_version == '11.0' ]]; then
-    echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64:/usr/local/cuda-11.0/extras/CUPTI/lib64/:$LD_LIBRARY_PATH' >>$target_env_file
-    if [[ $cudnn_version == '8.1' ]]; then
-      echo 'export LD_LIBRARY_PATH=/app/nvidia/cudnn8.1-cu11/lib64:$LD_LIBRARY_PATH' >>$target_env_file
-      echo 'export CUDNN_INSTALL_PATH=/app/nvidia/cudnn8.1-cu11' >>$target_env_file
-    fi
-
-  elif [[ $cuda_version == '11.2' ]]; then
-    echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:/usr/local/cuda-11.2/extras/CUPTI/lib64/:$LD_LIBRARY_PATH' >>$target_env_file
-    if [[ $cudnn_version == '8.1' ]]; then
-      echo 'export LD_LIBRARY_PATH=/app/nvidia/cudnn8.1-cu11/lib64:$LD_LIBRARY_PATH' >>$target_env_file
-      echo 'export CUDNN_INSTALL_PATH=/app/nvidia/cudnn8.1-cu11' >>$target_env_file
-    fi
-
-  elif [[ $cuda_version == '11.4' ]]; then
-    echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64:/usr/local/cuda-11.4/extras/CUPTI/lib64/:$LD_LIBRARY_PATH' >>$target_env_file
-    if [[ $cudnn_version == '8.1' ]]; then
-      echo 'export LD_LIBRARY_PATH=/app/nvidia/cudnn8.1-cu11/lib64:$LD_LIBRARY_PATH' >>$target_env_file
-      echo 'export CUDNN_INSTALL_PATH=/app/nvidia/cudnn8.1-cu11' >>$target_env_file
-    fi
-
-  elif [[ $cuda_version == '12.3' ]]; then
-    echo 'export LD_LIBRARY_PATH=/usr/local/cuda-12.3/lib64:/usr/local/cuda-12.3/extras/CUPTI/lib64/:$LD_LIBRARY_PATH' >>$target_env_file
-    if [[ $cudnn_version == '8.9' ]]; then
-      echo 'export CUDNN_INSTALL_PATH=/app/nvidia/cudnn8.9-cu12' >>$target_env_file
-      echo 'export LD_LIBRARY_PATH=/app/nvidia/cudnn8.9-cu12/lib:$LD_LIBRARY_PATH' >>$target_env_file
-    fi
-  fi
-
+  echo "export LD_LIBRARY_PATH=/usr/local/cuda-${cuda_version}/lib64:/usr/local/cuda-${cuda_version}/extras/CUPTI/lib64/:\$LD_LIBRARY_PATH" >>$target_env_file
+  echo "export LD_LIBRARY_PATH=/app/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}/lib64:\$LD_LIBRARY_PATH" >>$target_env_file
+  echo "export CUDNN_INSTALL_PATH=/app/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}" >>$target_env_file
 fi
 
 conda clean -y -a
