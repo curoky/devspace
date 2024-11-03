@@ -24,8 +24,9 @@ sudo -u x /app/dotbox/docker/base/script/setup-userconf.sh
 /app/dotbox/docker/base/script/start-sshd.sh $SSHD_PORT
 
 sudo -u x bash /app/dotbox/docker/base/script/setup-profile.sh $PROFILE_PASS &
-
 sudo -u x bash -c 'cd /app/dotbox && pre-commit install-hooks' &
+
+chmod 600 /home/x/dotbox/config/ssh/devbox.private.id_rsa
 
 while true; do sleep 86400; done
 # exec /lib/systemd/systemd
