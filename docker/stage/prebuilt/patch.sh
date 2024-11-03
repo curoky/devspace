@@ -42,6 +42,7 @@ mv $prefix/bin/.gzip-wrapped $prefix/bin/gzip
 # mv $prefix/bin/git $prefix/bin/.git-wrapped
 mv $prefix/bin/curl $prefix/bin/.curl-wrapped
 mv $prefix/bin/wget $prefix/bin/.wget-wrapped
+mv $prefix/bin/scp $prefix/bin/.scp-wrapped
 
 find $prefix -name "*.a" -delete
 find $prefix -name "*.pyc" -delete
