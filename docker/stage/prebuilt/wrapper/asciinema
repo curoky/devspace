@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-root=$(cd "$(dirname "$0")" && pwd)/..
+script_path="$(readlink -f "$0")"
+root=$(cd "$(dirname "$script_path")" && pwd)/..
 
 export PYTHONHOME=$root/py311-static
 export PYTHONPATH=$PYTHONPATH:$PYTHONHOME/lib/python3.11

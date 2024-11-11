@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-root=$(cd "$(dirname "$0")" && pwd)/..
+script_path="$(readlink -f "$0")"
+root=$(cd "$(dirname "$script_path")" && pwd)/..
+
 if [[ -z $GIT_TEMPLATE_DIR ]]; then
   export GIT_TEMPLATE_DIR="$root/share/git-core/templates"
 fi

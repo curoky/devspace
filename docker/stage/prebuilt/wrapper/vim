@@ -2,7 +2,9 @@
 
 # https://askubuntu.com/questions/445686/vim-cannot-find-syntax-vim
 
-root=$(cd "$(dirname "$0")" && pwd)/../inner
+script_path="$(readlink -f "$0")"
+root=$(cd "$(dirname "$script_path")" && pwd)/../inner
+
 if [[ -z $VIMRUNTIME ]]; then
   export VIMRUNTIME=$root/share/vim/vim91
 fi
