@@ -15,6 +15,7 @@ ENV PATH=$PATH:/nix/var/nix/profiles/default/bin:/home/x/.nix-profile/bin:/nix/v
   NIXPKGS_ALLOW_BROKEN=1
 
 RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
+  && nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs \
   && nix-channel --update
 
 COPY --from=third-party nixpkgs nixpkgs
