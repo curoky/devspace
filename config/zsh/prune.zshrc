@@ -1,4 +1,3 @@
-
 # Copyright (c) 2018-2023 curoky(cccuroky@gmail.com).
 #
 # This file is part of dotbox.
@@ -30,19 +29,16 @@ fi
 export ZSH=~/prebuilt/share/oh-my-zsh
 # https://github.com/ohmyzsh/ohmyzsh/blob/7ed475cb589c9e82211f71b3a5d7083b69cea93c/oh-my-zsh.sh#L132
 autoload -U compaudit compinit zrecompile
-compinit -u -d "$XDG_CACHE_HOME/.zcompdump"
+compinit -u -d $XDG_CACHE_HOME/.zcompdump
 
-source "${ZSH}/lib/history.zsh"
-source "${ZSH}/lib/completion.zsh"
-source "${ZSH}/lib/key-bindings.zsh"
-source "${ZSH}/lib/directories.zsh"
-
-default_plugins_path=$HOME/prebuilt/share/oh-my-zsh/plugins
-custom_plugins_path=$HOME/prebuilt/share/oh-my-zsh/custom/plugins
-source $default_plugins_path/extract/extract.plugin.zsh
-source $default_plugins_path/git/git.plugin.zsh
-source $custom_plugins_path/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $custom_plugins_path/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ${ZSH}/lib/history.zsh
+source ${ZSH}/lib/completion.zsh
+source ${ZSH}/lib/key-bindings.zsh
+source ${ZSH}/lib/directories.zsh
+source ${ZSH}/plugins/extract/extract.plugin.zsh
+source ${ZSH}/plugins/git/git.plugin.zsh
+source ${ZSH}/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ${ZSH}/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # source $custom_plugins_path/conda-zsh-completion/conda-zsh-completion.plugin.zsh
 # source $custom_plugins_path/zsh-completions/zsh-completions.plugin.zsh

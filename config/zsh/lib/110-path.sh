@@ -38,6 +38,7 @@ ENV_PATHS=(
   "/app/pipx/bin"
   "/app/prebuilt/bin"
   "/app/prebuilt/extra/bin"
+  "/app/conda/condabin"
   "/nix/var/nix/profiles/default/bin"
 
   # "$HOME/.npm-global/bin"

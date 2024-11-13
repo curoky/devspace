@@ -53,6 +53,7 @@ $prefix/bin/atuin gen-completions --shell zsh >$prefix/share/oh-my-zsh/custom/pl
 mkdir -p $prefix/share/oh-my-zsh/custom/plugins/fzf
 cp $prefix/share/fzf/completion.zsh $prefix/share/oh-my-zsh/custom/plugins/fzf/_fzf_completion
 cp $prefix/share/fzf/key-bindings.zsh $prefix/share/oh-my-zsh/custom/plugins/fzf/key-bindings.zsh
+cp $prefix/share/oh-my-zsh/custom/plugins/conda-zsh-completion/_conda $prefix/share/zsh/site-functions
 
 find $prefix -name "*.a" -delete
 find $prefix -name "*.pyc" -delete
