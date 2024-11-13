@@ -41,7 +41,7 @@ export KRB5CCNAME=/tmp/krb5_ccache
 #=-> go
 # https://pkg.go.dev/cmd/go#hdr-Build_and_test_caching
 # export GOCACHE=$XDG_CACHE_HOME/go-build
-export GOENV=$CONFIG_HOME/go/env
+# export GOENV=$CONFIG_HOME/go/env
 
 #=-> npm
 # https://docs.npmjs.com/cli/v6/using-npm/config#environment-variables
@@ -130,7 +130,7 @@ export FILTER_BRANCH_SQUELCH_WARNING=1
 #=-> starship
 # https://starship.rs/config/#logging
 # export STARSHIP_CACHE=$XDG_CACHE_HOME/starship
-export STARSHIP_CONFIG=$CONFIG_HOME/starship/starship.toml
+# export STARSHIP_CONFIG=$CONFIG_HOME/starship/starship.toml
 
 #=-> dool(dstat's fork)
 # https://github.com/scottchiefbaker/dool/blob/master/docs/dool.1.adoc#environment-variables
@@ -153,7 +153,7 @@ export STARSHIP_CONFIG=$CONFIG_HOME/starship/starship.toml
 # export ATUIN_CONFIG_DIR=$CONFIG_HOME/atuin
 
 #=-> bat
-export BAT_CONFIG_PATH=$CONFIG_HOME/bat/config
+# export BAT_CONFIG_PATH=$CONFIG_HOME/bat/config
 
 #=-> navi
 # export NAVI_CONFIG=$CONFIG_HOME/navi/config.yaml

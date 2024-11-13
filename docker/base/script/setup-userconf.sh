@@ -60,12 +60,16 @@ function link_path() {
 
 link_path $CONF_PATH/conda/condarc ~/.config/conda/condarc
 link_path $CONF_PATH/croc/classic_enabled ~/.config/croc/classic_enabled
-link_path $CONF_PATH/gdb/gdbinit ~/.gdbinit
 link_path $CONF_PATH/nixpkgs/config.nix ~/.config/nixpkgs/config.nix
 link_path $CONF_PATH/procps/toprc ~/.config/procps/toprc
-link_path $CONF_PATH/vim/vimrc ~/.vimrc
 link_path $CONF_PATH/tmux/tmux.conf ~/.config/tmux/tmux.conf
 link_path $CONF_PATH/atuin/config.toml ~/.config/atuin/config.toml
+link_path $CONF_PATH/starship/starship.toml ~/.config/starship.toml
+link_path $CONF_PATH/bat/config ~/.config/bat/config
+link_path $CONF_PATH/go/env ~/.config/go/env
+
+link_path $CONF_PATH/gdb/gdbinit ~/.gdbinit
+link_path $CONF_PATH/vim/vimrc ~/.vimrc
 link_path $CONF_PATH/vscode/remote-server-settings.json ~/.vscode-server/data/Machine/settings.json
 # link_path $CONF_PATH/tabby-ml/config.toml ~/.tabby-client/agent/config.toml
 
