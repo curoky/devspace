@@ -70,7 +70,7 @@ link_path $CONF_PATH/go/env ~/.config/go/env
 
 link_path $CONF_PATH/gdb/gdbinit ~/.gdbinit
 link_path $CONF_PATH/vim/vimrc ~/.vimrc
-link_path $CONF_PATH/zsh/omz.zshrc ~/.zshrc
+link_path $CONF_PATH/zsh/prune.zshrc ~/.zshrc
 
 link_path $CONF_PATH/vscode/remote-server-settings.json ~/.vscode-server/data/Machine/settings.json
 # link_path $CONF_PATH/tabby-ml/config.toml ~/.tabby-client/agent/config.toml
