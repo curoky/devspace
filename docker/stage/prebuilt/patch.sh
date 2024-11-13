@@ -45,11 +45,11 @@ mv $prefix/bin/wget $prefix/bin/.wget-wrapped
 mv $prefix/bin/scp $prefix/bin/.scp-wrapped
 
 mkdir -p $prefix/share/oh-my-zsh/custom/plugins/starship
-starship init zsh >$prefix/share/oh-my-zsh/custom/plugins/starship/starship.plugin.zsh
-starship completions zsh >$prefix/share/oh-my-zsh/custom/plugins/starship/_starship
+$prefix/bin/starship init zsh >$prefix/share/oh-my-zsh/custom/plugins/starship/starship.plugin.zsh
+$prefix/bin/starship completions zsh >$prefix/share/oh-my-zsh/custom/plugins/starship/_starship
 mkdir -p $prefix/share/oh-my-zsh/custom/plugins/atuin
-atuin init zsh --disable-up-arrow >$prefix/share/oh-my-zsh/custom/plugins/atuin/atuin.plugin.zsh
-atuin gen-completions --shell zsh >$prefix/share/oh-my-zsh/custom/plugins/atuin/_atuin
+$prefix/bin/atuin init zsh --disable-up-arrow >$prefix/share/oh-my-zsh/custom/plugins/atuin/atuin.plugin.zsh
+$prefix/bin/atuin gen-completions --shell zsh >$prefix/share/oh-my-zsh/custom/plugins/atuin/_atuin
 mkdir -p $prefix/share/oh-my-zsh/custom/plugins/fzf
 cp $prefix/share/fzf/completion.zsh $prefix/share/oh-my-zsh/custom/plugins/fzf/_fzf_completion
 cp $prefix/share/fzf/key-bindings.zsh $prefix/share/oh-my-zsh/custom/plugins/fzf/key-bindings.zsh

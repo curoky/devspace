@@ -1,3 +1,4 @@
+
 # Copyright (c) 2018-2023 curoky(cccuroky@gmail.com).
 #
 # This file is part of dotbox.
@@ -26,16 +27,25 @@ if [[ -f $HOMEBREW_PREFIX/bin/brew ]]; then
   eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 fi
 
-#=-> nix
+export ZSH=~/prebuilt/share/oh-my-zsh
+# https://github.com/ohmyzsh/ohmyzsh/blob/7ed475cb589c9e82211f71b3a5d7083b69cea93c/oh-my-zsh.sh#L132
+autoload -U compaudit compinit zrecompile
+compinit -u -d "$XDG_CACHE_HOME/.zcompdump"
+
+source "${ZSH}/lib/history.zsh"
+source "${ZSH}/lib/completion.zsh"
+source "${ZSH}/lib/key-bindings.zsh"
+source "${ZSH}/lib/directories.zsh"
+
 default_plugins_path=$HOME/prebuilt/share/oh-my-zsh/plugins
 custom_plugins_path=$HOME/prebuilt/share/oh-my-zsh/custom/plugins
 source $default_plugins_path/extract/extract.plugin.zsh
-source $custom_plugins_path/conda-zsh-completion/conda-zsh-completion.plugin.zsh
-source $custom_plugins_path/starship/starship.plugin.zsh
-source $custom_plugins_path/atuin/atuin.plugin.zsh
-source $custom_plugins_path/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-source $custom_plugins_path/zsh-completions/zsh-completions.plugin.zsh
-source $custom_plugins_path/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+source $default_plugins_path/git/git.plugin.zsh
+source $custom_plugins_path/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $custom_plugins_path/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# source $custom_plugins_path/conda-zsh-completion/conda-zsh-completion.plugin.zsh
+# source $custom_plugins_path/zsh-completions/zsh-completions.plugin.zsh
 
 #=-> conda
 # if [[ -f /app/conda/bin/conda ]]; then
@@ -45,11 +55,6 @@ source $custom_plugins_path/zsh-syntax-highlighting/zsh-syntax-highlighting.plug
 #   eval "$(/opt/homebrew/Caskroom/miniconda/base/bin/conda shell.zsh hook 2>/dev/null)"
 # fi
 
-#=-> mamba
-# if [ -f "/app/conda/etc/profile.d/mamba.sh" ]; then
-#   . "/app/conda/etc/profile.d/mamba.sh"
-# fi
-
 # TODO: remove -u
 # why: why add -u to compinit?
 # ref: https://stackoverflow.com/questions/13762280/zsh-compinit-insecure-directories
@@ -57,7 +62,7 @@ source $custom_plugins_path/zsh-syntax-highlighting/zsh-syntax-highlighting.plug
 #   zsh compinit: insecure directories, run compaudit for list.
 #   Ignore insecure directories and continue [y] or abort compinit [n]?
 # autoload -zU compinit && compinit -u
-autoload -U compinit && compinit -u
+# autoload -U compinit
 
 # compdef _bb bb bbup bb4 bb4up bbcl bbclup
 
@@ -73,3 +78,6 @@ autoload -U compinit && compinit -u
 
 #-> (post) atuin
 # eval "$(atuin init zsh --disable-up-arrow)"
+
+source $custom_plugins_path/starship/starship.plugin.zsh
+source $custom_plugins_path/atuin/atuin.plugin.zsh

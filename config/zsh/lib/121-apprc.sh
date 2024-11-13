@@ -224,8 +224,8 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main brackets pattern cursor)
 
 #=-> [zsh-plugin] zsh-autosuggestions
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
-# ZSH_AUTOSUGGEST_USE_ASYNC=1
-ZSH_AUTOSUGGEST_MANUAL_REBIND=0
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+# ZSH_AUTOSUGGEST_MANUAL_REBIND=0
 # for hyper-hypest/iterm2 https://jonasjacek.github.io/colors/
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 
@@ -235,3 +235,24 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 # if [[ ! -d $FZF_BASE ]]; then
 #   FZF_BASE=~/prebuilt/share/fzf/
 # fi
+
+#=-> zsh history
+# https://zsh.sourceforge.io/Doc/Release/Options.html
+# setopt | grep hist
+# export HISTORY_IGNORE="(?|??|???|????|* --help|* --version)"
+# if [[ -d "$HOME/My Drive/CKYData/010-backup/shell-history" ]]; then
+#   HISTFILE="$HOME/My Drive/CKYData/010-backup/shell-history/$MY_HOST_NAME.$(id -u).$DEVBOX_PROFILE.zsh_history"
+# fi
+
+# HISTSIZE=30000
+# SAVEHIST=20000
+# setopt EXTENDED_HISTORY
+# setopt HIST_EXPIRE_DUPS_FIRST
+# setopt HIST_IGNORE_DUPS
+# setopt HIST_IGNORE_ALL_DUPS
+# setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+# setopt HIST_BEEP
+# setopt noextendedhistory
+# setopt nosharehistory

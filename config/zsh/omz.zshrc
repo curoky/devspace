@@ -21,6 +21,33 @@ for f in "$CONFIG_HOME"/zsh/lib/*.sh; do
   source "$f"
 done
 
+DISABLE_AUTO_UPDATE=true
+ZSH_DISABLE_COMPFIX=true
+DISABLE_LS_COLORS=true # we use exa not ls
+# ZSH_THEME="spaceship"
+
+plugins=(
+  # common-aliases
+  conda-zsh-completion
+  extract
+  # fzf
+  git
+  zsh-autosuggestions
+  zsh-completions
+  zsh-syntax-highlighting
+  # systemadmin
+  # direnv
+  # docker
+  # docker-compose
+  # git-auto-fetch
+  # golang
+  # history
+  # pip
+  # z
+  # zoxide
+  # direnv
+)
+
 #=-> homebrew
 if [[ -f $HOMEBREW_PREFIX/bin/brew ]]; then
   eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
@@ -30,6 +57,7 @@ fi
 source_if_exists ~/.nix-profile/etc/profile.d/nix.sh
 
 #=-> start oh-my-zsh
+export ZSH=~/prebuilt/share/oh-my-zsh
 source "${ZSH}/oh-my-zsh.sh"
 
 #=-> conda
