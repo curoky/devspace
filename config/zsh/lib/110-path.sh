@@ -51,3 +51,31 @@ ENV_PATHS=(
 for p in "${ENV_PATHS[@]}"; do
   [[ -d $p ]] && export PATH=$PATH:$p
 done
+
+ENV_FPATHS=(
+  # homebrew
+  # "$HOMEBREW_PREFIX/share/zsh/functions" # already added by default
+  # "$HOMEBREW_PREFIX/share/zsh/site-functions"
+  "$HOMEBREW_PREFIX/Homebrew/completions/zsh"
+  # system
+  # "/usr/share/zsh/vendor-completions"
+  # typer
+  # "$HOME/.zfunc"
+  # /home/x/prebuilt/share/zsh/site-functions
+
+  "$HOME/prebuilt/share/zsh/site-functions"
+  # "$HOME/prebuilt/share/zsh/zsh-functions"
+)
+
+for p in "${ENV_FPATHS[@]}"; do
+  [[ -d $p ]] && fpath=($p $fpath)
+done
+
+ENV_PATHS=(
+  # "$WORKSPACE/thriftoy"
+  # "/data/share/thriftoy"
+)
+
+for p in "${ENV_PATHS[@]}"; do
+  [[ -d $p ]] && export PYTHONPATH=$p:$PYTHONPATH
+done

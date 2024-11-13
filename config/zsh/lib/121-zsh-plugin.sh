@@ -24,15 +24,17 @@ DISABLE_LS_COLORS=true # we use exa not ls
 # ZSH_THEME="spaceship"
 
 plugins=(
-  common-aliases
+  # common-aliases
   conda-zsh-completion
   extract
-  fzf
+  # fzf
   git
-  systemadmin
+  starship
+  atuin
   zsh-autosuggestions
   zsh-completions
   zsh-syntax-highlighting
+  # systemadmin
   # direnv
   # docker
   # docker-compose
@@ -44,47 +46,6 @@ plugins=(
   # zoxide
   # direnv
 )
-
-#=-> [zsh-syntax-highlighting]
-ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main brackets pattern cursor)
-
-#=-> [zsh-theme] space-ship
-# SPACESHIP_DIR_TRUNC=5
-# SPACESHIP_DIR_TRUNC_REPO=false
-# SPACESHIP_CHAR_PREFIX="%F{cyan}(${MARK}) "
-# SPACESHIP_CHAR_SUFFIX=" "
-# SPACESHIP_USER_COLOR=blue
-# SPACESHIP_DOCKER_SHOW=false
-# SPACESHIP_DOTNET_SHOW=false
-# SPACESHIP_ELIXIR_SHOW=false
-# SPACESHIP_ELM_SHOW=false
-# SPACESHIP_GOLANG_SHOW=false
-# SPACESHIP_JULIA_SHOW=false
-# SPACESHIP_PHP_SHOW=false
-# SPACESHIP_RUBY_SHOW=false
-# SPACESHIP_RUST_SHOW=false
-# SPACESHIP_SWIFT_SHOW_LOCAL=false
-# SPACESHIP_TIME_SHOW=true
-# SPACESHIP_XCODE_SHOW_LOCAL=false
-
-#=-> z
-# _Z_CMD=j
-# _Z_DATA="conf/.z/$MY_HOST_NAME.$(id -u).z"
-# _Z_NO_RESOLVE_SYMLINKS=1
-
-#=-> [zsh-plugin] zsh-autosuggestions
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
-# ZSH_AUTOSUGGEST_USE_ASYNC=1
-ZSH_AUTOSUGGEST_MANUAL_REBIND=0
-# for hyper-hypest/iterm2 https://jonasjacek.github.io/colors/
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
-
-#-> fzf
-# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
-FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
-if [[ ! -d $FZF_BASE ]]; then
-  FZF_BASE=~/prebuilt/share/fzf/
-fi
 
 #=-> zsh history
 # https://zsh.sourceforge.io/Doc/Release/Options.html

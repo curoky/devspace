@@ -178,6 +178,12 @@ export FILTER_BRANCH_SQUELCH_WARNING=1
 #-> tmux
 export TMUX_CONF_LOCAL=$CONFIG_HOME/tmux/tmux.conf.local
 
+#-> nixpkgs
+# from source_if_exists ~/.nix-profile/etc/profile.d/nix.sh
+# export NIX_PROFILES=/nix/var/nix/profiles/default /home/x/.nix-profile
+# export NIX_SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+# export PATH:$PATH:$HOME/.nix-profile/bin
+
 #-> vscode
 # vscode-remote code command not found
 # https://www.v2ex.com/t/1080529#reply0
@@ -188,3 +194,44 @@ if [[ -f "${VS_SERVICES_DIR}/lru.json" ]]; then
   vscode_dir="${VS_SERVICES_DIR}/${vs_version}/server/bin/remote-cli"
   export PATH=${vscode_dir}:${PATH}
 fi
+
+#=-> [zsh-syntax-highlighting]
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main brackets pattern cursor)
+
+#=-> [zsh-theme] space-ship
+# SPACESHIP_DIR_TRUNC=5
+# SPACESHIP_DIR_TRUNC_REPO=false
+# SPACESHIP_CHAR_PREFIX="%F{cyan}(${MARK}) "
+# SPACESHIP_CHAR_SUFFIX=" "
+# SPACESHIP_USER_COLOR=blue
+# SPACESHIP_DOCKER_SHOW=false
+# SPACESHIP_DOTNET_SHOW=false
+# SPACESHIP_ELIXIR_SHOW=false
+# SPACESHIP_ELM_SHOW=false
+# SPACESHIP_GOLANG_SHOW=false
+# SPACESHIP_JULIA_SHOW=false
+# SPACESHIP_PHP_SHOW=false
+# SPACESHIP_RUBY_SHOW=false
+# SPACESHIP_RUST_SHOW=false
+# SPACESHIP_SWIFT_SHOW_LOCAL=false
+# SPACESHIP_TIME_SHOW=true
+# SPACESHIP_XCODE_SHOW_LOCAL=false
+
+#=-> z
+# _Z_CMD=j
+# _Z_DATA="conf/.z/$MY_HOST_NAME.$(id -u).z"
+# _Z_NO_RESOLVE_SYMLINKS=1
+
+#=-> [zsh-plugin] zsh-autosuggestions
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
+# ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_MANUAL_REBIND=0
+# for hyper-hypest/iterm2 https://jonasjacek.github.io/colors/
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
+
+#-> fzf
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
+# FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
+# if [[ ! -d $FZF_BASE ]]; then
+#   FZF_BASE=~/prebuilt/share/fzf/
+# fi

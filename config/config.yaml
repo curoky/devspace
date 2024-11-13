@@ -123,7 +123,7 @@ dotfiles:
   zshrc:
     dst: ~/.zshrc
     link: nolink
-    src: zsh/zshrc
+    src: zsh/omz.zshrc
 profiles:
   docker:
     dotfiles:

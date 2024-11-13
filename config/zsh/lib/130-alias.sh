@@ -23,8 +23,45 @@ alias penv='env | sort'
 alias t='task'
 
 alias ls=eza-wrapper.sh
+# ls, the common ones I use a lot shortened for rapid fire usage
+alias l='ls -lFh'   #size,show type,human readable
+alias la='ls -lAFh' #long list,show almost all,show type,human readable
+alias lr='ls -tRFh' #sorted by date,recursive,show type,human readable
+alias lt='ls -ltFh' #long list,sorted by date,show type,human readable
+alias ll='ls -l'    #long list
+alias ldot='ls -ld .*'
+alias lS='ls -1FSsh'
+alias lart='ls -1Fcart'
+alias lrt='ls -1Fcrt'
+alias lsr='ls -lARFh' #Recursive list of files and directories
+alias lsn='ls -1'     #A column contains name of files and directories
+
+alias grep='grep --color'
+alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
+
+alias t='tail -f'
+
+alias ff='find . -type f -name'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+function psgrep() {
+  ps aux | grep "${1:-.}" | grep -v grep
+}
+# Kills any process that matches a regexp passed to it
+function killit() {
+  ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs sudo kill
+}
+
 # alias l='ls -lFh --git'
 # alias la='ls -lFha --git'
+alias ping='ping -c 5'
+alias ping6='ping6 -c 5'
+alias clr='clear; echo Currently logged in on $TTY, as $USERNAME in directory $PWD.'
+alias path='print -l $path'
+alias mkdir='mkdir -pv'
 
 alias ta='tmux attach -t'
 alias tad='tmux attach -d -t'

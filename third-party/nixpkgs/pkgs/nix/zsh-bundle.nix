@@ -2,6 +2,7 @@
   zsh-syntax-highlighting,
   zsh-autosuggestions,
   zsh-completions,
+  zsh-fast-syntax-highlighting,
 }:
 
 stdenv.mkDerivation rec {
@@ -28,6 +29,7 @@ stdenv.mkDerivation rec {
     cp -r ${zsh-autosuggestions.src}/ $out/share/oh-my-zsh/custom/plugins/zsh-autosuggestions
     cp -r ${zsh-syntax-highlighting.src}/ $out/share/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
     cp -r ${zsh-completions.src}/ $out/share/oh-my-zsh/custom/plugins/zsh-completions
+    cp -r ${zsh-fast-syntax-highlighting.src}/ $out/share/oh-my-zsh/custom/plugins/zsh-fast-syntax-highlighting
     cp -r conda-zsh-completion $out/share/oh-my-zsh/custom/plugins/
   '';
 
