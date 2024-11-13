@@ -40,16 +40,6 @@ source ${ZSH}/plugins/git/git.plugin.zsh
 source ${ZSH}/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ${ZSH}/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# source $custom_plugins_path/zsh-completions/zsh-completions.plugin.zsh
-
-#=-> conda
-# if [[ -f /app/conda/bin/conda ]]; then
-#   eval "$(/app/conda/bin/conda shell.zsh hook 2>/dev/null)"
-# fi
-# if [[ -f /opt/homebrew/Caskroom/miniconda/base/bin/conda ]]; then
-#   eval "$(/opt/homebrew/Caskroom/miniconda/base/bin/conda shell.zsh hook 2>/dev/null)"
-# fi
-
 if [[ ! -f $XDG_CACHE_HOME/starship.plugin.zsh ]]; then
   starship init zsh > $XDG_CACHE_HOME/starship.plugin.zsh
 fi
