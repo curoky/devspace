@@ -21,56 +21,34 @@ for f in "$CONFIG_HOME"/zsh/lib/*.sh; do
   source "$f"
 done
 
-DISABLE_AUTO_UPDATE=true
-ZSH_DISABLE_COMPFIX=true
-DISABLE_LS_COLORS=true # we use exa not ls
-# ZSH_THEME="spaceship"
-
-plugins=(
-  # common-aliases
-  conda-zsh-completion
-  extract
-  # fzf
-  git
-  zsh-autosuggestions
-  zsh-completions
-  zsh-syntax-highlighting
-  # systemadmin
-  # direnv
-  # docker
-  # docker-compose
-  # git-auto-fetch
-  # golang
-  # history
-  # pip
-  # z
-  # zoxide
-  # direnv
-)
-
 #=-> homebrew
 if [[ -f $HOMEBREW_PREFIX/bin/brew ]]; then
   eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 fi
 
-#=-> nix
-source_if_exists ~/.nix-profile/etc/profile.d/nix.sh
-
-#=-> start oh-my-zsh
 export ZSH=~/prebuilt/share/oh-my-zsh
-source "${ZSH}/oh-my-zsh.sh"
+# https://github.com/ohmyzsh/ohmyzsh/blob/7ed475cb589c9e82211f71b3a5d7083b69cea93c/oh-my-zsh.sh#L132
+autoload -U compaudit compinit zrecompile
+compinit -u -d $XDG_CACHE_HOME/.zcompdump
+
+source ${ZSH}/lib/history.zsh
+source ${ZSH}/lib/completion.zsh
+source ${ZSH}/lib/key-bindings.zsh
+source ${ZSH}/lib/directories.zsh
+source ${ZSH}/plugins/extract/extract.plugin.zsh
+source ${ZSH}/plugins/git/git.plugin.zsh
+source ${ZSH}/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ${ZSH}/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# source $custom_plugins_path/conda-zsh-completion/conda-zsh-completion.plugin.zsh
+# source $custom_plugins_path/zsh-completions/zsh-completions.plugin.zsh
 
 #=-> conda
-if [[ -f /app/conda/bin/conda ]]; then
-  eval "$(/app/conda/bin/conda shell.zsh hook 2>/dev/null)"
-fi
-if [[ -f /opt/homebrew/Caskroom/miniconda/base/bin/conda ]]; then
-  eval "$(/opt/homebrew/Caskroom/miniconda/base/bin/conda shell.zsh hook 2>/dev/null)"
-fi
-
-#=-> mamba
-# if [ -f "/app/conda/etc/profile.d/mamba.sh" ]; then
-#   . "/app/conda/etc/profile.d/mamba.sh"
+# if [[ -f /app/conda/bin/conda ]]; then
+#   eval "$(/app/conda/bin/conda shell.zsh hook 2>/dev/null)"
+# fi
+# if [[ -f /opt/homebrew/Caskroom/miniconda/base/bin/conda ]]; then
+#   eval "$(/opt/homebrew/Caskroom/miniconda/base/bin/conda shell.zsh hook 2>/dev/null)"
 # fi
 
 # TODO: remove -u
@@ -80,7 +58,7 @@ fi
 #   zsh compinit: insecure directories, run compaudit for list.
 #   Ignore insecure directories and continue [y] or abort compinit [n]?
 # autoload -zU compinit && compinit -u
-autoload -U compinit && compinit -u
+# autoload -U compinit
 
 # compdef _bb bb bbup bb4 bb4up bbcl bbclup
 
@@ -89,10 +67,20 @@ autoload -U compinit && compinit -u
 # unset zle_bracketed_paste
 
 #-> (post) starship
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 
 #-> (post) mcfly
 # eval "$(mcfly init zsh)"
 
 #-> (post) atuin
-eval "$(atuin init zsh --disable-up-arrow)"
+# eval "$(atuin init zsh --disable-up-arrow)"
+
+if [[ ! -f $XDG_CACHE_HOME/starship.plugin.zsh ]]; then
+  starship init zsh > $XDG_CACHE_HOME/starship.plugin.zsh
+fi
+source $XDG_CACHE_HOME/starship.plugin.zsh
+
+if [[ ! -f $XDG_CACHE_HOME/atuin.plugin.zsh ]]; then
+  atuin init zsh --disable-up-arrow > $XDG_CACHE_HOME/atuin.plugin.zsh
+fi
+source $XDG_CACHE_HOME/atuin.plugin.zsh

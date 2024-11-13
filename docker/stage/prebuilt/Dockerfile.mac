@@ -17,8 +17,5 @@ RUN nix-env -p /nix/var/nix/profiles/packer -iA nixpkgs.python3
 COPY pack.py .
 RUN /nix/var/nix/profiles/packer/bin/python3 ./pack.py
 
-COPY patch-oh-my-zsh.sh .
-RUN ./patch-oh-my-zsh.sh
-
 FROM debian:bookworm-backports
 COPY --from=nixpkgs-builder /output /output

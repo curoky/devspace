@@ -23,9 +23,7 @@ RUN rsync --progress --archive --human-readable /output-base/ /output/ \
 ADD https://curl.se/ca/cacert-2024-09-24.pem /output/etc/ssl/certs/ca-certificates.crt
 
 COPY patch.sh .
-COPY patch-oh-my-zsh.sh .
 RUN ./patch.sh \
-  && ./patch-oh-my-zsh.sh \
   && chown 5230:5230 -R /output \
   && mkdir -p /output/dotbox \
   && curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/dev.tar.gz \

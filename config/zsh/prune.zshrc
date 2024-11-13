@@ -74,6 +74,11 @@ source ${ZSH}/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #-> (post) atuin
 # eval "$(atuin init zsh --disable-up-arrow)"
-
-source $custom_plugins_path/starship/starship.plugin.zsh
-source $custom_plugins_path/atuin/atuin.plugin.zsh
+if [[ ! -f $XDG_CACHE_HOME/starship.plugin.zsh ]]; then
+  starship init zsh > $XDG_CACHE_HOME/starship.plugin.zsh
+fi
+source $XDG_CACHE_HOME/starship.plugin.zsh
+if [[ ! -f $XDG_CACHE_HOME/atuin.plugin.zsh ]]; then
+  atuin init zsh --disable-up-arrow > $XDG_CACHE_HOME/atuin.plugin.zsh
+fi
+source $XDG_CACHE_HOME/atuin.plugin.zsh
