@@ -18,8 +18,8 @@
 
 set -xeuo pipefail
 
-export CONAN_ROOT=/app/conda
-export PATH=$CONAN_ROOT/bin:$PATH
+export CONDA_ROOT=/app/conda
+export PATH=$CONDA_ROOT/bin:$PATH
 export PIP_CACHE_DIR=/tmp/pip
 
 env_file=${1}
@@ -36,16 +36,16 @@ echo "create $env_name($env_file) python_version:$python_version python_short_ve
 
 conda env remove -n $env_name -y
 conda create -n $env_name python=$python_version -y --no-default-packages
-rm -rf $CONAN_ROOT/envs/$env_name/compiler_compat/
+rm -rf $CONDA_ROOT/envs/$env_name/compiler_compat/
 
-export PKG_CONFIG_PATH=$CONAN_ROOT/envs/$env_name/lib/pkgconfig
-export CFLAGS="-I/$CONAN_ROOT/envs/$env_name/include"
-export LDFLAGS="-I/$CONAN_ROOT/envs/$env_name/lib"
+export PKG_CONFIG_PATH=$CONDA_ROOT/envs/$env_name/lib/pkgconfig
+export CFLAGS="-I/$CONDA_ROOT/envs/$env_name/include"
+export LDFLAGS="-I/$CONDA_ROOT/envs/$env_name/lib"
 conda env update -f ${env_file}
 
 if [[ $add_tf_env -eq 1 ]]; then
-  mkdir -p $CONAN_ROOT/envs/$env_name/etc/conda/activate.d
-  target_env_file=$CONAN_ROOT/envs/$env_name/etc/conda/activate.d/env_vars.sh
+  mkdir -p $CONDA_ROOT/envs/$env_name/etc/conda/activate.d
+  target_env_file=$CONDA_ROOT/envs/$env_name/etc/conda/activate.d/env_vars.sh
   echo '' >$target_env_file
 
   echo "export LD_LIBRARY_PATH=/usr/local/cuda-${cuda_version}/lib64:/usr/local/cuda-${cuda_version}/extras/CUPTI/lib64/:\$LD_LIBRARY_PATH" >>$target_env_file
