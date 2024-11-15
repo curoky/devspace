@@ -54,3 +54,5 @@ rm -rf \
 # remove ld from binutils
 # /app/prebuilt/extra/bin/ld.gold: error: /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so: could not load plugin library: Dynamic loading not supported
 rm -rf $prefix/extra/bin/ld $prefix/extra/bin/ld.bfd $prefix/extra/bin/ld.gold
+
+ln -s

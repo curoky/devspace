@@ -1,0 +1,1 @@
+../docker/stage/vscode/install-vscode-ext.sh
