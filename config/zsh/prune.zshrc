@@ -1,4 +1,4 @@
-# Copyright (c) 2018-2023 curoky(cccuroky@gmail.com).
+# Copyright (c) 2018-2024 curoky(cccuroky@gmail.com).
 #
 # This file is part of dotbox.
 # See https://github.com/curoky/dotbox for further info.
