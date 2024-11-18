@@ -27,7 +27,7 @@
   "files.watcherExclude": {
     "**/build64_release/**": true
   },
-  "git.path": "/app/prebuilt/bin/git",
+  "git.path": "/nix/var/nix/profiles/default/bin/git",
   "go.alternateTools": {
     "go": "/nix/var/nix/profiles/default/bin/go"
   },
