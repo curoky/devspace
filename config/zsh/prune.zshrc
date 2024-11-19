@@ -49,3 +49,8 @@ if [[ ! -f $XDG_CACHE_HOME/atuin.plugin.zsh ]]; then
   atuin init zsh --disable-up-arrow > $XDG_CACHE_HOME/atuin.plugin.zsh
 fi
 source $XDG_CACHE_HOME/atuin.plugin.zsh
+
+if [[ ! -f $XDG_CACHE_HOME/conda.plugin.zsh ]] && command -v conda >/dev/null 2>&1; then
+  conda shell.zsh hook 2>/dev/null > $XDG_CACHE_HOME/conda.plugin.zsh
+fi
+source $XDG_CACHE_HOME/conda.plugin.zsh

@@ -4,7 +4,7 @@ FROM nixpkgs/nix-unstable:latest AS nixpkgs-builder
 ENV NIX_PATH=nixpkgs=channel:nixos-24.11 \
   NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
 
-RUN nix-channel --add https://nixos.org/channels/nixos-24.04 old \
+RUN nix-channel --add https://nixos.org/channels/nixos-24.05 old \
   && nix-channel --update \
   && nix-channel --add https://nixos.org/channels/nixos-24.11 nixpkgs \
   && nix-channel --update \
@@ -22,7 +22,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.connect
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.curl
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ethtool
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.findutils
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gdb
+# RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gdb
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gnugrep
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gnupatch
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gnused
