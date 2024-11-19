@@ -64,8 +64,6 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.gettext
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.git-extras
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.gnumake
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.m4
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.protobuf_24
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.protobuf_28
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.util-linux
 
 RUN nix-env -p /nix/var/nix/profiles/inner -iA nixpkgs.pkgsStatic.file

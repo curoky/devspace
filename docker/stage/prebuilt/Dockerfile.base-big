@@ -14,6 +14,9 @@ RUN nix-channel --add https://nixos.org/channels/nixos-24.05 old \
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gdb
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.aria2
+RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.protobuf_24
+RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.protobuf_25
+RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.protobuf_28
 
 COPY default.nix .
 RUN nix-env -p /nix/var/nix/profiles/extra2 -iA -f default.nix protobuf_3_8_0_static
