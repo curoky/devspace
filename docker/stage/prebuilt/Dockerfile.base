@@ -80,8 +80,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA old.pkgsStatic.wget
 COPY default.nix .
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix diffutils_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gnupg_minimal_static
-RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix
-_static
+RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix silver_searcher_static
 RUN nix-env -p /nix/var/nix/profiles/extra2 -iA -f default.nix protobuf_3_8_0_static
 RUN nix-env -p /nix/var/nix/profiles/extra3 -iA -f default.nix protobuf_3_9_2_static
 # RUN nix-env -p /nix/var/nix/profiles/extra4 -iA -f default.nix protobuf3_20_static
