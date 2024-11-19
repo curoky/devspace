@@ -48,7 +48,7 @@ let
     nativeBuildInputs = [ pkgs.gettext pkgs.pkg-config pkgs.lzip pkgs.libiconv pkgs.libintl ];
     doCheck = false;
   });
-  zsh_static = pkgs.pkgsStatic.zsh.overrideAttrs (oldAttrs: rec {
+  zsh_static = old.pkgsStatic.zsh.overrideAttrs (oldAttrs: rec {
     patchPhase = oldAttrs.patchPhase or "" + ''
       echo "link=either" >> Src/Modules/system.mdd
       echo "link=either" >> Src/Modules/regex.mdd
