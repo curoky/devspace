@@ -68,12 +68,12 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.util-linux
 
 RUN nix-env -p /nix/var/nix/profiles/inner -iA nixpkgs.pkgsStatic.file
 RUN nix-env -p /nix/var/nix/profiles/inner -iA nixpkgs.pkgsStatic.vim
-RUN nix-env -p /nix/var/nix/profiles/inner -iA nixpkgs.pkgsStatic.zsh
 
 # not in stable
 RUN nix-env -p /nix/var/nix/profiles/default -iA old.pkgsStatic.wget
 
 COPY default.nix .
+RUN nix-env -p /nix/var/nix/profiles/inner -iA -f default.nix zsh_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix diffutils_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gnupg_minimal_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix silver_searcher_static
