@@ -132,6 +132,7 @@ jobs:
         include:
           - name: llvm18
           - name: base
+          - name: base-big
           - name: rust
           - name: perl
           - name: go
