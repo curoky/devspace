@@ -6,7 +6,9 @@
 # commands such as:
 #     nix-build -A mypackage
 
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> { },
+  old ? import <old> { },
+}:
 
 let
   gdu_static = pkgs.gdu.overrideAttrs (oldAttrs: rec {
@@ -36,7 +38,7 @@ let
   fzf_static = pkgs.fzf.overrideAttrs (oldAttrs: rec {
     CGO_ENABLED = "0";
   });
-  silver_searcher_static = pkgs.pkgsStatic.silver-searcher.overrideAttrs (oldAttrs: rec {
+  silver_searcher_static = old.pkgsStatic.silver-searcher.overrideAttrs (oldAttrs: rec {
     NIX_LDFLAGS = "";
   });
   diffutils_static = pkgs.pkgsStatic.diffutils.overrideAttrs (oldAttrs: rec {

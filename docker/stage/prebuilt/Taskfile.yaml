@@ -81,3 +81,11 @@ tasks:
         --file Dockerfile.mac
         --network=host
         --tag curoky/dotbox:stage-prebuilt-mac
+  experimental:
+    cmds:
+      - >
+        docker buildx build .
+        --build-context third-party=../../../third-party
+        --file Dockerfile.experimental
+        --network=host
+        --tag curoky/dotbox:stage-prebuilt-experimental

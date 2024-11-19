@@ -3,17 +3,18 @@ FROM nixpkgs/nix-unstable:latest AS nixpkgs-builder
 
 ENV NIX_PATH=nixpkgs=channel:nixos-24.11
 
-RUN nix-channel --add https://nixos.org/channels/nixos-24.11 nixpkgs \
+RUN nix-channel --add https://nixos.org/channels/nixos-24.05 old \
+  && nix-channel --add https://nixos.org/channels/nixos-24.11 nixpkgs \
   && nix-channel --update
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.bat
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.eza
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.fd
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.procs
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ruff
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.starship
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.miniserve
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.atuin
+RUN nix-env -p /nix/var/nix/profiles/default -iA old.pkgsStatic.ruff
 # RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.simple-http-server
 
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.git-absorb
