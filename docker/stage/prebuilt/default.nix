@@ -60,7 +60,7 @@ let
       mv $out/bin/protoc $out/bin/protoc-${oldAttrs.version}
     '';
   });
-  protobuf_3_8_0_static = pkgs.pkgsStatic.protobuf3_20.overrideAttrs (oldAttrs: rec {
+  protobuf_3_8_0_static = old.pkgsStatic.protobuf3_20.overrideAttrs (oldAttrs: rec {
     src = pkgs.fetchFromGitHub {
       owner = "protocolbuffers";
       repo = "protobuf";
@@ -71,7 +71,7 @@ let
       mv $out/bin/protoc $out/bin/protoc-3.8.0
     '';
   });
-  protobuf_3_9_2_static = pkgs.pkgsStatic.protobuf3_20.overrideAttrs (oldAttrs: rec {
+  protobuf_3_9_2_static = old.pkgsStatic.protobuf3_20.overrideAttrs (oldAttrs: rec {
     src = pkgs.fetchFromGitHub {
       owner = "protocolbuffers";
       repo = "protobuf";
