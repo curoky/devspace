@@ -39,8 +39,8 @@ conda create -n $env_name python=$python_version -y --no-default-packages
 rm -rf $CONDA_ROOT/envs/$env_name/compiler_compat/
 
 export PKG_CONFIG_PATH=$CONDA_ROOT/envs/$env_name/lib/pkgconfig
-export CFLAGS="-I/$CONDA_ROOT/envs/$env_name/include"
-export LDFLAGS="-I/$CONDA_ROOT/envs/$env_name/lib"
+export CFLAGS="-I$CONDA_ROOT/envs/$env_name/include"
+export LDFLAGS="-I$CONDA_ROOT/envs/$env_name/lib"
 conda env update -f ${env_file}
 
 if [[ $add_tf_env -eq 1 ]]; then
