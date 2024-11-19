@@ -1,10 +1,12 @@
 # syntax=docker/dockerfile:1.9.0
 FROM nixpkgs/nix-unstable:latest AS nixpkgs-builder
 
-ENV NIX_PATH=nixpkgs=channel:nixos-24.05 \
+ENV NIX_PATH=nixpkgs=channel:nixos-24.11 \
   NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
 
-RUN nix-channel --add https://nixos.org/channels/nixos-24.05 nixpkgs \
+RUN nix-channel --add https://nixos.org/channels/nixos-24.04 old \
+  && nix-channel --update \
+  && nix-channel --add https://nixos.org/channels/nixos-24.11 nixpkgs \
   && nix-channel --update \
   && nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable \
   && nix-channel --update \
@@ -66,6 +68,7 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.util-linux
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.gnumake
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.aria2
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.protobuf_24
+RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.protobuf_28
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.git-extras
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.glibcLocales
 
@@ -74,10 +77,10 @@ RUN nix-env -p /nix/var/nix/profiles/inner -iA nixpkgs.pkgsStatic.file
 
 RUN nix-env -p /nix/var/nix/profiles/experimental -iA nixpkgs.pkgsStatic.bash
 
-# not in stabe
-RUN nix-env -p /nix/var/nix/profiles/default -iA unstable.pkgsStatic.rsync
-RUN nix-env -p /nix/var/nix/profiles/default -iA master.pkgsStatic.krb5
-RUN nix-env -p /nix/var/nix/profiles/default -iA master.pkgsStatic.openssh_gssapi
+# not in stable
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.rsync
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.krb5
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.openssh_gssapi
 RUN nix-env -p /nix/var/nix/profiles/experimental -iA git_fix.pkgsStatic.git
 
 COPY --from=third-party nixpkgs nixpkgs

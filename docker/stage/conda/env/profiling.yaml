@@ -17,3 +17,4 @@ dependencies:
       # - notion-client
       # - git+https://github.com/curoky/thriftpy2@dev
       - git+https://github.com/curoky/thriftoy@master
+      - protobuf==5.28.3
