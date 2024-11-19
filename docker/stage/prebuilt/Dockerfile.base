@@ -50,14 +50,12 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zip
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib-ng
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zstd
-RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gdb
 
 RUN nix-env -p /nix/var/nix/profiles/default2 -iA nixpkgs.pkgsStatic.openssl.bin
 RUN nix-env -p /nix/var/nix/profiles/default3 -iA nixpkgs.pkgsStatic.tzdata.out
 RUN nix-env -p /nix/var/nix/profiles/default4 -iA nixpkgs.pkgsStatic.netcat
 
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.glibcLocales
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.aria2
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.binutils
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.bison
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.coreutils
@@ -81,9 +79,6 @@ COPY default.nix .
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix diffutils_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix gnupg_minimal_static
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f default.nix silver_searcher_static
-RUN nix-env -p /nix/var/nix/profiles/extra2 -iA -f default.nix protobuf_3_8_0_static
-RUN nix-env -p /nix/var/nix/profiles/extra3 -iA -f default.nix protobuf_3_9_2_static
-# RUN nix-env -p /nix/var/nix/profiles/extra4 -iA -f default.nix protobuf3_20_static
 
 COPY --from=third-party nixpkgs nixpkgs
 RUN nix-env -p /nix/var/nix/profiles/default -iA -f ./nixpkgs/default.nix vim-bundle

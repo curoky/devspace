@@ -4,6 +4,7 @@ FROM debian:bookworm-backports AS packer
 RUN apt-get update -y && apt-get install -y rsync curl file binutils less vim # python3 python3-pip
 
 COPY --from=curoky/dotbox:stage-prebuilt-base /output /output-base
+COPY --from=curoky/dotbox:stage-prebuilt-base-big /output /output-base-big
 COPY --from=curoky/dotbox:stage-prebuilt-llvm18 /output /output-llvm18
 COPY --from=curoky/dotbox:stage-prebuilt-rust /output /output-rust
 COPY --from=curoky/dotbox:stage-prebuilt-perl /output /output-perl
@@ -13,6 +14,7 @@ COPY --from=curoky/dotbox:stage-prebuilt-haskell /output /output-haskell
 COPY --from=curoky/dotbox:stage-prebuilt-experimental /output /output-experimental
 
 RUN rsync --progress --archive --human-readable /output-base/ /output/ \
+  && rsync --progress --archive --human-readable /output-base-big/ /output/ \
   && rsync --progress --archive --human-readable /output-llvm18/ /output/ \
   && rsync --progress --archive --human-readable /output-rust/ /output/ \
   && rsync --progress --archive --human-readable /output-perl/ /output/ \

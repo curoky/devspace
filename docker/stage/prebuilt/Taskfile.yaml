@@ -17,6 +17,14 @@ tasks:
         --file Dockerfile.base
         --network=host
         --tag curoky/dotbox:stage-prebuilt-base
+  base-big:
+    cmds:
+      - >
+        docker buildx build .
+        --build-context third-party=../../../third-party
+        --file Dockerfile.base-big
+        --network=host
+        --tag curoky/dotbox:stage-prebuilt-base-big
   llvm17:
     cmds:
       - >

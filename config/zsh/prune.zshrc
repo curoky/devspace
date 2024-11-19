@@ -40,12 +40,12 @@ source ${ZSH}/plugins/git/git.plugin.zsh
 source ${ZSH}/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ${ZSH}/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-if [[ ! -f $XDG_CACHE_HOME/starship.plugin.zsh ]]; then
+if [[ ! -f $XDG_CACHE_HOME/starship.plugin.zsh ]] && command -v starship >/dev/null 2>&1; then
   starship init zsh > $XDG_CACHE_HOME/starship.plugin.zsh
 fi
 source $XDG_CACHE_HOME/starship.plugin.zsh
 
-if [[ ! -f $XDG_CACHE_HOME/atuin.plugin.zsh ]]; then
+if [[ ! -f $XDG_CACHE_HOME/atuin.plugin.zsh ]] && command -v atuin >/dev/null 2>&1; then
   atuin init zsh --disable-up-arrow > $XDG_CACHE_HOME/atuin.plugin.zsh
 fi
 source $XDG_CACHE_HOME/atuin.plugin.zsh
