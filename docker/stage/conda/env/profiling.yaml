@@ -10,7 +10,7 @@ dependencies:
       - pydantic
       - requests
       - typer
-      # - python-snappy==0.6.1
+      - python-snappy
       - locust
       - sqlmodel
       # - bbpb
