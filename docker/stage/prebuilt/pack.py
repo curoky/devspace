@@ -156,6 +156,9 @@ if __name__ == "__main__":
             Path("/nix/var/nix/profiles/extra2"),
             Path("/nix/var/nix/profiles/extra3"),
             Path("/nix/var/nix/profiles/extra4"),
+            Path("/nix/var/nix/profiles/extra5"),
+            Path("/nix/var/nix/profiles/extra6"),
+            Path("/nix/var/nix/profiles/extra7"),
         ],
     )
     pack(
