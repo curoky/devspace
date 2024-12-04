@@ -16,6 +16,6 @@ dependencies:
       # - bbpb
       # - notion-client
       # - git+https://github.com/curoky/thriftpy2@dev
-      - git+https://github.com/curoky/thriftoy@master
+      # - git+ssh://git@github.com/curoky/thriftool
       # - protobuf==5.28.3
       - tensorflow==2.17.1
