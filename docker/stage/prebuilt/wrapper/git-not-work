@@ -16,4 +16,4 @@ if [[ -z $GIT_TEXTDOMAINDIR ]]; then
 fi
 
 # export PATH=$PATH:$root/libexec/git-core
-exec -a "$0" "$root/bin/.git-wrapped" "$@"
+exec -a "$0" "$root/bin/dot-git-wrapped" "$@"

@@ -3,4 +3,4 @@
 script_path="$(readlink -f "$0")"
 root=$(cd "$(dirname "$script_path")" && pwd)/..
 
-exec -a "$0" "$root/bin/.wget-wrapped" --ca-certificate $root/etc/ssl/certs/ca-certificates.crt "$@"
+exec -a "$0" "$root/bin/dot-wget-wrapped" --ca-certificate $root/etc/ssl/certs/ca-certificates.crt "$@"

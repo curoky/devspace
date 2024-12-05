@@ -3,4 +3,4 @@
 script_path="$(readlink -f "$0")"
 root=$(cd "$(dirname "$script_path")" && pwd)/..
 
-exec -a "$0" "$root/bin/.curl-wrapped" --cacert $root/etc/ssl/certs/ca-certificates.crt "$@"
+exec -a "$0" "$root/bin/dot-curl-wrapped" --cacert $root/etc/ssl/certs/ca-certificates.crt "$@"
