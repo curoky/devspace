@@ -20,6 +20,7 @@ dependencies:
       # - scikit-learn
       # - scipy
       # - statsmodels
+      - rapids-dask-dependency==24.2.0
       - tensorflow==2.17.* # tensorflow[and-cuda]
       - tensorboard==2.17.*
       - tensorboard-plugin-profile==2.17.*
