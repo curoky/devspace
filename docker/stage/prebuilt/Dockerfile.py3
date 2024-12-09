@@ -10,7 +10,7 @@ RUN nix-channel --add https://nixos.org/channels/nixos-24.11 nixpkgs \
 
 COPY default.nix .
 RUN nix-env -p /nix/var/nix/profiles/py311-static -iA -f default.nix python311_static
-RUN nix-env -p /nix/var/nix/profiles/py311 -iA nixpkgs.pipx
+RUN nix-env -p /nix/var/nix/profiles/py311 -iA nixpkgs.python311Packages.pipx
 
 COPY pipx-install.sh .
 RUN ./pipx-install.sh licenseheaders dotdrop netron git-filter-repo dool asciinema licenseheaders
