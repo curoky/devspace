@@ -50,6 +50,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zip
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zlib-ng
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zstd
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.util-linux
 
 RUN nix-env -p /nix/var/nix/profiles/default2 -iA nixpkgs.pkgsStatic.openssl.bin
 RUN nix-env -p /nix/var/nix/profiles/default3 -iA nixpkgs.pkgsStatic.tzdata.out
@@ -64,7 +65,6 @@ RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.gettext
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.git-extras
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.gnumake
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.m4
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.util-linux
 
 RUN nix-env -p /nix/var/nix/profiles/inner -iA nixpkgs.pkgsStatic.file
 RUN nix-env -p /nix/var/nix/profiles/inner -iA nixpkgs.pkgsStatic.vim
