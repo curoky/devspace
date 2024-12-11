@@ -15,10 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: sh <(curl -L https://nixos.org/nix/install)
+
       - run: |
           nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
           nix-channel --update
+
       - run: nix-env -iA nixpkgs.cat
+
       - uses: mxschmitt/action-tmate@v3
-        if: ${{ failure() && github.event_name == 'workflow_dispatch' }}
+        if: ${{ failure() }}
         timeout-minutes: 30
