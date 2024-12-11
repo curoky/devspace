@@ -1,0 +1,21 @@
+name: Pack prebuilt
+
+on:
+  push:
+    paths:
+      - '.github/workflows/pack-prebuilt.yaml'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  pack:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: sh <(curl -L https://nixos.org/nix/install)
+      - run: |
+          nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+          nix-channel --update
+      - run: nix-env -iA nixpkgs.cat
