@@ -135,6 +135,9 @@ if __name__ == "__main__":
             Path("/nix/var/nix/profiles/default5"),
             Path("/nix/var/nix/profiles/default6"),
             Path("/nix/var/nix/profiles/default7"),
+            # for macos
+            Path.home() / "nix/profiles/default",
+            Path.home() / "nix/profiles/default2",
         ],
     )
     pack(

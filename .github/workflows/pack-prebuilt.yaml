@@ -22,7 +22,7 @@ jobs:
       #     ~/.nix-profile/nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
       #     ~/.nix-profile/nix-channel --update
 
-      - run: mkdir -p ~/nix/profiles/default
+      - run: mkdir -p ~/nix/profiles/
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.bzip2
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.xz
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.zstd
