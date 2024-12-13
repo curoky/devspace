@@ -27,7 +27,7 @@ jobs:
 
       - run: mkdir -p ~/nix/profiles/
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.bzip2
-      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.xz
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.xz2
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.zstd
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.zip
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.unzip
