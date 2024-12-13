@@ -22,32 +22,37 @@ jobs:
       #     ~/.nix-profile/nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
       #     ~/.nix-profile/nix-channel --update
 
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.bzip2
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.xz
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zstd
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.zip
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.unzip
+      - run: mkdir -p ~/nix/profiles/default
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.bzip2
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.xz
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.zstd
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.zip
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.unzip
 
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gettext
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.m4
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gnupatch
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.gettext
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.m4
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.gnupatch
 
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.netcat
-      - run: nix-env -p /nix/var/nix/profiles/default2 -iA nixpkgs.pkgsStatic.lsof
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.connect
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.inetutils
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.netcat
+      - run: nix-env -p ~/nix/profiles/default2 -iA nixpkgs.pkgsStatic.lsof
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.connect
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.inetutils
 
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.ncdu_1
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.coreutils
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.ncdu_1
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.coreutils
 
       # - run: nix-env -iA nixpkgs.pkgsStatic.parallel
       # - run: nix-env -iA nixpkgs.pkgsStatic.wget
       # - run: nix-env -iA nixpkgs.pkgsStatic.eza
       # - run: nix-env -iA nixpkgs.pkgsStatic.fd
 
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.silver_searcher
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.aria2
-      - run: nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.exiftool
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.silver-searcher
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.rsync
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.krb5
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.aria2
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.fzf
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.exiftool
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.gost
 
       - uses: mxschmitt/action-tmate@v3
         if: ${{ failure() }}
