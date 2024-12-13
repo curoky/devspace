@@ -22,5 +22,5 @@ Host github.com
 Host bitbucket.org
   IdentityFile ~/.ssh/github.private.id_ed25519
 
-# Host *.tmate.io
-#   IdentityFile ~/xxx/conf/ssh/github.private.id_rsa
+Host *.tmate.io
+  IdentityFile ~/.ssh/github.private.id_ed25519

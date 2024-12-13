@@ -20,7 +20,7 @@ jobs:
           nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
           nix-channel --update
 
-      - run: nix-env -iA nixpkgs.cat
+      - run: ~/.nix-profile/bin/nix-env -iA nixpkgs.pkgsStatic.xz
 
       - uses: mxschmitt/action-tmate@v3
         if: ${{ failure() }}
