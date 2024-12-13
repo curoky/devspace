@@ -53,8 +53,8 @@ jobs:
 
       # - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.krb5
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.aria2
-      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.fzf
-      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.exiftool
+
+
       # - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.gost
 
       - run: ./docker/stage/prebuilt/pack.py
