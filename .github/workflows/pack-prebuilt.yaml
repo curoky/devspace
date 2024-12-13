@@ -31,45 +31,103 @@ jobs:
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.zstd
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.zip
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.unzip
-
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.gettext
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.m4
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.gnupatch
-
       - run: nix-env -p ~/nix/profiles/default2 -iA nixpkgs.pkgsStatic.netcat
-      - run: nix-env -p ~/nix/profiles/default3 -iA nixpkgs.pkgsStatic.lsof
-      - run: nix-env -p ~/nix/profiles/default4 -iA nixpkgs.pkgsStatic.connect
-      - run: nix-env -p ~/nix/profiles/default5 -iA nixpkgs.pkgsStatic.inetutils
-
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.lsof
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.connect
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.inetutils
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.ncdu_1
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.coreutils
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.silver-searcher
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.rsync
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.aria2
+      - run: nix-env -p ~/nix/profiles/default -iA -f ./docker/stage/prebuilt/default.nix vim-bundle
+      - run: nix-env -p ~/nix/profiles/default -iA -f ./docker/stage/prebuilt/default.nix zsh-bundle
+      - run: nix-env -p ~/nix/profiles/default -iA -f ./docker/stage/prebuilt/default.nix rime-bundle
 
       # - run: nix-env -iA nixpkgs.pkgsStatic.parallel
       # - run: nix-env -iA nixpkgs.pkgsStatic.wget
       # - run: nix-env -iA nixpkgs.pkgsStatic.eza
       # - run: nix-env -iA nixpkgs.pkgsStatic.fd
-
       # - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.krb5
-      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.aria2
-
-
+      # - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.fzf
+      # - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.exiftool
       # - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.gost
 
       - run: ./docker/stage/prebuilt/pack.py
 
       - name: pack osx
         run: |
-          tar -czvf output-mac2.tar.gz /tmp/output
+          tar -czvf output-mac.tar.gz /tmp/output
 
       - uses: actions/upload-artifact@v4
         # if: ${{ github.event_name == 'workflow_dispatch' }}
         with:
           name: output
           path: |
-            output-mac2.tar.gz
+            output-mac.tar.gz
+
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          file: output.tar.gz
+          asset_name: output-mac.tar.gz
+          tag: 'v1.0.0'
+          overwrite: true
 
       - uses: mxschmitt/action-tmate@v3
         if: ${{ failure() }}
         timeout-minutes: 30
+
+  pack-prebuilt:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker pull curoky/dotbox:stage-prebuilt
+      - run: |
+          id=$(docker create curoky/dotbox:stage-prebuilt)
+          docker cp $id:/output - > output.tar
+          docker rm -v $id
+          tar -xvf output.tar
+          tar -czvf output.tar.gz ./output
+
+      - name: pack minimal
+        run: |
+          cp -r ./output ./output-minimal
+          rm -rf ./output-minimal/extra
+          rm -rf ./output-minimal/experimental
+          tar -czvf output-minimal.tar.gz ./output-minimal
+
+      - name: pack osx
+        run: |
+          id=$(docker create curoky/dotbox:stage-prebuilt-mac)
+          docker cp $id:/output - > output-mac.tar
+          gzip output-mac.tar
+
+      - uses: actions/upload-artifact@v4
+        # if: ${{ github.event_name == 'workflow_dispatch' }}
+        with:
+          name: output
+          path: |
+            output.tar.gz
+            output-minimal.tar.gz
+
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          file: output.tar.gz
+          asset_name: output.tar.gz
+          tag: 'v1.0.0'
+          overwrite: true
+
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          file: output-minimal.tar.gz
+          asset_name: output-minimal.tar.gz
+          tag: 'v1.0.0'
+          overwrite: true
+
+      - name: test
+        run: ./host/linux/bootstrap.sh
