@@ -14,6 +14,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
       - run: sh <(curl -L https://nixos.org/nix/install)
 
       - run: echo "/nix/var/nix/profiles/default/bin/" >> $GITHUB_PATH
@@ -35,24 +38,26 @@ jobs:
 
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.netcat
       - run: nix-env -p ~/nix/profiles/default2 -iA nixpkgs.pkgsStatic.lsof
-      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.connect
+      - run: nix-env -p ~/nix/profiles/default3 -iA nixpkgs.pkgsStatic.connect
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.inetutils
 
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.ncdu_1
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.coreutils
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.silver-searcher
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.rsync
 
       # - run: nix-env -iA nixpkgs.pkgsStatic.parallel
       # - run: nix-env -iA nixpkgs.pkgsStatic.wget
       # - run: nix-env -iA nixpkgs.pkgsStatic.eza
       # - run: nix-env -iA nixpkgs.pkgsStatic.fd
 
-      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.silver-searcher
-      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.rsync
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.krb5
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.aria2
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.fzf
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.exiftool
-      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.gost
+      # - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.gost
+
+      - run: ./docker/stage/prebuilt/pack.py
 
       - uses: mxschmitt/action-tmate@v3
         if: ${{ failure() }}
