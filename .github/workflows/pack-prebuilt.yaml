@@ -9,7 +9,7 @@ on:
     - cron: '0 0 * * 0'
 
 jobs:
-  pack:
+  macos:
     runs-on: macos-latest
 
     steps:
@@ -43,9 +43,9 @@ jobs:
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.silver-searcher
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.rsync
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.aria2
-      - run: nix-env -p ~/nix/profiles/default -iA -f ./docker/stage/prebuilt/default.nix vim-bundle
-      - run: nix-env -p ~/nix/profiles/default -iA -f ./docker/stage/prebuilt/default.nix zsh-bundle
-      - run: nix-env -p ~/nix/profiles/default -iA -f ./docker/stage/prebuilt/default.nix rime-bundle
+      - run: nix-env -p ~/nix/profiles/default -iA -f ./third-party/nixpkgs/default.nix vim-bundle
+      - run: nix-env -p ~/nix/profiles/default -iA -f ./third-party/nixpkgs/default.nix zsh-bundle
+      - run: nix-env -p ~/nix/profiles/default -iA -f ./third-party/nixpkgs/default.nix rime-bundle
 
       # - run: nix-env -iA nixpkgs.pkgsStatic.parallel
       # - run: nix-env -iA nixpkgs.pkgsStatic.wget
@@ -60,19 +60,19 @@ jobs:
 
       - name: pack osx
         run: |
-          tar -czvf output-mac.tar.gz /tmp/output
+          tar -czvf output-macos.tar.gz /tmp/output
 
       - uses: actions/upload-artifact@v4
         # if: ${{ github.event_name == 'workflow_dispatch' }}
         with:
           name: output
           path: |
-            output-mac.tar.gz
+            output-macos.tar.gz
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: output.tar.gz
-          asset_name: output-mac.tar.gz
+          file: output-macos.tar.gz
+          asset_name: output-macos.tar.gz
           tag: 'v1.0.0'
           overwrite: true
 
@@ -80,7 +80,7 @@ jobs:
         if: ${{ failure() }}
         timeout-minutes: 30
 
-  pack-prebuilt:
+  linux:
     runs-on: ubuntu-latest
     permissions:
       contents: write
