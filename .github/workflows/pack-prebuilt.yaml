@@ -36,10 +36,10 @@ jobs:
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.m4
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.gnupatch
 
-      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.netcat
-      - run: nix-env -p ~/nix/profiles/default2 -iA nixpkgs.pkgsStatic.lsof
-      - run: nix-env -p ~/nix/profiles/default3 -iA nixpkgs.pkgsStatic.connect
-      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.inetutils
+      - run: nix-env -p ~/nix/profiles/default2 -iA nixpkgs.pkgsStatic.netcat
+      - run: nix-env -p ~/nix/profiles/default3 -iA nixpkgs.pkgsStatic.lsof
+      - run: nix-env -p ~/nix/profiles/default4 -iA nixpkgs.pkgsStatic.connect
+      - run: nix-env -p ~/nix/profiles/default5 -iA nixpkgs.pkgsStatic.inetutils
 
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.ncdu_1
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.coreutils
@@ -58,6 +58,17 @@ jobs:
       # - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.gost
 
       - run: ./docker/stage/prebuilt/pack.py
+
+      - name: pack osx
+        run: |
+          tar -czvf output-mac2.tar.gz /tmp/output
+
+      - uses: actions/upload-artifact@v4
+        # if: ${{ github.event_name == 'workflow_dispatch' }}
+        with:
+          name: output
+          path: |
+            output-mac2.tar.gz
 
       - uses: mxschmitt/action-tmate@v3
         if: ${{ failure() }}

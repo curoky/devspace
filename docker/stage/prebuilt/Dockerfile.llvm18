@@ -15,4 +15,4 @@ COPY pack.py .
 RUN /nix/var/nix/profiles/packer/bin/python3 ./pack.py
 
 FROM debian:bookworm-backports
-COPY --from=nixpkgs-builder /output/bin/clang-format /output/bin/clang-format-18
+COPY --from=nixpkgs-builder /tmp/output/bin/clang-format /output/bin/clang-format-18
