@@ -27,7 +27,7 @@ jobs:
 
       - run: mkdir -p ~/nix/profiles/
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.bzip2
-      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.xz2
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.xz
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.zstd
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.zip
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.unzip
@@ -43,6 +43,14 @@ jobs:
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.silver-searcher
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.rsync
       - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.aria2
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.zsh
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.pkgsStatic.vim
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.git-lfs
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.gost
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.fzf
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.shfmt
+      - run: nix-env -p ~/nix/profiles/default -iA nixpkgs.go-task
+
       - run: nix-env -p ~/nix/profiles/default -iA -f ./third-party/nixpkgs/default.nix vim-bundle
       - run: nix-env -p ~/nix/profiles/default -iA -f ./third-party/nixpkgs/default.nix zsh-bundle
       - run: nix-env -p ~/nix/profiles/default -iA -f ./third-party/nixpkgs/default.nix rime-bundle
