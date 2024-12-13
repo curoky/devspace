@@ -90,4 +90,4 @@ COPY pack.py .
 RUN /nix/var/nix/profiles/packer/bin/python3 ./pack.py
 
 FROM debian:bookworm-backports
-COPY --from=nixpkgs-builder /output /output
+COPY --from=nixpkgs-builder /tmp/output /output
