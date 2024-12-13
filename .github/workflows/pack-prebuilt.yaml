@@ -22,6 +22,16 @@ jobs:
 
       - run: /nix/var/nix/profiles/default/bin/nix-env -iA nixpkgs.pkgsStatic.xz
 
+      - run: /nix/var/nix/profiles/default/bin/nix-env -iA nixpkgs.pkgsStatic.lsof
+
+      - run: /nix/var/nix/profiles/default/bin/nix-env -iA nixpkgs.pkgsStatic.gettext
+
+      - run: /nix/var/nix/profiles/default/bin/nix-env -iA nixpkgs.pkgsStatic.m4
+
+      - run: /nix/var/nix/profiles/default/bin/nix-env -iA nixpkgs.pkgsStatic.ncdu
+
+      - run: /nix/var/nix/profiles/default/bin/nix-env -iA nixpkgs.pkgsStatic.wget
+
       - uses: mxschmitt/action-tmate@v3
         if: ${{ failure() }}
         timeout-minutes: 30
