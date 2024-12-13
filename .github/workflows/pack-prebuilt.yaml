@@ -65,9 +65,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         # if: ${{ github.event_name == 'workflow_dispatch' }}
         with:
-          name: output
-          path: |
-            output-macos.tar.gz
+          path: output-macos.tar.gz
 
       - uses: svenstaro/upload-release-action@v2
         with:
