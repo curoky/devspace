@@ -146,6 +146,7 @@ profiles:
     dotfiles:
       # - prettier
       - atuin
+      - conda
       - top
       - rime
       - snipaste
