@@ -27,6 +27,8 @@ ENV_PATHS=(
   "$HOMEBREW_PREFIX/opt/openssl@3/bin"
   "$HOMEBREW_PREFIX/opt/unzip/bin"
   "$HOMEBREW_PREFIX/opt/ruby/bin"
+  "$HOME/prebuilt/bin"
+  "/nix/var/nix/profiles/default/bin"
 )
 for p in "${ENV_PATHS[@]}"; do
   [[ -d $p ]] && export PATH=$p:$PATH
@@ -37,10 +39,8 @@ ENV_PATHS=(
   "$HOME/.nix-profile/bin"
   "/app/pipx/bin"
   "/app/conda/condabin"
-  "/app/prebuilt/bin"
-  # "/app/prebuilt/extra/bin"
-  "/nix/var/nix/profiles/default/bin"
 
+  # "/app/prebuilt/extra/bin"
   # "$HOME/.npm-global/bin"
   "$HOME/dotbox/tools"
   # "$HOME/go/bin"

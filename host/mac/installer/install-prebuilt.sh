@@ -17,8 +17,10 @@
 # limitations under the License.
 set -xeuo pipefail
 
-rm -rf /tmp/prebuilt-mac.tar.gz
-curl -SL https://github.com/curoky/dotbox/releases/download/v1.0.0/output-mac.tar.gz -o /tmp/prebuilt-mac.tar.gz
+rm -rf /tmp/prebuilt-macos.tar.gz
+curl -SL https://github.com/curoky/dotbox/releases/download/v1.0.0/output-macos.tar.gz -o /tmp/prebuilt-macos.tar.gz
 rm -rf ~/prebuilt
 mkdir ~/prebuilt
-tar -xzf /tmp/prebuilt-mac.tar.gz -C ~/prebuilt --strip-components=1
+tar -xzf /tmp/prebuilt-macos.tar.gz -C ~/prebuilt --strip-components=2
+
+# sudo find ~/prebuilt/bin -type f -exec xattr -d com.apple.quarantine {} +

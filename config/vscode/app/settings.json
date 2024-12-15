@@ -6,6 +6,7 @@
   "C_Cpp.default.intelliSenseMode": "gcc-x64",
   "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
   "C_Cpp.inlayHints.autoDeclarationTypes.showOnLeft": true,
+  "C_Cpp.inlayHints.parameterNames.enabled": true,
   "C_Cpp.inlayHints.referenceOperator.enabled": true,
   "C_Cpp.intelliSenseCacheSize": 16384,
   "C_Cpp.intelliSenseMemoryLimit": 16384,
@@ -356,6 +357,7 @@
   "python.analysis.inlayHints.functionReturnTypes": true,
   "python.analysis.inlayHints.pytestParameters": true,
   "python.analysis.inlayHints.variableTypes": true,
+  "python.analysis.languageServerMode": "full",
   "python.analysis.typeCheckingMode": "basic",
   "python.languageServer": "Pylance",
   "python.terminal.activateEnvironment": false,
@@ -364,9 +366,7 @@
   "remote.SSH.connectTimeout": 36000,
   "remote.SSH.logLevel": "trace",
   "remote.SSH.maxReconnectionAttempts": 8,
-  "remote.SSH.remotePlatform": {
-    "a30": "linux"
-  },
+  "remote.downloadExtensionsLocally": true,
   "remote.tunnels.access.preventSleep": true,
   "rest-client.enableTelemetry": false,
   "rest-client.environmentVariables": {
@@ -438,7 +438,7 @@
     "editorBracketHighlight.foreground6": "#90a983",
     "minimap.background": "#1f1f2256"
   },
-  "workbench.colorTheme": "Better Selenized Light",
+  "workbench.colorTheme": "Better Solarized Light",
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.wrapTabs": true,
   "workbench.editorAssociations": {
