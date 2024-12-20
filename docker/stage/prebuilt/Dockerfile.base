@@ -58,9 +58,9 @@ RUN nix-env -p /nix/var/nix/profiles/default3 -iA nixpkgs.pkgsStatic.tzdata.out
 RUN nix-env -p /nix/var/nix/profiles/default4 -iA nixpkgs.pkgsStatic.netcat
 
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.glibcLocales
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.binutils
+# RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.binutils
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.bison
-RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.coreutils
+# RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.coreutils
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.flex
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.gettext
 RUN nix-env -p /nix/var/nix/profiles/extra -iA nixpkgs.pkgsStatic.git-extras
