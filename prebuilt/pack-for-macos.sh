@@ -44,6 +44,7 @@ wait
 rename_wrapped
 remove_unneeded
 link_bin
+add_dotbox
 
 ln -s -r tmp/prebuilt/bin/vim tmp/prebuilt/bin/vi
 

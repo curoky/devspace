@@ -128,10 +128,12 @@ remove_unneeded
 strip_bin
 link_bin
 copy_wrapper
+add_dotbox
 
 ln -s -r tmp/prebuilt/bin/bazelisk tmp/prebuilt/bin/bazel
 ln -s -r tmp/prebuilt/bin/vim tmp/prebuilt/bin/vi
 ln -s -r tmp/prebuilt/bin/clang-format tmp/prebuilt/bin/clang-format-18
 
 ./setup-pipx.sh
-tar -czvf tmp/prebuilt.linux_amd64.tar.gz tmp/prebuilt
+cd tmp
+tar -czvf prebuilt.linux_amd64.tar.gz prebuilt

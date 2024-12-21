@@ -62,9 +62,8 @@ ENV_FPATHS=(
   # "/usr/share/zsh/vendor-completions"
   # typer
   # "$HOME/.zfunc"
-  # /home/x/prebuilt/share/zsh/site-functions
 
-  "$HOME/prebuilt/share/zsh/site-functions"
+  "$HOME/prebuilt/pkgs/zsh-bundle/share/zsh/site-functions"
   # "$HOME/prebuilt/share/zsh/zsh-functions"
 )
 

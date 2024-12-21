@@ -45,3 +45,8 @@ function rename_wrapped() {
 function copy_wrapper() {
   cp --remove-destination wrapper/* tmp/prebuilt/bin/
 }
+
+function add_dotbox() {
+  mkdir -p tmp/prebuilt/dotbox
+  curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/dev.tar.gz | tar -xv --gunzip -C tmp/prebuilt/dotbox --strip-components 1
+}

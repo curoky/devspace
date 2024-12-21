@@ -26,7 +26,7 @@ if [[ -f $HOMEBREW_PREFIX/bin/brew ]]; then
   eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 fi
 
-export ZSH=~/prebuilt/share/oh-my-zsh
+export ZSH=~/prebuilt/pkgs/zsh-bundle/share/oh-my-zsh
 # https://github.com/ohmyzsh/ohmyzsh/blob/7ed475cb589c9e82211f71b3a5d7083b69cea93c/oh-my-zsh.sh#L132
 autoload -Uz compinit # zrecompile compaudit
 compinit -u -d $XDG_CACHE_HOME/.zcompdump
