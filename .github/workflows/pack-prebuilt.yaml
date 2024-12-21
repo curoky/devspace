@@ -21,6 +21,7 @@ jobs:
           python-version: '3'
       - uses: Homebrew/actions/setup-homebrew@master
       - run: brew install coreutils
+      - run: echo "/opt/homebrew/opt/coreutils/libexec/gnubin" >> $GITHUB_PATH
       - run: |
           cd prebuilt
           ./pack-for-macos.sh
