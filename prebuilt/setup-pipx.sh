@@ -25,6 +25,6 @@ mkdir -p $PIPX_HOME
 nix-channel --add https://nixos.org/channels/nixos-24.11 nixpkgs &&
   nix-channel --update
 
-nix-env -p /nix/var/nix/profiles/py311 -iA nixpkgs.python311Packages.pipx
+nix-env -iA nixpkgs.python311Packages.pipx
 
-/nix/var/nix/profiles/py311/bin/pipx install licenseheaders dotdrop netron git-filter-repo dool asciinema licenseheaders
+~/.nix-profile/bin/pipx install licenseheaders dotdrop netron git-filter-repo dool asciinema licenseheaders
