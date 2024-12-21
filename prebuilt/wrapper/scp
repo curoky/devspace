@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+script_path="$(readlink -f "$0")"
+root=$(cd "$(dirname "$script_path")" && pwd)/..
+pkgs=$root/pkgs
+
+exec -a "$0" "$pkgs/openssh_gssapi/bin/scp" -S $pkgs/openssh_gssapi/bin/ssh "$@"

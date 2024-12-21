@@ -1,0 +1,10 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - >
+        docker buildx build .
+        --file Dockerfile
+        --network=host
+        --tag curoky/dotbox:stage-prebuilt-v2

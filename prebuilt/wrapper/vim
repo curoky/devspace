@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# https://askubuntu.com/questions/445686/vim-cannot-find-syntax-vim
+
+script_path="$(readlink -f "$0")"
+root=$(cd "$(dirname "$script_path")" && pwd)/..
+pkgs=$root/pkgs
+
+if [[ -z $VIMRUNTIME ]]; then
+  export VIMRUNTIME=$pkgs/vim/share/vim/vim91
+fi
+
+# args=""
+# if [[ -f $HOME/dotbox/config/vim/vimrc ]]; then
+#   args="-u $HOME/dotbox/config/vim/vimrc"
+# elif [[ -f $HOME/prebuilt/dotbox/config/vim/vimrc ]]; then
+#   args="-u $HOME/prebuilt/dotbox/config/vim/vimrc"
+# fi
+
+exec -a "$0" "$pkgs/vim/bin/vim" "$@"

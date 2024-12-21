@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+script_path="$(readlink -f "$0")"
+root=$(cd "$(dirname "$script_path")" && pwd)/..
+pkgs=$root/pkgs
+
+export PYTHONHOME=$pkgs/python311
+export PYTHONPATH=$PYTHONPATH:$PYTHONHOME/lib/python3.11
+export PYTHONPATH=$PYTHONPATH:$PYTHONHOME/lib/python3.11/site-packages
+export PYTHONPATH=$PYTHONPATH:$PYTHONHOME/lib/python3.11/lib-dynload
+export PYTHONPATH=$PYTHONPATH:$root/pipx/venvs/netron/lib/python3.11/site-packages
+
+# python_bin_path=/home/x/.nix-profile/bin/python3.11
+# pathon_lib_root=/nix/var/nix/profiles/py311-static/lib/python3.11/
+
+exec -a "$0" "$PYTHONHOME/bin/python3" "$root/pipx/venvs/netron/bin/netron" "$@"
