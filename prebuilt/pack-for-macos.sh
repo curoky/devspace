@@ -57,6 +57,7 @@ for pkg in "${pkgs[@]}"; do
 done
 wait
 
+rm -rf tmp/prebuilt/pkgs/zsh
 remove_unneeded
 
 rename_wrapped
