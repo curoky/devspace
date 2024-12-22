@@ -138,11 +138,13 @@ cp tmp/prebuilt/pkgs/llvmPackages_18.clang-unwrapped/bin/clang-format tmp/prebui
 rm -rf tmp/prebuilt/pkgs/llvmPackages_18.clang-unwrapped
 
 rm -rf tmp/prebuilt/pkgs/glibcLocales
+rm -rf tmp/prebuilt/pkgs/binutils
+rm -rf tmp/prebuilt/pkgs/coreutils
+remove_unneeded
 
 rename_wrapped
-remove_unneeded
 strip_bin
-link_bin
+link_to_bin
 copy_wrapper
 add_dotbox
 

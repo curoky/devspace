@@ -26,16 +26,16 @@ function download_pkg() {
   tar -x --gunzip -f tmp/download/${pkg}.tar.gz -C tmp/prebuilt/pkgs/${pkg} --strip-components 1
 }
 
-function link_bin() {
+function link_to_bin() {
   mkdir -p tmp/prebuilt/bin
   find tmp/prebuilt/pkgs/*/bin -type f -exec ln -s -r {} $PWD/tmp/prebuilt/bin/ \;
 }
 
 function strip_bin() {
   chmod -R +w tmp/prebuilt/
-  for f in $(find tmp/prebuilt/ -executable -type f); do
-    if file "$f" | grep -q 'ELF'; then
-      strip --strip-unneeded "$f"
+  find tmp/prebuilt/pkgs/*/bin -executable -type f | while read -r file; do
+    if file "$file" | grep -q 'ELF'; then
+      strip --strip-unneeded "$file"
     fi
   done
 }
@@ -50,7 +50,6 @@ function remove_unneeded() {
 }
 
 function rename_wrapped() {
-
   find tmp/prebuilt/pkgs -type f -name ".*-wrapped" | while read -r file; do
     dir=$(dirname "$file")
     new_name=$(basename "$file" | sed -e 's/-wrapped//g' -e 's/^.//')

@@ -57,9 +57,10 @@ for pkg in "${pkgs[@]}"; do
 done
 wait
 
-rename_wrapped
 remove_unneeded
-link_bin
+
+rename_wrapped
+link_to_bin
 add_dotbox
 
 ln -s -r tmp/prebuilt/bin/vim tmp/prebuilt/bin/vi
