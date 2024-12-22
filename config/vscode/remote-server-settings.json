@@ -12,7 +12,7 @@
   "[cpp]": {
     "editor.tabSize": 2
   },
-  "bazel.buildifierExecutable": "/app/prebuilt/bin/buildifier",
+  "bazel.buildifierExecutable": "/app/prebuilt/pkgs/buildifier/bin/buildifier",
   "bazel.executable": "/app/prebuilt/pkgs/bazelisk/bin/bazelisk",
   "black-formatter.path": ["/nix/var/nix/profiles/default/bin/black"],
   "clang-format.executable": "/app/prebuilt/pkgs/clang-format-18/bin/clang-format-18",

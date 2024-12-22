@@ -2,6 +2,5 @@
 
 script_path="$(readlink -f "$0")"
 root=$(cd "$(dirname "$script_path")" && pwd)/..
-pkgs=$root/pkgs
 
-exec -a "$0" "$pkgs/wget/bin/wget" --ca-certificate $pkgs/cacert/etc/ssl/certs/ca-certificates.crt "$@"
+exec -a "$0" "$root/bin/dot-wget-wrapped" --ca-certificate $root/../cacert/etc/ssl/certs/ca-certificates.crt "$@"

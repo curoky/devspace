@@ -144,8 +144,8 @@ remove_unneeded
 
 rename_wrapped
 strip_bin
-link_to_bin
 copy_wrapper
+link_to_bin
 add_dotbox
 
 ln -s -r tmp/prebuilt/bin/bazelisk tmp/prebuilt/bin/bazel

@@ -2,6 +2,5 @@
 
 script_path="$(readlink -f "$0")"
 root=$(cd "$(dirname "$script_path")" && pwd)/..
-pkgs=$root/pkgs
 
-exec -a "$0" "$pkgs/file/bin/file" "--magic-file" "$pkgs/file/share/misc/magic.mgc" "$@"
+exec -a "$0" "$root/bin/dot-file-wrapped" "--magic-file" "$root/share/misc/magic.mgc" "$@"

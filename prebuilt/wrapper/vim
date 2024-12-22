@@ -4,10 +4,9 @@
 
 script_path="$(readlink -f "$0")"
 root=$(cd "$(dirname "$script_path")" && pwd)/..
-pkgs=$root/pkgs
 
 if [[ -z $VIMRUNTIME ]]; then
-  export VIMRUNTIME=$pkgs/vim/share/vim/vim91
+  export VIMRUNTIME=$root/share/vim/vim91
 fi
 
 # args=""
@@ -17,4 +16,4 @@ fi
 #   args="-u $HOME/prebuilt/dotbox/config/vim/vimrc"
 # fi
 
-exec -a "$0" "$pkgs/vim/bin/vim" "$@"
+exec -a "$0" "$root/bin/dot-vim-wrapped" "$@"

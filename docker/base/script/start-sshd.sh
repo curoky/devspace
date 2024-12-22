@@ -26,7 +26,7 @@ chmod 600 /app/dotbox/config/sshd/host-key/*
 
 mkdir -p /var/log
 # https://github.com/un-def/openssh-static-build/blob/master/run-sshd.sh#L30
-/app/prebuilt/bin/sshd \
+/app/prebuilt/pkgs/openssh_gssapi/bin/sshd \
   -o SshdSessionPath="/app/prebuilt/pkgs/openssh_gssapi/libexec/sshd-session" \
   -f /app/dotbox/config/sshd/sshd_config.conf -e
 # -E /var/log/mysshd.log

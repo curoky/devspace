@@ -2,8 +2,6 @@
 
 script_path="$(readlink -f "$0")"
 root=$(cd "$(dirname "$script_path")" && pwd)/..
-pkgs=$root/pkgs
+export FPATH=$FPATH:$root/share/zsh/5.9/functions
 
-export FPATH=$FPATH:$pkgs/zsh/share/zsh/5.9/functions
-
-exec -a "$0" "$pkgs/zsh/bin/zsh" "$@"
+exec -a "$0" "$root/bin/dot-zsh-wrapped" "$@"
