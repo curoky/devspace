@@ -17,8 +17,8 @@ COPY --chown=5230:5230 ./ /app/dotbox
 
 RUN ln -sf /app/dotbox ~/dotbox \
   && ln -s /app/prebuilt ~/prebuilt \
-  && ln -s /app/prebuilt/bin/zsh /usr/bin \
-  && ln -s /app/prebuilt/bin/wget /usr/bin \
+  && ln -s /app/prebuilt/pkgs/zsh/bin/zsh /usr/bin \
+  && ln -s /app/prebuilt/pkgs/wget/bin/wget /usr/bin \
   && /app/dotbox/docker/base/script/setup-sysconf.sh ~/dotbox/config \
   && /app/dotbox/docker/base/script/setup-userconf.sh ~/dotbox/config \
   && mkdir -p /workspace \
