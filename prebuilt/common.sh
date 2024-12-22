@@ -20,6 +20,7 @@ set -xeuo pipefail
 function download_pkg() {
   pkg=$1
   arch=$(uname -s)_$(uname -m)
+  # arch=$(echo $(uname -s)_$(uname -m) | tr '[:upper:]' '[:lower:]')
   mkdir -p tmp/download
   mkdir -p tmp/prebuilt/pkgs/${pkg}
   curl -sSL -o tmp/download/${pkg}.tar.gz https://github.com/curoky/prebuilt/releases/download/v1.0/${pkg}.${arch,,}.tar.gz

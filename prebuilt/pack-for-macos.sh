@@ -65,4 +65,5 @@ add_dotbox
 
 ln -s -r tmp/prebuilt/bin/vim tmp/prebuilt/bin/vi
 
-tar -czf tmp/prebuilt.darwin_arm64.tar.gz tmp/prebuilt
+cd tmp
+tar -czf prebuilt.darwin_arm64.tar.gz prebuilt
