@@ -125,6 +125,8 @@ pkgs=(
   zsh
   zsh-bundle
   zstd
+  gawk
+  getopt
 )
 rm -rf tmp
 

@@ -45,10 +45,16 @@ pkgs=(
   fzf
   shfmt
   go-task
-
   vim-bundle
   zsh-bundle
   rime-bundle
+  openssl
+  gawk
+  getopt
+  findutils
+  gnugrep
+  gnupatch
+  gnutar
 )
 rm -rf tmp
 
