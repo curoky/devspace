@@ -30,6 +30,7 @@ pkgs=(
   bazelisk
   binutils
   bison
+  buildifier
   bzip2
   cacert
   connect
