@@ -152,4 +152,4 @@ ln -s -r tmp/prebuilt/bin/clang-format tmp/prebuilt/bin/clang-format-18
 
 ./setup-pipx.sh
 cd tmp
-tar -czvf prebuilt.linux_amd64.tar.gz prebuilt
+tar -czf prebuilt.linux_x86_64.tar.gz prebuilt

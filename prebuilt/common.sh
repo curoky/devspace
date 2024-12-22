@@ -51,7 +51,7 @@ function remove_unneeded() {
 
 function rename_wrapped() {
 
-  find tmp/prebuilt/pkgs/*/bin -type f -name ".*-wrapped" | while read -r file; do
+  find tmp/prebuilt/pkgs -type f -name ".*-wrapped" | while read -r file; do
     dir=$(dirname "$file")
     new_name=$(basename "$file" | sed -e 's/-wrapped//g' -e 's/^.//')
     mv "$file" "$dir/$new_name"
