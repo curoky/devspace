@@ -19,7 +19,7 @@ set -xeuo pipefail
 
 function download_pkg() {
   pkg=$1
-  arch=$(uname -s)_$(uname -m)
+  arch=${2:-$(uname -s)_$(uname -m)}
   # arch=$(echo $(uname -s)_$(uname -m) | tr '[:upper:]' '[:lower:]')
   mkdir -p tmp/download
   mkdir -p tmp/prebuilt/pkgs/${pkg}
