@@ -11,6 +11,7 @@ RUN apt-get update -y && apt-get install -y sudo curl
 RUN curl -SL https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt.linux_x86_64.tar.gz -o prebuilt.tar.gz \
   && mkdir -p /app/prebuilt \
   && tar -xzf prebuilt.tar.gz -C /app/prebuilt --strip-components=1 \
+  && chown -R 5230:5230 /app/prebuilt \
   && rm -rf prebuilt.tar.gz
 
 COPY --chown=5230:5230 ./ /app/dotbox
