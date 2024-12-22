@@ -21,40 +21,41 @@ source ./common.sh
 
 # task --list-all | sed -e 's/://g' -e 's/*//g'
 pkgs=(
-  bzip2
-  xz
-  zstd
-  zip
-  unzip
-  gettext
-  m4
-  gnupatch
-  netcat
-  lsof
-  connect
-  inetutils
-  ncdu_1
-  coreutils
-  silver-searcher
-  rsync
   aria2
-  zsh
-  vim
-  git-lfs
-  gost
+  bzip2
+  connect
+  coreutils
+  findutils
   fzf
-  shfmt
-  go-task
-  vim-bundle
-  zsh-bundle
-  rime-bundle
-  openssl
   gawk
   getopt
-  findutils
+  gettext
+  git-lfs
   gnugrep
   gnupatch
+  gnupatch
+  gnused
   gnutar
+  go-task
+  gost
+  inetutils
+  lsof
+  m4
+  ncdu_1
+  netcat
+  openssl
+  rime-bundle
+  rsync
+  shfmt
+  silver-searcher
+  unzip
+  vim
+  vim-bundle
+  xz
+  zip
+  zsh
+  zsh-bundle
+  zstd
 )
 rm -rf tmp
 

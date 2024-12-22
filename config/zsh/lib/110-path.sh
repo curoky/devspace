@@ -16,16 +16,9 @@
 # limitations under the License.
 
 ENV_PATHS=(
-  "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
-  "$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin"
   "$HOMEBREW_PREFIX/opt/gawk/libexec/gnubin"
-  "$HOMEBREW_PREFIX/opt/gnu-getopt/bin"
   "$HOMEBREW_PREFIX/opt/gnu-indent/libexec/gnubin"
   "$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin"
-  "$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin"
-  "$HOMEBREW_PREFIX/opt/grep/libexec/gnubin"
-  "$HOMEBREW_PREFIX/opt/openssl@3/bin"
-  "$HOMEBREW_PREFIX/opt/unzip/bin"
   "$HOMEBREW_PREFIX/opt/ruby/bin"
   "$HOME/prebuilt/bin"
   "/nix/var/nix/profiles/default/bin"

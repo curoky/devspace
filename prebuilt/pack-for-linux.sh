@@ -45,8 +45,10 @@ pkgs=(
   findutils
   flex
   fzf
+  gawk
   gdb
   gdu
+  getopt
   gettext
   gh
   git
@@ -101,8 +103,6 @@ pkgs=(
   rime-bundle
   rsync
   ruff
-  #  setup
-  #  setup-extra
   shfmt
   silver-searcher
   snappy
@@ -125,8 +125,6 @@ pkgs=(
   zsh
   zsh-bundle
   zstd
-  gawk
-  getopt
 )
 rm -rf tmp
 
