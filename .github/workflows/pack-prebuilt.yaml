@@ -56,8 +56,8 @@ jobs:
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/tmp/prebuilt.linux_amd64.tar.gz
-          asset_name: prebuilt.linux_amd64.tar.gz
+          file: prebuilt/tmp/prebuilt.linux_x86_64.tar.gz
+          asset_name: prebuilt.linux_x86_64.tar.gz
           tag: 'v1.0'
           overwrite: true
 

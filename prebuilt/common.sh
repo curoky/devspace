@@ -19,11 +19,11 @@ set -xeuo pipefail
 
 function download_pkg() {
   pkg=$1
-  arch=${2:-linux_amd64}
+  arch=$(uname -s)_$(uname -m)
   mkdir -p tmp/download
   mkdir -p tmp/prebuilt/pkgs/${pkg}
-  curl -sSL -o tmp/download/${pkg}.tar.gz https://github.com/curoky/prebuilt/releases/download/v1.0/${pkg}.${arch}.tar.gz
-  tar -x --gunzip -f tmp/download/${pkg}.tar.gz -C tmp/prebuilt/pkgs/${pkg} --strip-components 2
+  curl -sSL -o tmp/download/${pkg}.tar.gz https://github.com/curoky/prebuilt/releases/download/v1.0/${pkg}.${arch,,}.tar.gz
+  tar -x --gunzip -f tmp/download/${pkg}.tar.gz -C tmp/prebuilt/pkgs/${pkg} --strip-components 1
 }
 
 function link_bin() {
