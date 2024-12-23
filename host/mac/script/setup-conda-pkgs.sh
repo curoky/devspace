@@ -25,7 +25,7 @@ echo "use conf_path=$conf_path"
 function create_conda_env() {
   local env_name=$1
   echo "create $env_name"
-  /opt/homebrew/bin/conda env remove -y -n $env_name
+  /opt/homebrew/bin/conda env remove -y -n $env_name || echo ignore env remove
   /opt/homebrew/bin/conda env create -f $conf_path/${env_name}.yaml
 }
 

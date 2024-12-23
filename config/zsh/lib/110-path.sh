@@ -16,9 +16,6 @@
 # limitations under the License.
 
 ENV_PATHS=(
-  "$HOMEBREW_PREFIX/opt/gawk/libexec/gnubin"
-  "$HOMEBREW_PREFIX/opt/gnu-indent/libexec/gnubin"
-  "$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin"
   "$HOMEBREW_PREFIX/opt/ruby/bin"
   "$HOME/prebuilt/bin"
   "/nix/var/nix/profiles/default/bin"
@@ -33,14 +30,11 @@ ENV_PATHS=(
   "/app/pipx/bin"
   "/app/conda/condabin"
 
-  # "/app/prebuilt/extra/bin"
   # "$HOME/.npm-global/bin"
   "$HOME/dotbox/tools"
-  # "$HOME/go/bin"
   # "/nix/var/nix/profiles/default/lib/ruby/gems/2.7.0/bin"
   # "$HOMEBREW_PREFIX/lib/ruby/gems/3.1.0/bin"
   # "$HOME/.cargo/bin" # already source in ~/.zshenv
-  # /nix/var/nix/profiles/gcc13/bin
 )
 for p in "${ENV_PATHS[@]}"; do
   [[ -d $p ]] && export PATH=$PATH:$p
@@ -48,16 +42,12 @@ done
 
 ENV_FPATHS=(
   # homebrew
-  # "$HOMEBREW_PREFIX/share/zsh/functions" # already added by default
-  # "$HOMEBREW_PREFIX/share/zsh/site-functions"
-  "$HOMEBREW_PREFIX/Homebrew/completions/zsh"
-  # system
-  # "/usr/share/zsh/vendor-completions"
+  "$HOMEBREW_PREFIX/completions/zsh"
+
   # typer
   # "$HOME/.zfunc"
 
   "$HOME/prebuilt/pkgs/zsh-bundle/share/zsh/site-functions"
-  # "$HOME/prebuilt/share/zsh/zsh-functions"
 )
 
 for p in "${ENV_FPATHS[@]}"; do
@@ -65,8 +55,6 @@ for p in "${ENV_FPATHS[@]}"; do
 done
 
 ENV_PATHS=(
-  # "$WORKSPACE/thriftoy"
-  # "/data/share/thriftoy"
 )
 
 for p in "${ENV_PATHS[@]}"; do
