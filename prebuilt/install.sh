@@ -26,6 +26,6 @@ rm -rf /tmp/prebuilt.tar.gz
 curl -SL https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt.${arch}.tar.gz -o /tmp/prebuilt.tar.gz
 rm -rf ~/prebuilt
 mkdir ~/prebuilt
-tar -xzf /tmp/prebuilt.tar.gz -C ~/prebuilt --strip-components=1
+tar -x --gunzip -f /tmp/prebuilt.tar.gz -C ~/prebuilt --strip-components=1
 
 # sudo find ~/prebuilt/bin -type f -exec xattr -d com.apple.quarantine {} +
