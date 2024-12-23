@@ -150,7 +150,6 @@ link_to_bin
 add_dotbox
 
 ln -s -r tmp/prebuilt/bin/bazelisk tmp/prebuilt/bin/bazel
-ln -s -r tmp/prebuilt/bin/vim tmp/prebuilt/bin/vi
 ln -s -r tmp/prebuilt/bin/clang-format tmp/prebuilt/bin/clang-format-18
 
 ./setup-pipx.sh

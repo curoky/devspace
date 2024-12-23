@@ -49,13 +49,14 @@ pkgs=(
   shfmt
   silver-searcher
   unzip
-  vim
   vim-bundle
   xz
   zip
-  zsh
   zsh-bundle
   zstd
+
+  # vim
+  # zsh
 )
 rm -rf tmp
 
@@ -70,8 +71,6 @@ remove_unneeded
 rename_wrapped
 link_to_bin
 add_dotbox
-
-ln -s -r tmp/prebuilt/bin/vim tmp/prebuilt/bin/vi
 
 cd tmp
 tar -czf prebuilt.darwin_arm64.tar.gz prebuilt

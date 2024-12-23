@@ -60,7 +60,7 @@ function rename_wrapped() {
 }
 
 function copy_wrapper() {
-  mv tmp/prebuilt/pkgs/curl/bin/curl tmp/prebuilt/pkgs/curl/bin/dot-curl-wrapped
+  mv tmp/prebuilt/1pkgs/curl/bin/curl tmp/prebuilt/pkgs/curl/bin/dot-curl-wrapped
   cp wrapper/curl tmp/prebuilt/pkgs/curl/bin/curl
 
   mv tmp/prebuilt/pkgs/wget/bin/wget tmp/prebuilt/pkgs/wget/bin/dot-wget-wrapped
