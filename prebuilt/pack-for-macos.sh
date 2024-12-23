@@ -70,7 +70,8 @@ remove_unneeded
 
 rename_wrapped
 link_to_bin
+link_zsh_comp
 add_dotbox
 
 cd tmp
-tar -czf prebuilt.darwin_arm64.tar.gz prebuilt
+tar -c --gunzip -f prebuilt.darwin_arm64.tar.gz prebuilt

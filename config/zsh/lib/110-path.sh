@@ -41,13 +41,14 @@ for p in "${ENV_PATHS[@]}"; do
 done
 
 ENV_FPATHS=(
-  # homebrew
   "$HOMEBREW_PREFIX/completions/zsh"
 
   # typer
   # "$HOME/.zfunc"
 
-  "$HOME/prebuilt/pkgs/zsh-bundle/share/zsh/site-functions"
+  "$HOME/prebuilt/share/zsh/site-functions"
+  "$HOME/prebuilt/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/zsh-completions/src"
+  "$HOME/prebuilt/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/conda-zsh-completion"
 )
 
 for p in "${ENV_FPATHS[@]}"; do

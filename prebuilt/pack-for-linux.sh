@@ -162,6 +162,7 @@ rename_wrapped
 strip_bin
 copy_wrapper
 link_to_bin
+link_zsh_comp
 add_dotbox
 
 ln -s -r tmp/prebuilt/bin/bazelisk tmp/prebuilt/bin/bazel

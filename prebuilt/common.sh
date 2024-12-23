@@ -47,6 +47,16 @@ function link_to_bin() {
   # find tmp/prebuilt/pkgs/*/bin -type l -exec ln -s -r {} $PWD/tmp/prebuilt/bin/ \;
 }
 
+function link_zsh_comp() {
+  rm -rf tmp/prebuilt/share/zsh/site-functions/
+  mkdir -p tmp/prebuilt/share/zsh/site-functions/
+  find . -type d -path "*/zsh/site-functions" | while read -r dir; do
+    for file in $dir/*; do
+      ln -s -r $file tmp/prebuilt/share/zsh/site-functions/
+    done
+  done
+}
+
 function strip_bin() {
   chmod -R +w tmp/prebuilt/
   find tmp/prebuilt/pkgs/*/bin -executable -type f | while read -r file; do
