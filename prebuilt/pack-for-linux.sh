@@ -126,6 +126,7 @@ pkgs=(
   zsh-bundle
   zstd
 )
+
 rm -rf tmp
 
 for pkg in "${pkgs[@]}"; do
@@ -138,9 +139,23 @@ mkdir -p tmp/prebuilt/pkgs/clang-format-18/bin
 cp tmp/prebuilt/pkgs/llvmPackages_18.clang-unwrapped/bin/clang-format tmp/prebuilt/pkgs/clang-format-18/bin/clang-format
 rm -rf tmp/prebuilt/pkgs/llvmPackages_18.clang-unwrapped
 
+# some issue
+touch tmp/prebuilt/pkgs/binutils/skip_link
+touch tmp/prebuilt/pkgs/coreutils/skip_link
+
+# experimental
+touch tmp/prebuilt/pkgs/bash/skip_link
+touch tmp/prebuilt/pkgs/git/skip_link
+touch tmp/prebuilt/pkgs/perl/skip_link
+touch tmp/prebuilt/pkgs/man/skip_link
+touch tmp/prebuilt/pkgs/autoconf/skip_link
+touch tmp/prebuilt/pkgs/automake/skip_link
+touch tmp/prebuilt/pkgs/pkg-config/skip_link
+touch tmp/prebuilt/pkgs/libtool/skip_link
+touch tmp/prebuilt/pkgs/gdb/skip_link
+
+# unneeded
 rm -rf tmp/prebuilt/pkgs/glibcLocales
-rm -rf tmp/prebuilt/pkgs/binutils
-rm -rf tmp/prebuilt/pkgs/coreutils
 remove_unneeded
 
 rename_wrapped

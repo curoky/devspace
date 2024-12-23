@@ -29,8 +29,22 @@ function download_pkg() {
 
 function link_to_bin() {
   mkdir -p tmp/prebuilt/bin
-  find tmp/prebuilt/pkgs/*/bin -type f -exec ln -s -r {} $PWD/tmp/prebuilt/bin/ \;
-  find tmp/prebuilt/pkgs/*/bin -type l -exec ln -s -r {} $PWD/tmp/prebuilt/bin/ \;
+  for dir in tmp/prebuilt/pkgs/*; do
+    if [[ -d $dir/bin ]]; then
+      if [[ ! -f $dir/skip_link ]]; then
+        for file in $dir/bin/*; do
+          if [[ -L $file ]] || [[ -f $file ]]; then
+            if [[ -f $PWD/tmp/prebuilt/bin/$(basename $file) ]]; then
+              rm $PWD/tmp/prebuilt/bin/$(basename $file)
+            fi
+            ln -s -r $file $PWD/tmp/prebuilt/bin/
+          fi
+        done
+      fi
+    fi
+  done
+  # find tmp/prebuilt/pkgs/*/bin -type f -exec ln -s -r {} $PWD/tmp/prebuilt/bin/ \;
+  # find tmp/prebuilt/pkgs/*/bin -type l -exec ln -s -r {} $PWD/tmp/prebuilt/bin/ \;
 }
 
 function strip_bin() {

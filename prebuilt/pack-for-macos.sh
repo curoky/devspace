@@ -49,14 +49,13 @@ pkgs=(
   shfmt
   silver-searcher
   unzip
+  vim
   vim-bundle
   xz
   zip
+  zsh
   zsh-bundle
   zstd
-
-  # vim
-  # zsh
 )
 rm -rf tmp
 
@@ -65,7 +64,8 @@ for pkg in "${pkgs[@]}"; do
 done
 wait
 
-rm -rf tmp/prebuilt/pkgs/zsh
+touch tmp/prebuilt/pkgs/vim/skip_link
+touch tmp/prebuilt/pkgs/zsh/skip_link
 remove_unneeded
 
 rename_wrapped
