@@ -30,6 +30,7 @@ function download_pkg() {
 function link_to_bin() {
   mkdir -p tmp/prebuilt/bin
   find tmp/prebuilt/pkgs/*/bin -type f -exec ln -s -r {} $PWD/tmp/prebuilt/bin/ \;
+  find tmp/prebuilt/pkgs/*/bin -type l -exec ln -s -r {} $PWD/tmp/prebuilt/bin/ \;
 }
 
 function strip_bin() {
