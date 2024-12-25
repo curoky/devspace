@@ -17,13 +17,33 @@
 # limitations under the License.
 
 set -xeuo pipefail
-host_arch=$(echo $(uname -s)_$(uname -m) | tr '[:upper:]' '[:lower:]')
 
-target=${1:-$HOME/prebuilt}
-arch=${2:-${host_arch}} # linux_amd64/darwin_arm64
+target=$HOME/prebuilt
+arch=$(echo $(uname -s)_$(uname -m) | tr '[:upper:]' '[:lower:]') # linux_amd64/darwin_arm64
+url=https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt.${arch}.tar.gz
+
+while getopts "t:a:u:" opt; do
+  case "$opt" in
+    t)
+      target="$OPTARG"
+      ;;
+    a)
+      arch="$OPTARG"
+      url=https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt.${arch}.tar.gz
+      ;;
+
+    u)
+      url="$OPTARG"
+      ;;
+    \?)
+      echo "Usage: $0 [-t target] [-a arch] [-u url]"
+      exit 1
+      ;;
+  esac
+done
 
 rm -rf /tmp/prebuilt.tar.gz
-curl -SL https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt.${arch}.tar.gz -o /tmp/prebuilt.tar.gz
+curl -SL $url -o /tmp/prebuilt.tar.gz
 rm -rf $target
 mkdir $target
 tar -x --gunzip -f /tmp/prebuilt.tar.gz -C $target --strip-components=1

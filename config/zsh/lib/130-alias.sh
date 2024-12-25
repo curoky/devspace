@@ -95,8 +95,6 @@ alias mirror="rsync --partial --progress --archive --human-readable --rsh=ssh --
 
 alias prune_empty_dir="find . -type d -empty -delete"
 
-alias mux=tmuxinator
-
 alias agf='ag --case-sensitive --word-regexp --hidden --silent -g'
 
 alias lint="pre-commit run --all-files"

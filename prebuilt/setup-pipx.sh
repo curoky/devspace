@@ -27,4 +27,4 @@ nix-channel --add https://nixos.org/channels/nixos-24.11 nixpkgs &&
 
 nix-env -iA nixpkgs.python311Packages.pipx
 
-~/.nix-profile/bin/pipx install licenseheaders dotdrop netron git-filter-repo dool asciinema licenseheaders
+~/.nix-profile/bin/pipx install licenseheaders dotdrop netron git-filter-repo dool asciinema

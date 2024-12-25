@@ -145,3 +145,7 @@ function analyze-file-extension-name() {
   # find . -type f -name "*.*" | rev | cut -d. -f1 | rev  | tr '[:upper:]' '[:lower:]' | sort | uniq --count | sort -rn
   find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort | uniq -c | sort -n
 }
+
+function mkcd takedir() {
+  mkdir -p $@ && cd ${@:$#}
+}
