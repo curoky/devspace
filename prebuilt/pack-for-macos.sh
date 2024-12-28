@@ -38,6 +38,7 @@ pkgs=(
   gnutar
   go-task
   gost
+  gdu
   inetutils
   lsof
   m4
