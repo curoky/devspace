@@ -138,6 +138,7 @@ mkdir tmp/prebuilt/bin/
 mkdir -p tmp/prebuilt/pkgs/clang-format-18/bin
 cp tmp/prebuilt/pkgs/llvmPackages_18.clang-unwrapped/bin/clang-format tmp/prebuilt/pkgs/clang-format-18/bin/clang-format
 rm -rf tmp/prebuilt/pkgs/llvmPackages_18.clang-unwrapped
+rm -rf tmp/prebuilt/pkgs/rime-bundle
 
 # some issue
 touch tmp/prebuilt/pkgs/binutils/skip_link
