@@ -24,13 +24,21 @@ jobs:
       # - run: brew install coreutils
       # - run: echo "/opt/homebrew/opt/coreutils/libexec/gnubin" >> $GITHUB_PATH
       - run: |
-          cd prebuilt
-          ./pack-for-macos.sh
+          cd prebuilt/macos/
+          ./pack.sh
+          ./pack-conda.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/tmp/prebuilt.darwin_arm64.tar.gz
+          file: prebuilt/macos/tmp/prebuilt.darwin_arm64.tar.gz
           asset_name: prebuilt.darwin_arm64.tar.gz
+          tag: 'v1.0'
+          overwrite: true
+
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          file: prebuilt/macos/tmp/conda.darwin_arm64.tar.gz
+          asset_name: conda.darwin_arm64.tar.gz
           tag: 'v1.0'
           overwrite: true
 
@@ -52,12 +60,12 @@ jobs:
           nix_path: nixpkgs=channel:nixos-24.11
 
       - run: |
-          cd prebuilt
-          ./pack-for-linux.sh
+          cd prebuilt/linux
+          ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/tmp/prebuilt.linux_x86_64.tar.gz
+          file: prebuilt/linux/tmp/prebuilt.linux_x86_64.tar.gz
           asset_name: prebuilt.linux_x86_64.tar.gz
           tag: 'v1.0'
           overwrite: true

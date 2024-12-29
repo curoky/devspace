@@ -17,7 +17,7 @@
 # limitations under the License.
 set -xeuo pipefail
 
-source ./common.sh
+source ../common/utils.sh
 
 # task --list-all | sed -e 's/://g' -e 's/*//g'
 pkgs=(
