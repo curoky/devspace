@@ -11,6 +11,8 @@ rm -rf tmp
 mkdir -p tmp
 curl -sSL -o tmp/miniconda.sh \
   https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+
+sed -i -e 's/| md5/| openssl md5/g' tmp/miniconda.sh
 bash tmp/miniconda.sh -b -u -p /opt/conda
 
 /opt/conda/condabin/conda env create -f ../../host/mac/conf/conda/py3.yaml
