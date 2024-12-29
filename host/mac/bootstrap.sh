@@ -44,6 +44,6 @@ setup-dotfiles
 setup-brew-pkgs
 ../../prebuilt/install.sh
 
-if [[ ! -d /opt/homebrew/Caskroom/miniconda/base/envs/py3 ]]; then
-  ./script/setup-conda-pkgs.sh
-fi
+# if [[ ! -d /opt/homebrew/Caskroom/miniconda/base/envs/py3 ]]; then
+#   ./script/setup-conda-pkgs.sh
+# fi

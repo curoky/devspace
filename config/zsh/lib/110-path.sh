@@ -29,6 +29,7 @@ ENV_PATHS=(
   "$HOME/.nix-profile/bin"
   "/app/pipx/bin"
   "/app/conda/condabin"
+  "/opt/conda/condabin"
 
   # "$HOME/.npm-global/bin"
   "$HOME/dotbox/tools"
