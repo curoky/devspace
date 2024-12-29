@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -xeuo pipefail
 
+export PATH=$PATH:/sbin
+
 sudo rm -rf /opt/conda
 sudo mkdir /opt/conda
 sudo chown "$(id -u):$(id -g)" /opt/conda
