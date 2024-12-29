@@ -27,19 +27,11 @@ jobs:
       - run: |
           cd prebuilt/macos/
           ./pack.sh
-          ./pack-conda.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
           file: prebuilt/macos/tmp/prebuilt.darwin_arm64.tar.gz
           asset_name: prebuilt.darwin_arm64.tar.gz
-          tag: 'v1.0'
-          overwrite: true
-
-      - uses: svenstaro/upload-release-action@v2
-        with:
-          file: prebuilt/macos/tmp/conda.darwin_arm64.tar.gz
-          asset_name: conda.darwin_arm64.tar.gz
           tag: 'v1.0'
           overwrite: true
 
