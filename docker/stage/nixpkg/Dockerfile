@@ -21,15 +21,16 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
 COPY --from=third-party nixpkgs nixpkgs
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA \
-    nixpkgs.pkg-config nixpkgs.libtool nixpkgs.automake nixpkgs.autoconf nixpkgs.man \
-    nixpkgs.locale nixpkgs.graphviz nixpkgs.git nixpkgs.conan \
+    # nixpkgs.pkg-config nixpkgs.libtool nixpkgs.automake nixpkgs.autoconf nixpkgs.man \
+    nixpkgs.locale nixpkgs.git nixpkgs.conan \
+    # nixpkgs.graphviz \
     # nixpkgs.ccache nixpkgs.distcc nixpkgs.meson nixpkgs.scons nixpkgs.asciinema nixpkgs.bash
     # lua static
-    nixpkgs.pandoc \
+    # nixpkgs.pandoc \
     # dotnet-sdk static failed
     nixpkgs.pre-commit \
     # perl5.40.0-Module test failed
-    nixpkgs.cloc \
+    # nixpkgs.cloc \
     # ModuleNotFoundError: No module named '_dbm
     nixpkgs.dstat \
     # libuv test failed

@@ -105,6 +105,7 @@ pkgs=(
   rsync
   ruff
   shfmt
+  scc
   silver-searcher
   snappy
   starship
