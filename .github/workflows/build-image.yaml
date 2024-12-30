@@ -54,7 +54,7 @@ jobs:
           build-args: BASE_IMAGE=${{ matrix.base_image }}
           tags: curoky/dotbox:base-${{ matrix.saved_image }}
       - run: >
-          docker run -ti --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
+          docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
           ubuntu:latest curoky/dotbox:base-${{ matrix.saved_image }}
 
   stage:
@@ -86,7 +86,7 @@ jobs:
           no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
           tags: curoky/dotbox:stage-${{ matrix.name }}
       - run: >
-          docker run -ti --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
+          docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
           curoky/dotbox:stage-${{ matrix.name }}
 
   stage-cuda:
@@ -136,7 +136,7 @@ jobs:
             CUDNN_VERSION=${{ matrix.CUDNN_VERSION }}
           tags: curoky/dotbox:stage-cuda-${{ matrix.name }}
       - run: >
-          docker run -ti --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
+          docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
           curoky/dotbox:stage-cuda-${{ matrix.name }}
 
   dist:
@@ -168,7 +168,7 @@ jobs:
           build-args: BASE_IMAGE=${{ matrix.base_image }}
           tags: curoky/dotbox:${{ matrix.saved_image }}
       - run: >
-          docker run -ti --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
+          docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
           tags: curoky/dotbox:${{ matrix.saved_image }}
 
   dist-tf:
@@ -204,5 +204,5 @@ jobs:
           no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
           tags: curoky/dotbox:${{ matrix.name }}
       - run: >
-          docker run -ti --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
+          docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
           tags: curoky/dotbox:${{ matrix.name }}
