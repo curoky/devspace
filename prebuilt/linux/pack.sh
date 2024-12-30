@@ -158,7 +158,6 @@ touch tmp/prebuilt/pkgs/libtool/skip_link
 touch tmp/prebuilt/pkgs/gdb/skip_link
 
 # unneeded
-rm -rf tmp/prebuilt/pkgs/glibcLocales
 remove_unneeded
 
 rename_wrapped
