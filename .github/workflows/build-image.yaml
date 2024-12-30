@@ -31,6 +31,8 @@ jobs:
             saved_image: 'debian12'
           - base_image: 'ubuntu:24.04'
             saved_image: 'ubuntu24.04'
+          - base_image: 'ubuntu:24.10'
+            saved_image: 'ubuntu24.10'
     needs:
       - stage
     steps:
@@ -132,12 +134,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - name: default
-            base_image: 'debian11'
-            saved_image: default-debian11
-          - name: default
-            base_image: 'ubuntu24.04'
-            saved_image: default-ubuntu24.04
           - name: gcc
             base_image: 'debian12'
             saved_image: gcc
