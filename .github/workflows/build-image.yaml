@@ -203,6 +203,7 @@ jobs:
           cache-to: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.name }},mode=max
           no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
           tags: curoky/dotbox:${{ matrix.name }}
-      - run: >
-          docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
-          curoky/dotbox:${{ matrix.name }}
+      # no space left
+      # - run: >
+      #     docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
+      #     curoky/dotbox:${{ matrix.name }}
