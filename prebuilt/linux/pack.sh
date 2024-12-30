@@ -38,6 +38,7 @@ pkgs=(
   croc
   curl
   diffutils
+  dive
   ethtool
   eza
   fd
