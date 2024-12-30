@@ -53,6 +53,9 @@ jobs:
           no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
           build-args: BASE_IMAGE=${{ matrix.base_image }}
           tags: curoky/dotbox:base-${{ matrix.saved_image }}
+      - run: >
+          docker run -ti --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
+          ubuntu:latest curoky/dotbox:base-${{ matrix.saved_image }}
 
   stage:
     runs-on: ubuntu-latest
@@ -82,6 +85,9 @@ jobs:
           cache-to: type=registry,ref=curoky/dotbox:__cache_stage_${{ matrix.name }},mode=max
           no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
           tags: curoky/dotbox:stage-${{ matrix.name }}
+      - run: >
+          docker run -ti --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
+          curoky/dotbox:stage-${{ matrix.name }}
 
   stage-cuda:
     runs-on: ubuntu-latest
@@ -129,6 +135,10 @@ jobs:
             CUDA_DRIVER_VERSION=${{ matrix.CUDA_DRIVER_VERSION }}
             CUDNN_VERSION=${{ matrix.CUDNN_VERSION }}
           tags: curoky/dotbox:stage-cuda-${{ matrix.name }}
+      - run: >
+          docker run -ti --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
+          curoky/dotbox:stage-cuda-${{ matrix.name }}
+
   dist:
     runs-on: ubuntu-latest
     strategy:
@@ -156,6 +166,9 @@ jobs:
           cache-to: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.saved_image }},mode=max
           no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
           build-args: BASE_IMAGE=${{ matrix.base_image }}
+          tags: curoky/dotbox:${{ matrix.saved_image }}
+      - run: >
+          docker run -ti --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
           tags: curoky/dotbox:${{ matrix.saved_image }}
 
   dist-tf:
@@ -189,4 +202,7 @@ jobs:
           cache-from: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.name }}
           cache-to: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.name }},mode=max
           no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
+          tags: curoky/dotbox:${{ matrix.name }}
+      - run: >
+          docker run -ti --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
           tags: curoky/dotbox:${{ matrix.name }}
