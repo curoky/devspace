@@ -55,7 +55,7 @@ jobs:
           tags: curoky/dotbox:base-${{ matrix.saved_image }}
       - run: >
           docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
-          ubuntu:latest curoky/dotbox:base-${{ matrix.saved_image }}
+          curoky/dotbox:base-${{ matrix.saved_image }}
 
   stage:
     runs-on: ubuntu-latest
@@ -169,7 +169,7 @@ jobs:
           tags: curoky/dotbox:${{ matrix.saved_image }}
       - run: >
           docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
-          tags: curoky/dotbox:${{ matrix.saved_image }}
+          curoky/dotbox:${{ matrix.saved_image }}
 
   dist-tf:
     runs-on: ubuntu-latest
@@ -205,4 +205,4 @@ jobs:
           tags: curoky/dotbox:${{ matrix.name }}
       - run: >
           docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
-          tags: curoky/dotbox:${{ matrix.name }}
+          curoky/dotbox:${{ matrix.name }}
