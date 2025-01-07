@@ -156,6 +156,7 @@ touch tmp/prebuilt/pkgs/automake/skip_link
 touch tmp/prebuilt/pkgs/pkg-config/skip_link
 touch tmp/prebuilt/pkgs/libtool/skip_link
 touch tmp/prebuilt/pkgs/gdb/skip_link
+touch tmp/prebuilt/pkgs/python311/skip_link
 
 # unneeded
 remove_unneeded
