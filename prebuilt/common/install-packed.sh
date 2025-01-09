@@ -31,7 +31,6 @@ while getopts "t:a:u:" opt; do
       arch="$OPTARG"
       url=https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt.${arch}.tar.gz
       ;;
-
     u)
       url="$OPTARG"
       ;;

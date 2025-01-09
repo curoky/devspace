@@ -130,9 +130,11 @@ pkgs=(
 )
 
 rm -rf tmp
+mkdir -p tmp
 
+curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >tmp/install.sh
 for pkg in "${pkgs[@]}"; do
-  download_pkg ${pkg} &
+  bash tmp/install.sh -n $pkg -d tmp/download -i tmp/prebuilt/pkgs/$pkg &
 done
 wait
 
