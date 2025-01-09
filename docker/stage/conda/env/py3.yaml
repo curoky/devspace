@@ -11,3 +11,5 @@ dependencies:
       - pydantic
       - requests
       - typer
+      - sqlmodel
+      - notion-client
