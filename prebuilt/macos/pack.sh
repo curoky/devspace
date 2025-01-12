@@ -60,10 +60,11 @@ pkgs=(
   eza
   bat
   atuin
-  ruff
   fd
   git-absorb
   starship
+  git-extras
+  # ruff need link jemalloc
 )
 rm -rf tmp
 mkdir -p tmp

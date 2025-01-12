@@ -127,6 +127,7 @@ pkgs=(
   zsh
   zsh-bundle
   zstd
+  exiftool
 )
 
 rm -rf tmp
