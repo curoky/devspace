@@ -43,8 +43,8 @@ casks.each do |b|
 end
 
 brews = [
-  'pre-commit', 'prettier', 'eslint', 'clang-format', 'openjdk',
-  'wget', 'dotdrop', 'smartmontools', 'krb5', 'parallel', 'git',
+  'pre-commit', 'prettier', 'eslint', 'clang-format', # 'openjdk',
+  'wget', 'dotdrop', 'smartmontools', 'parallel', 'git',
   'exiftool', 'git-filter-repo',
 
   # rust
