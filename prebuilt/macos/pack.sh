@@ -57,6 +57,13 @@ pkgs=(
   zsh
   zsh-bundle
   zstd
+  eza
+  bat
+  atuin
+  ruff
+  fd
+  git-absorb
+  starship
 )
 rm -rf tmp
 mkdir -p tmp
