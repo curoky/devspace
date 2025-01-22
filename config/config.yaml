@@ -147,13 +147,13 @@ profiles:
       # - prettier
       - atuin
       - conda
-      - top
+      - git-config
       - rime
       - snipaste
+      - ssh-user-config
+      - top
       - vim
       - vscode-keybindings
       - vscode-settings
       - vscode-snippets
-      - git-config
-      - ssh-user-config
       - zshrc

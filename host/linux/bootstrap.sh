@@ -31,6 +31,4 @@ if [[ -L ~/dotbox ]]; then
 fi
 ln -s ~/prebuilt/dotbox ~/dotbox
 
-~/prebuilt/dotbox/docker/base/script/setup-userconf.sh ~/prebuilt/dotbox/config
-rm -rf ~/.gitconfig
-rm -rf ~/.ssh/config
+~/prebuilt/dotbox/config/setup.sh host-linux ~/prebuilt/dotbox/config

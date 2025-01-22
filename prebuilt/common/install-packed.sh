@@ -42,7 +42,7 @@ while getopts "t:a:u:" opt; do
 done
 
 rm -rf /tmp/prebuilt.tar.gz
-curl -SL $url -o /tmp/prebuilt.tar.gz
+curl -L $url -o /tmp/prebuilt.tar.gz
 rm -rf $target
 mkdir $target
 tar -x --gunzip -f /tmp/prebuilt.tar.gz -C $target --strip-components=1
