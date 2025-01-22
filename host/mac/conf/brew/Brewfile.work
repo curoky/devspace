@@ -44,7 +44,7 @@ end
 
 brews = [
   'pre-commit', 'prettier', 'eslint', 'clang-format', # 'openjdk',
-  'wget', 'dotdrop', 'smartmontools', 'krb5', 'parallel', 'git',
+  'wget', 'smartmontools', 'krb5', 'parallel', 'git',
   'exiftool', 'git-filter-repo',
 
   # rust

@@ -18,8 +18,8 @@
 set -xeuo pipefail
 
 function copy_path() {
-  src=$1
-  dst=$2
+  src="$1"
+  dst="$2"
   force=${3:-0}
   if [[ ! -e $src ]]; then
     echo "Path $src does not exist"
@@ -29,18 +29,18 @@ function copy_path() {
   fi
   if [[ -e $dst ]]; then
     echo "Path $dst already exists, move it to backup"
-    rm -rf mv $dst
+    rm -rf "$dst"
     # mv $dst ${dst}.bk
   fi
-  mkdir -p $(dirname $dst)
-  cp -r $src $dst
-  chmod 600 $dst
+  mkdir -p $(dirname "$dst")
+  cp -r "$src" "$dst"
+  chmod 600 "$dst"
   echo "Copied $src to $dst"
 }
 
 function link_path() {
-  src=$1
-  dst=$2
+  src="$1"
+  dst="$2"
   ignore_source_not_exist=${3:-0}
   if [[ ! -e $src ]]; then
     echo "Path $src does not exist"
@@ -50,11 +50,11 @@ function link_path() {
   fi
   if [[ -e $dst ]] || [[ -L $dst ]]; then
     echo "Path $dst already exists, move it to backup"
-    rm -rf $dst
+    rm -rf "$dst"
     # mv $dst ${dst}.bk
   fi
-  mkdir -p $(dirname $dst)
-  ln -s $src $dst
+  mkdir -p $(dirname "$dst")
+  ln -s "$src" "$dst"
   echo "Linked $src to $dst"
 }
 
