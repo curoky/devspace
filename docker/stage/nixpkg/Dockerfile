@@ -22,7 +22,7 @@ COPY --from=third-party nixpkgs nixpkgs
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA \
     # nixpkgs.pkg-config nixpkgs.libtool nixpkgs.automake nixpkgs.autoconf nixpkgs.man \
-    nixpkgs.locale nixpkgs.git nixpkgs.conan \
+    nixpkgs.locale nixpkgs.git \
     # nixpkgs.graphviz \
     # nixpkgs.ccache nixpkgs.distcc nixpkgs.meson nixpkgs.scons nixpkgs.asciinema nixpkgs.bash
     # lua static

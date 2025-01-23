@@ -13,3 +13,7 @@ dependencies:
       - typer
       - sqlmodel
       - notion-client
+      - plotly
+      - numpy
+      - pandas
+      - nbformat
