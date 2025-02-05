@@ -6,13 +6,12 @@ on:
       - '.github/workflows/pack-prebuilt.yaml'
       - 'prebuilt/**'
   workflow_dispatch:
-  # schedule:
-  #   - cron: '0 0 - name: - name: 0'
+  schedule:
+    - cron: '0 0 * * 0'
 
 jobs:
   macos:
     runs-on: ubuntu-latest
-    # runs-on: macos-latest
     permissions:
       contents: write
     steps:
@@ -21,9 +20,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3'
-      # - uses: Homebrew/actions/setup-homebrew@master
-      # - run: brew install coreutils
-      # - run: echo "/opt/homebrew/opt/coreutils/libexec/gnubin" >> $GITHUB_PATH
       - run: |
           cd prebuilt/macos/
           ./pack.sh
