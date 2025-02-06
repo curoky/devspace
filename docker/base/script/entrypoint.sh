@@ -19,7 +19,7 @@
 set -xeuo pipefail
 
 /app/dotbox/docker/base/script/link-path.sh
-sudo -u x /app/dotbox/docker/base/script/setup-userconf.sh
+sudo -u x /app/dotbox/config/setup.sh docker ~/dotbox/config
 
 /app/dotbox/docker/base/script/start-sshd.sh $SSHD_PORT
 
