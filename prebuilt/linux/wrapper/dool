@@ -13,4 +13,4 @@ export PYTHONPATH=$PYTHONPATH:$root/pipx/venvs/dool/lib/python3.11/site-packages
 # python_bin_path=/home/x/.nix-profile/bin/python3.11
 # pathon_lib_root=/nix/var/nix/profiles/py311-static/lib/python3.11/
 
-exec -a "$0" "$PYTHONHOME/bin/python3" "$root/pipx/venvs/dool/bin/dool" "$@"
+exec -a "$0" "$PYTHONHOME/bin/python3" "$root/pipx/venvs/dool/bin/dool" --bytes "$@"

@@ -50,7 +50,7 @@ function link_to_bin() {
 function link_zsh_comp() {
   rm -rf tmp/prebuilt/share/zsh/site-functions/
   mkdir -p tmp/prebuilt/share/zsh/site-functions/
-  find . -type d -path "*/zsh/site-functions" | while read -r dir; do
+  find tmp/prebuilt/pkgs -type d -path "*/zsh/site-functions" | while read -r dir; do
     for file in $dir/*; do
       ln -s -r $file tmp/prebuilt/share/zsh/site-functions/
     done

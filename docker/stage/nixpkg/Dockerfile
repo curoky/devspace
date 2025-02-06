@@ -32,7 +32,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     # perl5.40.0-Module test failed
     # nixpkgs.cloc \
     # ModuleNotFoundError: No module named '_dbm
-    nixpkgs.dstat \
+    # nixpkgs.dstat \
     # libuv test failed
     nixpkgs.cmake \
     nixpkgs.nodePackages.prettier \
