@@ -21,4 +21,4 @@ export PIPX_HOME=/app/pipx
 export PIPX_BIN_DIR=/app/pipx/bin
 export PIPX_MAN_DIR=/app/pipx/share/man
 
-/app/conda/envs/pipx/bin/pipx install $@
+/app/conda/bin/pipx install $@

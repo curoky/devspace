@@ -34,7 +34,7 @@ python_short_version=$(grep -oP " python=\K\S+" $env_file | cut -d '.' -f1,2)
 
 echo "create $env_name($env_file) python_version:$python_version python_short_version:$python_short_version"
 
-conda env remove -n $env_name -y
+conda env remove -n $env_name -y || echo not exist
 conda create -n $env_name python=$python_version -y --no-default-packages
 rm -rf $CONDA_ROOT/envs/$env_name/compiler_compat/
 
