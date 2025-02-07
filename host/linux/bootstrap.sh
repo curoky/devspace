@@ -26,9 +26,7 @@ if ! grep -q 'prebuilt/bin' ~/.profile; then
   echo 'export PATH=$HOME/prebuilt/bin:$PATH' >>~/.profile
 fi
 
-if [[ -L ~/dotbox ]]; then
-  rm -f ~/dotbox
-fi
+rm -f ~/dotbox
 ln -s ~/prebuilt/dotbox ~/dotbox
 
 ~/prebuilt/dotbox/config/setup.sh host-linux ~/prebuilt/dotbox/config
