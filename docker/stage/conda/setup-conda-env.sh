@@ -91,7 +91,7 @@ conda create -n $env_name python=$python_version -y --no-default-packages
 rm -rf $CONDA_ROOT/envs/$env_name/compiler_compat/
 conda env update -f ${env_file}
 
-if [[ $add_tf_env -eq 1 ]]; then
+if [[ $add_tf_env == "true" ]]; then
   cuda_short_version=${cuda_version%%.*}
   echo "add tf env with cuda_version=${cuda_version}, cudnn_version=${cudnn_version}, cuda_short_version=${cuda_short_version}"
   mkdir -p $CONDA_ROOT/envs/$env_name/etc/conda/activate.d
