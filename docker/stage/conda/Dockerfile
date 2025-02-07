@@ -11,7 +11,7 @@ ENV PATH=$PATH:/app/conda/condabin:/app/pipx/bin/
 
 COPY env env
 COPY setup-conda-env.sh /app/conda/condabin/setup-conda-env.sh
-RUN setup-conda-env.sh env/py3.yaml
+RUN setup-conda-env.sh -e env/py3.yaml
   # && setup-conda-env.sh env/profiling.yaml \
   # && setup-conda-env.sh env/py2.yaml \
   # && setup-conda-env.sh env/py311.yaml \

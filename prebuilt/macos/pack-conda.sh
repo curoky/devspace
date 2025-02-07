@@ -15,7 +15,6 @@ curl -sSL -o tmp/miniconda.sh \
 sed -i -e 's/| md5/| openssl md5/g' tmp/miniconda.sh
 bash tmp/miniconda.sh -b -u -p /opt/conda
 
-/opt/conda/condabin/conda env create -f ../../host/mac/conf/conda/py3.yaml
-/opt/conda/condabin/conda clean --all -y
+/workspace/dotbox/docker/stage/conda/setup-conda-env.sh -e ../../host/mac/conf/conda/py3.yaml
 
 tar -c --gunzip -f tmp/conda.darwin_arm64.tar.gz /opt/conda
