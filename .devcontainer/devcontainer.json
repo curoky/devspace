@@ -1,5 +1,5 @@
 {
-  "image": "curoky/dotbox:default-debian11",
+  "image": "curoky/dotbox:base-ubuntu24.10",
   "containerUser": "x",
   "features": {}
 }
