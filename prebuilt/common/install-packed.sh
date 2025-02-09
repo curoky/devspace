@@ -19,7 +19,7 @@
 set -xeuo pipefail
 
 target=$HOME/prebuilt
-arch=$(echo $(uname -s)_$(uname -m) | tr '[:upper:]' '[:lower:]') # linux_amd64/darwin_arm64
+arch=$(echo $(uname -s)-$(uname -m) | tr '[:upper:]' '[:lower:]') # linux_amd64/darwin_arm64
 url=https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt.${arch}.tar.gz
 
 while getopts "t:a:u:" opt; do
