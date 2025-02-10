@@ -462,5 +462,7 @@
   "yaml.format.enable": false,
   "yaml.format.singleQuote": true,
   "git.blame.editorDecoration.enabled": true,
-  "git.blame.statusBarItem.enabled": true
+  "git.blame.statusBarItem.enabled": true,
+  "fileNestingUpdater.autoUpdateInterval": 10080,
+  "github.copilot.nextEditSuggestions.enabled": true
 }

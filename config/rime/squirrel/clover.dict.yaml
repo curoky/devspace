@@ -3,7 +3,7 @@ version: '1'
 sort: by_weight
 
 import_tables:
-  - curoky
+  # - custom
   - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-ice/cn_dicts/8105
   - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-ice/cn_dicts/base
   - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-ice/cn_dicts/ext
