@@ -33,7 +33,7 @@ RUN bazel build //tensorflow/tools/pip_package:build_pip_package \
     --config=nohdfs \
     --config=nonccl
 RUN ./bazel-bin/tensorflow/tools/pip_package/build_pip_package /output \
-  && ls -lah /output/tensorflow-2.16.1-cp311-cp311-linux_x86_64.whl \
+  && ls -lah /output/tensorflow-2.16.1-cp311-cp311-linux-x86_64.whl \
   && rm -rf /root/.cache /tensorflow
 
 FROM debian:latest

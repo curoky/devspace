@@ -54,7 +54,7 @@ jobs:
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/linux/tmp/prebuilt.linux_x86_64.tar.gz
+          file: prebuilt/linux/tmp/prebuilt.linux-x86_64.tar.gz
           asset_name: prebuilt.linux-x86_64.tar.gz
           tag: 'v1.0'
           overwrite: true
@@ -70,25 +70,25 @@ jobs:
     steps:
       - run: |
           id=$(docker create curoky/dotbox:stage-tf2.5.0-cu11.0.3-cudnn8.1.0-gcc8-py3.7)
-          docker cp $id:/output/tensorflow-2.5.0-cp37-cp37m-linux_x86_64.whl - > tensorflow-2.5.0-cu11.0.3-cudnn8.1.0-gcc8-cp37-cp37m-linux_x86_64.whl
+          docker cp $id:/output/tensorflow-2.5.0-cp37-cp37m-linux-x86_64.whl - > tensorflow-2.5.0-cu11.0.3-cudnn8.1.0-gcc8-cp37-cp37m-linux-x86_64.whl
           docker rm -v $id
 
       - run: |
           id=$(docker create curoky/dotbox:stage-tf2.5.0-cu11.4.0-cudnn8.1.0-gcc8-py3.7)
-          docker cp $id:/output/tensorflow-2.5.0-cp37-cp37m-linux_x86_64.whl - > tensorflow-2.5.0-cu11.4.0-cudnn8.1.0-gcc8-cp37-cp37m-linux_x86_64.whl
+          docker cp $id:/output/tensorflow-2.5.0-cp37-cp37m-linux-x86_64.whl - > tensorflow-2.5.0-cu11.4.0-cudnn8.1.0-gcc8-cp37-cp37m-linux-x86_64.whl
           docker rm -v $id
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: tensorflow-2.5.0-cu11.0.3-cudnn8.1.0-gcc8-cp37-cp37m-linux_x86_64.whl
-          asset_name: tensorflow-2.5.0-cu11.0.3-cudnn8.1.0-gcc8-cp37-cp37m-linux_x86_64.whl
+          file: tensorflow-2.5.0-cu11.0.3-cudnn8.1.0-gcc8-cp37-cp37m-linux-x86_64.whl
+          asset_name: tensorflow-2.5.0-cu11.0.3-cudnn8.1.0-gcc8-cp37-cp37m-linux-x86_64.whl
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: tensorflow-2.5.0-cu11.4.0-cudnn8.1.0-gcc8-cp37-cp37m-linux_x86_64.whl
-          asset_name: tensorflow-2.5.0-cu11.4.0-cudnn8.1.0-gcc8-cp37-cp37m-linux_x86_64.whl
+          file: tensorflow-2.5.0-cu11.4.0-cudnn8.1.0-gcc8-cp37-cp37m-linux-x86_64.whl
+          asset_name: tensorflow-2.5.0-cu11.4.0-cudnn8.1.0-gcc8-cp37-cp37m-linux-x86_64.whl
           tag: 'v1.0'
           overwrite: true
 
