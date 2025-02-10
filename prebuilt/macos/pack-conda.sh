@@ -17,4 +17,4 @@ bash tmp/miniconda.sh -b -u -p /opt/conda
 
 /workspace/dotbox/docker/stage/conda/setup-conda-env.sh -e ../../host/mac/conf/conda/py3.yaml
 
-tar -c --gunzip -f tmp/conda.darwin_arm64.tar.gz /opt/conda
+tar -c --gunzip -f tmp/conda.darwin-arm64.tar.gz /opt/conda

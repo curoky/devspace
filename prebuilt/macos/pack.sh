@@ -71,7 +71,7 @@ mkdir -p tmp
 
 curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >tmp/install.sh
 for pkg in "${pkgs[@]}"; do
-  bash tmp/install.sh -n $pkg -d tmp/download -i tmp/prebuilt/pkgs/$pkg -a darwin_arm64 &
+  bash tmp/install.sh -n $pkg -d tmp/download -i tmp/prebuilt/pkgs/$pkg -a darwin-arm64 &
 done
 wait
 
@@ -85,4 +85,4 @@ link_zsh_comp
 add_dotbox
 
 cd tmp
-tar -c --gunzip -f prebuilt.darwin_arm64.tar.gz prebuilt
+tar -c --gunzip -f prebuilt.darwin-arm64.tar.gz prebuilt
