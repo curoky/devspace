@@ -35,6 +35,7 @@ source ${ZSH}/lib/history.zsh
 source ${ZSH}/lib/completion.zsh
 source ${ZSH}/lib/key-bindings.zsh
 source ${ZSH}/lib/directories.zsh
+source ${ZSH}/lib/git.zsh
 source ${ZSH}/plugins/extract/extract.plugin.zsh
 source ${ZSH}/plugins/git/git.plugin.zsh
 source ${ZSH}/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
