@@ -84,24 +84,6 @@ function rename_wrapped() {
 }
 
 function copy_wrapper() {
-  mv tmp/prebuilt/pkgs/curl/bin/curl tmp/prebuilt/pkgs/curl/bin/dot-curl-wrapped
-  cp wrapper/curl tmp/prebuilt/pkgs/curl/bin/curl
-
-  mv tmp/prebuilt/pkgs/wget/bin/wget tmp/prebuilt/pkgs/wget/bin/dot-wget-wrapped
-  cp wrapper/wget tmp/prebuilt/pkgs/wget/bin/wget
-
-  mv tmp/prebuilt/pkgs/file/bin/file tmp/prebuilt/pkgs/file/bin/dot-file-wrapped
-  cp wrapper/file tmp/prebuilt/pkgs/file/bin/file
-
-  mv tmp/prebuilt/pkgs/vim/bin/vim tmp/prebuilt/pkgs/vim/bin/dot-vim-wrapped
-  cp wrapper/vim tmp/prebuilt/pkgs/vim/bin/vim
-
-  mv tmp/prebuilt/pkgs/zsh/bin/zsh tmp/prebuilt/pkgs/zsh/bin/dot-zsh-wrapped
-  cp wrapper/zsh tmp/prebuilt/pkgs/zsh/bin/zsh
-
-  mv tmp/prebuilt/pkgs/openssh_gssapi/bin/scp tmp/prebuilt/pkgs/openssh_gssapi/bin/dot-scp-wrapped
-  cp wrapper/scp tmp/prebuilt/pkgs/openssh_gssapi/bin/scp
-
   cp \
     wrapper/dool \
     wrapper/git-filter-repo \
