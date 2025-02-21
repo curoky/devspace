@@ -72,7 +72,7 @@ function common() {
   link_path $CONF_PATH/starship/starship.toml $HOME/.config/starship.toml
   link_path $CONF_PATH/tmux/tmux.conf $HOME/.config/tmux/tmux.conf
 
-  link_path $CONF_PATH/gdb/gdbinit $HOME/.gdbinit
+  # link_path $CONF_PATH/gdb/gdbinit $HOME/.gdbinit
   link_path $CONF_PATH/vim/vimrc $HOME/.vimrc
   # link_path $CONF_PATH/tabby-ml/config.toml $HOME/.tabby-client/agent/config.toml
 
@@ -94,6 +94,7 @@ elif [[ $SCENE == "host-linux" ]]; then
   link_path $CONF_PATH/vscode/remote-server-settings.json $HOME/.vscode-server/data/Machine/settings.json
   rm -rf ~/.gitconfig
   rm -rf ~/.ssh/config
+  rm -rf ~/.gdbinit
 
 elif [[ $SCENE == "docker" ]]; then
   link_path $CONF_PATH/vscode/remote-server-settings.json $HOME/.vscode-server/data/Machine/settings.json
