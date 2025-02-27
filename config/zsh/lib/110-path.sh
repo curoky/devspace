@@ -27,9 +27,14 @@ done
 ENV_PATHS=(
   "$HOME/.local/bin"
   "$HOME/.nix-profile/bin"
+
+  # docker
   "/app/pipx/bin"
   "/app/conda/condabin"
+
+  # macos host
   "/opt/conda/condabin"
+  "/opt/conda/pipx/bin"
 
   # "$HOME/.npm-global/bin"
   "$HOME/dotbox/tools"
