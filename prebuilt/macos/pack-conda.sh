@@ -12,7 +12,7 @@ mkdir -p tmp
 curl -sSL -o tmp/miniconda.sh \
   https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
 # https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-sed -e 's/| md5/| openssl md5/g' -i"" tmp/miniconda.sh
+gsed -i -e 's/| md5/| openssl md5/g' tmp/miniconda.sh
 bash tmp/miniconda.sh -b -u -p /opt/conda
 
 # setup env
