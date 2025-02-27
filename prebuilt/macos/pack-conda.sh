@@ -21,8 +21,8 @@ bash tmp/miniconda.sh -b -u -p /opt/conda
 # setup pipx
 /opt/conda/bin/pip3 install pipx
 export PIPX_HOME=/opt/conda/pipx
-export PIPX_BIN_DIR=/opt/conda/pipx/bin
-export PIPX_MAN_DIR=/opt/conda/pipx/share/man
+export PIPX_BIN_DIR=${PIPX_HOME}/bin
+export PIPX_MAN_DIR=${PIPX_HOME}/share/man
 /opt/conda/bin/pipx install licenseheaders
 
 tar -c --gunzip -f tmp/conda.darwin-arm64.tar.gz /opt/conda
