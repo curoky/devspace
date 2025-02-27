@@ -41,11 +41,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: Homebrew/actions/setup-homebrew@master
-      - run: brew install gnu-sed grep
+      - run: brew install gnu-sed grep gnu-getopt
       - name: add path
         run: |
           echo "/opt/homebrew/opt/grep/libexec/gnubin" >> $GITHUB_PATH
           echo "/opt/homebrew/opt/gnu-sed/libexec/gnubin" >> $GITHUB_PATH
+          echo "/opt/homebrew/opt/gnu-getopt/bin" >> $GITHUB_PATH
 
       - uses: actions/setup-python@v5
         with:
