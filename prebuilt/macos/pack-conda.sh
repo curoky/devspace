@@ -16,7 +16,7 @@ gsed -i -e 's/| md5/| openssl md5/g' tmp/miniconda.sh
 bash tmp/miniconda.sh -b -u -p /opt/conda
 
 # setup env
-/workspace/dotbox/docker/stage/conda/setup-conda-env.sh -e ../../host/mac/conf/conda/py3.yaml
+../../docker/stage/conda/setup-conda-env.sh -e ../../host/mac/conf/conda/py3.yaml
 
 # setup pipx
 /opt/conda/bin/pip3 install pipx
