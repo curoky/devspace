@@ -30,13 +30,6 @@ jobs:
           tag: 'v1.0'
           overwrite: true
 
-      - uses: svenstaro/upload-release-action@v2
-        with:
-          file: prebuilt/macos/tmp/conda.darwin-arm64.tar.gz
-          asset_name: conda.darwin-arm64.tar.gz
-          tag: 'v1.0'
-          overwrite: true
-
       - uses: mxschmitt/action-tmate@v3
         if: ${{ failure() }}
         timeout-minutes: 30
@@ -52,7 +45,7 @@ jobs:
       - name: add path
         run: |
           echo "/opt/homebrew/opt/grep/libexec/gnubin" >> $GITHUB_PATH
-          echo "/opt/homebrew/opt/gnu-sed/bin" >> $GITHUB_PATH
+          echo "/opt/homebrew/opt/gnu-sed/libexec/gnubin" >> $GITHUB_PATH
 
       - uses: actions/setup-python@v5
         with:
