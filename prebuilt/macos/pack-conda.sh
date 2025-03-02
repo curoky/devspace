@@ -40,8 +40,89 @@ cp /opt/homebrew/opt/libtiff/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib
 cp /opt/homebrew/opt/nss/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
 cp /opt/homebrew/opt/nspr/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
 cp /opt/homebrew/opt/libassuan/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+cp /opt/homebrew/opt/libgpg-error/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+cp /opt/homebrew/opt/xz/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+cp /opt/homebrew/opt/zstd/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
 
-install_name_tool -change /opt/homebrew/opt/poppler/lib/libpoppler-cpp.2.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libpoppler-cpp.2.dylib /opt/conda/pipx/venvs/monopoly-core/lib/python3.12/site-packages/pdftotext.cpython-312-darwin.so
-# install_name_tool -add_rpath /opt/conda/pipx/venvs/monopoly-core/lib/ /opt/conda/pipx/venvs/monopoly-core/lib/python3.12/site-packages/pdftotext.cpython-312-darwin.so
+# install_name_tool -change /opt/homebrew/opt/poppler/lib/libpoppler-cpp.2.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libpoppler-cpp.2.dylib /opt/conda/pipx/venvs/monopoly-core/lib/python3.12/site-packages/pdftotext.cpython-312-darwin.so
+# install_name_tool \
+#   -change /opt/homebrew/opt/freetype/lib/libfreetype.6.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libfreetype.6.dylib \
+#   -change /opt/homebrew/opt/fontconfig/lib/libfontconfig.1.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libfontconfig.1.dylib \
+#   -change /opt/homebrew/opt/jpeg-turbo/lib/libjpeg.8.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libjpeg.8.dylib \
+#   -change /opt/homebrew/opt/gpgme/lib/libgpgmepp.6.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libgpgmepp.6.dylib \
+#   -change /opt/homebrew/opt/openjpeg/lib/libopenjp2.7.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libopenjp2.7.dylib \
+#   -change /opt/homebrew/opt/little-cms2/lib/liblcms2.2.dylib /opt/conda/pipx/venvs/monopoly-core/lib/liblcms2.2.dylib \
+#   -change /opt/homebrew/opt/libpng/lib/libpng16.16.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libpng16.16.dylib \
+#   -change /opt/homebrew/opt/libtiff/lib/libtiff.6.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libtiff.6.dylib \
+#   -change /opt/homebrew/opt/nss/lib/libnss3.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libnss3.dylib \
+#   -change /opt/homebrew/opt/nss/lib/libnssutil3.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libnssutil3.dylib \
+#   -change /opt/homebrew/opt/nss/lib/libsmime3.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libsmime3.dylib \
+#   -change /opt/homebrew/opt/nss/lib/libssl3.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libssl3.dylib \
+#   -change /opt/homebrew/opt/nspr/lib/libplds4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libplds4.dylib \
+#   -change /opt/homebrew/opt/nspr/lib/libplc4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libplc4.dylib \
+#   -change /opt/homebrew/opt/nspr/lib/libnspr4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libnspr4.dylib \
+#   -change /opt/homebrew/opt/gpgme/lib/libgpgme.11.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libgpgme.11.dylib \
+#   -change /opt/homebrew/opt/libassuan/lib/libassuan.9.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libassuan.9.dylib \
+#   /opt/conda/pipx/venvs/monopoly-core/lib/libpoppler.146.dylib
+
+# install_name_tool \
+#   -change /opt/homebrew/opt/gpgme/lib/libgpgmepp.6.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libgpgmepp.6.dylib \
+#   -change /opt/homebrew/Cellar/gpgme/1.24.2/lib/libgpgme.11.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libgpgme.11.dylib \
+#   -change /opt/homebrew/opt/libassuan/lib/libassuan.9.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libassuan.9.dylib \
+#   /opt/conda/pipx/venvs/monopoly-core/lib/libgpgmepp.6.dylib
+
+# install_name_tool \
+#   -change /opt/homebrew/opt/nss/lib/libnss3.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libnss3.dylib \
+#   -change /opt/homebrew/opt/nss/lib/libnssutil3.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libnssutil3.dylib \
+#   -change /opt/homebrew/opt/nspr/lib/libplds4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libplds4.dylib \
+#   -change /opt/homebrew/opt/nspr/lib/libplc4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libplc4.dylib \
+#   -change /opt/homebrew/opt/nspr/lib/libnspr4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libnspr4.dylib \
+#   /opt/conda/pipx/venvs/monopoly-core/lib/libnss3.dylib
+
+# install_name_tool \
+#   -change /opt/homebrew/opt/libassuan/lib/libassuan.9.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libassuan.9.dylib \
+#   -change /opt/homebrew/opt/libgpg-error/lib/libgpg-error.0.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libgpg-error.0.dylib \
+#   /opt/conda/pipx/venvs/monopoly-core/lib/libassuan.9.dylib
+
+# install_name_tool \
+#   -change /opt/homebrew/opt/libassuan/lib/libassuan.9.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libassuan.9.dylib \
+#   -change /opt/homebrew/opt/gpgme/lib/libgpgme.11.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libgpgme.11.dylib \
+#   -change /opt/homebrew/opt/libgpg-error/lib/libgpg-error.0.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libgpg-error.0.dylib \
+#   /opt/conda/pipx/venvs/monopoly-core/lib/libgpgme.11.dylib
+
+# install_name_tool \
+#   -change /opt/homebrew/opt/nspr/lib/libplc4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libplc4.dylib \
+#   -change /opt/homebrew/opt/nspr/lib/libnspr4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libnspr4.dylib \
+#   /opt/conda/pipx/venvs/monopoly-core/lib/libplc4.dylib
+
+# install_name_tool \
+#   -change /opt/homebrew/opt/nspr/lib/libplds4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libplds4.dylib \
+#   -change /opt/homebrew/opt/nspr/lib/libnspr4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libnspr4.dylib \
+#   /opt/conda/pipx/venvs/monopoly-core/lib/libplds4.dylib
+
+# install_name_tool \
+#   -change /opt/homebrew/opt/nss/lib/libssl3.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libssl3.dylib \
+#   -change /opt/homebrew/opt/nss/lib/libnss3.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libnss3.dylib \
+#   -change /opt/homebrew/opt/nss/lib/libnssutil3.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libnssutil3.dylib \
+#   -change /opt/homebrew/opt/nspr/lib/libplds4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libplds4.dylib \
+#   -change /opt/homebrew/opt/nspr/lib/libplc4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libplc4.dylib \
+#   -change /opt/homebrew/opt/nspr/lib/libnspr4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libnspr4.dylib \
+#   /opt/conda/pipx/venvs/monopoly-core/lib/libssl3.dylib
+
+# install_name_tool \
+#   -change /opt/homebrew/opt/nss/lib/libsmime3.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libsmime3.dylib \
+#   -change /opt/homebrew/opt/nss/lib/libnss3.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libnss3.dylib \
+#   -change /opt/homebrew/opt/nss/lib/libnssutil3.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libnssutil3.dylib \
+#   -change /opt/homebrew/opt/nss/lib/libnssutil3.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libnssutil3.dylib \
+#   -change /opt/homebrew/opt/nspr/lib/libplds4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libplds4.dylib \
+#   -change /opt/homebrew/opt/nspr/lib/libplc4.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libplc4.dylib \
+#   /opt/conda/pipx/venvs/monopoly-core/lib/libsmime3.dylib
+
+# install_name_tool \
+#   -change /opt/homebrew/opt/libtiff/lib/libtiff.6.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libtiff.6.dylib \
+#   -change /opt/homebrew/opt/zstd/lib/libzstd.1.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libzstd.1.dylib \
+#   -change /opt/homebrew/opt/xz/lib/liblzma.5.dylib /opt/conda/pipx/venvs/monopoly-core/lib/liblzma.5.dylib \
+#   -change /opt/homebrew/opt/jpeg-turbo/lib/libjpeg.8.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libjpeg.8.dylib \
+#   /opt/conda/pipx/venvs/monopoly-core/lib/libtiff.6.dylib
 
 tar -c --gunzip -f tmp/conda.darwin-arm64.tar.gz /opt/conda
