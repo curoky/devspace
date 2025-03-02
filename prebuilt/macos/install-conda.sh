@@ -10,4 +10,3 @@ sudo chown "$(id -u):$(id -g)" /opt/conda
 
 tar -x --gunzip -f /tmp/conda.darwin-arm64.tar.gz -C /opt/conda --strip-components=2
 rm -rf /tmp/conda.darwin-arm64.tar.gz
-12

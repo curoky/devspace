@@ -30,3 +30,5 @@ brew install gcc@11 pkg-config poppler ocrmypdf
 /opt/conda/bin/pipx install monopoly-core
 
 tar -c --gunzip -f tmp/conda.darwin-arm64.tar.gz /opt/conda
+
+123
