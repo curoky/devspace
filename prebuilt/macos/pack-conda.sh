@@ -28,7 +28,6 @@ export PIPX_MAN_DIR=${PIPX_HOME}/share/man
 # setup pipx monopoly
 brew install gcc@11 pkg-config poppler ocrmypdf
 /opt/conda/bin/pipx install monopoly-core
+cp /opt/homebrew/opt/poppler/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
 
 tar -c --gunzip -f tmp/conda.darwin-arm64.tar.gz /opt/conda
-
-123
