@@ -28,21 +28,28 @@ export PIPX_MAN_DIR=${PIPX_HOME}/share/man
 # setup pipx monopoly
 brew install gcc@11 pkg-config poppler ocrmypdf
 /opt/conda/bin/pipx install monopoly-core
-cp /opt/homebrew/opt/poppler/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
-cp /opt/homebrew/opt/freetype/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
-cp /opt/homebrew/opt/fontconfig/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
-cp /opt/homebrew/opt/jpeg-turbo/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
-cp /opt/homebrew/opt/gpgme/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
-cp /opt/homebrew/opt/openjpeg/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
-cp /opt/homebrew/opt/little-cms2/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
-cp /opt/homebrew/opt/libpng/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
-cp /opt/homebrew/opt/libtiff/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
-cp /opt/homebrew/opt/nss/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
-cp /opt/homebrew/opt/nspr/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
-cp /opt/homebrew/opt/libassuan/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
-cp /opt/homebrew/opt/libgpg-error/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
-cp /opt/homebrew/opt/xz/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
-cp /opt/homebrew/opt/zstd/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+
+/opt/conda/bin/python3 ./prebuilt/macos/bundle.py \
+  /opt/conda/pipx/venvs/monopoly-core/lib/python3.12/site-packages/pdftotext.cpython-312-darwin.so \
+  /opt/conda/pipx/venvs/monopoly-core/lib/python3.12/site-packages/pdftotext.cpython-312-darwin.so \
+  /opt/conda/pipx/venvs/monopoly-core/lib/
+
+123123
+# cp /opt/homebrew/opt/poppler/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+# cp /opt/homebrew/opt/freetype/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+# cp /opt/homebrew/opt/fontconfig/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+# cp /opt/homebrew/opt/jpeg-turbo/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+# cp /opt/homebrew/opt/gpgme/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+# cp /opt/homebrew/opt/openjpeg/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+# cp /opt/homebrew/opt/little-cms2/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+# cp /opt/homebrew/opt/libpng/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+# cp /opt/homebrew/opt/libtiff/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+# cp /opt/homebrew/opt/nss/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+# cp /opt/homebrew/opt/nspr/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+# cp /opt/homebrew/opt/libassuan/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+# cp /opt/homebrew/opt/libgpg-error/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+# cp /opt/homebrew/opt/xz/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
+# cp /opt/homebrew/opt/zstd/lib/*.dylib /opt/conda/pipx/venvs/monopoly-core/lib/
 
 # install_name_tool -change /opt/homebrew/opt/poppler/lib/libpoppler-cpp.2.dylib /opt/conda/pipx/venvs/monopoly-core/lib/libpoppler-cpp.2.dylib /opt/conda/pipx/venvs/monopoly-core/lib/python3.12/site-packages/pdftotext.cpython-312-darwin.so
 # install_name_tool \
