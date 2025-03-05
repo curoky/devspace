@@ -74,7 +74,7 @@ function common() {
 
   # link_path $CONF_PATH/gdb/gdbinit $HOME/.gdbinit
   link_path $CONF_PATH/vim/vimrc $HOME/.vimrc
-  # link_path $CONF_PATH/tabby-ml/config.toml $HOME/.tabby-client/agent/config.toml
+  link_path $CONF_PATH/tabby-ml/config.toml $HOME/.tabby-client/agent/config.toml
 
   copy_path $CONF_PATH/zsh/prune.zshrc $HOME/.zshrc
   copy_path $CONF_PATH/git/.gitconfig $HOME/.gitconfig
@@ -95,6 +95,7 @@ elif [[ $SCENE == "host-linux" ]]; then
   rm -rf ~/.gitconfig
   rm -rf ~/.ssh/config
   rm -rf ~/.gdbinit
+  rm -rf ~/.tabby-client
 
 elif [[ $SCENE == "docker" ]]; then
   link_path $CONF_PATH/vscode/remote-server-settings.json $HOME/.vscode-server/data/Machine/settings.json
