@@ -42,6 +42,8 @@ def otool(binary: Path) -> list[Path]:
             # skip on system lib
             if dep.as_posix().startswith("/usr/lib"):
                 continue
+            if dep.as_posix().startswith("/System/Library"):
+                continue
 
             deps.append(dep)
     return deps
@@ -107,11 +109,16 @@ def resolve_deps(binary: Path):
 
         deps = otool(binary) if is_macos() else ldd(binary)
         logging.debug("reslove:recursive: deps is %s", deps)
-        edge[binary] = deps
+        edge[binary] = []
 
         if len(deps) <= 0:
             return
+
         for dep in deps:
+            if not dep.exists():
+                logging.error("reslove:recursive: dep find not found %s", binary)
+                continue
+            edge[binary].append(dep)
             total_deps.add(dep)
             recursive(dep)
 
@@ -127,8 +134,9 @@ def patch_deps(binary: Path, edge: dict[Path, list[Path]], bundle_path: Path):
     def recursive(binary: Path):
         if binary not in edge or binary in processed:
             return
-        install_name_tool.add_rpath(binary, bundle_path)
         processed.add(binary)
+
+        install_name_tool.add_rpath(binary, bundle_path)
         if is_macos():
             for dep in edge[binary]:
                 recursive(binary)
