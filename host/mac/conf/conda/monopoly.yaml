@@ -1,0 +1,9 @@
+name: monopoly
+channels:
+  - defaults
+dependencies:
+  - python=3.12.8
+  - poppler=24.09.0=h092caa6_1
+  - pip
+  - pip:
+      - monopoly-core

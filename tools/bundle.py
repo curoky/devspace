@@ -22,9 +22,7 @@ def ldd(binary: Path) -> list[Path]:
 
 def otool(binary: Path) -> list[Path]:
     logging.debug("cmd: otool -L %s", binary)
-    otool_output = subprocess.check_output(["otool", "-L", binary.as_posix()]).decode(
-        "utf-8"
-    )
+    otool_output = subprocess.check_output(["otool", "-L", binary.as_posix()]).decode("utf-8")
     logging.debug("cmd:output: %s", otool_output)
     deps = []
     for line in otool_output.split("\n")[1:]:
@@ -75,9 +73,7 @@ class install_name_tool:
 
 def patchelf_set_rpath(binary: Path, rpaths: list[Path]) -> None:
     for rpath in rpaths:
-        logging.debug(
-            "cmd: patchelf --set-rpath %s %s", rpath.as_posix(), binary.as_posix()
-        )
+        logging.debug("cmd: patchelf --set-rpath %s %s", rpath.as_posix(), binary.as_posix())
         output = subprocess.check_output(
             ["patchelf", "--set-rpath", rpath.as_posix(), binary.as_posix()]
         )
@@ -169,13 +165,13 @@ def main():
 
     for dep in total_deps:
         logging.debug("copy %s -> %s", dep, bundle_path)
-        shutil.copy(
-            src=dep.as_posix(), dst=bundle_path.as_posix(), follow_symlinks=True
-        )
+        if (bundle_path / dep.name).exists():
+            continue
+        shutil.copy(src=dep.as_posix(), dst=bundle_path.as_posix(), follow_symlinks=True)
 
     if binary_save_path != binary_source_path:
         logging.debug("copy %s -> %s", binary_source_path, binary_save_path)
-        shutil.copy(src=binary_source_path, dst=binary_save_path, follow_symlinks=True)
+        shutil.copy(src=binary_source_path, dst=binary_save_path, follow_symlinks=False)
 
     if is_macos():
         patch_deps(binary_save_path, edge, bundle_path)
