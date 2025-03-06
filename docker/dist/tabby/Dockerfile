@@ -1,6 +1,38 @@
-ARG CUDA_VERSION=12.3.2
+ARG CUDA_VERSION=12.2.2
 ARG BASE_CUDA_DEV_CONTAINER=nvidia/cuda:${CUDA_VERSION}-devel-ubuntu22.04
 ARG BASE_CUDA_RUN_CONTAINER=nvidia/cuda:${CUDA_VERSION}-runtime-ubuntu22.04
+
+FROM ${BASE_CUDA_DEV_CONTAINER} AS build
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        curl \
+        pkg-config \
+        libssl-dev \
+        protobuf-compiler \
+        git \
+        cmake \
+        && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# setup rust.
+RUN curl https://sh.rustup.rs -sSf | bash -s -- --default-toolchain stable -y
+ENV PATH="/root/.cargo/bin:${PATH}" LD_LIBRARY_PATH="/usr/local/cuda/compat/:${LD_LIBRARY_PATH}"
+
+WORKDIR /root/workspace
+
+RUN git clone --recurse-submodules -b v0.25.1 --depth=1 https://github.com/TabbyML/tabby /root/workspace \
+  && mkdir -p target
+
+RUN ls -la /root/workspace/docker/Dockerfile.cuda
+RUN --mount=type=cache,target=/usr/local/cargo/registry \
+    --mount=type=cache,target=/root/workspace/target \
+  cargo build --no-default-features --features cuda,prod --release --package tabby \
+  && mkdir -p /opt/tabby/bin \
+  && cp target/release/llama-server /opt/tabby/bin/ \
+  && cp target/release/tabby /opt/tabby/bin/
 
 FROM ${BASE_CUDA_RUN_CONTAINER} AS runtime
 
@@ -27,11 +59,8 @@ RUN mkdir -p /data /opt && chown x:x -R /data /opt
 
 USER x
 WORKDIR /home/x
-RUN curl -sSL -o tabby.tar.gz \
-    https://github.com/TabbyML/tabby/releases/download/v0.25.1/tabby_x86_64-manylinux_2_28-cuda123.tar.gz \
-  && mkdir -p /opt/tabby/bin \
-  && tar -x --gunzip -f tabby.tar.gz -C /opt/tabby/bin --strip-components=1 \
-  && rm -rf tabby.tar.gz
+
+COPY --from=build /opt/tabby /opt/tabby
 
 ENV PATH="$PATH:/opt/tabby/bin"
 ENV TABBY_ROOT=/data
