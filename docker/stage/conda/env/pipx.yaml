@@ -3,7 +3,7 @@ name: pipx
 channels:
   - defaults
 dependencies:
-  - python=3.12
+  - python=3.12.8
   - pip
   - pip:
       - pipx
