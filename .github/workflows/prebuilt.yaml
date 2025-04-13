@@ -84,6 +84,7 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
       - run: |
           cd prebuilt/offline-install-docker/debian10
           ./pack.sh
