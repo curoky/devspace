@@ -1,9 +1,9 @@
-name: pack prebuilt
+name: prebuilt
 
 on:
   push:
     paths:
-      - '.github/workflows/pack-prebuilt.yaml'
+      - '.github/workflows/prebuilt.yaml'
       - 'prebuilt/**'
   workflow_dispatch:
   schedule:
@@ -21,11 +21,11 @@ jobs:
           python-version: '3'
 
       - run: |
-          cd prebuilt/macos/
+          cd prebuilt/basic-sre-tools/macos
           ./pack.sh
 
       - run: |
-          cd prebuilt/linux
+          cd prebuilt/basic-sre-tools/linux
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
@@ -63,6 +63,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3'
+
       - run: |
           cd prebuilt/packed-conda/macos
           ./pack.sh
@@ -71,6 +72,26 @@ jobs:
         with:
           file: prebuilt/macos/tmp/conda.darwin-arm64.tar.gz
           asset_name: conda.darwin-arm64.tar.gz
+          tag: 'v1.0'
+          overwrite: true
+
+      - uses: mxschmitt/action-tmate@v3
+        if: ${{ failure() }}
+        timeout-minutes: 30
+
+  offline-install-docker:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - run: |
+          cd prebuilt/offline-install-docker/debian10
+          ./pack.sh
+
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          file: prebuilt/offline-install-docker/debian10/tmp/docker.debian10.tar.gz
+          asset_name: docker.debian10.tar.gz
           tag: 'v1.0'
           overwrite: true
 
