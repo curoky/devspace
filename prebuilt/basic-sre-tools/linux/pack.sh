@@ -130,7 +130,7 @@ pkgs=(
   exiftool
 )
 
-rm -rf tmp
+rm -rf tmp/download tmp/prebuilt
 mkdir -p tmp
 
 curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >tmp/install.sh
@@ -138,8 +138,9 @@ for pkg in "${pkgs[@]}"; do
   bash tmp/install.sh -n $pkg -d tmp/download -i tmp/prebuilt/pkgs/$pkg &
 done
 wait
+./setup-pypi-pkgs.sh
 
-mkdir tmp/prebuilt/bin/
+mkdir -p tmp/prebuilt/bin/
 mkdir -p tmp/prebuilt/pkgs/clang-format-18/bin
 cp tmp/prebuilt/pkgs/llvmPackages_18.clang-unwrapped/bin/clang-format tmp/prebuilt/pkgs/clang-format-18/bin/clang-format
 rm -rf tmp/prebuilt/pkgs/llvmPackages_18.clang-unwrapped
@@ -166,7 +167,7 @@ remove_unneeded
 
 rename_wrapped
 strip_bin
-copy_wrapper
+# copy_wrapper
 link_to_bin
 link_zsh_comp
 add_dotbox
@@ -174,6 +175,5 @@ add_dotbox
 ln -s -r tmp/prebuilt/bin/bazelisk tmp/prebuilt/bin/bazel
 ln -s -r tmp/prebuilt/bin/clang-format tmp/prebuilt/bin/clang-format-18
 
-./setup-pipx.sh
 cd tmp
 tar -c --gunzip -f prebuilt.linux-x86_64.tar.gz prebuilt
