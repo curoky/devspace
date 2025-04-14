@@ -22,4 +22,4 @@ curl -L -o /tmp/prebuilt-sre-tools.gzip.sh https://github.com/curoky/dotbox/rele
 bash /tmp/prebuilt-sre-tools.gzip.sh $@
 
 # Usage
-# curl -sSL https://github.com/curoky/dotbox/raw/dev/prebuilt/packed-dotbox/online-installer.sh | bash -s -- -l -n host-linux
+# curl -sSL https://github.com/curoky/dotbox/raw/dev/prebuilt/packed-dotbox/online-installer.sh | bash -s -- -- -l -n host-linux/docker
