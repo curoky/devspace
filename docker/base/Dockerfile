@@ -42,14 +42,12 @@ RUN sudo mkdir -p /workspace \
 
 # TODO: remove
 RUN sudo mkdir -p /app/prebuilt \
-  && sudo chown x:x /app \
+  && sudo chown -R x:x /app \
   && ln -s /home/x/app/prebuilt ~/prebuilt \
   && ln -s /home/x/app/prebuilt /app/prebuilt
 
 USER root
-RUN mkdir app \
-  && ln -s /home/x/app ~/app \
-  && ln -sf /home/x/app/dotbox ~/dotbox \
+RUN ln -sf /home/x/app/dotbox ~/dotbox \
   && ~/dotbox/docker/base/script/setup-sysconf.sh ~/dotbox/config \
   && ~/dotbox/config/setup.sh docker ~/dotbox/config
 
