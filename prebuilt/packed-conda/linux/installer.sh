@@ -3,8 +3,8 @@ set -xeuo pipefail
 
 abspath=$(cd "$(dirname "$0")" && pwd)
 
-rm -rf /opt/conda
-mkdir -p /opt/conda
-chown "$(id -u):$(id -g)" /opt/conda
+rm -rf /home/x/app/conda
+mkdir -p /home/x/app/conda
+chown "$(id -u):$(id -g)" /home/x/app/conda
 
-cp -r $abspath/* /opt/conda
+cp -r $abspath/* /home/x/app/conda
