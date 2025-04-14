@@ -142,6 +142,30 @@ jobs:
         if: ${{ failure() }}
         timeout-minutes: 30
 
+  packed-dotbox:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@master
+      - run: brew install makeself
+
+      - run: |
+          cd prebuilt/packed-dotbox/
+          ./pack.sh
+
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          file: prebuilt/packed-dotbox/tmp/dotbox_installer.gzip.sh
+          asset_name: dotbox_installer.gzip.sh
+          tag: 'v1.0'
+          overwrite: true
+
+      - uses: mxschmitt/action-tmate@v3
+        if: ${{ failure() }}
+        timeout-minutes: 30
+
   linux-tensorflow:
     runs-on: ubuntu-latest
     permissions:

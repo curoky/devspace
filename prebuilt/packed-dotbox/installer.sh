@@ -1,7 +1,36 @@
 #!/usr/bin/env bash
 set -xeuo pipefail
 
-# rm -f ~/dotbox
-#   ln -s $HOME/app/prebuilt/dotbox ~/dotbox
+abspath=$(cd "$(dirname "$0")" && pwd)
 
-#   $HOME/app/prebuilt/dotbox/config/setup.sh host-linux $HOME/app/prebuilt/dotbox/config
+target=$HOME/app/dotbox
+link=0
+link_name=host-linux
+
+while getopts "t:l:n" opt; do
+  case "$opt" in
+    t)
+      target="$OPTARG"
+      ;;
+    l)
+      link=1
+      ;;
+    n)
+      link_name="$OPTARG"
+      ;;
+    \?)
+      echo "Usage: $0 [-t target] [-l link] [-n link_name]"
+      exit 1
+      ;;
+  esac
+done
+
+rm -rf $target
+mkdir -p $target
+cp -r $abspath/* $target
+
+if [ $host-linux -eq 1 ]; then
+  rm -f $HOME/dotbox
+  ln -s $target $HOME/dotbox
+  $HOME/dotbox/config/setup.sh $link_name $HOME/dotbox/config
+fi
