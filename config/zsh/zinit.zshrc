@@ -62,17 +62,12 @@ compinit
 #    @atuinsh/atuin
 
 # #=-> conda
-# if [[ -f /app/conda/bin/conda ]]; then
-#   eval "$(/app/conda/bin/conda shell.zsh hook 2>/dev/null)"
+# if [[ -f ~/app/conda/bin/conda ]]; then
+#   eval "$(~/app/conda/bin/conda shell.zsh hook 2>/dev/null)"
 # fi
 # if [[ -f /opt/homebrew/Caskroom/miniconda/base/bin/conda ]]; then
 #   eval "$(/opt/homebrew/Caskroom/miniconda/base/bin/conda shell.zsh hook 2>/dev/null)"
 # fi
-
-# #=-> mamba
-# # if [ -f "/app/conda/etc/profile.d/mamba.sh" ]; then
-# #   . "/app/conda/etc/profile.d/mamba.sh"
-# # fi
 
 # # TODO: remove -u
 # # why: why add -u to compinit?

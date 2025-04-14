@@ -71,7 +71,7 @@ function remove_unneeded() {
   find tmp/prebuilt/ -name "*.pyc" -delete
 
   # remove ld from binutils
-  # /app/prebuilt/extra/bin/ld.gold: error: /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so: could not load plugin library: Dynamic loading not supported
+  # ~/app/prebuilt/extra/bin/ld.gold: error: /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so: could not load plugin library: Dynamic loading not supported
   rm -rf tmp/prebuilt/bin/ld tmp/prebuilt/bin/ld.bfd tmp/prebuilt/bin/ld.gold
 }
 

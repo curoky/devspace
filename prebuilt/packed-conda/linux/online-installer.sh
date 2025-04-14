@@ -15,10 +15,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 set -xeuo pipefail
 
-export PIPX_HOME=/home/x/app/conda/pipx
-export PIPX_BIN_DIR=${PIPX_HOME}/bin
-export PIPX_MAN_DIR=${PIPX_HOME}/share/man
-
-/home/x/app/conda/bin/pipx install $@
+curl -L -o /tmp/conda.linux-x86_64.gzip.sh https://github.com/curoky/dotbox/releases/download/v1.0/conda.linux-x86_64.gzip.sh
+bash /tmp/conda.linux-x86_64.gzip.sh $@
