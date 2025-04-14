@@ -101,7 +101,6 @@ pkgs=(
   protobuf_3_8_0
   protobuf_3_9_2
   python311
-  rime-bundle
   rsync
   ruff
   shfmt
@@ -138,13 +137,13 @@ for pkg in "${pkgs[@]}"; do
   bash tmp/install.sh -n $pkg -d tmp/download -i tmp/prebuilt/pkgs/$pkg &
 done
 wait
+
 ./setup-pypi-pkgs.sh
 
 mkdir -p tmp/prebuilt/bin/
 mkdir -p tmp/prebuilt/pkgs/clang-format-18/bin
 cp tmp/prebuilt/pkgs/llvmPackages_18.clang-unwrapped/bin/clang-format tmp/prebuilt/pkgs/clang-format-18/bin/clang-format
 rm -rf tmp/prebuilt/pkgs/llvmPackages_18.clang-unwrapped
-rm -rf tmp/prebuilt/pkgs/rime-bundle
 
 # some issue
 touch tmp/prebuilt/pkgs/binutils/skip_link
@@ -164,13 +163,18 @@ touch tmp/prebuilt/pkgs/python311/skip_link
 
 remove_unneeded
 rename_wrapped
-strip_bin
+strip_binary
 link_to_bin
-link_zsh_comp
+link_zsh_site_funtions
+remove_invalid_link
 add_dotbox
 
 ln -s -r tmp/prebuilt/bin/bazelisk tmp/prebuilt/bin/bazel
 ln -s -r tmp/prebuilt/bin/clang-format tmp/prebuilt/bin/clang-format-18
 
-cd tmp
-tar -c --gunzip -f prebuilt-sre-tools.linux-x86_64.tar.gz prebuilt
+cp -f ../common/installer.sh tmp/prebuilt/
+
+makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/prebuilt tmp/prebuilt_installer.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
+makeself --complevel 9 --tar-quietly --zstd --threads 16 tmp/prebuilt tmp/prebuilt_installer.linux-x86_64.zstd.sh "Prebuilt Installer" ./installer.sh
+
+# tar -c --gunzip -f prebuilt-sre-tools.linux-x86_64.tar.gz prebuilt

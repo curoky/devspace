@@ -4,7 +4,7 @@ set -xeuo pipefail
 export PATH=$PATH:/sbin
 
 sudo rm -rf /opt/conda
-sudo mkdir /opt/conda
+sudo mkdir -p /opt/conda
 sudo chown "$(id -u):$(id -g)" /opt/conda
 
 rm -rf tmp
@@ -24,4 +24,9 @@ export PIPX_BIN_DIR=${PIPX_HOME}/bin
 export PIPX_MAN_DIR=${PIPX_HOME}/share/man
 /opt/conda/bin/pipx install licenseheaders
 
-tar -c --gunzip -f tmp/conda.linux-x86_64.tar.gz /opt/conda
+cp installer.sh /opt/conda/installer.sh
+
+makeself --complevel 6 --tar-quietly --gzip --threads 16 /opt/conda tmp/conda.linux-x86_64.gzip.sh "Prebuilt Installer" /dev/null
+makeself --complevel 9 --tar-quietly --zstd --threads 16 /opt/conda tmp/conda.linux-x86_64.zstd.sh "Prebuilt Installer" /dev/null
+
+# tar -c --gunzip -f tmp/conda.linux-x86_64.tar.gz /opt/conda

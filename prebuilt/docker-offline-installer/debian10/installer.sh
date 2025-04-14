@@ -69,7 +69,7 @@ dpkg_command="dpkg -i"
 
 for url in "${urls[@]}"; do
   filename=$(basename "$url")
-  dpkg_command="$dpkg_command tmp/docker/$filename"
+  dpkg_command="$dpkg_command ./$filename"
 done
 
 eval "$dpkg_command"

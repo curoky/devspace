@@ -47,7 +47,7 @@ function link_to_bin() {
   # find tmp/prebuilt/pkgs/*/bin -type l -exec ln -s -r {} $PWD/tmp/prebuilt/bin/ \;
 }
 
-function link_zsh_comp() {
+function link_zsh_site_funtions() {
   rm -rf tmp/prebuilt/share/zsh/site-functions/
   mkdir -p tmp/prebuilt/share/zsh/site-functions/
   find tmp/prebuilt/pkgs -type d -path "*/zsh/site-functions" | while read -r dir; do
@@ -57,7 +57,7 @@ function link_zsh_comp() {
   done
 }
 
-function strip_bin() {
+function strip_binary() {
   chmod -R +w tmp/prebuilt/
   find tmp/prebuilt/pkgs/*/bin -executable -type f | while read -r file; do
     if file "$file" | grep -q 'ELF'; then
@@ -83,13 +83,20 @@ function rename_wrapped() {
   done
 }
 
-function copy_wrapper() {
-  cp \
-    wrapper/dool \
-    wrapper/git-filter-repo \
-    wrapper/netron \
-    tmp/prebuilt/bin
+function remove_invalid_link() {
+  find tmp/prebuilt -type l -exec test ! -e {} \; -print | while read -r file; do
+    echo "remove invalid link: $file"
+    rm -rf "$file"
+  done
 }
+
+# function copy_wrapper() {
+#   cp \
+#     wrapper/dool \
+#     wrapper/git-filter-repo \
+#     wrapper/netron \
+#     tmp/prebuilt/bin
+# }
 
 function add_dotbox() {
   mkdir -p tmp/prebuilt/dotbox

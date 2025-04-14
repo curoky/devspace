@@ -14,28 +14,31 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    strategy:
+      matrix:
+        include:
+          - os: linux
+            arch: amd64
+          - os: darwin
+            arch: arm64
     steps:
       - uses: actions/checkout@v4
 
       - run: |
-          cd prebuilt/prebuilt-sre-tools/macos
-          ./pack.sh
-
-      - run: |
-          cd prebuilt/prebuilt-sre-tools/linux
+          cd prebuilt/prebuilt-sre-tools/${{ matrix.os }}
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/prebuilt-sre-tools/macos/tmp/prebuilt-sre-tools.darwin-arm64.tar.gz
-          asset_name: prebuilt-sre-tools.darwin-arm64.tar.gz
+          file: prebuilt/prebuilt-sre-tools/${{ matrix.os }}/tmp/prebuilt_installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
+          asset_name: prebuilt-sre-tools.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/prebuilt-sre-tools/linux/tmp/prebuilt-sre-tools.linux-x86_64.tar.gz
-          asset_name: prebuilt-sre-tools.linux-x86_64.tar.gz
+          file: prebuilt/prebuilt-sre-tools/${{ matrix.os }}/tmp/prebuilt_installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
+          asset_name: prebuilt-sre-tools.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
           tag: 'v1.0'
           overwrite: true
 
@@ -58,12 +61,12 @@ jobs:
           echo "/opt/homebrew/opt/gnu-getopt/bin" >> $GITHUB_PATH
 
       - run: |
-          cd prebuilt/packed-conda/macos
+          cd prebuilt/packed-conda/darwin
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/packed-conda/macos/tmp/conda.darwin-arm64.tar.gz
+          file: prebuilt/packed-conda/darwin/tmp/conda.darwin-arm64.tar.gz
           asset_name: conda.darwin-arm64.tar.gz
           tag: 'v1.0'
           overwrite: true
