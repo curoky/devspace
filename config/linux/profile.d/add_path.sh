@@ -14,4 +14,4 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-export PATH:/app/prebuilt/bin:$PATH
+export PATH:/home/x/app/prebuilt/bin:$PATH
