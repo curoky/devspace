@@ -17,7 +17,7 @@
 # limitations under the License.
 set -xeuo pipefail
 
-curl -sSL https://github.com/curoky/dotbox/raw/dev/prebuilt/prebuilt-sre-tools/online-install.sh | bash
+curl -sSL https://github.com/curoky/dotbox/raw/dev/prebuilt/prebuilt-sre-tools/online-installer.sh | bash
 
 if ! grep -q 'prebuilt/bin' ~/.bashrc; then
   echo 'export PATH=$HOME/prebuilt/bin:$PATH' >>~/.bashrc
