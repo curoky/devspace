@@ -16,9 +16,6 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      # - uses: actions/setup-python@v5
-      #   with:
-      #     python-version: '3'
 
       - run: |
           cd prebuilt/prebuilt-sre-tools/macos
@@ -60,10 +57,6 @@ jobs:
           echo "/opt/homebrew/opt/gnu-sed/libexec/gnubin" >> $GITHUB_PATH
           echo "/opt/homebrew/opt/gnu-getopt/bin" >> $GITHUB_PATH
 
-      # - uses: actions/setup-python@v5
-      #   with:
-      #     python-version: '3'
-
       - run: |
           cd prebuilt/packed-conda/macos
           ./pack.sh
@@ -87,7 +80,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - run: |
-          cd prebuilt/packed-conda/linux/x86_64
+          cd prebuilt/packed-conda/linux/
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
