@@ -5,4 +5,4 @@ curl -L -o /tmp/profile.sh https://github.com/curoky/dotbox/raw/dev/config/passk
 bash /tmp/profile.sh $@
 
 # Usage
-# curl -sSL https://github.com/curoky/dotbox/raw/dev/dotbox/tools/profile-installer.sh | bash -s -- -- xxxx
+# curl -sSL https://github.com/curoky/dotbox/raw/dev/tools/profile-installer.sh | bash
