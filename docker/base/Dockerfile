@@ -8,38 +8,49 @@ ENV PATH=$PATH:/home/x/app/pipx/bin:/home/x/app/prebuilt/bin:/nix/var/nix/profil
 
 RUN apt-get update -y && apt-get install -y sudo curl
 
-RUN curl -sSL -o prebuilt-sre-tools.linux-x86_64.gzip.sh https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt-sre-tools.linux-x86_64.gzip.sh \
-  && bash prebuilt-sre-tools.linux-x86_64.gzip.sh \
-  && rm -rf prebuilt-sre-tools.linux-x86_64.gzip.sh
+COPY script/setup-user.sh /tmp/setup-user.sh
+RUN /tmp/setup-user.sh
 
-COPY --chown=5230:5230 ./ /home/x/app/dotbox
+USER x
 
-RUN ln -sf /home/x/app/dotbox ~/dotbox \
-  && ln -s /home/x/app/prebuilt/pkgs/zsh/bin/zsh /usr/bin \
-  && ln -s /home/x/app/prebuilt/pkgs/wget/bin/wget /usr/bin \
-  && /home/x/app/dotbox/docker/base/script/setup-sysconf.sh ~/dotbox/config \
-  && /home/x/app/dotbox/config/setup.sh docker ~/dotbox/config \
-  && mkdir -p /workspace \
-  && chown x:x /workspace /app /opt
-
-# TODO: remove
-RUN mkdir -p /app/prebuilt \
-  && chown x:x /workspace /app \
-  && ln -s /home/x/app/prebuilt ~/prebuilt \
-  && ln -s /home/x/app/prebuilt /app/prebuilt
-
+# copy multi stage build result
 COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-conda /home/x/app/conda /home/x/app/conda
 COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-conda /home/x/app/pipx /home/x/app/pipx
 COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-nixpkg /nix /nix
 COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-nixpkg /home/x/.local/state/nix /home/x/.local/state/nix
 
-USER x
-RUN ln -s /home/x/app/dotbox ~/dotbox \
-  && ln -s /home/x/app/prebuilt ~/prebuilt \
-  && ln -s ~/.local/state/nix/profiles/profile ~/.nix-profile \
+# setup prebuilt-sre-tools
+RUN curl -sSL -o /tmp/prebuilt-sre-tools.linux-x86_64.gzip.sh https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt-sre-tools.linux-x86_64.gzip.sh \
+  && bash /tmp/prebuilt-sre-tools.linux-x86_64.gzip.sh \
+  && rm -rf /tmp/prebuilt-sre-tools.linux-x86_64.gzip.sh \
+  && sudo ln -s /home/x/app/prebuilt/pkgs/zsh/bin/zsh /usr/bin \
+  && sudo ln -s /home/x/app/prebuilt/pkgs/wget/bin/wget /usr/bin
+
+# setup dotbox
+COPY --chown=5230:5230 ./ /home/x/app/dotbox
+RUN ln -sf /home/x/app/dotbox ~/dotbox \
+  && ~/dotbox/docker/base/script/setup-sysconf.sh ~/dotbox/config \
+  && ~/dotbox/config/setup.sh docker ~/dotbox/config
+
+# setup nixpkgs
+RUN ln -s ~/.local/state/nix/profiles/profile ~/.nix-profile \
   && mkdir ~/.nix-defexpr \
-  && ln -s ~/.local/state/nix/profiles/channels ~/.nix-defexpr/channels \
-  && /home/x/app/dotbox/config/setup.sh docker ~/dotbox/config
+  && ln -s ~/.local/state/nix/profiles/channels ~/.nix-defexpr/channels
+
+# other
+RUN mkdir -p /workspace \
+  && chown x:x /workspace /opt
+
+# TODO: remove
+RUN mkdir -p /app/prebuilt \
+  && chown x:x /app \
+  && ln -s /home/x/app/prebuilt ~/prebuilt \
+  && ln -s /home/x/app/prebuilt /app/prebuilt
 
 USER root
+RUN mkdir app \
+  && ln -s /home/x/app ~/app \
+  && ln -sf /home/x/app/dotbox ~/dotbox \
+  && ~/dotbox/config/setup.sh docker ~/dotbox/config
+
 ENTRYPOINT ["/home/x/app/dotbox/docker/base/script/entrypoint.sh"]

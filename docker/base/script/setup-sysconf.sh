@@ -57,19 +57,6 @@ function link_path() {
   echo "Linked $src to $dst"
 }
 
-# remove user ubuntu
-userdel ubuntu -r || echo "ignore userdel failed"
-
-# update user root
-echo "root:123456" | chpasswd
-chsh -s /home/x/app/prebuilt/pkgs/zsh/bin/zsh
-
-# add user x
-useradd --create-home --shell /home/x/app/prebuilt/pkgs/zsh/bin/zsh --uid 5230 --user-group x
-echo "x:123456" | chpasswd
-usermod -aG sudo x
-echo "x ALL=(ALL:ALL) NOPASSWD:ALL" >>/etc/sudoers.d/nopasswd_user
-
 # add ca-certificates
 copy_path /home/x/app/prebuilt/pkgs/cacert/etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 chmod 644 /etc/ssl/certs/ca-certificates.crt

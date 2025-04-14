@@ -17,7 +17,8 @@
 
 ENV_PATHS=(
   "$HOMEBREW_PREFIX/opt/ruby/bin"
-  "$HOME/prebuilt/bin"
+  "$HOME/prebuilt/bin" # TODO: remove
+  "$HOME/app/prebuilt/bin"
   "/nix/var/nix/profiles/default/bin"
 )
 for p in "${ENV_PATHS[@]}"; do
@@ -29,8 +30,10 @@ ENV_PATHS=(
   "$HOME/.nix-profile/bin"
 
   # docker
-  "/app/pipx/bin"
-  "/app/conda/condabin"
+  "/app/pipx/bin" # TODO: remove
+  "$HOME/app/pipx/bin"
+  "/app/conda/condabin" # TODO: remove
+  "$HOME/app/conda/condabin"
 
   # macos host
   "/opt/conda/condabin"
@@ -52,9 +55,14 @@ ENV_FPATHS=(
   # typer
   # "$HOME/.zfunc"
 
+  # TODO: remove
   "$HOME/prebuilt/share/zsh/site-functions"
   "$HOME/prebuilt/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/zsh-completions/src"
   "$HOME/prebuilt/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/conda-zsh-completion"
+
+  "$HOME/app/prebuilt/share/zsh/site-functions"
+  "$HOME/app/prebuilt/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/zsh-completions/src"
+  "$HOME/app/prebuilt/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/conda-zsh-completion"
 )
 
 for p in "${ENV_FPATHS[@]}"; do
