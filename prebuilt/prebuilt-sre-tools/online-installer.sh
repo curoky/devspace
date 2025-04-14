@@ -18,10 +18,16 @@
 
 set -xeuo pipefail
 
+if command -v zstd &>/dev/null; then
+  compress_type=zstd
+else
+  compress_type=gzip
+fi
+
 arch=$(echo $(uname -s)-$(uname -m) | tr '[:upper:]' '[:lower:]') # linux_amd64/darwin-arm64
 
-curl -L -o /tmp/prebuilt-sre-tools.gzip.sh https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt-sre-tools.${arch}.gzip.sh
-bash /tmp/prebuilt-sre-tools.gzip.sh $@
+curl -L -o /tmp/prebuilt-sre-tools.sh https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt-sre-tools.${arch}.${compress_type}.sh
+bash /tmp/prebuilt-sre-tools.sh $@
 
 # sudo find ~/prebuilt/bin -type f -exec xattr -d com.apple.quarantine {} +
 

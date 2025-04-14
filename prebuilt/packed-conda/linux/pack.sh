@@ -25,4 +25,4 @@ bash tmp/miniconda.sh -b -u -p /home/x/app/conda
 cp installer.sh /home/x/app/conda/installer.sh
 
 makeself --complevel 6 --tar-quietly --gzip --threads 16 /home/x/app/conda tmp/conda.linux-x86_64.gzip.sh "Conda Installer" ./installer.sh
-makeself --complevel 9 --tar-quietly --zstd --threads 16 /home/x/app/conda tmp/conda.linux-x86_64.zstd.sh "Conda Installer" ./installer.sh
+makeself --complevel 16 --tar-quietly --zstd --threads 16 /home/x/app/conda tmp/conda.linux-x86_64.zstd.sh "Conda Installer" ./installer.sh

@@ -88,4 +88,4 @@ link_zsh_site_funtions
 cp -f ../common/installer.sh tmp/prebuilt/
 
 makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/prebuilt tmp/prebuilt_installer.darwin-arm64.gzip.sh "Prebuilt Installer" ./installer.sh
-makeself --complevel 9 --tar-quietly --zstd --threads 16 tmp/prebuilt tmp/prebuilt_installer.darwin-arm64.zstd.sh "Prebuilt Installer" ./installer.sh
+makeself --complevel 16 --tar-quietly --zstd --threads 16 tmp/prebuilt tmp/prebuilt_installer.darwin-arm64.zstd.sh "Prebuilt Installer" ./installer.sh

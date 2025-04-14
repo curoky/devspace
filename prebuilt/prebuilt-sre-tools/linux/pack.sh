@@ -175,4 +175,4 @@ ln -s -r tmp/prebuilt/bin/clang-format tmp/prebuilt/bin/clang-format-18
 cp -f ../common/installer.sh tmp/prebuilt/
 
 makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/prebuilt tmp/prebuilt_installer.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
-makeself --complevel 9 --tar-quietly --zstd --threads 16 tmp/prebuilt tmp/prebuilt_installer.linux-x86_64.zstd.sh "Prebuilt Installer" ./installer.sh
+makeself --complevel 16 --tar-quietly --zstd --threads 16 tmp/prebuilt tmp/prebuilt_installer.linux-x86_64.zstd.sh "Prebuilt Installer" ./installer.sh

@@ -18,8 +18,14 @@
 
 set -xeuo pipefail
 
-curl -L -o /tmp/conda.linux-x86_64.gzip.sh https://github.com/curoky/dotbox/releases/download/v1.0/conda.linux-x86_64.gzip.sh
-bash /tmp/conda.linux-x86_64.gzip.sh $@
+if command -v zstd &>/dev/null; then
+  compress_type=zstd
+else
+  compress_type=gzip
+fi
+
+curl -L -o /tmp/conda.linux-x86_64.sh https://github.com/curoky/dotbox/releases/download/v1.0/conda.linux-x86_64.${compress_type}.sh
+bash /tmp/conda.linux-x86_64.sh $@
 
 # Usage
 # curl -sSL https://github.com/curoky/dotbox/raw/dev/prebuilt/packed-conda/linux/online-installer.sh | bash
