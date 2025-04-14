@@ -23,6 +23,8 @@ jobs:
             arch: arm64
     steps:
       - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@master
+      - run: brew install makeself
 
       - run: |
           cd prebuilt/prebuilt-sre-tools/${{ matrix.os }}
@@ -53,7 +55,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: Homebrew/actions/setup-homebrew@master
-      - run: brew install gnu-sed grep gnu-getopt
+      - run: brew install gnu-sed grep gnu-getopt makeself
       - name: add path
         run: |
           echo "/opt/homebrew/opt/grep/libexec/gnubin" >> $GITHUB_PATH
@@ -81,6 +83,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@master
+      - run: brew install makeself
 
       - run: |
           cd prebuilt/packed-conda/linux/
@@ -99,6 +103,9 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@master
+      - run: brew install makeself
+
       - run: |
           cd prebuilt/docker-offline-installer/debian10
           ./pack.sh
