@@ -58,6 +58,7 @@ function link_path() {
 }
 
 # change login shell
+echo "/home/x/app/prebuilt/pkgs/zsh/bin/zsh" >>/etc/shells
 chsh -s /home/x/app/prebuilt/pkgs/zsh/bin/zsh root
 chsh -s /home/x/app/prebuilt/pkgs/zsh/bin/zsh x
 
