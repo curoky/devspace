@@ -17,7 +17,7 @@
 # limitations under the License.
 set -xeuo pipefail
 
-CONF_PATH=${1:-/app/dotbox/config}
+CONF_PATH=${1:-/home/x/app/dotbox/config}
 
 function copy_path() {
   src=$1
@@ -62,16 +62,16 @@ userdel ubuntu -r || echo "ignore userdel failed"
 
 # update user root
 echo "root:123456" | chpasswd
-chsh -s /app/prebuilt/pkgs/zsh/bin/zsh
+chsh -s /home/x/app/prebuilt/pkgs/zsh/bin/zsh
 
 # add user x
-useradd --create-home --shell /app/prebuilt/pkgs/zsh/bin/zsh --uid 5230 --user-group x
+useradd --create-home --shell /home/x/app/prebuilt/pkgs/zsh/bin/zsh --uid 5230 --user-group x
 echo "x:123456" | chpasswd
 usermod -aG sudo x
 echo "x ALL=(ALL:ALL) NOPASSWD:ALL" >>/etc/sudoers.d/nopasswd_user
 
 # add ca-certificates
-copy_path /app/prebuilt/pkgs/cacert/etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+copy_path /home/x/app/prebuilt/pkgs/cacert/etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 chmod 644 /etc/ssl/certs/ca-certificates.crt
 
 # sudoers
@@ -84,7 +84,7 @@ copy_path $CONF_PATH/linux/sysctl.d/custom.conf /etc/sysctl.d/custom.conf
 # copy_path $CONF_PATH/ssh/etc.ssh_config /etc/ssh/ssh_config
 # copy_path $CONF_PATH/sshd/host-key /etc/ssh/sshd-host-key
 # chmod 600 /etc/ssh/sshd-host-key/*
-# systemctl enable /app/dotbox/config/systemd/myssh.service
+# systemctl enable /home/x/app/dotbox/config/systemd/myssh.service
 useradd --uid 200 -g 65534 --home-dir /run/sshd --create-home --shell /usr/sbin/nologin sshd
 mkdir -p /var/empty
 

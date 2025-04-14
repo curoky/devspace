@@ -18,7 +18,7 @@
 
 set -xeuo pipefail
 
-export CONDA_ROOT=/app/conda
+export CONDA_ROOT=/home/x/app/conda
 export PATH=$CONDA_ROOT/bin:$PATH
 export PIP_CACHE_DIR=/tmp/pip
 

@@ -49,4 +49,4 @@ dependencies:
       - urllib3==1.26.19
       - werkzeug==1.0.1
       - wrapt==1.15.0
-prefix: /app/conda/envs/tf1.15
+prefix: /home/x/app/conda/envs/tf1.15

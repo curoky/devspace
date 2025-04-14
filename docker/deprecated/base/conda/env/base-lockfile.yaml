@@ -82,4 +82,4 @@ dependencies:
       - click==8.1.7
       - pipx==1.6.0
       - userpath==1.9.2
-prefix: /app/conda
+prefix: /home/x/app/conda

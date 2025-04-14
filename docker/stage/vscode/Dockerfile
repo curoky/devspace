@@ -17,4 +17,4 @@ COPY install-vscode-ext.sh .
 RUN ./install-vscode-ext.sh
 
 FROM debian:latest
-COPY --from=packer /root/.vscode-server/extensions /app/vscode/extensions
+COPY --from=packer /root/.vscode-server/extensions /home/x/app/vscode/extensions

@@ -88,4 +88,4 @@ dependencies:
       - torchaudio==2.3.1
       - torchvision==0.18.1
       - triton==2.3.1
-prefix: /app/conda/envs/pytorch
+prefix: /home/x/app/conda/envs/pytorch

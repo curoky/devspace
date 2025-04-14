@@ -17,8 +17,8 @@
 # limitations under the License.
 set -xeuo pipefail
 
-export PIPX_HOME=/app/pipx
+export PIPX_HOME=/home/x/app/pipx
 export PIPX_BIN_DIR=${PIPX_HOME}/bin
 export PIPX_MAN_DIR=${PIPX_HOME}/share/man
 
-/app/conda/bin/pipx install $@
+/home/x/app/conda/bin/pipx install $@

@@ -102,4 +102,4 @@ dependencies:
       - widgetsnbextension==4.0.11
       - zope-event==5.0
       - zope-interface==6.4.post2
-prefix: /app/conda/envs/py3
+prefix: /home/x/app/conda/envs/py3

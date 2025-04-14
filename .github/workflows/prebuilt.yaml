@@ -18,7 +18,7 @@ jobs:
       matrix:
         include:
           - os: linux
-            arch: amd64
+            arch: x86_64
           - os: darwin
             arch: arm64
     steps:

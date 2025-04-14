@@ -28,7 +28,7 @@ fi
 eval set -- "$OPTIONS"
 
 env_file=""
-conda_root="/app/conda"
+conda_root="/home/x/app/conda"
 add_tf_env=false
 cuda_version=""
 cudnn_version=""
@@ -99,8 +99,8 @@ if [[ $add_tf_env == "true" ]]; then
   echo '' >$target_env_file
 
   echo "export LD_LIBRARY_PATH=/usr/local/cuda-${cuda_version}/lib64:/usr/local/cuda-${cuda_version}/extras/CUPTI/lib64/:\$LD_LIBRARY_PATH" >>$target_env_file
-  echo "export LD_LIBRARY_PATH=/app/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}/lib64:\$LD_LIBRARY_PATH" >>$target_env_file
-  echo "export CUDNN_INSTALL_PATH=/app/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}" >>$target_env_file
+  echo "export LD_LIBRARY_PATH=/home/x/app/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}/lib64:\$LD_LIBRARY_PATH" >>$target_env_file
+  echo "export CUDNN_INSTALL_PATH=/home/x/app/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}" >>$target_env_file
 fi
 
 conda clean -y -a

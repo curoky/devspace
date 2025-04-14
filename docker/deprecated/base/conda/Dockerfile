@@ -8,7 +8,7 @@ COPY env env
 COPY setup-conda-env.sh .
 
 RUN curl -sSL -o /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
-  && bash /tmp/miniconda.sh -b -u -p /app/conda \
+  && bash /tmp/miniconda.sh -b -u -p /home/x/app/conda \
   && setup-conda-env.sh env/py2.yaml \
   && setup-conda-env.sh env/py3.yaml \
   && setup-conda-env.sh env/tf1.15.yaml 1 \
@@ -19,6 +19,6 @@ RUN curl -sSL -o /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda
   && rm -rf /tmp/*
 
 COPY --from=pipx install-pkgs.sh install-pipx-pkgs.sh
-ENV PATH=${PATH}:/app/conda/bin
+ENV PATH=${PATH}:/home/x/app/conda/bin
 RUN pip install pipx \
   && ./install-pipx-pkgs.sh

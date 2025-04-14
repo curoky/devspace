@@ -20,13 +20,13 @@ set -xeuo pipefail
 SSHD_PORT=${1:-61000}
 
 sed -i -e "s/Port 61000/Port ${SSHD_PORT}/g" \
-  /app/dotbox/config/sshd/sshd_config.conf
+  /home/x/app/dotbox/config/sshd/sshd_config.conf
 
-chmod 600 /app/dotbox/config/sshd/host-key/*
+chmod 600 /home/x/app/dotbox/config/sshd/host-key/*
 
 mkdir -p /var/log
 # https://github.com/un-def/openssh-static-build/blob/master/run-sshd.sh#L30
-/app/prebuilt/pkgs/openssh_gssapi/bin/sshd \
-  -o SshdSessionPath="/app/prebuilt/pkgs/openssh_gssapi/libexec/sshd-session" \
-  -f /app/dotbox/config/sshd/sshd_config.conf -e
+/home/x/app/prebuilt/pkgs/openssh_gssapi/bin/sshd \
+  -o SshdSessionPath="/home/x/app/prebuilt/pkgs/openssh_gssapi/libexec/sshd-session" \
+  -f /home/x/app/dotbox/config/sshd/sshd_config.conf -e
 # -E /var/log/mysshd.log

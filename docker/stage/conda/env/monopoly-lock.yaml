@@ -82,4 +82,4 @@ dependencies:
       - tqdm==4.67.1
       - typing-extensions==4.12.2
       - tzlocal==5.3
-prefix: /app/conda/envs/monopoly
+prefix: /home/x/app/conda/envs/monopoly

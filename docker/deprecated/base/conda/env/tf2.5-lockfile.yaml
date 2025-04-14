@@ -101,4 +101,4 @@ dependencies:
       - widgetsnbextension==4.0.11
       - wrapt==1.12.1
       - zipp==3.19.2
-prefix: /app/conda/envs/tf2.5
+prefix: /home/x/app/conda/envs/tf2.5
