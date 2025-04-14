@@ -20,3 +20,6 @@ set -xeuo pipefail
 
 curl -L -o /tmp/prebuilt-sre-tools.gzip.sh https://github.com/curoky/dotbox/releases/download/v1.0/dotbox_installer.gzip.sh
 bash /tmp/prebuilt-sre-tools.gzip.sh $@
+
+# Usage
+# curl -sSL https://github.com/curoky/dotbox/raw/dev/prebuilt/packed-dotbox/online-installer.sh | bash -s -- -l -n host-linux

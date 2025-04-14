@@ -24,3 +24,6 @@ curl -L -o /tmp/prebuilt-sre-tools.gzip.sh https://github.com/curoky/dotbox/rele
 bash /tmp/prebuilt-sre-tools.gzip.sh $@
 
 # sudo find ~/prebuilt/bin -type f -exec xattr -d com.apple.quarantine {} +
+
+# Usage
+# curl -sSL https://github.com/curoky/dotbox/raw/dev/prebuilt/prebuilt-sre-tools/online-installer.sh | bash
