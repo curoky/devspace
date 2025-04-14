@@ -20,7 +20,7 @@ set -xeuo pipefail
 
 target=$HOME/prebuilt
 arch=$(echo $(uname -s)-$(uname -m) | tr '[:upper:]' '[:lower:]') # linux_amd64/darwin-arm64
-url=https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt-sre-tools.${arch}.tar.gz
+url=https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt-sre-tools.${arch}.gzip.sh
 
 while getopts "t:a:u:" opt; do
   case "$opt" in
@@ -29,7 +29,7 @@ while getopts "t:a:u:" opt; do
       ;;
     a)
       arch="$OPTARG"
-      url=https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt-sre-tools.${arch}.tar.gz
+      url=https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt-sre-tools.${arch}.gzip.sh
       ;;
     u)
       url="$OPTARG"
@@ -41,10 +41,8 @@ while getopts "t:a:u:" opt; do
   esac
 done
 
-rm -rf /tmp/prebuilt-sre-tools.tar.gz
-curl -L $url -o /tmp/prebuilt-sre-tools.tar.gz
-rm -rf $target
-mkdir $target
-tar -x --gunzip -f /tmp/prebuilt-sre-tools.tar.gz -C $target --strip-components=1
+rm -rf /tmp/prebuilt-sre-tools.gzip.sh
+curl -L $url -o /tmp/prebuilt-sre-tools.gzip.sh
+bash /tmp/prebuilt-sre-tools.gzip.sh
 
 # sudo find ~/prebuilt/bin -type f -exec xattr -d com.apple.quarantine {} +

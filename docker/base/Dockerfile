@@ -15,14 +15,18 @@ RUN curl -sSL -o prebuilt-sre-tools.linux-x86_64.gzip.sh https://github.com/curo
 COPY --chown=5230:5230 ./ /home/x/app/dotbox
 
 RUN ln -sf /home/x/app/dotbox ~/dotbox \
-  && ln -s /home/x/app/prebuilt ~/prebuilt \
-  && ln -s /home/x/app/prebuilt /app/prebuilt \
   && ln -s /home/x/app/prebuilt/pkgs/zsh/bin/zsh /usr/bin \
   && ln -s /home/x/app/prebuilt/pkgs/wget/bin/wget /usr/bin \
   && /home/x/app/dotbox/docker/base/script/setup-sysconf.sh ~/dotbox/config \
   && /home/x/app/dotbox/config/setup.sh docker ~/dotbox/config \
   && mkdir -p /workspace \
   && chown x:x /workspace /app /opt
+
+# TODO: remove
+RUN mkdir -p /app/prebuilt \
+  && chown x:x /workspace /app \
+  && ln -s /home/x/app/prebuilt ~/prebuilt \
+  && ln -s /home/x/app/prebuilt /app/prebuilt
 
 COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-conda /home/x/app/conda /home/x/app/conda
 COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-conda /home/x/app/pipx /home/x/app/pipx

@@ -28,5 +28,3 @@ cp installer.sh /home/x/app/conda/installer.sh
 
 makeself --complevel 6 --tar-quietly --gzip --threads 16 /home/x/app/conda tmp/conda.linux-x86_64.gzip.sh "Prebuilt Installer" /dev/null
 makeself --complevel 9 --tar-quietly --zstd --threads 16 /home/x/app/conda tmp/conda.linux-x86_64.zstd.sh "Prebuilt Installer" /dev/null
-
-# tar -c --gunzip -f tmp/conda.linux-x86_64.tar.gz /home/x/app/conda

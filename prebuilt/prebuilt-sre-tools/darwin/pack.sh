@@ -64,6 +64,7 @@ pkgs=(
   git-absorb
   starship
   git-extras
+  makeself
   # ruff need link jemalloc
 )
 
@@ -83,11 +84,8 @@ remove_unneeded
 rename_wrapped
 link_to_bin
 link_zsh_site_funtions
-add_dotbox
 
 cp -f ../common/installer.sh tmp/prebuilt/
 
 makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/prebuilt tmp/prebuilt_installer.darwin-arm64.gzip.sh "Prebuilt Installer" ./installer.sh
 makeself --complevel 9 --tar-quietly --zstd --threads 16 tmp/prebuilt tmp/prebuilt_installer.darwin-arm64.zstd.sh "Prebuilt Installer" ./installer.sh
-
-# tar -c --gunzip -f prebuilt-sre-tools.darwin-arm64.tar.gz prebuilt

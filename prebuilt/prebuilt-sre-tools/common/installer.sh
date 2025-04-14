@@ -26,17 +26,10 @@ mkdir -p $target
 cp -r $abspath/* $target
 
 if [ ! -z "$post_link" ]; then
-  ln -s $target $HOME/prebuilt
-
   if ! grep -q 'prebuilt/bin' ~/.bashrc; then
     echo 'export PATH=$HOME/app/prebuilt/bin:$PATH' >>~/.bashrc
   fi
   if ! grep -q 'prebuilt/bin' ~/.profile; then
     echo 'export PATH=$HOME/app/prebuilt/bin:$PATH' >>~/.profile
   fi
-
-  rm -f ~/dotbox
-  ln -s $HOME/app/prebuilt/dotbox ~/dotbox
-
-  $HOME/app/prebuilt/dotbox/config/setup.sh host-linux $HOME/app/prebuilt/dotbox/config
 fi

@@ -98,7 +98,7 @@ function remove_invalid_link() {
 #     tmp/prebuilt/bin
 # }
 
-function add_dotbox() {
-  mkdir -p tmp/prebuilt/dotbox
-  curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/dev.tar.gz | tar -x --gunzip -C tmp/prebuilt/dotbox --strip-components 1
-}
+# function add_dotbox() {
+#   mkdir -p tmp/prebuilt/dotbox
+#   curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/dev.tar.gz | tar -x --gunzip -C tmp/prebuilt/dotbox --strip-components 1
+# }

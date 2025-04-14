@@ -127,6 +127,7 @@ pkgs=(
   zsh-bundle
   zstd
   exiftool
+  makeself
 )
 
 rm -rf tmp/download tmp/prebuilt
@@ -167,7 +168,6 @@ strip_binary
 link_to_bin
 link_zsh_site_funtions
 remove_invalid_link
-add_dotbox
 
 ln -s -r tmp/prebuilt/bin/bazelisk tmp/prebuilt/bin/bazel
 ln -s -r tmp/prebuilt/bin/clang-format tmp/prebuilt/bin/clang-format-18
@@ -176,5 +176,3 @@ cp -f ../common/installer.sh tmp/prebuilt/
 
 makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/prebuilt tmp/prebuilt_installer.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
 makeself --complevel 9 --tar-quietly --zstd --threads 16 tmp/prebuilt tmp/prebuilt_installer.linux-x86_64.zstd.sh "Prebuilt Installer" ./installer.sh
-
-# tar -c --gunzip -f prebuilt-sre-tools.linux-x86_64.tar.gz prebuilt

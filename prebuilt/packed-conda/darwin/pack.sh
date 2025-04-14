@@ -29,5 +29,3 @@ cp installer.sh /opt/conda/installer.sh
 
 makeself --complevel 6 --tar-quietly --gzip --threads 16 /opt/conda tmp/conda.darwin-arm64.gzip.sh "Prebuilt Installer" /dev/null
 makeself --complevel 9 --tar-quietly --zstd --threads 16 /opt/conda tmp/conda.darwin-arm64.zstd.sh "Prebuilt Installer" /dev/null
-
-# tar -c --gunzip -f tmp/conda.darwin-arm64.tar.gz /opt/conda

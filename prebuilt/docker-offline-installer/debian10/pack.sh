@@ -39,5 +39,3 @@ cp installer.sh tmp/docker/installer.sh
 
 makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/docker tmp/docker_installer.debian10.gzip.sh "Prebuilt Installer" /dev/null
 makeself --complevel 9 --tar-quietly --zstd --threads 16 tmp/docker tmp/docker_installer.debian10.zstd.sh "Prebuilt Installer" /dev/null
-
-# tar -c --gunzip -f docker-offline-installer.debian10.tar.gz docker
