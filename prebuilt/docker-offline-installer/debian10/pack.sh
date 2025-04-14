@@ -36,4 +36,4 @@ for pkg in ${pkg_list[@]}; do
 done
 
 cd tmp
-tar -c --gunzip -f docker.debian10.tar.gz docker
+tar -c --gunzip -f docker-offline-installer.debian10.tar.gz docker

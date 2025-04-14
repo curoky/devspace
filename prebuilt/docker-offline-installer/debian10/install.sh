@@ -19,51 +19,28 @@ set -xeuo pipefail
 
 enable_gpu=${1:-0}
 
-tmp_dir=docker_pkgs
-mkdir -p $tmp_dir
-
 apt-get remove -y \
   docker-ce docker-ce-cli containerd.io \
   docker-buildx-plugin docker-compose-plugin \
   nvidia-container-toolkit nvidia-container-toolkit-base \
   libnvidia-container-tools libnvidia-container1 || echo ignore
+
 apt-get update -y
 apt-get install -y iptables
 
-curl -sSL -o $tmp_dir/libseccomp2_2.5.4-1+b3_amd64.deb \
-  http://ftp.debian.org/debian/pool/main/libs/libseccomp/libseccomp2_2.5.4-1+b3_amd64.deb
-dpkg -i $tmp_dir/libseccomp2_2.5.4-1+b3_amd64.deb
+dpkg -i tmp/docker/libseccomp2_2.5.4-1+b3_amd64.deb
 
-# https://download.docker.com/linux/debian/dists/bullseye/pool/stable/amd64/
-
-pkg_list=(
-  containerd.io_1.6.22-1
-  docker-ce-cli_24.0.5-1~debian.11~bullseye
-  docker-ce_24.0.5-1~debian.11~bullseye
-  # docker-buildx-plugin_0.11.2-1~debian.11~bullseye
-  docker-buildx-plugin_0.16.2-1~debian.11~bullseye
-  docker-compose-plugin_2.20.2-1~debian.11~bullseye
-)
-
-for pkg in ${pkg_list[@]}; do
-  curl -sSL -o $tmp_dir/${pkg}.deb \
-    https://download.docker.com/linux/debian/dists/bullseye/pool/stable/amd64/${pkg}_amd64.deb
-  dpkg -i $tmp_dir/${pkg}.deb
-done
+dpkg -i tmp/docker/containerd.io_1.6.22-1.deb \
+  tmp/docker/docker-ce_24.0.5-1~debian.11~bullseye.deb \
+  tmp/docker/docker-ce-cli_24.0.5-1~debian.11~bullseye.deb \
+  tmp/docker/docker-buildx-plugin_0.16.2-1~debian.11~bullseye.deb \
+  tmp/docker/docker-compose-plugin_2.20.2-1~debian.11~bullseye.deb
 
 if [[ $enable_gpu == 1 ]]; then
-  # https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
-  pkg_list=(
-    libnvidia-container1_1.13.5-1
-    libnvidia-container-tools_1.13.5-1
-    nvidia-container-toolkit-base_1.13.5-1
-    nvidia-container-toolkit_1.13.5-1
-  )
-  for pkg in ${pkg_list[@]}; do
-    curl -sSL -o $tmp_dir/${pkg}.deb \
-      https://github.com/NVIDIA/libnvidia-container/raw/gh-pages/stable/debian10/amd64/${pkg}_amd64.deb
-    dpkg -i $tmp_dir/${pkg}.deb
-  done
+  dpkg -i tmp/docker/libnvidia-container1_1.13.5-1.deb \
+    tmp/docker/libnvidia-container-tools_1.13.5-1.deb \
+    tmp/docker/nvidia-container-toolkit-base_1.13.5-1.deb \
+    tmp/docker/nvidia-container-toolkit_1.13.5-1.deb
 fi
 
 # Post stage for docker
