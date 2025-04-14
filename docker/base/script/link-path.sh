@@ -19,11 +19,6 @@
 set -xeuo pipefail
 
 # reset dotfiles for x
-if [[ -d /data/share/dotbox ]]; then
-  rm -rf /home/x/dotbox
-  ln -s /data/share/dotbox /home/x/dotbox
-fi
-
 if [[ -d /workspace/dotbox ]]; then
   rm -rf /home/x/dotbox
   ln -s /workspace/dotbox /home/x/dotbox

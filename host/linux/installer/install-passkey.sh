@@ -19,8 +19,6 @@ set -xeuo pipefail
 
 PROFILE_NAME=${1:-000}
 
-curl -sSL -o /tmp/profile https://github.com/curoky/dotbox/raw/refs/heads/dev/config/passkey/profile
+curl -sSL -o /tmp/profile.gzip.sh https://github.com/curoky/dotbox/raw/refs/heads/dev/config/passkey/profile.gzip.sh
 
-openssl enc -d -aes-256-cbc -pbkdf2 -in /tmp/profile -out /tmp/profile.dec -k $PROFILE_NAME
-
-bash /tmp/profile.dec install
+bash profile.gzip.sh
