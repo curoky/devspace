@@ -59,7 +59,7 @@ function link_path() {
 }
 
 SCENE=${1}
-CONF_PATH=${2:-$HOME/dotbox/config}
+CONF_PATH=${2:-$HOME/dotbox/config} # TODO: remove
 
 function common() {
   link_path $CONF_PATH/atuin/config.toml $HOME/.config/atuin/config.toml

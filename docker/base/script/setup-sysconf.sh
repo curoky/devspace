@@ -57,6 +57,10 @@ function link_path() {
   echo "Linked $src to $dst"
 }
 
+# change login shell
+chsh -s /home/x/app/prebuilt/pkgs/zsh/bin/zsh root
+chsh -s /home/x/app/prebuilt/pkgs/zsh/bin/zsh x
+
 # add ca-certificates
 copy_path /home/x/app/prebuilt/pkgs/cacert/etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 chmod 644 /etc/ssl/certs/ca-certificates.crt

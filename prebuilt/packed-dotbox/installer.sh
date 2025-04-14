@@ -29,7 +29,7 @@ rm -rf $target
 mkdir -p $target
 cp -r $abspath/* $target
 
-if [ $host-linux -eq 1 ]; then
+if [ $link -eq 1 ]; then
   rm -f $HOME/dotbox
   ln -s $target $HOME/dotbox
   $HOME/dotbox/config/setup.sh $link_name $HOME/dotbox/config
