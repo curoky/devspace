@@ -162,12 +162,9 @@ touch tmp/prebuilt/pkgs/libtool/skip_link
 touch tmp/prebuilt/pkgs/gdb/skip_link
 touch tmp/prebuilt/pkgs/python311/skip_link
 
-# unneeded
 remove_unneeded
-
 rename_wrapped
 strip_bin
-# copy_wrapper
 link_to_bin
 link_zsh_comp
 add_dotbox
@@ -176,4 +173,4 @@ ln -s -r tmp/prebuilt/bin/bazelisk tmp/prebuilt/bin/bazel
 ln -s -r tmp/prebuilt/bin/clang-format tmp/prebuilt/bin/clang-format-18
 
 cd tmp
-tar -c --gunzip -f prebuilt.linux-x86_64.tar.gz prebuilt
+tar -c --gunzip -f prebuilt-sre-tools.linux-x86_64.tar.gz prebuilt

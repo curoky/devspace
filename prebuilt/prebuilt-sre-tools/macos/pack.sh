@@ -66,7 +66,8 @@ pkgs=(
   git-extras
   # ruff need link jemalloc
 )
-rm -rf tmp
+
+rm -rf tmp/download tmp/prebuilt
 mkdir -p tmp
 
 curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >tmp/install.sh
@@ -77,12 +78,12 @@ wait
 
 touch tmp/prebuilt/pkgs/vim/skip_link
 touch tmp/prebuilt/pkgs/zsh/skip_link
-remove_unneeded
 
+remove_unneeded
 rename_wrapped
 link_to_bin
 link_zsh_comp
 add_dotbox
 
 cd tmp
-tar -c --gunzip -f prebuilt.darwin-arm64.tar.gz prebuilt
+tar -c --gunzip -f prebuilt-sre-tools.darwin-arm64.tar.gz prebuilt

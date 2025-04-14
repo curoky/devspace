@@ -10,7 +10,7 @@ on:
     - cron: '0 0 * * 0'
 
 jobs:
-  prebuilt-basic-sre-tools:
+  prebuilt-sre-tools:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -21,23 +21,23 @@ jobs:
           python-version: '3'
 
       - run: |
-          cd prebuilt/basic-sre-tools/macos
+          cd prebuilt/prebuilt-sre-tools/macos
           ./pack.sh
 
       - run: |
-          cd prebuilt/basic-sre-tools/linux
+          cd prebuilt/prebuilt-sre-tools/linux
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/macos/tmp/prebuilt.darwin-arm64.tar.gz
+          file: prebuilt/prebuilt-sre-tools/macos/tmp/prebuilt-sre-tools.darwin-arm64.tar.gz
           asset_name: prebuilt.darwin-arm64.tar.gz
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/linux/tmp/prebuilt.linux-x86_64.tar.gz
+          file: prebuilt/prebuilt-sre-tools/linux/tmp/prebuilt-sre-tools.linux-x86_64.tar.gz
           asset_name: prebuilt.linux-x86_64.tar.gz
           tag: 'v1.0'
           overwrite: true
@@ -70,7 +70,7 @@ jobs:
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/macos/tmp/conda.darwin-arm64.tar.gz
+          file: prebuilt/packed-conda/macos/tmp/conda.darwin-arm64.tar.gz
           asset_name: conda.darwin-arm64.tar.gz
           tag: 'v1.0'
           overwrite: true
