@@ -3,6 +3,11 @@ set -xeuo pipefail
 
 export PATH=$PATH:/sbin
 
+if ! id -u x &>/dev/null; then
+  sudo mkdir -p /home/x/
+  sudo chown -R $(id -u):$(id -g) /home/x/
+fi
+
 rm -rf tmp && mkdir -p tmp
 curl -sSL -o tmp/miniconda.sh \
   https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
