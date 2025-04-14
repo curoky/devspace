@@ -7,7 +7,7 @@ target=$HOME/app/dotbox
 link=0
 link_name=host-linux
 
-while getopts "t:l:n" opt; do
+while getopts "t:ln:" opt; do
   case "$opt" in
     t)
       target="$OPTARG"
@@ -19,7 +19,7 @@ while getopts "t:l:n" opt; do
       link_name="$OPTARG"
       ;;
     \?)
-      echo "Usage: $0 [-t target] [-l link] [-n link_name]"
+      echo "Usage: $0 [-t target] [-l] [-n link_name]"
       exit 1
       ;;
   esac
