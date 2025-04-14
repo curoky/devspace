@@ -29,15 +29,11 @@ ENV_PATHS=(
   "$HOME/.local/bin"
   "$HOME/.nix-profile/bin"
 
-  # docker
-  "/app/pipx/bin" # TODO: remove
-  "$HOME/app/pipx/bin"
-  "/app/conda/condabin" # TODO: remove
   "$HOME/app/conda/condabin"
+  "$HOME/app/pipx/bin"
 
-  # macos host
-  "/opt/conda/condabin"
-  "/opt/conda/pipx/bin"
+  # docker
+  "/app/conda/condabin" # TODO: remove
 
   # "$HOME/.npm-global/bin"
   "$HOME/dotbox/tools"
