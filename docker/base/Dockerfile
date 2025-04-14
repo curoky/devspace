@@ -8,11 +8,9 @@ ENV PATH=$PATH:/home/x/app/pipx/bin:/home/x/app/prebuilt/bin:/nix/var/nix/profil
 
 RUN apt-get update -y && apt-get install -y sudo curl
 
-RUN curl -SL https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt-sre-tools.linux-x86_64.tar.gz -o prebuilt.tar.gz \
-  && mkdir -p /home/x/app/prebuilt \
-  && tar -xzf prebuilt.tar.gz -C /home/x/app/prebuilt --strip-components=1 \
-  && chown -R 5230:5230 /home/x/app/prebuilt \
-  && rm -rf prebuilt.tar.gz
+RUN curl -sSL -o prebuilt-sre-tools.linux-x86_64.gzip.sh https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt-sre-tools.linux-x86_64.gzip.sh \
+  && bash prebuilt-sre-tools.linux-x86_64.gzip.sh \
+  && rm -rf prebuilt-sre-tools.linux-x86_64.gzip.sh
 
 COPY --chown=5230:5230 ./ /home/x/app/dotbox
 
