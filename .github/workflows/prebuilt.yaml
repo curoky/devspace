@@ -16,9 +16,9 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3'
+      # - uses: actions/setup-python@v5
+      #   with:
+      #     python-version: '3'
 
       - run: |
           cd prebuilt/prebuilt-sre-tools/macos
@@ -60,9 +60,9 @@ jobs:
           echo "/opt/homebrew/opt/gnu-sed/libexec/gnubin" >> $GITHUB_PATH
           echo "/opt/homebrew/opt/gnu-getopt/bin" >> $GITHUB_PATH
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3'
+      # - uses: actions/setup-python@v5
+      #   with:
+      #     python-version: '3'
 
       - run: |
           cd prebuilt/packed-conda/macos
@@ -78,6 +78,24 @@ jobs:
       - uses: mxschmitt/action-tmate@v3
         if: ${{ failure() }}
         timeout-minutes: 30
+
+  packed-conda-linux-x86_64:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: |
+          cd prebuilt/packed-conda/linux/x86_64
+          ./pack.sh
+
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          file: prebuilt/packed-conda/linux/tmp/conda.linux-x86_64.tar.gz
+          asset_name: conda.linux-x86_64.tar.gz
+          tag: 'v1.0'
+          overwrite: true
 
   docker-offline-installer:
     runs-on: ubuntu-latest
