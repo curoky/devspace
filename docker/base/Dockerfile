@@ -14,9 +14,9 @@ RUN /tmp/setup-user.sh
 USER x
 
 # copy multi stage build result
-COPY --chown=x:x --link --from=curoky/dotbox:stage-conda /home/x/app/conda /home/x/app/conda
-COPY --chown=x:x --link --from=curoky/dotbox:stage-nixpkg /nix /nix
-COPY --chown=x:x --link --from=curoky/dotbox:stage-nixpkg /home/x/.local/state/nix /home/x/.local/state/nix
+COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-conda /home/x/app/conda /home/x/app/conda
+COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-nixpkg /nix /nix
+COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-nixpkg /home/x/.local/state/nix /home/x/.local/state/nix
 
 # setup prebuilt-sre-tools
 RUN curl -sSL -o /tmp/prebuilt-sre-tools.linux-x86_64.sh https://github.com/curoky/dotbox/releases/download/v1.0/prebuilt-sre-tools.linux-x86_64.zstd.sh \
@@ -31,13 +31,13 @@ RUN mkdir ~/.nix-defexpr \
   && ln -s ~/.local/state/nix/profiles/profile ~/.nix-profile
 
 # setup dotbox
-COPY --chown=x:x ./ /home/x/app/dotbox
+COPY --chown=5230:5230 ./ /home/x/app/dotbox
 RUN ln -sf /home/x/app/dotbox ~/dotbox \
   && bash ~/dotbox/config/setup.sh docker ~/dotbox/config
 
 # other
 RUN sudo mkdir -p /workspace \
-  && sudo chown x:x /workspace /opt
+  && sudo chown 5230:5230 /workspace /opt
 
 USER root
 RUN ln -sf /home/x/app ~/app \
