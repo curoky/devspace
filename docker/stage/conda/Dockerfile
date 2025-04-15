@@ -17,7 +17,7 @@ RUN setup-conda-env.sh -e env/py3.yaml \
   # && setup-conda-env.sh env/py311.yaml \
   # && setup-conda-env.sh env/pipx.yaml
 
-COPY pipx-install.sh /home/x/app/pipx/bin/pipx-install.sh
+COPY pipx-install.sh /home/x/app/conda/pipx/bin/pipx-install.sh
 RUN /home/x/app/conda/bin/pip3 install pipx \
   && pipx-install.sh \
     licenseheaders conan

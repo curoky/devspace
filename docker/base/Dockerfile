@@ -27,9 +27,9 @@ RUN curl -sSL -o /tmp/prebuilt-sre-tools.linux-x86_64.gzip.sh https://github.com
   && sudo ln -s /home/x/app/prebuilt/pkgs/wget/bin/wget /usr/bin
 
 # setup nixpkgs
-RUN ln -s ~/.local/state/nix/profiles/profile ~/.nix-profile \
-  && mkdir ~/.nix-defexpr \
-  && ln -s ~/.local/state/nix/profiles/channels ~/.nix-defexpr/channels
+RUN mkdir ~/.nix-defexpr \
+  && ln -s ~/.local/state/nix/profiles/channels ~/.nix-defexpr/channels \
+  && ln -s ~/.local/state/nix/profiles/profile ~/.nix-profile
 
 # setup dotbox
 COPY --chown=5230:5230 ./ /home/x/app/dotbox
@@ -39,12 +39,6 @@ RUN ln -sf /home/x/app/dotbox ~/dotbox \
 # other
 RUN sudo mkdir -p /workspace \
   && sudo chown x:x /workspace /opt
-
-# TODO: remove
-RUN sudo mkdir -p /app/prebuilt \
-  && sudo chown -R x:x /app \
-  && ln -s /home/x/app/prebuilt ~/prebuilt \
-  && ln -s /home/x/app/prebuilt /app/prebuilt
 
 USER root
 RUN ln -sf /home/x/app/dotbox ~/dotbox \

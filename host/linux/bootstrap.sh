@@ -17,16 +17,5 @@
 # limitations under the License.
 set -xeuo pipefail
 
+curl -sSL https://github.com/curoky/dotbox/raw/dev/prebuilt/packed-dotbox/online-installer.sh | bash -s -- -- -l -n host-linux/docker
 curl -sSL https://github.com/curoky/dotbox/raw/dev/prebuilt/prebuilt-sre-tools/online-installer.sh | bash
-
-if ! grep -q 'prebuilt/bin' ~/.bashrc; then
-  echo 'export PATH=$HOME/prebuilt/bin:$PATH' >>~/.bashrc
-fi
-if ! grep -q 'prebuilt/bin' ~/.profile; then
-  echo 'export PATH=$HOME/prebuilt/bin:$PATH' >>~/.profile
-fi
-
-rm -f ~/dotbox
-ln -s ~/prebuilt/dotbox ~/dotbox
-
-~/prebuilt/dotbox/config/setup.sh host-linux ~/prebuilt/dotbox/config

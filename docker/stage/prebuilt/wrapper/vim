@@ -12,8 +12,8 @@ fi
 # args=""
 # if [[ -f $HOME/dotbox/config/vim/vimrc ]]; then
 #   args="-u $HOME/dotbox/config/vim/vimrc"
-# elif [[ -f $HOME/prebuilt/dotbox/config/vim/vimrc ]]; then
-#   args="-u $HOME/prebuilt/dotbox/config/vim/vimrc"
+# elif [[ -f $HOME/app/prebuilt/dotbox/config/vim/vimrc ]]; then
+#   args="-u $HOME/app/prebuilt/dotbox/config/vim/vimrc"
 # fi
 
 exec -a "$0" "$root/bin/vim" "$@"

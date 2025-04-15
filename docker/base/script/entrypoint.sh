@@ -23,7 +23,7 @@ sudo -u x /home/x/app/dotbox/config/setup.sh docker /home/x/dotbox/config
 
 /home/x/app/dotbox/docker/base/script/start-sshd.sh $SSHD_PORT
 
-sudo -u x bash /home/x/app/dotbox/docker/base/script/setup-profile.sh $PROFILE_PASS
+sudo -u x bash /home/x/app/dotbox/tools/profile-installer.sh --ssl-pass-src pass:$PROFILE_PASS
 
 sudo -u x bash /home/x/.config/atuin/login-and-sync.sh &
 sudo -u x bash -c 'cd /home/x/app/dotbox && pre-commit install-hooks' &

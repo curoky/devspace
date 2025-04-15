@@ -233,7 +233,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
 # FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
 # if [[ ! -d $FZF_BASE ]]; then
-#   FZF_BASE=~/prebuilt/share/fzf/
+#   FZF_BASE=~/app/prebuilt/share/fzf/
 # fi
 
 #=-> zsh history

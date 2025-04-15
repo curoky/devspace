@@ -17,7 +17,6 @@
 
 ENV_PATHS=(
   "$HOMEBREW_PREFIX/opt/ruby/bin"
-  "$HOME/prebuilt/bin" # TODO: remove
   "$HOME/app/prebuilt/bin"
   "/nix/var/nix/profiles/default/bin"
 )
@@ -31,9 +30,6 @@ ENV_PATHS=(
 
   "$HOME/app/conda/condabin"
   "$HOME/app/pipx/bin"
-
-  # docker
-  "/app/conda/condabin" # TODO: remove
 
   # "$HOME/.npm-global/bin"
   "$HOME/dotbox/tools"
@@ -50,11 +46,6 @@ ENV_FPATHS=(
 
   # typer
   # "$HOME/.zfunc"
-
-  # TODO: remove
-  "$HOME/prebuilt/share/zsh/site-functions"
-  "$HOME/prebuilt/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/zsh-completions/src"
-  "$HOME/prebuilt/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/conda-zsh-completion"
 
   "$HOME/app/prebuilt/share/zsh/site-functions"
   "$HOME/app/prebuilt/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/zsh-completions/src"
