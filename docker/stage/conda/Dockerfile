@@ -7,7 +7,7 @@ RUN apt-get update -y \
   && curl -sSL -o /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-py312_24.11.1-0-Linux-x86_64.sh \
   && bash /tmp/miniconda.sh -b -u -p /home/x/app/conda
 
-ENV PATH=$PATH:/home/x/app/conda/condabin:/home/x/app/pipx/bin/
+ENV PATH=$PATH:/home/x/app/conda/condabin:/home/x/app/conda/pipx/bin/
 
 COPY env env
 COPY setup-conda-env.sh /home/x/app/conda/condabin/setup-conda-env.sh
