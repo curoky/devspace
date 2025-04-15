@@ -30,5 +30,10 @@ sudo -u x bash -c 'cd /home/x/app/dotbox && pre-commit install-hooks' &
 
 chmod 600 /home/x/dotbox/config/ssh/devbox.private.id_rsa
 
+# clean cache
+rm -rf /home/x/.cache/starship.plugin.zsh \
+  /home/x/.cache/conda.plugin.zsh \
+  /home/x/.cache/atuin.plugin.zsh
+
 while true; do sleep 86400; done
 # exec /lib/systemd/systemd
