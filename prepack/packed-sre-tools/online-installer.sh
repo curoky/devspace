@@ -26,8 +26,8 @@ fi
 
 arch=$(echo $(uname -s)-$(uname -m) | tr '[:upper:]' '[:lower:]') # linux_amd64/darwin-arm64
 
-curl -L -o /tmp/packed-sre-tools.sh https://github.com/curoky/dotbox/releases/download/v1.0/packed-sre-tools.${arch}.${compress_type}.sh
-bash /tmp/packed-sre-tools.sh $@
+curl -L -o /tmp/sre-tools-installer.sh https://github.com/curoky/dotbox/releases/download/v1.0/sre-tools-installer.${arch}.${compress_type}.sh
+bash /tmp/sre-tools-installer.sh $@
 
 # sudo find ~/app/sre-tools/bin -type f -exec xattr -d com.apple.quarantine {} +
 

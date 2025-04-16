@@ -174,5 +174,5 @@ ln -s -r tmp/sre-tools/bin/clang-format tmp/sre-tools/bin/clang-format-18
 
 cp -f ../common/installer.sh tmp/sre-tools/
 
-makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/sre-tools tmp/sre-tools.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
-makeself --complevel 16 --tar-quietly --zstd --threads 16 tmp/sre-tools tmp/sre-tools.linux-x86_64.zstd.sh "Prebuilt Installer" ./installer.sh
+makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/sre-tools tmp/sre-tools-installer.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
+makeself --complevel 16 --tar-quietly --zstd --threads 16 tmp/sre-tools tmp/sre-tools-installer.linux-x86_64.zstd.sh "Prebuilt Installer" ./installer.sh

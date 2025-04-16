@@ -87,5 +87,5 @@ link_zsh_site_funtions
 
 cp -f ../common/installer.sh tmp/sre-tools/
 
-makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/sre-tools tmp/sre-tools.darwin-arm64.gzip.sh "Prebuilt Installer" ./installer.sh
-makeself --complevel 16 --tar-quietly --zstd --threads 16 tmp/sre-tools tmp/sre-tools.darwin-arm64.zstd.sh "Prebuilt Installer" ./installer.sh
+makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/sre-tools tmp/sre-tools-installer.darwin-arm64.gzip.sh "Prebuilt Installer" ./installer.sh
+makeself --complevel 16 --tar-quietly --zstd --threads 16 tmp/sre-tools tmp/sre-tools-installer.darwin-arm64.zstd.sh "Prebuilt Installer" ./installer.sh

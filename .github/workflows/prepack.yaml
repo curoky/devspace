@@ -32,15 +32,15 @@ jobs:
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-sre-tools/${{ matrix.os }}/tmp/sre-tools.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
-          asset_name: packed-sre-tools.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
+          file: prepack/packed-sre-tools/${{ matrix.os }}/tmp/sre-tools-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
+          asset_name: sre-tools-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-sre-tools/${{ matrix.os }}/tmp/sre-tools.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
-          asset_name: packed-sre-tools.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
+          file: prepack/packed-sre-tools/${{ matrix.os }}/tmp/sre-tools-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
+          asset_name: sre-tools-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
           tag: 'v1.0'
           overwrite: true
 
@@ -77,19 +77,19 @@ jobs:
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-conda-envs/${{ matrix.os }}/tmp/conda-envs.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
-          asset_name: conda-envs.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
+          file: prepack/packed-conda-envs/${{ matrix.os }}/tmp/conda-envs-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
+          asset_name: conda-envs-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-conda-envs/${{ matrix.os }}/tmp/conda-envs.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
-          asset_name: conda-envs.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
+          file: prepack/packed-conda-envs/${{ matrix.os }}/tmp/conda-envs-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
+          asset_name: conda-envs-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
           tag: 'v1.0'
           overwrite: true
 
-  packed-docker-installer:
+  packed-docker:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -99,19 +99,19 @@ jobs:
       - run: brew install makeself
 
       - run: |
-          cd prepack/packed-docker-installer/debian10
+          cd prepack/packed-docker/debian10
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-docker-installer/debian10/tmp/docker-installer.debian10.gzip.sh
+          file: prepack/packed-docker/debian10/tmp/docker-installer.debian10.gzip.sh
           asset_name: docker-installer.debian10.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-docker-installer/debian10/tmp/docker-installer.debian10.zstd.sh
+          file: prepack/packed-docker/debian10/tmp/docker-installer.debian10.zstd.sh
           asset_name: docker-installer.debian10.zstd.sh
           tag: 'v1.0'
           overwrite: true
@@ -135,8 +135,8 @@ jobs:
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-dotbox/tmp/dotbox_installer.gzip.sh
-          asset_name: dotbox_installer.gzip.sh
+          file: prepack/packed-dotbox/tmp/dotbox-installer.gzip.sh
+          asset_name: dotbox-installer.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
