@@ -3,7 +3,7 @@ ARG BASE_IMAGE=debian:12
 
 FROM $BASE_IMAGE
 
-ENV PATH=$PATH:/home/x/app/pipx/bin:/home/x/app/prebuilt/bin:/nix/var/nix/profiles/default/bin \
+ENV PATH=$PATH:/home/x/app/pipx/bin:/home/x/app/sre-tools/bin:/nix/var/nix/profiles/default/bin \
   DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y && apt-get install -y sudo curl zstd
@@ -22,8 +22,8 @@ COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-nixpkg /home/x/.local/s
 RUN curl -sSL -o /tmp/packed-sre-tools.linux-x86_64.sh https://github.com/curoky/dotbox/releases/download/v1.0/packed-sre-tools.linux-x86_64.zstd.sh \
   && bash /tmp/packed-sre-tools.linux-x86_64.sh \
   && rm -rf /tmp/packed-sre-tools.linux-x86_64.sh \
-  && sudo ln -s /home/x/app/prebuilt/pkgs/zsh/bin/zsh /usr/bin \
-  && sudo ln -s /home/x/app/prebuilt/pkgs/wget/bin/wget /usr/bin
+  && sudo ln -s /home/x/app/sre-tools/pkgs/zsh/bin/zsh /usr/bin \
+  && sudo ln -s /home/x/app/sre-tools/pkgs/wget/bin/wget /usr/bin
 
 # setup nixpkgs
 RUN mkdir ~/.nix-defexpr \

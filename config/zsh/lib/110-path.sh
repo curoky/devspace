@@ -17,7 +17,7 @@
 
 ENV_PATHS=(
   "$HOMEBREW_PREFIX/opt/ruby/bin"
-  "$HOME/app/prebuilt/bin"
+  "$HOME/app/sre-tools/bin"
   "/nix/var/nix/profiles/default/bin"
 )
 for p in "${ENV_PATHS[@]}"; do
@@ -47,9 +47,9 @@ ENV_FPATHS=(
   # typer
   # "$HOME/.zfunc"
 
-  "$HOME/app/prebuilt/share/zsh/site-functions"
-  "$HOME/app/prebuilt/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/zsh-completions/src"
-  "$HOME/app/prebuilt/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/conda-zsh-completion"
+  "$HOME/app/sre-tools/share/zsh/site-functions"
+  "$HOME/app/sre-tools/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/zsh-completions/src"
+  "$HOME/app/sre-tools/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/conda-zsh-completion"
 )
 
 for p in "${ENV_FPATHS[@]}"; do

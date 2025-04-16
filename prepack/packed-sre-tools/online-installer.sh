@@ -29,7 +29,7 @@ arch=$(echo $(uname -s)-$(uname -m) | tr '[:upper:]' '[:lower:]') # linux_amd64/
 curl -L -o /tmp/packed-sre-tools.sh https://github.com/curoky/dotbox/releases/download/v1.0/packed-sre-tools.${arch}.${compress_type}.sh
 bash /tmp/packed-sre-tools.sh $@
 
-# sudo find ~/app/prebuilt/bin -type f -exec xattr -d com.apple.quarantine {} +
+# sudo find ~/app/sre-tools/bin -type f -exec xattr -d com.apple.quarantine {} +
 
 # Usage
 # curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/packed-sre-tools/online-installer.sh | bash

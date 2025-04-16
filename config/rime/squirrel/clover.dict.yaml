@@ -4,47 +4,47 @@ sort: by_weight
 
 import_tables:
   # - custom
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-ice/cn_dicts/8105
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-ice/cn_dicts/base
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-ice/cn_dicts/ext
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-ice/cn_dicts/41448
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-ice/cn_dicts/tencent
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-ice/cn_dicts/8105
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-ice/cn_dicts/base
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-ice/cn_dicts/ext
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-ice/cn_dicts/41448
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-ice/cn_dicts/tencent
 
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_animal
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_caijing
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_car
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_chengyu
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_diming
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_food
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_IT
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_law
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_lishimingren
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_medical
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_poem
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_animal
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_caijing
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_car
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_chengyu
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_diming
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_food
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_IT
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_law
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_lishimingren
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_medical
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/THUOCL_poem
 
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/clover.base
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/clover.phrase
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/clover.base
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-cloverpinyin/clover.phrase
 
-  # - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.anime
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.basis
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.biaoqing
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.chat
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.classical
-  # - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.cn_en
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.computer
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.daily
-  # - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.diet
-  # - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.game
-  # - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.gd
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.hanyu
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.history
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.idiom
-  # - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.moba
-  # - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.movie
-  # - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.music
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.name
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.net
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.poetry
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.practical
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.sougou
-  - ../../../../../prebuilt/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.website
+  # - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.anime
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.basis
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.biaoqing
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.chat
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.classical
+  # - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.cn_en
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.computer
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.daily
+  # - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.diet
+  # - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.game
+  # - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.gd
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.hanyu
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.history
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.idiom
+  # - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.moba
+  # - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.movie
+  # - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.music
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.name
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.net
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.poetry
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.practical
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.sougou
+  - ../../../../../app/sre-tools/pkgs/rime-bundle/share/rime-bundle/rime-dict/simple.luna_pinyin.website

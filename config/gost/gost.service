@@ -5,7 +5,7 @@ Wants=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/x/app/prebuilt/pkgs/gost/bin/gost -C /etc/gost/daemon.json
+ExecStart=/home/x/app/sre-tools/pkgs/gost/bin/gost -C /etc/gost/daemon.json
 Restart=on-failure
 
 [Install]

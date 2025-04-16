@@ -3,7 +3,7 @@
 script_path="$(readlink -f "$0")"
 root=$(cd "$(dirname "$script_path")" && pwd)/../py311
 
-# root=/home/x/app/prebuilt/py311
+# root=/home/x/app/sre-tools/py311
 python_bin_path=$root/bin/python3
 pathon_lib_root=$root/lib/python3.11
 

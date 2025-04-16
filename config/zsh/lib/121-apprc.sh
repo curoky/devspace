@@ -16,7 +16,7 @@
 # limitations under the License.
 
 #=-> locles
-# export LOCALE_ARCHIVE=/app/prebuilt/lib/locale/locale-archive
+# export LOCALE_ARCHIVE=/app/sre-tools/lib/locale/locale-archive
 
 #-> java
 if [[ -d /nix/var/nix/profiles/jdk19 ]]; then
@@ -104,8 +104,8 @@ export FILTER_BRANCH_SQUELCH_WARNING=1
 #=-> vim-plugin
 # if [[ -d "${HOMEBREW_PREFIX}/opt/vim-bundle/vim-plugin" ]]; then
 #   export VIM_PLUGIN_PATH="${HOMEBREW_PREFIX}/opt/vim-bundle/vim-plugin"
-# elif [[ -d "${HOME}/prebuilt/vim-plugin" ]]; then
-#   export VIM_PLUGIN_PATH="${HOME}/prebuilt/share/vim-plugin"
+# elif [[ -d "${HOME}/app/sre-tools/vim-plugin" ]]; then
+#   export VIM_PLUGIN_PATH="${HOME}/app/sre-tools/share/vim-plugin"
 # fi
 
 # export VIM_PLUGIN_PATH=$HOMEBREW_PREFIX/opt/vim-bundle/vim-plugin
@@ -233,7 +233,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
 # FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
 # if [[ ! -d $FZF_BASE ]]; then
-#   FZF_BASE=~/app/prebuilt/share/fzf/
+#   FZF_BASE=~/app/sre-tools/share/fzf/
 # fi
 
 #=-> zsh history

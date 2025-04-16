@@ -23,7 +23,7 @@ function download_pkg() {
   # arch=$(echo $(uname -s)-$(uname -m) | tr '[:upper:]' '[:lower:]')
   mkdir -p tmp/download
   mkdir -p tmp/sre-tools/pkgs/${pkg}
-  curl -sSL -o tmp/download/${pkg}.tar.gz https://github.com/curoky/prebuilt/releases/download/v1.0/${pkg}.${arch,,}.tar.gz
+  curl -sSL -o tmp/download/${pkg}.tar.gz https://github.com/curoky/prebuilt-tools/releases/download/v1.0/${pkg}.${arch,,}.tar.gz
   tar -x --gunzip -f tmp/download/${pkg}.tar.gz -C tmp/sre-tools/pkgs/${pkg} --strip-components 1
 }
 
@@ -71,7 +71,7 @@ function remove_unneeded() {
   find tmp/sre-tools/ -name "*.pyc" -delete
 
   # remove ld from binutils
-  # ~/app/prebuilt/extra/bin/ld.gold: error: /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so: could not load plugin library: Dynamic loading not supported
+  # ~/app/sre-tools/extra/bin/ld.gold: error: /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so: could not load plugin library: Dynamic loading not supported
   rm -rf tmp/sre-tools/bin/ld tmp/sre-tools/bin/ld.bfd tmp/sre-tools/bin/ld.gold
 }
 

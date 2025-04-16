@@ -58,12 +58,12 @@ function link_path() {
 }
 
 # change login shell
-echo "/home/x/app/prebuilt/pkgs/zsh/bin/zsh" >>/etc/shells
-chsh -s /home/x/app/prebuilt/pkgs/zsh/bin/zsh root
-chsh -s /home/x/app/prebuilt/pkgs/zsh/bin/zsh x
+echo "/home/x/app/sre-tools/pkgs/zsh/bin/zsh" >>/etc/shells
+chsh -s /home/x/app/sre-tools/pkgs/zsh/bin/zsh root
+chsh -s /home/x/app/sre-tools/pkgs/zsh/bin/zsh x
 
 # add ca-certificates
-copy_path /home/x/app/prebuilt/pkgs/cacert/etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+copy_path /home/x/app/sre-tools/pkgs/cacert/etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 chmod 644 /etc/ssl/certs/ca-certificates.crt
 
 # sudoers
