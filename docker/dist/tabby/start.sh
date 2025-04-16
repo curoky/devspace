@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 # Copyright (c) 2018-2024 curoky(cccuroky@gmail.com).
 #
 # This file is part of dotbox.
@@ -17,10 +17,13 @@
 # limitations under the License.
 set -xeuo pipefail
 
-rm -rf tmp/
-mkdir -p tmp/dotbox
-curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/dev.tar.gz | tar -x --gunzip -C tmp/dotbox --strip-components 1
-
-cp installer.sh tmp/dotbox
-
-makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/dotbox tmp/dotbox-installer.gzip.sh "Dotbox Installer" ./installer.sh
+docker pull curoky/dotbox:tabby
+docker tag curoky/dotbox:tabby tabbyml/tabby
+docker rmi curoky/dotbox:tabby
+docker rm --force tabbyd
+mkdir -p $HOME/tabby/data
+# --chat-model Qwen2.5-Coder-32B-Instruct
+docker run -d --network=host --gpus all \
+  -v $HOME/tabby/data:/data \
+  --name tabbyd tabbyml/tabby \
+  serve --no-webserver --model Qwen2.5-Coder-14B --device cuda --port 5847 --host ::
