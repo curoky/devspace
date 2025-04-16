@@ -27,5 +27,5 @@ export PIPX_MAN_DIR=${PIPX_HOME}/share/man
 
 cp installer.sh /Users/x/app/conda/installer.sh
 
-makeself --complevel 6 --tar-quietly --gzip --threads 16 /Users/x/app/conda tmp/conda.darwin-arm64.gzip.sh "Conda Installer" ./installer.sh
-makeself --complevel 16 --tar-quietly --zstd --threads 16 /Users/x/app/conda tmp/conda.darwin-arm64.zstd.sh "Conda Installer" ./installer.sh
+makeself --complevel 6 --tar-quietly --gzip --threads 16 /Users/x/app/conda tmp/conda-envs.darwin-arm64.gzip.sh "Conda Installer" ./installer.sh
+makeself --complevel 16 --tar-quietly --zstd --threads 16 /Users/x/app/conda tmp/conda-envs.darwin-arm64.zstd.sh "Conda Installer" ./installer.sh

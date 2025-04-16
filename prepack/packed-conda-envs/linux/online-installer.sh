@@ -24,8 +24,8 @@ else
   compress_type=gzip
 fi
 
-curl -L -o /tmp/conda.linux-x86_64.sh https://github.com/curoky/dotbox/releases/download/v1.0/conda.linux-x86_64.${compress_type}.sh
-bash /tmp/conda.linux-x86_64.sh $@
+curl -L -o /tmp/conda-envs.linux-x86_64.sh https://github.com/curoky/dotbox/releases/download/v1.0/conda.linux-x86_64.${compress_type}.sh
+bash /tmp/conda-envs.linux-x86_64.sh $@
 
 # Usage
 # curl -sSL https://github.com/curoky/dotbox/raw/dev/prebuilt/packed-conda/linux/online-installer.sh | bash

@@ -18,8 +18,18 @@
 
 set -xeuo pipefail
 
-curl -L -o /tmp/prebuilt-sre-tools.sh https://github.com/curoky/dotbox/releases/download/v1.0/dotbox_installer.gzip.sh
-bash /tmp/prebuilt-sre-tools.sh $@
+if command -v zstd &>/dev/null; then
+  compress_type=zstd
+else
+  compress_type=gzip
+fi
+
+arch=$(echo $(uname -s)-$(uname -m) | tr '[:upper:]' '[:lower:]') # linux_amd64/darwin-arm64
+
+curl -L -o /tmp/packed-sre-tools.sh https://github.com/curoky/dotbox/releases/download/v1.0/packed-sre-tools.${arch}.${compress_type}.sh
+bash /tmp/packed-sre-tools.sh $@
+
+# sudo find ~/app/prebuilt/bin -type f -exec xattr -d com.apple.quarantine {} +
 
 # Usage
-# curl -sSL https://github.com/curoky/dotbox/raw/dev/prebuilt/packed-dotbox/online-installer.sh | bash -s -- -- -l -n host-linux/docker
+# curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/packed-sre-tools/online-installer.sh | bash

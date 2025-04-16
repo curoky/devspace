@@ -1,16 +1,16 @@
-name: prebuilt
+name: prepack
 
 on:
   push:
     paths:
-      - '.github/workflows/prebuilt.yaml'
-      - 'prebuilt/**'
+      - '.github/workflows/prepack.yaml'
+      - 'prepack/**'
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * 0'
 
 jobs:
-  prebuilt-sre-tools:
+  packed-sre-tools:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -27,20 +27,20 @@ jobs:
       - run: brew install makeself
 
       - run: |
-          cd prebuilt/prebuilt-sre-tools/${{ matrix.os }}
+          cd prepack/packed-sre-tools/${{ matrix.os }}
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/prebuilt-sre-tools/${{ matrix.os }}/tmp/prebuilt_installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
-          asset_name: prebuilt-sre-tools.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
+          file: prepack/packed-sre-tools/${{ matrix.os }}/tmp/sre-tools.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
+          asset_name: packed-sre-tools.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/prebuilt-sre-tools/${{ matrix.os }}/tmp/prebuilt_installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
-          asset_name: prebuilt-sre-tools.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
+          file: prepack/packed-sre-tools/${{ matrix.os }}/tmp/sre-tools.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
+          asset_name: packed-sre-tools.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
           tag: 'v1.0'
           overwrite: true
 
@@ -48,7 +48,7 @@ jobs:
         if: ${{ failure() }}
         timeout-minutes: 30
 
-  packed-conda-darwin-arm64:
+  packed-conda-envs-darwin-arm64:
     runs-on: macos-latest
     permissions:
       contents: write
@@ -63,20 +63,20 @@ jobs:
           echo "/opt/homebrew/opt/gnu-getopt/bin" >> $GITHUB_PATH
 
       - run: |
-          cd prebuilt/packed-conda/darwin
+          cd prepack/packed-conda-envs/darwin
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/packed-conda/darwin/tmp/conda.darwin-arm64.gzip.sh
-          asset_name: conda.darwin-arm64.gzip.sh
+          file: prepack/packed-conda-envs/darwin/tmp/conda-envs.darwin-arm64.gzip.sh
+          asset_name: conda-envs.darwin-arm64.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/packed-conda/darwin/tmp/conda.darwin-arm64.zstd.sh
-          asset_name: conda.darwin-arm64.zstd.sh
+          file: prepack/packed-conda-envs/darwin/tmp/conda-envs.darwin-arm64.zstd.sh
+          asset_name: conda-envs.darwin-arm64.zstd.sh
           tag: 'v1.0'
           overwrite: true
 
@@ -84,7 +84,7 @@ jobs:
         if: ${{ failure() }}
         timeout-minutes: 30
 
-  packed-conda-linux-x86_64:
+  packed-conda-envs-linux-x86_64:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -94,24 +94,24 @@ jobs:
       - run: brew install makeself
 
       - run: |
-          cd prebuilt/packed-conda/linux/
+          cd prepack/packed-conda-envs/linux/
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/packed-conda/linux/tmp/conda.linux-x86_64.gzip.sh
-          asset_name: conda.linux-x86_64.gzip.sh
+          file: prepack/packed-conda-envs/linux/tmp/conda-envs.linux-x86_64.gzip.sh
+          asset_name: conda-envs.linux-x86_64.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/packed-conda/linux/tmp/conda.linux-x86_64.zstd.sh
-          asset_name: conda.linux-x86_64.zstd.sh
+          file: prepack/packed-conda-envs/linux/tmp/conda-envs.linux-x86_64.zstd.sh
+          asset_name: conda-envs.linux-x86_64.zstd.sh
           tag: 'v1.0'
           overwrite: true
 
-  docker-offline-installer:
+  packed-docker-installer:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -121,19 +121,19 @@ jobs:
       - run: brew install makeself
 
       - run: |
-          cd prebuilt/docker-offline-installer/debian10
+          cd prepack/packed-docker-installer/debian10
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/docker-offline-installer/debian10/tmp/docker_installer.debian10.gzip.sh
+          file: prepack/packed-docker-installer/debian10/tmp/docker_installer.debian10.gzip.sh
           asset_name: docker_installer.debian10.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/docker-offline-installer/debian10/tmp/docker_installer.debian10.zstd.sh
+          file: prepack/packed-docker-installer/debian10/tmp/docker_installer.debian10.zstd.sh
           asset_name: docker_installer.debian10.zstd.sh
           tag: 'v1.0'
           overwrite: true
@@ -152,12 +152,12 @@ jobs:
       - run: brew install makeself
 
       - run: |
-          cd prebuilt/packed-dotbox/
+          cd prepack/packed-dotbox/
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/packed-dotbox/tmp/dotbox_installer.gzip.sh
+          file: prepack/packed-dotbox/tmp/dotbox_installer.gzip.sh
           asset_name: dotbox_installer.gzip.sh
           tag: 'v1.0'
           overwrite: true
