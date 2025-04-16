@@ -48,8 +48,17 @@ jobs:
         if: ${{ failure() }}
         timeout-minutes: 30
 
-  packed-conda-envs-darwin-arm64:
-    runs-on: macos-latest
+  packed-conda-envs:
+    strategy:
+      matrix:
+        include:
+          - os: linux
+            arch: x86_64
+            runs-on: ubuntu-latest
+          - os: darwin
+            arch: arm64
+            runs-on: macos-latest
+    runs-on: ${{ matrix.runs-on }}
     permissions:
       contents: write
     steps:
@@ -63,51 +72,20 @@ jobs:
           echo "/opt/homebrew/opt/gnu-getopt/bin" >> $GITHUB_PATH
 
       - run: |
-          cd prepack/packed-conda-envs/darwin
+          cd prepack/packed-conda-envs/${{ matrix.os }}/
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-conda-envs/darwin/tmp/conda-envs.darwin-arm64.gzip.sh
-          asset_name: conda-envs.darwin-arm64.gzip.sh
+          file: prepack/packed-conda-envs/${{ matrix.os }}/tmp/conda-envs.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
+          asset_name: conda-envs.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-conda-envs/darwin/tmp/conda-envs.darwin-arm64.zstd.sh
-          asset_name: conda-envs.darwin-arm64.zstd.sh
-          tag: 'v1.0'
-          overwrite: true
-
-      - uses: mxschmitt/action-tmate@v3
-        if: ${{ failure() }}
-        timeout-minutes: 30
-
-  packed-conda-envs-linux-x86_64:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: Homebrew/actions/setup-homebrew@master
-      - run: brew install makeself
-
-      - run: |
-          cd prepack/packed-conda-envs/linux/
-          ./pack.sh
-
-      - uses: svenstaro/upload-release-action@v2
-        with:
-          file: prepack/packed-conda-envs/linux/tmp/conda-envs.linux-x86_64.gzip.sh
-          asset_name: conda-envs.linux-x86_64.gzip.sh
-          tag: 'v1.0'
-          overwrite: true
-
-      - uses: svenstaro/upload-release-action@v2
-        with:
-          file: prepack/packed-conda-envs/linux/tmp/conda-envs.linux-x86_64.zstd.sh
-          asset_name: conda-envs.linux-x86_64.zstd.sh
+          file: prepack/packed-conda-envs/${{ matrix.os }}/tmp/conda-envs.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
+          asset_name: conda-envs.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
           tag: 'v1.0'
           overwrite: true
 
@@ -126,15 +104,15 @@ jobs:
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-docker-installer/debian10/tmp/docker_installer.debian10.gzip.sh
-          asset_name: docker_installer.debian10.gzip.sh
+          file: prepack/packed-docker-installer/debian10/tmp/docker-installer.debian10.gzip.sh
+          asset_name: docker-installer.debian10.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-docker-installer/debian10/tmp/docker_installer.debian10.zstd.sh
-          asset_name: docker_installer.debian10.zstd.sh
+          file: prepack/packed-docker-installer/debian10/tmp/docker-installer.debian10.zstd.sh
+          asset_name: docker-installer.debian10.zstd.sh
           tag: 'v1.0'
           overwrite: true
 

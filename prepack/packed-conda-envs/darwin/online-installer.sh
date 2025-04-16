@@ -11,4 +11,4 @@ curl -L -o /tmp/conda-envs.darwin-arm64.sh https://github.com/curoky/dotbox/rele
 bash /tmp/conda-envs.darwin-arm64.sh $@
 
 # Usage
-# curl -sSL https://github.com/curoky/dotbox/raw/dev/prebuilt/packed-conda/darwin/online-installer.sh | bash
+# curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/packed-conda/darwin/online-installer.sh | bash

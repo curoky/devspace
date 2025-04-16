@@ -68,24 +68,24 @@ pkgs=(
   # ruff need link jemalloc
 )
 
-rm -rf tmp/download tmp/prebuilt
+rm -rf tmp/download tmp/sre-tools
 mkdir -p tmp
 
 curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >tmp/install.sh
 for pkg in "${pkgs[@]}"; do
-  bash tmp/install.sh -n $pkg -d tmp/download -i tmp/prebuilt/pkgs/$pkg -a darwin-arm64 &
+  bash tmp/install.sh -n $pkg -d tmp/download -i tmp/sre-tools/pkgs/$pkg -a darwin-arm64 &
 done
 wait
 
-touch tmp/prebuilt/pkgs/vim/skip_link
-touch tmp/prebuilt/pkgs/zsh/skip_link
+touch tmp/sre-tools/pkgs/vim/skip_link
+touch tmp/sre-tools/pkgs/zsh/skip_link
 
 remove_unneeded
 rename_wrapped
 link_to_bin
 link_zsh_site_funtions
 
-cp -f ../common/installer.sh tmp/prebuilt/
+cp -f ../common/installer.sh tmp/sre-tools/
 
-makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/prebuilt tmp/sre-tools.darwin-arm64.gzip.sh "Prebuilt Installer" ./installer.sh
-makeself --complevel 16 --tar-quietly --zstd --threads 16 tmp/prebuilt tmp/sre-tools.darwin-arm64.zstd.sh "Prebuilt Installer" ./installer.sh
+makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/sre-tools tmp/sre-tools.darwin-arm64.gzip.sh "Prebuilt Installer" ./installer.sh
+makeself --complevel 16 --tar-quietly --zstd --threads 16 tmp/sre-tools tmp/sre-tools.darwin-arm64.zstd.sh "Prebuilt Installer" ./installer.sh

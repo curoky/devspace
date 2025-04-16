@@ -22,44 +22,44 @@ function download_pkg() {
   arch=${2:-$(uname -s)-$(uname -m)}
   # arch=$(echo $(uname -s)-$(uname -m) | tr '[:upper:]' '[:lower:]')
   mkdir -p tmp/download
-  mkdir -p tmp/prebuilt/pkgs/${pkg}
+  mkdir -p tmp/sre-tools/pkgs/${pkg}
   curl -sSL -o tmp/download/${pkg}.tar.gz https://github.com/curoky/prebuilt/releases/download/v1.0/${pkg}.${arch,,}.tar.gz
-  tar -x --gunzip -f tmp/download/${pkg}.tar.gz -C tmp/prebuilt/pkgs/${pkg} --strip-components 1
+  tar -x --gunzip -f tmp/download/${pkg}.tar.gz -C tmp/sre-tools/pkgs/${pkg} --strip-components 1
 }
 
 function link_to_bin() {
-  mkdir -p tmp/prebuilt/bin
-  for dir in tmp/prebuilt/pkgs/*; do
+  mkdir -p tmp/sre-tools/bin
+  for dir in tmp/sre-tools/pkgs/*; do
     if [[ -d $dir/bin ]]; then
       if [[ ! -f $dir/skip_link ]]; then
         for file in $dir/bin/*; do
           if [[ -L $file ]] || [[ -f $file ]]; then
-            if [[ -f $PWD/tmp/prebuilt/bin/$(basename $file) ]]; then
-              rm $PWD/tmp/prebuilt/bin/$(basename $file)
+            if [[ -f $PWD/tmp/sre-tools/bin/$(basename $file) ]]; then
+              rm $PWD/tmp/sre-tools/bin/$(basename $file)
             fi
-            ln -s -r $file $PWD/tmp/prebuilt/bin/
+            ln -s -r $file $PWD/tmp/sre-tools/bin/
           fi
         done
       fi
     fi
   done
-  # find tmp/prebuilt/pkgs/*/bin -type f -exec ln -s -r {} $PWD/tmp/prebuilt/bin/ \;
-  # find tmp/prebuilt/pkgs/*/bin -type l -exec ln -s -r {} $PWD/tmp/prebuilt/bin/ \;
+  # find tmp/sre-tools/pkgs/*/bin -type f -exec ln -s -r {} $PWD/tmp/sre-tools/bin/ \;
+  # find tmp/sre-tools/pkgs/*/bin -type l -exec ln -s -r {} $PWD/tmp/sre-tools/bin/ \;
 }
 
 function link_zsh_site_funtions() {
-  rm -rf tmp/prebuilt/share/zsh/site-functions/
-  mkdir -p tmp/prebuilt/share/zsh/site-functions/
-  find tmp/prebuilt/pkgs -type d -path "*/zsh/site-functions" | while read -r dir; do
+  rm -rf tmp/sre-tools/share/zsh/site-functions/
+  mkdir -p tmp/sre-tools/share/zsh/site-functions/
+  find tmp/sre-tools/pkgs -type d -path "*/zsh/site-functions" | while read -r dir; do
     for file in $dir/*; do
-      ln -s -r $file tmp/prebuilt/share/zsh/site-functions/
+      ln -s -r $file tmp/sre-tools/share/zsh/site-functions/
     done
   done
 }
 
 function strip_binary() {
-  chmod -R +w tmp/prebuilt/
-  find tmp/prebuilt/pkgs/*/bin -executable -type f | while read -r file; do
+  chmod -R +w tmp/sre-tools/
+  find tmp/sre-tools/pkgs/*/bin -executable -type f | while read -r file; do
     if file "$file" | grep -q 'ELF'; then
       strip --strip-unneeded "$file"
     fi
@@ -67,16 +67,16 @@ function strip_binary() {
 }
 
 function remove_unneeded() {
-  find tmp/prebuilt/ -name "*.a" -delete
-  find tmp/prebuilt/ -name "*.pyc" -delete
+  find tmp/sre-tools/ -name "*.a" -delete
+  find tmp/sre-tools/ -name "*.pyc" -delete
 
   # remove ld from binutils
   # ~/app/prebuilt/extra/bin/ld.gold: error: /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so: could not load plugin library: Dynamic loading not supported
-  rm -rf tmp/prebuilt/bin/ld tmp/prebuilt/bin/ld.bfd tmp/prebuilt/bin/ld.gold
+  rm -rf tmp/sre-tools/bin/ld tmp/sre-tools/bin/ld.bfd tmp/sre-tools/bin/ld.gold
 }
 
 function rename_wrapped() {
-  find tmp/prebuilt/pkgs -type f -name ".*-wrapped" | while read -r file; do
+  find tmp/sre-tools/pkgs -type f -name ".*-wrapped" | while read -r file; do
     dir=$(dirname "$file")
     new_name=$(basename "$file" | sed -e 's/-wrapped//g' -e 's/^.//')
     mv "$file" "$dir/$new_name"
@@ -84,7 +84,7 @@ function rename_wrapped() {
 }
 
 function remove_invalid_link() {
-  find tmp/prebuilt -type l -exec test ! -e {} \; -print | while read -r file; do
+  find tmp/sre-tools -type l -exec test ! -e {} \; -print | while read -r file; do
     echo "remove invalid link: $file"
     rm -rf "$file"
   done
@@ -95,10 +95,10 @@ function remove_invalid_link() {
 #     wrapper/dool \
 #     wrapper/git-filter-repo \
 #     wrapper/netron \
-#     tmp/prebuilt/bin
+#     tmp/sre-tools/bin
 # }
 
 # function add_dotbox() {
-#   mkdir -p tmp/prebuilt/dotbox
-#   curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/dev.tar.gz | tar -x --gunzip -C tmp/prebuilt/dotbox --strip-components 1
+#   mkdir -p tmp/sre-tools/dotbox
+#   curl -sSL https://github.com/curoky/dotbox/archive/refs/heads/dev.tar.gz | tar -x --gunzip -C tmp/sre-tools/dotbox --strip-components 1
 # }

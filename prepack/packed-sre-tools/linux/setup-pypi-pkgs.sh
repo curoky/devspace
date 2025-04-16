@@ -23,4 +23,4 @@ cp -r pypkgs/dool tmp/pypi/dool/bin
 cp -r pypkgs/netron tmp/pypi/netron/bin
 cp -r pypkgs/git-filter-repo tmp/pypi/git-filter-repo/bin
 
-mv tmp/pypi/dool tmp/pypi/git-filter-repo tmp/pypi/netron tmp/prebuilt/pkgs
+mv tmp/pypi/dool tmp/pypi/git-filter-repo tmp/pypi/netron tmp/sre-tools/pkgs

@@ -130,37 +130,37 @@ pkgs=(
   makeself
 )
 
-rm -rf tmp/download tmp/prebuilt
+rm -rf tmp/download tmp/sre-tools
 mkdir -p tmp
 
 curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >tmp/install.sh
 for pkg in "${pkgs[@]}"; do
-  bash tmp/install.sh -n $pkg -d tmp/download -i tmp/prebuilt/pkgs/$pkg &
+  bash tmp/install.sh -n $pkg -d tmp/download -i tmp/sre-tools/pkgs/$pkg &
 done
 wait
 
 ./setup-pypi-pkgs.sh
 
-mkdir -p tmp/prebuilt/bin/
-mkdir -p tmp/prebuilt/pkgs/clang-format-18/bin
-cp tmp/prebuilt/pkgs/llvmPackages_18.clang-unwrapped/bin/clang-format tmp/prebuilt/pkgs/clang-format-18/bin/clang-format
-rm -rf tmp/prebuilt/pkgs/llvmPackages_18.clang-unwrapped
+mkdir -p tmp/sre-tools/bin/
+mkdir -p tmp/sre-tools/pkgs/clang-format-18/bin
+cp tmp/sre-tools/pkgs/llvmPackages_18.clang-unwrapped/bin/clang-format tmp/sre-tools/pkgs/clang-format-18/bin/clang-format
+rm -rf tmp/sre-tools/pkgs/llvmPackages_18.clang-unwrapped
 
 # some issue
-touch tmp/prebuilt/pkgs/binutils/skip_link
-touch tmp/prebuilt/pkgs/coreutils/skip_link
+touch tmp/sre-tools/pkgs/binutils/skip_link
+touch tmp/sre-tools/pkgs/coreutils/skip_link
 
 # experimental
-touch tmp/prebuilt/pkgs/bash/skip_link
-touch tmp/prebuilt/pkgs/git/skip_link
-touch tmp/prebuilt/pkgs/perl/skip_link
-touch tmp/prebuilt/pkgs/man/skip_link
-touch tmp/prebuilt/pkgs/autoconf/skip_link
-touch tmp/prebuilt/pkgs/automake/skip_link
-# touch tmp/prebuilt/pkgs/pkg-config/skip_link
-touch tmp/prebuilt/pkgs/libtool/skip_link
-touch tmp/prebuilt/pkgs/gdb/skip_link
-touch tmp/prebuilt/pkgs/python311/skip_link
+touch tmp/sre-tools/pkgs/bash/skip_link
+touch tmp/sre-tools/pkgs/git/skip_link
+touch tmp/sre-tools/pkgs/perl/skip_link
+touch tmp/sre-tools/pkgs/man/skip_link
+touch tmp/sre-tools/pkgs/autoconf/skip_link
+touch tmp/sre-tools/pkgs/automake/skip_link
+# touch tmp/sre-tools/pkgs/pkg-config/skip_link
+touch tmp/sre-tools/pkgs/libtool/skip_link
+touch tmp/sre-tools/pkgs/gdb/skip_link
+touch tmp/sre-tools/pkgs/python311/skip_link
 
 remove_unneeded
 rename_wrapped
@@ -169,10 +169,10 @@ link_to_bin
 link_zsh_site_funtions
 remove_invalid_link
 
-ln -s -r tmp/prebuilt/bin/bazelisk tmp/prebuilt/bin/bazel
-ln -s -r tmp/prebuilt/bin/clang-format tmp/prebuilt/bin/clang-format-18
+ln -s -r tmp/sre-tools/bin/bazelisk tmp/sre-tools/bin/bazel
+ln -s -r tmp/sre-tools/bin/clang-format tmp/sre-tools/bin/clang-format-18
 
-cp -f ../common/installer.sh tmp/prebuilt/
+cp -f ../common/installer.sh tmp/sre-tools/
 
-makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/prebuilt tmp/sre-tools.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
-makeself --complevel 16 --tar-quietly --zstd --threads 16 tmp/prebuilt tmp/sre-tools.linux-x86_64.zstd.sh "Prebuilt Installer" ./installer.sh
+makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/sre-tools tmp/sre-tools.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
+makeself --complevel 16 --tar-quietly --zstd --threads 16 tmp/sre-tools tmp/sre-tools.linux-x86_64.zstd.sh "Prebuilt Installer" ./installer.sh

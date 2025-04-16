@@ -7,8 +7,8 @@ else
   compress_type=gzip
 fi
 
-curl -L -o /tmp/docker_installer.debian10.sh https://github.com/curoky/dotbox/releases/download/v1.0/docker_installer.debian10.${compress_type}.sh
-bash /tmp/docker_installer.debian10.sh --target /tmp/docker --noexec # $@
+curl -L -o /tmp/docker-installer.debian10.sh https://github.com/curoky/dotbox/releases/download/v1.0/docker-installer.debian10.${compress_type}.sh
+bash /tmp/docker-installer.debian10.sh --target /tmp/docker --noexec # $@
 
 # Usage
-# curl -sSL https://github.com/curoky/dotbox/raw/dev/prebuilt/docker-offline-installer/debian10/online-installer.sh | bash
+# curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/docker-offline-installer/debian10/online-installer.sh | bash

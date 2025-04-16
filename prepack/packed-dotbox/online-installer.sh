@@ -22,4 +22,4 @@ curl -L -o /tmp/packed-sre-tools.sh https://github.com/curoky/dotbox/releases/do
 bash /tmp/packed-sre-tools.sh $@
 
 # Usage
-# curl -sSL https://github.com/curoky/dotbox/raw/dev/prebuilt/packed-dotbox/online-installer.sh | bash -s -- -- -l -n host-linux/docker
+# curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/packed-dotbox/online-installer.sh | bash -s -- -- -l -n host-linux/docker
