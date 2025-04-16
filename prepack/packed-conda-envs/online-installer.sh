@@ -24,8 +24,10 @@ else
   compress_type=gzip
 fi
 
-curl -L -o /tmp/conda-envs-installer.linux-x86_64.sh https://github.com/curoky/dotbox/releases/download/v1.0/conda-envs-installer.linux-x86_64.${compress_type}.sh
-bash /tmp/conda-envs-installer.linux-x86_64.sh $@
+arch=$(echo $(uname -s)-$(uname -m) | tr '[:upper:]' '[:lower:]') # linux_amd64/darwin-arm64
+
+curl -L -o /tmp/conda-envs-installer.${arch}.sh https://github.com/curoky/dotbox/releases/download/v1.0/conda-envs-installer.${arch}.${compress_type}.sh
+bash /tmp/conda-envs-installer.${arch}.sh $@
 
 # Usage
-# curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/packed-conda-envs/linux/online-installer.sh | bash
+# curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/packed-conda-envs/online-installer.sh | bash
