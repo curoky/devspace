@@ -35,6 +35,7 @@ function link_to_bin() {
         for file in $dir/bin/*; do
           if [[ -L $file ]] || [[ -f $file ]]; then
             if [[ -f $PWD/tmp/sre-tools/bin/$(basename $file) ]]; then
+              echo "remove $PWD/tmp/sre-tools/bin/$(basename $file)" >>tmp/sre-tools/logs/link_to_bin.log
               rm $PWD/tmp/sre-tools/bin/$(basename $file)
             fi
             ln -s -r $file $PWD/tmp/sre-tools/bin/
@@ -79,13 +80,14 @@ function rename_wrapped() {
   find tmp/sre-tools/pkgs -type f -name ".*-wrapped" | while read -r file; do
     dir=$(dirname "$file")
     new_name=$(basename "$file" | sed -e 's/-wrapped//g' -e 's/^.//')
+    echo "rename $file to $dir/$new_name" >>tmp/sre-tools/logs/rename_wrapped.log
     mv "$file" "$dir/$new_name"
   done
 }
 
 function remove_invalid_link() {
   find tmp/sre-tools -type l -exec test ! -e {} \; -print | while read -r file; do
-    echo "remove invalid link: $file"
+    echo "remove invalid link: $file" >>tmp/sre-tools/logs/remove_invalid_link.log
     rm -rf "$file"
   done
 }

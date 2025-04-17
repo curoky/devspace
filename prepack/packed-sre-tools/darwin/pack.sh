@@ -69,7 +69,7 @@ pkgs=(
 )
 
 rm -rf tmp/download tmp/sre-tools
-mkdir -p tmp
+mkdir -p tmp/download tmp/sre-tools/logs
 
 curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >tmp/install.sh
 for pkg in "${pkgs[@]}"; do

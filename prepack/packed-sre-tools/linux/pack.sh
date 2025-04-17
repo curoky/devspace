@@ -75,7 +75,6 @@ pkgs=(
   less
   libcap
   libtool
-  llvmPackages_18.clang-unwrapped
   lsb-release
   lsof
   m4
@@ -128,10 +127,12 @@ pkgs=(
   zstd
   exiftool
   makeself
+  # lld_18
+  clang-format_18
 )
 
 rm -rf tmp/download tmp/sre-tools
-mkdir -p tmp
+mkdir -p tmp/download tmp/sre-tools/logs
 
 curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >tmp/install.sh
 for pkg in "${pkgs[@]}"; do
@@ -142,9 +143,6 @@ wait
 ./setup-pypi-pkgs.sh
 
 mkdir -p tmp/sre-tools/bin/
-mkdir -p tmp/sre-tools/pkgs/clang-format-18/bin
-cp tmp/sre-tools/pkgs/llvmPackages_18.clang-unwrapped/bin/clang-format tmp/sre-tools/pkgs/clang-format-18/bin/clang-format
-rm -rf tmp/sre-tools/pkgs/llvmPackages_18.clang-unwrapped
 
 # some issue
 touch tmp/sre-tools/pkgs/binutils/skip_link
@@ -170,7 +168,7 @@ link_zsh_site_funtions
 remove_invalid_link
 
 ln -s -r tmp/sre-tools/bin/bazelisk tmp/sre-tools/bin/bazel
-ln -s -r tmp/sre-tools/bin/clang-format tmp/sre-tools/bin/clang-format-18
+ln -s -r tmp/sre-tools/bin/clang-format-18 tmp/sre-tools/bin/clang-format
 
 cp -f ../common/installer.sh tmp/sre-tools/
 
