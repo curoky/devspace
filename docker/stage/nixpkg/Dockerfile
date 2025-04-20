@@ -18,8 +18,6 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
   && nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs \
   && nix-channel --update
 
-COPY --from=third-party nixpkgs nixpkgs
-
 RUN nix-env -p /nix/var/nix/profiles/default -iA \
     # nixpkgs.pkg-config nixpkgs.libtool nixpkgs.automake nixpkgs.autoconf nixpkgs.man \
     nixpkgs.locale nixpkgs.git \
