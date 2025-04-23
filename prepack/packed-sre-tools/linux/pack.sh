@@ -28,12 +28,13 @@ pkgs=(
   buildifier
   bzip2
   cacert
+  clang-format_18
   connect
   croc
   curl
   diffutils
-  # dive
   ethtool
+  exiftool
   eza
   fd
   file
@@ -44,7 +45,6 @@ pkgs=(
   gdu
   getopt
   gettext
-  # gh
   git-absorb
   git-extras
   git-lfs
@@ -56,11 +56,9 @@ pkgs=(
   gnused
   gnutar
   go-task
-  # gost
   gzip
   inetutils
   iproute2
-  # iptables
   iputils
   jq
   krb5
@@ -69,14 +67,12 @@ pkgs=(
   lsb-release
   lsof
   m4
+  makeself
   miniserve
   ncdu_1
   netcat
   nettools
   ninja
-  # nixfmt-rfc-style
-  # nixpkgs-fmt
-  # numactl
   openssh_gssapi
   openssl
   patchelf
@@ -92,7 +88,6 @@ pkgs=(
   rsync
   ruff
   shfmt
-  # scc
   silver-searcher
   snappy
   starship
@@ -114,17 +109,22 @@ pkgs=(
   zsh
   zsh-bundle
   zstd
-  exiftool
-  makeself
-  # lld_18
-  clang-format_18
 
-  # unneeded
+  ##### unneeded
+  # lld_18
   # binutils
   # coreutils
   # aria2
+  # gost
+  # iptables
+  # nixfmt-rfc-style
+  # nixpkgs-fmt
+  # numactl
+  # scc
+  # gh
+  # dive
 
-  # experimental
+  ##### experimental
   # autoconf
   # automake
   # bash
