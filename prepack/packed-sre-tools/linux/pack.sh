@@ -21,24 +21,18 @@ source ../common/utils.sh
 
 # task --list-all | sed -e 's/://g' -e 's/*//g'
 pkgs=(
-  aria2
   atuin
-  autoconf
-  automake
-  bash
   bat
   bazelisk
-  binutils
   bison
   buildifier
   bzip2
   cacert
   connect
-  coreutils
   croc
   curl
   diffutils
-  dive
+  # dive
   ethtool
   eza
   fd
@@ -47,12 +41,10 @@ pkgs=(
   flex
   fzf
   gawk
-  gdb
   gdu
   getopt
   gettext
-  gh
-  git
+  # gh
   git-absorb
   git-extras
   git-lfs
@@ -64,33 +56,30 @@ pkgs=(
   gnused
   gnutar
   go-task
-  gost
+  # gost
   gzip
   inetutils
   iproute2
-  iptables
+  # iptables
   iputils
   jq
   krb5
   less
   libcap
-  libtool
   lsb-release
   lsof
   m4
-  man
   miniserve
   ncdu_1
   netcat
   nettools
   ninja
-  nixfmt-rfc-style
-  nixpkgs-fmt
-  numactl
+  # nixfmt-rfc-style
+  # nixpkgs-fmt
+  # numactl
   openssh_gssapi
   openssl
   patchelf
-  perl
   pkg-config
   procps
   procs
@@ -103,7 +92,7 @@ pkgs=(
   rsync
   ruff
   shfmt
-  scc
+  # scc
   silver-searcher
   snappy
   starship
@@ -129,6 +118,21 @@ pkgs=(
   makeself
   # lld_18
   clang-format_18
+
+  # unneeded
+  # binutils
+  # coreutils
+  # aria2
+
+  # experimental
+  # autoconf
+  # automake
+  # bash
+  # git
+  # perl
+  # man
+  # gdb
+  # libtool
 )
 
 rm -rf tmp/download tmp/sre-tools
@@ -145,27 +149,27 @@ wait
 mkdir -p tmp/sre-tools/bin/
 
 # some issue
-touch tmp/sre-tools/pkgs/binutils/skip_link
-touch tmp/sre-tools/pkgs/coreutils/skip_link
+# touch tmp/sre-tools/pkgs/binutils/skip_link
+# touch tmp/sre-tools/pkgs/coreutils/skip_link
 
 # experimental
-touch tmp/sre-tools/pkgs/bash/skip_link
-touch tmp/sre-tools/pkgs/git/skip_link
-touch tmp/sre-tools/pkgs/perl/skip_link
-touch tmp/sre-tools/pkgs/man/skip_link
-touch tmp/sre-tools/pkgs/autoconf/skip_link
-touch tmp/sre-tools/pkgs/automake/skip_link
+# touch tmp/sre-tools/pkgs/bash/skip_link
+# touch tmp/sre-tools/pkgs/git/skip_link
+# touch tmp/sre-tools/pkgs/perl/skip_link
+# touch tmp/sre-tools/pkgs/man/skip_link
+# touch tmp/sre-tools/pkgs/autoconf/skip_link
+# touch tmp/sre-tools/pkgs/automake/skip_link
 # touch tmp/sre-tools/pkgs/pkg-config/skip_link
-touch tmp/sre-tools/pkgs/libtool/skip_link
-touch tmp/sre-tools/pkgs/gdb/skip_link
+# touch tmp/sre-tools/pkgs/libtool/skip_link
+# touch tmp/sre-tools/pkgs/gdb/skip_link
 touch tmp/sre-tools/pkgs/python311/skip_link
 
-remove_unneeded
-rename_wrapped
-strip_binary
+# remove_unneeded
+# rename_wrapped
+# strip_binary
+# remove_invalid_link
 link_to_bin
 link_zsh_site_funtions
-remove_invalid_link
 
 ln -s -r tmp/sre-tools/bin/bazelisk tmp/sre-tools/bin/bazel
 ln -s -r tmp/sre-tools/bin/clang-format-18 tmp/sre-tools/bin/clang-format

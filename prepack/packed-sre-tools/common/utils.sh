@@ -17,15 +17,15 @@
 # limitations under the License.
 set -xeuo pipefail
 
-function download_pkg() {
-  pkg=$1
-  arch=${2:-$(uname -s)-$(uname -m)}
-  # arch=$(echo $(uname -s)-$(uname -m) | tr '[:upper:]' '[:lower:]')
-  mkdir -p tmp/download
-  mkdir -p tmp/sre-tools/pkgs/${pkg}
-  curl -sSL -o tmp/download/${pkg}.tar.gz https://github.com/curoky/prebuilt-tools/releases/download/v1.0/${pkg}.${arch,,}.tar.gz
-  tar -x --gunzip -f tmp/download/${pkg}.tar.gz -C tmp/sre-tools/pkgs/${pkg} --strip-components 1
-}
+# function download_pkg() {
+#   pkg=$1
+#   arch=${2:-$(uname -s)-$(uname -m)}
+#   # arch=$(echo $(uname -s)-$(uname -m) | tr '[:upper:]' '[:lower:]')
+#   mkdir -p tmp/download
+#   mkdir -p tmp/sre-tools/pkgs/${pkg}
+#   curl -sSL -o tmp/download/${pkg}.tar.gz https://github.com/curoky/prebuilt-tools/releases/download/v1.0/${pkg}.${arch,,}.tar.gz
+#   tar -x --gunzip -f tmp/download/${pkg}.tar.gz -C tmp/sre-tools/pkgs/${pkg} --strip-components 1
+# }
 
 function link_to_bin() {
   mkdir -p tmp/sre-tools/bin
@@ -58,39 +58,39 @@ function link_zsh_site_funtions() {
   done
 }
 
-function strip_binary() {
-  chmod -R +w tmp/sre-tools/
-  find tmp/sre-tools/pkgs/*/bin -executable -type f | while read -r file; do
-    if file "$file" | grep -q 'ELF'; then
-      strip --strip-unneeded "$file"
-    fi
-  done
-}
+# function strip_binary() {
+#   chmod -R +w tmp/sre-tools/
+#   find tmp/sre-tools/pkgs/*/bin -executable -type f | while read -r file; do
+#     if file "$file" | grep -q 'ELF'; then
+#       strip --strip-unneeded "$file"
+#     fi
+#   done
+# }
 
-function remove_unneeded() {
-  find tmp/sre-tools/ -name "*.a" -delete
-  find tmp/sre-tools/ -name "*.pyc" -delete
+# function remove_unneeded() {
+#   find tmp/sre-tools/ -name "*.a" -delete
+#   find tmp/sre-tools/ -name "*.pyc" -delete
 
-  # remove ld from binutils
-  # ~/app/sre-tools/extra/bin/ld.gold: error: /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so: could not load plugin library: Dynamic loading not supported
-  rm -rf tmp/sre-tools/bin/ld tmp/sre-tools/bin/ld.bfd tmp/sre-tools/bin/ld.gold
-}
+#   # remove ld from binutils
+#   # ~/app/sre-tools/extra/bin/ld.gold: error: /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so: could not load plugin library: Dynamic loading not supported
+#   rm -rf tmp/sre-tools/bin/ld tmp/sre-tools/bin/ld.bfd tmp/sre-tools/bin/ld.gold
+# }
 
-function rename_wrapped() {
-  find tmp/sre-tools/pkgs -type f -name ".*-wrapped" | while read -r file; do
-    dir=$(dirname "$file")
-    new_name=$(basename "$file" | sed -e 's/-wrapped//g' -e 's/^.//')
-    echo "rename $file to $dir/$new_name" >>tmp/sre-tools/logs/rename_wrapped.log
-    mv "$file" "$dir/$new_name"
-  done
-}
+# function rename_wrapped() {
+#   find tmp/sre-tools/pkgs -type f -name ".*-wrapped" | while read -r file; do
+#     dir=$(dirname "$file")
+#     new_name=$(basename "$file" | sed -e 's/-wrapped//g' -e 's/^.//')
+#     echo "rename $file to $dir/$new_name" >>tmp/sre-tools/logs/rename_wrapped.log
+#     mv "$file" "$dir/$new_name"
+#   done
+# }
 
-function remove_invalid_link() {
-  find tmp/sre-tools -type l -exec test ! -e {} \; -print | while read -r file; do
-    echo "remove invalid link: $file" >>tmp/sre-tools/logs/remove_invalid_link.log
-    rm -rf "$file"
-  done
-}
+# function remove_invalid_link() {
+#   find tmp/sre-tools -type l -exec test ! -e {} \; -print | while read -r file; do
+#     echo "remove invalid link: $file" >>tmp/sre-tools/logs/remove_invalid_link.log
+#     rm -rf "$file"
+#   done
+# }
 
 # function copy_wrapper() {
 #   cp \

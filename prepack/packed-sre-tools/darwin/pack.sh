@@ -80,8 +80,8 @@ wait
 touch tmp/sre-tools/pkgs/vim/skip_link
 touch tmp/sre-tools/pkgs/zsh/skip_link
 
-remove_unneeded
-rename_wrapped
+# remove_unneeded
+# rename_wrapped
 link_to_bin
 link_zsh_site_funtions
 
