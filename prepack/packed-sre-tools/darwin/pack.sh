@@ -21,27 +21,31 @@ source ../common/utils.sh
 
 # task --list-all | sed -e 's/://g' -e 's/*//g'
 pkgs=(
-  aria2
+  atuin
+  bat
   bzip2
   connect
   coreutils
+  eza
+  fd
   findutils
   fzf
   gawk
+  gdu
   getopt
   gettext
+  git-absorb
+  git-extras
   git-lfs
   gnugrep
-  gnupatch
   gnupatch
   gnused
   gnutar
   go-task
-  gost
-  gdu
   inetutils
   lsof
   m4
+  makeself
   ncdu_1
   netcat
   openssl
@@ -49,6 +53,7 @@ pkgs=(
   rsync
   shfmt
   silver-searcher
+  starship
   unzip
   vim
   vim-bundle
@@ -57,14 +62,11 @@ pkgs=(
   zsh
   zsh-bundle
   zstd
-  eza
-  bat
-  atuin
-  fd
-  git-absorb
-  starship
-  git-extras
-  makeself
+
+  ##### unneeded
+  # aria2
+  # gost
+
   # ruff need link jemalloc
 )
 
