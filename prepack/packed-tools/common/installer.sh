@@ -25,10 +25,10 @@ rm -rf $target
 mkdir -p $target
 cp -r $abspath/* $target
 
-if ! grep -q 'app/tools/prefile/default/bin' ~/.bashrc; then
-  echo 'export PATH=$HOME/app/tools/prefile/default/bin:$PATH' >>~/.bashrc
+if ! grep -q 'app/tools/bin' ~/.bashrc; then
+  echo 'export PATH=$HOME/app/tools/bin:$PATH' >>~/.bashrc
 fi
 
-if ! grep -q 'app/tools/prefile/default/bin' ~/.profile; then
-  echo 'export PATH=$HOME/app/tools/prefile/default/bin:$PATH' >>~/.profile
+if ! grep -q 'app/tools/bin' ~/.profile; then
+  echo 'export PATH=$HOME/app/tools/bin:$PATH' >>~/.profile
 fi
