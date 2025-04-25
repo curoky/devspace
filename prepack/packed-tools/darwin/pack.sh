@@ -73,7 +73,7 @@ rm -rf tmp && mkdir tmp
 
 curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >tmp/install.sh
 for pkg in "${pkgs[@]}"; do
-  bash tmp/install.sh -n $pkg -i tmp/tools -l -p tmp/tools &
+  bash tmp/install.sh -n $pkg -i tmp/tools -l -p tmp/tools -a darwin-arm64 &
 done
 wait
 
