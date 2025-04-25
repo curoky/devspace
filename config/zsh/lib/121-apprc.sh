@@ -104,8 +104,8 @@ export FILTER_BRANCH_SQUELCH_WARNING=1
 #=-> vim-plugin
 # if [[ -d "${HOMEBREW_PREFIX}/opt/vim-bundle/vim-plugin" ]]; then
 #   export VIM_PLUGIN_PATH="${HOMEBREW_PREFIX}/opt/vim-bundle/vim-plugin"
-# elif [[ -d "${HOME}/app/sre-tools/vim-plugin" ]]; then
-#   export VIM_PLUGIN_PATH="${HOME}/app/sre-tools/share/vim-plugin"
+# elif [[ -d "${HOME}/app/tools/vim-plugin" ]]; then
+#   export VIM_PLUGIN_PATH="${HOME}/app/tools/share/vim-plugin"
 # fi
 
 # export VIM_PLUGIN_PATH=$HOMEBREW_PREFIX/opt/vim-bundle/vim-plugin
@@ -233,7 +233,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
 # FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
 # if [[ ! -d $FZF_BASE ]]; then
-#   FZF_BASE=~/app/sre-tools/share/fzf/
+#   FZF_BASE=~/app/tools/share/fzf/
 # fi
 
 #=-> zsh history

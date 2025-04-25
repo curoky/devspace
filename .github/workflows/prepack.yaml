@@ -10,7 +10,7 @@ on:
     - cron: '0 0 * * 0'
 
 jobs:
-  packed-sre-tools:
+  packed-tools:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -27,20 +27,20 @@ jobs:
       - run: brew install makeself
 
       - run: |
-          cd prepack/packed-sre-tools/${{ matrix.os }}
+          cd prepack/packed-tools/${{ matrix.os }}
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-sre-tools/${{ matrix.os }}/tmp/sre-tools-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
-          asset_name: sre-tools-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
+          file: prepack/packed-tools/${{ matrix.os }}/tmp/tools-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
+          asset_name: tools-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-sre-tools/${{ matrix.os }}/tmp/sre-tools-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
-          asset_name: sre-tools-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
+          file: prepack/packed-tools/${{ matrix.os }}/tmp/tools-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
+          asset_name: tools-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
           tag: 'v1.0'
           overwrite: true
 

@@ -18,8 +18,8 @@
 
 set -xeuo pipefail
 
-curl -L -o /tmp/sre-tools-installer.sh https://github.com/curoky/dotbox/releases/download/v1.0/dotbox-installer.gzip.sh
-bash /tmp/sre-tools-installer.sh $@
+curl -L -o /tmp/tools-installer.sh https://github.com/curoky/dotbox/releases/download/v1.0/dotbox-installer.gzip.sh
+bash /tmp/tools-installer.sh $@
 
 # Usage
 # curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/packed-dotbox/online-installer.sh | bash -s -- -- -l -n host-linux/docker

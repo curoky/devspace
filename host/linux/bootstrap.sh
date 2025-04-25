@@ -18,4 +18,4 @@
 set -xeuo pipefail
 
 curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/packed-dotbox/online-installer.sh | bash -s -- -- -l -n host-linux/docker
-curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/packed-sre-tools/online-installer.sh | bash
+curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/packed-tools/online-installer.sh | bash

@@ -141,15 +141,15 @@ rm -rf tmp && mkdir tmp
 
 curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >tmp/install.sh
 for pkg in "${pkgs[@]}"; do
-  bash tmp/install.sh -n $pkg -i tmp/sre-tools -l -p tmp/sre-tools &
+  bash tmp/install.sh -n $pkg -i tmp/tools -l -p tmp/tools &
 done
-bash tmp/install.sh -n python311 -i tmp/sre-tools &
+bash tmp/install.sh -n python311 -i tmp/tools &
 wait
 
-ln -s -r tmp/sre-tools/bin/bazelisk tmp/sre-tools/bin/bazel
-ln -s -r tmp/sre-tools/bin/clang-format-18 tmp/sre-tools/bin/clang-format
+ln -s -r tmp/tools/bin/bazelisk tmp/tools/bin/bazel
+ln -s -r tmp/tools/bin/clang-format-18 tmp/tools/bin/clang-format
 
-cp -f ../common/installer.sh tmp/sre-tools/
+cp -f ../common/installer.sh tmp/tools/
 
-makeself --tar-format gnu --complevel 6 --tar-quietly --gzip --threads 16 tmp/sre-tools tmp/sre-tools-installer.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
-makeself --tar-format gnu --complevel 16 --tar-quietly --zstd --threads 16 tmp/sre-tools tmp/sre-tools-installer.linux-x86_64.zstd.sh "Prebuilt Installer" ./installer.sh
+makeself --tar-format gnu --complevel 6 --tar-quietly --gzip --threads 16 tmp/tools tmp/tools-installer.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
+makeself --tar-format gnu --complevel 16 --tar-quietly --zstd --threads 16 tmp/tools tmp/tools-installer.linux-x86_64.zstd.sh "Prebuilt Installer" ./installer.sh
