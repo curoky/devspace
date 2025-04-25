@@ -61,6 +61,7 @@
   "ruby.interpreter.commandPath": "/nix/var/nix/profiles/default/bin/ruby",
   "ruby.pathToBundler": "/nix/var/nix/profiles/default/bin/bundle",
   "ruff.path": ["/home/x/app/tools/store/ruff/bin/ruff"],
+  "ruff.interpreter": ["/home/x/app/conda/bin/python3"],
   // "ruby.useBundler": true,
   "shellcheck.executablePath": "/nix/var/nix/profiles/default/bin/shellcheck",
   "shellformat.path": "/home/x/app/tools/store/shfmt/bin/shfmt",
