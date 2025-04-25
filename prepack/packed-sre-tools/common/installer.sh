@@ -25,10 +25,10 @@ rm -rf $target
 mkdir -p $target
 cp -r $abspath/* $target
 
-if ! grep -q 'app/sre-tools/bin' ~/.bashrc; then
-  echo 'export PATH=$HOME/app/sre-tools/bin:$PATH' >>~/.bashrc
+if ! grep -q 'app/sre-tools/prefile/default/bin' ~/.bashrc; then
+  echo 'export PATH=$HOME/app/sre-tools/prefile/default/bin:$PATH' >>~/.bashrc
 fi
 
-if ! grep -q 'app/sre-tools/bin' ~/.profile; then
-  echo 'export PATH=$HOME/app/sre-tools/bin:$PATH' >>~/.profile
+if ! grep -q 'app/sre-tools/prefile/default/bin' ~/.profile; then
+  echo 'export PATH=$HOME/app/sre-tools/prefile/default/bin:$PATH' >>~/.profile
 fi

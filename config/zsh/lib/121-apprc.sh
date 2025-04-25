@@ -16,7 +16,7 @@
 # limitations under the License.
 
 #=-> locles
-# export LOCALE_ARCHIVE=/app/sre-tools/lib/locale/locale-archive
+# export LOCALE_ARCHIVE=/app/tools/lib/locale/locale-archive
 
 #-> java
 if [[ -d /nix/var/nix/profiles/jdk19 ]]; then

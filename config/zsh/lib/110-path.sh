@@ -17,6 +17,8 @@
 
 ENV_PATHS=(
   "$HOMEBREW_PREFIX/opt/ruby/bin"
+  "/home/x/app/tools/bin"
+  # TODO: remove
   "$HOME/app/sre-tools/bin"
   "/nix/var/nix/profiles/default/bin"
 )
@@ -29,7 +31,7 @@ ENV_PATHS=(
   "$HOME/.nix-profile/bin"
 
   "$HOME/app/conda/condabin"
-  "$HOME/app/pipx/bin"
+  "$HOME/app/conda/pipx/bin"
 
   # "$HOME/.npm-global/bin"
   "$HOME/dotbox/tools"
@@ -47,9 +49,14 @@ ENV_FPATHS=(
   # typer
   # "$HOME/.zfunc"
 
+  # TODO: remove
   "$HOME/app/sre-tools/share/zsh/site-functions"
   "$HOME/app/sre-tools/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/zsh-completions/src"
   "$HOME/app/sre-tools/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/conda-zsh-completion"
+
+  "$HOME/app/tools/share/zsh/site-functions"
+  "$HOME/app/tools/store/zsh-bundle/share/oh-my-zsh/custom/plugins/zsh-completions/src"
+  "$HOME/app/tools/store/zsh-bundle/share/oh-my-zsh/custom/plugins/conda-zsh-completion"
 )
 
 for p in "${ENV_FPATHS[@]}"; do

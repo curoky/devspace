@@ -17,7 +17,7 @@
 # limitations under the License.
 set -xeuo pipefail
 
-source ../common/utils.sh
+# source ../common/utils.sh
 
 # task --list-all | sed -e 's/://g' -e 's/*//g'
 pkgs=(
@@ -55,39 +55,38 @@ pkgs=(
   silver-searcher
   starship
   unzip
-  vim
   vim-bundle
   xz
   zip
-  zsh
   zsh-bundle
   zstd
 
   ##### unneeded
+  # vim
+  # zsh
   # aria2
   # gost
 
   # ruff need link jemalloc
 )
+rm -rf tmp
+mkdir tmp
 
-rm -rf tmp/download tmp/sre-tools
-mkdir -p tmp/download tmp/sre-tools/logs
-
-curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >tmp/install.sh
+curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/dev/tools/install.sh >tmp/install.sh
 for pkg in "${pkgs[@]}"; do
-  bash tmp/install.sh -n $pkg -d tmp/download -i tmp/sre-tools/pkgs/$pkg -a darwin-arm64 &
+  bash tmp/install.sh -n $pkg -i tmp/sre-tools -l &
 done
 wait
 
-touch tmp/sre-tools/pkgs/vim/skip_link
-touch tmp/sre-tools/pkgs/zsh/skip_link
+# touch tmp/sre-tools/pkgs/vim/skip_link
+# touch tmp/sre-tools/pkgs/zsh/skip_link
 
 # remove_unneeded
 # rename_wrapped
-link_to_bin
-link_zsh_site_funtions
+# link_to_bin
+# link_zsh_site_funtions
 
 cp -f ../common/installer.sh tmp/sre-tools/
 
-makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/sre-tools tmp/sre-tools-installer.darwin-arm64.gzip.sh "Prebuilt Installer" ./installer.sh
-makeself --complevel 16 --tar-quietly --zstd --threads 16 tmp/sre-tools tmp/sre-tools-installer.darwin-arm64.zstd.sh "Prebuilt Installer" ./installer.sh
+makeself --tar-format gnu --complevel 6 --tar-quietly --gzip --threads 16 tmp/sre-tools tmp/sre-tools-installer.darwin-arm64.gzip.sh "Prebuilt Installer" ./installer.sh
+makeself --tar-format gnu --complevel 16 --tar-quietly --zstd --threads 16 tmp/sre-tools tmp/sre-tools-installer.darwin-arm64.zstd.sh "Prebuilt Installer" ./installer.sh

@@ -17,164 +17,139 @@
 # limitations under the License.
 set -xeuo pipefail
 
-source ../common/utils.sh
-
-# task --list-all | sed -e 's/://g' -e 's/*//g'
 pkgs=(
-  atuin
-  bat
-  bazelisk
-  bison
-  buildifier
-  bzip2
-  cacert
-  clang-format_18
+  bzip2 clang-format_18
   connect
-  croc
-  curl
-  diffutils
+  dool
   ethtool
-  exiftool
-  eza
-  fd
-  file
-  findutils
-  flex
   fzf
-  gawk
   gdu
-  getopt
-  gettext
-  git-absorb
-  git-extras
-  git-lfs
-  glibcLocales
-  gnugrep
-  gnumake
-  gnupatch
-  gnupg-minimal
-  gnused
-  gnutar
   go-task
-  gzip
   inetutils
   iproute2
   iputils
   jq
   krb5
-  less
   libcap
   lsb-release
-  lsof
-  m4
   makeself
   miniserve
   ncdu_1
   netcat
+  netron
   nettools
-  ninja
-  openssh_gssapi
   openssl
   patchelf
-  pkg-config
   procps
-  procs
-  protobuf_24
-  protobuf_25
-  protobuf_28
-  protobuf_3_8_0
-  protobuf_3_9_2
-  python311
   rsync
-  ruff
-  shfmt
   silver-searcher
   snappy
-  starship
   strace
   tmux
-  tmux-bundle
-  tree
-  tzdata
-  unzip
-  util-linux
-  vim
-  vim-bundle
-  wget
   xxd
   xz
-  zip
   zlib
   zlib-ng
-  zsh
-  zsh-bundle
   zstd
 
+  ####  too basic tool
+  # cacert
+  # curl
+  # diffutils
+  # fd
+  # file
+  # findutils
+  # gawk
+  # getopt
+  # gettext
+  # gnugrep
+  # gnumake
+  # gnupatch
+  # gnused
+  # gnutar
+  # gzip
+  # less
+  # lsof
+  # m4
+  # pkg-config
+  # tree
+  # unzip
+  # util-linux
+  # wget
+  # zip
+
+  #### only use in docker
+  # atuin
+  # bat
+  # bazelisk
+  # bison
+  # buildifier
+  # exiftool
+  # eza
+  # flex
+  # git-absorb
+  # git-extras
+  # git-filter-repo
+  # git-lfs
+  # glibcLocales
+  # gnupg-minimal
+  # ninja
+  # openssh_gssapi
+  # procs
+  # protobuf_24
+  # protobuf_25
+  # protobuf_28
+  # protobuf_3_8_0
+  # protobuf_3_9_2
+  # ruff
+  # shfmt
+  # starship
+  # tmux-bundle
+  # tzdata
+  # vim
+  # vim-bundle
+  # zsh
+  # zsh-bundle
+
   ##### unneeded
-  # lld_18
+  # aria2
   # binutils
   # coreutils
-  # aria2
+  # croc
+  # dive
+  # gh
   # gost
   # iptables
+  # lld_18
   # nixfmt-rfc-style
   # nixpkgs-fmt
   # numactl
   # scc
-  # gh
-  # dive
 
   ##### experimental
   # autoconf
   # automake
   # bash
-  # git
-  # perl
-  # man
   # gdb
+  # git
   # libtool
+  # man
+  # perl
 )
 
-rm -rf tmp/download tmp/sre-tools
-mkdir -p tmp/download tmp/sre-tools/logs
+rm -rf tmp && mkdir tmp
 
 curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >tmp/install.sh
 for pkg in "${pkgs[@]}"; do
-  bash tmp/install.sh -n $pkg -d tmp/download -i tmp/sre-tools/pkgs/$pkg &
+  bash tmp/install.sh -n $pkg -i tmp/sre-tools -l -p tmp/sre-tools &
 done
+bash tmp/install.sh -n python311 -i tmp/sre-tools &
 wait
-
-./setup-pypi-pkgs.sh
-
-mkdir -p tmp/sre-tools/bin/
-
-# some issue
-# touch tmp/sre-tools/pkgs/binutils/skip_link
-# touch tmp/sre-tools/pkgs/coreutils/skip_link
-
-# experimental
-# touch tmp/sre-tools/pkgs/bash/skip_link
-# touch tmp/sre-tools/pkgs/git/skip_link
-# touch tmp/sre-tools/pkgs/perl/skip_link
-# touch tmp/sre-tools/pkgs/man/skip_link
-# touch tmp/sre-tools/pkgs/autoconf/skip_link
-# touch tmp/sre-tools/pkgs/automake/skip_link
-# touch tmp/sre-tools/pkgs/pkg-config/skip_link
-# touch tmp/sre-tools/pkgs/libtool/skip_link
-# touch tmp/sre-tools/pkgs/gdb/skip_link
-touch tmp/sre-tools/pkgs/python311/skip_link
-
-# remove_unneeded
-# rename_wrapped
-# strip_binary
-# remove_invalid_link
-link_to_bin
-link_zsh_site_funtions
 
 ln -s -r tmp/sre-tools/bin/bazelisk tmp/sre-tools/bin/bazel
 ln -s -r tmp/sre-tools/bin/clang-format-18 tmp/sre-tools/bin/clang-format
 
 cp -f ../common/installer.sh tmp/sre-tools/
 
-makeself --complevel 6 --tar-quietly --gzip --threads 16 tmp/sre-tools tmp/sre-tools-installer.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
-makeself --complevel 16 --tar-quietly --zstd --threads 16 tmp/sre-tools tmp/sre-tools-installer.linux-x86_64.zstd.sh "Prebuilt Installer" ./installer.sh
+makeself --tar-format gnu --complevel 6 --tar-quietly --gzip --threads 16 tmp/sre-tools tmp/sre-tools-installer.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
+makeself --tar-format gnu --complevel 16 --tar-quietly --zstd --threads 16 tmp/sre-tools tmp/sre-tools-installer.linux-x86_64.zstd.sh "Prebuilt Installer" ./installer.sh
