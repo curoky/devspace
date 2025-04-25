@@ -19,16 +19,16 @@ set -xeuo pipefail
 
 abspath=$(cd "$(dirname "$0")" && pwd)
 
-target=${1:-$HOME/app/sre-tools}
+target=${1:-$HOME/app/tools}
 
 rm -rf $target
 mkdir -p $target
 cp -r $abspath/* $target
 
-if ! grep -q 'app/sre-tools/prefile/default/bin' ~/.bashrc; then
-  echo 'export PATH=$HOME/app/sre-tools/prefile/default/bin:$PATH' >>~/.bashrc
+if ! grep -q 'app/tools/prefile/default/bin' ~/.bashrc; then
+  echo 'export PATH=$HOME/app/tools/prefile/default/bin:$PATH' >>~/.bashrc
 fi
 
-if ! grep -q 'app/sre-tools/prefile/default/bin' ~/.profile; then
-  echo 'export PATH=$HOME/app/sre-tools/prefile/default/bin:$PATH' >>~/.profile
+if ! grep -q 'app/tools/prefile/default/bin' ~/.profile; then
+  echo 'export PATH=$HOME/app/tools/prefile/default/bin:$PATH' >>~/.profile
 fi

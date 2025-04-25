@@ -26,10 +26,10 @@ fi
 
 arch=$(echo $(uname -s)-$(uname -m) | tr '[:upper:]' '[:lower:]') # linux_amd64/darwin-arm64
 
-curl -L -o /tmp/sre-tools-installer.sh https://github.com/curoky/dotbox/releases/download/v1.0/sre-tools-installer.${arch}.${compress_type}.sh
-bash /tmp/sre-tools-installer.sh $@
+curl -L -o /tmp/tools-installer.sh https://github.com/curoky/dotbox/releases/download/v1.0/tools-installer.${arch}.${compress_type}.sh
+bash /tmp/tools-installer.sh $@
 
-# sudo find ~/app/sre-tools/bin -type f -exec xattr -d com.apple.quarantine {} +
+# sudo find ~/app/tools/bin -type f -exec xattr -d com.apple.quarantine {} +
 
 # Usage
-# curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/packed-sre-tools/online-installer.sh | bash
+# curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/packed-tools/online-installer.sh | bash
