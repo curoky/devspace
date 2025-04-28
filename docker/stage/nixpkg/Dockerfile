@@ -35,6 +35,6 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     nixpkgs.cmake \
     nixpkgs.nodePackages.prettier \
   && chmod +w /nix/var/nix/profiles/default/* \
-  && nix-env -iA -p /nix/var/nix/profiles/libs nixpkgs.python311Packages.libtorrent-rasterbar \
-      nixpkgs.ncurses5 nixpkgs.libxml2.out nixpkgs.libxcrypt nixpkgs.libbacktrace \
+  # && nix-env -iA -p /nix/var/nix/profiles/libs nixpkgs.python311Packages.libtorrent-rasterbar \
+  #     nixpkgs.ncurses5 nixpkgs.libxml2.out nixpkgs.libxcrypt nixpkgs.libbacktrace \
   && nix-collect-garbage
