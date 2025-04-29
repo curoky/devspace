@@ -77,6 +77,7 @@ for pkg in "${pkgs[@]}"; do
 done
 wait
 
+rm -rf tmp/tools/downloads
 cp -f ../common/installer.sh tmp/tools/
 
 makeself --tar-format gnu --complevel 6 --tar-quietly --gzip --threads 16 tmp/tools tmp/tools-installer.darwin-arm64.gzip.sh "Prebuilt Installer" ./installer.sh

@@ -18,38 +18,39 @@
 set -xeuo pipefail
 
 pkgs=(
-  bzip2 clang-format_18
-  connect
+  # bzip2
+  # clang-format_18
+  # connect
   dool
-  ethtool
-  fzf
-  gdu
+  # ethtool
+  # fzf
+  # gdu
   go-task
-  inetutils
-  iproute2
-  iputils
-  jq
-  krb5
-  libcap
-  lsb-release
-  makeself
+  # inetutils
+  # iproute2
+  # iputils
+  # jq
+  # krb5
+  # libcap
+  # lsb-release
+  # makeself
   miniserve
   ncdu_1
   netcat
   netron
-  nettools
-  openssl
-  patchelf
-  procps
+  # nettools
+  # openssl
+  # patchelf
+  # procps
   rsync
   silver-searcher
-  snappy
-  strace
-  tmux
-  xxd
-  xz
-  zlib
-  zlib-ng
+  # snappy
+  # strace
+  # tmux
+  # xxd
+  # xz
+  # zlib
+  # zlib-ng
   zstd
 
   ####  too basic tool
@@ -149,6 +150,7 @@ wait
 ln -s -r tmp/tools/bin/bazelisk tmp/tools/bin/bazel
 ln -s -r tmp/tools/bin/clang-format-18 tmp/tools/bin/clang-format
 
+rm -rf tmp/tools/downloads
 cp -f ../common/installer.sh tmp/tools/
 
 makeself --tar-format gnu --complevel 6 --tar-quietly --gzip --threads 16 tmp/tools tmp/tools-installer.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
