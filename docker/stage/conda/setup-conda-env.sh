@@ -18,7 +18,7 @@
 
 set -euo pipefail
 
-OPTIONS=$(getopt -o c:e:t:v:n: --long conda_root:,env_file:,add_tf_env,cuda_version:,cudnn_version: -- "$@")
+OPTIONS=$(getopt -o c:d:e:t:v:n: --long conda_root:,delete_before_create,env_file:,add_tf_env,cuda_version:,cudnn_version: -- "$@")
 
 if [ $? -ne 0 ]; then
   echo "Usage: $0 [-c conda_root] [-t] [-v cuda_version] [-n cudnn_version]" 1>&2
@@ -32,6 +32,7 @@ conda_root="/home/x/app/conda"
 add_tf_env=false
 cuda_version=""
 cudnn_version=""
+delete_before_create=false
 
 while true; do
   case "$1" in
@@ -42,6 +43,10 @@ while true; do
     -e | --env_file)
       env_file="$2"
       shift 2
+      ;;
+    -d | --delete_before_create)
+      delete_before_create=true
+      shift
       ;;
     -t | --add_tf_env)
       add_tf_env=true
@@ -86,7 +91,9 @@ export PKG_CONFIG_PATH=$CONDA_ROOT/envs/$env_name/lib/pkgconfig
 export CFLAGS="-I$CONDA_ROOT/envs/$env_name/include"
 export LDFLAGS="-I$CONDA_ROOT/envs/$env_name/lib"
 
-conda env remove -n $env_name -y || echo not exist
+if [[ $delete_before_create == "true" ]]; then
+  conda env remove -n $env_name -y || echo not exist
+fi
 conda create -n $env_name python=$python_version -y --no-default-packages
 rm -rf $CONDA_ROOT/envs/$env_name/compiler_compat/
 conda env update -f ${env_file}
