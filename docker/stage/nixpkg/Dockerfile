@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.9.0
-FROM debian:bookworm-backports
+FROM debian:stable-slim
 
 RUN apt-get update -y \
   && apt-get install -y curl xz-utils sudo \

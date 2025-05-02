@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.9.0
-FROM debian:bookworm-backports
+FROM debian:stable-slim
 
 RUN apt-get update -y \
   && apt-get install -y curl gcc g++ git pkg-config \
@@ -11,8 +11,8 @@ ENV PATH=$PATH:/home/x/app/conda/condabin:/home/x/app/conda/pipx/bin/
 
 COPY env env
 COPY setup-conda-env.sh /home/x/app/conda/condabin/setup-conda-env.sh
-RUN setup-conda-env.sh -e env/py3.yaml \
-  && setup-conda-env.sh -e env/profiling.yaml
+RUN setup-conda-env.sh -e env/py3.yaml
+  # && setup-conda-env.sh -e env/profiling.yaml
   # && setup-conda-env.sh env/py2.yaml \
   # && setup-conda-env.sh env/py311.yaml \
   # && setup-conda-env.sh env/pipx.yaml
