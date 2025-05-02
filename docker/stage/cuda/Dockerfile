@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1.9.0
-FROM debian:stable-slim as stage-cudnn
+FROM debian:stable-slim AS stage-cudnn
 ARG CUDNN_VERSION=8.9.7.29_cuda11
 
 RUN apt-get update -y \
-  && apt-get install -y curl
+  && apt-get install -y curl xz-utils
 
 COPY ./install-cudnn.sh .
 
