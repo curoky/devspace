@@ -60,6 +60,7 @@ pkgs=(
   zip
   zsh-bundle
   zstd
+  buildifier
 
   ##### unneeded
   # vim
