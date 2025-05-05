@@ -122,7 +122,6 @@ fi
 conda env export -n $env_name >$lock_file || echo conda failed export lock file
 
 if [[ $clean_cache == "true" ]]; then
-  rm -rf $CONDA_ROOT/envs/$env_name/lib
   conda clean -y -a
   rm -rf /tmp/pip-cache
 fi
