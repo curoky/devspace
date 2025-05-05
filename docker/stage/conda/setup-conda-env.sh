@@ -113,6 +113,6 @@ if [[ $add_tf_env == "true" ]]; then
   echo "export CUDNN_INSTALL_PATH=/home/x/app/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}" >>$target_env_file
 fi
 
-conda env export -n py3 >$lock_file
+conda env export -n py3 >$lock_file || echo conda failed export lock file
 
 conda clean -y -a
