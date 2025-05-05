@@ -22,6 +22,7 @@ driver_version=${2:-'470.42.01'}
 
 function install_cuda() {
   local toolkitpath=$1
+  mkdir -p $toolkitpath
   chmod +x /tmp/cuda_linux.run
   /tmp/cuda_linux.run --silent --toolkit --override --toolkitpath=$toolkitpath
   rm -f /tmp/cuda_linux.run
