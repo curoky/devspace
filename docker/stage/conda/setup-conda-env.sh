@@ -114,7 +114,7 @@ if [[ $add_tf_env == "true" ]]; then
   target_env_file=$CONDA_ROOT/envs/$env_name/etc/conda/activate.d/env_vars.sh
   echo '' >$target_env_file
 
-  echo "export LD_LIBRARY_PATH=/usr/local/cuda-${cuda_version}/lib64:/usr/local/cuda-${cuda_version}/extras/CUPTI/lib64/:\$LD_LIBRARY_PATH" >>$target_env_file
+  echo "export LD_LIBRARY_PATH=/home/x/app/nvidia/cuda-${cuda_version}/lib64:/home/x/app/nvidia/cuda-${cuda_version}/extras/CUPTI/lib64/:\$LD_LIBRARY_PATH" >>$target_env_file
   echo "export LD_LIBRARY_PATH=/home/x/app/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}/lib64:\$LD_LIBRARY_PATH" >>$target_env_file
   echo "export CUDNN_INSTALL_PATH=/home/x/app/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}" >>$target_env_file
 fi
