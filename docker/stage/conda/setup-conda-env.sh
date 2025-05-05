@@ -28,6 +28,7 @@ fi
 eval set -- "$OPTIONS"
 
 env_file=""
+lock_file=""
 conda_root="/home/x/app/conda"
 add_tf_env=false
 cuda_version=""
@@ -42,6 +43,7 @@ while true; do
       ;;
     -e | --env_file)
       env_file="$2"
+      lock_file=$(echo $env_file | sed -e "s/.yaml/-lock.yaml/g")
       shift 2
       ;;
     -d | --delete_before_create)
@@ -76,6 +78,7 @@ echo "env_file: $env_file"
 echo "add_tf_env: $add_tf_env"
 echo "cuda_version: $cuda_version"
 echo "cudnn_version: $cudnn_version"
+echo "lock_file: $lock_file"
 
 env_name=$(grep -oP "name: \K\S+" $env_file)
 python_version=$(grep -oP " python=\K\S+" $env_file)
@@ -109,5 +112,7 @@ if [[ $add_tf_env == "true" ]]; then
   echo "export LD_LIBRARY_PATH=/home/x/app/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}/lib64:\$LD_LIBRARY_PATH" >>$target_env_file
   echo "export CUDNN_INSTALL_PATH=/home/x/app/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}" >>$target_env_file
 fi
+
+conda env export -n py3 >$lock_file
 
 conda clean -y -a
