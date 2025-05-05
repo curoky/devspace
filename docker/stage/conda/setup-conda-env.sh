@@ -18,7 +18,7 @@
 
 set -euo pipefail
 
-OPTIONS=$(getopt -o c:d:e:t:v:n: --long conda_root:,delete_before_create,env_file:,add_tf_env,cuda_version:,cudnn_version: -- "$@")
+OPTIONS=$(getopt -o c:de:t:v:xn: --long conda_root:,delete_before_create,env_file:,add_tf_env,cuda_version:,clean_cache,cudnn_version: -- "$@")
 
 if [ $? -ne 0 ]; then
   echo "Usage: $0 [-c conda_root] [-t] [-v cuda_version] [-n cudnn_version]" 1>&2
@@ -34,6 +34,7 @@ add_tf_env=false
 cuda_version=""
 cudnn_version=""
 delete_before_create=false
+clean_cache=false
 
 while true; do
   case "$1" in
@@ -52,6 +53,10 @@ while true; do
       ;;
     -t | --add_tf_env)
       add_tf_env=true
+      shift
+      ;;
+    -x | --clean_cache)
+      clean_cache=true
       shift
       ;;
     -v | --cuda_version)
@@ -79,6 +84,7 @@ echo "add_tf_env: $add_tf_env"
 echo "cuda_version: $cuda_version"
 echo "cudnn_version: $cudnn_version"
 echo "lock_file: $lock_file"
+echo "clean_cache: $clean_cache"
 
 env_name=$(grep -oP "name: \K\S+" $env_file)
 python_version=$(grep -oP " python=\K\S+" $env_file)
@@ -89,7 +95,7 @@ echo "create $env_name($env_file) on $conda_root with python_version=$python_ver
 
 export CONDA_ROOT=$conda_root
 export PATH=$CONDA_ROOT/bin:$PATH
-export PIP_CACHE_DIR=/tmp/pip
+export PIP_CACHE_DIR=/tmp/pip-cache
 export PKG_CONFIG_PATH=$CONDA_ROOT/envs/$env_name/lib/pkgconfig
 export CFLAGS="-I$CONDA_ROOT/envs/$env_name/include"
 export LDFLAGS="-I$CONDA_ROOT/envs/$env_name/lib"
@@ -115,4 +121,8 @@ fi
 
 conda env export -n $env_name >$lock_file || echo conda failed export lock file
 
-conda clean -y -a
+if [[ $clean_cache == "true" ]]; then
+  rm -rf $CONDA_ROOT/envs/$env_name/lib
+  conda clean -y -a
+  rm -rf /tmp/pip-cache
+fi
