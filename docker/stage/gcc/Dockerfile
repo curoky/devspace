@@ -1,6 +1,6 @@
 # https://github.com/docker-library/gcc/blob/master/14/Dockerfile
 
-FROM debian:buster-slim
+FROM debian:buster-slim AS builder
 
 RUN apt-get update -y \
 	&& apt-get install -y --no-install-recommends \
@@ -20,7 +20,7 @@ RUN mkdir -p /opt/binutils/src \
   # && make -j$(nproc) && make install \
   && rm -rf /opt/binutils
 
-ENV GCC_VERSION 14.2.0
+ARG GCC_VERSION=14.2.0
 
 RUN mkdir -p /opt/gcc/src \
 	&& curl -sSL https://ftpmirror.gnu.org/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.xz | tar -x --xz -C /opt/gcc/src --strip-components 1 \
@@ -50,3 +50,7 @@ RUN mkdir -p /opt/gcc/src \
 # 	gcc="$(readlink -ve /usr/local/lib*/libstdc++.so | head -1)"; \
 # # using LD_PRELOAD to make sure "abidiff" itself doesn't fail with the exact error we're trying to test for 😂😭
 # 	LD_PRELOAD="$deb" abidiff --no-added-syms "$deb" "$gcc"
+
+FROM debian:stable-slim
+
+COPY --link --from=builder /home/x/app /home/x/app

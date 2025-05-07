@@ -2,6 +2,7 @@
 set -xeuo pipefail
 
 docker buildx build . \
-  --file Dockerfile.gcc-14.2.0 \
+  --file Dockerfile \
   --network=host \
-  --tag curoky/dotbox:stage-gcc-14.2.0
+  --build-arg="GCC_VERSION=14.2.0"
+--tag curoky/dotbox:stage-gcc-14.2.0
