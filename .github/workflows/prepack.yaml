@@ -149,13 +149,13 @@ jobs:
     strategy:
       matrix:
         include:
-          - image_name: stage-tf2.5.0-cu11.0.3-cudnn8.1.0-gcc8-py3.7-abi0
-            whl_name_from: tensorflow-2.5.0-cp37-cp37m-linux_x86_64.whl
-            whl_name_to: tensorflow-2.5.0_cu11.0.3_cudnn8.1.0_gcc8_abi0-cp37-cp37m-linux_x86_64.whl
+          # - image_name: stage-tf2.5.0-cu11.0.3-cudnn8.1.0-gcc8-py3.7-abi0
+          #   whl_name_from: tensorflow-2.5.0-cp37-cp37m-linux_x86_64.whl
+          #   whl_name_to: tensorflow-2.5.0_cu11.0.3_cudnn8.1.0_gcc8_abi0-cp37-cp37m-linux_x86_64.whl
 
-          - image_name: stage-tf2.5.0-cu11.0.3-cudnn8.1.0-gcc8-py3.7-abi1
-            whl_name_from: tensorflow-2.5.0-cp37-cp37m-linux_x86_64.whl
-            whl_name_to: tensorflow-2.5.0-cu11.0.3_cudnn8.1.0_gcc8_abi1-cp37-cp37m-linux_x86_64.whl
+          # - image_name: stage-tf2.5.0-cu11.0.3-cudnn8.1.0-gcc8-py3.7-abi1
+          #   whl_name_from: tensorflow-2.5.0-cp37-cp37m-linux_x86_64.whl
+          #   whl_name_to: tensorflow-2.5.0-cu11.0.3_cudnn8.1.0_gcc8_abi1-cp37-cp37m-linux_x86_64.whl
 
           - image_name: stage-tf2.5.0-cu11.4.0-cudnn8.1.0-gcc8-py3.7-abi0
             whl_name_from: tensorflow-2.5.0-cp37-cp37m-linux_x86_64.whl
@@ -164,6 +164,14 @@ jobs:
           - image_name: stage-tf2.5.0-cu11.4.0-cudnn8.1.0-gcc8-py3.7-abi1
             whl_name_from: tensorflow-2.5.0-cp37-cp37m-linux_x86_64.whl
             whl_name_to: tensorflow-2.5.0_cu11.4.0_cudnn8.1.0_gcc8_abi1-cp37-cp37m-linux_x86_64.whl
+
+          - image_name: stage-tf2.5.0-cu11.4.4-cudnn8.1.0-gcc8-py3.7-abi0
+            whl_name_from: tensorflow-2.5.0-cp37-cp37m-linux_x86_64.whl
+            whl_name_to: tensorflow-2.5.0_cu11.4.4_cudnn8.1.0_gcc8_abi0-cp37-cp37m-linux_x86_64.whl
+
+          - image_name: stage-tf2.5.0-cu11.4.4-cudnn8.1.0-gcc8-py3.7-abi1
+            whl_name_from: tensorflow-2.5.0-cp37-cp37m-linux_x86_64.whl
+            whl_name_to: tensorflow-2.5.0_cu11.4.4_cudnn8.1.0_gcc8_abi1-cp37-cp37m-linux_x86_64.whl
 
           - image_name: stage-tf2.16.1-cu12.3.2-cudnn8.9.7-gcc11-py3.11
             whl_name_from: tensorflow-2.16.1-cp311-cp311-linux_x86_64.whl
