@@ -46,7 +46,7 @@ pkgs=(
   silver-searcher
   # snappy
   # strace
-  # tmux
+  tmux
   # xxd
   # xz
   # zlib
