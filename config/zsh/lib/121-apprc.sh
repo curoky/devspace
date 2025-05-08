@@ -81,7 +81,7 @@ fi
 # export CXX=/home/linuxbrew/.linuxbrew/opt/gcc@10/bin/g++-10
 
 #=-> git
-export FILTER_BRANCH_SQUELCH_WARNING=1
+# export FILTER_BRANCH_SQUELCH_WARNING=1
 
 #=-> docker
 # export DOCKER_CLIENT_TIMEOUT=120

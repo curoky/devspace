@@ -27,7 +27,7 @@ fi
 export MY_HOST_NAME=$(hostname)
 
 #=-> basic config
-export EDITOR=vim
+# export EDITOR=vim
 # command -v vim >/dev/null && export EDITOR=vim
 
 #=-> XDG

@@ -17,8 +17,6 @@
 
 ENV_PATHS=(
   "$HOMEBREW_PREFIX/opt/ruby/bin"
-  "/home/x/app/tools/bin"
-  # TODO: remove
   "$HOME/app/tools/bin"
   "/nix/var/nix/profiles/default/bin"
 )
@@ -45,14 +43,6 @@ done
 
 ENV_FPATHS=(
   "$HOMEBREW_PREFIX/completions/zsh"
-
-  # typer
-  # "$HOME/.zfunc"
-
-  # TODO: remove
-  "$HOME/app/tools/share/zsh/site-functions"
-  "$HOME/app/tools/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/zsh-completions/src"
-  "$HOME/app/tools/pkgs/zsh-bundle/share/oh-my-zsh/custom/plugins/conda-zsh-completion"
 
   "$HOME/app/tools/share/zsh/site-functions"
   "$HOME/app/tools/store/zsh-bundle/share/oh-my-zsh/custom/plugins/zsh-completions/src"
