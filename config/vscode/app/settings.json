@@ -474,5 +474,7 @@
   "xml.server.vmargs": "-Xmx1024M",
   "xml.symbols.maxItemsComputed": 400000,
   "yaml.format.enable": false,
-  "yaml.format.singleQuote": true
+  "yaml.format.singleQuote": true,
+  "geminicodeassist.enableTelemetry": false,
+  "docker.lsp.telemetry": "off"
 }

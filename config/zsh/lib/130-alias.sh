@@ -88,7 +88,7 @@ alias -s log=less
 
 alias cfmt='clang-format -style=file -fallback-style=google -sort-includes=1 -i '
 
-alias ssync="rsync --partial --progress --archive --human-readable --rsh=ssh"
+alias update="rsync --partial --progress --archive --human-readable --rsh=ssh"
 # --checksum --bwlimit=4000
 alias mirror="rsync --partial --progress --archive --human-readable --rsh=ssh --delete --delete-excluded"
 # alias increment="rsync --partial --progress --archive --human-readable --rsh=ssh"
