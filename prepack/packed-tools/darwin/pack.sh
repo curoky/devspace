@@ -71,7 +71,7 @@ pkgs=(
   # ruff need link jemalloc
 )
 rm -rf tmp && mkdir tmp
-mkdir -p tmp/tools/{bin,downloads,lib,profile,share,store}
+mkdir -p tmp/tools/{bin,etc,include,downloads,lib,libexec,profile,share,store}
 
 curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >tmp/install.sh
 for pkg in "${pkgs[@]}"; do
