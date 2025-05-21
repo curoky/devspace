@@ -15,6 +15,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 set -xeuo pipefail
 
 pkgs=(
@@ -43,16 +44,19 @@ pkgs=(
   # patchelf
   # procps
   rsync
-  silver-searcher
   # snappy
   # strace
-  tmux
   # xxd
   # xz
   # zlib
   # zlib-ng
   zstd
   dive
+  tmux
+  tmux-extra
+  vim
+  vim-extra
+  ripgrep
 
   ####  too basic tool
   # cacert
@@ -106,10 +110,7 @@ pkgs=(
   # ruff
   # shfmt
   # starship
-  # tmux-bundle
   # tzdata
-  # vim
-  # vim-bundle
   # zsh
   # zsh-bundle
 
@@ -127,6 +128,7 @@ pkgs=(
   # nixpkgs-fmt
   # numactl
   # scc
+  # silver-searcher
 
   ##### experimental
   # autoconf

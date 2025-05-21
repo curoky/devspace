@@ -65,8 +65,8 @@ function common() {
   link_path $CONF_PATH/atuin/config.toml $HOME/.config/atuin/config.toml
   link_path $CONF_PATH/bat/config $HOME/.config/bat/config
   link_path $CONF_PATH/conda/condarc $HOME/.config/conda/condarc
-  link_path $CONF_PATH/croc/classic_enabled $HOME/.config/croc/classic_enabled
-  link_path $CONF_PATH/go/env $HOME/.config/go/env
+  # link_path $CONF_PATH/croc/classic_enabled $HOME/.config/croc/classic_enabled
+  # link_path $CONF_PATH/go/env $HOME/.config/go/env
   link_path $CONF_PATH/nixpkgs/config.nix $HOME/.config/nixpkgs/config.nix
   link_path $CONF_PATH/procps/toprc $HOME/.config/procps/toprc
   link_path $CONF_PATH/starship/starship.toml $HOME/.config/starship.toml

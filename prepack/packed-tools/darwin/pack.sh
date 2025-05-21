@@ -49,18 +49,18 @@ pkgs=(
   ncdu_1
   netcat
   openssl
-  rime-bundle
+  rime-extra
   rsync
   shfmt
-  silver-searcher
   starship
   unzip
-  vim-bundle
+  vim-extra
   xz
   zip
   zsh-bundle
   zstd
   buildifier
+  ripgrep
 
   ##### unneeded
   # vim

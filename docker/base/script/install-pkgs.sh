@@ -19,7 +19,8 @@
 set -xeuo pipefail
 
 pkgs=(
-  bzip2 clang-format_18
+  bzip2
+  clang-format_18
   connect
   dool
   ethtool
@@ -43,15 +44,18 @@ pkgs=(
   patchelf
   procps
   rsync
-  silver-searcher
   snappy
   strace
-  tmux
   xxd
   xz
   zlib
   zlib-ng
   zstd
+  tmux
+  tmux-extra
+  vim
+  vim-extra
+  ripgrep
 
   ####  too basic tool
   cacert
@@ -105,11 +109,7 @@ pkgs=(
   ruff
   shfmt
   starship
-  tmux-bundle
   tzdata
-  vim
-  vim-bundle
-  zsh
   zsh-bundle
 
   ##### unneeded
@@ -126,6 +126,7 @@ pkgs=(
   # nixpkgs-fmt
   # numactl
   # scc
+  # silver-searcher
 
   ##### experimental
   # autoconf
