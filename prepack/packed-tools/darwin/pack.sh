@@ -61,6 +61,8 @@ pkgs=(
   zstd
   buildifier
   ripgrep
+  tmux
+  tmux-extra
 
   ##### unneeded
   # vim
