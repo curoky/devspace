@@ -102,13 +102,13 @@ fi
 # export CCACHE_DIR=$XDG_CACHE_HOME/ccache
 
 #=-> vim-plugin
-# if [[ -d "${HOMEBREW_PREFIX}/opt/vim-bundle/vim-plugin" ]]; then
-#   export VIM_PLUGIN_PATH="${HOMEBREW_PREFIX}/opt/vim-bundle/vim-plugin"
+# if [[ -d "${HOMEBREW_PREFIX}/opt/vim-extra/vim-plugin" ]]; then
+#   export VIM_PLUGIN_PATH="${HOMEBREW_PREFIX}/opt/vim-extra/vim-plugin"
 # elif [[ -d "${HOME}/app/tools/vim-plugin" ]]; then
 #   export VIM_PLUGIN_PATH="${HOME}/app/tools/share/vim-plugin"
 # fi
 
-# export VIM_PLUGIN_PATH=$HOMEBREW_PREFIX/opt/vim-bundle/vim-plugin
+# export VIM_PLUGIN_PATH=$HOMEBREW_PREFIX/opt/vim-extra/vim-plugin
 # https://stackoverflow.com/questions/4618151/how-to-reference-source-a-custom-vimrc-file
 # export VIMINIT="source ${__VIM_RC_PATH}"
 # alias vim="vim -u ${__VIM_RC_PATH}"
