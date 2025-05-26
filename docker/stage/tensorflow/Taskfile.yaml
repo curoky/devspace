@@ -56,3 +56,10 @@ tasks:
         --file 2.16.1/Dockerfile.cu12.3.2-cudnn8.9.7-gcc11-py3.11
         --network=host
         --tag curoky/dotbox:stage-tf2.16.1-cu12.3.2-cudnn8.9.7-gcc11-py3.11
+  tf2.18-cu12.3.2:
+    cmds:
+      - >
+        docker buildx build .
+        --file 2.18.1/Dockerfile.cu12.3.2-cudnn8.9.7-gcc12-py3.12
+        --network=host
+        --tag curoky/dotbox:stage-tf2.18.1-cu12.3.2-cudnn8.9.7-gcc12-py3.12
