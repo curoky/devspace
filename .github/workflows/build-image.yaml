@@ -28,8 +28,14 @@ jobs:
             saved_image: 'debian11'
           - base_image: 'debian:12'
             saved_image: 'debian12'
-          # - base_image: 'ubuntu:25.04'
-          #   saved_image: 'ubuntu25.04'
+          - base_image: 'ubuntu:22.04'
+            saved_image: 'ubuntu22.04'
+          - base_image: 'ubuntu:23.04'
+            saved_image: 'ubuntu23.04'
+          - base_image: 'ubuntu:24.04'
+            saved_image: 'ubuntu24.04'
+          - base_image: 'ubuntu:25.04'
+            saved_image: 'ubuntu25.04'
     needs:
       - stage
     steps:
