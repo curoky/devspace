@@ -1,15 +1,15 @@
 # syntax=docker/dockerfile:1.9.0
-FROM ubuntu:22.04 AS builder
+FROM ubuntu:24.04 AS builder
 
 #### Common start ####
 RUN apt-get update -y \
   && apt-get install -y \
     curl wget git ncdu ca-certificates xz-utils patchelf
 # install gcc
-RUN apt-get install -y gcc-11 g++-11
+RUN apt-get install -y gcc-12 g++-12
 
 # install python
-RUN apt-get install -y python3.11 python3.11-dev python3-pip
+RUN apt-get install -y python3.12 python3.12-dev python3-pip
 
 # install bazel
 RUN curl -sSL -o bazelisk https://github.com/bazelbuild/bazelisk/releases/download/v1.20.0/bazelisk-linux-amd64 \
@@ -23,17 +23,17 @@ COPY --link --from=curoky/dotbox:stage-cuda-cu12.3.2-cudnn8.9.7 /home/x/app/nvid
 ENV TF_CUDA_VERSION=12.3 \
   TF_CUDNN_VERSION=8 \
   TF_CUDA_COMPUTE_CAPABILITIES="sm_75,compute_75,sm_80,compute_80,sm_86,compute_86" \
-  TF_PYTHON_VERSION="3.11" \
-  GCC_HOST_COMPILER_PATH=/usr/bin/gcc-11 \
+  TF_PYTHON_VERSION="3.12" \
+  GCC_HOST_COMPILER_PATH=/usr/bin/gcc-12 \
   CUDA_TOOLKIT_PATH=/home/x/app/nvidia/cuda-12.3.2 \
   CUDNN_INSTALL_PATH=/home/x/app/nvidia/cudnn8.9.7-cu12
 
 RUN ln -s /home/x/app/nvidia/cuda-12.3.2 /usr/local/cuda
-RUN git clone --recurse-submodules --depth=1 -b v2.16.1 https://github.com/tensorflow/tensorflow
+RUN git clone --recurse-submodules --depth=1 -b v2.18.1 https://github.com/tensorflow/tensorflow
 WORKDIR /tensorflow
 RUN echo 'startup --host_jvm_args=-Djava.net.preferIPv6Addresses=true' >> .bazelrc
 # RUN echo 'build --repo_env=TF_CUDA_COMPUTE_CAPABILITIES="compute_90"' >> .bazelrc
-# RUN ln -s /usr/bin/python3.11 /usr/bin/python
+# RUN ln -s /usr/bin/python3.12 /usr/bin/python
 
 RUN bazel build //tensorflow/tools/pip_package:build_pip_package \
     --repo_env=WHEEL_NAME=tensorflow \
@@ -42,9 +42,9 @@ RUN bazel build //tensorflow/tools/pip_package:build_pip_package \
     --config=monolithic \
     # --config=tensorrt \
     --config=cuda \
-    --config=noaws \
+    # --config=noaws \
     --config=nogcp \
-    --config=nohdfs \
+    # --config=nohdfs \
     --config=nonccl
 RUN ./bazel-bin/tensorflow/tools/pip_package/build_pip_package /output
 
@@ -52,4 +52,4 @@ FROM debian:latest
 
 COPY --from=builder /output /output
 
-RUN ls -lah /output/tensorflow-2.16.1-cp311-cp311-linux_x86_64.whl
+RUN ls -lah /output/tensorflow-2.18.1-cp312-cp312-linux_x86_64.whl
