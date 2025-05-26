@@ -111,8 +111,8 @@ pkgs=(
   # shfmt
   # starship
   # tzdata
-  # zsh
-  # zsh-bundle
+  zsh
+  zsh-bundle
 
   ##### unneeded
   # aria2
