@@ -111,7 +111,7 @@ pkgs=(
   # shfmt
   # starship
   # tzdata
-  zsh
+  # zsh
   zsh-bundle
 
   ##### unneeded
