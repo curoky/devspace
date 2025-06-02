@@ -89,7 +89,6 @@ copy_path $CONF_PATH/zsh/etc/zshenv /etc/zsh/zshenv
 link_path /etc/zsh/zshenv /etc/zshenv
 
 # setup locales from apt
-apt-get install -y locales
 echo "en_US.UTF-8 UTF-8" >/etc/locale.gen
 locale-gen
 

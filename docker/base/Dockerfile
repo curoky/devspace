@@ -2,7 +2,7 @@
 ARG BASE_IMAGE=debian:12
 
 FROM debian:latest AS stage_tools
-RUN apt-get update -y && apt-get install -y curl zstd
+RUN apt-get update -y && apt-get install -y curl zstd locales
 
 COPY docker/base/script/install-pkgs.sh /tmp/install-pkgs.sh
 
