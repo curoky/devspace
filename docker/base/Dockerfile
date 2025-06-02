@@ -2,7 +2,7 @@
 ARG BASE_IMAGE=debian:12
 
 FROM debian:latest AS stage_tools
-RUN apt-get update -y && apt-get install -y curl zstd locales
+RUN apt-get update -y && apt-get install -y curl zstd
 
 COPY docker/base/script/install-pkgs.sh /tmp/install-pkgs.sh
 
@@ -13,7 +13,7 @@ FROM $BASE_IMAGE
 ENV PATH=$PATH:/home/x/app/pipx/bin:/home/x/app/tools/bin:/nix/var/nix/profiles/default/bin:/home/x/app/conda/condabin \
   DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update -y && apt-get install -y sudo
+RUN apt-get update -y && apt-get install -y sudo locales
 
 COPY docker/base/script/setup-user.sh /tmp/setup-user.sh
 RUN /tmp/setup-user.sh
