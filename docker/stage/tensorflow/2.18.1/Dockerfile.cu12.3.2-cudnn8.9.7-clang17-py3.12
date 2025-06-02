@@ -10,7 +10,7 @@ RUN apt-get update -y \
 RUN apt-get install -y clang-17 lld-17
 
 # install python
-RUN apt-get install -y python3.12 python3.12-dev python3-pip 
+RUN apt-get install -y python3.12 python3.12-dev python3-pip
 
 # install bazel
 RUN curl -sSL -o bazelisk https://github.com/bazelbuild/bazelisk/releases/download/v1.20.0/bazelisk-linux-amd64 \
