@@ -141,11 +141,11 @@ pkgs=(
 
 curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >/tmp/install.sh
 for pkg in "${pkgs[@]}"; do
-  bash /tmp/install.sh -n $pkg -i /home/x/app/tools -l -p /home/x/app/tools/ &
+  bash /tmp/install.sh -n $pkg -i /opt/tools -l -p /opt/tools/ &
 done
-bash /tmp/install.sh -n python311 -i /home/x/app/tools &
+bash /tmp/install.sh -n python311 -i /opt/tools &
 wait
-rm -rf /home/x/app/tools/downloads
+rm -rf /opt/tools/downloads
 
-ln -s -r /home/x/app/tools/bin/bazelisk /home/x/app/tools/bin/bazel
-ln -s -r /home/x/app/tools/bin/clang-format-18 /home/x/app/tools/bin/clang-format
+ln -s -r /opt/tools/bin/bazelisk /opt/tools/bin/bazel
+ln -s -r /opt/tools/bin/clang-format-18 /opt/tools/bin/clang-format

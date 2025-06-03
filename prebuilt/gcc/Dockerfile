@@ -54,3 +54,4 @@ RUN mkdir -p /tmp/gcc/src \
 FROM debian:stable-slim
 
 COPY --link --from=builder /opt/binutils /opt/binutils
+COPY --link --from=builder /opt/gcc /opt/gcc

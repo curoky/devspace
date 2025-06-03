@@ -58,12 +58,12 @@ function link_path() {
 }
 
 # change login shell
-echo "/home/x/app/tools/bin/zsh" >>/etc/shells
-chsh -s /home/x/app/tools/bin/zsh root
-chsh -s /home/x/app/tools/bin/zsh x
+echo "/opt/tools/bin/zsh" >>/etc/shells
+chsh -s /opt/tools/bin/zsh root
+chsh -s /opt/tools/bin/zsh x
 
 # add ca-certificates
-copy_path /home/x/app/tools/store/cacert/etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+copy_path /opt/tools/store/cacert/etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 chmod 644 /etc/ssl/certs/ca-certificates.crt
 
 # sudoers
