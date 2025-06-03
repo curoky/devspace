@@ -97,4 +97,4 @@ dependencies:
       - urllib3==2.4.0
       - wcwidth==0.2.13
       - widgetsnbextension==4.0.14
-prefix: /home/x/app/conda/envs/py3
+prefix: /opt/conda/envs/py3

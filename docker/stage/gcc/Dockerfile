@@ -29,8 +29,8 @@ RUN mkdir -p /opt/gcc/src \
   && mkdir -p /opt/gcc/build && cd /opt/gcc/build \
 	&& /opt/gcc/src/configure \
     # CXXFLAGS="-fPIC" CFLAGS="-fPIC" \
-    --prefix=/home/x/app/gcc/gcc-$GCC_VERSION \
-    # --with-sysroot=/home/x/app/gcc/gcc-14.2.0 \
+    --prefix=/opt/gcc/gcc-$GCC_VERSION \
+    # --with-sysroot=/opt/gcc/gcc-14.2.0 \
 		--build="x86_64-linux-gnu" \
 		--disable-multilib \
     --disable-nls \

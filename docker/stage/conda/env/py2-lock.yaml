@@ -28,4 +28,4 @@ dependencies:
       - requests==2.27.1
       - six==1.17.0
       - urllib3==1.26.20
-prefix: /home/x/app/conda/envs/py2
+prefix: /opt/conda/envs/py2

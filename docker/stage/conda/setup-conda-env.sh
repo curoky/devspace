@@ -29,7 +29,7 @@ eval set -- "$OPTIONS"
 
 env_file=""
 lock_file=""
-conda_root="/home/x/app/conda"
+conda_root="/opt/conda"
 add_tf_env=false
 cuda_version=""
 cudnn_version=""
@@ -114,9 +114,9 @@ if [[ $add_tf_env == "true" ]]; then
   target_env_file=$CONDA_ROOT/envs/$env_name/etc/conda/activate.d/env_vars.sh
   echo '' >$target_env_file
 
-  echo "export LD_LIBRARY_PATH=/home/x/app/nvidia/cuda-${cuda_version}/lib64:/home/x/app/nvidia/cuda-${cuda_version}/extras/CUPTI/lib64/:\$LD_LIBRARY_PATH" >>$target_env_file
-  echo "export LD_LIBRARY_PATH=/home/x/app/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}/lib64:\$LD_LIBRARY_PATH" >>$target_env_file
-  echo "export CUDNN_INSTALL_PATH=/home/x/app/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}" >>$target_env_file
+  echo "export LD_LIBRARY_PATH=/opt/nvidia/cuda-${cuda_version}/lib64:/opt/nvidia/cuda-${cuda_version}/extras/CUPTI/lib64/:\$LD_LIBRARY_PATH" >>$target_env_file
+  echo "export LD_LIBRARY_PATH=/opt/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}/lib64:\$LD_LIBRARY_PATH" >>$target_env_file
+  echo "export CUDNN_INSTALL_PATH=/opt/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}" >>$target_env_file
 fi
 
 conda env export -n $env_name >$lock_file || echo conda failed export lock file
