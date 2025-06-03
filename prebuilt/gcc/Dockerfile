@@ -10,24 +10,24 @@ RUN apt-get update -y \
     make texinfo
 
 # install latest binutils
-RUN mkdir -p /opt/binutils/src \
-	&& curl -sSL https://ftpmirror.gnu.org/gnu/binutils/binutils-2.42.tar.gz | tar -x --gunzip -C /opt/binutils/src --strip-components 1 \
-  && mkdir -p /opt/binutils/build && cd /opt/binutils/build \
-  && /opt/binutils/src/configure --prefix=/home/x/app/binutils --disable-multilib \
+RUN mkdir -p /tmp/binutils/src \
+	&& curl -sSL https://ftpmirror.gnu.org/gnu/binutils/binutils-2.42.tar.gz | tar -x --gunzip -C /tmp/binutils/src --strip-components 1 \
+  && mkdir -p /tmp/binutils/build && cd /tmp/binutils/build \
+  && /tmp/binutils/src/configure --prefix=/opt/binutils/binutils --disable-multilib \
   && make -j$(nproc) && make install \
-  && find /home/x/app/binutils/bin/ -type f -exec ln -sf {} /usr/bin \; \
-  # && /opt/binutils/src/configure --prefix=/usr --disable-multilib \
+  && find /opt/binutils/binutils/bin/ -type f -exec ln -sf {} /usr/bin \; \
+  # && /tmp/binutils/src/configure --prefix=/usr --disable-multilib \
   # && make -j$(nproc) && make install \
-  && rm -rf /opt/binutils
+  && rm -rf /tmp/binutils
 
 ARG GCC_VERSION=14.2.0
 
-RUN mkdir -p /opt/gcc/src \
-	&& curl -sSL https://ftpmirror.gnu.org/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.xz | tar -x --xz -C /opt/gcc/src --strip-components 1 \
-  && cd /opt/gcc/src \
+RUN mkdir -p /tmp/gcc/src \
+	&& curl -sSL https://ftpmirror.gnu.org/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.xz | tar -x --xz -C /tmp/gcc/src --strip-components 1 \
+  && cd /tmp/gcc/src \
 	&& ./contrib/download_prerequisites \
-  && mkdir -p /opt/gcc/build && cd /opt/gcc/build \
-	&& /opt/gcc/src/configure \
+  && mkdir -p /tmp/gcc/build && cd /tmp/gcc/build \
+	&& /tmp/gcc/src/configure \
     # CXXFLAGS="-fPIC" CFLAGS="-fPIC" \
     --prefix=/opt/gcc/gcc-$GCC_VERSION \
     # --with-sysroot=/opt/gcc/gcc-14.2.0 \
@@ -37,7 +37,7 @@ RUN mkdir -p /opt/gcc/src \
 		--enable-languages=c,c++ \
 		'' \
 	&& make -j "$(nproc)" && make install-strip \
-  && rm -rf /opt/gcc
+  && rm -rf /tmp/gcc
 
 # gcc installs .so files in /usr/local/lib64 (and /usr/local/lib)...
 # RUN set -ex; \
@@ -53,4 +53,4 @@ RUN mkdir -p /opt/gcc/src \
 
 FROM debian:stable-slim
 
-COPY --link --from=builder /home/x/app /home/x/app
+COPY --link --from=builder /opt/binutils /opt/binutils

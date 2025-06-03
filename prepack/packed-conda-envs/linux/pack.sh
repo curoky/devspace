@@ -36,7 +36,10 @@ bash tmp/miniconda.sh -b -u -p /home/x/app/conda
 
 # setup pipx
 /home/x/app/conda/bin/pip3 install pipx
-../../../docker/stage/conda/pipx-install.sh licenseheaders conan
+export PIPX_HOME=/home/x/app/conda/pipx
+export PIPX_BIN_DIR=${PIPX_HOME}/bin
+export PIPX_MAN_DIR=${PIPX_HOME}/share/man
+/home/x/app/conda/bin/pipx install licenseheaders conan
 
 cp installer.sh /home/x/app/conda/installer.sh
 
