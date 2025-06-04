@@ -13,9 +13,9 @@ RUN apt-get update -y \
 RUN mkdir -p /tmp/binutils/src \
 	&& curl -sSL https://ftpmirror.gnu.org/gnu/binutils/binutils-2.42.tar.gz | tar -x --gunzip -C /tmp/binutils/src --strip-components 1 \
   && mkdir -p /tmp/binutils/build && cd /tmp/binutils/build \
-  && /tmp/binutils/src/configure --prefix=/opt/binutils/binutils --disable-multilib \
+  && /tmp/binutils/src/configure --prefix=/opt/binutils --disable-multilib \
   && make -j$(nproc) && make install \
-  && find /opt/binutils/binutils/bin/ -type f -exec ln -sf {} /usr/bin \; \
+  && find /opt/binutils/bin/ -type f -exec ln -sf {} /usr/bin \; \
   # && /tmp/binutils/src/configure --prefix=/usr --disable-multilib \
   # && make -j$(nproc) && make install \
   && rm -rf /tmp/binutils
