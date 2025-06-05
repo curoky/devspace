@@ -16,6 +16,10 @@
 # limitations under the License.
 
 export CONFIG_HOME=~/dotbox/config
+export TOOLS_ROOT=/opt/tools
+if [[ ! -d $TOOLS_ROOT ]]; then
+  export TOOLS_ROOT=$HOME/app/tools
+fi
 
 for f in "$CONFIG_HOME"/zsh/lib/*.sh; do
   source "$f"
@@ -26,7 +30,7 @@ if [[ -f $HOMEBREW_PREFIX/bin/brew ]]; then
   eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 fi
 
-export ZSH=~/app/tools/store/zsh-bundle/share/oh-my-zsh
+export ZSH=$TOOLS_ROOT/store/zsh-bundle/share/oh-my-zsh
 # https://github.com/ohmyzsh/ohmyzsh/blob/7ed475cb589c9e82211f71b3a5d7083b69cea93c/oh-my-zsh.sh#L132
 autoload -Uz compinit # zrecompile compaudit
 compinit -u -d $XDG_CACHE_HOME/.zcompdump

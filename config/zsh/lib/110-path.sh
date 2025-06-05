@@ -18,6 +18,7 @@
 ENV_PATHS=(
   "$HOMEBREW_PREFIX/opt/ruby/bin"
   "$HOME/app/tools/bin"
+  "/opt/tools/bin"
   "/nix/var/nix/profiles/default/bin"
 )
 for p in "${ENV_PATHS[@]}"; do
@@ -28,6 +29,8 @@ ENV_PATHS=(
   "$HOME/.local/bin"
   "$HOME/.nix-profile/bin"
 
+  "/opt/conda/condabin"
+  "/opt/conda/pipx/bin"
   "$HOME/app/conda/condabin"
   "$HOME/app/conda/pipx/bin"
 
