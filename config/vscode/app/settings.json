@@ -368,7 +368,7 @@
   "python.analysis.inlayHints.pytestParameters": true,
   "python.analysis.inlayHints.variableTypes": true,
   "python.analysis.languageServerMode": "full",
-  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.typeCheckingMode": "standard",
   "python.languageServer": "Pylance",
   "python.terminal.activateEnvironment": false,
   "pythonTestExplorer.testFramework": "pytest",
@@ -476,5 +476,9 @@
   "yaml.format.enable": false,
   "yaml.format.singleQuote": true,
   "geminicodeassist.enableTelemetry": false,
-  "docker.lsp.telemetry": "off"
+  "docker.lsp.telemetry": "off",
+  "remote.SSH.experimental.chat": false,
+  "chat.agent.enabled": false,
+  "notebook.experimental.generate": false,
+  "diffEditor.codeLens": true
 }
