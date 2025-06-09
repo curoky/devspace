@@ -21,7 +21,7 @@ RUN curl -sSL -o bazelisk https://github.com/bazelbuild/bazelisk/releases/downlo
 COPY --link --from=curoky/dotbox:stage-cuda-cu12.3.2-cudnn8.9.7 /opt/nvidia/cuda-12.3.2 /opt/nvidia/cuda-12.3.2
 COPY --link --from=curoky/dotbox:stage-cuda-cu12.3.2-cudnn8.9.7 /opt/nvidia/cudnn8.9.7-cu12 /opt/nvidia/cudnn8.9.7-cu12
 
-RUN git clone --recurse-submodules --depth=1 -b v2.16.1 https://github.com/tensorflow/tensorflow
+RUN git clone --recurse-submodules --depth=1 -b v2.16.2 https://github.com/tensorflow/tensorflow
 WORKDIR /tensorflow
 
 RUN cat <<EOF >> .bazelrc
@@ -78,4 +78,4 @@ FROM debian:latest
 
 COPY --from=builder /output /output
 
-RUN ls -lah /output/tensorflow-2.16.1-cp312-cp312-linux_x86_64.whl
+RUN ls -lah /output/tensorflow-2.16.2-cp312-cp312-linux_x86_64.whl
