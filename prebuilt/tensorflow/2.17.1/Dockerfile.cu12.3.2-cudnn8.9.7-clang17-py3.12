@@ -60,7 +60,7 @@ RUN bazel build //tensorflow/tools/pip_package:wheel \
     --config=v2 \
     # --config=opt \
     --config=avx_linux \
-    --config=monolithic \
+    # --config=monolithic \
     # --config=tensorrt \
     --config=cuda \
     # --config=cuda_clang \

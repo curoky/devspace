@@ -60,7 +60,7 @@ RUN bazel build //tensorflow/tools/pip_package:build_pip_package \
     --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=${USE_CXX11_ABI}" \
     --config=v2 \
     --config=avx_linux \
-    --config=monolithic \
+    # --config=monolithic \
     # --config=tensorrt \
     --config=cuda \
     --config=noaws \
