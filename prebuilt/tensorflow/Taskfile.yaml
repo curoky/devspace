@@ -46,15 +46,15 @@ tasks:
   tf2.16-cu12.3.2-gcc11:
     - >
       docker buildx build .
-      --file 2.16.1/Dockerfile.cu12.3.2-cudnn8.9.7-gcc11-py3.11
+      --file 2.16.2/Dockerfile.cu12.3.2-cudnn8.9.7-gcc11-py3.11
       --network=host
-      --tag curoky/dotbox:prebuilt-tf2.16.1-cu12.3.2-cudnn8.9.7-gcc11-py3.11
+      --tag curoky/dotbox:prebuilt-tf2.16.2-cu12.3.2-cudnn8.9.7-gcc11-py3.11
   tf2.16-cu12.3.2-clang17:
     - >
       docker buildx build .
-      --file 2.16.1/Dockerfile.cu12.3.2-cudnn8.9.7-clang17-py3.12
+      --file 2.16.2/Dockerfile.cu12.3.2-cudnn8.9.7-clang17-py3.12
       --network=host
-      --tag curoky/dotbox:prebuilt-tf2.16.1-cu12.3.2-cudnn8.9.7-clang17-py3.12
+      --tag curoky/dotbox:prebuilt-tf2.16.2-cu12.3.2-cudnn8.9.7-clang17-py3.12
   tf2.17-cu12.3.2-clang17:
     - >
       docker buildx build .
@@ -84,10 +84,10 @@ tasks:
     - docker push curoky/dotbox:prebuilt-tf2.5.0-cu11.4.4-cudnn8.1.0-gcc8-py3.7-abi1
 
     - task: tf2.16-cu12.3.2-gcc11
-    - docker push curoky/dotbox:prebuilt-tf2.16.1-cu12.3.2-cudnn8.9.7-gcc11-py3.11
+    - docker push curoky/dotbox:prebuilt-tf2.16.2-cu12.3.2-cudnn8.9.7-gcc11-py3.11
 
     - task: tf2.16-cu12.3.2-clang17
-    - docker push curoky/dotbox:prebuilt-tf2.16.1-cu12.3.2-cudnn8.9.7-clang17-py3.12
+    - docker push curoky/dotbox:prebuilt-tf2.16.2-cu12.3.2-cudnn8.9.7-clang17-py3.12
 
     - task: tf2.17-cu12.3.2-clang17
     - docker push curoky/dotbox:prebuilt-tf2.17.1-cu12.3.2-cudnn8.9.7-clang17-py3.12
