@@ -7,5 +7,5 @@ conda env list | awk '{print $1}' | while read env; do
     continue
   fi
   echo "Exporting environment: $env"
-  conda env export -n "$env" >"$save_path/${env}.yml"
+  conda env export -n "$env" >"$save_path/${env}.yaml"
 done
