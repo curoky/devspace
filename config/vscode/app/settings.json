@@ -480,5 +480,6 @@
   "remote.SSH.experimental.chat": false,
   "chat.agent.enabled": false,
   "notebook.experimental.generate": false,
-  "diffEditor.codeLens": true
+  "diffEditor.codeLens": true,
+  "docker.extension.enableComposeLanguageServer": false
 }
