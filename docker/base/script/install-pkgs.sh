@@ -82,6 +82,9 @@ pkgs=(
   util-linux
   wget
   zip
+  autoconf
+  automake
+  libtool
 
   #### only use in docker
   atuin
@@ -129,12 +132,9 @@ pkgs=(
   # silver-searcher
 
   ##### experimental
-  # autoconf
-  # automake
   # bash
   # gdb
   # git
-  # libtool
   # man
   # perl
 )

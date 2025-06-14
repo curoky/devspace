@@ -15,17 +15,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# ENV_PATHS=(
+#   "$HOMEBREW_PREFIX/opt/ruby/bin"
+#   "$HOME/app/tools/bin"
+#   "/opt/tools/bin"
+#   "/nix/var/nix/profiles/default/bin"
+# )
+# for p in "${ENV_PATHS[@]}"; do
+#   [[ -d $p ]] && export PATH=$p:$PATH
+# done
+
 ENV_PATHS=(
-  "$HOMEBREW_PREFIX/opt/ruby/bin"
   "$HOME/app/tools/bin"
   "/opt/tools/bin"
   "/nix/var/nix/profiles/default/bin"
-)
-for p in "${ENV_PATHS[@]}"; do
-  [[ -d $p ]] && export PATH=$p:$PATH
-done
 
-ENV_PATHS=(
   "$HOME/.local/bin"
   "$HOME/.nix-profile/bin"
 
@@ -33,9 +37,11 @@ ENV_PATHS=(
   "/opt/conda/pipx/bin"
   "$HOME/app/conda/condabin"
   "$HOME/app/conda/pipx/bin"
+  "$HOMEBREW_PREFIX/opt/ruby/bin"
 
   # "$HOME/.npm-global/bin"
   "$HOME/dotbox/tools"
+
   # "/nix/var/nix/profiles/default/lib/ruby/gems/2.7.0/bin"
   # "$HOMEBREW_PREFIX/lib/ruby/gems/3.1.0/bin"
   # "$HOME/.cargo/bin" # already source in ~/.zshenv
