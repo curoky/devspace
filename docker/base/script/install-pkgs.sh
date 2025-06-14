@@ -133,10 +133,10 @@ pkgs=(
 
   ##### experimental
   # bash
-  # gdb
+  gdb
   # git
   # man
-  # perl
+  perl
 )
 
 curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >/tmp/install.sh
