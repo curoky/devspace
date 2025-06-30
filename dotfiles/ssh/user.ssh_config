@@ -1,0 +1,34 @@
+Host *
+  GSSAPIAuthentication yes
+  GSSAPIDelegateCredentials no
+  HashKnownHosts no
+  IdentityFile ~/dotbox/dotfiles/ssh/devbox.private.id_rsa
+  UserKnownHostsFile ~/.ssh/known_hosts ~/dotbox/dotfiles/ssh/known_hosts
+  ServerAliveInterval 10
+  ServerAliveCountMax 10000000
+  TCPKeepAlive yes
+  HostKeyAlgorithms +ssh-rsa
+  PubkeyAcceptedKeyTypes +ssh-rsa
+
+Host 10.*
+  StrictHostKeyChecking no
+  GSSAPIAuthentication yes
+  GSSAPIDelegateCredentials no
+  HashKnownHosts No
+
+Host github.com
+  IdentityFile ~/.ssh/github.private.id_ed25519
+
+Host gitlab.com
+  IdentityFile ~/.ssh/github.private.id_ed25519
+
+Host bitbucket.org
+  IdentityFile ~/.ssh/github.private.id_ed25519
+
+Host *.tmate.io
+  IdentityFile ~/.ssh/github.private.id_ed25519
+
+Host windows
+  HostName 192.168.1.77
+  User x
+  Port 61000

@@ -1,4 +1,4 @@
-name: tensorflow
+name: Dep tensorflow
 
 on:
   push:

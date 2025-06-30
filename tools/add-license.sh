@@ -28,11 +28,11 @@ CurrentYear=$(date +'%Y')
 Owner="$(git config user.name)($(git config user.email))"
 
 licenseheaders \
-  --tmpl=$HOME/dotbox/config/licenseheaders/apache-2.tmpl \
+  --tmpl=$HOME/dotbox/dotfiles/licenseheaders/apache-2.tmpl \
   --owner=$Owner \
   --projname=$(basename "$PWD") \
   --projurl=$GitURL \
-  --settings=$HOME/dotbox/config/licenseheaders/license-settings.json \
+  --settings=$HOME/dotbox/dotfiles/licenseheaders/license-settings.json \
   --exclude '*.yaml' '.md' '*.gzip.sh' '*.zstd.sh' \
   --dir ${1:-.} \
   --years="$FirstCommitYear-$CurrentYear"

@@ -26,7 +26,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 rm -rf ~/dotbox
 ln -s ~/workspace/dotbox ~/dotbox
-~/dotbox/config/setup.sh host-macos $HOME/dotbox/config
+~/dotbox/dotfiles/setup.sh host-macos $HOME/dotbox/dotfiles
 
 brew bundle --force --file ~/dotbox/host/mac/conf/brew/Brewfile.personal --cleanup --verbose
 # brew link krb5 --force
