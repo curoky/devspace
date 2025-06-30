@@ -136,8 +136,8 @@ jobs:
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-dotfiles/tmp/dotfiles-installer.gzip.sh
-          asset_name: dotfiles-installer.gzip.sh
+          file: prepack/packed-dotfiles/tmp/devspace-installer.gzip.sh
+          asset_name: devspace-installer.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
