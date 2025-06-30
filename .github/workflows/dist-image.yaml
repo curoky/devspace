@@ -3,7 +3,7 @@ name: Build devbox
 on:
   push:
     paths:
-      - '.github/workflows/build-devbox.yaml'
+      - '.github/workflows/dist-image.yaml'
       - 'dist/images/**'
       - 'dotfiles/**'
   workflow_dispatch:
