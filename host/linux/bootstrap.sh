@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Copyright (c) 2018-2025 curoky(cccuroky@gmail.com).
 #
-# This file is part of dotbox.
-# See https://github.com/curoky/dotbox for further info.
+# This file is part of devspace.
+# See https://github.com/curoky/devspace for further info.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,5 +17,5 @@
 # limitations under the License.
 set -xeuo pipefail
 
-curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/packed-dotbox/online-installer.sh | bash -s -- -- -l -n host-linux/docker
-curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/packed-tools/online-installer.sh | bash
+curl -sSL https://github.com/curoky/devspace/raw/dev/prepack/packed-devspace/online-installer.sh | bash -s -- -- -l -n host-linux/docker
+curl -sSL https://github.com/curoky/devspace/raw/dev/prepack/packed-tools/online-installer.sh | bash

@@ -7,4 +7,4 @@ tasks:
         docker buildx build .
         --file Dockerfile
         --network=host
-        --tag curoky/dotbox:stage-vcpkg
+        --tag curoky/devspace:stage-vcpkg

@@ -60,12 +60,12 @@ jobs:
             CUDA_VERSION=${{ matrix.CUDA_VERSION }}
             CUDA_DRIVER_VERSION=${{ matrix.CUDA_DRIVER_VERSION }}
             CUDNN_VERSION=${{ matrix.CUDNN_VERSION }}
-          tags: curoky/dotbox:deps-cuda-${{ matrix.name }}
+          tags: curoky/devspace:deps-cuda-${{ matrix.name }}
 
       - if: github.event_name == 'schedule'
         run: >
           docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
-          curoky/dotbox:deps-cuda-${{ matrix.name }}
+          curoky/devspace:deps-cuda-${{ matrix.name }}
 
       - uses: mxschmitt/action-tmate@v3
         if: ${{ failure() }}

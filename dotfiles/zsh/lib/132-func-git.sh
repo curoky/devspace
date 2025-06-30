@@ -1,7 +1,7 @@
 # Copyright (c) 2018-2025 curoky(cccuroky@gmail.com).
 #
-# This file is part of dotbox.
-# See https://github.com/curoky/dotbox for further info.
+# This file is part of devspace.
+# See https://github.com/curoky/devspace for further info.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -95,7 +95,7 @@ function git-show-deleted-files() {
 }
 
 function set-git-proxy() {
-  export GIT_SSH=~/dotbox/tools/git-proxy-wrapper.sh
+  export GIT_SSH=~/devspace/tools/git-proxy-wrapper.sh
   echo "export GIT_SSH=$GIT_SSH"
 }
 

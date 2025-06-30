@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Copyright (c) 2018-2025 curoky(cccuroky@gmail.com).
 #
-# This file is part of dotbox.
-# See https://github.com/curoky/dotbox for further info.
+# This file is part of devspace.
+# See https://github.com/curoky/devspace for further info.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@ set -xeuo pipefail
 SSHD_PORT=${1:-61000}
 
 sed -i -e "s/Port 61000/Port ${SSHD_PORT}/g" \
-  /home/x/app/dotbox/dotfiles/sshd/sshd_config.conf
+  /home/x/app/devspace/dotfiles/sshd/sshd_config.conf
 
-chmod 600 /home/x/app/dotbox/dotfiles/sshd/host-key/*
+chmod 600 /home/x/app/devspace/dotfiles/sshd/host-key/*
 
 mkdir -p /var/log
 # https://github.com/un-def/openssh-static-build/blob/master/run-sshd.sh#L30
 /opt/tools/store/openssh_gssapi/bin/sshd \
   -o SshdSessionPath="/opt/tools/store/openssh_gssapi/libexec/sshd-session" \
-  -f /home/x/app/dotbox/dotfiles/sshd/sshd_config.conf -e
+  -f /home/x/app/devspace/dotfiles/sshd/sshd_config.conf -e
 # -E /var/log/mysshd.log

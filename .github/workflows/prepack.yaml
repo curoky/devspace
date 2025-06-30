@@ -121,7 +121,7 @@ jobs:
         if: ${{ failure() }}
         timeout-minutes: 30
 
-  packed-dotbox:
+  packed-devspace:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -131,13 +131,13 @@ jobs:
       - run: brew install makeself
 
       - run: |
-          cd prepack/packed-dotbox/
+          cd prepack/packed-devspace/
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-dotbox/tmp/dotbox-installer.gzip.sh
-          asset_name: dotbox-installer.gzip.sh
+          file: prepack/packed-devspace/tmp/devspace-installer.gzip.sh
+          asset_name: devspace-installer.gzip.sh
           tag: 'v1.0'
           overwrite: true
 

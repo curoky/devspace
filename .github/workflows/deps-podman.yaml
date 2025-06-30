@@ -23,10 +23,10 @@ jobs:
           context: deps/podman
           file: deps/podman/Dockerfile
           load: true
-          tags: curoky/dotbox:deps-podman
+          tags: curoky/devspace:deps-podman
 
       - run: |
-          id=$(docker create curoky/dotbox:deps-podman)
+          id=$(docker create curoky/devspace:deps-podman)
           docker cp $id:/opt/podman - >podman.tar
 
       - uses: svenstaro/upload-release-action@v2

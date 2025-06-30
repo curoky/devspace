@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Copyright (c) 2018-2025 curoky(cccuroky@gmail.com).
 #
-# This file is part of dotbox.
-# See https://github.com/curoky/dotbox for further info.
+# This file is part of devspace.
+# See https://github.com/curoky/devspace for further info.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,16 +18,16 @@
 
 set -xeuo pipefail
 
-/home/x/app/dotbox/docker/base/script/link-path.sh
-sudo -u x /home/x/app/dotbox/dotfiles/setup.sh docker /home/x/dotbox/dotfiles
+/home/x/app/devspace/docker/base/script/link-path.sh
+sudo -u x /home/x/app/devspace/dotfiles/setup.sh docker /home/x/devspace/dotfiles
 
-chmod 600 /home/x/dotbox/dotfiles/ssh/devbox.private.id_rsa
-/home/x/app/dotbox/docker/base/script/start-sshd.sh $SSHD_PORT
+chmod 600 /home/x/devspace/dotfiles/ssh/devbox.private.id_rsa
+/home/x/app/devspace/docker/base/script/start-sshd.sh $SSHD_PORT
 
-sudo -u x bash /home/x/app/dotbox/tools/profile-installer.sh --ssl-pass-src pass:$PROFILE_PASS
+sudo -u x bash /home/x/app/devspace/tools/profile-installer.sh --ssl-pass-src pass:$PROFILE_PASS
 
 sudo -u x bash /home/x/.config/atuin/login-and-sync.sh &
-sudo -u x bash -c 'cd /home/x/app/dotbox && pre-commit install-hooks' &
+sudo -u x bash -c 'cd /home/x/app/devspace && pre-commit install-hooks' &
 
 # clean cache
 rm -rf /home/x/.cache/starship.plugin.zsh \

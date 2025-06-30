@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Copyright (c) 2018-2025 curoky(cccuroky@gmail.com).
 #
-# This file is part of dotbox.
-# See https://github.com/curoky/dotbox for further info.
+# This file is part of devspace.
+# See https://github.com/curoky/devspace for further info.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ set -xeuo pipefail
 
 abspath=$(cd "$(dirname "$0")" && pwd)
 
-target=$HOME/app/dotbox
+target=$HOME/app/devspace
 link=0
 link_name=host-linux
 
@@ -46,7 +46,7 @@ mkdir -p $target
 cp -r $abspath/* $target
 
 if [ $link -eq 1 ]; then
-  rm -f $HOME/dotbox
-  ln -s $target $HOME/dotbox
-  $HOME/dotbox/dotfiles/setup.sh $link_name $HOME/dotbox/dotfiles
+  rm -f $HOME/devspace
+  ln -s $target $HOME/devspace
+  $HOME/devspace/dotfiles/setup.sh $link_name $HOME/devspace/dotfiles
 fi

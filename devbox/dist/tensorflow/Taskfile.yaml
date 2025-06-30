@@ -6,7 +6,7 @@ tasks:
       - >
         docker buildx build .
         --network=host --file Dockerfile.{{.version}}
-        --tag curoky/dotbox:{{.version}}
+        --tag curoky/devspace:{{.version}}
   tf2.5-cu11.0.3:
     deps:
       - task: build

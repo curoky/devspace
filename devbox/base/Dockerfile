@@ -21,9 +21,9 @@ RUN /tmp/setup-user.sh
 USER x
 
 # copy multi stage build result
-COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-conda /opt/conda /opt/conda
-COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-nixpkg /nix /nix
-COPY --chown=5230:5230 --link --from=curoky/dotbox:stage-nixpkg /home/x/.local/state/nix /home/x/.local/state/nix
+COPY --chown=5230:5230 --link --from=curoky/devspace:stage-conda /opt/conda /opt/conda
+COPY --chown=5230:5230 --link --from=curoky/devspace:stage-nixpkg /nix /nix
+COPY --chown=5230:5230 --link --from=curoky/devspace:stage-nixpkg /home/x/.local/state/nix /home/x/.local/state/nix
 COPY --chown=5230:5230 --link --from=stage_tools /opt/tools /opt/tools
 
 # setup tools
@@ -37,10 +37,10 @@ RUN mkdir ~/.nix-defexpr \
   && ln -s ~/.local/state/nix/profiles/channels ~/.nix-defexpr/channels \
   && ln -s ~/.local/state/nix/profiles/profile ~/.nix-profile
 
-# setup dotbox
-COPY --chown=5230:5230 ./ /home/x/app/dotbox
-RUN ln -sf /home/x/app/dotbox ~/dotbox \
-  && bash ~/dotbox/dotfiles/setup.sh docker ~/dotbox/dotfiles
+# setup devspace
+COPY --chown=5230:5230 ./ /home/x/app/devspace
+RUN ln -sf /home/x/app/devspace ~/devspace \
+  && bash ~/devspace/dotfiles/setup.sh docker ~/devspace/dotfiles
 
 # other
 RUN sudo mkdir -p /workspace \
@@ -48,8 +48,8 @@ RUN sudo mkdir -p /workspace \
 
 USER root
 RUN ln -sf /home/x/app ~/app \
-  && ln -sf ~/app/dotbox ~/dotbox \
-  && bash ~/dotbox/docker/base/script/setup-sysconf.sh ~/dotbox/dotfiles \
-  && bash ~/dotbox/dotfiles/setup.sh docker ~/dotbox/dotfiles
+  && ln -sf ~/app/devspace ~/devspace \
+  && bash ~/devspace/docker/base/script/setup-sysconf.sh ~/devspace/dotfiles \
+  && bash ~/devspace/dotfiles/setup.sh docker ~/devspace/dotfiles
 
-ENTRYPOINT ["/home/x/app/dotbox/docker/base/script/entrypoint.sh"]
+ENTRYPOINT ["/home/x/app/devspace/docker/base/script/entrypoint.sh"]

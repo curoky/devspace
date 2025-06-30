@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Copyright (c) 2018-2025 curoky(cccuroky@gmail.com).
 #
-# This file is part of dotbox.
-# See https://github.com/curoky/dotbox for further info.
+# This file is part of devspace.
+# See https://github.com/curoky/devspace for further info.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,8 +23,8 @@ else
   compress_type=gzip
 fi
 
-curl -L -o /tmp/docker-installer.debian10.sh https://github.com/curoky/dotbox/releases/download/v1.0/docker-installer.debian10.${compress_type}.sh
+curl -L -o /tmp/docker-installer.debian10.sh https://github.com/curoky/devspace/releases/download/v1.0/docker-installer.debian10.${compress_type}.sh
 bash /tmp/docker-installer.debian10.sh --target /tmp/docker --noexec # $@
 
 # Usage
-# curl -sSL https://github.com/curoky/dotbox/raw/dev/prepack/docker-offline-installer/debian10/online-installer.sh | bash
+# curl -sSL https://github.com/curoky/devspace/raw/dev/prepack/docker-offline-installer/debian10/online-installer.sh | bash
