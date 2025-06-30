@@ -1,0 +1,50 @@
+name: gcc
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deps-gcc.yaml'
+      - 'deps/gcc/**'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    strategy:
+      matrix:
+        version:
+          - '11.5.0'
+          - '12.4.0'
+          - '13.4.0'
+          - '14.2.0'
+          - '14.3.0'
+          - '15.1.0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          username: curoky
+          password: ${{ secrets.DOCKER_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: deps/gcc
+          file: deps/gcc/Dockerfile
+          push: true
+          provenance: mode=max
+          cache-from: type=registry,ref=curoky/dotbox:__cache_deps_gcc_${{ matrix.version }}
+          cache-to: type=registry,ref=curoky/dotbox:__cache_deps_gcc_${{ matrix.version }},mode=max
+          no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
+          tags: curoky/dotbox:deps-gcc-${{ matrix.version }}
+      - if: github.event_name == 'schedule'
+        run: >
+          docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
+          curoky/dotbox:deps-gcc-${{ matrix.version }}
+
+      - uses: mxschmitt/action-tmate@v3
+        if: ${{ failure() }}
+        timeout-minutes: 30
