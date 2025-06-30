@@ -31,8 +31,8 @@ jobs:
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: deps/podman/podman.tar
-          asset_name: deps/podman/podman.tar
+          file: podman.tar
+          asset_name: podman.tar
           tag: 'v1.0'
           overwrite: true
 
