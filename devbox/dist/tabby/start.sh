@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 # Copyright (c) 2018-2025 curoky(cccuroky@gmail.com).
 #
-# This file is part of dotbox.
-# See https://github.com/curoky/dotbox for further info.
+# This file is part of devspace.
+# See https://github.com/curoky/devspace for further info.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
 # limitations under the License.
 set -xeuo pipefail
 
-docker pull curoky/dotbox:tabby
-docker tag curoky/dotbox:tabby tabbyml/tabby
-docker rmi curoky/dotbox:tabby
+docker pull curoky/devspace:tabby
+docker tag curoky/devspace:tabby tabbyml/tabby
+docker rmi curoky/devspace:tabby
 docker rm --force tabbyd
 mkdir -p $HOME/tabby/data
 # --chat-model Qwen2.5-Coder-32B-Instruct

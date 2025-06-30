@@ -1,5 +1,5 @@
 {
-  "image": "curoky/dotbox:base-ubuntu25.04",
+  "image": "curoky/devspace:base-ubuntu25.04",
   "containerUser": "x",
   "features": {}
 }

@@ -53,16 +53,16 @@ jobs:
           file: devbox/base/Dockerfile
           push: true
           provenance: mode=max
-          cache-from: type=registry,ref=curoky/dotbox:__cache_base_${{ matrix.saved_image }}
-          cache-to: type=registry,ref=curoky/dotbox:__cache_base_${{ matrix.saved_image }},mode=max
+          cache-from: type=registry,ref=curoky/devspace:__cache_base_${{ matrix.saved_image }}
+          cache-to: type=registry,ref=curoky/devspace:__cache_base_${{ matrix.saved_image }},mode=max
           no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
           build-args: BASE_IMAGE=${{ matrix.base_image }}
-          tags: curoky/dotbox:base-${{ matrix.saved_image }}
+          tags: curoky/devspace:base-${{ matrix.saved_image }}
 
       - if: github.event_name == 'schedule'
         run: >
           docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
-          curoky/dotbox:base-${{ matrix.saved_image }}
+          curoky/devspace:base-${{ matrix.saved_image }}
 
   stage:
     runs-on: ubuntu-latest
@@ -85,14 +85,14 @@ jobs:
           file: devbox/stage/${{ matrix.name }}/Dockerfile
           push: true
           provenance: mode=max
-          cache-from: type=registry,ref=curoky/dotbox:__cache_stage_${{ matrix.name }}
-          cache-to: type=registry,ref=curoky/dotbox:__cache_stage_${{ matrix.name }},mode=max
+          cache-from: type=registry,ref=curoky/devspace:__cache_stage_${{ matrix.name }}
+          cache-to: type=registry,ref=curoky/devspace:__cache_stage_${{ matrix.name }},mode=max
           no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
-          tags: curoky/dotbox:stage-${{ matrix.name }}
+          tags: curoky/devspace:stage-${{ matrix.name }}
       - if: github.event_name == 'schedule'
         run: >
           docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
-          curoky/dotbox:stage-${{ matrix.name }}
+          curoky/devspace:stage-${{ matrix.name }}
 
   dist:
     runs-on: ubuntu-latest
@@ -116,14 +116,14 @@ jobs:
           file: devbox/dist/${{ matrix.name }}/Dockerfile
           push: true
           provenance: mode=max
-          cache-from: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.saved_image }}
-          cache-to: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.saved_image }},mode=max
+          cache-from: type=registry,ref=curoky/devspace:__cache_dist_${{ matrix.saved_image }}
+          cache-to: type=registry,ref=curoky/devspace:__cache_dist_${{ matrix.saved_image }},mode=max
           no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
-          tags: curoky/dotbox:${{ matrix.saved_image }}
+          tags: curoky/devspace:${{ matrix.saved_image }}
       - if: github.event_name == 'schedule'
         run: >
           docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
-          curoky/dotbox:${{ matrix.saved_image }}
+          curoky/devspace:${{ matrix.saved_image }}
 
   # dist-tabby:
   #   runs-on: ubuntu-latest
@@ -146,10 +146,10 @@ jobs:
   #         file: devbox/dist/${{ matrix.name }}/Dockerfile
   #         push: true
   #         provenance: mode=max
-  #         cache-from: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.saved_image }}
-  #         cache-to: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.saved_image }},mode=max
+  #         cache-from: type=registry,ref=curoky/devspace:__cache_dist_${{ matrix.saved_image }}
+  #         cache-to: type=registry,ref=curoky/devspace:__cache_dist_${{ matrix.saved_image }},mode=max
   #         no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
-  #         tags: curoky/dotbox:${{ matrix.saved_image }}
+  #         tags: curoky/devspace:${{ matrix.saved_image }}
 
   dist-tf:
     runs-on: ubuntu-latest
@@ -181,11 +181,11 @@ jobs:
           file: devbox/dist/tensorflow/Dockerfile.${{ matrix.name }}
           push: true
           provenance: mode=max
-          cache-from: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.name }}
-          cache-to: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.name }},mode=max
+          cache-from: type=registry,ref=curoky/devspace:__cache_dist_${{ matrix.name }}
+          cache-to: type=registry,ref=curoky/devspace:__cache_dist_${{ matrix.name }},mode=max
           no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
-          tags: curoky/dotbox:${{ matrix.name }}
+          tags: curoky/devspace:${{ matrix.name }}
       # no space left
       # - run: >
       #     docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
-      #     curoky/dotbox:${{ matrix.name }}
+      #     curoky/devspace:${{ matrix.name }}

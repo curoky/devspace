@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Copyright (c) 2018-2025 curoky(cccuroky@gmail.com).
 #
-# This file is part of dotbox.
-# See https://github.com/curoky/dotbox for further info.
+# This file is part of devspace.
+# See https://github.com/curoky/devspace for further info.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ set -xeuo pipefail
 cd "$(dirname $0)" || exit 1
 
 # --cache-to=type=inline \
-# --cache-from=type=registry,ref=curoky/dotbox:${base_image} \
+# --cache-from=type=registry,ref=curoky/devspace:${base_image} \
 docker buildx build . --network=host --file Dockerfile "${@:2}" \
-  --tag curoky/dotbox:gcc
+  --tag curoky/devspace:gcc
 # --output type=local,dest=$PWD/temp

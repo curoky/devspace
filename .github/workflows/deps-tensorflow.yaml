@@ -63,7 +63,7 @@ jobs:
       contents: write
     steps:
       - run: |
-          id=$(docker create curoky/dotbox:${{ matrix.image_name }})
+          id=$(docker create curoky/devspace:${{ matrix.image_name }})
           docker cp $id:/output/${{ matrix.whl_name_from }} - > ${{ matrix.whl_name_to }}
           docker rm -v $id
 

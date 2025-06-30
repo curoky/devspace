@@ -7,7 +7,7 @@ tasks:
         --file ./Dockerfile
         --network=host
         --build-arg="GCC_VERSION={{.version}}"
-        --tag curoky/dotbox:prebuilt-gcc-{{.version}}
+        --tag curoky/devspace:prebuilt-gcc-{{.version}}
   11.5.0:
     deps:
       - task: _build
@@ -45,8 +45,8 @@ tasks:
     # - task: 14.2.0
     - task: 14.3.0
     - task: 15.1.0
-    - docker push curoky/dotbox:prebuilt-gcc-11.5.0
-    - docker push curoky/dotbox:prebuilt-gcc-12.4.0
-    - docker push curoky/dotbox:prebuilt-gcc-13.4.0
-    - docker push curoky/dotbox:prebuilt-gcc-14.3.0
-    - docker push curoky/dotbox:prebuilt-gcc-15.1.0
+    - docker push curoky/devspace:prebuilt-gcc-11.5.0
+    - docker push curoky/devspace:prebuilt-gcc-12.4.0
+    - docker push curoky/devspace:prebuilt-gcc-13.4.0
+    - docker push curoky/devspace:prebuilt-gcc-14.3.0
+    - docker push curoky/devspace:prebuilt-gcc-15.1.0

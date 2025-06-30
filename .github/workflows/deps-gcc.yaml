@@ -36,12 +36,12 @@ jobs:
           context: deps/gcc
           file: deps/gcc/Dockerfile
           push: true
-          tags: curoky/dotbox:deps-gcc-${{ matrix.version }}
+          tags: curoky/devspace:deps-gcc-${{ matrix.version }}
 
       - if: github.event_name == 'schedule'
         run: >
           docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
-          curoky/dotbox:deps-gcc-${{ matrix.version }}
+          curoky/devspace:deps-gcc-${{ matrix.version }}
 
       - uses: mxschmitt/action-tmate@v3
         if: ${{ failure() }}

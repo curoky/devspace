@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Copyright (c) 2018-2025 curoky(cccuroky@gmail.com).
 #
-# This file is part of dotbox.
-# See https://github.com/curoky/dotbox for further info.
+# This file is part of devspace.
+# See https://github.com/curoky/devspace for further info.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -59,7 +59,7 @@ function link_path() {
 }
 
 SCENE=${1}
-CONF_PATH=${2:-$HOME/dotbox/dotfiles} # TODO: remove
+CONF_PATH=${2:-$HOME/devspace/dotfiles} # TODO: remove
 
 function common() {
   link_path $CONF_PATH/atuin/config.toml $HOME/.config/atuin/config.toml
