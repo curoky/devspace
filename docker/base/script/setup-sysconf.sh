@@ -17,7 +17,7 @@
 # limitations under the License.
 set -xeuo pipefail
 
-CONF_PATH=${1:-/home/x/app/dotbox/config}
+CONF_PATH=${1:-/home/x/app/dotbox/dotfiles}
 
 function copy_path() {
   src=$1
@@ -76,7 +76,7 @@ copy_path $CONF_PATH/linux/sysctl.d/custom.conf /etc/sysctl.d/custom.conf
 # copy_path $CONF_PATH/ssh/etc.ssh_config /etc/ssh/ssh_config
 # copy_path $CONF_PATH/sshd/host-key /etc/ssh/sshd-host-key
 # chmod 600 /etc/ssh/sshd-host-key/*
-# systemctl enable /home/x/app/dotbox/config/systemd/myssh.service
+# systemctl enable /home/x/app/dotbox/dotfiles/systemd/myssh.service
 useradd --uid 200 -g 65534 --home-dir /run/sshd --create-home --shell /usr/sbin/nologin sshd
 mkdir -p /var/empty
 

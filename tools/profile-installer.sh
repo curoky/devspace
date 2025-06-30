@@ -17,7 +17,7 @@
 # limitations under the License.
 set -xeuo pipefail
 
-curl -L -o /tmp/profile.sh https://github.com/curoky/dotbox/raw/dev/config/passkey/profile.gzip.sh
+curl -L -o /tmp/profile.sh https://github.com/curoky/dotbox/raw/dev/dotfiles/passkey/profile.gzip.sh
 
 bash /tmp/profile.sh $@
 

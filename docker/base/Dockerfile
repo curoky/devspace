@@ -40,7 +40,7 @@ RUN mkdir ~/.nix-defexpr \
 # setup dotbox
 COPY --chown=5230:5230 ./ /home/x/app/dotbox
 RUN ln -sf /home/x/app/dotbox ~/dotbox \
-  && bash ~/dotbox/config/setup.sh docker ~/dotbox/config
+  && bash ~/dotbox/dotfiles/setup.sh docker ~/dotbox/dotfiles
 
 # other
 RUN sudo mkdir -p /workspace \
@@ -49,7 +49,7 @@ RUN sudo mkdir -p /workspace \
 USER root
 RUN ln -sf /home/x/app ~/app \
   && ln -sf ~/app/dotbox ~/dotbox \
-  && bash ~/dotbox/docker/base/script/setup-sysconf.sh ~/dotbox/config \
-  && bash ~/dotbox/config/setup.sh docker ~/dotbox/config
+  && bash ~/dotbox/docker/base/script/setup-sysconf.sh ~/dotbox/dotfiles \
+  && bash ~/dotbox/dotfiles/setup.sh docker ~/dotbox/dotfiles
 
 ENTRYPOINT ["/home/x/app/dotbox/docker/base/script/entrypoint.sh"]

@@ -1,4 +1,4 @@
-name: gcc
+name: Dep gcc
 
 on:
   push:

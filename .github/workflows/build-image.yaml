@@ -5,7 +5,7 @@ on:
     paths:
       - '.github/workflows/build-image.yaml'
       - 'docker/**'
-      - 'config/**'
+      - 'dotfiles/**'
   workflow_dispatch:
     inputs:
       disable_docker_cache:

@@ -19,9 +19,9 @@
 set -xeuo pipefail
 
 /home/x/app/dotbox/docker/base/script/link-path.sh
-sudo -u x /home/x/app/dotbox/config/setup.sh docker /home/x/dotbox/config
+sudo -u x /home/x/app/dotbox/dotfiles/setup.sh docker /home/x/dotbox/dotfiles
 
-chmod 600 /home/x/dotbox/config/ssh/devbox.private.id_rsa
+chmod 600 /home/x/dotbox/dotfiles/ssh/devbox.private.id_rsa
 /home/x/app/dotbox/docker/base/script/start-sshd.sh $SSHD_PORT
 
 sudo -u x bash /home/x/app/dotbox/tools/profile-installer.sh --ssl-pass-src pass:$PROFILE_PASS

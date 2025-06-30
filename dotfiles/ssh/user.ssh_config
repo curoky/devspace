@@ -2,8 +2,8 @@ Host *
   GSSAPIAuthentication yes
   GSSAPIDelegateCredentials no
   HashKnownHosts no
-  IdentityFile ~/dotbox/config/ssh/devbox.private.id_rsa
-  UserKnownHostsFile ~/.ssh/known_hosts ~/dotbox/config/ssh/known_hosts
+  IdentityFile ~/dotbox/dotfiles/ssh/devbox.private.id_rsa
+  UserKnownHostsFile ~/.ssh/known_hosts ~/dotbox/dotfiles/ssh/known_hosts
   ServerAliveInterval 10
   ServerAliveCountMax 10000000
   TCPKeepAlive yes

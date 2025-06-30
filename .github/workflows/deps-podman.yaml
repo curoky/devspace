@@ -1,4 +1,4 @@
-name: podman
+name: Dep podman
 
 on:
   push:
@@ -18,8 +18,16 @@ jobs:
       - uses: actions/checkout@v4
       - uses: docker/setup-buildx-action@v3
 
-      - run: ./build.sh
-        working-directory: deps/podman
+      - uses: docker/build-push-action@v6
+        with:
+          context: deps/podman
+          file: deps/podman/Dockerfile
+          load: true
+          tags: curoky/dotbox:deps-podman
+
+      - run: |
+          id=$(docker create curoky/dotbox:deps-podman)
+          docker cp $id:/opt/podman - >podman.tar
 
       - uses: svenstaro/upload-release-action@v2
         with:

@@ -11,6 +11,6 @@ jobs:
 
       - run: pip install dotdrop
 
-      - run: dotdrop install --cfg=config/config.yaml --force --profile=docker
+      - run: dotdrop install --cfg=dotfiles/config.yaml --force --profile=docker
 
       - uses: pre-commit/action@v3.0.1

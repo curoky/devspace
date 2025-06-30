@@ -48,5 +48,5 @@ cp -r $abspath/* $target
 if [ $link -eq 1 ]; then
   rm -f $HOME/dotbox
   ln -s $target $HOME/dotbox
-  $HOME/dotbox/config/setup.sh $link_name $HOME/dotbox/config
+  $HOME/dotbox/dotfiles/setup.sh $link_name $HOME/dotbox/dotfiles
 fi

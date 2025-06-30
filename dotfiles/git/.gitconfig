@@ -14,7 +14,7 @@ smudge = git-lfs smudge -- %f
 ;   branch = yellow black bold ul
 
 [core]
-excludesfile = ~/dotbox/config/git/.gitignore_global
+excludesfile = ~/dotbox/dotfiles/git/.gitignore_global
 
 [log]
 date = iso
@@ -62,7 +62,7 @@ date = iso
 	# 	"
 
 [includeIf "gitdir:/"]
-path = ~/dotbox/config/git/.user.gitconfig
+path = ~/dotbox/dotfiles/git/.user.gitconfig
 
 # [safe]
 # 	directory = /opt/bazel/registry/bazel-central-registry

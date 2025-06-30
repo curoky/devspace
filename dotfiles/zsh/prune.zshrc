@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-export CONFIG_HOME=~/dotbox/config
+export CONFIG_HOME=~/dotbox/dotfiles
 export TOOLS_ROOT=/opt/tools
 if [[ ! -d $TOOLS_ROOT ]]; then
   export TOOLS_ROOT=$HOME/app/tools

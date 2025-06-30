@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-export CONFIG_HOME=~/dotbox/config
+export CONFIG_HOME=~/dotbox/dotfiles
 
 for f in "$CONFIG_HOME"/zsh/lib/*.sh; do
   source "$f"
