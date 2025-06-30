@@ -1,0 +1,132 @@
+FROM nixpkgs/nix-unstable:latest AS deps-nixpkgs-builder
+
+ENV NIX_PATH=nixpkgs=channel:nixos-25.05
+
+RUN nix-channel --add https://nixos.org/channels/nixos-25.05 nixpkgs \
+  && nix-channel --update \
+  && nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.netavark
+
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.patchelf
+RUN mkdir -p /opt/tools \
+  && cp -L /nix/var/nix/profiles/default/bin/netavark /opt/tools \
+  && cp -L /nix/var/nix/profiles/default/bin/patchelf /opt/tools
+
+FROM debian:stretch-backports AS deps-builder
+
+RUN cat /etc/apt/sources.list \
+  && sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list \
+  && sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list.d/backports.list \
+  && sed -i 's/security.debian.org/archive.debian.org/g' /etc/apt/sources.list \
+  && sed -i '/stretch-updates/d' /etc/apt/sources.list \
+  && apt-get update -y \
+  && apt-get install -y \
+      git curl wget vim ca-certificates unzip xz-utils \
+      pkg-config make gcc g++ gperf
+
+ENV PATH=$PATH:/opt/deps/bin
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/deps/lib
+
+RUN mkdir -p /opt/build/libgpg-error \
+  && curl -sSL https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.46.tar.gz | \
+    tar -x --gunzip -C /opt/build/libgpg-error --strip-components 1 \
+  && cd /opt/build/libgpg-error \
+  && ./configure --prefix=/opt/deps \
+  && make -j$(nproc) && make install
+
+RUN mkdir -p /opt/build/libgcrypt \
+  && curl -sSL https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.10.3.tar.gz | \
+    tar -x --gunzip -C /opt/build/libgcrypt --strip-components 1 \
+  && cd /opt/build/libgcrypt \
+  && ./configure --prefix=/opt/deps \
+  && make -j$(nproc) && make install
+
+RUN mkdir -p /opt/build/libksba \
+  && curl -sSL https://gnupg.org/ftp/gcrypt/libksba/libksba-1.6.6.tar.bz2 | \
+    tar -x --bzip2 -C /opt/build/libksba --strip-components 1 \
+  && cd /opt/build/libksba \
+  && ./configure --prefix=/opt/deps \
+  && make -j$(nproc) && make install
+
+RUN mkdir -p /opt/build/npth \
+  && curl -sSL https://gnupg.org/ftp/gcrypt/npth/npth-1.6.tar.bz2 | \
+    tar -x --bzip2 -C /opt/build/npth --strip-components 1 \
+  && cd /opt/build/npth \
+  && ./configure --prefix=/opt/deps \
+  && make -j$(nproc) && make install
+
+RUN mkdir -p /opt/build/libassuan \
+  && curl -sSL https://gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.6.tar.bz2 | \
+    tar -x --bzip2 -C /opt/build/libassuan --strip-components 1 \
+  && cd /opt/build/libassuan \
+  && ./configure --prefix=/opt/deps \
+  && make -j$(nproc) && make install
+
+RUN mkdir -p /opt/build/gnupg \
+  && curl -sSL https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.5.tar.bz2 | \
+    tar -x --bzip2 -C /opt/build/gnupg --strip-components 1 \
+  && cd /opt/build/gnupg \
+  && ./configure --prefix=/opt/deps \
+    --with-npth-prefix=/opt/deps \
+    # --with-libgpg-error-prefix=/opt/deps \
+    # --with-libgcrypt-prefix=/opt/deps \
+    # --with-ksba-prefix=/opt/deps \
+    # --with-npth-prefix=/opt/deps \
+  && make -j$(nproc) && make install
+
+RUN mkdir -p /opt/build/gpgme \
+  && curl -sSL https://gnupg.org/ftp/gcrypt/gpgme/gpgme-1.23.2.tar.bz2 | \
+    tar -x --bzip2 -C /opt/build/gpgme --strip-components 1 \
+  && cd /opt/build/gpgme \
+  && ./configure --prefix=/opt/deps \
+  && make -j$(nproc) && make install
+
+RUN mkdir -p /opt/build/libseccomp \
+  && curl -sSL https://github.com/seccomp/libseccomp/releases/download/v2.5.5/libseccomp-2.5.5.tar.gz | \
+    tar -x --gunzip -C /opt/build/libseccomp --strip-components 1 \
+  && cd /opt/build/libseccomp \
+  && ./configure --prefix=/opt/deps \
+  && make -j$(nproc) && make install
+
+FROM debian:stretch-backports
+
+RUN cat /etc/apt/sources.list \
+  && sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list \
+  && sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list.d/backports.list \
+  && sed -i 's/security.debian.org/archive.debian.org/g' /etc/apt/sources.list \
+  && sed -i '/stretch-updates/d' /etc/apt/sources.list \
+  && apt-get update -y \
+  && apt-get install -y \
+      git curl wget vim ca-certificates unzip xz-utils \
+      pkg-config make gcc g++
+
+RUN mkdir -p /usr/local/go \
+  && curl -sSL https://go.dev/dl/go1.24.4.linux-amd64.tar.gz | \
+    tar -x --gunzip -C /usr/local/go --strip-components 1
+
+COPY --link --from=deps-builder /opt/deps/ /opt/deps/
+COPY --link --from=deps-nixpkgs-builder /opt/tools /opt/tools
+
+WORKDIR /src
+
+ENV GOPATH=/go
+ENV PATH="/usr/local/go/bin:$PATH:$GOPATH/bin"
+ENV PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/deps/lib/pkgconfig
+
+RUN git clone --depth 1 --branch v5.5.2 https://github.com/containers/podman.git
+
+WORKDIR /src/podman
+RUN make vendor \
+  && make bin/podman bin/rootlessport bin/quadlet podman-remote
+
+RUN mkdir -p /opt/podman/lib \
+  && cp bin/podman bin/podman-remote /opt/tools/netavark /opt/podman \
+  && cp /opt/deps/lib/libgpgme.so.11 \
+    /opt/deps/lib/libseccomp.so.2 \
+    /opt/deps/lib/libassuan.so.0 \
+    /opt/deps/lib/libgpg-error.so.0 /opt/podman/lib \
+  && curl -sSL -o /opt/podman/conmon https://github.com/containers/conmon/releases/download/v2.1.13/conmon.amd64 \
+  && chmod +x /opt/podman/conmon \
+  && /opt/tools/patchelf --add-rpath '$ORIGIN/lib' /opt/podman/podman
+
+COPY ./conf /opt/podman/conf
+COPY ./install.sh /opt/podman/

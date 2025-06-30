@@ -1,0 +1,33 @@
+name: podman
+
+on:
+  push:
+    paths:
+      - '.github/workflows/podman.yaml'
+      - 'prebuilt/podman/**'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  packed-tools:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+
+      - run: ./build.sh
+        working-directory: prebuilt/podman
+
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          file: prebuilt/podman/podman.tar
+          asset_name: prebuilt/podman/podman.tar
+          tag: 'v1.0'
+          overwrite: true
+
+      - uses: mxschmitt/action-tmate@v3
+        if: ${{ failure() }}
+        timeout-minutes: 30

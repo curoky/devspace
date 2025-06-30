@@ -41,7 +41,7 @@ pkgs=(
   netron
   # nettools
   # openssl
-  # patchelf
+  patchelf
   # procps
   rsync
   # snappy
