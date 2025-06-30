@@ -81,7 +81,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: docker/stage/${{ matrix.name }}
+          context: devbox/stage/${{ matrix.name }}
           file: devbox/stage/${{ matrix.name }}/Dockerfile
           push: true
           provenance: mode=max
@@ -112,7 +112,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: docker/dist/${{ matrix.name }}
+          context: devbox/dist/${{ matrix.name }}
           file: devbox/dist/${{ matrix.name }}/Dockerfile
           push: true
           provenance: mode=max
@@ -142,7 +142,7 @@ jobs:
   #         password: ${{ secrets.DOCKER_TOKEN }}
   #     - uses: docker/build-push-action@v6
   #       with:
-  #         context: docker/dist/${{ matrix.name }}
+  #         context: devbox/dist/${{ matrix.name }}
   #         file: devbox/dist/${{ matrix.name }}/Dockerfile
   #         push: true
   #         provenance: mode=max
@@ -177,7 +177,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: docker/dist/tensorflow
+          context: devbox/dist/tensorflow
           file: devbox/dist/tensorflow/Dockerfile.${{ matrix.name }}
           push: true
           provenance: mode=max
