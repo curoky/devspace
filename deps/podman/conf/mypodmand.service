@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Type=simple
 User=root
-Environment=PATH=/opt/mypodman/:/usr/local/bin:/usr/bin:/bin
-ExecStart=podman system service --time=0 unix:///tmp/mypodman.sock
+Environment=PATH=/opt/mypodman:/usr/local/bin:/usr/bin:/bin
+ExecStart=/opt/mypodman/podman system service --time=0 unix:///tmp/mypodman.sock
 Restart=always
 RestartSec=10s
 
