@@ -27,7 +27,7 @@ COPY --chown=5230:5230 --link --from=curoky/devspace:stage-nixpkg /home/x/.local
 COPY --chown=5230:5230 --link --from=stage_tools /opt/tools /opt/tools
 
 # setup tools
-RUN sudo ln -s /opt/tools/store/zsh/bin/zsh /usr/bin \
+RUN sudo ln -s /opt/tools/store/zsh-bundle/bin/zsh /usr/bin \
   && sudo ln -s /opt/tools/store/wget/bin/wget /usr/bin \
   && sudo ln -s /opt/tools/store/curl/bin/curl /usr/bin \
   && sudo ln -s /opt/tools/store/openssh_gssapi/bin/ssh /usr/bin
