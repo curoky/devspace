@@ -18,11 +18,11 @@
 
 set -xeuo pipefail
 
-/home/x/app/devspace/docker/base/script/link-path.sh
+/home/x/app/devspace/dist/images/base/script/link-path.sh
 sudo -u x /home/x/app/devspace/dotfiles/setup.sh docker /home/x/devspace/dotfiles
 
 chmod 600 /home/x/devspace/dotfiles/ssh/devbox.private.id_rsa
-/home/x/app/devspace/docker/base/script/start-sshd.sh $SSHD_PORT
+/home/x/app/devspace/dist/images/base/script/start-sshd.sh $SSHD_PORT
 
 sudo -u x bash /home/x/app/devspace/tools/profile-installer.sh --ssl-pass-src pass:$PROFILE_PASS
 
