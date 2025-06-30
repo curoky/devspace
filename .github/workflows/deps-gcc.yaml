@@ -30,16 +30,14 @@ jobs:
         with:
           username: curoky
           password: ${{ secrets.DOCKER_TOKEN }}
+
       - uses: docker/build-push-action@v6
         with:
           context: deps/gcc
           file: deps/gcc/Dockerfile
           push: true
-          provenance: mode=max
-          cache-from: type=registry,ref=curoky/dotbox:__cache_deps_gcc_${{ matrix.version }}
-          cache-to: type=registry,ref=curoky/dotbox:__cache_deps_gcc_${{ matrix.version }},mode=max
-          no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
           tags: curoky/dotbox:deps-gcc-${{ matrix.version }}
+
       - if: github.event_name == 'schedule'
         run: >
           docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive

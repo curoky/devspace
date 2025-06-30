@@ -6,12 +6,6 @@ on:
       - '.github/workflows/deps-cuda.yaml'
       - 'deps/cuda/**'
   workflow_dispatch:
-    inputs:
-      disable_docker_cache:
-        description: 'disable docker cache'
-        default: false
-        required: false
-        type: boolean
   schedule:
     - cron: '0 0 * * 0'
 
@@ -56,21 +50,23 @@ jobs:
         with:
           username: curoky
           password: ${{ secrets.DOCKER_TOKEN }}
+
       - uses: docker/build-push-action@v6
         with:
           context: deps/cuda
           file: deps/cuda/Dockerfile
           push: true
-          provenance: mode=max
-          cache-from: type=registry,ref=curoky/dotbox:__cache_deps_cuda_${{ matrix.name }}
-          cache-to: type=registry,ref=curoky/dotbox:__cache_deps_cuda_${{ matrix.name }},mode=max
-          no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
           build-args: |
             CUDA_VERSION=${{ matrix.CUDA_VERSION }}
             CUDA_DRIVER_VERSION=${{ matrix.CUDA_DRIVER_VERSION }}
             CUDNN_VERSION=${{ matrix.CUDNN_VERSION }}
           tags: curoky/dotbox:deps-cuda-${{ matrix.name }}
+
       - if: github.event_name == 'schedule'
         run: >
           docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
           curoky/dotbox:deps-cuda-${{ matrix.name }}
+
+      - uses: mxschmitt/action-tmate@v3
+        if: ${{ failure() }}
+        timeout-minutes: 30

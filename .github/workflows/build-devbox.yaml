@@ -1,10 +1,10 @@
-name: Build images
+name: Build devbox
 
 on:
   push:
     paths:
-      - '.github/workflows/build-image.yaml'
-      - 'docker/**'
+      - '.github/workflows/build-devbox.yaml'
+      - 'devbox/**'
       - 'dotfiles/**'
   workflow_dispatch:
     inputs:
@@ -50,7 +50,7 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           context: .
-          file: docker/base/Dockerfile
+          file: devbox/base/Dockerfile
           push: true
           provenance: mode=max
           cache-from: type=registry,ref=curoky/dotbox:__cache_base_${{ matrix.saved_image }}
@@ -82,7 +82,7 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           context: docker/stage/${{ matrix.name }}
-          file: docker/stage/${{ matrix.name }}/Dockerfile
+          file: devbox/stage/${{ matrix.name }}/Dockerfile
           push: true
           provenance: mode=max
           cache-from: type=registry,ref=curoky/dotbox:__cache_stage_${{ matrix.name }}
@@ -113,7 +113,7 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           context: docker/dist/${{ matrix.name }}
-          file: docker/dist/${{ matrix.name }}/Dockerfile
+          file: devbox/dist/${{ matrix.name }}/Dockerfile
           push: true
           provenance: mode=max
           cache-from: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.saved_image }}
@@ -143,7 +143,7 @@ jobs:
   #     - uses: docker/build-push-action@v6
   #       with:
   #         context: docker/dist/${{ matrix.name }}
-  #         file: docker/dist/${{ matrix.name }}/Dockerfile
+  #         file: devbox/dist/${{ matrix.name }}/Dockerfile
   #         push: true
   #         provenance: mode=max
   #         cache-from: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.saved_image }}
@@ -178,7 +178,7 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           context: docker/dist/tensorflow
-          file: docker/dist/tensorflow/Dockerfile.${{ matrix.name }}
+          file: devbox/dist/tensorflow/Dockerfile.${{ matrix.name }}
           push: true
           provenance: mode=max
           cache-from: type=registry,ref=curoky/dotbox:__cache_dist_${{ matrix.name }}
