@@ -22,9 +22,8 @@ abspath=$(cd "$(dirname "$0")" && pwd)
 target=${1:-$HOME/app/tools}
 
 rm -rf $target
-# mkdir -p $target
-# cp -r $abspath/* $target
-mv $abspath $target
+mkdir -p $target
+cp -r $abspath/* $target
 
 if ! grep -q 'app/tools/bin' ~/.bashrc; then
   echo 'export PATH=$HOME/app/tools/bin:$PATH' >>~/.bashrc

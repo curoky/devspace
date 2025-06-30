@@ -43,6 +43,13 @@ tasks:
       --network=host
       --build-arg USE_CXX11_ABI=1
       --tag curoky/dotbox:prebuilt-tf2.5.0-cu11.4.4-cudnn8.1.0-gcc8-py3.7-abi1
+  tf2.5-cu12.4.0-abi1:
+    - >
+      docker buildx build .
+      --file 2.5.0/Dockerfile.cu12.4.0-cudnn8.9.2-gcc8-py3.7
+      --network=host
+      --build-arg USE_CXX11_ABI=1
+      --tag curoky/dotbox:prebuilt-tf2.5.0-cu12.4.0-cudnn8.9.2-gcc8-py3.7-abi1
   tf2.16-cu12.3.2-gcc11:
     - >
       docker buildx build .
