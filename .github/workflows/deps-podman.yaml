@@ -3,14 +3,14 @@ name: podman
 on:
   push:
     paths:
-      - '.github/workflows/podman.yaml'
-      - 'prebuilt/podman/**'
+      - '.github/workflows/deps-podman.yaml'
+      - 'deps/podman/**'
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * 0'
 
 jobs:
-  packed-tools:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -19,12 +19,12 @@ jobs:
       - uses: docker/setup-buildx-action@v3
 
       - run: ./build.sh
-        working-directory: prebuilt/podman
+        working-directory: deps/podman
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prebuilt/podman/podman.tar
-          asset_name: prebuilt/podman/podman.tar
+          file: deps/podman/podman.tar
+          asset_name: deps/podman/podman.tar
           tag: 'v1.0'
           overwrite: true
 
