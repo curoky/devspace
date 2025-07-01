@@ -128,5 +128,11 @@ RUN mkdir -p /opt/podman/lib \
   && chmod +x /opt/podman/conmon \
   && /opt/tools/patchelf --add-rpath '$ORIGIN/lib' /opt/podman/podman
 
+RUN mkdir -p /opt/podman/gpu \
+  && curl -sSL -o /opt/podman/gpu/libnvidia-container1_1.17.5-1_amd64.deb https://github.com/NVIDIA/libnvidia-container/raw/gh-pages/stable/deb/amd64/libnvidia-container1_1.17.5-1_amd64.deb \
+  && curl -sSL -o /opt/podman/gpu/libnvidia-container-tools_1.17.5-1_amd64.deb https://github.com/NVIDIA/libnvidia-container/raw/gh-pages/stable/deb/amd64/libnvidia-container-tools_1.17.5-1_amd64.deb \
+  && curl -sSL -o /opt/podman/gpu/nvidia-container-toolkit-base_1.17.5-1_amd64.deb https://github.com/NVIDIA/libnvidia-container/raw/gh-pages/stable/deb/amd64/nvidia-container-toolkit-base_1.17.5-1_amd64.deb \
+  && curl -sSL -o /opt/podman/gpu/nvidia-container-toolkit_1.17.5-1_amd64.deb https://github.com/NVIDIA/libnvidia-container/raw/gh-pages/stable/deb/amd64/nvidia-container-toolkit_1.17.5-1_amd64.deb
+
 COPY ./conf /opt/podman/conf
 COPY ./install.sh /opt/podman/

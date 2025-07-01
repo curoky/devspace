@@ -21,8 +21,10 @@ enable_gpu=${1:-0}
 
 packages=(docker-ce docker-ce-cli containerd.io
   docker-buildx-plugin docker-compose-plugin
-  nvidia-container-toolkit nvidia-container-toolkit-base
-  libnvidia-container-tools libnvidia-container1
+  nvidia-container-toolkit
+  nvidia-container-toolkit-base
+  libnvidia-container-tools
+  libnvidia-container1
 )
 
 for package in "${packages[@]}"; do
