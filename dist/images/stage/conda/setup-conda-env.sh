@@ -115,7 +115,7 @@ if [[ $add_tf_env == "true" ]]; then
   echo '' >$target_env_file
 
   echo "export LD_LIBRARY_PATH=/opt/nvidia/cuda-${cuda_version}/lib64:/opt/nvidia/cuda-${cuda_version}/extras/CUPTI/lib64/:\$LD_LIBRARY_PATH" >>$target_env_file
-  echo "export LD_LIBRARY_PATH=/opt/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}/lib64:\$LD_LIBRARY_PATH" >>$target_env_file
+  echo "export LD_LIBRARY_PATH=/opt/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}/lib64:/opt/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}/lib:\$LD_LIBRARY_PATH" >>$target_env_file
   echo "export CUDNN_INSTALL_PATH=/opt/nvidia/cudnn${cudnn_version}-cu${cuda_short_version}" >>$target_env_file
 fi
 
