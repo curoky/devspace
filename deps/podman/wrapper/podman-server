@@ -18,4 +18,6 @@ export PATH=$PATH:$root/bin
 exec -a "$0" "$root/bin/podman" \
   --imagestore=$root/storage \
   --runroot=$root/runroot \
+  --log-level=debug \
+  --network-cmd-path=$root/bin \
   "$@"
