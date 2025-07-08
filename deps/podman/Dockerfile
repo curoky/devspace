@@ -1,3 +1,12 @@
+FROM debian:stretch-backports AS debian-default
+
+RUN cat /etc/apt/sources.list \
+  && sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list \
+  && sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list.d/backports.list \
+  && sed -i 's/security.debian.org/archive.debian.org/g' /etc/apt/sources.list \
+  && sed -i '/stretch-updates/d' /etc/apt/sources.list \
+  && apt-get update -y
+
 FROM nixpkgs/nix-unstable:latest AS deps-nixpkgs-builder
 
 ENV NIX_PATH=nixpkgs=channel:nixos-25.05
@@ -11,14 +20,9 @@ RUN mkdir -p /opt/tools \
   && cp -L /nix/var/nix/profiles/default/bin/netavark /opt/tools \
   && cp -L /nix/var/nix/profiles/default/bin/patchelf /opt/tools
 
-FROM debian:stretch-backports AS deps-builder
+FROM debian-default AS deps-builder
 
-RUN cat /etc/apt/sources.list \
-  && sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list \
-  && sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list.d/backports.list \
-  && sed -i 's/security.debian.org/archive.debian.org/g' /etc/apt/sources.list \
-  && sed -i '/stretch-updates/d' /etc/apt/sources.list \
-  && apt-get update -y \
+RUN apt-get update -y \
   && apt-get install -y \
       git curl wget vim ca-certificates unzip xz-utils \
       pkg-config make gcc g++ gperf
@@ -87,14 +91,9 @@ RUN mkdir -p /opt/build/libseccomp \
   && ./configure --prefix=/opt/deps \
   && make -j$(nproc) && make install
 
-FROM debian:stretch-backports
+FROM debian-default as podman-builder
 
-RUN cat /etc/apt/sources.list \
-  && sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list \
-  && sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list.d/backports.list \
-  && sed -i 's/security.debian.org/archive.debian.org/g' /etc/apt/sources.list \
-  && sed -i '/stretch-updates/d' /etc/apt/sources.list \
-  && apt-get update -y \
+RUN apt-get update -y \
   && apt-get install -y \
       git curl wget vim ca-certificates unzip xz-utils \
       pkg-config make gcc g++
@@ -103,8 +102,7 @@ RUN mkdir -p /usr/local/go \
   && curl -sSL https://go.dev/dl/go1.24.4.linux-amd64.tar.gz | \
     tar -x --gunzip -C /usr/local/go --strip-components 1
 
-COPY --link --from=deps-builder /opt/deps/ /opt/deps/
-COPY --link --from=deps-nixpkgs-builder /opt/tools /opt/tools
+COPY --link --from=deps-builder /opt/deps /opt/deps
 
 WORKDIR /src
 
@@ -118,15 +116,32 @@ WORKDIR /src/podman
 RUN make vendor \
   && make bin/podman bin/rootlessport bin/quadlet podman-remote
 
-RUN mkdir -p /opt/podman/lib \
-  && cp bin/podman bin/podman-remote /opt/tools/netavark /opt/podman \
+
+FROM debian-default
+
+RUN apt-get update -y \
+  && apt-get install -y \
+    curl
+
+COPY --link --from=deps-nixpkgs-builder /opt/tools /opt/tools
+COPY --link --from=deps-builder /opt/deps /opt/deps
+COPY --link --from=podman-builder /src/podman /src/podman
+
+RUN mkdir -p /opt/podman/bin /opt/podman/lib  \
+  && cp /src/podman/bin/podman \
+    /src/podman/bin/podman-remote \
+    /opt/podman/bin \
   && cp /opt/deps/lib/libgpgme.so.11 \
     /opt/deps/lib/libseccomp.so.2 \
     /opt/deps/lib/libassuan.so.0 \
-    /opt/deps/lib/libgpg-error.so.0 /opt/podman/lib \
-  && curl -sSL -o /opt/podman/conmon https://github.com/containers/conmon/releases/download/v2.1.13/conmon.amd64 \
-  && chmod +x /opt/podman/conmon \
-  && /opt/tools/patchelf --add-rpath '$ORIGIN/lib' /opt/podman/podman
+    /opt/deps/lib/libgpg-error.so.0 \
+    /opt/podman/lib \
+  && /opt/tools/patchelf --add-rpath '$ORIGIN/../lib' /opt/podman/bin/podman
+
+RUN cp /opt/tools/netavark /opt/podman/bin
+
+RUN curl -sSL -o /opt/podman/bin/conmon https://github.com/containers/conmon/releases/download/v2.1.13/conmon.amd64 \
+  && chmod +x /opt/podman/bin/conmon
 
 RUN mkdir -p /opt/podman/gpu \
   && curl -sSL -o /opt/podman/gpu/libnvidia-container1_1.17.5-1_amd64.deb https://github.com/NVIDIA/libnvidia-container/raw/gh-pages/stable/deb/amd64/libnvidia-container1_1.17.5-1_amd64.deb \
@@ -134,5 +149,8 @@ RUN mkdir -p /opt/podman/gpu \
   && curl -sSL -o /opt/podman/gpu/nvidia-container-toolkit-base_1.17.5-1_amd64.deb https://github.com/NVIDIA/libnvidia-container/raw/gh-pages/stable/deb/amd64/nvidia-container-toolkit-base_1.17.5-1_amd64.deb \
   && curl -sSL -o /opt/podman/gpu/nvidia-container-toolkit_1.17.5-1_amd64.deb https://github.com/NVIDIA/libnvidia-container/raw/gh-pages/stable/deb/amd64/nvidia-container-toolkit_1.17.5-1_amd64.deb
 
-COPY ./conf /opt/podman/conf
+RUN mkdir -p /opt/podman/testdir
+
 COPY ./install.sh /opt/podman/
+COPY ./conf /opt/podman/conf
+COPY ./wrapper/* /opt/podman

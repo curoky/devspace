@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -xeuo pipefail
+
+script_path="$(readlink -f "$0")"
+root=$(cd "$(dirname "$script_path")" && pwd)
+
+export CONTAINER_HOST=unix:///tmp/mypodman.sock
+
+exec -a "$0" "$root/bin/podman" "$@"

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -xeuo pipefail
+
+script_path="$(readlink -f "$0")"
+root=$(cd "$(dirname "$script_path")" && pwd)
+
+export CONTAINERS_CONF=$root/conf/containers.conf
+export CONTAINERS_STORAGE_CONF=$root/conf/storage.conf
+export CONTAINERS_REGISTRIES_CONF=$root/conf/registries.conf
+# export CONTAINERS_POLICY=$root/conf/policy.json
+
+# or --tmpdir=path
+export TMPDIR=$root/tmpdir
+
+# or helper_binaries_dir/--network-cmd-path
+export PATH=$PATH:$root/bin
+
+exec -a "$0" "$root/bin/podman" \
+  --imagestore=$root/storage \
+  --runroot=$root/runroot \
+  "$@"
