@@ -154,3 +154,5 @@ RUN mkdir -p /opt/podman/testdir
 COPY ./install.sh /opt/podman/
 COPY ./conf /opt/podman/conf
 COPY ./wrapper/* /opt/podman
+
+RUN ln -s -r /opt/podman/podman-client /opt/podman/pod
