@@ -149,7 +149,7 @@ RUN mkdir -p /opt/podman/gpu \
   && curl -sSL -o /opt/podman/gpu/nvidia-container-toolkit-base_1.17.5-1_amd64.deb https://github.com/NVIDIA/libnvidia-container/raw/gh-pages/stable/deb/amd64/nvidia-container-toolkit-base_1.17.5-1_amd64.deb \
   && curl -sSL -o /opt/podman/gpu/nvidia-container-toolkit_1.17.5-1_amd64.deb https://github.com/NVIDIA/libnvidia-container/raw/gh-pages/stable/deb/amd64/nvidia-container-toolkit_1.17.5-1_amd64.deb
 
-RUN mkdir -p /opt/podman/testdir
+RUN mkdir -p /opt/podman/tmpdir
 
 COPY ./install.sh /opt/podman/
 COPY ./conf /opt/podman/conf

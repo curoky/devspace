@@ -6,4 +6,4 @@ root=$(cd "$(dirname "$script_path")" && pwd)
 
 export CONTAINER_HOST=unix:///tmp/mypodman.sock
 
-exec -a "$0" "$root/bin/podman" "$@"
+exec -a "$0" "$root/bin/podman" --remote "$@"

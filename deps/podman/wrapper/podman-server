@@ -10,14 +10,14 @@ export CONTAINERS_REGISTRIES_CONF=$root/conf/registries.conf
 # export CONTAINERS_POLICY=$root/conf/policy.json
 
 # or --tmpdir=path
-export TMPDIR=$root/tmpdir
+# export TMPDIR=$root/tmpdir
 
 # or helper_binaries_dir/--network-cmd-path
 export PATH=$PATH:$root/bin
 
+# --imagestore=$root/storage \
+# --runroot=$root/runroot \
+# --network-cmd-path=$root/bin \
 exec -a "$0" "$root/bin/podman" \
-  --imagestore=$root/storage \
-  --runroot=$root/runroot \
   --log-level=debug \
-  --network-cmd-path=$root/bin \
   "$@"

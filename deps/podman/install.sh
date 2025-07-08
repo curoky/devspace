@@ -9,8 +9,8 @@ mkdir -p /opt/mypodman
 cp -r ./* /opt/mypodman
 
 rm -rf /etc/containers/policy.json
-mkdir -p /etc/containers/policy.json
-cp ./conf/policy.json /etc/containers/policy.json
+mkdir -p /etc/containers
+cp ./conf/policy.json /etc/containers/
 
 rm -rf /etc/systemd/system/mypodmand.service
 mkdir -p /etc/systemd/system/
