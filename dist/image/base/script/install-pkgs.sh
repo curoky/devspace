@@ -139,7 +139,7 @@ pkgs=(
   perl
 )
 
-curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/install.sh >/tmp/install.sh
+curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/multi-install.sh >/tmp/install.sh
 for pkg in "${pkgs[@]}"; do
   bash /tmp/install.sh -n $pkg -i /opt/tools -l -p /opt/tools/ &
 done
