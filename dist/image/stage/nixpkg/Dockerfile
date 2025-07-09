@@ -32,7 +32,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     # ModuleNotFoundError: No module named '_dbm
     # nixpkgs.dstat \
     # libuv test failed
-    nixpkgs.cmake \
+    # nixpkgs.cmake \
     nixpkgs.nodePackages.prettier \
   && chmod +w /nix/var/nix/profiles/default/* \
   # && nix-env -iA -p /nix/var/nix/profiles/libs nixpkgs.python311Packages.libtorrent-rasterbar \

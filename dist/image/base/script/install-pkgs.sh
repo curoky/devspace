@@ -56,6 +56,7 @@ pkgs=(
   vim
   vim-extra
   ripgrep
+  cmake
 
   ####  too basic tool
   cacert
