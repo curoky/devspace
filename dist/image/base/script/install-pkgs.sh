@@ -57,6 +57,7 @@ pkgs=(
   vim-extra
   ripgrep
   cmake
+  git
 
   ####  too basic tool
   cacert
@@ -135,7 +136,6 @@ pkgs=(
   ##### experimental
   # bash
   gdb
-  # git
   # man
   perl
 )
