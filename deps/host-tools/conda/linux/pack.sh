@@ -31,8 +31,8 @@ rm -rf /home/x/app/conda && mkdir -p /home/x/app/conda
 bash tmp/miniconda.sh -b -u -p /home/x/app/conda
 
 # setup env
-../../../dist/image/stage/conda/setup-conda-env.sh -e ../../../dist/image/stage/conda/env/py3.yaml --conda_root=/home/x/app/conda
-../../../dist/image/stage/conda/setup-conda-env.sh -e ../../../dist/image/stage/conda/env/profiling.yaml --conda_root=/home/x/app/conda
+../../../../dist/image/stage/conda/setup-conda-env.sh -e ../../../dist/image/stage/conda/env/py3.yaml --conda_root=/home/x/app/conda
+../../../../dist/image/stage/conda/setup-conda-env.sh -e ../../../dist/image/stage/conda/env/profiling.yaml --conda_root=/home/x/app/conda
 
 # setup pipx
 /home/x/app/conda/bin/pip3 install pipx

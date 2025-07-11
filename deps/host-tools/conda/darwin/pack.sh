@@ -31,8 +31,8 @@ sed -i -e 's/| md5/| openssl md5/g' tmp/miniconda.sh
 bash tmp/miniconda.sh -b -u -p /Users/x/app/conda
 
 # setup env
-../../../dist/image/stage/conda/setup-conda-env.sh -e ../../../dist/host/darwin/conf/conda/py3.yaml --conda_root=/Users/x/app/conda
-../../../dist/image/stage/conda/setup-conda-env.sh -e ../../../dist/host/darwin/conf/conda/monopoly.yaml --conda_root=/Users/x/app/conda
+../../../../dist/image/stage/conda/setup-conda-env.sh -e ../../../dist/host/darwin/conf/conda/py3.yaml --conda_root=/Users/x/app/conda
+../../../../dist/image/stage/conda/setup-conda-env.sh -e ../../../dist/host/darwin/conf/conda/monopoly.yaml --conda_root=/Users/x/app/conda
 
 # setup pipx
 /Users/x/app/conda/bin/pip3 install pipx
