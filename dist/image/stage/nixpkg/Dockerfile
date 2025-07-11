@@ -20,7 +20,8 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA \
     # nixpkgs.man \
-    nixpkgs.locale nixpkgs.git \
+    nixpkgs.locale \
+    # nixpkgs.git \
     # nixpkgs.graphviz \
     # nixpkgs.ccache nixpkgs.distcc nixpkgs.meson nixpkgs.scons nixpkgs.asciinema nixpkgs.bash
     # lua static

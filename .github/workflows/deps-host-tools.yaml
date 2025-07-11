@@ -1,17 +1,16 @@
-name: prepack
+name: Dep host tools
 
 on:
   push:
     paths:
-      - '.github/workflows/prepack.yaml'
-      - 'dotfiles/**'
-      - 'prepack/**'
+      - '.github/workflows/deps-host-tools.yaml'
+      - 'deps/host-tools/**'
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * 0'
 
 jobs:
-  packed-tools:
+  tools:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -28,19 +27,19 @@ jobs:
       - run: brew install makeself
 
       - run: |
-          cd prepack/packed-tools/${{ matrix.os }}
+          cd deps/host-tools/tools/${{ matrix.os }}
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-tools/${{ matrix.os }}/tmp/tools-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
+          file: deps/host-tools/tools/${{ matrix.os }}/tmp/tools-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
           asset_name: tools-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-tools/${{ matrix.os }}/tmp/tools-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
+          file: deps/host-tools/tools/${{ matrix.os }}/tmp/tools-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
           asset_name: tools-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
           tag: 'v1.0'
           overwrite: true
@@ -49,7 +48,7 @@ jobs:
         if: ${{ failure() }}
         timeout-minutes: 30
 
-  packed-conda-envs:
+  conda:
     strategy:
       matrix:
         include:
@@ -73,24 +72,24 @@ jobs:
           echo "/opt/homebrew/opt/gnu-getopt/bin" >> $GITHUB_PATH
 
       - run: |
-          cd prepack/packed-conda-envs/${{ matrix.os }}/
+          cd deps/host-tools/conda/${{ matrix.os }}/
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-conda-envs/${{ matrix.os }}/tmp/conda-envs-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
+          file: deps/host-tools/conda/${{ matrix.os }}/tmp/conda-envs-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
           asset_name: conda-envs-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-conda-envs/${{ matrix.os }}/tmp/conda-envs-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
+          file: deps/host-tools/conda/${{ matrix.os }}/tmp/conda-envs-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
           asset_name: conda-envs-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
           tag: 'v1.0'
           overwrite: true
 
-  packed-docker:
+  docker:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -100,19 +99,19 @@ jobs:
       - run: brew install makeself
 
       - run: |
-          cd prepack/packed-docker/debian10
+          cd deps/host-tools/docker/debian10
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-docker/debian10/tmp/docker-installer.debian10.gzip.sh
+          file: deps/host-tools/docker/debian10/tmp/docker-installer.debian10.gzip.sh
           asset_name: docker-installer.debian10.gzip.sh
           tag: 'v1.0'
           overwrite: true
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-docker/debian10/tmp/docker-installer.debian10.zstd.sh
+          file: deps/host-tools/docker/debian10/tmp/docker-installer.debian10.zstd.sh
           asset_name: docker-installer.debian10.zstd.sh
           tag: 'v1.0'
           overwrite: true
@@ -121,7 +120,7 @@ jobs:
         if: ${{ failure() }}
         timeout-minutes: 30
 
-  packed-dotfiles:
+  dotfiles:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -131,12 +130,12 @@ jobs:
       - run: brew install makeself
 
       - run: |
-          cd prepack/packed-dotfiles/
+          cd deps/host-tools/dotfiles/
           ./pack.sh
 
       - uses: svenstaro/upload-release-action@v2
         with:
-          file: prepack/packed-dotfiles/tmp/devspace-installer.gzip.sh
+          file: deps/host-tools/dotfiles/tmp/devspace-installer.gzip.sh
           asset_name: devspace-installer.gzip.sh
           tag: 'v1.0'
           overwrite: true
