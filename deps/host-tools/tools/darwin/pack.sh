@@ -75,7 +75,7 @@ pkgs=(
 rm -rf tmp && mkdir tmp
 mkdir -p tmp/tools/{bin,etc,include,downloads,lib,libexec,profile,share,store}
 
-curl https://raw.githubusercontent.com/curoky/prebuilt-tools/refs/heads/master/tools/multi-install.sh >tmp/install.sh
+curl https://raw.githubusercontent.com/curoky/static-binaries/refs/heads/master/tools/multi-install.sh >tmp/install.sh
 for pkg in "${pkgs[@]}"; do
   bash tmp/install.sh -n $pkg -i tmp/tools -l -p tmp/tools -a darwin-arm64 &
 done
