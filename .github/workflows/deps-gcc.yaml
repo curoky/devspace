@@ -35,6 +35,8 @@ jobs:
           context: deps/gcc
           file: deps/gcc/Dockerfile
           push: true
+          build-args: |
+            GCC_VERSION=${{ matrix.version }}
           tags: curoky/devspace:deps-gcc-${{ matrix.version }}
 
       - if: github.event_name == 'schedule'

@@ -25,15 +25,15 @@ if [[ -d /workspace/devspace ]]; then
 fi
 
 # setup cache dir
-mkdir -p /data/cache
-chown x:x /data/cache
+mkdir -p /cache
+chown x:x /cache
 rm -rf /home/x/.cache
-ln -s /data/cache /home/x/.cache
+ln -s /cache /home/x/.cache
 
 # setup vscode-server cache
-mkdir -p /data/cache/vscode-server
-chown x:x /data/cache/vscode-server
+mkdir -p /cache/vscode-server
+chown x:x /cache/vscode-server
 rm -rf /home/x/.vscode-server
-ln -s /data/cache/vscode-server /home/x/.vscode-server
+ln -s /cache/vscode-server /home/x/.vscode-server
 
 chown x:x /workspace
