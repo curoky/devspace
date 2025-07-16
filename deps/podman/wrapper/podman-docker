@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+script_path="$(readlink -f "$0")"
+root=$(cd "$(dirname "$script_path")" && pwd)
+
+export CONTAINER_HOST=unix:///tmp/mypodman.sock
+
+echo "Use Podman as Docker"
+exec -a "$0" "$root/bin/podman" --remote "$@"

@@ -4,7 +4,7 @@ tasks:
   default:
     cmds:
       - >
-        docker buildx build .
+        docker build .
         --file Dockerfile
         --network=host
         --tag curoky/devspace:stage-vcpkg
