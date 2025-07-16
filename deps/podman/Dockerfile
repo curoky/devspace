@@ -156,3 +156,4 @@ COPY ./conf /opt/podman/conf
 COPY ./wrapper/* /opt/podman
 
 RUN ln -s -r /opt/podman/podman-client /opt/podman/pod
+RUN ln -s -r /opt/podman/docker-client /opt/podman/docker
