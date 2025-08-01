@@ -11,15 +11,17 @@ on:
 
 jobs:
   tools:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runs-on }}
     permissions:
       contents: write
     strategy:
       matrix:
         include:
-          - os: linux
+          - runs-on: ubuntu-latest
+            os: linux
             arch: x86_64
-          - os: darwin
+          - runs-on: macos-latest
+            os: darwin
             arch: arm64
     steps:
       - uses: actions/checkout@v4
