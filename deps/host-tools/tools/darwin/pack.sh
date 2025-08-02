@@ -64,14 +64,10 @@ pkgs=(
   # tmux
   tmux-extra
 
-  lxgw-wenkai
-  fira-code
-  nerd-fonts.fira-code
-  nerd-fonts.ubuntu-mono
-  # iina
-  # snipaste
-  # keka
-  # obs-studio
+  # lxgw-wenkai
+  # fira-code
+  # nerd-fonts.fira-code
+  # nerd-fonts.ubuntu-mono
 
   ##### unneeded
   # vim
@@ -88,57 +84,7 @@ curl https://raw.githubusercontent.com/curoky/static-binaries/refs/heads/master/
 for pkg in "${pkgs[@]}"; do
   bash tmp/install.sh -n $pkg -i tmp/tools -l -p tmp/tools -a darwin-arm64 &
 done
-# wait
-
-# https://github.com/wulkano/Kap/releases
-# https://github.com/wulkano/Kap/releases/download/v3.6.0/Kap-3.6.0-arm64-mac.zip
-
-# https://github.com/iina/iina/releases
-# https://github.com/iina/iina/releases/download/v1.3.5/IINA.v1.3.5.dmg
-
-# https://zh.snipaste.com/download.html
-# https://download.snipaste.com/archives/Snipaste-2.10.8.dmg
-
-# https://github.com/newmarcel/KeepingYouAwake/releases
-# https://github.com/newmarcel/KeepingYouAwake/releases/download/1.6.7/KeepingYouAwake-1.6.7.zip
-
-# https://download.bjango.com/istatmenus6/
-# https://cdn.istatmenus.app/files/istatmenus6/istatmenus6.73.1.zip
-
-# https://github.com/obsproject/obs-studio/releases
-# https://cdn-fastly.obsproject.com/downloads/obs-studio-31.1.2-macos-apple.dmg
-# https://github.com/obsproject/obs-studio/releases/download/31.1.2/OBS-Studio-31.1.2-macOS-Apple.dmg
-
-# https://github.com/aonez/Keka/releases
-# https://github.com/aonez/Keka/releases/download/v1.5.2/Keka-1.5.2.dmg
-
-curl -sSL -o tmp/tools/downloads/Kap.zip https://github.com/wulkano/Kap/releases/download/v3.6.0/Kap-3.6.0-arm64-mac.zip &
-curl -sSL -o tmp/tools/downloads/KeepingYouAwake.zip https://github.com/newmarcel/KeepingYouAwake/releases/download/1.6.7/KeepingYouAwake-1.6.7.zip &
-curl -sSL -o tmp/tools/downloads/istatmenus6.zip https://cdn.istatmenus.app/files/istatmenus6/istatmenus6.73.1.zip &
-curl -sSL -o tmp/tools/downloads/OBS-Studio.dmg https://github.com/obsproject/obs-studio/releases/download/31.1.2/OBS-Studio-31.1.2-macOS-Apple.dmg &
-curl -sSL -o tmp/tools/downloads/Snipaste.dmg https://download.snipaste.com/archives/Snipaste-2.10.8.dmg &
-curl -sSL -o tmp/tools/downloads/IINA.dmg https://github.com/iina/iina/releases/download/v1.3.5/IINA.v1.3.5.dmg &
-curl -sSL -o tmp/tools/downloads/Keka.dmg https://github.com/aonez/Keka/releases/download/v1.5.2/Keka-1.5.2.dmg &
 wait
-
-unzip -d tmp/tools/Library tmp/tools/downloads/Kap.zip
-unzip -d tmp/tools/Library tmp/tools/downloads/KeepingYouAwake.zip
-unzip -d tmp/tools/Library tmp/tools/downloads/istatmenus6.zip
-
-hdiutil attach tmp/tools/downloads/OBS-Studio.dmg
-hdiutil attach tmp/tools/downloads/Snipaste.dmg
-hdiutil attach tmp/tools/downloads/IINA.dmg
-hdiutil attach tmp/tools/downloads/keka.dmg
-
-cp -r '/Volumes/OBS Studio 31.1.2 (Apple)/OBS.app' tmp/tools/Library
-cp -r '/Volumes/Snipaste/Snipaste.app' tmp/tools/Library
-cp -r '/Volumes/IINA/IINA.app' tmp/tools/Library
-cp -r '/Volumes/Keka/Keka.app' tmp/tools/Library
-
-hdiutil detach '/Volumes/Snipaste'
-hdiutil detach '/Volumes/IINA'
-hdiutil detach '/Volumes/Keka'
-hdiutil detach '/Volumes/OBS Studio 31.1.2 (Apple)'
 
 rm -rf tmp/tools/downloads
 cp -f ../common/installer.sh tmp/tools/
