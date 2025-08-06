@@ -1,0 +1,18 @@
+# https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually
+name: whisper
+channels:
+  - defaults
+dependencies:
+  - python=3.12.11
+  - pip
+  - pip:
+      - ipykernel
+      - ipywidgets
+      - nbformat
+      - pydantic
+      - requests
+      - typer
+      - pyobjc
+      - numpy
+      - sounddevice
+      - soundfile

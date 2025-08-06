@@ -116,6 +116,8 @@ pkgs=(
   starship
   tzdata
   zsh-bundle
+  cronie
+  p7zip
 
   ##### unneeded
   # aria2
