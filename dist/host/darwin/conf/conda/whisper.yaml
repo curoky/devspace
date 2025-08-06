@@ -3,7 +3,7 @@ name: whisper
 channels:
   - defaults
 dependencies:
-  - python=3.12.11
+  - python=3.13
   - pip
   - pip:
       - ipykernel

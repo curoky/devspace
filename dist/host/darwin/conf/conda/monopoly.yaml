@@ -2,7 +2,7 @@ name: monopoly
 channels:
   - defaults
 dependencies:
-  - python=3.12.9
+  - python=3.13
   - poppler=24.09.0=h092caa6_1
   - pip
   - pip:
