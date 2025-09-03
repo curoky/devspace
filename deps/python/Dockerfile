@@ -15,7 +15,7 @@ RUN apt-get update -y \
     tk-dev uuid-dev libgdbm-dev libgdbm-compat-dev libssl-dev libbz2-dev liblzma-dev zlib1g-dev \
     libreadline-dev libncurses5-dev libncursesw5-dev libsqlite3-dev libffi-dev
 
-ARG PYTHON_VERSION=3.13.7
+ARG PYTHON_VERSION 3.13.7
 
 RUN mkdir -p /tmp/python/src \
   && curl -L "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz" \
@@ -23,7 +23,7 @@ RUN mkdir -p /tmp/python/src \
 
 RUN cd /tmp/python/src \
   && ./configure \
-    --prefix=/opt/python/python-$GCC_VERSION \
+    --prefix=/opt/python/python-$PYTHON_VERSION \
 		--build="x86_64-linux-gnu" \
 		--enable-loadable-sqlite-extensions \
 		--enable-optimizations \
