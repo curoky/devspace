@@ -31,10 +31,10 @@ RUN cd /tmp/python/src \
 		--enable-shared \
 		--with-lto \
 		--with-ensurepip \
-  && make -j "$(nproc)"
+  && make -j "$(nproc)" \
+  && make install
 
 
 FROM debian:stable-slim
 
-ARG PYTHON_VERSION=3.13.7
-COPY --from=builder /opt/python/python-$GCC_VERSION /opt/python/python-$GCC_VERSION
+COPY --from=builder /opt/python /opt/python
