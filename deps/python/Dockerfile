@@ -36,4 +36,5 @@ RUN cd /tmp/python/src \
 
 FROM debian:stable-slim
 
+ARG PYTHON_VERSION=3.13.7
 COPY --from=builder /opt/python/python-$GCC_VERSION /opt/python/python-$GCC_VERSION
