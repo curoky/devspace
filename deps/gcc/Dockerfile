@@ -56,8 +56,8 @@ RUN mkdir -p /tmp/gcc/src \
     ''
 
 ARG ENABLE_2STAGE=false
-RUN [ ${ENABLE_2STAGE} = "true" ] && cd /tmp/gcc/build && make -j"$(nproc)" profiledbootstrap && make install-strip
-RUN [ ${ENABLE_2STAGE} = "false" ] && cd /tmp/gcc/build && make -j"$(nproc)" && make install-strip
+RUN [ ${ENABLE_2STAGE} = "true" ] && cd /tmp/gcc/build && make -j"$(nproc)" profiledbootstrap && make install-strip || echo "Skipping"
+RUN [ ${ENABLE_2STAGE} = "false" ] && cd /tmp/gcc/build && make -j"$(nproc)" && make install-strip || echo "Skipping"
 
 # gcc installs .so files in /usr/local/lib64 (and /usr/local/lib)...
 # RUN set -ex; \
