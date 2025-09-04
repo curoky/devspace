@@ -10,10 +10,12 @@ RUN cat /etc/apt/sources.list \
 
 RUN apt-get update -y \
   && apt-get install -y --no-install-recommends \
-    # for install gcc
-    curl tar ca-certificates dpkg-dev flex gcc g++ file tzdata unzip
+    # basic tools
+    curl tar unzip ca-certificates file tzdata dpkg-dev \
+    # compiler tools
+    gcc g++ \
     # for install llvm
-    # libxml2-dev git
+    libxml2-dev git
 
 # install latest ninja
 RUN curl -sSL -o ninja-linux.zip "https://github.com/ninja-build/ninja/releases/download/v1.12.1/ninja-linux.zip" \
@@ -33,18 +35,18 @@ ENV PATH=${PATH}:/opt/python/python-3.12.11/bin \
 ARG LLVM_VERSION 21.1.0
 
 RUN mkdir -p /tmp/clang/src \
-  && curl -sSL https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-21.1.0.tar.gz | tar -x --gzip -C /tmp/clang/src --strip-components 1 \
+  && curl -sSL https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${LLVM_VERSION}.tar.gz | tar -x --gzip -C /tmp/clang/src --strip-components 1 \
   && cd /tmp/clang/src \
   && mkdir -p /tmp/clang/build && cd /tmp/clang/build \
   && cmake -S "/tmp/clang/src/llvm" -B . \
     -GNinja \
-    -DCMAKE_INSTALL_PREFIX="/opt/llvm" \
+    -DCMAKE_INSTALL_PREFIX="/opt/llvm/llvm-${LLVM_VERSION}" \
     -DCMAKE_BUILD_TYPE="Release" \
     -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra"
 
 RUN cd /tmp/clang/build  \
   && ninja -j "$(nproc)" \
-  && rm -rf /tmp/clang
+  && ninja install
 
 FROM debian:stable-slim
 

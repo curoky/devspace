@@ -9,8 +9,10 @@ RUN cat /etc/apt/sources.list \
 
 RUN apt-get update -y \
   && apt-get install -y --no-install-recommends \
+    # basic tools
+    curl ca-certificates tar gcc g++ \
     # for install gcc
-    curl tar ca-certificates dpkg-dev flex gcc g++ file tzdata unzip \
+    # dpkg-dev flex  file tzdata  \
     # for install python
     tk-dev uuid-dev libgdbm-dev libgdbm-compat-dev libssl-dev libbz2-dev liblzma-dev zlib1g-dev \
     libreadline-dev libncurses5-dev libncursesw5-dev libsqlite3-dev libffi-dev
