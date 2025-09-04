@@ -36,7 +36,7 @@ RUN mkdir -p /tmp/binutils/src \
 ARG GCC_VERSION=15.1.0
 
 RUN mkdir -p /tmp/gcc/src \
-  && curl -sSL https://ftpmirror.gnu.org/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.xz | tar -x --xz -C /tmp/gcc/src --strip-components 1 \
+  && curl -L https://ftpmirror.gnu.org/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.xz | tar -x --xz -C /tmp/gcc/src --strip-components 1 \
   && cd /tmp/gcc/src \
   && ./contrib/download_prerequisites \
   && mkdir -p /tmp/gcc/build && cd /tmp/gcc/build \
@@ -53,8 +53,11 @@ RUN mkdir -p /tmp/gcc/src \
     --with-system-zlib \
     --with-zstd \
     --with-isl \
-    '' \
-  && make -j"$(nproc)" profiledbootstrap && make install-strip
+    ''
+
+ARG ENABLE_2STAGE=false
+RUN [ ${ENABLE_2STAGE} = "true" ] && cd /tmp/gcc/build && make -j"$(nproc)" profiledbootstrap && make install-strip
+RUN [ ${ENABLE_2STAGE} = "false" ] && cd /tmp/gcc/build && make -j"$(nproc)" && make install-strip
 
 # gcc installs .so files in /usr/local/lib64 (and /usr/local/lib)...
 # RUN set -ex; \

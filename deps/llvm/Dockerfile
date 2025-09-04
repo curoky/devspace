@@ -42,7 +42,11 @@ ARG LLVM_VERSION 21.1.0
 RUN mkdir -p /tmp/llvm/src \
   && curl -sSL https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${LLVM_VERSION}.tar.gz | tar -x --gzip -C /tmp/llvm/src --strip-components 1 \
   && cd /tmp/llvm/src \
-  && mkdir -p /tmp/llvm/build && cd /tmp/llvm/build \
+  && mkdir -p /tmp/llvm/build && cd /tmp/llvm/build
+
+ARG ENABLE_2STAGE=false
+
+RUN [ ${ENABLE_2STAGE} = "true" ] && cd /tmp/llvm/build \
   && cmake -S "/tmp/llvm/src/llvm" -B . \
     -GNinja \
     -DCMAKE_INSTALL_PREFIX="/opt/llvm/llvm-${LLVM_VERSION}" \
@@ -53,10 +57,22 @@ RUN mkdir -p /tmp/llvm/src \
     -DLLVM_ENABLE_LTO=ON \
     -DCLANG_ENABLE_BOOTSTRAP=ON \
     -DCLANG_BOOTSTRAP_TARGETS="install-clang;install-clang-resource-headers" \
-    -DBOOTSTRAP_CMAKE_BUILD_TYPE=Release
-
-RUN cd /tmp/llvm/build \
+    -DBOOTSTRAP_CMAKE_BUILD_TYPE=Release \
+  && cd /tmp/llvm/build \
   && ninja stage2-install-clang stage2-install-clang-resource-headers
+
+RUN [ ${ENABLE_2STAGE} = "false" ] && cd /tmp/llvm/build \
+  && cmake -S "/tmp/llvm/src/llvm" -B . \
+    -GNinja \
+    -DCMAKE_INSTALL_PREFIX="/opt/llvm/llvm-${LLVM_VERSION}" \
+    -DCMAKE_BUILD_TYPE="Release" \
+    -DLLVM_TARGETS_TO_BUILD=Native \
+    -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld" \
+    -DLLVM_ENABLE_RUNTIMES="compiler-rt" \
+    -DLLVM_ENABLE_LTO=ON \
+    -DBOOTSTRAP_CMAKE_BUILD_TYPE=Release \
+  && cd /tmp/llvm/build \
+  && ninja install-clang install-clang-resource-headers
 
 FROM debian:stable-slim
 
