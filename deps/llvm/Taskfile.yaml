@@ -54,9 +54,10 @@ tasks:
     - task: 18.1.8
     - task: 17.0.6
     - task: 16.0.6
-    # - docker push curoky/devspace:prebuilt-llvm-16.0.6
-    # - docker push curoky/devspace:prebuilt-llvm-17.0.6
-    # - docker push curoky/devspace:prebuilt-llvm-18.1.8
-    # - docker push curoky/devspace:prebuilt-llvm-19.1.7
-    # - docker push curoky/devspace:prebuilt-llvm-20.1.8
-    # - docker push curoky/devspace:prebuilt-llvm-21.1.0
+  push:
+    - docker push curoky/devspace:deps-llvm-16.0.6
+    - docker push curoky/devspace:deps-llvm-17.0.6
+    - docker push curoky/devspace:deps-llvm-18.1.8
+    - docker push curoky/devspace:deps-llvm-19.1.7
+    - docker push curoky/devspace:deps-llvm-20.1.8
+    - docker push curoky/devspace:deps-llvm-21.1.0
