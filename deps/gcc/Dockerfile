@@ -11,8 +11,10 @@ RUN cat /etc/apt/sources.list \
 
 RUN apt-get update -y \
 	&& apt-get install -y --no-install-recommends \
-    # for install gcc
-    curl tar ca-certificates dpkg-dev flex gcc g++ file tzdata \
+    # basic tools
+    curl tar ca-certificates dpkg-dev flex file tzdata \
+    # compiler tools
+    gcc g++ \
     # for install binutils
     make texinfo
 
@@ -21,7 +23,7 @@ RUN mkdir -p /tmp/binutils/src \
 	&& curl -sSL https://ftpmirror.gnu.org/gnu/binutils/binutils-2.42.tar.gz | tar -x --gunzip -C /tmp/binutils/src --strip-components 1 \
   && mkdir -p /tmp/binutils/build && cd /tmp/binutils/build \
   && /tmp/binutils/src/configure --prefix=/opt/binutils --disable-multilib \
-  && make -j$(nproc) && make install \
+  && make -j "$(nproc)" && make install \
   && find /opt/binutils/bin/ -type f -exec ln -sf {} /usr/bin \; \
   # && /tmp/binutils/src/configure --prefix=/usr --disable-multilib \
   # && make -j$(nproc) && make install \
@@ -60,5 +62,5 @@ RUN mkdir -p /tmp/gcc/src \
 
 FROM debian:stable-slim
 
-COPY --link --from=builder /opt/binutils /opt/binutils
-COPY --link --from=builder /opt/gcc /opt/gcc
+COPY --from=builder /opt/binutils /opt/binutils
+COPY --from=builder /opt/gcc /opt/gcc
