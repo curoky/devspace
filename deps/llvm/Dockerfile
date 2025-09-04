@@ -59,7 +59,7 @@ RUN [ ${ENABLE_2STAGE} = "true" ] && cd /tmp/llvm/build \
     -DCLANG_BOOTSTRAP_TARGETS="install-clang;install-clang-resource-headers" \
     -DBOOTSTRAP_CMAKE_BUILD_TYPE=Release \
   && cd /tmp/llvm/build \
-  && ninja stage2-install-clang stage2-install-clang-resource-headers
+  && ninja stage2-install-clang stage2-install-clang-resource-headers || echo "Skipping"
 
 RUN [ ${ENABLE_2STAGE} = "false" ] && cd /tmp/llvm/build \
   && cmake -S "/tmp/llvm/src/llvm" -B . \
@@ -72,7 +72,7 @@ RUN [ ${ENABLE_2STAGE} = "false" ] && cd /tmp/llvm/build \
     -DLLVM_ENABLE_LTO=ON \
     -DBOOTSTRAP_CMAKE_BUILD_TYPE=Release \
   && cd /tmp/llvm/build \
-  && ninja install-clang install-clang-resource-headers
+  && ninja install-clang install-clang-resource-headers || echo "Skipping"
 
 FROM debian:stable-slim
 
