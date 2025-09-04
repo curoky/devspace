@@ -1,4 +1,5 @@
 # https://github.com/docker-library/gcc/blob/master/14/Dockerfile
+# https://gcc.gnu.org/install/build.html
 
 FROM debian:buster-backports AS builder
 
