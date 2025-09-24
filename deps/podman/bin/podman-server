@@ -18,6 +18,7 @@ export PATH=$PATH:$root/bin
 # --imagestore=$root/storage \
 # --runroot=$root/runroot \
 # --network-cmd-path=$root/bin \
-exec -a "$0" "$root/bin/podman" \
+exec -a "$0" "$root/bin/_podman" \
   --log-level=debug \
-  "$@"
+  --out=$root/podman.log
+"$@"

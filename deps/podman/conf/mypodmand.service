@@ -9,7 +9,7 @@ User=root
 ExecStart=/opt/mypodman/podman-server system service --time=0 unix:///tmp/mypodman.sock
 ExecStop=/opt/mypodman/podman-server stop --all
 Restart=always
-RestartSec=10s
+RestartSec=30s
 
 [Install]
 WantedBy=multi-user.target

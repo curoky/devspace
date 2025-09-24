@@ -25,5 +25,5 @@ docker build . \
 
 id=$(docker create curoky/devspace:prebuilt-podman)
 docker cp $id:/opt/podman - >podman.tar
-rm -rf packed
+rm -rf ./podman
 tar -x -f podman.tar

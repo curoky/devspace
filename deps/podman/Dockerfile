@@ -12,13 +12,17 @@ FROM nixpkgs/nix-unstable:latest AS deps-nixpkgs-builder
 ENV NIX_PATH=nixpkgs=channel:nixos-25.05
 
 RUN nix-channel --add https://nixos.org/channels/nixos-25.05 nixpkgs \
-  && nix-channel --update \
-  && nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.netavark
-
+  && nix-channel --update
+RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.netavark
 RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.patchelf
-RUN mkdir -p /opt/tools \
-  && cp -L /nix/var/nix/profiles/default/bin/netavark /opt/tools \
-  && cp -L /nix/var/nix/profiles/default/bin/patchelf /opt/tools
+# RUN nix-env -p /nix/var/nix/profiles/libgpg-error -iA nixpkgs.pkgsStatic.libgpg-error.dev
+# RUN nix-env -p /nix/var/nix/profiles/libassuan -iA nixpkgs.pkgsStatic.libassuan.dev
+# RUN nix-env -p /nix/var/nix/profiles/libseccomp -iA nixpkgs.pkgsStatic.libseccomp.dev
+# RUN nix-env -p /nix/var/nix/profiles/default -iA nixpkgs.pkgsStatic.gpgme
+
+RUN mkdir -p /opt/tools/bin \
+  && cp -L /nix/var/nix/profiles/default/bin/netavark /opt/tools/bin/ \
+  && cp -L /nix/var/nix/profiles/default/bin/patchelf /opt/tools/bin
 
 FROM debian-default AS deps-builder
 
@@ -99,10 +103,10 @@ RUN apt-get update -y \
       pkg-config make gcc g++
 
 RUN mkdir -p /usr/local/go \
-  && curl -sSL https://go.dev/dl/go1.24.4.linux-amd64.tar.gz | \
+  && curl -sSL https://go.dev/dl/go1.25.1.linux-amd64.tar.gz | \
     tar -x --gunzip -C /usr/local/go --strip-components 1
 
-COPY --link --from=deps-builder /opt/deps /opt/deps
+COPY --from=deps-builder /opt/deps /opt/deps
 
 WORKDIR /src
 
@@ -110,7 +114,7 @@ ENV GOPATH=/go
 ENV PATH="/usr/local/go/bin:$PATH:$GOPATH/bin"
 ENV PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/deps/lib/pkgconfig
 
-RUN git clone --depth 1 --branch v5.5.2 https://github.com/containers/podman.git
+RUN git clone --depth 1 --branch v5.6.1 https://github.com/containers/podman.git
 
 WORKDIR /src/podman
 RUN make vendor \
@@ -123,22 +127,21 @@ RUN apt-get update -y \
   && apt-get install -y \
     curl
 
-COPY --link --from=deps-nixpkgs-builder /opt/tools /opt/tools
-COPY --link --from=deps-builder /opt/deps /opt/deps
-COPY --link --from=podman-builder /src/podman /src/podman
+COPY --from=deps-nixpkgs-builder /opt/tools /opt/tools
+COPY --from=deps-builder /opt/deps /opt/deps
+COPY --from=podman-builder /src/podman /src/podman
 
 RUN mkdir -p /opt/podman/bin /opt/podman/lib  \
-  && cp /src/podman/bin/podman \
-    /src/podman/bin/podman-remote \
-    /opt/podman/bin \
+  && cp /src/podman/bin/podman /opt/podman/bin/_podman \
+  && cp /src/podman/bin/podman-remote /opt/podman/bin/_podman-remote \
   && cp /opt/deps/lib/libgpgme.so.11 \
     /opt/deps/lib/libseccomp.so.2 \
     /opt/deps/lib/libassuan.so.0 \
     /opt/deps/lib/libgpg-error.so.0 \
     /opt/podman/lib \
-  && /opt/tools/patchelf --add-rpath '$ORIGIN/../lib' /opt/podman/bin/podman
+  && /opt/tools/bin/patchelf --add-rpath '$ORIGIN/../lib' /opt/podman/bin/_podman
 
-RUN cp /opt/tools/netavark /opt/podman/bin
+RUN cp /opt/tools/bin/* /opt/podman/bin
 
 RUN curl -sSL -o /opt/podman/bin/conmon https://github.com/containers/conmon/releases/download/v2.1.13/conmon.amd64 \
   && chmod +x /opt/podman/bin/conmon
@@ -152,8 +155,8 @@ RUN mkdir -p /opt/podman/gpu \
 RUN mkdir -p /opt/podman/tmpdir
 
 COPY ./install.sh /opt/podman/
-COPY ./conf /opt/podman/conf
-COPY ./wrapper/* /opt/podman
+COPY ./conf/* /opt/podman/conf/
+COPY ./bin/* /opt/podman/bin/
 
-RUN ln -s -r /opt/podman/podman-client /opt/podman/pod
-RUN ln -s -r /opt/podman/docker-client /opt/podman/docker
+RUN ln -s -r /opt/podman/podman /opt/podman/pod
+RUN ln -s -r /opt/podman/podman /opt/podman/docker
