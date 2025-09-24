@@ -17,25 +17,34 @@
 # limitations under the License.
 set -xeuo pipefail
 
-# wget https://github.com/curoky/devspace/releases/download/v1.0/podman.tar
-# tar -x -f podman.tar
+rm -rf /opt/mypodman/*
+cp -r ./* /opt/mypodman/
 
-rm -rf /opt/mypodman
-mkdir -p /opt/mypodman
-cp -r ./* /opt/mypodman
+rm -rf /etc/systemd/system/mypodmand.service
+mkdir -p /etc/systemd/system/
+cp -r ./conf/mypodmand.service /etc/systemd/system/mypodmand.service
 
 rm -rf /etc/containers/policy.json
 mkdir -p /etc/containers
 cp ./conf/policy.json /etc/containers/
 
-rm -rf /etc/systemd/system/mypodmand.service
-mkdir -p /etc/systemd/system/
-cp ./conf/mypodmand.service /etc/systemd/system/mypodmand.service
+systemctl daemon-reload
+systemctl enable mypodmand.service
+systemctl start mypodmand.service
+systemctl status mypodmand.service
+chmod +777 /tmp/mypodman.sock
 
-echo 'systemctl daemon-reload'
-echo 'systemctl enable mypodmand.service'
-echo 'systemctl start mypodmand.service'
-echo 'systemctl status mypodmand.service'
-echo 'chmod +777 /tmp/mypodman.sock'
+# wget https://github.com/curoky/devspace/releases/download/v1.0/podman.tar
+# tar -x -f podman.tar
+
+# rm -rf /opt/mypodman
+# mkdir -p /opt/mypodman
+# cp -r ./* /opt/mypodman
+
+# echo 'systemctl daemon-reload'
+# echo 'systemctl enable mypodmand.service'
+# echo 'systemctl start mypodmand.service'
+# echo 'systemctl status mypodmand.service'
+# echo 'chmod +777 /tmp/mypodman.sock'
 
 echo 'nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml'

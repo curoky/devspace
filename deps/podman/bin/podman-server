@@ -4,21 +4,21 @@ set -xeuo pipefail
 script_path="$(readlink -f "$0")"
 root=$(cd "$(dirname "$script_path")" && pwd)
 
-export CONTAINERS_CONF=$root/conf/containers.conf
-export CONTAINERS_STORAGE_CONF=$root/conf/storage.conf
-export CONTAINERS_REGISTRIES_CONF=$root/conf/registries.conf
-# export CONTAINERS_POLICY=$root/conf/policy.json
+export CONTAINERS_CONF=$root/../conf/containers.conf
+export CONTAINERS_STORAGE_CONF=$root/../conf/storage.conf
+export CONTAINERS_REGISTRIES_CONF=$root/../conf/registries.conf
+# export CONTAINERS_POLICY=$root/../conf/policy.json
 
 # or --tmpdir=path
 # export TMPDIR=$root/tmpdir
 
 # or helper_binaries_dir/--network-cmd-path
-export PATH=$PATH:$root/bin
+export PATH=$PATH:$root
 
 # --imagestore=$root/storage \
 # --runroot=$root/runroot \
 # --network-cmd-path=$root/bin \
-exec -a "$0" "$root/bin/_podman" \
+exec -a "$0" "$root/_podman" \
   --log-level=debug \
-  --out=$root/podman.log
-"$@"
+  --out=$root/../podman.log \
+  "$@"

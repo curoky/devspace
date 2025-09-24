@@ -158,5 +158,5 @@ COPY ./install.sh /opt/podman/
 COPY ./conf/* /opt/podman/conf/
 COPY ./bin/* /opt/podman/bin/
 
-RUN ln -s -r /opt/podman/podman /opt/podman/pod
-RUN ln -s -r /opt/podman/podman /opt/podman/docker
+RUN ln -s -r /opt/podman/bin/podman /opt/podman/bin/pod
+RUN ln -s -r /opt/podman/bin/podman /opt/podman/bin/docker
