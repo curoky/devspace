@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -xeuo pipefail
+set -euo pipefail
 
 script_path="$(readlink -f "$0")"
 root=$(cd "$(dirname "$script_path")" && pwd)
@@ -11,16 +11,4 @@ export CONTAINERS_REGISTRIES_CONF=$root/../conf/registries.conf
 
 export CONTAINER_HOST=unix:///tmp/mypodman.sock
 
-# or --tmpdir=path
-# export TMPDIR=$root/tmpdir
-
-# or helper_binaries_dir/--network-cmd-path
-export PATH=$PATH:$root
-
-# --imagestore=$root/storage \
-# --runroot=$root/runroot \
-# --network-cmd-path=$root/bin \
-exec -a "$0" "$root/_podman" \
-  --log-level=debug \
-  --out=$root/../podman.log \
-  "$@"
+exec -a "$0" "$root/_podman" --remote "$@"
