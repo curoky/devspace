@@ -30,4 +30,4 @@ curl -L -o /tmp/conda-envs-installer.${arch}.sh https://github.com/curoky/devspa
 bash /tmp/conda-envs-installer.${arch}.sh $@
 
 # Usage
-# curl -sSL https://github.com/curoky/devspace/raw/dev/prepack/packed-conda-envs/online-installer.sh | bash
+# curl -sSL https://github.com/curoky/devspace/raw/master/prepack/packed-conda-envs/online-installer.sh | bash

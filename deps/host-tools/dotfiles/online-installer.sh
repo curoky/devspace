@@ -22,4 +22,4 @@ curl -L -o /tmp/tools-installer.sh https://github.com/curoky/devspace/releases/d
 bash /tmp/tools-installer.sh $@
 
 # Usage
-# curl -sSL https://github.com/curoky/devspace/raw/dev/prepack/packed-devspace/online-installer.sh | bash -s -- -- -l -n host-linux/docker
+# curl -sSL https://github.com/curoky/devspace/raw/master/prepack/packed-devspace/online-installer.sh | bash -s -- -- -l -n host-linux/docker

@@ -32,5 +32,5 @@ bash /tmp/tools-installer.sh $@
 # sudo find ~/app/tools/bin -type f -exec xattr -d com.apple.quarantine {} +
 
 # Usage
-# curl -sSL https://github.com/curoky/devspace/raw/dev/prepack/packed-tools/online-installer.sh | bash
-# curl -sSL https://github.com/curoky/devspace/raw/dev/prepack/packed-tools/online-installer.sh | bash -s -- --noexec --target tmp
+# curl -sSL https://github.com/curoky/devspace/raw/master/prepack/packed-tools/online-installer.sh | bash
+# curl -sSL https://github.com/curoky/devspace/raw/master/prepack/packed-tools/online-installer.sh | bash -s -- --noexec --target tmp

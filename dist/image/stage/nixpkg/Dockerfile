@@ -20,7 +20,7 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA \
     # nixpkgs.man \
-    nixpkgs.locale \
+    # nixpkgs.locale \
     # nixpkgs.git \
     # nixpkgs.graphviz \
     # nixpkgs.ccache nixpkgs.distcc nixpkgs.meson nixpkgs.scons nixpkgs.asciinema nixpkgs.bash
@@ -34,7 +34,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     # nixpkgs.dstat \
     # libuv test failed
     # nixpkgs.cmake \
-    nixpkgs.nodePackages.prettier \
+    # nixpkgs.nodePackages.prettier \
   && chmod +w /nix/var/nix/profiles/default/* \
   # && nix-env -iA -p /nix/var/nix/profiles/libs nixpkgs.python311Packages.libtorrent-rasterbar \
   #     nixpkgs.ncurses5 nixpkgs.libxml2.out nixpkgs.libxcrypt nixpkgs.libbacktrace \

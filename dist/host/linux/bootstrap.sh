@@ -17,5 +17,5 @@
 # limitations under the License.
 set -xeuo pipefail
 
-curl -sSL https://github.com/curoky/devspace/raw/dev/prepack/packed-devspace/online-installer.sh | bash -s -- -- -l -n host-linux/docker
-curl -sSL https://github.com/curoky/devspace/raw/dev/prepack/packed-tools/online-installer.sh | bash
+curl -sSL https://github.com/curoky/devspace/raw/master/prepack/packed-devspace/online-installer.sh | bash -s -- -- -l -n host-linux/docker
+curl -sSL https://github.com/curoky/devspace/raw/master/prepack/packed-tools/online-installer.sh | bash

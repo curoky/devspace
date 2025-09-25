@@ -27,4 +27,4 @@ curl -L -o /tmp/docker-installer.debian10.sh https://github.com/curoky/devspace/
 bash /tmp/docker-installer.debian10.sh --target /tmp/docker --noexec # $@
 
 # Usage
-# curl -sSL https://github.com/curoky/devspace/raw/dev/prepack/docker-offline-installer/debian10/online-installer.sh | bash
+# curl -sSL https://github.com/curoky/devspace/raw/master/prepack/docker-offline-installer/debian10/online-installer.sh | bash
