@@ -9,7 +9,7 @@ export CONTAINERS_STORAGE_CONF=$root/../conf/storage.conf
 export CONTAINERS_REGISTRIES_CONF=$root/../conf/registries.conf
 # export CONTAINERS_POLICY=$root/../conf/policy.json
 
-export CONTAINER_HOST=unix:///tmp/mypodman.sock
+# export CONTAINER_HOST=unix:///tmp/mypodman.sock
 
 # or --tmpdir=path
 # export TMPDIR=$root/tmpdir
@@ -20,7 +20,7 @@ export PATH=$PATH:$root
 # --imagestore=$root/storage \
 # --runroot=$root/runroot \
 # --network-cmd-path=$root/bin \
+# --log-level=debug \
 exec -a "$0" "$root/_podman" \
-  --log-level=debug \
   --out=$root/../podman.log \
   "$@"

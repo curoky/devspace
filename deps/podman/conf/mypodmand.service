@@ -7,7 +7,7 @@ Type=simple
 User=root
 # Environment=PATH=/opt/mypodman/bin:/usr/local/bin:/usr/bin:/bin
 ExecStart=/opt/mypodman/bin/podman-server system service --time=0 unix:///tmp/mypodman.sock
-ExecStop=/opt/mypodman/bin/podman-server stop --all
+ExecStop=/opt/mypodman/bin/podman stop --all
 Restart=always
 RestartSec=30s
 

@@ -27,7 +27,7 @@ pkgs=(
   fzf
   gdu
   go-task
-  inetutils
+  # inetutils
   iproute2
   iputils
   jq
@@ -81,7 +81,7 @@ pkgs=(
   pkg-config
   tree
   unzip
-  util-linux
+  # util-linux
   wget
   zip
   autoconf

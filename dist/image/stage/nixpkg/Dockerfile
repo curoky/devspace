@@ -19,6 +19,7 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
   && nix-channel --update
 
 RUN nix-env -p /nix/var/nix/profiles/default -iA \
+    nixpkgs.hello \
     # nixpkgs.man \
     # nixpkgs.locale \
     # nixpkgs.git \
@@ -27,7 +28,7 @@ RUN nix-env -p /nix/var/nix/profiles/default -iA \
     # lua static
     # nixpkgs.pandoc \
     # dotnet-sdk static failed
-    nixpkgs.pre-commit \
+    # nixpkgs.pre-commit \
     # perl5.40.0-Module test failed
     # nixpkgs.cloc \
     # ModuleNotFoundError: No module named '_dbm
