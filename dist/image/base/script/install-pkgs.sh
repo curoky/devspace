@@ -156,3 +156,4 @@ rm -rf /opt/tools/downloads
 
 ln -s -r /opt/tools/bin/bazelisk /opt/tools/bin/bazel
 ln -s -r /opt/tools/bin/clang-format-21 /opt/tools/bin/clang-format
+rm -rf /opt/tools/store/nettools/bin/hostname
