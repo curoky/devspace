@@ -21,6 +21,9 @@ set -xeuo pipefail
 pkgs=(
   bzip2
   clang-format_18
+  clang-format_19
+  clang-format_20
+  clang-format_21
   connect
   dool
   ethtool
@@ -58,6 +61,7 @@ pkgs=(
   ripgrep
   cmake
   git
+  lefthook
 
   ####  too basic tool
   cacert
@@ -151,4 +155,4 @@ wait
 rm -rf /opt/tools/downloads
 
 ln -s -r /opt/tools/bin/bazelisk /opt/tools/bin/bazel
-ln -s -r /opt/tools/bin/clang-format-18 /opt/tools/bin/clang-format
+ln -s -r /opt/tools/bin/clang-format-21 /opt/tools/bin/clang-format
