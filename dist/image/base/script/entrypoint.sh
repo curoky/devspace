@@ -18,16 +18,15 @@
 
 set -xeuo pipefail
 
-/home/x/app/devspace/dist/image/base/script/link-path.sh
-sudo -u x /home/x/app/devspace/dotfiles/setup.sh docker /home/x/devspace/dotfiles
-
+/opt/devspace/dist/image/base/script/link-path.sh
+sudo -u x /home/x/devspace/dotfiles/setup.sh docker /home/x/devspace/dotfiles
 chmod 600 /home/x/devspace/dotfiles/ssh/devbox.private.id_rsa
-/home/x/app/devspace/dist/image/base/script/start-sshd.sh $SSHD_PORT
 
-sudo -u x bash /home/x/app/devspace/tools/profile-installer.sh --ssl-pass-src pass:$PROFILE_PASS
-
+/opt/devspace/dist/image/base/script/start-sshd.sh $SSHD_PORT
+sudo -u x bash /opt/devspace/tools/profile-installer.sh --ssl-pass-src pass:$PROFILE_PASS
 sudo -u x bash /home/x/.config/atuin/login-and-sync.sh &
-sudo -u x bash -c 'cd /home/x/app/devspace && pre-commit install-hooks' &
+
+# sudo -u x bash -c 'cd /opt/devspace && pre-commit install-hooks' &
 
 # clean cache
 rm -rf /home/x/.cache/starship.plugin.zsh \
