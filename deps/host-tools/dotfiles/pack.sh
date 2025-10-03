@@ -19,7 +19,7 @@ set -xeuo pipefail
 
 rm -rf tmp/
 mkdir -p tmp/devspace
-curl -sSL https://github.com/curoky/devspace/archive/refs/heads/dev.tar.gz | tar -x --gunzip -C tmp/devspace --strip-components 1
+curl -sSL https://github.com/curoky/devspace/archive/refs/heads/master.tar.gz | tar -x --gunzip -C tmp/devspace --strip-components 1
 
 cp installer.sh tmp/devspace
 
