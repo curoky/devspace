@@ -1,14 +1,21 @@
-ipykernel
-ipywidgets
-pydantic
-requests
-typer
-python-snappy
-locust
-sqlmodel
+name: profiling
+channels:
+  - defaults
+dependencies:
+  - python=3.13
+  - pip
+  - pip:
+      - ipykernel
+      - ipywidgets
+      - pydantic
+      - requests
+      - typer
+      - python-snappy
+      - locust
+      - sqlmodel
       # - bbpb
       # - notion-client
       # - git+https://github.com/curoky/thriftpy2@dev
-git+https://github.com/curoky/thriftool
+      - git+https://github.com/curoky/thriftool
       # - protobuf==5.28.3
-tensorflow==2.20.0
+      # - tensorflow==2.20.0

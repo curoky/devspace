@@ -7,65 +7,61 @@ dependencies:
   - _libgcc_mutex=0.1=main
   - _openmp_mutex=5.1=1_gnu
   - bzip2=1.0.8=h5eee18b_6
-  - ca-certificates=2025.2.25=h06a4308_0
+  - ca-certificates=2025.9.9=h06a4308_0
   - expat=2.7.1=h6a678d5_0
   - ld_impl_linux-64=2.40=h12ee557_0
   - libffi=3.4.4=h6a678d5_1
   - libgcc-ng=11.2.0=h1234567_1
   - libgomp=11.2.0=h1234567_1
+  - libmpdec=4.0.0=h5eee18b_0
   - libstdcxx-ng=11.2.0=h1234567_1
   - libuuid=1.41.5=h5eee18b_0
   - libxcb=1.17.0=h9b100fa_0
-  - ncurses=6.4=h6a678d5_0
-  - openssl=3.0.16=h5eee18b_0
-  - pip=25.1=pyhc872135_2
+  - libzlib=1.3.1=hb25bd0a_0
+  - ncurses=6.5=h7934f7d_0
+  - openssl=3.0.18=hd6dcaed_0
+  - pip=25.2=pyhc872135_0
   - pthread-stubs=0.3=h0ce48e5_1
-  - python=3.12.8=h5148396_0
-  - readline=8.2=h5eee18b_0
-  - setuptools=78.1.1=py312h06a4308_0
-  - sqlite=3.45.3=h5eee18b_0
-  - tk=8.6.14=h993c535_1
+  - python=3.13.7=h7e8bc2b_100_cp313
+  - python_abi=3.13=1_cp313
+  - readline=8.3=hc2a1206_0
+  - setuptools=78.1.1=py313h06a4308_0
+  - sqlite=3.50.2=hb25bd0a_1
+  - tk=8.6.15=h54e0aa7_0
   - tzdata=2025b=h04d1e81_0
-  - wheel=0.45.1=py312h06a4308_0
+  - wheel=0.45.1=py313h06a4308_0
   - xorg-libx11=1.8.12=h9b100fa_1
   - xorg-libxau=1.0.12=h9b100fa_0
   - xorg-libxdmcp=1.1.5=h9b100fa_0
   - xorg-xorgproto=2024.1=h5eee18b_1
   - xz=5.6.4=h5eee18b_1
-  - zlib=1.2.13=h5eee18b_1
+  - zlib=1.3.1=hb25bd0a_0
   - pip:
-      - absl-py==2.3.0
       - annotated-types==0.7.0
       - asttokens==3.0.0
-      - astunparse==1.6.3
       - bidict==0.23.1
       - blinker==1.9.0
       - brotli==1.1.0
-      - certifi==2025.4.26
-      - charset-normalizer==3.4.2
-      - click==8.2.1
-      - comm==0.2.2
+      - certifi==2025.8.3
+      - charset-normalizer==3.4.3
+      - click==8.3.0
+      - comm==0.2.3
       - configargparse==1.7.1
-      - cramjam==2.10.0
-      - cython==3.1.2
-      - debugpy==1.8.14
+      - cramjam==2.11.0
+      - debugpy==1.8.17
       - decorator==5.2.1
-      - executing==2.2.0
-      - flask==3.1.1
+      - executing==2.2.1
+      - flask==3.1.2
       - flask-cors==6.0.1
       - flask-login==0.6.3
-      - flatbuffers==25.2.10
-      - gast==0.6.0
       - gevent==25.5.1
       - geventhttpclient==2.3.4
-      - google-pasta==0.2.0
-      - greenlet==3.2.3
-      - grpcio==1.73.0
+      - greenlet==3.2.4
       - h11==0.16.0
-      - h5py==3.14.0
       - idna==3.10
-      - ipykernel==6.29.5
-      - ipython==9.3.0
+      - iniconfig==2.1.0
+      - ipykernel==6.30.1
+      - ipython==9.6.0
       - ipython-pygments-lexers==1.1.1
       - ipywidgets==8.1.7
       - itsdangerous==2.2.0
@@ -74,66 +70,54 @@ dependencies:
       - jupyter-client==8.6.3
       - jupyter-core==5.8.1
       - jupyterlab-widgets==3.0.15
-      - keras==3.10.0
-      - libclang==18.1.1
-      - locust==2.37.10
-      - locust-cloud==1.23.1
-      - markdown==3.8
-      - markdown-it-py==3.0.0
-      - markupsafe==3.0.2
+      - locust==2.41.3
+      - locust-cloud==1.27.2
+      - markdown-it-py==4.0.0
+      - markupsafe==3.0.3
       - matplotlib-inline==0.1.7
       - mdurl==0.1.2
-      - ml-dtypes==0.4.1
-      - msgpack==1.1.0
-      - namex==0.1.0
+      - msgpack==1.1.1
       - nest-asyncio==1.6.0
-      - numpy==1.26.4
-      - opt-einsum==3.4.0
-      - optree==0.16.0
       - packaging==25.0
-      - parso==0.8.4
+      - parso==0.8.5
       - pexpect==4.9.0
-      - platformdirs==4.3.8
+      - platformdirs==4.4.0
+      - pluggy==1.6.0
       - ply==3.11
-      - prompt-toolkit==3.0.51
-      - protobuf==4.25.8
-      - psutil==7.0.0
+      - prompt-toolkit==3.0.52
+      - psutil==7.1.0
       - ptyprocess==0.7.0
       - pure-eval==0.2.3
-      - pydantic==2.11.5
+      - pydantic==2.11.10
       - pydantic-core==2.33.2
-      - pygments==2.19.1
+      - pygments==2.19.2
+      - pytest==8.4.2
       - python-dateutil==2.9.0.post0
-      - python-engineio==4.12.2
+      - python-engineio==4.12.3
       - python-snappy==0.7.3
       - python-socketio==5.13.0
-      - pyzmq==26.4.0
-      - requests==2.32.4
-      - rich==14.0.0
+      - pyzmq==27.1.0
+      - requests==2.32.5
+      - rich==14.1.0
       - shellingham==1.5.4
       - simple-websocket==1.1.0
       - six==1.17.0
-      - sqlalchemy==2.0.41
-      - sqlmodel==0.0.24
+      - sqlalchemy==2.0.43
+      - sqlmodel==0.0.25
       - stack-data==0.6.3
-      - tensorboard==2.17.1
-      - tensorboard-data-server==0.7.2
-      - tensorflow==2.17.1
-      - termcolor==3.1.0
-      - git+https://github.com/curoky/thriftool
-      - thriftpy2==0.5.2
-      - tornado==6.5.1
+      - thriftool==1.0.0
+      - thriftpy2==0.5.3
+      - tornado==6.5.2
       - traitlets==5.14.3
-      - typer==0.16.0
-      - typing-extensions==4.14.0
-      - typing-inspection==0.4.1
-      - urllib3==2.4.0
-      - wcwidth==0.2.13
+      - typer==0.19.2
+      - typing-extensions==4.15.0
+      - typing-inspection==0.4.2
+      - urllib3==2.5.0
+      - wcwidth==0.2.14
       - websocket-client==1.8.0
       - werkzeug==3.1.3
       - widgetsnbextension==4.0.14
-      - wrapt==1.17.2
       - wsproto==1.2.0
-      - zope-event==5.0
-      - zope-interface==7.2
+      - zope-event==6.0
+      - zope-interface==8.0.1
 prefix: /opt/conda/envs/profiling

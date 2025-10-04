@@ -3,7 +3,7 @@ name: py3
 channels:
   - defaults
 dependencies:
-  - python=3.12.8
+  - python=3.13
   - pip
   - pip:
       - ipykernel

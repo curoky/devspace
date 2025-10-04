@@ -1,1 +1,9 @@
-monopoly-core
+name: monopoly
+channels:
+  - defaults
+dependencies:
+  - python=3.13
+  - poppler=24.09.0=hcf11d46_1
+  - pip
+  - pip:
+      - monopoly-core
