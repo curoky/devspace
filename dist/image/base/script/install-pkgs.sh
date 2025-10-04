@@ -62,6 +62,8 @@ pkgs=(
   cmake
   git
   lefthook
+  uv
+  yazi
 
   ####  too basic tool
   cacert

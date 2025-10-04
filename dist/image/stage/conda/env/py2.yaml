@@ -1,11 +1,4 @@
-# https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually
-name: py2
-channels:
-  - defaults
-dependencies:
-  - python=2.7.18
-  - pip
-  - pip:
-      - requests
-      - six
-      - futures
+
+requests
+six
+futures

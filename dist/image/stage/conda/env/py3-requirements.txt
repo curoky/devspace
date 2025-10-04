@@ -1,0 +1,12 @@
+ipykernel
+ipywidgets
+pydantic
+requests
+typer
+sqlmodel
+notion-client
+plotly
+numpy
+pandas
+nbformat
+pytest
