@@ -63,6 +63,7 @@ pkgs=(
   ripgrep
   # tmux
   tmux-extra
+  lefthook
 
   # lxgw-wenkai
   # fira-code
