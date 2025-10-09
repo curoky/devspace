@@ -18,7 +18,7 @@ RUN setup-conda-env.sh -x -e env/py3-lock.yaml
   # && setup-conda-env.sh -x -e env/py311.yaml \
   # && setup-conda-env.sh -x -e env/pipx.yaml
 
-COPY pipx-install.sh /opt/conda/pipx/bin/pipx-install.sh
-RUN /opt/conda/bin/pip3 install pipx \
-  && pipx-install.sh \
-    licenseheaders conan
+# COPY pipx-install.sh /opt/conda/pipx/bin/pipx-install.sh
+# RUN /opt/conda/bin/pip3 install pipx \
+#   && pipx-install.sh \
+#     licenseheaders conan

@@ -10,5 +10,5 @@ cp $abspath/pyproject.toml $abspath/uv.lock $abspath/pipx /opt/pipx
 
 cd /opt/pipx
 
-export UV_LINK_MODE=copy
+# export UV_LINK_MODE=copy
 uv sync
