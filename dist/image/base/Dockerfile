@@ -87,10 +87,10 @@ RUN ln -s /opt/devspace ~/devspace \
   && bash ~/devspace/dotfiles/setup.sh docker ~/devspace/dotfiles
 
 # setup uv
-COPY deps/uv-pipx /tmp/uv-pipx
+COPY dist/image/stage/uv/pipx /tmp/uv-pipx
 RUN /tmp/uv-pipx/install.sh
 
-COPY deps/uv-conda /tmp/uv-conda
+COPY dist/image/stage/uv/conda /tmp/uv-conda
 RUN /tmp/uv-conda/install.sh py3
 
 # other

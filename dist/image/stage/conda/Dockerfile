@@ -12,7 +12,7 @@ ENV PATH=$PATH:/opt/conda/condabin:/opt/conda/pipx/bin/
 COPY env env
 COPY setup-conda-env.sh /opt/conda/condabin/setup-conda-env.sh
 COPY lock-conda-env.sh /opt/conda/condabin/lock-conda-env.sh
-RUN setup-conda-env.sh -x -e env/py3-lock.yaml
+# RUN setup-conda-env.sh -x -e env/py3-lock.yaml
   # && setup-conda-env.sh -x -e env/profiling.yaml
   # && setup-conda-env.sh -x -e env/py2.yaml \
   # && setup-conda-env.sh -x -e env/py311.yaml \

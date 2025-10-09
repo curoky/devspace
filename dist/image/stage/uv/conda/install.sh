@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -xeuo pipefail
 
-export UV_LINK_MODE=copy
+# export UV_LINK_MODE=copy
 
 abspath=$(cd "$(dirname "$0")" && pwd)
 env_name=${1:-py3}
