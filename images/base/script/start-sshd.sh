@@ -15,10 +15,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 set -xeuo pipefail
 
-docker build . \
-  --file Dockerfile \
-  --network=host \
-  --tag curoky/devspace:stage-nixpkg
+SSHD_PORT=${1:-61000}
+
+sed -i -e "s/Port 61000/Port ${SSHD_PORT}/g" \
+  /opt/devspace/dotfiles/sshd/sshd_config.conf
+
+chmod 600 /opt/devspace/dotfiles/sshd/host-key/*
+
+mkdir -p /var/log
+# https://github.com/un-def/openssh-static-build/blob/master/run-sshd.sh#L30
+/opt/tools/store/openssh_gssapi/bin/sshd \
+  -f /opt/devspace/dotfiles/sshd/sshd_config.conf -e
+# -E /var/log/mysshd.log
