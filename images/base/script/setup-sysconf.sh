@@ -86,7 +86,7 @@ copy_path $CONF_PATH/linux/zoneinfo/Singapore /etc/localtime
 # env and rc file
 copy_path $CONF_PATH/linux/environment /etc/environment
 copy_path $CONF_PATH/zsh/etc/zshenv /etc/zsh/zshenv
-link_path /etc/zsh/zshenv /etc/zshenv
+ln -s /etc/zsh/zshenv /etc/zshenv
 
 # setup locales from apt
 echo "en_US.UTF-8 UTF-8" >/etc/locale.gen
