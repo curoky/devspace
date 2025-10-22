@@ -48,8 +48,9 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
   && nix-channel --update
 
 # setup uv
+ENV PATH=${PATH}:/opt/pipx/bin
 COPY images/base/stage/uv/pipx /tmp/uv-pipx
-RUN /tmp/uv-pipx/install.sh
+RUN /tmp/uv-pipx/install.sh && pipx install licenseheaders conan
 COPY images/base/stage/uv/conda /tmp/uv-conda
 RUN /tmp/uv-conda/install.sh py3
 
