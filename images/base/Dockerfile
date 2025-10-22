@@ -16,7 +16,7 @@ RUN apt-get update -y \
   && curl -sSL -o /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
   && bash /tmp/miniconda.sh -b -u -p /opt/conda
 
-COPY images/stage/conda/setup-conda-env.sh /opt/conda/condabin/setup-conda-env.sh
+COPY images/base/stage/conda/setup-conda-env.sh /opt/conda/condabin/setup-conda-env.sh
 
 ################################ main ################################
 FROM $BASE_IMAGE
@@ -48,9 +48,9 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
   && nix-channel --update
 
 # setup uv
-COPY images/stage/uv/pipx /tmp/uv-pipx
+COPY images/base/stage/uv/pipx /tmp/uv-pipx
 RUN /tmp/uv-pipx/install.sh
-COPY images/stage/uv/conda /tmp/uv-conda
+COPY images/base/stage/uv/conda /tmp/uv-conda
 RUN /tmp/uv-conda/install.sh py3
 
 # setup conda
