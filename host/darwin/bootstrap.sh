@@ -15,13 +15,22 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 set -xeuo pipefail
-cd "$(dirname $0)" || exit 1
 
-base_image=${1:-'debian:10'}
+if [[ ! -f /opt/homebrew/bin/brew ]]; then
+  export NONINTERACTIVE=1
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
-# --no-cache \
-docker build ../../.. --network=host --file Dockerfile "${@:2}" \
-  --build-arg="BASE_IMAGE=${base_image}" \
-  --tag docker.io/curoky/devspace:base-${base_image//:/}
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+rm -rf ~/devspace
+ln -s ~/workspace/devspace ~/devspace
+~/devspace/dotfiles/setup.sh host-macos $HOME/devspace/dotfiles
+
+brew bundle --force --file ~/devspace/host/darwin/conf/brew/Brewfile.personal --cleanup --verbose
+# brew link krb5 --force
+brew cleanup --prune=all
+
+curl -sSL https://github.com/curoky/devspace/raw/master/deps/host-tools/tools/online-installer.sh | bash
+curl -sSL https://github.com/curoky/devspace/raw/master/deps/host-tools/conda/online-installer.sh | bash

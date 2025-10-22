@@ -17,21 +17,11 @@
 # limitations under the License.
 
 set -xeuo pipefail
+cd "$(dirname $0)" || exit 1
 
-# /opt/devspace/dist/image/base/script/link-path.sh
-# sudo -u x /home/x/devspace/dotfiles/setup.sh docker /home/x/devspace/dotfiles
-# chmod 600 /home/x/devspace/dotfiles/ssh/devbox.private.id_rsa
+base_image=${1:-'debian:10'}
 
-/opt/devspace/dist/image/base/script/start-sshd.sh $SSHD_PORT
-sudo -u x bash /opt/devspace/tools/profile-installer.sh --ssl-pass-src pass:$PROFILE_PASS
-sudo -u x bash /home/x/.config/atuin/login-and-sync.sh &
-
-# sudo -u x bash -c 'cd /opt/devspace && pre-commit install-hooks' &
-
-# clean cache
-rm -rf /home/x/.cache/starship.plugin.zsh \
-  /home/x/.cache/conda.plugin.zsh \
-  /home/x/.cache/atuin.plugin.zsh
-
-while true; do sleep 86400; done
-# exec /lib/systemd/systemd
+# --no-cache \
+docker build ../.. --network=host --file Dockerfile "${@:2}" \
+  --build-arg="BASE_IMAGE=${base_image}" \
+  --tag docker.io/curoky/devspace:base-${base_image//:/}
