@@ -95,7 +95,7 @@ RUN mkdir -p /opt/build/libseccomp \
   && ./configure --prefix=/opt/deps \
   && make -j$(nproc) && make install
 
-FROM debian-default as podman-builder
+FROM debian-default AS podman-builder
 
 RUN apt-get update -y \
   && apt-get install -y \
