@@ -151,12 +151,11 @@ pkgs=(
 curl https://raw.githubusercontent.com/curoky/static-binaries/refs/heads/dev/tools/sbt >/tmp/sbt
 chmod +x /tmp/sbt
 for pkg in "${pkgs[@]}"; do
-  /workspace/static-binaries/tools/sbt install $pkg &
+  /tmp/sbt install $pkg &
 done
-/workspace/static-binaries/tools/sbt install python311 --nolink &
+/tmp/sbt install python311 --nolink &
 wait
 cp /tmp/sbt /opt/sbt/bin/
-rm -rf /tmp/sbt_download
 
 ln -s -r /opt/sbt/bin/bazelisk /opt/sbt/bin/bazel
 ln -s -r /opt/sbt/bin/clang-format-21 /opt/sbt/bin/clang-format

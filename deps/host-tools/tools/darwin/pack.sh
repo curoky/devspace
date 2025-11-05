@@ -79,15 +79,15 @@ pkgs=(
   # ruff need link jemalloc
 )
 
-curl https://raw.githubusercontent.com/curoky/static-binaries/refs/heads/master/tools/sbt >/tmp/sbt
+rm -rf tmp
+curl https://raw.githubusercontent.com/curoky/static-binaries/refs/heads/dev/tools/sbt >/tmp/sbt
 chmod +x /tmp/sbt
 for pkg in "${pkgs[@]}"; do
-  /tmp/sbt install $pkg &
+  /tmp/sbt install $pkg --arch darwin-arm64 --prefix tmp/sbt &
 done
 wait
 cp /tmp/sbt /opt/sbt/bin/
 
-rm -rf tmp/tools/downloads
 cp -f ../common/installer.sh tmp/tools/
 
 makeself --tar-format gnu --complevel 6 --tar-quietly --gzip --threads 16 tmp/tools tmp/tools-installer.darwin-arm64.gzip.sh "Prebuilt Installer" ./installer.sh
