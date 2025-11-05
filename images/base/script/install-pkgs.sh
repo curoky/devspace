@@ -148,15 +148,15 @@ pkgs=(
   perl
 )
 
-mkdir -p /opt/sbt/bin
-curl https://raw.githubusercontent.com/curoky/static-binaries/refs/heads/master/tools/sbt >/opt/sbt/bin/sbt
-chmod +x /opt/sbt/bin/sbt
+curl https://raw.githubusercontent.com/curoky/static-binaries/refs/heads/dev/tools/sbt >/tmp/sbt
+chmod +x /tmp/sbt
 for pkg in "${pkgs[@]}"; do
-  /opt/sbt/bin/sbt install $pkg &
+  /workspace/static-binaries/tools/sbt install $pkg &
 done
-/opt/sbt/bin/sbt install python311 --nolink &
+/workspace/static-binaries/tools/sbt install python311 --nolink &
 wait
-rm -rf /tmp/sbt
+cp /tmp/sbt /opt/sbt/bin/
+rm -rf /tmp/sbt_download
 
 ln -s -r /opt/sbt/bin/bazelisk /opt/sbt/bin/bazel
 ln -s -r /opt/sbt/bin/clang-format-21 /opt/sbt/bin/clang-format
