@@ -153,7 +153,7 @@ cp /tmp/sbt tmp/sbt/bin/
 
 # ln -s -r tmp/tools/bin/clang-format-18 tmp/tools/bin/clang-format
 
-cp -f ../common/installer.sh tmp/tools/
+cp -f ../common/installer.sh tmp/sbt/
 
-makeself --tar-format gnu --complevel 6 --tar-quietly --gzip --threads 16 tmp/tools tmp/tools-installer.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
-makeself --tar-format gnu --complevel 16 --tar-quietly --zstd --threads 16 tmp/tools tmp/tools-installer.linux-x86_64.zstd.sh "Prebuilt Installer" ./installer.sh
+makeself --tar-format gnu --complevel 6 --tar-quietly --gzip --threads 16 tmp/sbt tmp/tools-installer.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
+makeself --tar-format gnu --complevel 16 --tar-quietly --zstd --threads 16 tmp/sbt tmp/tools-installer.linux-x86_64.zstd.sh "Prebuilt Installer" ./installer.sh

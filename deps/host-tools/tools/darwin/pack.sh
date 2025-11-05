@@ -88,7 +88,7 @@ done
 wait
 cp /tmp/sbt /opt/sbt/bin/
 
-cp -f ../common/installer.sh tmp/tools/
+cp -f ../common/installer.sh tmp/sbt/
 
-makeself --tar-format gnu --complevel 6 --tar-quietly --gzip --threads 16 tmp/tools tmp/tools-installer.darwin-arm64.gzip.sh "Prebuilt Installer" ./installer.sh
-makeself --tar-format gnu --complevel 16 --tar-quietly --zstd --threads 16 tmp/tools tmp/tools-installer.darwin-arm64.zstd.sh "Prebuilt Installer" ./installer.sh
+makeself --tar-format gnu --complevel 6 --tar-quietly --gzip --threads 16 tmp/sbt tmp/tools-installer.darwin-arm64.gzip.sh "Prebuilt Installer" ./installer.sh
+makeself --tar-format gnu --complevel 16 --tar-quietly --zstd --threads 16 tmp/sbt tmp/tools-installer.darwin-arm64.zstd.sh "Prebuilt Installer" ./installer.sh
