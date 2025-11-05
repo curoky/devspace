@@ -86,7 +86,7 @@ for pkg in "${pkgs[@]}"; do
   /tmp/sbt install $pkg --arch darwin-arm64 --prefix tmp/sbt &
 done
 wait
-cp /tmp/sbt /opt/sbt/bin/
+cp /tmp/sbt tmp/sbt/bin/
 
 cp -f ../common/installer.sh tmp/sbt/
 
