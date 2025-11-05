@@ -141,20 +141,19 @@ pkgs=(
   # perl
 )
 
-rm -rf tmp && mkdir tmp
-mkdir -p tmp/tools/{bin,etc,include,downloads,lib,libexec,profile,share,store}
-
-curl https://raw.githubusercontent.com/curoky/static-binaries/refs/heads/master/tools/multi-install.sh >tmp/install.sh
+curl https://raw.githubusercontent.com/curoky/static-binaries/refs/heads/master/tools/sbt >/tmp/sbt
+chmod +x /tmp/sbt
 for pkg in "${pkgs[@]}"; do
-  bash tmp/install.sh -n $pkg -i tmp/tools -l -p tmp/tools &
+  /tmp/sbt install $pkg --prefix tmp/sbt &
 done
-bash tmp/install.sh -n python311 -i tmp/tools &
+/tmp/sbt install python311 --nolink --prefix tmp/sbt &
 wait
+cp /tmp/sbt tmp/sbt/bin/
+rm -rf /tmp/sbt_download
 
 ln -s -r tmp/tools/bin/bazelisk tmp/tools/bin/bazel
 ln -s -r tmp/tools/bin/clang-format-18 tmp/tools/bin/clang-format
 
-rm -rf tmp/tools/downloads
 cp -f ../common/installer.sh tmp/tools/
 
 makeself --tar-format gnu --complevel 6 --tar-quietly --gzip --threads 16 tmp/tools tmp/tools-installer.linux-x86_64.gzip.sh "Prebuilt Installer" ./installer.sh
