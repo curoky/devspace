@@ -80,7 +80,7 @@ pkgs=(
 )
 
 rm -rf tmp
-curl https://raw.githubusercontent.com/curoky/static-binaries/refs/heads/dev/tools/sbt >/tmp/sbt
+curl https://raw.githubusercontent.com/curoky/static-binaries/refs/heads/master/tools/sbt >/tmp/sbt
 chmod +x /tmp/sbt
 for pkg in "${pkgs[@]}"; do
   /tmp/sbt install $pkg --arch darwin-arm64 --prefix tmp/sbt &
