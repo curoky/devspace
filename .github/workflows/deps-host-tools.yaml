@@ -24,8 +24,8 @@ jobs:
           #   os: darwin
           #   arch: arm64
     steps:
-      - uses: actions/checkout@v4
-      - uses: Homebrew/actions/setup-homebrew@master
+      - uses: actions/checkout@v5
+      - uses: Homebrew/actions/setup-homebrew@main
       - run: brew install makeself gnu-sed grep gnu-getopt coreutils
       - name: add path
         run: |
@@ -70,8 +70,8 @@ jobs:
   #   permissions:
   #     contents: write
   #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: Homebrew/actions/setup-homebrew@master
+  #     - uses: actions/checkout@v5
+  #     - uses: Homebrew/actions/setup-homebrew@main
   #     - run: brew install gnu-sed grep gnu-getopt makeself
   #     - name: add path
   #       run: |
@@ -102,8 +102,8 @@ jobs:
   #   permissions:
   #     contents: write
   #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: Homebrew/actions/setup-homebrew@master
+  #     - uses: actions/checkout@v5
+  #     - uses: Homebrew/actions/setup-homebrew@main
   #     - run: brew install makeself
 
   #     - run: |
@@ -133,8 +133,8 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: Homebrew/actions/setup-homebrew@master
+      - uses: actions/checkout@v5
+      - uses: Homebrew/actions/setup-homebrew@main
       - run: brew install makeself
 
       - run: |
