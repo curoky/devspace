@@ -50,6 +50,7 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
 
 # setup rust
 ENV CARGO_HOME=/opt/rust/cargo RUSTUP_HOME=/opt/rust/rustup
+ENV PATH=${PATH}:/opt/rust/cargo/bin
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --no-modify-path --default-toolchain stable \
   && rm -rf /opt/rust/rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/doc
 
