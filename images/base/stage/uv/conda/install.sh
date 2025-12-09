@@ -22,7 +22,7 @@ set -xeuo pipefail
 abspath=$(cd "$(dirname "$0")" && pwd)
 env_name=${1:-py3}
 
-rm -rf /opt/uv
+rm -rf /opt/uv/${env_name}
 mkdir -p /opt/uv/${env_name}
 
 cd /opt/uv/${env_name}
