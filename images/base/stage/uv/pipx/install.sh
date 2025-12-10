@@ -29,3 +29,4 @@ cd /opt/pipx
 
 # export UV_LINK_MODE=copy
 uv sync
+uv cache clean

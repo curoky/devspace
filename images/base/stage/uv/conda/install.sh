@@ -29,3 +29,4 @@ cd /opt/uv/${env_name}
 
 cp $abspath/env/${env_name}/pyproject.toml $abspath/env/${env_name}/uv.lock /opt/uv/${env_name}
 uv sync
+uv cache clean
