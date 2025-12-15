@@ -16,6 +16,7 @@ export CONTAINERS_REGISTRIES_CONF=$root/../conf/registries.conf
 
 # or helper_binaries_dir/--network-cmd-path
 export PATH=$PATH:$root
+export LD_LIBRARY_PATH=$root/../lib
 
 # --imagestore=$root/storage \
 # --runroot=$root/runroot \

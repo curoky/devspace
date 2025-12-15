@@ -11,4 +11,6 @@ export CONTAINERS_REGISTRIES_CONF=$root/../conf/registries.conf
 
 export CONTAINER_HOST=unix:///tmp/mypodman.sock
 
+export LD_LIBRARY_PATH=$root/../lib
+
 exec -a "$0" "$root/_podman" --remote "$@"
