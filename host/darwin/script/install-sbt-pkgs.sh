@@ -67,7 +67,7 @@ pkgs=(
   uv
   ruff
   yazi
-  git
+  # git
 
   # lxgw-wenkai
   # fira-code
