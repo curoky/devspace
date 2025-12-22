@@ -50,12 +50,13 @@ end
 
 brews = [
   # 'pre-commit', 'prettier', 'eslint', 
-  'clang-format', # 'openjdk',
-  'wget', 'smartmontools', 'krb5', 'parallel', 'git',
-  'exiftool', 'git-filter-repo', 'yazi',
+  'clang-format', 'wget', 'smartmontools', 'krb5', 'parallel','exiftool', 'git-filter-repo',
+  # 'openjdk',
+  #'git',
+  #'yazi',
 
   # rust
-  'ruff', # 'eza', 'bat', 'atuin',  'fd', 'git-absorb', 'starship',
+  #'ruff', # 'eza', 'bat', 'atuin',  'fd', 'git-absorb', 'starship',
 ]
 
 brews.each do |b|
