@@ -36,7 +36,7 @@ RUN mkdir -p /tmp/binutils/src \
 ARG GCC_VERSION=15.1.0
 
 RUN mkdir -p /tmp/gcc/src \
-  && curl -L https://ftp.gnu.org/gcc/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.xz | tar -x --xz -C /tmp/gcc/src --strip-components 1 \
+  && curl -L https://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.xz | tar -x --xz -C /tmp/gcc/src --strip-components 1 \
   && cd /tmp/gcc/src \
   && ./contrib/download_prerequisites \
   && mkdir -p /tmp/gcc/build && cd /tmp/gcc/build \
