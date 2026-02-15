@@ -6,55 +6,55 @@ on:
       - '.github/workflows/deps-host-tools.yaml'
       - 'deps/host-tools/**'
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * 0'
+  # schedule:
+  #   - cron: '0 0 * * 0'
 
 jobs:
-  tools:
-    runs-on: ${{ matrix.runs-on }}
-    permissions:
-      contents: write
-    strategy:
-      matrix:
-        include:
-          - runs-on: ubuntu-latest
-            os: linux
-            arch: x86_64
-          # - runs-on: macos-latest
-          #   os: darwin
-          #   arch: arm64
-    steps:
-      - uses: actions/checkout@v5
-      - uses: Homebrew/actions/setup-homebrew@main
-      - run: brew install makeself gnu-sed grep gnu-getopt coreutils
-      - name: add path
-        run: |
-          echo "/opt/homebrew/opt/grep/libexec/gnubin" >> $GITHUB_PATH
-          echo "/opt/homebrew/opt/gnu-sed/libexec/gnubin" >> $GITHUB_PATH
-          echo "/opt/homebrew/opt/gnu-getopt/bin" >> $GITHUB_PATH
-          echo "/opt/homebrew/opt/coreutils/libexec/gnubin" >> $GITHUB_PATH
+  # tools:
+  #   runs-on: ${{ matrix.runs-on }}
+  #   permissions:
+  #     contents: write
+  #   strategy:
+  #     matrix:
+  #       include:
+  #         - runs-on: ubuntu-latest
+  #           os: linux
+  #           arch: x86_64
+  #         # - runs-on: macos-latest
+  #         #   os: darwin
+  #         #   arch: arm64
+  #   steps:
+  #     - uses: actions/checkout@v5
+  #     - uses: Homebrew/actions/setup-homebrew@main
+  #     - run: brew install makeself gnu-sed grep gnu-getopt coreutils
+  #     - name: add path
+  #       run: |
+  #         echo "/opt/homebrew/opt/grep/libexec/gnubin" >> $GITHUB_PATH
+  #         echo "/opt/homebrew/opt/gnu-sed/libexec/gnubin" >> $GITHUB_PATH
+  #         echo "/opt/homebrew/opt/gnu-getopt/bin" >> $GITHUB_PATH
+  #         echo "/opt/homebrew/opt/coreutils/libexec/gnubin" >> $GITHUB_PATH
 
-      - run: |
-          cd deps/host-tools/tools/${{ matrix.os }}
-          ./pack.sh
+  #     - run: |
+  #         cd deps/host-tools/tools/${{ matrix.os }}
+  #         ./pack.sh
 
-      - uses: svenstaro/upload-release-action@v2
-        with:
-          file: deps/host-tools/tools/${{ matrix.os }}/tmp/tools-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
-          asset_name: tools-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
-          tag: 'v1.0'
-          overwrite: true
+  #     - uses: svenstaro/upload-release-action@v2
+  #       with:
+  #         file: deps/host-tools/tools/${{ matrix.os }}/tmp/tools-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
+  #         asset_name: tools-installer.${{ matrix.os }}-${{ matrix.arch }}.gzip.sh
+  #         tag: 'v1.0'
+  #         overwrite: true
 
-      - uses: svenstaro/upload-release-action@v2
-        with:
-          file: deps/host-tools/tools/${{ matrix.os }}/tmp/tools-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
-          asset_name: tools-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
-          tag: 'v1.0'
-          overwrite: true
+  #     - uses: svenstaro/upload-release-action@v2
+  #       with:
+  #         file: deps/host-tools/tools/${{ matrix.os }}/tmp/tools-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
+  #         asset_name: tools-installer.${{ matrix.os }}-${{ matrix.arch }}.zstd.sh
+  #         tag: 'v1.0'
+  #         overwrite: true
 
-      - uses: mxschmitt/action-tmate@v3
-        if: ${{ failure() }}
-        timeout-minutes: 30
+  #     - uses: mxschmitt/action-tmate@v3
+  #       if: ${{ failure() }}
+  #       timeout-minutes: 30
 
   # conda:
   #   strategy:
