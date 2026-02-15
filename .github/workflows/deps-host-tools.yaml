@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/deps-host-tools.yaml'
-      - 'deps/host-tools/**'
+      # - 'deps/host-tools/**'
   workflow_dispatch:
   # schedule:
   #   - cron: '0 0 * * 0'
