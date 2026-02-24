@@ -1,4 +1,5 @@
-#!/command/with-contenv bash
+#!/opt/s6-overlay/command/with-contenv bash
+set -x
 
 # Environment Variables:
 #   OLLAMA_DEBUG               Show additional debug information (e.g. OLLAMA_DEBUG=1)
@@ -11,6 +12,7 @@
 #   OLLAMA_NUM_PARALLEL        Maximum number of parallel requests
 #   OLLAMA_NOPRUNE             Do not prune model blobs on startup
 #   OLLAMA_ORIGINS             A comma separated list of allowed origins
+
 #   OLLAMA_SCHED_SPREAD        Always schedule model across all GPUs
 #   OLLAMA_FLASH_ATTENTION     Enabled flash attention
 #   OLLAMA_KV_CACHE_TYPE       Quantization type for the K/V cache (default: f16)

@@ -1,10 +1,10 @@
-#!/command/with-contenv bash
-set -xeuo pipefail
+#!/usr/bin/env bash
+set -x
 
 echo "SSHD_PORT: $SSHD_PORT"
 
-sed -i -e "s/Port 61000/Port ${SSHD_PORT}/g" \
-  /opt/devspace/dotfiles/sshd/sshd_config.conf
+# sed -i -e "s/Port 61000/Port ${SSHD_PORT}/g" \
+#   /opt/devspace/dotfiles/sshd/sshd_config.conf
 
 chmod 600 /opt/devspace/dotfiles/sshd/host-key/*
 
