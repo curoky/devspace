@@ -431,5 +431,7 @@
   "xml.server.vmargs": "-Xmx1024M",
   "xml.symbols.maxItemsComputed": 400000,
   "yaml.format.enable": true,
-  "yaml.format.singleQuote": true
+  "yaml.format.singleQuote": true,
+  "python-envs.terminal.autoActivationType": "shellStartup",
+  "python-envs.terminal.showActivateButton": true
 }
