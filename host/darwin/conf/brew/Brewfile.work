@@ -51,6 +51,7 @@ end
 brews = [
   # 'pre-commit', 'prettier', 'eslint',
   'clang-format', 'wget', 'smartmontools', 'krb5', 'parallel','exiftool', 'git-filter-repo',
+  'go',
   # 'openjdk',
   #'git',
   #'yazi',

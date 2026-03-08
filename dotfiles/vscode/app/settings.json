@@ -54,6 +54,7 @@
     "editor.defaultFormatter": "xaver.clang-format"
   },
   "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
     // "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
