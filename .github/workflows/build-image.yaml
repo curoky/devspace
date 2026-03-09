@@ -60,10 +60,12 @@ jobs:
           file: images/base/Dockerfile
           push: true
           provenance: mode=max
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          # cache-from: type=gha
+          # cache-to: type=gha,mode=max
           # cache-from: type=registry,ref=curoky/devspace:__cache_base_${{ matrix.saved_image }}
           # cache-to: type=registry,ref=curoky/devspace:__cache_base_${{ matrix.saved_image }},mode=max
+          cache-from: type=registry,ref=ghcr.io/curoky/devspace-cache:base-${{ matrix.saved_image }}
+          cache-to: type=registry,ref=ghcr.io/curoky/devspace-cache:base-${{ matrix.saved_image }},mode=max
           no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
           build-args: BASE_IMAGE=${{ matrix.base_image }}
           tags: ghcr.io/curoky/devspace:base-${{ matrix.saved_image }}
@@ -121,18 +123,21 @@ jobs:
       - uses: docker/setup-buildx-action@v3
       - uses: docker/login-action@v3
         with:
-          username: curoky
-          password: ${{ secrets.DOCKER_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/build-push-action@v6
         with:
           context: images/${{ matrix.name }}
           file: images/${{ matrix.name }}/Dockerfile
           push: true
           provenance: mode=max
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          # cache-from: type=gha
+          # cache-to: type=gha,mode=max
           # cache-from: type=registry,ref=curoky/devspace:__cache_dist_${{ matrix.saved_image }}
           # cache-to: type=registry,ref=curoky/devspace:__cache_dist_${{ matrix.saved_image }},mode=max
+          cache-from: type=registry,ref=ghcr.io/curoky/devspace-cache:${{ matrix.saved_image }}
+          cache-to: type=registry,ref=ghcr.io/curoky/devspace-cache:${{ matrix.saved_image }},mode=max
           no-cache: ${{ github.event_name == 'workflow_dispatch' && inputs.disable_docker_cache == true }}
           tags: ghcr.io/curoky/devspace:${{ matrix.saved_image }}
           outputs: type=image,oci-mediatypes=true
