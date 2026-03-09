@@ -59,7 +59,8 @@ jobs:
           context: .
           file: images/base/Dockerfile
           push: true
-          provenance: mode=max
+          # provenance: mode=max
+          provenance: false
           # cache-from: type=gha
           # cache-to: type=gha,mode=max
           # cache-from: type=registry,ref=curoky/devspace:__cache_base_${{ matrix.saved_image }}
@@ -131,7 +132,8 @@ jobs:
           context: images/${{ matrix.name }}
           file: images/${{ matrix.name }}/Dockerfile
           push: true
-          provenance: mode=max
+          # provenance: mode=max
+          provenance: false
           # cache-from: type=gha
           # cache-to: type=gha,mode=max
           # cache-from: type=registry,ref=curoky/devspace:__cache_dist_${{ matrix.saved_image }}
