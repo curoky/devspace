@@ -77,6 +77,20 @@ jobs:
       #     docker run --rm --env=CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive
       #     curoky/devspace:base-${{ matrix.saved_image }}
 
+  clean:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Delete untagged images
+        uses: vlaurin/action-ghcr-cleanup@v1.10.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          package: ${{ github.event.repository.name }}
+          untagged-only: true
+          owner: ${{ github.repository_owner }}
+
   # stage:
   #   runs-on: ubuntu-latest
   #   strategy:
