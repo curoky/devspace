@@ -6,7 +6,6 @@ FROM docker.io/debian:latest AS stage_sbt
 RUN apt-get update -y && apt-get install -y curl zstd
 
 COPY images/base/script/install-sbt-pkgs.sh /tmp/install-sbt-pkgs.sh
-COPY images/base/script/sbt /tmp/sbt
 RUN /tmp/install-sbt-pkgs.sh
 
 ################################# stage/conda environ ################################
