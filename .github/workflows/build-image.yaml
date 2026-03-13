@@ -86,6 +86,7 @@ jobs:
       - uses: dataaxiom/ghcr-cleanup-action@v1
         with:
           dry-run: false
+          delete-untagged: true
 
   # stage:
   #   runs-on: ubuntu-latest
