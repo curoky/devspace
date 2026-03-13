@@ -83,13 +83,9 @@ jobs:
       contents: read
       packages: write
     steps:
-      - name: Delete untagged images
-        uses: vlaurin/action-ghcr-cleanup@v1.10.0
+      - uses: dataaxiom/ghcr-cleanup-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          package: ${{ github.event.repository.name }}
-          untagged-only: true
-          owner: ${{ github.repository_owner }}
+          dry-run: false
 
   # stage:
   #   runs-on: ubuntu-latest
