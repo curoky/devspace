@@ -34,10 +34,6 @@ function link() {
 
 pkgs=(
   bzip2
-  clang-tools-18
-  clang-tools-19
-  clang-tools-20
-  clang-tools-21
   clang-tools-22
   connect
   dool
@@ -169,6 +165,10 @@ pkgs=(
 
 pkgs_nolink=(
   python311
+  clang-tools-18
+  clang-tools-19
+  clang-tools-20
+  clang-tools-21
 
   s6
   s6-rc
