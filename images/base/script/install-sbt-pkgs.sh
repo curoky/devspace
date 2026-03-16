@@ -34,11 +34,11 @@ function link() {
 
 pkgs=(
   bzip2
-  clang-format_18
-  clang-format_19
-  clang-format_20
-  clang-format_21
-  # clang-format_22
+  clang-tools-18
+  clang-tools-19
+  clang-tools-20
+  clang-tools-21
+  clang-tools-22
   connect
   dool
   ethtool
