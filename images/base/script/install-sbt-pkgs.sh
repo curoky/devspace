@@ -181,7 +181,7 @@ pkgs_nolink=(
 )
 
 mkdir -p /opt/sbt/bin
-curl https://raw.githubusercontent.com/curoky/static-binaries/refs/heads/dev/tools/sbt >/opt/sbt/bin/sbt
+curl https://raw.githubusercontent.com/curoky/static-binaries/refs/heads/master/tools/sbt >/opt/sbt/bin/sbt
 chmod +x /opt/sbt/bin/sbt
 for pkg in "${pkgs[@]}"; do
   /opt/sbt/bin/sbt install --version=3 $pkg &
@@ -192,7 +192,7 @@ done
 wait
 
 ln -s -r /opt/sbt/bin/bazelisk /opt/sbt/bin/bazel
-ln -s -r /opt/sbt/bin/clang-format-21 /opt/sbt/bin/clang-format
+# ln -s -r /opt/sbt/bin/clang-format-21 /opt/sbt/bin/clang-format
 rm -rf /opt/sbt/store/nettools/bin/hostname
 
 link /opt/sbt/store/s6 /opt/sbt/profile/s6-overlay
