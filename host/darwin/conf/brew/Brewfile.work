@@ -15,7 +15,7 @@ casks = [
   # 'adrive',
   'keepingyouawake',
   # 'kap',
-  # 'input-source-pro',
+  'input-source-pro',
   # 'clash-verge-rev',
   # 'obs',
   # 'keycastr',
