@@ -1,21 +1,26 @@
 Host *
   GSSAPIAuthentication yes
-  GSSAPIDelegateCredentials no
-  HashKnownHosts no
+  GSSAPIDelegateCredentials yes
+
   IdentityFile ~/devspace/dotfiles/ssh/devbox.private.id_rsa
-  UserKnownHostsFile ~/.ssh/known_hosts ~/devspace/dotfiles/ssh/known_hosts
+
+  # StrictHostKeyChecking no
+  # HashKnownHosts no
+  UserKnownHostsFile ~/.ssh/known_hosts ~/devspace/dotfiles/ssh/known_hosts ~/devbox2/dotfiles/ssh/known_hosts
+
   ServerAliveInterval 10
   ServerAliveCountMax 10000000
   TCPKeepAlive yes
-  HostKeyAlgorithms +ssh-rsa
-  PubkeyAcceptedKeyTypes +ssh-rsa
-   ObscureKeystrokeTiming no
 
-Host 10.*
-  StrictHostKeyChecking no
-  GSSAPIAuthentication yes
-  GSSAPIDelegateCredentials no
-  HashKnownHosts No
+  # HostKeyAlgorithms +ssh-rsa
+  # PubkeyAcceptedKeyTypes +ssh-rsa
+
+  ControlMaster auto
+  ControlPath ~/.ssh/local-%r@%h:%p
+  ControlPersist 4h
+
+  # ObscureKeystrokeTiming no
+  # ObsoletePostQuantumKeyExchange no
 
 Host github.com
   IdentityFile ~/.ssh/github.private.id_ed25519
