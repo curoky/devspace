@@ -53,6 +53,9 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
   && nix-env -iA nixpkgs.opencommit \
   && nix-env -iA nixpkgs.markdownlint-cli2 \
   && nix-env -iA nixpkgs.prettier \
+  && nix-env -iA nixpkgs.maven \
+  && nix-env -iA nixpkgs.jdk8_headless -p /nix/var/nix/profiles/jdk8 \
+  && nix-env -iA nixpkgs.jdk25_headless -p /nix/var/nix/profiles/jdk25 \
   && nix-collect-garbage -d \
   && nix-store --optimise
 
