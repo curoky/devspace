@@ -53,9 +53,6 @@ RUN curl -L https://nixos.org/nix/install | sh -s -- --no-daemon \
   && nix-env -iA nixpkgs.opencommit \
   && nix-env -iA nixpkgs.markdownlint-cli2 \
   && nix-env -iA nixpkgs.prettier \
-  && nix-env -iA nixpkgs.maven \
-  && nix-env -iA nixpkgs.jdk8_headless -p /nix/var/nix/profiles/jdk8 \
-  && nix-env -iA nixpkgs.jdk25_headless -p /nix/var/nix/profiles/jdk25 \
   && nix-collect-garbage -d \
   && nix-store --optimise
 
@@ -64,6 +61,13 @@ ENV CARGO_HOME=/opt/rust/cargo RUSTUP_HOME=/opt/rust/rustup
 ENV PATH=${PATH}:/opt/rust/cargo/bin
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile default --no-modify-path --default-toolchain stable \
   && rustup component remove rust-docs
+
+# setup java
+RUN nix-env -iA nixpkgs.maven \
+  && nix-env -iA nixpkgs.jdk8_headless -p /nix/var/nix/profiles/jdk8 \
+  && nix-env -iA nixpkgs.jdk25_headless -p /nix/var/nix/profiles/jdk25 \
+  && nix-collect-garbage -d \
+  && nix-store --optimise
 
 # setup uv
 ENV PATH=${PATH}:/opt/pipx/bin
