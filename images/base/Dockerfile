@@ -28,7 +28,7 @@ ENV PATH=${PATH}:/opt/sbt/bin \
 ARG BASE_IMAGE
 COPY images/base/script/patch-apt.sh /tmp/patch-apt.sh
 RUN /tmp/patch-apt.sh ${BASE_IMAGE} \
-  && apt-get update -y && apt-get install -y sudo locales
+  && apt-get update -y && apt-get install -y sudo locales ca-certificates
 
 COPY images/base/script/setup-user.sh /tmp/setup-user.sh
 RUN /tmp/setup-user.sh
