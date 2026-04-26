@@ -27,7 +27,7 @@ sudo /opt/devspace/images/base/script/setup-proxy.sh
 
 mkdir -p /workspace/.vscode-server/data/Machine
 ln -sf /home/x/.vscode-server/data/Machine/settings.json /workspace/.vscode-server/data/Machine/settings.json
-mkdir -p /home/x/.trae-server/data/Machine/settings.json
+mkdir -p /home/x/.trae-server/data/Machine
 ln -sf /home/x/.vscode-server/data/Machine/settings.json /home/x/.trae-server/data/Machine/settings.json
 
 # /opt/devspace/tools/profile-installer.sh --ssl-pass-src pass:$(cat /var/run/s6/container_environment/PROFILE_PASS)
