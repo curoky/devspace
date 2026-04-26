@@ -73,8 +73,9 @@ RUN nix-env -iA nixpkgs.maven \
 # setup uv
 ENV PATH=${PATH}:/opt/pipx/bin
 COPY images/base/stage/uv/pipx /tmp/uv-pipx
-RUN /tmp/uv-pipx/install.sh
-# && pipx install licenseheaders
+RUN uv python install 3.14 \
+  && /tmp/uv-pipx/install.sh \
+  && pipx install licenseheaders
 # COPY images/base/stage/uv/conda /tmp/uv-conda
 # RUN /tmp/uv-conda/install.sh py3
 
