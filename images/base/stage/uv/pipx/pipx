@@ -21,4 +21,17 @@ export PIPX_HOME=/opt/pipx
 export PIPX_BIN_DIR=${PIPX_HOME}/bin
 export PIPX_MAN_DIR=${PIPX_HOME}/share/man
 
+UV_PYTHON_DIR=/home/x/.local/share/uv/python
+PYTHON_VERSION_LIST=(
+  3.9
+  3.10
+  3.11
+  3.12
+  3.13
+  3.14
+)
+for ver in "${PYTHON_VERSION_LIST[@]}"; do
+  export PATH=${PATH}:${UV_PYTHON_DIR}/cpython-$ver-linux-x86_64-gnu/bin
+done
+
 /opt/pipx/.venv/bin/pipx $@
