@@ -18,7 +18,8 @@ casks = [
   'sloth',
   'localsend',
   'resilio-sync',
-  'input-source-pro'
+  'input-source-pro',
+  'pnpm',
   # 'flameshot',
 
   # 'obs',
