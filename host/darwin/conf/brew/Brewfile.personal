@@ -51,6 +51,7 @@ casks = [
   # 'visual-studio-code',
   # 'warp',
   # 'google-chrome',
+  # 'lyricsx', # https://github.com/ddddxxx/LyricsX
 ]
 
 casks.each do |b|
