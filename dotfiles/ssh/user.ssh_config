@@ -26,10 +26,10 @@ Host github.com
   IdentityFile ~/.ssh/github.private.id_ed25519
 
 Host gitlab.com
-  IdentityFile ~/.ssh/github.private.id_ed25519
+  IdentityFile ~/.ssh/gitlab.id_ed25519
 
-Host bitbucket.org
-  IdentityFile ~/.ssh/github.private.id_ed25519
+# Host bitbucket.org
+#   IdentityFile ~/.ssh/github.private.id_ed25519
 
 Host *.tmate.io
   IdentityFile ~/.ssh/github.private.id_ed25519
