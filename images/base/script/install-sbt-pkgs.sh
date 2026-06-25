@@ -151,9 +151,9 @@ pkgs=(
   # iptables
   # lld_18
   # numactl
+  # silver-searcher
   scc
   cloc
-  # silver-searcher
 
   ##### experimental
   # bash
@@ -164,11 +164,13 @@ pkgs=(
 
 pkgs_nolink=(
   python311
+
   clang-tools-18
   clang-tools-19
   clang-tools-20
   clang-tools-21
 
+  s6
   s6-rc
   s6-linux-init
   s6-linux-utils
@@ -176,7 +178,6 @@ pkgs_nolink=(
   s6-networking
   s6-dns
   execline
-  s6
 )
 
 mkdir -p /opt/sbt/bin
@@ -190,8 +191,8 @@ for pkg in "${pkgs_nolink[@]}"; do
 done
 wait
 
-ln -s -r /opt/sbt/bin/bazelisk /opt/sbt/bin/bazel
 # ln -s -r /opt/sbt/bin/clang-format-21 /opt/sbt/bin/clang-format
+ln -s -r /opt/sbt/bin/bazelisk /opt/sbt/bin/bazel
 rm -rf /opt/sbt/store/nettools/bin/hostname
 
 link /opt/sbt/store/s6 /opt/sbt/profile/s6
