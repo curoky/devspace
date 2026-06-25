@@ -9,4 +9,4 @@ RUN apt-get update -y \
   && rm -rf /var/lib/apt/lists/*
 
 USER root
-ENTRYPOINT ["/opt/s6-overlay/init"]
+ENTRYPOINT ["/etc/s6/init/bin/init"]
