@@ -106,7 +106,6 @@ pkgs=(
   autoconf
   automake
   libtool
-  nixfmt
 
   #### only use in docker
   atuin
@@ -170,7 +169,6 @@ pkgs_nolink=(
   clang-tools-20
   clang-tools-21
 
-  s6
   s6-rc
   s6-linux-init
   s6-linux-utils
@@ -178,6 +176,7 @@ pkgs_nolink=(
   s6-networking
   s6-dns
   execline
+  s6
 )
 
 mkdir -p /opt/sbt/bin
@@ -195,14 +194,14 @@ ln -s -r /opt/sbt/bin/bazelisk /opt/sbt/bin/bazel
 # ln -s -r /opt/sbt/bin/clang-format-21 /opt/sbt/bin/clang-format
 rm -rf /opt/sbt/store/nettools/bin/hostname
 
-link /opt/sbt/store/s6 /opt/sbt/profile/s6-overlay
-link /opt/sbt/store/s6-rc /opt/sbt/profile/s6-overlay
-link /opt/sbt/store/s6-dns /opt/sbt/profile/s6-overlay
-link /opt/sbt/store/s6-linux-init /opt/sbt/profile/s6-overlay
-link /opt/sbt/store/s6-linux-utils /opt/sbt/profile/s6-overlay
-link /opt/sbt/store/s6-networking /opt/sbt/profile/s6-overlay
-link /opt/sbt/store/s6-portable-utils /opt/sbt/profile/s6-overlay
-link /opt/sbt/store/execline /opt/sbt/profile/s6-overlay
+link /opt/sbt/store/s6 /opt/sbt/profile/s6
+link /opt/sbt/store/s6-rc /opt/sbt/profile/s6
+link /opt/sbt/store/s6-dns /opt/sbt/profile/s6
+link /opt/sbt/store/s6-linux-init /opt/sbt/profile/s6
+link /opt/sbt/store/s6-linux-utils /opt/sbt/profile/s6
+link /opt/sbt/store/s6-networking /opt/sbt/profile/s6
+link /opt/sbt/store/s6-portable-utils /opt/sbt/profile/s6
+link /opt/sbt/store/execline /opt/sbt/profile/s6
 
 # option
 rm -rf /opt/sbt/store/cmake/share/cmake*/Help
