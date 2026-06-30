@@ -142,6 +142,11 @@ pkgs=(
   parallel
   nixfmt
 
+  pnpm
+  prettier
+  markdownlint-cli2
+  # opencommit
+
   ##### unneeded
   # aria2
   # binutils
@@ -165,6 +170,7 @@ pkgs=(
 
 pkgs_nolink=(
   python311
+  nodejs-slim24
 
   clang-tools-18
   clang-tools-19
