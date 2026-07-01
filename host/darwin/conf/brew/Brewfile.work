@@ -60,9 +60,9 @@ brews = [
   'prettier',
   'node',
   'pnpm',
-  'ffmpeg',
+  # 'ffmpeg',
 
-  'krb5',
+  # 'krb5',
   # 'openjdk',
   #'git',
   #'yazi',
