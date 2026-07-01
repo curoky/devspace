@@ -70,6 +70,11 @@ pkgs=(
   # git
   git-filter-repo
   biome
+  smartmontools
+  cloc
+  parallel
+  exiftool
+  wget
 
   # lxgw-wenkai
   # fira-code
@@ -82,7 +87,6 @@ pkgs=(
   # aria2
   # gost
 
-  # ruff need link jemalloc
 )
 
 sudo mkdir -p /opt/sb
