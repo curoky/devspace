@@ -170,7 +170,9 @@ pkgs=(
 
 pkgs_nolink=(
   python311
+  python314
   nodejs-slim24
+  nodejs-slim26
 
   clang-tools-18
   clang-tools-19
