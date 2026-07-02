@@ -21,6 +21,7 @@ mkdir -p /home/x/.trae-server/data/Machine
 ln -sf /home/x/.vscode-server/data/Machine/settings.json /home/x/.trae-server/data/Machine/settings.json
 
 if [[ -d /workspace/ai-coding-config/.trae/rules ]]; then
+  mkdir -p /home/x/.trae/user_rules
   rsync --partial --progress --archive --human-readable --rsh=ssh --delete --delete-excluded \
     /workspace/ai-coding-config/.trae/rules/ /home/x/.trae/user_rules/
 fi
