@@ -12,7 +12,7 @@ redirfd -w 1 /var/log/atuin.log
 # Supabase (or Postgres) connection string.
 export ATUIN_HOST "127.0.0.1"
 export ATUIN_PORT "2000"
-export ATUIN_OPEN_REGISTRATION "true"
+# export ATUIN_OPEN_REGISTRATION "true"
 export ATUIN_DB_URI "${X_ATUIN_DB_URI}"
 exec /opt/sb/store/atuin/bin/atuin server start
 
