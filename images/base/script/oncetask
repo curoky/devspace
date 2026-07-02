@@ -39,4 +39,4 @@ ln -sf /home/x/.vscode-server/data/Machine/settings.json /home/x/.trae-server/da
 # ollama pull llama3:8b &
 # ollama pull mistral &
 
-wait
+# wait
