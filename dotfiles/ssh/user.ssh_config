@@ -34,12 +34,6 @@ Host gitlab.com
   IdentityFile ~/.ssh/gitlab_id_ed25519
   IdentitiesOnly yes
 
-# Host bitbucket.org
-#   IdentityFile ~/.ssh/github.private.id_ed25519
-
-Host *.tmate.io
-  IdentityFile ~/.ssh/github.private.id_ed25519
-
 Host windows
   HostName 192.168.1.77
   User x
