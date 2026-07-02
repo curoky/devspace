@@ -23,10 +23,16 @@ Host *
   # ObsoletePostQuantumKeyExchange no
 
 Host github.com
-  IdentityFile ~/.ssh/github.private.id_ed25519
+  IdentityFile /workspace/passkey/github_id_ed25519
+  IdentityFile /Users/x/workspace/passkey/github_id_ed25519
+  IdentityFile ~/.ssh/github_id_ed25519
+  IdentitiesOnly yes
 
 Host gitlab.com
-  IdentityFile ~/.ssh/gitlab.id_ed25519
+  IdentityFile /workspace/passkey/gitlab_id_ed25519
+  IdentityFile /Users/x/workspace/passkey/gitlab_id_ed25519
+  IdentityFile ~/.ssh/gitlab_id_ed25519
+  IdentitiesOnly yes
 
 # Host bitbucket.org
 #   IdentityFile ~/.ssh/github.private.id_ed25519
