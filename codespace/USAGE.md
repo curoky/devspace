@@ -44,7 +44,7 @@ bash codespace/agent/run-agent.sh
 
 ```bash
 podman run --rm --name codespace-agent \
-  -p 8001:8001 \
+  --network host \
   -v /run/podman/podman.sock:/run/podman/podman.sock \
   codespace/agent:latest \
   serve \
