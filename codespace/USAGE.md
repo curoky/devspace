@@ -44,24 +44,24 @@ bash codespace/agent/run-agent.sh
 
 ```bash
 podman run --rm --name codespace-agent \
-  -p 8080:8080 \
+  -p 8001:8001 \
   -v /run/podman/podman.sock:/run/podman/podman.sock \
   codespace/agent:latest \
   serve \
   --workspace-root-host /var/lib/codespace-workspaces \
   --podman-uri unix:///run/podman/podman.sock \
-  --host 0.0.0.0 --port 8080
+  --host 0.0.0.0 --port 8001
 ```
 
 | CLI 参数 | 必填 | 说明 |
 | --- | --- | --- |
 | `--workspace-root-host` | 是 | 工作区 bind mount 的宿主机路径前缀 |
 | `--podman-uri` | 是 | podman service socket URI |
-| `--host` / `--port` | 否 | HTTP 绑定地址/端口（默认 `0.0.0.0:8080`） |
+| `--host` / `--port` | 否 | HTTP 绑定地址/端口（默认 `0.0.0.0:8001`） |
 
 配置非法（缺必填项等）时 agent 启动即报错退出。
 
-验证：`curl http://<host>:8080/codespaces` 返回 `[]`。
+验证：`curl http://<host>:8001/codespaces` 返回 `[]`。
 
 ## 4. 使用 client（本地）
 
@@ -74,7 +74,7 @@ podman run --rm --name codespace-agent \
 export GITHUB_TOKEN=ghp_xxx
 uv run python -m codespace.client create \
   --repo owner/name \
-  --agent http://10.0.0.5:8080 \
+  --agent http://10.0.0.5:8001 \
   --ssh-host 10.0.0.5 \
   --image codespace/dev:latest \
   --workspace default \
@@ -138,7 +138,7 @@ git clone git@github.com:curoky/dotfiles.git   # 只读，可 pull，不可 push
 ### 列表
 
 ```bash
-uv run python -m codespace.client list --agent http://10.0.0.5:8080 --ssh-host 10.0.0.5
+uv run python -m codespace.client list --agent http://10.0.0.5:8001 --ssh-host 10.0.0.5
 ```
 
 > `--ssh-host` 可选，仅用于填充 HOST 列展示（省略则显示 `-`）；agent 只返回端口。
