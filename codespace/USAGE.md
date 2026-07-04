@@ -9,7 +9,7 @@
 | --- | --- | --- |
 | **agent** | Linux 宿主机 | rootful Podman（`/run/podman/podman.sock` 可用）、可被 client 访问的网络端口 |
 | **client** | macOS / 本地 | Python 3.13+、`uv`、`ssh` 与 `ssh-keygen` |
-| **dev 镜像** | 由 agent 拉起 | 满足 `DESIGN.md §3` 契约（sshd:22、非 root 用户、`/workspace` 可写、含 git/ssh） |
+| **dev 镜像** | 由 agent 拉起 | 满足 `DESIGN.md §3` 契约（sshd 支持 `SSHD_PORT`、非 root 用户、`/workspace` 可写、含 git/ssh） |
 
 准备一枚 **GitHub token**（对目标 repo 有 deploy key 管理权限）。token **只用在 client 本地**
 与 GitHub 交互，**从不发给 agent、不经网络**（见 §7）。
@@ -164,7 +164,7 @@ uv run python -m codespace.client delete --alias my-cs
 - **`curl` 返回空但 create 失败**：确认 agent 能连 podman socket，且 `--image` 指定的镜像
   已构建/可拉取。
 - **`ssh <alias>` 连不上**：确认 `--ssh-host` 是 client 可达的宿主机地址，且宿主机
-  防火墙放行了 podman 映射的随机端口。
+  防火墙放行了开发容器在 host network 下监听的随机 sshd 端口。
 - **`git clone` 目标 repo 失败**：确认 token 有 deploy key 权限、repo 名正确；deploy key
   默认可读写。
 - **create 报注册 deploy key 失败**：检查 token 权限；client 已自动回滚容器，修正 token 后重试。
