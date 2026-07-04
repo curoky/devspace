@@ -89,6 +89,8 @@ uv run python -m codespace.client create \
 - `--image`（可选，默认 `codespace/dev:latest`）：满足 §3 契约的 dev 镜像，由 client 指定。
 - `--user`（可选，默认 `dev`）：容器内登录用户。
 - `--workspace`（可选，默认 `default`）：同一 repo 下的独立持久化工作区。
+- `--extra-repo`（可选，可多次）：额外授予**只读**拉取权限的仓库；与固定配置
+  `~/.config/codespace/extra-repos` 合并（见下）。
 - `--alias`（可选）：SSH 别名，默认 `<repo 名>-<workspace>`。
 
 流程：
@@ -111,6 +113,27 @@ ssh my-cs
 git clone git@github.com:owner/name.git   # 成功且可 push
 # clone 其它仓库会因无权限失败——这是预期的隔离保证
 ```
+
+### 额外只读仓库（如 dotfiles）
+
+让每个 codespace 额外获得若干仓库的**只读**拉取权限。两种指定方式（合并去重）：
+
+- **固定配置**（推荐，所有 codespace 生效）：`~/.config/codespace/extra-repos`，每行一个
+  `owner/name`，`#` 之后为注释。例如：
+  ```
+  # 每个 codespace 都能只读拉取的仓库
+  curoky/dotfiles
+  ```
+- **单次追加**：`create --extra-repo owner/tools`（可多次）。
+
+创建后进入容器，额外仓库可用**原始 URL 透明拉取**（内部经 host alias + git `insteadOf`
+重写到该 repo 专属只读 key）：
+
+```bash
+git clone git@github.com:curoky/dotfiles.git   # 只读，可 pull，不可 push
+```
+
+> 每个额外仓库对应一把独立的 `read_only` deploy key，删除 codespace 时一并吊销。
 
 ### 列表
 
