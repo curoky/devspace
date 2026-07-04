@@ -77,7 +77,6 @@ uv run python -m codespace.client create \
   --agent http://0.0.0.0:8001 \
   --ssh-host 10.0.0.5 \
   --image ghcr.io/curoky/devspace:codespace-debian12 \
-  --workspace default \
   --alias my-cs
 ```
 
@@ -88,9 +87,7 @@ uv run python -m codespace.client create \
 - `--token`（必填，或 `GITHUB_TOKEN`）：GitHub token，仅本地使用。
 - `--image`（可选，默认 `ghcr.io/curoky/devspace:codespace-debian12`）：满足 §3 契约的
   dev 镜像，由 client 指定。
-- `--user`（可选，默认 `dev`）：容器内登录用户。
-- `--workspace`（可选，默认 `default`）：同一 repo 下的独立持久化工作区。
-- `--alias`（可选）：SSH 别名，默认 `<repo 名>-<workspace>`。
+- `--alias`（可选）：SSH 别名，默认 `<repo 名>`。
 
 此外每个 codespace 会自动获得一组**固定额外仓库**的只读拉取权限（见「额外只读仓库」）。
 
@@ -147,17 +144,17 @@ uv run python -m codespace.client delete --alias my-cs
 
 删除会：**client 用 token 吊销 GitHub deploy key**（按 title `codespace-<id>` 反查）→
 请求 agent 移除容器 → 清理本地 `~/.ssh/config` 托管块与登录 key。
-**默认保留工作区目录**，重建同名 `--workspace` 即复用其中数据。
+**默认保留工作区目录**，重建同 repo codespace 即复用其中数据。
 
 > `delete` 需要 `--token`（或 `GITHUB_TOKEN`）用于吊销 deploy key；`id` 与 `repo` 自动从
 > ssh config 托管块读取，无需手填（缺失时可用 `--id` / `--repo` 覆盖）。
 
 ## 5. 工作区持久化
 
-每个 `(repo, workspace)` 对应宿主机一个固定目录
-`<workspace_root_host>/codespace-<repo-slug>-<workspace>-<hash8>`，以 bind mount 挂到
+每个 repo 对应宿主机一个固定目录
+`<workspace_root_host>/codespace-<repo-slug>-default-<hash8>`，以 bind mount 挂到
 容器 `/workspace`。删除容器（不 `--purge`）保留该目录，重建复用。
-同一 repo 用不同 `--workspace` 可并行开多个互不干扰的 codespace。
+同一 repo 只允许一个运行中的 codespace。
 
 ## 6. 常见问题
 
