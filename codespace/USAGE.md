@@ -74,31 +74,33 @@ podman run --rm --name codespace-agent \
 export GITHUB_TOKEN=ghp_xxx
 uv run python -m codespace.client create \
   --repo owner/name \
-  --agent http://10.0.0.5:8001 \
+  --agent http://0.0.0.0:8001 \
   --ssh-host 10.0.0.5 \
-  --image codespace/dev:latest \
+  --image ghcr.io/curoky/devspace:codespace-image-debian12 \
   --workspace default \
   --alias my-cs
 ```
 
 - `--repo`（必填）：目标 GitHub 仓库 `owner/name`。
-- `--agent`（必填）：agent 地址。
+- `--agent`（可选，默认 `http://0.0.0.0:8001`）：agent 地址。
 - `--ssh-host`（必填）：client 可达的宿主机地址，用于 ssh 到 dev 容器（写入 ssh config 的
   `HostName`）；常与 `--agent` 的 host 相同。
 - `--token`（必填，或 `GITHUB_TOKEN`）：GitHub token，仅本地使用。
-- `--image`（可选，默认 `codespace/dev:latest`）：满足 §3 契约的 dev 镜像，由 client 指定。
+- `--image`（可选，默认 `ghcr.io/curoky/devspace:codespace-image-debian12`）：满足 §3 契约的
+  dev 镜像，由 client 指定。
 - `--user`（可选，默认 `dev`）：容器内登录用户。
 - `--workspace`（可选，默认 `default`）：同一 repo 下的独立持久化工作区。
-- `--extra-repo`（可选，可多次）：额外授予**只读**拉取权限的仓库；与固定配置
-  `~/.config/codespace/extra-repos` 合并（见下）。
 - `--alias`（可选）：SSH 别名，默认 `<repo 名>-<workspace>`。
+
+此外每个 codespace 会自动获得一组**固定额外仓库**的只读拉取权限（见「额外只读仓库」）。
 
 流程：
 1. 本地生成登录 keypair `~/.ssh/codespace/<alias>{,.pub}`（已存在则复用）；
-2. `POST` 到 agent（**不含 token**），agent 建容器、注入 deploy 私钥、返回 deploy 公钥；
-3. client 用 token 把该公钥注册为 GitHub deploy key（`codespace-<id>`）；注册失败会自动
-   请求 agent 删除刚建的容器（回滚），避免孤儿；
-4. `~/.ssh/config` 写入托管块（含 `id` 与 `repo`）；
+2. `POST` 到 agent（**不含 token**），agent 建容器、注入 deploy 私钥（主 repo + 额外 repo）、
+   返回各 repo 的 deploy 公钥；
+3. client 用 token 把每个公钥注册为对应 repo 的 GitHub deploy key（`codespace-<id>`）；任一
+   注册失败会吊销已注册的 key、请求 agent 删除容器（回滚），避免孤儿；
+4. `~/.ssh/config` 写入托管块（含 `id` 与全部 `repos`）；
 5. 提示 `ssh <alias>` 即可登录。
 
 ### 登录
@@ -114,23 +116,16 @@ git clone git@github.com:owner/name.git   # 成功且可 push
 # clone 其它仓库会因无权限失败——这是预期的隔离保证
 ```
 
-### 额外只读仓库（如 dotfiles）
+### 额外只读仓库
 
-让每个 codespace 额外获得若干仓库的**只读**拉取权限。两种指定方式（合并去重）：
-
-- **固定配置**（推荐，所有 codespace 生效）：`~/.config/codespace/extra-repos`，每行一个
-  `owner/name`，`#` 之后为注释。例如：
-  ```
-  # 每个 codespace 都能只读拉取的仓库
-  curoky/dotfiles
-  ```
-- **单次追加**：`create --extra-repo owner/tools`（可多次）。
+每个 codespace 会自动获得一组**固定额外仓库**的**只读**拉取权限（如共享配置
+`curoky/ai-coding-config`）。该列表硬编码在 client 的 `EXTRA_REPOS` 常量中，无需额外配置。
 
 创建后进入容器，额外仓库可用**原始 URL 透明拉取**（内部经 host alias + git `insteadOf`
 重写到该 repo 专属只读 key）：
 
 ```bash
-git clone git@github.com:curoky/dotfiles.git   # 只读，可 pull，不可 push
+git clone git@github.com:curoky/ai-coding-config.git   # 只读，可 pull，不可 push
 ```
 
 > 每个额外仓库对应一把独立的 `read_only` deploy key，删除 codespace 时一并吊销。
