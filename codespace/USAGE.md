@@ -18,7 +18,7 @@
 
 ```bash
 # 参考开发镜像（满足 §3 契约）
-podman build -t codespace/dev:latest codespace/image
+podman build -t codespace/dev:latest -f codespace/image/Dockerfile .
 
 # agent 自身镜像（从仓库根构建，需 pyproject.toml/uv.lock 在上下文）
 podman build -t codespace/agent:latest -f codespace/agent/Dockerfile .
@@ -76,7 +76,7 @@ uv run python -m codespace.client create \
   --repo owner/name \
   --agent http://0.0.0.0:8001 \
   --ssh-host 10.0.0.5 \
-  --image ghcr.io/curoky/devspace:codespace-image-debian12 \
+  --image ghcr.io/curoky/devspace:codespace-debian12 \
   --workspace default \
   --alias my-cs
 ```
@@ -86,7 +86,7 @@ uv run python -m codespace.client create \
 - `--ssh-host`（必填）：client 可达的宿主机地址，用于 ssh 到 dev 容器（写入 ssh config 的
   `HostName`）；常与 `--agent` 的 host 相同。
 - `--token`（必填，或 `GITHUB_TOKEN`）：GitHub token，仅本地使用。
-- `--image`（可选，默认 `ghcr.io/curoky/devspace:codespace-image-debian12`）：满足 §3 契约的
+- `--image`（可选，默认 `ghcr.io/curoky/devspace:codespace-debian12`）：满足 §3 契约的
   dev 镜像，由 client 指定。
 - `--user`（可选，默认 `dev`）：容器内登录用户。
 - `--workspace`（可选，默认 `default`）：同一 repo 下的独立持久化工作区。
