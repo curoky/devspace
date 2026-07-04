@@ -24,6 +24,9 @@ podman build -t codespace/dev:latest codespace/image
 podman build -t codespace/agent:latest -f codespace/agent/Dockerfile .
 ```
 
+> CI 也会把 agent 镜像推到 `ghcr.io/curoky/devspace:codespace-agent`，可直接
+> `podman pull ghcr.io/curoky/devspace:codespace-agent` 使用（配 `AGENT_IMAGE` 环境变量）。
+
 ## 3. 启动 agent（Linux 宿主机）
 
 agent 无状态、不接触 GitHub，只挂载 podman socket。配置仅通过**命令行参数**传入，两个
