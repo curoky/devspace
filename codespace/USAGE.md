@@ -45,7 +45,7 @@ podman pull ghcr.io/curoky/devspace:codespace-agent
 ### 3.1 使用参考脚本
 
 ```bash
-WORKSPACE_ROOT_HOST=/var/lib/codespace-workspaces \
+WORKSPACE_ROOT_HOST=/var/lib/codespace \
 ATUIN_DB_URI=postgres://user:pass@host:5432/atuin \
 bash codespace/images/agent/run.sh
 ```
@@ -56,8 +56,8 @@ bash codespace/images/agent/run.sh
 podman run --rm --name codespace-agent \
   --network host \
   -v /tmp/podmanxd.sock:/tmp/podmanxd.sock \
-  -v /var/lib/codespace-workspaces:/var/lib/codespace-workspaces \
-  -e WORKSPACE_ROOT_HOST=/var/lib/codespace-workspaces \
+  -v /var/lib/codespace:/var/lib/codespace \
+  -e WORKSPACE_ROOT_HOST=/var/lib/codespace \
   -e ATUIN_DB_URI=postgres://user:pass@host:5432/atuin \
   ghcr.io/curoky/devspace:codespace-agent
 ```
