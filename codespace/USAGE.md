@@ -46,6 +46,7 @@ podman pull ghcr.io/curoky/devspace:codespace-agent
 
 ```bash
 WORKSPACE_ROOT_HOST=/var/lib/codespace-workspaces \
+ATUIN_DB_URI=postgres://user:pass@host:5432/atuin \
 bash codespace/images/agent/run.sh
 ```
 
@@ -54,22 +55,26 @@ bash codespace/images/agent/run.sh
 ```bash
 podman run --rm --name codespace-agent \
   --network host \
-  -v /run/podman/podman.sock:/run/podman/podman.sock \
-  ghcr.io/curoky/devspace:codespace-agent \
-  serve \
-  --workspace-root-host /var/lib/codespace-workspaces \
-  --podman-uri unix:///run/podman/podman.sock \
-  --host 0.0.0.0 --port 8001
+  -v /tmp/podmanxd.sock:/tmp/podmanxd.sock \
+  -v /var/lib/codespace-workspaces:/var/lib/codespace-workspaces \
+  -e WORKSPACE_ROOT_HOST=/var/lib/codespace-workspaces \
+  -e ATUIN_DB_URI=postgres://user:pass@host:5432/atuin \
+  ghcr.io/curoky/devspace:codespace-agent
 ```
 
-参数说明：
+agent 镜像使用 s6 管理进程，容器启动后会自动拉起 `agent-service` 和 `atuin-service`。启动时只传入
+`WORKSPACE_ROOT_HOST` 和可选的 `ATUIN_DB_URI`；其他运行参数固定在 s6 run 脚本中，而不是在镜像命令行后追加 `serve ...`
+参数。
 
-| 参数 | 必填 | 说明 |
-| --- | --- | --- |
-| `--workspace-root-host` | 是 | 宿主机 workspace 根目录。该路径由宿主机 podman service 解释。 |
-| `--podman-uri` | 是 | podman service socket URI。 |
-| `--host` | 否 | agent HTTP 监听地址，默认 `0.0.0.0`。 |
-| `--port` | 否 | agent HTTP 监听端口，默认 `8001`。 |
+环境变量说明：
+
+| 环境变量 | 必填 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `WORKSPACE_ROOT_HOST` | 是 | 无 | 宿主机 workspace 根目录。该路径由宿主机 podman service 解释。 |
+| `ATUIN_DB_URI` | 否 | 无 | atuin server 数据库连接串。 |
+
+固定参数：agent 监听 `0.0.0.0:8001`，podman socket 为 `unix:///tmp/podmanxd.sock`，atuin 监听
+`127.0.0.1:8002` 且关闭开放注册。
 
 验证：
 
@@ -305,7 +310,7 @@ Host home-devspace-default
 - 检查 agent 是否运行：`curl http://<agent>:8001/codespaces`。
 - 检查本地是否能访问 `agent_url`。
 - 如果使用 SSH proxy，检查 `ssh_proxy_host` 是否能登录。
-- 检查 agent 启动参数中的 `--host` / `--port`。
+- 检查 agent 是否按固定端口 `8001` 启动。
 
 ### 创建失败：token missing
 
