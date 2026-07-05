@@ -19,7 +19,7 @@ GitHub / GitLab token 在 Web GUI 页面中填写后保存到本地 Python Web G
 ### 2.1 参考开发镜像
 
 ```bash
-podman build -t codespace/dev:latest -f codespace/image/Dockerfile .
+podman build -t codespace/dev:latest -f codespace/images/dev/Dockerfile .
 ```
 
 也可以使用项目发布的参考镜像，例如：
@@ -31,7 +31,7 @@ ghcr.io/curoky/devspace:codespace-debian12
 ### 2.2 agent 镜像
 
 ```bash
-podman build -t codespace/agent:latest -f codespace/agent/Dockerfile .
+podman build -t codespace/agent:latest -f codespace/images/agent/Dockerfile .
 ```
 
 如果已有发布镜像，可直接拉取：
@@ -45,9 +45,8 @@ podman pull ghcr.io/curoky/devspace:codespace-agent
 ### 3.1 使用参考脚本
 
 ```bash
-ADVERTISE_HOST=10.0.0.5 \
 WORKSPACE_ROOT_HOST=/var/lib/codespace-workspaces \
-bash codespace/agent/run-agent.sh
+bash codespace/images/agent/run.sh
 ```
 
 ### 3.2 直接 podman run
