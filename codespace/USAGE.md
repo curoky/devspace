@@ -150,6 +150,14 @@ Python Web GUI service 的进程内存中；刷新页面或重启浏览器后，
 - 创建时 Web GUI 会用 service 内存中对应 provider 的 token 注册 deploy key；
 - 删除时 Web GUI 会用 service 内存中对应 provider 的 token 按 title `codespace-<id>` 查找并删除 deploy key。
 
+GitLab token 说明：
+
+- 支持 GitLab Personal Access Token，也支持 Fine-grained personal access token；
+- Fine-grained token 需要覆盖目标 project，并授予 Deploy Key 相关 REST API 权限，至少包括
+  list、create、delete project deploy keys；
+- client 只调用 project deploy key API，不要求 token 具备读取完整 project 详情的权限；
+- GitLab provider 当前只支持官方 `gitlab.com` API 和默认 SSH host。
+
 如果某个 provider token 未保存，对应 provider 的创建会被后端拒绝；删除仍会尽量删除远端容器，但会
 返回“跳过 deploy key 吊销”的 warning。
 
@@ -180,7 +188,8 @@ CODESPACE_WEB_HOST=127.0.0.1 CODESPACE_WEB_PORT=8765 uv run python -m codespace.
 2. 在页面顶部填写目标 provider 的 token，并点击 Save 保存到 Python service 内存。
 3. 在顶部 template select 中选择一个 template，或在 template 行点击 `New instance`。
 4. 确认弹窗中的 agent、provider、repo、image。
-5. 填写 instance，例如 `default`、`debug`、`feature-x`。
+5. 填写 instance，例如 `default`、`debug`、`feature-x`。如果 `default` 已存在，Web GUI 会自动建议
+   `default-2`、`default-3` 等下一个可用名称；提交前也会阻止与当前 Dashboard/operation 已知实例重名。
 6. 提交创建。
 7. 在 operation timeline 中观察进度。
 
@@ -231,8 +240,8 @@ ssh x@10.0.0.5 -p 49207
 
 在 Dashboard 中选择实例删除：
 
-- **Delete**：删除容器，保留宿主机 workspace。
-- **Delete + Purge**：删除容器并删除宿主机 workspace。
+- **Delete container**：删除容器，保留宿主机 workspace。
+- **Delete workspace**：删除容器并删除宿主机 workspace 目录本身。
 
 删除会尝试执行：
 
@@ -241,7 +250,8 @@ ssh x@10.0.0.5 -p 49207
 3. 删除本地 `~/.ssh/codespace/ssh_config` 托管块；
 4. 删除本地登录 keypair。
 
-如果对应 provider token 未保存，容器仍可删除，但 deploy key 吊销会被跳过并显示 warning。
+如果对应 provider token 未保存，容器仍可删除，但 deploy key 吊销会被跳过并显示 warning。如果 deploy
+key 吊销调用返回 403 等 provider 权限错误，Web GUI 也会继续删除容器并把吊销失败显示为 warning。
 
 ## 10. SSH proxy agent
 
@@ -320,8 +330,36 @@ Host home-devspace-default
 ### 创建失败：deploy key 注册失败
 
 - 确认 token 对目标 repo 有 deploy key 管理权限。
+- 如果使用 GitLab Fine-grained token，确认 token 的 project 范围包含目标 repo，且 Deploy Key
+  权限包含 create/list/delete project deploy keys。
 - 检查 repo 路径是否正确。
 - 检查目标 repo 是否已经存在同 title 的异常 deploy key；必要时手动清理 `codespace-<id>` key。
+
+### 创建失败：codespace already exists
+
+这个错误来自 agent 的 Podman container label 去重检查，不是 workspace 目录已存在导致的。agent 会在
+创建前查找同一个 `repo/template/instance` 是否已有容器；若找到，就拒绝创建并返回 existing id、容器名
+和状态。
+
+常见原因是之前创建流程在容器已创建后失败，留下 stale container。注意 agent 使用固定 podman socket：
+
+```text
+unix:///tmp/podmanxd.sock
+```
+
+请在 agent 所在机器上使用同一个 socket 排查：
+
+```bash
+podman --url unix:///tmp/podmanxd.sock ps -a \
+  --filter label=codespace.id \
+  --format '{{.ID}} {{.Names}} {{.Status}} {{.Labels}}'
+```
+
+确认 stale container 后可清理：
+
+```bash
+podman --url unix:///tmp/podmanxd.sock rm -f <container-name-or-id>
+```
 
 ### 创建失败：clone 失败
 
@@ -339,7 +377,8 @@ Host home-devspace-default
 
 ### 删除后 workspace 仍在
 
-这是默认行为。只有选择 purge 才会删除 workspace 目录。
+这是默认行为。只有选择 **Delete workspace** 才会删除 workspace 目录本身；普通 **Delete container**
+会保留 workspace，便于之后用同一 repo/template/instance 复用数据。
 
 ## 13. 安全边界
 
