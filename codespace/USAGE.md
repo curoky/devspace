@@ -185,8 +185,8 @@ CODESPACE_WEB_HOST=127.0.0.1 CODESPACE_WEB_PORT=8765 uv run python -m codespace.
 ## 7. 在 Web GUI 中创建 codespace
 
 1. 打开 Web GUI。
-2. 选择一个 template，或点击 Create 使用空白表单。
-3. 确认 agent、provider、repo、image。
+2. 在顶部 template select 中选择一个 template，或在 template 行点击 `New instance`。
+3. 确认弹窗中的 agent、provider、repo、image。
 4. 填写 instance，例如 `default`、`debug`、`feature-x`。
 5. 如需要代理等非敏感配置，在 Environment variables 中填写每行 `KEY=VALUE`。
 6. 提交创建。
