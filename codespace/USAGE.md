@@ -11,8 +11,8 @@
 | **client / Web GUI** | 本地机器 | Python 3.13+、`uv`、`ssh`、`ssh-keygen` |
 | **dev 镜像** | agent 拉起 | sshd 支持 `SSHD_PORT`、默认用户 `x`、`/workspace` 可写、包含 git/ssh |
 
-GitHub / GitLab token 只在 client 本地进程中读取，用于注册和吊销 deploy key；token 不会发送给
-agent，也不会返回给浏览器。
+GitHub / GitLab token 在 Web GUI 页面中填写后保存到本地 Python Web GUI service 的进程内存中，
+用于注册和吊销 deploy key；token 不会发送给 agent，也不会写入 YAML 配置或浏览器持久化存储。
 
 ## 2. 构建或拉取镜像
 
@@ -101,14 +101,6 @@ defaults:
   agent: home
   image: ghcr.io/curoky/devspace:codespace-debian12
 
-github:
-  token_env: GITHUB_TOKEN
-
-gitlab:
-  token_env: GITLAB_TOKEN
-  api_url: https://gitlab.com
-  ssh_host: gitlab.com
-
 agents:
   home:
     agent_url: http://10.0.0.5:8001
@@ -133,12 +125,10 @@ templates:
     agent: office
     provider: gitlab
     repo: group/service-api
-    git_ssh_host: gitlab.example.com
 ```
 
 注意：
 
-- `token_env` 必须写环境变量名，不要写 token 明文。
 - `defaults.agent` 必须存在于 `agents`。
 - template 的 `agent` 如设置，也必须存在于 `agents`。
 - template 的 `repo` 使用 `owner/name` 或 `group/project` 形式。
@@ -146,21 +136,18 @@ templates:
 
 ## 5. 准备 token
 
-按配置中的 env 名称导出 token：
-
-```bash
-export GITHUB_TOKEN=github_pat_xxx
-export GITLAB_TOKEN=glpat-xxx
-```
+在 Web GUI 页面顶部填写 GitHub / GitLab token，并点击对应的 Save 按钮。token 会保存到本地
+Python Web GUI service 的进程内存中；刷新页面或重启浏览器后，页面会重新读取“是否已保存”的状态，
+不需要重复填写。重启 Python Web GUI service 后，内存 token 会丢失，需要重新保存。
 
 权限要求：
 
 - token 对目标 repo 需要有管理 deploy key 的权限；
-- 创建时 client 会注册 deploy key；
-- 删除时 client 会按 title `codespace-<id>` 查找并删除 deploy key。
+- 创建时 Web GUI 会用 service 内存中对应 provider 的 token 注册 deploy key；
+- 删除时 Web GUI 会用 service 内存中对应 provider 的 token 按 title `codespace-<id>` 查找并删除 deploy key。
 
-如果某个 provider token 缺失，对应 provider 的创建会被 Web API 拒绝；删除仍会尽量删除远端容器，
-但会返回“跳过 deploy key 吊销”的 warning。
+如果某个 provider token 未保存，对应 provider 的创建会被后端拒绝；删除仍会尽量删除远端容器，但会
+返回“跳过 deploy key 吊销”的 warning。
 
 ## 6. 启动 Web GUI
 
@@ -180,15 +167,16 @@ uv run python -m codespace.client
 CODESPACE_WEB_HOST=127.0.0.1 CODESPACE_WEB_PORT=8765 uv run python -m codespace.client
 ```
 
-不要把 Web GUI 暴露到不可信网络。Web GUI 进程可以访问本地 token、SSH key 和 `~/.ssh/config`。
+不要把 Web GUI 暴露到不可信网络。Web GUI 可操作本地 SSH key、`~/.ssh/config`，并会在进程内存中
+保存 provider token。
 
 ## 7. 在 Web GUI 中创建 codespace
 
 1. 打开 Web GUI。
-2. 在顶部 template select 中选择一个 template，或在 template 行点击 `New instance`。
-3. 确认弹窗中的 agent、provider、repo、image。
-4. 填写 instance，例如 `default`、`debug`、`feature-x`。
-5. 如需要代理等非敏感配置，在 Environment variables 中填写每行 `KEY=VALUE`。
+2. 在页面顶部填写目标 provider 的 token，并点击 Save 保存到 Python service 内存。
+3. 在顶部 template select 中选择一个 template，或在 template 行点击 `New instance`。
+4. 确认弹窗中的 agent、provider、repo、image。
+5. 填写 instance，例如 `default`、`debug`、`feature-x`。
 6. 提交创建。
 7. 在 operation timeline 中观察进度。
 
@@ -216,24 +204,6 @@ office-service-api-debug
 | `cloning repo into workspace` | agent 在容器 workspace 中 clone 主 repo。 |
 | `writing ssh config` | client 写入本地 SSH config 托管块。 |
 | `ready` | 创建完成。 |
-
-### 7.1 容器环境变量
-
-创建表单的 Environment variables 用于传递非敏感运行环境，例如：
-
-```text
-HTTP_PROXY=http://proxy.example.com:7890
-HTTPS_PROXY=http://proxy.example.com:7890
-NO_PROXY=localhost,127.0.0.1
-```
-
-规则：
-
-- 每行一个 `KEY=VALUE`；
-- 空行和 `#` 开头的注释行会被忽略；
-- 变量名必须是合法 shell 风格 env 名称；
-- `SSHD_PORT` 是系统保留变量，不能覆盖；
-- 不要填写 token、password、private key 等敏感信息。
 
 ## 8. 登录和使用
 
@@ -267,7 +237,7 @@ ssh x@10.0.0.5 -p 49207
 3. 删除本地 `~/.ssh/config` 托管块；
 4. 删除本地登录 keypair。
 
-如果 token 缺失，容器仍可删除，但 deploy key 吊销会被跳过并显示 warning。
+如果对应 provider token 未保存，容器仍可删除，但 deploy key 吊销会被跳过并显示 warning。
 
 ## 10. SSH proxy agent
 
@@ -333,9 +303,8 @@ Host home-devspace-default
 
 ### 创建失败：token missing
 
-- 确认配置中的 `github.token_env` / `gitlab.token_env` 是环境变量名。
-- 确认启动 Web GUI 的同一个 shell 中已 `export` 对应 token。
-- 不要把 token 明文写进 YAML。
+- 确认已在 Web GUI 页面顶部填写并保存目标 provider 的 token。
+- token 只保存在 Python Web GUI service 进程内存中；如果刚重启过 service，需要重新保存。
 
 ### 创建失败：deploy key 注册失败
 
@@ -345,9 +314,9 @@ Host home-devspace-default
 
 ### 创建失败：clone 失败
 
-- 通常说明 deploy key 尚未生效、repo 路径错误或 Git SSH host 配置错误。
-- 检查 template 的 `provider` 和 `git_ssh_host`。
-- GitLab 自建实例需要正确配置 `gitlab.api_url` 与 `gitlab.ssh_host`。
+- 通常说明 deploy key 尚未生效、repo 路径错误或 Git SSH host 不匹配。
+- 检查 template 的 `provider`。
+- GitLab provider 只支持官方 `gitlab.com` API 和默认 SSH host；如需自建 GitLab 实例，需要重新引入 API/SSH host 配置。
 
 ### `ssh <alias>` 连不上
 
@@ -363,7 +332,8 @@ Host home-devspace-default
 ## 13. 安全边界
 
 - agent 不持有 GitHub / GitLab token。
-- Web GUI 进程可访问本地 token、SSH key 和 `~/.ssh/config`，默认只监听 localhost。
+- provider token 只保存在本地 Python Web GUI service 进程内存中，不写入 YAML 或浏览器持久化存储。
+- Web GUI 进程可访问本地 SSH key 和 `~/.ssh/config`，默认只监听 localhost。
 - 不要把 Web GUI 暴露到不可信网络。
 - deploy key 粒度限制在单个 repo。
 - 删除 codespace 时由 client 负责吊销 deploy key。
