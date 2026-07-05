@@ -167,8 +167,8 @@ uv run python -m codespace.client
 CODESPACE_WEB_HOST=127.0.0.1 CODESPACE_WEB_PORT=8765 uv run python -m codespace.client
 ```
 
-不要把 Web GUI 暴露到不可信网络。Web GUI 可操作本地 SSH key、`~/.ssh/config`，并会在进程内存中
-保存 provider token。
+不要把 Web GUI 暴露到不可信网络。Web GUI 可操作本地 SSH key、`~/.ssh/config` 与
+`~/.ssh/codespace/ssh_config`，并会在进程内存中保存 provider token。
 
 ## 7. 在 Web GUI 中创建 codespace
 
@@ -202,7 +202,7 @@ office-service-api-debug
 | `agent: ...` | agent 正在准备 workspace、拉镜像、建容器、注入密钥。 |
 | `registering deploy key` | client 在 Git provider 注册 deploy key。 |
 | `cloning repo into workspace` | agent 在容器 workspace 中 clone 主 repo。 |
-| `writing ssh config` | client 写入本地 SSH config 托管块。 |
+| `writing ssh config` | client 写入 `~/.ssh/codespace/ssh_config` 托管块，并确保主 SSH config Include。 |
 | `ready` | 创建完成。 |
 
 ## 8. 登录和使用
@@ -234,7 +234,7 @@ ssh x@10.0.0.5 -p 49207
 
 1. 吊销 Git provider deploy key；
 2. 删除 agent 上的容器；
-3. 删除本地 `~/.ssh/config` 托管块；
+3. 删除本地 `~/.ssh/codespace/ssh_config` 托管块；
 4. 删除本地登录 keypair。
 
 如果对应 provider token 未保存，容器仍可删除，但 deploy key 吊销会被跳过并显示 warning。
@@ -268,11 +268,18 @@ client 会自动建立本地 SSH HTTP tunnel 访问 agent API。最终登录 cod
 | `~/.ssh/codespace/<alias>` | 本地登录私钥。 |
 | `~/.ssh/codespace/<alias>.pub` | 本地登录公钥。 |
 | `~/.ssh/codespace/known_hosts` | codespace SSH known hosts。 |
-| `~/.ssh/config` | Web GUI 写入 codespace 托管块。 |
+| `~/.ssh/codespace/ssh_config` | Web GUI 写入 codespace SSH Host 托管块。 |
+| `~/.ssh/config` | Web GUI 确保包含 `Include ~/.ssh/codespace/ssh_config`。 |
 
 SSH config 托管块示例：
 
 ```sshconfig
+# ~/.ssh/config
+Include ~/.ssh/codespace/ssh_config
+```
+
+```sshconfig
+# ~/.ssh/codespace/ssh_config
 # >>> codespace home-devspace-default >>>
 # codespace-id: abc123
 # codespace-repos: curoky/devspace
@@ -320,7 +327,8 @@ Host home-devspace-default
 
 ### `ssh <alias>` 连不上
 
-- 检查 `~/.ssh/config` 中对应 Host 是否存在。
+- 检查 `~/.ssh/config` 是否包含 `Include ~/.ssh/codespace/ssh_config`。
+- 检查 `~/.ssh/codespace/ssh_config` 中对应 Host 是否存在。
 - 检查 agent profile 的 `ssh_host` 是否是本地可达的宿主机地址。
 - 检查宿主机防火墙是否允许访问容器 sshd 随机端口。
 - 尝试页面展示的 raw SSH 命令。
@@ -333,7 +341,7 @@ Host home-devspace-default
 
 - agent 不持有 GitHub / GitLab token。
 - provider token 只保存在本地 Python Web GUI service 进程内存中，不写入 YAML 或浏览器持久化存储。
-- Web GUI 进程可访问本地 SSH key 和 `~/.ssh/config`，默认只监听 localhost。
+- Web GUI 进程可访问本地 SSH key、`~/.ssh/config` 和 `~/.ssh/codespace/ssh_config`，默认只监听 localhost。
 - 不要把 Web GUI 暴露到不可信网络。
 - deploy key 粒度限制在单个 repo。
 - 删除 codespace 时由 client 负责吊销 deploy key。
