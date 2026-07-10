@@ -1,0 +1,24 @@
+model = "openrouter-3o"
+
+[hooks.state."ai-contribution@traex-bd-plugins:hooks.json:pre_tool_use:0:0"]
+trusted_hash = "sha256:51240fc0c89a61b41d3b32c185f06486af57bf906061592136352c29d8f6b502"
+
+[hooks.state."ai-contribution@traex-bd-plugins:hooks.json:stop:0:0"]
+trusted_hash = "sha256:061927b7dfea80fa83db740b89ca0b587df5f6df9d071d28806a08886a87df4b"
+
+[hooks.state."ai-contribution@traex-bd-plugins:hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:255602584ec8684c114345b4b528d5411b04835d12a0905c8f7059f004e1201e"
+
+[marketplaces.traex-bd-plugins]
+auto_update = true
+last_revision = "a8d792af9179d51727477e10987bcd400089b332"
+last_updated = "2026-07-10T07:24:34Z"
+ref = "main"
+source = "git@code.byted.org:ide/traex-bd-plugins.git"
+source_type = "git"
+
+[projects."/Users/x/workspace"]
+trust_level = "trusted"
+
+[projects."/Users/x/workspace/devspace"]
+trust_level = "trusted"
