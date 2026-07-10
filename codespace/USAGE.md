@@ -185,13 +185,16 @@ CODESPACE_WEB_HOST=127.0.0.1 CODESPACE_WEB_PORT=8765 uv run python -m codespace.
 
 ## 7. 在 Web GUI 中创建 codespace
 
+Web GUI 以「项目」为中心：每个 config template 是一张项目卡，实例（instance）是项目下的运行环境。
+
 1. 打开 Web GUI。
 2. 点击顶部 **Tokens**，填写目标 provider 的 token 并点击 Save 保存到 Python service 内存。
-3. 点击顶部 **New codespace** 打开创建弹窗。
-4. 在弹窗的 template 列表中选择一个 template（可用上方搜索框过滤）；agent、provider、repo、image 由 template 与 defaults 自动填充。
-5. 填写 instance，例如 `default`、`debug`、`feature-x`。弹窗打开时会为选中 template 自动建议一个未占用的名称（如 `default` 已存在则建议 `default-2`）；提交前也会阻止与当前 Dashboard/operation 已知实例重名。
-6. 提交创建。
-7. 该实例会立即以「进行中」卡片出现在 grid 顶部，卡片上的进度条与 stage 会通过 SSE 实时更新；完成后自动替换为可连接的 codespace 卡片。
+3. 找到目标项目卡（可用 Agent Bar 的搜索框按项目名/repo 过滤）。
+4. 一键创建：如果项目还没有环境，直接点卡片上的 **Create**，Web GUI 会用 `default`（或下一个可用名，如 `default-2`）加项目配置直接创建，无需填表。
+5. 自定义创建：如果想指定 instance 名（例如 `debug`、`feature-x`），点项目卡右上角的 **New instance** 打开弹窗，template 已锁定为该项目，只需填 instance 名后提交。
+6. 该实例会立即以「进行中」的一行出现在所属项目卡里，进度条与 stage 通过 SSE 实时更新；完成后自动替换为可连接的实例行。
+
+> 若对应 provider 的 token 尚未保存，创建会被拒绝并提示先在顶部 Tokens 中保存。
 
 系统自动生成本地 SSH alias：
 
@@ -232,14 +235,14 @@ Web GUI 也会展示 raw SSH 命令：
 ssh x@10.0.0.5 -p 49207
 ```
 
-如果本地 alias 存在，优先使用 `ssh <alias>`；如果 alias 缺失，卡片仍会通过 Copy SSH 提供 raw SSH 命令。
+如果本地 alias 存在，优先使用 `ssh <alias>`；如果 alias 缺失，实例行仍会通过 Copy SSH 提供 raw SSH 命令。
 
-每张 ready codespace 卡片提供两个一等动作：**Open in Trae**（Trae Remote-SSH deep link，打开
-`/workspace/<repo-name>`）和 **Copy SSH**（复制 `ssh <alias>`，alias 缺失时复制 raw SSH 命令）。
+每个 ready 实例行提供两个一等动作：**Open in Trae**（Trae Remote-SSH deep link，打开
+`/workspace/<repo-name>`）和 **SSH**（复制 `ssh <alias>`，alias 缺失时复制 raw SSH 命令）。
 
 ## 9. 删除 codespace
 
-在 codespace 卡片右下角的 **⋯** 菜单中选择删除方式（会弹出确认框）：
+在实例行右侧的 **⋯** 菜单中选择删除方式（会弹出确认框）：
 
 - **Delete container**：删除容器，保留宿主机 workspace。
 - **Delete workspace**：删除容器并删除宿主机 workspace 目录本身。
@@ -374,7 +377,7 @@ podman --url unix:///tmp/podmanxd.sock rm -f <container-name-or-id>
 - 检查 `~/.ssh/codespace/ssh_config` 中对应 Host 是否存在。
 - 检查 agent profile 的 `ssh_host` 是否是本地可达的宿主机地址。
 - 检查宿主机防火墙是否允许访问容器 sshd 随机端口。
-- 尝试卡片上 Copy SSH 复制的 raw SSH 命令。
+- 尝试实例行上 SSH 按钮复制的 raw SSH 命令。
 
 ### 删除后 workspace 仍在
 
