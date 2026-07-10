@@ -140,9 +140,10 @@ templates:
 
 ## 5. 准备 token
 
-在 Web GUI 页面顶部填写 GitHub / GitLab token，并点击对应的 Save 按钮。token 会保存到本地
-Python Web GUI service 的进程内存中；刷新页面或重启浏览器后，页面会重新读取“是否已保存”的状态，
-不需要重复填写。重启 Python Web GUI service 后，内存 token 会丢失，需要重新保存。
+点击 Web GUI 顶部的 **Tokens**（按钮上会显示已保存的 provider 数量，如 `1/2`）打开弹窗，填写
+GitHub / GitLab token 并点击对应的 Save 按钮。token 会保存到本地 Python Web GUI service 的进程内存中；
+刷新页面或重启浏览器后，页面会重新读取“是否已保存”的状态，不需要重复填写。重启 Python Web GUI
+service 后，内存 token 会丢失，需要重新保存。
 
 权限要求：
 
@@ -185,13 +186,12 @@ CODESPACE_WEB_HOST=127.0.0.1 CODESPACE_WEB_PORT=8765 uv run python -m codespace.
 ## 7. 在 Web GUI 中创建 codespace
 
 1. 打开 Web GUI。
-2. 在页面顶部填写目标 provider 的 token，并点击 Save 保存到 Python service 内存。
-3. 在顶部 template select 中选择一个 template，或在 template 行点击 `New instance`。
-4. 确认弹窗中的 agent、provider、repo、image。
-5. 填写 instance，例如 `default`、`debug`、`feature-x`。如果 `default` 已存在，Web GUI 会自动建议
-   `default-2`、`default-3` 等下一个可用名称；提交前也会阻止与当前 Dashboard/operation 已知实例重名。
+2. 点击顶部 **Tokens**，填写目标 provider 的 token 并点击 Save 保存到 Python service 内存。
+3. 点击顶部 **New codespace** 打开创建弹窗。
+4. 在弹窗的 template 列表中选择一个 template（可用上方搜索框过滤）；agent、provider、repo、image 由 template 与 defaults 自动填充。
+5. 填写 instance，例如 `default`、`debug`、`feature-x`。弹窗打开时会为选中 template 自动建议一个未占用的名称（如 `default` 已存在则建议 `default-2`）；提交前也会阻止与当前 Dashboard/operation 已知实例重名。
 6. 提交创建。
-7. 在 operation timeline 中观察进度。
+7. 该实例会立即以「进行中」卡片出现在 grid 顶部，卡片上的进度条与 stage 会通过 SSE 实时更新；完成后自动替换为可连接的 codespace 卡片。
 
 系统自动生成本地 SSH alias：
 
@@ -232,13 +232,14 @@ Web GUI 也会展示 raw SSH 命令：
 ssh x@10.0.0.5 -p 49207
 ```
 
-如果本地 alias 存在，优先使用 `ssh <alias>`；如果 alias 缺失，Dashboard 仍会展示 raw SSH 命令。
+如果本地 alias 存在，优先使用 `ssh <alias>`；如果 alias 缺失，卡片仍会通过 Copy SSH 提供 raw SSH 命令。
 
-也可以点击 Trae Remote-SSH deep link 打开 `/workspace/<repo-name>`。
+每张 ready codespace 卡片提供两个一等动作：**Open in Trae**（Trae Remote-SSH deep link，打开
+`/workspace/<repo-name>`）和 **Copy SSH**（复制 `ssh <alias>`，alias 缺失时复制 raw SSH 命令）。
 
 ## 9. 删除 codespace
 
-在 Dashboard 中选择实例删除：
+在 codespace 卡片右下角的 **⋯** 菜单中选择删除方式（会弹出确认框）：
 
 - **Delete container**：删除容器，保留宿主机 workspace。
 - **Delete workspace**：删除容器并删除宿主机 workspace 目录本身。
@@ -324,7 +325,7 @@ Host home-devspace-default
 
 ### 创建失败：token missing
 
-- 确认已在 Web GUI 页面顶部填写并保存目标 provider 的 token。
+- 确认已在 Web GUI 顶部 **Tokens** 弹窗中填写并保存目标 provider 的 token。
 - token 只保存在 Python Web GUI service 进程内存中；如果刚重启过 service，需要重新保存。
 
 ### 创建失败：deploy key 注册失败
@@ -373,7 +374,7 @@ podman --url unix:///tmp/podmanxd.sock rm -f <container-name-or-id>
 - 检查 `~/.ssh/codespace/ssh_config` 中对应 Host 是否存在。
 - 检查 agent profile 的 `ssh_host` 是否是本地可达的宿主机地址。
 - 检查宿主机防火墙是否允许访问容器 sshd 随机端口。
-- 尝试页面展示的 raw SSH 命令。
+- 尝试卡片上 Copy SSH 复制的 raw SSH 命令。
 
 ### 删除后 workspace 仍在
 
