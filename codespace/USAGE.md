@@ -278,6 +278,22 @@ client 会自动建立本地 SSH HTTP tunnel 访问 agent API。最终登录 cod
 - `agent_url` 可以写 bastion 能访问的 agent 地址；
 - 若 agent 只在远端 localhost 监听，可用 `http://127.0.0.1:8001` 配合 SSH tunnel。
 
+### 透传额外 SSH 指令（如 ProxyJump）
+
+某些 agent 的 codespace 需要额外的 SSH Host 指令（例如通过跳板机 `ProxyJump`）。用 agent
+profile 的 `ssh_options` 透传，键值原样写入托管块，追加在其余指令之后：
+
+```yaml
+agents:
+  my3-h20:
+    agent_url: http://127.0.0.1:8001
+    ssh_host: fdbd:dc55:2:1200::24
+    ssh_options:
+      ProxyJump: jump-proxy-sg.tiktok-row.org
+```
+
+该值只存在于本地 config，不写进代码库；每次创建 codespace 时按 agent 注入到对应托管块。
+
 ## 11. 本地文件位置
 
 | 路径 | 说明 |
