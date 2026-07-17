@@ -316,7 +316,6 @@ Include ~/.ssh/codespace/ssh_config
 # ~/.ssh/codespace/ssh_config
 # >>> codespace home-devspace-default >>>
 # codespace-id: abc123
-# codespace-repos: curoky/devspace
 # codespace-provider: github
 # codespace-agent: home
 # codespace-repo: curoky/devspace
